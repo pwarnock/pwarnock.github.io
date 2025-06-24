@@ -1,0 +1,19 @@
+[[social]]
+  type = "linkedin"
+  id   = "peterwarnock"
+
+[[social]]
+  type = "github"
+  id   = "pwarnock"
+
+# [[social]]
+#  type = "facebook"
+#  id   = "username"
+
+#[[social]]
+#  type = "telegram"
+#  id   = "username"
+
+#[[social]]
+#  type = "whatsapp"
+#  id   = "+1234567890"

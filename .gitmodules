@@ -1,0 +1,3 @@
+[submodule "themes/porto"]
+	path = themes/porto
+	url = https://github.com/pwarnock/hugo-porto-theme.git

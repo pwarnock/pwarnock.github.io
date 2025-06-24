@@ -1,0 +1,22 @@
+baseURL = 'https://peterwarnock.com/'
+languageCode = 'en-us'
+title = 'Peter Warnock | Cloud & Platform Engineering | DevOps Leadership'
+
+enableRobotsTXT = false
+googleAnalytics = 'G-SKDDM2GBXN'
+
+theme='porto'
+
+[params]
+  description = "Peter Warnock's personal website"
+  keywords = []
+
+  [params.author]
+    name = "Peter Warnock"
+
+  hero_title = "Peter Warnock"
+  hero_text = "Cloud & Platform Engineering leader with 15+ years of experience in DevOps leadership and fullstack development"
+
+[module]
+  [[module.imports]]
+    path = "github.com/pwarnock/hugo-porto-theme"

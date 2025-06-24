@@ -1,0 +1,51 @@
+title = "End-to-End Expertise in Development & Operations"
+
+[[skill]]
+title = "Programming Languages"
+icon = "bx-code"
+text = """Experienced in programming languages such as Python, JavaScript/TypeScript, Java, and C#. 
+Proficient in object-oriented programming, functional programming, and scripting. 
+Well-versed in data structures, algorithms, and design patterns."""
+
+[[skill]]
+title = "Web Development"
+icon = "bx-code-alt"
+text = """Experienced in web development technologies such as HTML, CSS, and JavaScript. 4
+Proficient in front-end frameworks such as React, Angular, and Vue.js. 
+Well-versed in responsive design, cross-browser compatibility, and web performance optimization."""
+
+[[skill]]
+title = "Backend Development"
+icon = "bx-server"
+text = """Experienced in backend development technologies such as Node.js, Express, and Django. 
+Proficient in RESTful APIs, GraphQL, and microservices architecture. 
+Well-versed in database management using SQL and NoSQL databases."""
+
+[[skill]]
+title = "Cloud Technologies"
+icon = "bx-cloud"
+text = """Experienced in leveraging cloud platforms such as AWS, Azure, and Google Cloud. 
+Proficient in designing and deploying scalable, secure, and cost-effective cloud 
+solutions. Well-versed in cloud-native services, containerization (Docker, 
+Kubernetes), and serverless architectures."""
+
+[[skill]]
+title = "CI/CD Pipelines"
+icon = "bx-git-branch"
+text = """Experienced in setting up CI/CD pipelines using Jenkins, GitHub Actions, and GitLab CI/CD. 
+Proficient in automating build, test, and deployment processes. 
+Well-versed in version control using Git and GitHub."""
+
+[[skill]]
+title = "Agile Methodologies"
+icon = "bxl-trello"
+text = """Experienced in working with Agile methodologies such as Scrum and Kanban. 
+Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. 
+Well-versed in using Jira, Trello, and other tools."""
+
+[[skill]]
+title = "DevOps Practices"
+icon = "bxl-dev-to"
+text = """Experienced in implementing DevOps practices such as infrastructure as code, configuration management, and monitoring. 
+Proficient in using tools such as Terraform, Ansible, and Prometheus. 
+Well-versed in logging, monitoring, and alerting."""

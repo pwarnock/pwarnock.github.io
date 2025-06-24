@@ -1,0 +1,20 @@
+title = "Peter Warnock"
+logo  = "img/default-logo.png"
+
+[[menu]]
+  text        = "Home"
+  description = "Welcome to my personal website"
+  link        = "/"
+  target      = "_self"
+
+[[menu]]
+  text        = "Posts"
+  description = "Read my latest posts"
+  link        = "/posts"
+  target      = "_self"
+
+[button]
+  enabled = false
+  text    = "Get my CV"
+  link    = "files/path/to/resume.pdf"
+  target  = "_blank"

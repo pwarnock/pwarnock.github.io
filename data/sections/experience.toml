@@ -1,0 +1,30 @@
+
+[[company]]
+  name = "Learneo (formerly Barnes & Noble Education)"
+  role = "Director of DevOps, Student Brands"
+  date = "Feb 2015 - July 2024"
+  text = [
+    "Led cloud engineering and SRE initiatives, managing a global team of engineers and driving operational excellence.",
+    "Designed and optimized cloud infrastructure, migrating operations from Joyent to AWS and later between AWS and GCP.",
+    "Implemented interoperability solutions and Lean practices, saving $100K+ in cloud and SaaS costs.",
+    "Managed $2M+ in vendor relationships, enhancing service quality and reducing costs.",
+    "Championed security and compliance protocols, ensuring adherence to SOC 2, PCI-DSS, and GDPR standards."
+  ]
+
+[[company]]
+  name = "MotorTrend (formerly Source Interlink Media / TEN: The Enthusiast Network)"
+  date = "Jan 2013 - Feb 2015"
+  role = "Director of Software Engineering – Platform Development"
+  text = [
+    "Developed a strategic roadmap for platform development, aligning engineering efforts with business objectives.",
+    "Architected a modern web-tier framework and transitioned the enterprise to agile practices, driving efficiency."
+  ]
+
+[[company]]
+  name = "GoBankingRates (formerly Consumertrack)"
+  role = "Software Development Manager / Solutions Architect"
+  date = "Jun 2008 - Jan 2013"
+  text = [
+    "Led integrations with credit bureaus and partners, optimizing data flow and achieving $1M+ revenue per employee.",
+    "Architected a hyperlocal WordPress platform, scaling for high traffic and ensuring robust performance."
+  ]

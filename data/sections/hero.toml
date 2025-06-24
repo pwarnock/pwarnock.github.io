@@ -1,0 +1,18 @@
+title1 = "FULLSTACK"
+text1 = """
+Bridging secure, scalable applications with a focus on team-driven innovation.
+"""
+title2 = "ARCHITECT"
+text2 = "Peter Warnock profile picture"
+avatar = "img/default-avatar.jpg"
+title3 = "LEADER"
+text3 = """
+I connect business and technology with a customer-first mindset and a passion
+for growth. By aligning technical solutions with strategic goals, I deliver
+impactful results that drive innovation and lasting value."""
+description = """
+As a software engineer and leader, I specialize in crafting innovative solutions,
+designing robust systems, and fostering collaboration. I thrive on solving complex
+challenges, leading teams to success, and ensuring quality and efficiency in every
+project.
+"""
