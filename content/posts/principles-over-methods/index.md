@@ -3,7 +3,6 @@
   date: 2025-07-03T11:55:15-07:00
   image: 'principles-over-methods-quote-harrington-emerson.png'
   tags: ['']
-  draft: true
 ---
 
 > "As to methods, there may be a million and then some, but principles are few. The person who grasps principles can successfully select their own methods. The person who tries methods, ignoring principles, is sure to have trouble."
