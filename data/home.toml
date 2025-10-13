@@ -14,16 +14,21 @@
   weight  = 3
 
 [[section]]
-  id      = "education"
+  id      = "newsletter"
   enabled = true
   weight  = 4
 
 [[section]]
+  id      = "posts"
+  enabled = true
+  weight  = 5
+
+[[section]]
   id      = "projects"
   enabled = false
-  weight  = 5
+  weight  = 6
 
 [[section]]
   id      = "testimonials"
   enabled = false
-  weight  = 6
+  weight  = 7
