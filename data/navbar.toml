@@ -8,10 +8,16 @@ logo  = "img/default-logo.png"
   target      = "_self"
 
 [[menu]]
-  text        = "Posts"
-  description = "Read my latest posts"
-  link        = "/posts"
-  target      = "_self"
+   text        = "Experience"
+   description = "View my professional milestones"
+   link        = "/experience"
+   target      = "_self"
+
+[[menu]]
+   text        = "Posts"
+   description = "Read my latest posts"
+   link        = "/posts"
+   target      = "_self"
 
 [button]
   enabled = false
