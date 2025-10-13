@@ -46,3 +46,13 @@ jobs:
         check_external_links: true
         ignore_urls:
           - "https://peterwarnock.com/"  # Ignore self-references if needed
+
+    - name: SEO validation
+      run: |
+        echo "Checking for meta descriptions..."
+        find public -name "*.html" -exec grep -L '<meta name="description"' {} \; | head -5
+        if [ $? -eq 0 ]; then
+          echo "Some pages missing meta descriptions"
+          exit 1
+        fi
+        echo "SEO check passed"
