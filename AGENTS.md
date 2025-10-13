@@ -7,6 +7,10 @@
 
 ## Code Style Guidelines
 
+### General
+- Avoid hardcoding values; use theme variables, data files, or configuration options instead
+- Prefer reusable, configurable components over layout-specific overrides
+
 ### Hugo Templates
 - Use Go template syntax with proper context scoping (`$.Site` vs `.Site`)
 - Prefer semantic HTML in templates
