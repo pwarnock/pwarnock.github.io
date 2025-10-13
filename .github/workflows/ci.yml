@@ -56,3 +56,13 @@ jobs:
           exit 1
         fi
         echo "SEO check passed"
+
+    - name: Accessibility test
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: |
+          http://localhost:1313/
+          http://localhost:1313/posts/
+        configPath: .lighthouserc.json
+        uploadArtifacts: true
+        temporaryPublicStorage: true
