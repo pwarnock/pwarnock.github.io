@@ -5,7 +5,7 @@ title = 'Peter Warnock | Cloud & Platform Engineering | DevOps Leadership'
 enableRobotsTXT = false
 googleAnalytics = 'G-SKDDM2GBXN'
 
-theme='hugo-porto'
+theme = 'hugo-porto'
 
 [params]
   description = "Peter Warnock's personal website"
