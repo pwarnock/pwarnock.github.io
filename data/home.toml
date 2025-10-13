@@ -9,9 +9,9 @@
   weight  = 2
 
 [[section]]
-  id      = "experience"
-  enabled = true
-  weight  = 3
+   id      = "experience"
+   enabled = false
+   weight  = 3
 
 [[section]]
   id      = "newsletter"
