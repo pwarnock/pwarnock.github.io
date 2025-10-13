@@ -1,10 +1,9 @@
----
-  title: 'Principles Over Methods'
-  date: 2025-07-03T11:55:15-07:00
-  description: "Exploring the importance of principles over methods in an era of rapid innovation and AI, inspired by Harrington Emerson's timeless quote."
-  image: 'principles-over-methods-quote-harrington-emerson.png'
-  tags: ['']
----
++++
+title = 'Principles Over Methods'
+date = 2025-07-03T11:55:15-07:00
+description = "Exploring the importance of principles over methods in an era of rapid innovation and AI, inspired by Harrington Emerson's timeless quote."
+image = 'principles-over-methods-quote-harrington-emerson.png'
++++
 
 > "As to methods, there may be a million and then some, but principles are few. The person who grasps principles can successfully select their own methods. The person who tries methods, ignoring principles, is sure to have trouble."
 > —[Harrington Emerson](https://en.wikipedia.org/wiki/Harrington_Emerson), *The Clothier and Furnisher* (July 1911), via [James Clear's 3-2-1 Thursday, July 3, 2025](https://jamesclear.com/3-2-1/july-3-2025).

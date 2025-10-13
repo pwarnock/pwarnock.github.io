@@ -34,5 +34,14 @@
 - Keep drafts as `draft: true` until ready
 - Test builds locally before pushing
 
+### Testing and Validation
+- **Build validation**: Run `hugo --minify` to ensure the site builds without errors
+- **CI checks**: Push changes to trigger GitHub Actions CI, which includes:
+  - HTML link validation (htmltest)
+  - SEO validation
+  - Accessibility testing (Lighthouse)
+  - Performance testing
+- **Local accessibility check**: Use browser dev tools or Lighthouse extension to audit pages
+
 ### Work Tracking
 We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
