@@ -45,3 +45,8 @@
 
 ### Work Tracking
 We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
+
+### Development Workflow
+- **Plan First**: Before implementing any feature, create a detailed plan and get user approval.
+- **Incremental Changes**: Implement one feature at a time, committing after each.
+- **Show Implementation**: After building, demonstrate how features are implemented.

@@ -14,10 +14,10 @@ Seth’s 65 insights cover topics like creativity, leadership, integrity, and pe
 
 ## What I Did
 
-- **Rephrased the 65 notes as daily prompts.**
-- **Created an .ics (iCalendar) file** with 65 all-day events, one per day, each summarizing a prompt.
-- **Each event is marked as “free” (doesn’t block time) and triggers a pop-up reminder at 8:30am**—perfect for journaling first thing in the morning.
-- **Importable into Apple Calendar, Google Calendar, Outlook, or any calendar app supporting the .ics format.**
+- Rephrased the 65 notes as daily prompts.
+- Created an .ics (iCalendar) file with 65 all-day events, one per day, each summarizing a prompt.
+- Each event is marked as "free" (doesn't block time) and triggers a pop-up reminder at 8:30am—perfect for journaling first thing in the morning.
+- Importable into Apple Calendar, Google Calendar, Outlook, or any calendar app supporting the .ics format.
 
 ## How You Can Use It
 
