@@ -5,6 +5,8 @@ title = 'Peter Warnock | Cloud & Platform Engineering | DevOps Leadership'
 enableRobotsTXT = false
 googleAnalytics = 'G-SKDDM2GBXN'
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
 theme = 'hugo-porto'
 
 [params]
