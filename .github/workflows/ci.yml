@@ -32,3 +32,14 @@ jobs:
           exit 1
         fi
         echo "Build successful"
+
+    - name: HTML validation
+      uses: chabad360/htmlproofer@master
+      with:
+        directory: "./public"
+        allow_hash_href: true
+        check_external_hash: true
+        check_html: true
+        check_img_http: true
+        check_opengraph: true
+        validation: true
