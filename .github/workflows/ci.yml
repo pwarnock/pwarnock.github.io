@@ -45,7 +45,7 @@ jobs:
         validation: true
         check_external_links: true
         ignore_urls:
-          - "https://peterwarnock.com/"  # Ignore self-references if needed
+          - "https://peterwarnock.com/"
 
     - name: SEO validation
       run: |
