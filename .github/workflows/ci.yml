@@ -33,7 +33,7 @@ jobs:
         fi
         echo "Build successful"
 
-    - name: HTML validation
+    - name: HTML validation and link checking
       uses: chabad360/htmlproofer@master
       with:
         directory: "./public"
@@ -43,3 +43,6 @@ jobs:
         check_img_http: true
         check_opengraph: true
         validation: true
+        check_external_links: true
+        ignore_urls:
+          - "https://peterwarnock.com/"  # Ignore self-references if needed
