@@ -1,6 +1,7 @@
 ---
   title: '65 Days of Seth Godin: Daily Journal Prompts as a Calendar'
   date: 2025-07-30T14:38:20-07:00
+  description: "Transform Seth Godin's 65 insights into daily journal prompts delivered via calendar. Download the .ics file for 65 days of reflection."
   image: "seth-godin-daily-journal-prompts-calendar.png"
   tags: ['']
   draft: false

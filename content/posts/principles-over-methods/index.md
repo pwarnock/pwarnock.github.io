@@ -1,6 +1,7 @@
 ---
   title: 'Principles Over Methods'
   date: 2025-07-03T11:55:15-07:00
+  description: "Exploring the importance of principles over methods in an era of rapid innovation and AI, inspired by Harrington Emerson's timeless quote."
   image: 'principles-over-methods-quote-harrington-emerson.png'
   tags: ['']
 ---

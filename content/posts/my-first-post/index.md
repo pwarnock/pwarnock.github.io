@@ -1,6 +1,7 @@
 ---
   title: 'My First Post'
   date: 2025-06-24T15:08:06-07:00
+  description: 'Learn about Lorem Ipsum, the standard dummy text used in printing and typesetting since the 1500s.'
   image: 'my-first-post.webp'
   tags: ['']
   # draft: true
