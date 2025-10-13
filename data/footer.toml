@@ -1,10 +1,13 @@
-[[social]]
-  type = "linkedin"
-  id   = "peterwarnock"
+copyright = "© 2025 Peter Warnock"
+color = "text-gray-900 dark:text-gray-100"
 
 [[social]]
-  type = "github"
-  id   = "pwarnock"
+   type = "linkedin"
+   id   = "peterwarnock"
+
+[[social]]
+   type = "github"
+   id   = "pwarnock"
 
 # [[social]]
 #  type = "facebook"
