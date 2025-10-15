@@ -3,3 +3,8 @@
 <link
   href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap"
   rel="stylesheet" />
+
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+{{ $styles := resources.Get "css/tailwind.css" | css.PostCSS }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
