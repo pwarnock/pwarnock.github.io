@@ -1,16 +1,20 @@
 {
-"name": "pwarnock.github.io",
-"version": "1.0.0",
-"description": "",
-"main": "postcss.config.js",
-"scripts": {
-"test": "echo \"Error: no test specified\" && exit 1"
-},
-"keywords": [],
-"author": "",
-"license": "ISC",
+  "name": "pwarnock.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "postcss.config.js",
+  "scripts": {
+    "prepare": "husky",
+    "build": "hugo --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "daisyui": "^4.12.10",
+    "husky": "^9.1.7",
     "tailwindcss": "^3.4.0"
   }
 }
