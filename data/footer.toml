@@ -6,12 +6,16 @@ color = "text-gray-900 dark:text-gray-100"
    id   = "peterwarnock"
 
 [[social]]
-   type = "github"
+type = "github"
+id   = "pwarnock"
+
+[[social]]
+   type = "x"
    id   = "pwarnock"
 
-# [[social]]
-#  type = "facebook"
-#  id   = "username"
+ # [[social]]
+ #  type = "facebook"
+ #  id   = "username"
 
 #[[social]]
 #  type = "telegram"
