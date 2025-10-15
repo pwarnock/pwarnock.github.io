@@ -6,5 +6,13 @@ module.exports = {
     './themes/hugo-porto/layouts/**/*.html',
     './themes/hugo-porto/content/**/*.md',
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif'],
+      },
+    },
+  },
   plugins: []
 };

@@ -1,0 +1,22 @@
+/* Map DaisyUI variables to theme's expected color variables */
+:root {
+  --color-base-100: hsl(var(--b1));
+  --color-base-200: hsl(var(--b2));
+  --color-base-300: hsl(var(--b3));
+  --color-primary: hsl(var(--p));
+  --color-primary-content: hsl(var(--pc));
+  --color-secondary: hsl(var(--s));
+  --color-secondary-content: hsl(var(--sc));
+  --color-accent: hsl(var(--a));
+  --color-accent-content: hsl(var(--ac));
+  --color-neutral: hsl(var(--n));
+  --color-neutral-content: hsl(var(--nc));
+  --color-info: hsl(var(--in));
+  --color-success: hsl(var(--suc));
+  --color-warning: hsl(var(--wa));
+  --color-error: hsl(var(--er));
+  --color-info-content: hsl(var(--inc));
+  --color-success-content: hsl(var(--suc));
+  --color-warning-content: hsl(var(--wac));
+  --color-error-content: hsl(var(--erc));
+}
