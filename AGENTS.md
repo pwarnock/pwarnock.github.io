@@ -1,6 +1,7 @@
 # Agent Guidelines for pwarnock.github.io
 
 ## Build Commands
+- **Install dependencies**: `npm install` (installs Node.js dependencies for TailwindCSS and DaisyUI)
 - **Development server**: `hugo server -D` (includes drafts)
 - **Production build**: `hugo --minify`
 - **Clean build**: `hugo -d public --minify`
@@ -54,3 +55,9 @@ We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
 - **Plan First**: Before implementing any feature, create a detailed plan and get user approval.
 - **Incremental Changes**: Implement one feature at a time, committing after each.
 - **Show Implementation**: After building, demonstrate how features are implemented.
+
+### Theme Customization
+- Theme switching is implemented with DaisyUI themes (light, dark, retro, cyberpunk, halloween).
+- Use the palette button in the navbar to cycle themes.
+- Themes are configured in `tailwind.config.js` and color variables are mapped in `static/css/custom.css`.
+- Font overrides use theme fonts (Poppins for headings, Roboto for body), loaded in `layouts/partials/head.html`.
