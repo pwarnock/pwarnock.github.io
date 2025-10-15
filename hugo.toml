@@ -18,3 +18,9 @@ theme = 'hugo-porto'
 
   hero_title = "Peter Warnock"
   hero_text = "Cloud & Platform Engineering leader with 15+ years of experience in DevOps leadership and fullstack development"
+
+  [params.mailchimp]
+  action = "https://gmail.us8.list-manage.com/subscribe/post?u=174f78659f6d3dd707f265f33&id=daaddd52e4&f_id=005f13e1f0"
+  user_id = "174f78659f6d3dd707f265f33"
+  list_id = "daaddd52e4"
+  f_id = "005f13e1f0"
