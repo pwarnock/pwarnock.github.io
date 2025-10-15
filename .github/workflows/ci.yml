@@ -37,15 +37,7 @@ jobs:
       uses: chabad360/htmlproofer@master
       with:
         directory: "./public"
-        allow_hash_href: true
-        check_external_hash: true
-        check_html: true
-        check_img_http: true
-        check_opengraph: true
-        validation: true
-        check_external_links: true
-        ignore_urls:
-          - "https://peterwarnock.com/"
+        arguments: --allow-hash-href --check-external-hash --check-html --check-img-http --check-opengraph --validation --check-external-links --ignore-urls https://peterwarnock.com/
 
     - name: SEO validation
       run: |
