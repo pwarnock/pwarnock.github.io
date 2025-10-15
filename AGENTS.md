@@ -61,3 +61,5 @@ We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
 - Use the palette button in the navbar to cycle themes.
 - Themes are configured in `tailwind.config.js` and color variables are mapped in `static/css/custom.css`.
 - Font overrides use theme fonts (Poppins for headings, Roboto for body), loaded in `layouts/partials/head.html`.
+- Treat themes as external dependencies. Do not modify files in `themes/` directly. Instead, use Hugo's layout overrides by placing modified versions in the site's `layouts/` directory with the same relative path (e.g., override `themes/theme-name/layouts/partials/example.html` by creating `layouts/partials/example.html`).
+- Theme defaults: Halloween theme in October, dark theme if system prefers dark mode, random theme otherwise (when no localStorage value exists).
