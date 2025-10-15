@@ -1,0 +1,17 @@
+{{/* Posts section */}}
+<div class="container mx-auto px-4 py-16">
+  <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 text-center font-medium font-poppins text-base-300 mb-12">
+  Latest Posts
+  </h2>
+  <div class="grid grid-cols-2 gap-8">
+    {{ range first 6 (where site.RegularPages "Type" "posts") }}
+      <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-base-200">
+        <h3 class="mb-4 text-lg font-medium sm:text-xl lg:text-lg xl:text-xl text-base-content">
+          <a href="{{ .Permalink }}" class="text-primary hover:text-primary-focus">{{ .Title }}</a>
+        </h3>
+        <p class="text-lg font-light text-base-content">{{ .Summary | plainify | truncate 150 }}</p>
+        <a href="{{ .Permalink }}" class="text-primary hover:text-primary-focus">Read more</a>
+      </div>
+    {{ end }}
+  </div>
+</div>
