@@ -6,7 +6,7 @@
 
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-{{ $styles := resources.Get "css/tailwind.css" | css.PostCSS }}
+{{ $styles := resources.Get "css/tailwind.css" }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
 
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
