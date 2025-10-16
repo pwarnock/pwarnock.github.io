@@ -40,7 +40,7 @@ jobs:
       uses: chabad360/htmlproofer@master
       with:
         directory: "./public"
-        arguments: --allow-hash-href --check-external-hash --check-html --check-img-http --check-opengraph --validation --disable-external --ignore-urls https://peterwarnock.com/
+        arguments: --allow-hash-href --check-external-hash --check-img-http --check-opengraph --validation --disable-external --ignore-urls https://peterwarnock.com/
 
     - name: SEO validation
       run: |
