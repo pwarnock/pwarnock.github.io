@@ -1,6 +1,7 @@
 
 [[company]]
-  name = "Learneo (formerly Barnes & Noble Education)"
+  name = "Learneo"
+  former = "Barnes & Noble Education"
   role = "Director of DevOps, Student Brands"
   date = "Feb 2015 - July 2024"
   text = [
@@ -12,7 +13,8 @@
   ]
 
 [[company]]
-  name = "MotorTrend (formerly Source Interlink Media / TEN: The Enthusiast Network)"
+  name = "MotorTrend"
+  former = "Source Interlink Media"
   date = "Jan 2013 - Feb 2015"
   role = "Director of Software Engineering – Platform Development"
   text = [
@@ -21,7 +23,8 @@
   ]
 
 [[company]]
-  name = "GoBankingRates (formerly Consumertrack)"
+  name = "GoBankingRates"
+  former = "ConsumerTrack"
   role = "Software Development Manager / Solutions Architect"
   date = "Jun 2008 - Jan 2013"
   text = [

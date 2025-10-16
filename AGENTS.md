@@ -3,8 +3,9 @@
 ## Build Commands
 - **Install dependencies**: `npm install` (installs Node.js dependencies for TailwindCSS and DaisyUI)
 - **Development server**: `hugo server -D` (includes drafts)
+  - Note: Do not start the dev server in interactive mode as it will hang the agent session. Use build commands for comparisons instead.
 - **Production build**: `hugo --minify`
-- **Clean build**: `hugo -d public --minify`
+- **Clean build**: `rm -rf public && hugo -d public --minify`
 
 ## Code Style Guidelines
 

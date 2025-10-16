@@ -1,0 +1,34 @@
+{{/* Default data */}}{{ $title := "Professional milestones" }}
+{{ $companies := slice
+  (dict "name" "GlobalWidgets" "role" "Team Leader" "date" "2019 - Present" "text" (slice "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc." "Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc."))
+  (dict "name" "TechNova Solutions" "role" "CTO" "date" "2017 - 2019" "text" (slice "Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+  (dict "name" "BrightMind Inc." "role" "Software Engineer" "date" "2015 - 2017" "text" (slice "Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+}}
+
+{{/* Custom data from configuration file */}}{{ with site.Data.sections.experience }}
+  {{ $companies = slice }}
+  {{ if .title }}{{ $title = .title }}{{ end }}
+  {{ if .company }}{{ $companies = .company }}{{ end }}
+{{ end }}
+
+<div class="container mx-auto px-4 py-16">
+  <h2 class="text-3xl md:text-4xl lg:text-5xl text-center font-medium font-poppins text-base-content">
+    {{ $title }}
+  </h2>
+  <div class="relative mx-auto mt-12 flex w-full flex-col text-center text-base-content">
+    {{ range $companies }}
+      <div class="mt-12 flex flex-col text-center md:flex-row md:text-left">
+        <div class="flex-1">
+          <h3 class="text-lg font-medium sm:text-xl lg:text-lg xl:text-xl text-base-content">{{ .name }}</h3>
+          <p class="text-lg font-light text-base-content">{{ .role }}</p>
+          <p class="text-lg font-light text-base-content">{{ .date }}</p>
+        </div>
+        <div class="flex-1">
+          {{ range .text }}
+            <p class="text-lg font-light text-base-content">{{ . }}</p>
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</div>
