@@ -5,7 +5,8 @@
   "main": "postcss.config.js",
   "scripts": {
     "prepare": "husky",
-    "build": "hugo --minify"
+    "build": "hugo --minify",
+    "lint:yaml": "find . -name '*.yml' -o -name '*.yaml' | xargs bundle exec yaml-lint"
   },
   "keywords": [],
   "author": "",

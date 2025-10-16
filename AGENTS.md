@@ -39,6 +39,7 @@
 - Use conventional commit messages
 - Keep drafts as `draft: true` until ready
 - Test builds locally before pushing
+- Pre-commit hooks run YAML lint and build to catch errors early
 
 ### Testing and Validation
 - **Build validation**: Run `hugo --minify` to ensure the site builds without errors
