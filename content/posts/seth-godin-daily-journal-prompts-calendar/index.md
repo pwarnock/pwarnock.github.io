@@ -21,7 +21,7 @@ Seth’s 65 insights cover topics like creativity, leadership, integrity, and pe
 
 ## How You Can Use It
 
-1. [**Download the .ics file.**](seth_godin_journal_prompts.ics)
+1. [**Download the .ics file.**](/posts/seth-godin-daily-journal-prompts-calendar/seth_godin_journal_prompts.ics)
 2. Import it into your calendar app (Apple/Google/Outlook, etc).
 3. Each morning for 65 days, you’ll receive a prompt at 8:30am.  
    Use it to journal, reflect, or simply carry the question with you through the day.
