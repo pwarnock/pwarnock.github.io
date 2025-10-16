@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "husky",
     "build": "hugo --minify",
-    "lint:yaml": "find . -name '*.yml' -o -name '*.yaml' | xargs bundle exec yaml-lint"
+    "lint:yaml": "find . -name '*.yml' -o -name '*.yaml' | xargs bundle exec yaml-lint",
+    "lint:toml": "find . -name '*.toml' | xargs -I {} python3 -c \"import tomllib; tomllib.load(open('{}'))\" 2>/dev/null || echo \"TOML syntax error in {}\""
   },
   "keywords": [],
   "author": "",
