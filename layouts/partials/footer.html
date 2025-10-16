@@ -1,0 +1,38 @@
+{{/* Default values */}}
+{{ $author := or site.Params.Author.name (or site.Author.name "John Doe") }}
+{{ $copyright := printf "© %d %s" now.Year $author }}
+
+{{/* Custom data from configuration file */}}
+{{ with site.Data.footer }}
+  {{ if .copyright }}{{ $copyright = .copyright }}{{ end }}
+{{ end }}
+
+<div class="bg-light-bg-secondary dark:bg-dark-bg-secondary py-16">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-between items-center">
+      <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+        <h3 class="text-2xl font-medium text-light-text-primary dark:text-dark-text-primary mb-4">About Me</h3>
+        <p class="text-light-text-secondary dark:text-dark-text-secondary">
+          I'm a Cloud & Platform Engineering leader with 15+ years of experience in DevOps leadership and fullstack development. I'm passionate about building scalable and resilient systems.
+        </p>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <h3 class="text-2xl font-medium text-light-text-primary dark:text-dark-text-primary mb-4">Subscribe to my Newsletter</h3>
+        <form action="{{ site.Params.mailchimp.action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div class="flex">
+            <input type="email" value="" name="EMAIL" class="flex-1 px-4 py-2 border border-light-text-secondary dark:border-dark-text-secondary bg-light-bg dark:bg-dark-bg text-light-text-primary dark:text-dark-text-primary rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500" id="mce-EMAIL" placeholder="Enter your email">
+            <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="px-6 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer/socials.html" }}
+
+<div class="pb-5 text-center text-lg font-light text-base-content">
+  <div title="hugo-porto v{{ trim (partial "footer/version.html") "\n\r " }}">
+    {{ $copyright }}
+  </div>
+</div>
