@@ -7,7 +7,7 @@
     "prepare": "husky",
     "build": "hugo --minify",
     "lint:yaml": "find . -name '*.yml' -o -name '*.yaml' | xargs bundle exec yaml-lint",
-    "lint:toml": "find . -name '*.toml' | while read file; do python3 -c \"import tomllib; tomllib.load(open('$file'))\" || echo \"TOML syntax error in $file\"; done"
+    "lint:toml": "find . -name '*.toml' | while read file; do ruby -e \"require 'toml'; TOML.load_file('$file')\" || echo \"TOML syntax error in $file\"; done"
   },
   "keywords": [],
   "author": "",
