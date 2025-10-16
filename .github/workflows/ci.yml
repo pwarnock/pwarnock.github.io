@@ -26,32 +26,29 @@ jobs:
       run: hugo --minify
 
     - name: Test build
-       run: |
-         if [ ! -d "public" ]; then
-           echo "Build failed: public directory not found"
-           exit 1
-         fi
-         echo "Build successful"
+      run: |
+        if [ ! -d "public" ]; then
+          echo "Build failed: public directory not found"
+          exit 1
+        fi
+        echo "Build successful"
 
-    - name: Start server
-       run: python3 -m http.server 1313 --directory public &
-
-     - name: HTML validation and link checking
+    - name: HTML validation and link checking
       uses: chabad360/htmlproofer@master
       with:
         directory: "./public"
         arguments: --allow-hash-href --check-external-hash --check-html --check-img-http --check-opengraph --validation --check-external-links --ignore-urls https://peterwarnock.com/
 
     - name: SEO validation
-    run: |
-    echo "Checking for meta descriptions..."
-    missing=$(find public -name "*.html" -exec grep -L '<meta name="description"' {} \; | wc -l)
-    if [ "$missing" -gt 0 ]; then
-    echo "Warning: $missing pages missing meta descriptions"
-    find public -name "*.html" -exec grep -L '<meta name="description"' {} \; | head -5
-    else
-      echo "SEO check passed"
-         fi
+      run: |
+        echo "Checking for meta descriptions..."
+        missing=$(find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | wc -l)
+        if [ "$missing" -gt 0 ]; then
+          echo "Warning: $missing pages missing meta descriptions"
+          find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | head -5
+        else
+          echo "SEO check passed"
+        fi
 
     # - name: Accessibility test
     #   uses: treosh/lighthouse-ci-action@v10
