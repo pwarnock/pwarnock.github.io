@@ -12,6 +12,7 @@ logo  = "img/default-logo.png"
    description = "View my professional milestones"
    link        = "/experience"
    target      = "_self"
+   enabled     = false
 
 [[menu]]
    text        = "Posts"
