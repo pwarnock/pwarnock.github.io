@@ -1,5 +1,6 @@
 # Hugo build output
 /public/
+/public-dev/
 /resources/_gen/
 
 # Hugo temporary files
