@@ -22,5 +22,4 @@ logo  = "img/default-logo.png"
 [button]
   enabled = false
   text    = "Get my CV"
-  link    = "files/path/to/resume.pdf"
   target  = "_blank"
