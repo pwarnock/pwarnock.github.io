@@ -20,7 +20,6 @@ hugo.linux
 
 # Node.js dependencies (if using npm or yarn)
 node_modules/
-package-lock.json
 yarn.lock
 
 # IDE/editor-specific files
