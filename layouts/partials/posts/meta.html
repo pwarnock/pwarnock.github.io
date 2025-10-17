@@ -4,21 +4,24 @@
 
 <div class="flex items-center">
   <div class="my-2 flex whitespace-nowrap items-center">
-    <i class="bx bx-calendar text-base-content h-5"></i>
-    <span class="text-base-content text-sm mx-1"><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></span>
+  <i class="bx bx-calendar text-base-content h-5"></i>
+  <span class="text-base-content text-sm mx-1"><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></span>
   </div>
   <div class="m-2 text-base flex whitespace-nowrap items-center">
-    <i class="bx bx-time-five text-base-content"></i>
-    <span class="text-base-content text-sm mx-1 h-5">
-      {{ .ReadingTime }}
-      {{ if eq .ReadingTime 1 }}minute{{ else }}minutes{{ end }}
-    </span>
+  <i class="bx bx-time-five text-base-content"></i>
+  <span class="text-base-content text-sm mx-1 h-5">
+  {{ .ReadingTime }}
+  {{ if eq .ReadingTime 1 }}minute{{ else }}minutes{{ end }}
+  </span>
   </div>
+  {{ $variants := slice "badge-primary" "badge-secondary" "badge-accent" "badge-neutral" "badge-info" "badge-success" "badge-warning" "badge-error" }}
   <div class="my-2 flex flex-wrap items-center gap-1">
-    <i class="bx bx-purchase-tag-alt text-base-300 h-4"></i>
-    {{ range index .Params "tags" }}
-      {{ $href := print (absURL "tags/") (urlize .) }}
-      <a class="inline-block bg-base-200 text-primary hover:bg-base-300 px-2 py-1 rounded text-sm transition-colors" href="{{ $href | safeURL }}" aria-label="{{ . | safeHTMLAttr }}">{{ . }}</a>
-    {{ end }}
+  {{ range $index, $tag := .Params.tags }}
+  {{ $variant := index $variants (mod $index (len $variants)) }}
+  {{ $href := print "/tags/" (urlize $tag) }}
+  <a class="badge {{ $variant }} hover:badge-ghost px-2 py-1 text-sm transition-colors" href="{{ $href }}" aria-label="{{ $tag }}">
+  <i class="bx bx-purchase-tag-alt h-3 mr-2"></i>{{ $tag }}
+  </a>
+  {{ end }}
   </div>
 </div>
