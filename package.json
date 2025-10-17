@@ -4,7 +4,8 @@
   "description": "",
   "main": "postcss.config.js",
   "scripts": {
-    "build": "hugo --gc --ignoreCache --minify",
+    "build": "npm run build:css && hugo --gc --ignoreCache --minify",
+    "build:css": "postcss assets/css/tailwind.css -o static/css/tailwind.css --minify --config themes/hugo-porto/postcss.config.js",
     "clean": "rm -rf public",
     "dev": "hugo server -D",
     "lint": "npm run lint:yaml && npm run lint:toml && npm run lint:css",

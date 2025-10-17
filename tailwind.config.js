@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './layouts/**/*.html',
-    './content/**/*.md',
-    './assets/**/*.js',
-    './static/**/*.js',
-  ],
+
   theme: {
     extend: {},
   },
@@ -15,5 +10,12 @@ module.exports = {
   daisyui: {
     themes: ["light", "dark", "retro", "cyberpunk", "halloween"],
   },
-  safelist: ['badge', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-neutral', 'badge-info', 'badge-success', 'badge-warning', 'badge-error', 'badge-ghost'],
+  safelist: [
+    { pattern: /^bg-base-/ },
+    { pattern: /^text-base-/ },
+    { pattern: /^border-base-/ },
+    { pattern: /^hover:bg-base-/ },
+    { pattern: /^hover:text-base-/ },
+    'badge', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-neutral', 'badge-info', 'badge-success', 'badge-warning', 'badge-error', 'badge-ghost'
+  ],
 }
