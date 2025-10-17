@@ -76,9 +76,6 @@ jobs:
       if: github.ref == 'refs/heads/main'
       uses: treosh/lighthouse-ci-action@v10
       with:
-        urls: |
-          https://peterwarnock.github.io/
-          https://peterwarnock.github.io/posts/
         configPath: .lighthouserc.json
         uploadArtifacts: true
         temporaryPublicStorage: true

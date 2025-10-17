@@ -6,13 +6,15 @@
       {{ $paginator := .Paginate $posts 10 }}
       {{ range $paginator.Pages }}
         <div class="bg-base-200 px-8 py-10 rounded-md">
-          <a href="{{ .RelPermalink }}">
-            <img
-              class="rounded-md mb-4"
-              src="{{ .RelPermalink }}/{{ .Params.image }}"
-              alt="{{ .Title }}"
-              title="{{ .Title }}" />
+        {{ if .Params.image }}
+        <a href="{{ .RelPermalink }}">
+        <img
+        class="rounded-md mb-4"
+        src="{{ .RelPermalink }}/{{ .Params.image }}"
+        alt="{{ .Title }}"
+            title="{{ .Title }}" />
           </a>
+          {{ end }}
           <div class="relative">
             <a href="{{ .RelPermalink }}">
               <h2 class="mt-4 mb-2 font-medium text-base-content text-lg relative z-10">{{ .Title }}</h2>
