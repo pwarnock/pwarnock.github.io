@@ -15,4 +15,5 @@ module.exports = {
   daisyui: {
     themes: ["light", "dark", "retro", "cyberpunk", "halloween"],
   },
+  safelist: ['badge', 'badge-primary', 'badge-secondary', 'badge-accent', 'badge-neutral', 'badge-info', 'badge-success', 'badge-warning', 'badge-error', 'badge-ghost'],
 }

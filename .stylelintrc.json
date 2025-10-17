@@ -16,10 +16,11 @@
     "no-descending-specificity": null
   },
   "ignoreFiles": [
-    "node_modules/**/*",
-    "themes/**/*",
-    "public/**/*",
-    "assets/css/tailwind.css",
+  "node_modules/**/*",
+  "themes/**/*",
+  "public/**/*",
+  "static/**/*",
+  "assets/css/tailwind.css",
     "temp-tailwind-output.css"
   ]
 }
