@@ -13,9 +13,13 @@ id   = "pwarnock"
    type = "x"
    id   = "pwarnock"
 
- # [[social]]
- #  type = "facebook"
- #  id   = "username"
+[[social]]
+   type = "discord"
+   id   = "pwarnock"
+
+  # [[social]]
+  #  type = "facebook"
+  #  id   = "username"
 
 #[[social]]
 #  type = "telegram"

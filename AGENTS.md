@@ -17,6 +17,7 @@
 - Use Go template syntax with proper context scoping (`$.Site` vs `.Site`)
 - Prefer semantic HTML in templates
 - Use Hugo's built-in functions for date formatting: `{{ .Date.Format "2006-01-02" }}`
+- **Render Hooks**: Custom link rendering is implemented in `layouts/_default/_markup/render-link.html` for automatic external link handling with per-link override capability
 
 ### Content Front Matter
 - Use TOML format for front matter (preferred)
@@ -43,6 +44,10 @@
 
 ### Testing and Validation
 - **Build validation**: Run `hugo --minify` to ensure the site builds without errors
+- **Link rendering test**: Create test content with various link types to verify render hook functionality:
+  - External links (should auto-get target="_blank" and rel="nofollow")
+  - Internal links (should remain unchanged)
+  - Links with comment codes (<!--nt-->, <!--ot-->, <!--nf-->, <!--f-->)
 - **CI checks**: Push changes to trigger GitHub Actions CI, which includes:
   - HTML link validation (htmltest)
   - SEO validation
@@ -65,6 +70,12 @@ We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
 - Font overrides use theme fonts (Poppins for headings, Roboto for body), loaded in `layouts/partials/head.html`.
 - Treat themes as external dependencies. Do not modify files in `themes/` directly. Instead, use Hugo's layout overrides by placing modified versions in the site's `layouts/` directory with the same relative path (e.g., override `themes/theme-name/layouts/partials/example.html` by creating `layouts/partials/example.html`).
 - Theme defaults: Halloween theme in October, dark theme if system prefers dark mode, random theme otherwise (when no localStorage value exists).
+
+### Social Media Configuration
+- Social links are configured in `data/footer.toml` under the `[[social]]` sections
+- Supported platforms include: LinkedIn, GitHub, X (Twitter), Discord, Facebook, Instagram, YouTube, Telegram, WhatsApp, and more
+- To add Discord: Create a `[[social]]` entry with `type = "discord"` and `id = "YOUR_DISCORD_USERNAME_OR_INVITE_CODE"`
+- Custom social templates can be overridden by creating `layouts/partials/footer/socials.html`
 
 ### Submodule Workflow
 

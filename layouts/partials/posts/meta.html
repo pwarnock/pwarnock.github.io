@@ -14,11 +14,11 @@
       {{ if eq .ReadingTime 1 }}minute{{ else }}minutes{{ end }}
     </span>
   </div>
-  <div class="my-2 flex whitespace-nowrap items-center">
-    <i class="bx bx-purchase-tag-alt text-base-content h-4"></i>
+  <div class="my-2 flex flex-wrap items-center gap-1">
+    <i class="bx bx-purchase-tag-alt text-base-300 h-4"></i>
     {{ range index .Params "tags" }}
       {{ $href := print (absURL "tags/") (urlize .) }}
-      <a class="text-primary hover:underline text-sm mx-1 h-5" href="{{ $href }}" aria-label="{{ . }}">{{ . }}</a>
+      <a class="inline-block bg-base-200 text-primary hover:bg-base-300 px-2 py-1 rounded text-sm transition-colors" href="{{ $href }}" aria-label="{{ . }}">{{ . }}</a>
     {{ end }}
   </div>
 </div>
