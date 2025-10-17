@@ -4,11 +4,15 @@
   "description": "",
   "main": "postcss.config.js",
   "scripts": {
-    "prepare": "husky",
-    "build": "hugo --gc --minify",
+    "build": "hugo --gc --ignoreCache --minify",
+    "clean": "rm -rf public",
+    "dev": "hugo server -D",
+    "lint": "npm run lint:yaml && npm run lint:toml && npm run lint:css",
+    "lint:check": "stylelint \"assets/css/**/*.css\" \"static/css/**/*.css\"",
     "lint:yaml": "npx yaml-lint .github/workflows/*.yml",
     "lint:toml": "npx @taplo/cli lint **/*.toml",
-    "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore"
+    "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
+    "postinstall": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +26,11 @@
     "markdownlint-cli": "^0.45.0",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "^4.0.0",
+    "yaml-lint": "^1.7.0"
   },
   "dependencies": {
-  "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.19"
   }
 }
