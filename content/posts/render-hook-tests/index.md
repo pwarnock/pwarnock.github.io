@@ -1,8 +1,8 @@
 ---
-title: "Render Hook Test Page"
-date: 2024-01-15
+title: "Render Hook Tests"
+date: 2025-10-13T00:00:00-07:00
 draft: false
-description: "Test page for verifying Hugo render hook functionality for link handling"
+description: "Testing and demonstrating Hugo's render hooks for custom link and image rendering in Markdown content."
 ---
 
 # Render Hook Test Page
