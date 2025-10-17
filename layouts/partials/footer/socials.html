@@ -14,8 +14,8 @@
 {{ end }}
 
 {{ $map := dict
-  "twitter"   (dict "https://twitter.com/%s/" "twitter")
-  "x"         (dict "https://twitter.com/%s/" "twitter")
+"twitter"   (dict "https://twitter.com/%s/" "twitter")
+"x"         (dict "https://x.com/%s/" "x")
   "facebook"  (dict "https://www.facebook.com/%s/" "facebook")
   "linkedin"  (dict "https://www.linkedin.com/in/%s/" "linkedin")
   "github"    (dict "https://github.com/%s/" "github")
@@ -33,10 +33,14 @@
 <div class=" text-center">
   <div class="flex flex-wrap items-center justify-center">
     {{ range $socials }}
-      {{ $id := .id }}
-      {{ range $link, $icon := (index $map .type) }}
-        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-3xl"></i></a>
-      {{ end }}
-    {{ end }}
+    {{ $id := .id }}
+    {{ range $link, $icon := (index $map .type) }}
+    {{ if eq $icon "x" }}
+        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bx-x text-3xl" style="font-weight: bold;"></i></a>
+        {{ else }}
+           <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-3xl"></i></a>
+         {{ end }}
+       {{ end }}
+     {{ end }}
   </div>
 </div>

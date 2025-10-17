@@ -26,7 +26,7 @@ jobs:
       run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
     - name: Build
-    run: npm run build
+      run: npm run build
 
     - name: Test build
       run: |
