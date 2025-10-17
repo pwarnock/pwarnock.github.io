@@ -1,7 +1,7 @@
 +++
 title = "Gemini CLI"
 date = 2025-09-20T10:00:00-07:00
-draft = true
+draft = false
 tags = ["ai-coding", "developer-tools", "developer-centric"]
 categories = ["Tools", "Developer-Centric"]
 author = "Peter Warnock"

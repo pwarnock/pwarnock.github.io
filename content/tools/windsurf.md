@@ -1,7 +1,7 @@
 +++
 title = "Windsurf"
 date = 2025-09-07T10:00:00-07:00
-draft = true
+draft = false
 tags = ["ai-coding", "developer-tools", "product-centric"]
 categories = ["Tools", "Product-Centric"]
 author = "Peter Warnock"

@@ -2,12 +2,17 @@ baseURL = 'https://peterwarnock.com/'
 languageCode = 'en-us'
 title = 'Peter Warnock | Cloud & Platform Engineering | DevOps Leadership'
 
-enableRobotsTXT = false
+enableRobotsTXT = true
 googleAnalytics = 'G-SKDDM2GBXN'
 
 ignoreLogs = ['warning-goldmark-raw-html']
 
 theme = 'hugo-porto'
+
+[sitemap]
+  changefreq = 'monthly'
+  filename = 'sitemap.xml'
+  priority = 0.5
 
 [params]
   description = "Peter Warnock's personal website"
