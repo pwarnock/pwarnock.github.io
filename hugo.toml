@@ -7,6 +7,19 @@ googleAnalytics = 'G-SKDDM2GBXN'
 
 ignoreLogs = ['warning-goldmark-raw-html']
 
+# Build optimizations
+[build]
+  useResourceCacheWhen = 'always'
+  writeStats = false
+  noJSConfigInAssets = false
+
+# Asset processing
+[params.processing]
+  [params.processing.css]
+    minify = true
+  [params.processing.js]
+    minify = true
+
 theme = 'hugo-porto'
 
 [sitemap]

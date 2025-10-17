@@ -1,12 +1,12 @@
  <meta name="generator" content="Hugo {{ hugo.Version }}" />
  {{ template "_internal/opengraph.html" . }}
- <link rel="preconnect" href="https://fonts.googleapis.com" />
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link
-   href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;600&display=swap"
-   rel="stylesheet" />
+ <link rel="stylesheet" href="/fonts/fonts.css" />
+  <link rel="preload" href="/fonts/fonts.css" as="style" />
 
- <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//unpkg.com">
 
  <link rel="stylesheet" href="/css/tailwind.css" />
 
@@ -14,14 +14,22 @@
 
 {{ $scripts := resources.Get "scripts.js" }}
 {{ if $scripts }}
-  {{ if .Site.IsServer }}
-    <script src="{{ $scripts.RelPermalink }}" defer></script>
-  {{ else }}
-    {{ $scripts = $scripts | minify | fingerprint }}
-    <script
-      src="{{ $scripts.RelPermalink }}"
-      integrity="{{ $scripts.Data.Integrity }}"
-      crossorigin="anonymous"
-      defer></script>
-  {{ end }}
+{{ if .Site.IsServer }}
+<script src="{{ $scripts.RelPermalink }}" defer></script>
+{{ else }}
+{{ $scripts = $scripts | minify | fingerprint }}
+<script
+src="{{ $scripts.RelPermalink }}"
+integrity="{{ $scripts.Data.Integrity }}"
+crossorigin="anonymous"
+defer></script>
 {{ end }}
+{{ end }}
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
