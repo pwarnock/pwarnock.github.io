@@ -1,9 +1,8 @@
 const CACHE_NAME = 'pwarnock-site-v1';
 const urlsToCache = [
   '/',
-  '/css/',
-  '/fonts/',
-  '/js/'
+  '/css/custom.css',
+  '/fonts/fonts.css'
 ];
 
 self.addEventListener('install', (event) => {

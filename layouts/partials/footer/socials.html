@@ -36,7 +36,7 @@
     {{ $id := .id }}
     {{ range $link, $icon := (index $map .type) }}
     {{ if eq $icon "x" }}
-        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bx-x text-3xl" style="font-weight: bold;"></i></a>
+        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a> <!-- Official X logo SVG with inline styles for proper sizing and coloring -->
         {{ else }}
            <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-3xl"></i></a>
          {{ end }}
