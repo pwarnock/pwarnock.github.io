@@ -1,1 +1,9 @@
-<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }} />
+{{ $src := .Destination }}
+{{ if not (strings.HasPrefix $src "http") }}
+  {{ $image := .Page.Resources.GetMatch $src }}
+  {{ if $image }}
+    {{ $resized := $image.Resize "800x" }}
+    {{ $src = $resized.RelPermalink }}
+  {{ end }}
+{{ end }}
+<img loading="lazy" src="{{ $src | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }} />

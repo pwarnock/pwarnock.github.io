@@ -37,10 +37,19 @@
 - Data files in TOML format in `data/` directory
 
 ### Git Workflow
-- Use conventional commit messages
+- **Never commit directly to main branch** - Always create feature branches for changes
+- Use conventional commit messages (e.g., `feat: add dark mode toggle`, `fix: resolve mobile layout issue`)
 - Keep drafts as `draft: true` until ready
 - Test builds locally before pushing
 - Pre-commit hooks run YAML lint, TOML lint, CSS lint, and build to catch errors early
+- **Branch tracking with Beads**: Create a Bead issue for each feature branch. Use branch naming convention: `feature/{bead-id}-{description}` (e.g., `feature/pwarnock.github.io-52-tailwind-purging`)
+
+### Branch Management with Beads
+- Every feature branch must have a corresponding Bead issue
+- Branch names follow pattern: `feature/{bead-id}-{kebab-case-description}`
+- When creating a branch, reference the Bead ID in commit messages
+- Close Bead issues only after branch is merged to main
+- Use Beads to track branch status: `open` (branch created), `in-progress` (actively working), `completed` (merged)
 
 ### Testing and Validation
 - **Build validation**: Run `hugo --minify` to ensure the site builds without errors
@@ -62,6 +71,13 @@ We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
 - **Plan First**: Before implementing any feature, create a detailed plan and get user approval.
 - **Incremental Changes**: Implement one feature at a time, committing after each.
 - **Show Implementation**: After building, demonstrate how features are implemented.
+
+### Agent Interaction Guidelines
+- **Interactive Conversations**: When users ask questions or provide instructions, engage in back-and-forth dialogue rather than immediately executing tasks. Ask clarifying questions, confirm understanding, and explain reasoning before proceeding with implementation.
+- **Proactive Communication**: Don't just "do" tasks silently - explain what you're about to do, why you're doing it, and ask if the user agrees with the approach.
+- **User Confirmation**: For significant changes or when multiple approaches are possible, present options and get user approval before implementing.
+- **Progress Updates**: Provide regular updates during complex tasks, and pause for feedback at logical checkpoints.
+- **Question-Driven Workflow**: Treat conversations as collaborative problem-solving sessions rather than one-way command execution.
 
 ### Theme Customization
 - Theme switching is implemented with DaisyUI themes (light, dark, retro, cyberpunk, halloween).
