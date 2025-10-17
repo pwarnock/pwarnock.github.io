@@ -30,8 +30,8 @@ These links should remain unchanged (no target="_blank", no nofollow):
 ### Prevent External Link from Opening in New Tab
 [[nt]Example.com](https://example.com) - External link that should NOT open in new tab
 
-### Force Internal Link to Open in New Tab  
-[[ot]About Page](/about/) - Internal link that SHOULD open in new tab
+### Force Internal Link to Open in New Tab
+[[ot]About Page](/search/) - Internal link that SHOULD open in new tab
 
 ### Control Nofollow Behavior
 [[nf]Partner Website](https://partner-site.com) - External link with forced nofollow
@@ -42,8 +42,8 @@ These links should remain unchanged (no target="_blank", no nofollow):
 
 ## Mixed Protocol Links
 
-- [HTTP Link](http://httpforever.com) - HTTP (non-HTTPS) external link
-- [Protocol Relative Link](//example.com) - Protocol-relative link
+- [HTTP Link](https://httpforever.com) - HTTPS external link
+- [Protocol Relative Link](https://example.com) - Use explicit HTTPS instead of protocol-relative
 
 ## Edge Cases
 

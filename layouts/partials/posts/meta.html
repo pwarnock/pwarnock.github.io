@@ -18,7 +18,7 @@
     <i class="bx bx-purchase-tag-alt text-base-300 h-4"></i>
     {{ range index .Params "tags" }}
       {{ $href := print (absURL "tags/") (urlize .) }}
-      <a class="inline-block bg-base-200 text-primary hover:bg-base-300 px-2 py-1 rounded text-sm transition-colors" href="{{ $href }}" aria-label="{{ . }}">{{ . }}</a>
+      <a class="inline-block bg-base-200 text-primary hover:bg-base-300 px-2 py-1 rounded text-sm transition-colors" href="{{ $href | safeURL }}" aria-label="{{ . | safeHTMLAttr }}">{{ . }}</a>
     {{ end }}
   </div>
 </div>
