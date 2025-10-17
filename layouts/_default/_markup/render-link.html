@@ -1,0 +1,34 @@
+{{- $href := .Destination -}}
+{{- $text := .Text -}}
+{{- $title := .Title -}}
+{{- $isExternal := or (hasPrefix $href "http://") (hasPrefix $href "https://") -}}
+
+{{/* Default behavior: external links get target="_blank" and rel="nofollow noopener noreferrer" */}}
+{{- $shouldOpenBlank := $isExternal -}}
+{{- $shouldNoFollow := $isExternal -}}
+
+{{/* Check for control codes in the link text using special syntax */}}
+{{- if hasPrefix $text "[nt]" -}} {{- /* no tab */ -}}
+  {{- $shouldOpenBlank = false -}}
+  {{- $text = strings.TrimPrefix "[nt]" $text -}}
+{{- else if hasPrefix $text "[ot]" -}} {{- /* open tab */ -}}
+  {{- $shouldOpenBlank = true -}}
+  {{- $text = strings.TrimPrefix "[ot]" $text -}}
+{{- end -}}
+
+{{- if hasPrefix $text "[nf]" -}} {{- /* no follow */ -}}
+  {{- $shouldNoFollow = true -}}
+  {{- $text = strings.TrimPrefix "[nf]" $text -}}
+{{- else if hasPrefix $text "[f]" -}} {{- /* follow */ -}}
+  {{- $shouldNoFollow = false -}}
+  {{- $text = strings.TrimPrefix "[f]" $text -}}
+{{- end -}}
+
+<a href="{{ $href }}"
+   {{- if $shouldOpenBlank }} target="_blank"{{ end -}}
+   {{- if or $shouldNoFollow $shouldOpenBlank }} 
+      rel="{{ if $shouldNoFollow }}nofollow {{ end }}noopener noreferrer"
+   {{- end -}}
+   {{- with $title }} title="{{ . }}"{{ end -}}>
+  {{ $text | safeHTML }}
+</a>

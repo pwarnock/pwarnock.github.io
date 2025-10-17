@@ -46,6 +46,6 @@ To make this reproducible for others who want to start on their own Day 1, consi
 - Pairing with a journaling platform (like Apple Journal or Day One) for archiving longer-form thoughts.
 
 **Ready to open your calendar to new ideas?**
-Give it a try and let me know how daily prompts shape your reflections.
+Give it a try and let me know how daily prompts shape your reflections. Connect with me on [LinkedIn](https://www.linkedin.com/in/peterwarnock/), [GitHub](https://github.com/pwarnock/), [X (Twitter)](https://twitter.com/pwarnock/), or [Discord](https://discord.gg/pwarnock) to share your experience.
 
 *Prompts inspired by Seth's Blog: [Notes to myself](https://seths.blog/2025/07/65-thoughts/)*

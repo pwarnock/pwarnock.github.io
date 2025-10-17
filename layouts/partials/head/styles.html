@@ -1,0 +1,30 @@
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+{{ $css := resources.Get "css/tailwind.css" | resources.PostCSS }}
+{{ if hugo.IsServer }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
+{{ else }}
+  {{ $css = $css | minify | fingerprint }}
+  <link
+    rel="stylesheet"
+    href="{{ $css.RelPermalink }}"
+    integrity="{{ $css.Data.Integrity }}"
+    crossorigin="anonymous"
+    media="screen" />
+{{ end }}
+
+{{ $styles := resources.Get "css/styles.scss" }}
+{{ if $styles }}
+  {{ if hugo.IsServer }}
+    {{ $styles = $styles | toCSS }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
+  {{ else }}
+    {{ $styles = $styles | toCSS | minify | fingerprint }}
+    <link
+      rel="stylesheet"
+      href="{{ $styles.RelPermalink }}"
+      integrity="{{ $styles.Data.Integrity }}"
+      crossorigin="anonymous"
+      media="screen" />
+  {{ end }}
+{{ end }}
