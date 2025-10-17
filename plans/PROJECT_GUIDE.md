@@ -14,8 +14,8 @@ A Hugo-powered personal website featuring:
 
 - **Install dependencies**: `npm install` (for TailwindCSS and DaisyUI)
 - **Development server**: `hugo server -D` (includes drafts)
-- **Production build**: `hugo --minify`
-- **Clean build**: `rm -rf public && hugo -d public --minify`
+- **Production build**: `hugo --gc --ignoreCache --minify`
+- **Clean build**: `rm -rf public && hugo -d public --gc --ignoreCache --minify`
 - **Theme build**: `cd themes/hugo-porto && npm run build` (PostCSS + Tailwind)
 
 ## Key Features
