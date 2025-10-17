@@ -3,3 +3,18 @@ npm run lint:yaml
 npm run lint:toml
 npm run lint:css
 npm run build
+
+# HTML validation and link checking
+echo "Running HTML validation..."
+htmlproofer ./public --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph" || exit 1
+
+# SEO validation (warning only - doesn't block commit)
+echo "Running SEO validation..."
+missing=$(find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | wc -l)
+if [ "$missing" -gt 0 ]; then
+  echo "⚠️  WARNING: $missing pages missing meta descriptions:"
+  find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | head -5
+  echo "⚠️  Consider adding meta descriptions for better SEO"
+else
+  echo "✅ SEO check passed"
+fi

@@ -40,15 +40,15 @@
   {{ end }}
 {{ end }}
 
-{{/* If button link is default "#", set to local CV path */}}
+{{/* If button is enabled and link is default "#", set to local CV path */}}
 
-{{ if eq $buttonLink "#" }}
-  {{ $cvResource := resources.Get "/files/cv.pdf" }}
-  {{ if $cvResource }}
-    {{ $buttonLink = $cvResource.RelPermalink }}
-  {{ else }}
-    {{ $buttonLink = "/files/cv.pdf" }}
-  {{ end }}
+{{ if and $buttonEnabled (eq $buttonLink "#") }}
+{{ $cvResource := resources.Get "/files/cv.pdf" }}
+{{ if $cvResource }}
+{{ $buttonLink = $cvResource.RelPermalink }}
+{{ else }}
+{{ $buttonLink = "/files/cv.pdf" }}
+{{ end }}
 {{ end }}
 
 
@@ -133,11 +133,13 @@
         </li>
         {{ end }}
       {{ end }}
+      {{ if $buttonEnabled }}
       <li class="py-2">
-        <a href="{{ $buttonLink }}" target="_blank" class="cursor-pointer font-normal text-base-content">
-          Get my CV
+      <a href="{{ $buttonLink }}" target="_blank" class="cursor-pointer font-normal text-base-content">
+        Get my CV
         </a>
       </li>
+      {{ end }}
     </ul>
   </div>
 </div>

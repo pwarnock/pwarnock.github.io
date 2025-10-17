@@ -1,4 +1,4 @@
-name: CI
+name: CI & Deploy
 
 on:
   push:
@@ -6,9 +6,23 @@ on:
   pull_request:
     branches: [ main ]
 
+# Sets permissions for both CI and deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
+  # CI and Build Job
   build:
     runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.128.0
 
     steps:
     - name: Checkout
@@ -21,6 +35,11 @@ jobs:
       with:
         hugo-version: 'latest'
         extended: true
+
+    - name: Setup Pages
+      if: github.ref == 'refs/heads/main'
+      id: pages
+      uses: actions/configure-pages@v5
 
     - name: Install Node.js dependencies
       run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
@@ -40,7 +59,7 @@ jobs:
       uses: chabad360/htmlproofer@master
       with:
         directory: "./public"
-        arguments: --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.com/ --checks "Links,Images,Scripts,HTML,OpenGraph"
+        arguments: --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph"
 
     - name: SEO validation
       run: |
@@ -54,11 +73,31 @@ jobs:
         fi
 
     - name: Performance and accessibility test
+      if: github.ref == 'refs/heads/main'
       uses: treosh/lighthouse-ci-action@v10
       with:
         urls: |
-          https://peterwarnock.com/
-          https://peterwarnock.com/posts/
+          https://peterwarnock.github.io/
+          https://peterwarnock.github.io/posts/
         configPath: .lighthouserc.json
         uploadArtifacts: true
         temporaryPublicStorage: true
+
+    - name: Upload pages artifact
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./public
+
+  # Deploy Job (only runs on main branch after successful build)
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

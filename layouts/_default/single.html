@@ -2,11 +2,13 @@
   <div class="container max-w-screen-xl mx-auto px-4">
     <div class="grid grid-cols-1 gap-6">
       <div class="bg-base-200 px-8 py-10 rounded-md post-content prose prose-lg max-w-none">
-        <img
-          class="rounded-md mb-4 max-w-full max-h-96 object-cover mx-auto"
-          src="{{ .RelPermalink }}/{{ .Params.image }}"
-          alt="{{ .Title }}"
-          title="{{ .Title }}" />
+      {{ if .Params.image }}
+      <img
+      class="rounded-md mb-4 max-w-full max-h-96 object-cover mx-auto"
+      src="{{ .RelPermalink }}/{{ .Params.image }}"
+      alt="{{ .Title }}"
+        title="{{ .Title }}" />
+        {{ end }}
         <h1 class="font-poppins font-semibold text-base-content text-2xl md:text-3xl leading-tight mb-4">{{ .Title }}</h1>
         {{ partial "posts/meta.html" . }}
 
