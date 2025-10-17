@@ -64,10 +64,10 @@ jobs:
     - name: SEO validation
       run: |
         echo "Checking for meta descriptions..."
-        missing=$(find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | wc -l)
+        missing=$(find public -name "*.html" -exec grep -L '<meta name="description"' {} \; | wc -l)
         if [ "$missing" -gt 0 ]; then
           echo "Warning: $missing pages missing meta descriptions"
-          find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | head -5
+          find public -name "*.html" -exec grep -L '<meta name="description"' {} \; | head -5
         else
           echo "SEO check passed"
         fi
