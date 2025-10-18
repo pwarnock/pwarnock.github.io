@@ -12,7 +12,6 @@
     :class="{ 'overflow-hidden max-h-screen': mobileMenu }"
     class="relative"
     x-data="{
-    mobileMenu: false,
     themes: ['light', 'dark', 'retro', 'cyberpunk', 'halloween'],
     init() {
     let saved = localStorage.getItem('theme');
@@ -47,7 +46,7 @@
     }
     }"
     x-init="init()">
-    <div id="main" class="relative max-w-screen-xl mx-auto px-5">
+    <div id="main" class="relative max-w-screen-xl mx-auto px-5" x-data="{ mobileMenu: false }">
       {{ partial "navbar.html" . }}
       <main>
         {{ block "main" . }}{{ end }}
