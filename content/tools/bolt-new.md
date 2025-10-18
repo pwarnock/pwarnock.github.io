@@ -8,6 +8,7 @@ author = "Peter Warnock"
 description = "Entry-level frontend vibe coding platform"
 external_url = "https://bolt.new/"
 tool_category = "Product-Centric"
+slug = "bolt-new-frontend-platform"
 +++
 
 Bolt.new takes a streamlined approach to frontend development, offering an entry-level platform for teams that need to move quickly from ideas to working prototypes.

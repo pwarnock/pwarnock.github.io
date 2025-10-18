@@ -4,6 +4,10 @@ date = 2025-07-30T14:38:20-07:00
 description = "Transform Seth Godin's 65 insights into daily journal prompts delivered via calendar. Download the .ics file for 65 days of reflection."
 image = "seth-godin-daily-journal-prompts-calendar.webp"
 draft = false
+slug = "seth-godin-journal-prompts-calendar"
+tags = ["seth-godin", "journaling", "productivity", "calendar"]
+categories = ["Productivity"]
+author = "Peter Warnock"
 +++
 
 Ever wish you could turn timeless wisdom into a daily habit? Today, I transformed Seth Godin’s “Notes to myself”—a list of 65 thought-provoking insights—into actionable daily journal prompts, delivered straight to my calendar.
@@ -21,7 +25,7 @@ Seth’s 65 insights cover topics like creativity, leadership, integrity, and pe
 
 ## How You Can Use It
 
-1. [**Download the .ics file.**](/posts/seth-godin-daily-journal-prompts-calendar/seth_godin_journal_prompts.ics)
+1. [**Download the .ics file.**](/files/seth_godin_journal_prompts.ics)
 2. Import it into your calendar app (Apple/Google/Outlook, etc).
 3. Each morning for 65 days, you’ll receive a prompt at 8:30am.  
    Use it to journal, reflect, or simply carry the question with you through the day.

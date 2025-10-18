@@ -40,14 +40,12 @@
   {{ end }}
 {{ end }}
 
-{{/* If button is enabled and link is default "#", set to local CV path */}}
-
 {{ if and $buttonEnabled (eq $buttonLink "#") }}
 {{ $cvResource := resources.Get "/files/cv.pdf" }}
 {{ if $cvResource }}
 {{ $buttonLink = $cvResource.RelPermalink }}
 {{ else }}
-{{ $buttonLink = "/files/cv.pdf" }}
+{{ $buttonEnabled = false }}
 {{ end }}
 {{ end }}
 

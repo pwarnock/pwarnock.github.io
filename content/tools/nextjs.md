@@ -8,6 +8,7 @@ author = "Peter Warnock"
 description = "React framework for production-ready web applications"
 external_url = "https://nextjs.org/"
 tool_category = "Framework"
+slug = "nextjs-react-framework-for-production"
 +++
 
 Next.js has become the standard React framework for production applications. Developed by Vercel, it provides the structure and optimizations needed to build fast, SEO-friendly web applications.

@@ -4,7 +4,10 @@ date = 2025-06-24T15:08:06-07:00
 description = 'Learn about Lorem Ipsum, the standard dummy text used in printing and typesetting since the 1500s.'
 image = 'my-first-post.webp'
 tags = ["test"]
-# draft = true
+draft = false
+slug = "my-first-post-lorem-ipsum"
+categories = ["Tutorial"]
+author = "Peter Warnock"
 +++
 ## What is Lorem Ipsum?
 

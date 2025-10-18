@@ -3,6 +3,10 @@ title: "Bracket Code Reference"
 date: 2024-01-15
 draft: false
 description: "Quick reference for render hook bracket codes"
+slug: "hugo-render-hook-bracket-codes"
+tags: ["hugo", "development", "technical-reference"]
+categories: ["Technical Reference"]
+author: "Peter Warnock"
 ---
 
 # Render Hook Bracket Codes

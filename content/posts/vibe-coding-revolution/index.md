@@ -17,33 +17,33 @@ I've used several code augmentation/generation tools over the last year, and the
 
 ### The Foundation: Visual Studio Code
 
-First, there was [Visual Studio Code](/tools/visual-studio-code/)—a lightweight open-source version of Microsoft's Visual Studio IDE. A nice lightweight editing tool that could be expanded with plugins to make a very specific workspace with common tools in a single pane of glass.
+First, there was [Visual Studio Code](/tools/visual-studio-code-extensible-editor/)—a lightweight open-source version of Microsoft's Visual Studio IDE. A nice lightweight editing tool that could be expanded with plugins to make a very specific workspace with common tools in a single pane of glass.
 
 VS Code remains the foundation that many other tools build upon. Its extensibility and developer-first approach created the perfect platform for AI augmentation.
 
 ### The AI Revolution Begins: Cursor
 
-Then came [Cursor](/tools/cursor/)—a fork of VS Code. They wanted to use AI in novel ways that VS Code's extension architecture didn't support. This was a bold move that paid off, creating a genuinely different experience where AI isn't just autocompleting but actively participating in the coding process.
+Then came [Cursor](/tools/cursor-ai-native-code-editor/)—a fork of VS Code. They wanted to use AI in novel ways that VS Code's extension architecture didn't support. This was a bold move that paid off, creating a genuinely different experience where AI isn't just autocompleting but actively participating in the coding process.
 
 ### Microsoft's Response: GitHub Copilot
 
-Microsoft fired back with [GitHub Copilot](/tools/github-copilot/) for VS Code. The integration was seamless, and suddenly millions of developers had AI pair programming built right into their existing workflow.
+Microsoft fired back with [GitHub Copilot](/tools/github-copilot-2025-update/) for VS Code. The integration was seamless, and suddenly millions of developers had AI pair programming built right into their existing workflow.
 
 ### The Newcomers Making Waves
 
-Along came [Claude Code](/tools/claude-code/)—a terminal-based AI coding assistant that brings deep codebase understanding directly to your workflow, eliminating the need to switch between tools and IDEs.
+Along came [Claude Code](/tools/claude-code-conversational-ai/)—a terminal-based AI coding assistant that brings deep codebase understanding directly to your workflow, eliminating the need to switch between tools and IDEs.
 
-[DeepAgent](/tools/deepagent/) is another VS Code fork that connects with Abacus.AI. They also have a CLI tool, bridging the gap between traditional development and AI-powered automation.
+[DeepAgent](/tools/deepagent-abacus-ai-integration/) is another VS Code fork that connects with Abacus.AI. They also have a CLI tool, bridging the gap between traditional development and AI-powered automation.
 
 ### Command Line Warriors
 
-[Gemini CLI](/tools/gemini-cli/) is Google's entry into the CLI agent space—bringing AI assistance directly to the terminal where many developers feel most at home.
+[Gemini CLI](/tools/gemini-cli-google-ai-agent/) is Google's entry into the CLI agent space—bringing AI assistance directly to the terminal where many developers feel most at home.
 
-[OpenAI Codex](/tools/openai-codex/) provides paid, subscription-based CLI access designed for fast, reproducible, code‑centric workflows.
+[OpenAI Codex](/tools/openai-codex-cli-coding-assistant/) provides paid, subscription-based CLI access designed for fast, reproducible, code‑centric workflows.
 
-[OpenCode](/tools/opencode/) can use its Zen service or be configured with keys for other providers. It ships with Grok Fast for free, making AI coding accessible to budget-conscious developers.
+[OpenCode](/tools/opencode-multi-provider-ai-coding/) can use its Zen service or be configured with keys for other providers. It ships with Grok Fast for free, making AI coding accessible to budget-conscious developers.
 
-[Amp Free](/tools/amp-free/) released yesterday (Oct 15, 2025). In exchange for training on data and displaying a small text ad, it does CLI quite well. This freemium approach could democratize AI coding tools.
+[Amp Free](/tools/amp-free-ai-cli-tool/) released yesterday (Oct 15, 2025). In exchange for training on data and displaying a small text ad, it does CLI quite well. This freemium approach could democratize AI coding tools.
 
 ## Product-Centric Tools: From Idea to Application
 
@@ -51,19 +51,19 @@ The product-centric side tells a different story. These tools aren't about augme
 
 ### Frontend-Focused Solutions
 
-[Lovable](/tools/lovable/) serves as an entry-level frontend vibe coding tool, focusing on getting basic applications up and running with minimal technical overhead.
+[Lovable](/tools/lovable-frontend-prototyping-tool/) serves as an entry-level frontend vibe coding tool, focusing on getting basic applications up and running with minimal technical overhead.
 
-[Bolt.new](/tools/bolt-new/) takes a similar approach, targeting teams that need quick prototypes and proof-of-concepts.
+[Bolt.new](/tools/bolt-new-frontend-platform/) takes a similar approach, targeting teams that need quick prototypes and proof-of-concepts.
 
 ### The Acquisition Story: Windsurf
 
-[Windsurf](/tools/windsurf/) represents one of the most interesting stories in this space. OpenAI was in late-stage talks to acquire the company for around $3 billion, but the deal fell through; shortly after, Google DeepMind executed a reported $2.4 billion reverse‑acquihire, hiring Windsurf’s CEO and key researchers and licensing some of its technology ([TechCrunch](https://techcrunch.com/2025/07/11/windsurfs-ceo-goes-to-google-openais-acquisition-falls-apart/])). Days later, Cognition—the maker of Devin—signed a definitive agreement to acquire Windsurf’s remaining business. For context, see this discussion: [YouTube](https://youtu.be/g8nC1-d4Ce4?si=GfV9qkmTiwhxai_c).
+[Windsurf](/tools/windsurf-agentic-ide-cognition-ai/) represents one of the most interesting stories in this space. OpenAI was in late-stage talks to acquire the company for around $3 billion, but the deal fell through; shortly after, Google DeepMind executed a reported $2.4 billion reverse‑acquihire, hiring Windsurf’s CEO and key researchers and licensing some of its technology ([TechCrunch](https://techcrunch.com/2025/07/11/windsurfs-ceo-goes-to-google-openais-acquisition-falls-apart/])). Days later, Cognition—the maker of Devin—signed a definitive agreement to acquire Windsurf’s remaining business. For context, see this discussion: [YouTube](https://youtu.be/g8nC1-d4Ce4?si=GfV9qkmTiwhxai_c).
 
 This acquisition frenzy tells us everything about where the industry thinks this technology is heading.
 
 ### Platform-Specific Excellence
 
-[v0](/tools/v0/) is the coding agent from [Vercel](/tools/vercel/). While initially tailored for Vercel’s ecosystem and optimized for frameworks like [Next.js](/tools/nextjs/) and [Nuxt](/tools/nuxt/), v0 has evolved significantly. It now functions as a universal AI builder, enabling both developers and non-technical users to create full applications through natural language prompts—no coding required. This shift expands its utility beyond platform-specific workflows into a broader, no-code development environment.
+[v0](/tools/v0-vercel-ai-coding-agent/) is the coding agent from [Vercel](/tools/vercel-web-development-platform/). While initially tailored for Vercel’s ecosystem and optimized for frameworks like [Next.js](/tools/nextjs-react-framework-for-production/) and [Nuxt](/tools/nuxt-vuejs-framework-for-universal-apps/), v0 has evolved significantly. It now functions as a universal AI builder, enabling both developers and non-technical users to create full applications through natural language prompts—no coding required. This shift expands its utility beyond platform-specific workflows into a broader, no-code development environment.
 
 ## The Strategic Implications
 

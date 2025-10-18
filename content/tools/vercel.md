@@ -8,6 +8,7 @@ author = "Peter Warnock"
 description = "Modern web development and deployment platform"
 external_url = "https://vercel.com/home"
 tool_category = "Platform"
+slug = "vercel-web-development-platform"
 +++
 
 Vercel has established itself as the premier platform for modern web development, particularly for React-based applications and Jamstack architectures. Their focus on developer experience and performance has made them the go-to choice for many development teams.

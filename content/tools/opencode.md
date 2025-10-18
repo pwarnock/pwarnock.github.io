@@ -8,6 +8,7 @@ author = "Peter Warnock"
 description = "Flexible AI coding platform with multiple provider support"
 external_url = "https://opencode.ai/"
 tool_category = "Developer-Centric"
+slug = "opencode-multi-provider-ai-coding"
 +++
 
 OpenCode offers flexibility in AI coding assistance by supporting multiple AI providers. With its Zen service and support for various API keys, it gives developers choice in their AI coding experience.

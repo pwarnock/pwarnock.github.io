@@ -8,6 +8,7 @@ author = "Peter Warnock"
 description = "Anthropic's conversational approach to AI-powered coding"
 external_url = "https://claude.com/product/claude-code"
 tool_category = "Developer-Centric"
+slug = "claude-code-conversational-ai"
 +++
 
 Claude Code takes a fundamentally different approach to AI coding assistance. Instead of integrating into traditional IDEs, it offers a conversational interface where you can discuss code, architectures, and implementation strategies.

@@ -3,6 +3,10 @@ title: "Render Hook Tests"
 date: 2025-10-13T00:00:00-07:00
 draft: false
 description: "Testing and demonstrating Hugo's render hooks for custom link and image rendering in Markdown content."
+slug: "hugo-render-hook-tests"
+tags: ["hugo", "development", "testing"]
+categories: ["Technical Reference"]
+author: "Peter Warnock"
 ---
 
 # Render Hook Test Page
