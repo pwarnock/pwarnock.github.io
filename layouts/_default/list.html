@@ -7,13 +7,18 @@
       {{ range $paginator.Pages }}
         <div class="bg-base-200 px-8 py-10 rounded-md">
         {{ if .Params.image }}
-        <a href="{{ .RelPermalink }}">
-        <img
-        class="rounded-md mb-4"
-        src="{{ .RelPermalink }}/{{ .Params.image }}"
-        alt="{{ .Title }}"
-            title="{{ .Title }}" />
-          </a>
+          {{ $image := .Resources.Get .Params.image }}
+          {{ if $image }}
+            {{ $resized := $image.Resize "400x" }}
+            <a href="{{ .RelPermalink }}">
+            <img
+            class="rounded-md mb-4"
+            src="{{ $resized.RelPermalink }}"
+            alt="{{ .Title }}"
+                title="{{ .Title }}"
+                loading="lazy" />
+              </a>
+          {{ end }}
           {{ end }}
           <div class="relative">
             <a href="{{ .RelPermalink }}">

@@ -1,15 +1,23 @@
   <meta name="generator" content="Hugo {{ hugo.Version }}" />
-  <meta name="description" content="{{ .Description | default .Summary | default .Site.Params.description }}" />
+  {{ $desc := .Description | default .Summary | default .Site.Params.description }}
+  {{ if .IsNode }}
+    {{ if .Paginator }}
+      {{ $desc = printf "Page %d of %s" .Paginator.PageNumber .Title }}
+    {{ else if eq .Type "taxonomy" }}
+      {{ $desc = printf "Posts in %s: %s" .Title .Site.Params.description }}
+    {{ end }}
+  {{ end }}
+  <meta name="description" content="{{ $desc }}" />
   {{ template "_internal/opengraph.html" . }}
  <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="preload" href="/fonts/fonts.css" as="style" />
 
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
    <link rel="dns-prefetch" href="https://unpkg.com">
 
- <link rel="stylesheet" href="/css/tailwind.css" />
+  <link rel="preload" href="/css/tailwind.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/tailwind.css"></noscript>
 
  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
