@@ -44,20 +44,14 @@
     }
     }"
     x-init="init()">
-    <div class="drawer">
-    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col">
-      <div id="main" class="relative max-w-screen-xl mx-auto px-5" x-data="{ mobileMenu: false }">
-        {{ partial "navbar.html" . }}
-        <main>
-          {{ block "main" . }}{{ end }}
-        </main>
-        <footer>
-          {{ partial "footer.html" . }}
-        </footer>
-      </div>
-    </div>
-  </div>
-
+    <div id="main" class="relative max-w-screen-xl mx-auto px-5" x-data="{ mobileMenu: false }">
+          {{ partial "navbar.html" . }}
+          <main>
+            {{ block "main" . }}{{ end }}
+          </main>
+          <footer>
+            {{ partial "footer.html" . }}
+          </footer>
+         </div>
    </body>
 </html>
