@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
   </head>
 
-  <body
-    :class="{ 'overflow-hidden max-h-screen': mobileMenu }"
-    class="relative"
+  <body class="relative"
     x-data="{
     themes: ['light', 'dark', 'retro', 'cyberpunk', 'halloween'],
     init() {
@@ -46,15 +44,20 @@
     }
     }"
     x-init="init()">
-    <div id="main" class="relative max-w-screen-xl mx-auto px-5" x-data="{ mobileMenu: false }">
-      {{ partial "navbar.html" . }}
-      <main>
-        {{ block "main" . }}{{ end }}
-      </main>
-      <footer>
-        {{ partial "footer.html" . }}
-      </footer>
-     </div>
+    <div class="drawer">
+    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col">
+      <div id="main" class="relative max-w-screen-xl mx-auto px-5" x-data="{ mobileMenu: false }">
+        {{ partial "navbar.html" . }}
+        <main>
+          {{ block "main" . }}{{ end }}
+        </main>
+        <footer>
+          {{ partial "footer.html" . }}
+        </footer>
+      </div>
+    </div>
+  </div>
 
    </body>
 </html>
