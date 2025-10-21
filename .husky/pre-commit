@@ -1,4 +1,12 @@
 #!/bin/sh
+
+# Prevent commits directly to main branch
+branch=$(git branch --show-current)
+if [ "$branch" = "main" ]; then
+  echo "❌ Cannot commit directly to main branch. Please use a feature branch and create a pull request."
+  exit 1
+fi
+
 npm run lint:yaml
 npm run lint:toml
 npm run lint:css
