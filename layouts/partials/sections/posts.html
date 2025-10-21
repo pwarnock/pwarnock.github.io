@@ -10,7 +10,8 @@
           <a href="{{ .Permalink }}" class="text-primary hover:text-primary-focus">{{ .Title }}</a>
         </h3>
         <p class="text-lg font-light text-base-content">{{ .Summary | plainify | truncate 150 }}</p>
-        <a href="{{ .Permalink }}" class="text-primary hover:text-primary-focus">Read more</a>
+        <!-- aria-label provides descriptive text for accessibility, required for non-descriptive link text -->
+        <a href="{{ .Permalink }}" class="text-primary hover:text-primary-focus" aria-label="Read more about {{ .Title }}">Read more</a>
       </div>
     {{ end }}
   </div>
