@@ -103,10 +103,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Tag successful deployment
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git tag "pipeline-${{ github.run_number }}-green"
-          git push origin "pipeline-${{ github.run_number }}-green"
