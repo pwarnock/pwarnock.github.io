@@ -2,6 +2,7 @@
 {{ $logo := "img/default-logo.svg" }}
 {{ $logoLink := "/" }}
 {{ $title := "#hugo-porto" }}
+{{ $mobileTitle := "Peter Warnock" }}
 
 {{ $buttonEnabled := false }}
 {{ $buttonText := "Download CV" }}
@@ -55,7 +56,7 @@
       <img src="{{ $logo }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
     <a href="{{ $logoLink }}">
-      <h1 class="text-lg lg:text-xl px-2 lg:px-3 font-medium text-base-content">{{ $title }}</h1>
+    <h1 class="text-lg lg:text-xl px-2 lg:px-3 font-medium text-base-content truncate">{{ if lt (len $title) 30 }}{{ $title }}{{ else }}{{ $mobileTitle }}{{ end }}</h1>
     </a>
   </div>
   <div class="hidden lg:block">
