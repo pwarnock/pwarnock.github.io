@@ -44,8 +44,8 @@
     }
     }"
     x-init="init()">
-    <div id="main" class="relative max-w-screen-xl mx-auto px-5">
     {{ partial "navbar.html" . }}
+    <div id="main" class="relative max-w-screen-xl mx-auto px-5">
     <main>
     {{ block "main" . }}{{ end }}
     </main>
