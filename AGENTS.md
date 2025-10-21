@@ -62,7 +62,9 @@
   - SEO validation
   - Accessibility testing (Lighthouse)
   - Performance testing
+  - Automatic tagging: Successful deployments are tagged as `pipeline-{run_number}-green` for rollback reference
 - **Local accessibility check**: Use browser dev tools or Lighthouse extension to audit pages
+- **Production recovery**: If navigation or other issues appear in production, use `git log --oneline` to identify recent commits, then `git checkout <commit>` to test previous versions. Tag working commits as `pipeline-{number}-green` for reference.
 
 ### Work Tracking
 We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
