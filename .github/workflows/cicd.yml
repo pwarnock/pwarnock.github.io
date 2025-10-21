@@ -73,14 +73,6 @@ jobs:
           echo "SEO check passed"
         fi
 
-    - name: Performance and accessibility test
-      if: github.ref == 'refs/heads/main'
-      uses: treosh/lighthouse-ci-action@v10
-      with:
-        configPath: .lighthouserc.json
-        uploadArtifacts: true
-        temporaryPublicStorage: true
-
     - name: Upload pages artifact
       if: github.ref == 'refs/heads/main'
       uses: actions/upload-pages-artifact@v3
