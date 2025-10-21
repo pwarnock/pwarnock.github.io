@@ -113,7 +113,9 @@
   <li><a href="{{ .link }}" target="{{ .target }}" class="text-base-content">{{ .text }}</a></li>
   {{ end }}
   {{ end }}
-  <li><a href="#" target="_blank" class="text-base-content">Get my CV</a></li>
+  {{ if $buttonEnabled }}
+  <li><a href="{{ $buttonLink }}" target="{{ $buttonTarget }}" class="text-base-content">{{ $buttonText }}</a></li>
+  {{ end }}
   </ul>
   </div>
    </div>
