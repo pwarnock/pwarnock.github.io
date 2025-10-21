@@ -18,6 +18,7 @@
 - Prefer semantic HTML in templates
 - Use Hugo's built-in functions for date formatting: `{{ .Date.Format "2006-01-02" }}`
 - **Render Hooks**: Custom link rendering is implemented in `layouts/_default/_markup/render-link.html` for automatic external link handling with per-link override capability
+- **Link Accessibility**: Ensure all links have descriptive text or aria-labels. Avoid generic text like "Read more" without context; use aria-label for screen readers (e.g., aria-label="Read more about {{ .Title }}")
 
 ### Content Front Matter
 - Use TOML format for front matter (preferred)
@@ -60,8 +61,8 @@
 - **CI checks**: Push changes to trigger GitHub Actions CI, which includes:
   - HTML link validation (htmltest)
   - SEO validation
-  - Accessibility testing (Lighthouse)
-  - Performance testing
+  - Accessibility testing (Lighthouse) - ensures min 70% accessibility score
+  - Performance testing - ensures min 80% performance score
   - Automatic tagging: Successful deployments are tagged as `pipeline-{run_number}-green` for rollback reference
 - **Local accessibility check**: Use browser dev tools or Lighthouse extension to audit pages
 - **Production recovery**: If navigation or other issues appear in production, use `git log --oneline` to identify recent commits, then `git checkout <commit>` to test previous versions. Tag working commits as `pipeline-{number}-green` for reference.
