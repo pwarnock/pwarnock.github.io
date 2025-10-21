@@ -37,7 +37,7 @@
 - Data files in TOML format in `data/` directory
 
 ### Git Workflow
-- **Never commit directly to main branch** - Always create feature branches for changes
+- **Never commit directly to main branch** - Always create feature branches for changes. Pre-commit hooks prevent direct commits to main; use pull requests for merges
 - Use conventional commit messages (e.g., `feat: add dark mode toggle`, `fix: resolve mobile layout issue`)
 - Keep drafts as `draft: true` until ready
 - Test builds locally before pushing
