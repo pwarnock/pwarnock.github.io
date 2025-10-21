@@ -104,17 +104,17 @@
   </button>
   <!-- Mobile menu -->
   <div class="dropdown dropdown-end">
-    <label tabindex="0" class="btn btn-square btn-ghost" aria-label="open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-       </label>
-       <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-         {{ range $menu }}
-         {{ if (default true .enabled) }}
-         <li><a href="{{ .link }}" target="{{ .target }}" class="text-base-content">{{ .text }}</a></li>
-         {{ end }}
-         {{ end }}
-         <li><a href="#" target="_blank" class="text-base-content">Get my CV</a></li>
-       </ul>
-     </div>
+  <button tabindex="0" class="btn btn-square btn-ghost" aria-label="open menu">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+  </button>
+  <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+  {{ range $menu }}
+  {{ if (default true .enabled) }}
+  <li><a href="{{ .link }}" target="{{ .target }}" class="text-base-content">{{ .text }}</a></li>
+  {{ end }}
+  {{ end }}
+  <li><a href="#" target="_blank" class="text-base-content">Get my CV</a></li>
+  </ul>
+  </div>
    </div>
 </div>
