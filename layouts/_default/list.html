@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <div class="container max-w-screen-xl mx-auto px-4">
+  <div class="container max-w-screen-xl mx-auto">
     <h1 class="text-center font-medium text-base-content text-3xl md:text-4xl mb-2 font-poppins">{{ .Title }}</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {{ $posts := .Pages.ByPublishDate.Reverse }}
