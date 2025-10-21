@@ -1,1 +1,13 @@
-/* Theme handles all custom styling now */
+/* Custom styles */
+
+/* Hide drawer on desktop */
+@media (min-width: 1024px) {
+  .drawer-side {
+    display: none !important;
+  }
+}
+
+/* Hide drawer toggle checkbox */
+.drawer-toggle {
+  display: none;
+}
