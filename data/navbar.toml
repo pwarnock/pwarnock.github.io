@@ -15,6 +15,13 @@ logo  = "img/default-logo.png"
    enabled     = false
 
 [[menu]]
+   text        = "Portfolio"
+   description = "View my portfolio projects"
+   link        = "/portfolio"
+   target      = "_self"
+   enabled     = true
+
+[[menu]]
    text        = "Posts"
    description = "Read my latest posts"
    link        = "/posts"

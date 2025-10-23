@@ -1,4 +1,6 @@
-baseURL = 'https://peterwarnock.com/'
+# baseURL is set via environment variable or command line
+# Local development: hugo server -D --baseUrl=http://localhost:1313
+# Production build: hugo --gc --ignoreCache --minify --baseUrl=https://peterwarnock.com
 languageCode = 'en-us'
 title = 'Peter Warnock | Cloud & Platform Engineering | DevOps Leadership'
 
