@@ -34,65 +34,80 @@
               <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full h-full object-cover">
             </figure>
           {{ end }}
+          
           <div class="card-body">
-            <h3 class="card-title text-xl font-medium text-base-content">
-              <a href="{{ .Permalink }}" class="hover:text-primary transition-colors">
+            <!-- Card Title with Meta Information -->
+            <h2 class="card-title">
+              <a href="{{ .Permalink }}" class="hover:text-primary transition-colors text-xl font-semibold">
                 {{ .Title }}
               </a>
-            </h3>
+              {{ if .Params.category }}
+                <div class="badge badge-outline badge-primary">{{ .Params.category }}</div>
+              {{ end }}
+            </h2>
+            
+            <!-- Client Information -->
             {{ if .Params.client }}
               <p class="text-sm text-base-content/60">Client: {{ .Params.client }}</p>
             {{ end }}
-            <p class="text-base-content/80 line-clamp-3">
+            
+            <!-- Description -->
+            <p class="text-base-content/80 line-clamp-3 flex-1">
               {{ .Description | default .Summary }}
             </p>
+            
+            <!-- Technology Badges -->
             {{ if .Params.technologies }}
-              <div class="flex flex-wrap gap-2 mt-3">
+              <div class="flex flex-wrap gap-2">
                 {{ range .Params.technologies }}
                   {{ $tech := . }}
                   {{ if or (eq $tech "React") (eq $tech "Next.js") (eq $tech "JavaScript") (eq $tech "HTML5") (eq $tech "CSS3") (eq $tech "Tailwind CSS") }}
                     <div class="tooltip" data-tip="{{ if eq $tech "React" }}Modern frontend framework{{ else if eq $tech "Next.js" }}Full-stack React framework{{ else if eq $tech "JavaScript" }}Core programming language{{ else if eq $tech "HTML5" }}Web markup standard{{ else if eq $tech "CSS3" }}Styling language{{ else if eq $tech "Tailwind CSS" }}Utility-first CSS framework{{ end }}">
-                      <span class="badge badge-info badge-outline mr-2">{{ . }}</span>
+                      <span class="badge badge-info badge-outline">{{ . }}</span>
                     </div>
                   {{ else if or (eq $tech "Laravel") (eq $tech "PHP") (eq $tech "MySQL") (eq $tech "Supabase") (eq $tech "PostgreSQL") }}
                     <div class="tooltip" data-tip="{{ if eq $tech "Laravel" }}PHP web framework{{ else if eq $tech "PHP" }}Backend scripting language{{ else if eq $tech "MySQL" }}Relational database{{ else if eq $tech "Supabase" }}Backend-as-a-service{{ else if eq $tech "PostgreSQL" }}Advanced relational database{{ end }}">
-                      <span class="badge badge-success badge-outline mr-2">{{ . }}</span>
+                      <span class="badge badge-success badge-outline">{{ . }}</span>
                     </div>
                   {{ else if or (eq $tech "Filament") (eq $tech "Vercel") (eq $tech "Docker") (eq $tech "Git") (eq $tech "OpenAI") (eq $tech "ElevenLabs Music API") (eq $tech "SendGrid") }}
                     <div class="tooltip" data-tip="{{ if eq $tech "Filament" }}Laravel admin panel{{ else if eq $tech "Vercel" }}Deployment platform{{ else if eq $tech "Docker" }}Containerization platform{{ else if eq $tech "Git" }}Version control system{{ else if eq $tech "OpenAI" }}AI API service{{ else if eq $tech "ElevenLabs Music API" }}AI music generation{{ else if eq $tech "SendGrid" }}Email delivery service{{ end }}">
-                      <span class="badge badge-warning badge-outline mr-2">{{ . }}</span>
+                      <span class="badge badge-warning badge-outline">{{ . }}</span>
                     </div>
                   {{ else }}
                     <div class="tooltip" data-tip="Architecture pattern">
-                      <span class="badge badge-secondary badge-outline mr-2">{{ . }}</span>
+                      <span class="badge badge-secondary badge-outline">{{ . }}</span>
                     </div>
                   {{ end }}
                 {{ end }}
               </div>
             {{ end }}
-            {{ $buttonCount := 3 }}
-{{ if not .Params.live_url }}{{ $buttonCount = sub $buttonCount 1 }}{{ end }}
-{{ if not .Params.github_url }}{{ $buttonCount = sub $buttonCount 1 }}{{ end }}
-<div class="grid gap-2 pt-4" style="grid-template-columns: repeat({{ $buttonCount }}, 1fr);">
+            
+            <!-- Card Actions -->
+            <div class="card-actions justify-end">
+              {{ $buttonCount := 3 }}
+              {{ if not .Params.live_url }}{{ $buttonCount = sub $buttonCount 1 }}{{ end }}
+              {{ if not .Params.github_url }}{{ $buttonCount = sub $buttonCount 1 }}{{ end }}
+              <div class="grid gap-2" style="grid-template-columns: repeat({{ $buttonCount }}, 1fr);">
                 {{ if .Params.live_url }}
-                  <a href="{{ .Params.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm w-full" aria-label="View live demo of {{ .Title }}">
+                  <a href="{{ .Params.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" aria-label="View live demo of {{ .Title }}">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                     </svg>
                   </a>
                 {{ end }}
                 {{ if .Params.github_url }}
-                  <a href="{{ .Params.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm w-full" aria-label="View source code on GitHub">
+                  <a href="{{ .Params.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" aria-label="View source code on GitHub">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                   </a>
                 {{ end }}
-                <a href="{{ .Permalink }}" class="btn btn-ghost btn-sm w-full" aria-label="View details about {{ .Title }}">
+                <a href="{{ .Permalink }}" class="btn btn-ghost btn-sm" aria-label="View details about {{ .Title }}">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
                 </a>
+              </div>
             </div>
           </div>
         </div>
