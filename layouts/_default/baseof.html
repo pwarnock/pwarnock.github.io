@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{ $css := resources.Get "css/main.css" | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+</head>
+<body class="min-h-screen bg-base-100 flex flex-col">
+    {{ partial "header.html" . }}
+    
+    <main class="flex-grow container mx-auto px-4 py-8">
+        {{ block "main" . }}
+        <div class="prose prose-lg max-w-none">
+            <h1 class="text-4xl font-bold mb-6">{{ .Title }}</h1>
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </main>
+    
+    {{ partial "footer.html" . }}
+</body>
+</html>
