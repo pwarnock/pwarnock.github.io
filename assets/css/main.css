@@ -127,6 +127,11 @@
     gap: 0.5rem;
   }
 
+  .card-actions-no-wrap {
+    flex-wrap: nowrap !important;
+    gap: 0.5rem;
+  }
+
   .post-content {
     h2 {
       @apply font-medium text-xl md:text-2xl my-5;
