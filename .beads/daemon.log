@@ -1,0 +1,109 @@
+[2025-10-23 10:07:27] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-23 10:07:27] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-23 10:07:27] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-23 10:07:27] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-23 10:07:27] RPC server ready (socket listening)
+[2025-10-23 10:07:27] Starting sync cycle...
+[2025-10-23 10:07:27] Exported to JSONL
+[2025-10-23 10:07:32] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:12:27] Starting sync cycle...
+[2025-10-23 10:12:27] Exported to JSONL
+[2025-10-23 10:12:29] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:16:59] Received signal terminated, shutting down gracefully...
+[2025-10-23 10:17:01] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-23 10:17:01] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-23 10:17:01] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-23 10:17:01] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-23 10:17:01] RPC server ready (socket listening)
+[2025-10-23 10:17:01] Starting sync cycle...
+[2025-10-23 10:17:01] Exported to JSONL
+[2025-10-23 10:17:06] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:22:01] Starting sync cycle...
+[2025-10-23 10:22:01] Exported to JSONL
+[2025-10-23 10:22:03] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:27:01] Starting sync cycle...
+[2025-10-23 10:27:01] Exported to JSONL
+[2025-10-23 10:27:04] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:32:01] Starting sync cycle...
+[2025-10-23 10:32:01] Exported to JSONL
+[2025-10-23 10:32:05] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-23 10:37:01] Starting sync cycle...
+[2025-10-23 10:37:01] Exported to JSONL
+[2025-10-23 10:37:03] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
