@@ -1,128 +1,128 @@
 +++
-date = 2024-03-10
+date = 2024-11-23
 draft = false
 title = 'Vocabulary Game'
-description = 'An interactive vocabulary learning game that uses spaced repetition and gamification to help users expand their language skills effectively.'
-client = 'Educational Project'
-technologies = ['Vue.js', 'Node.js', 'Express', 'MongoDB', 'WebSockets', 'Tailwind CSS']
-live_url = 'https://vocabulary-game.example.com'
-github_url = 'https://github.com/example/vocabulary-game'
+description = 'An educational game designed to help young children (5 years old) practice typing, spelling, and reading skills through interactive vocabulary exercises.'
+client = 'Personal Project - Child Education'
+technologies = ['React', 'JavaScript', 'HTML5', 'CSS3']
+github_url = 'https://github.com/pwarnock/vocabulary-game'
 # featured_image = '/img/portfolio/vocabulary-game-screenshot.webp'
-completion_date = '2024-03'
-category = 'Educational Technology'
+completion_date = '2024-11'
+category = 'Educational Game'
 +++
 
-# Vocabulary Game - Interactive Learning Platform
+# Vocabulary Game - Educational Typing Practice
 
-Vocabulary Game is an engaging educational platform designed to make vocabulary acquisition fun and effective through gamification, spaced repetition algorithms, and social learning features. The application targets language learners of all levels, from beginners to advanced students seeking to expand their vocabulary.
+Vocabulary Game is a simple, focused educational application designed to help young children (specifically 5-year-olds) practice typing, spelling, and reading skills. The project demonstrates the practical application of AI-assisted development for creating educational tools.
 
-## Learning Methodology
+## Project Overview
 
-### Spaced Repetition System
-- Intelligent algorithm that schedules reviews based on forgetting curves
-- Adaptive difficulty adjustment based on user performance
-- Personalized review intervals for optimal retention
-- Progress tracking with detailed analytics
-
-### Gamification Elements
-- Points, badges, and achievement system
-- Daily streaks and leaderboards
-- Level progression with unlockable content
-- Challenge modes and timed competitions
+This frontend-only application provides an engaging way for children to learn vocabulary through typing practice. The game displays words that the child types, with immediate feedback on submission. It's designed as a personal educational tool for early childhood development.
 
 ## Core Features
 
-### Interactive Learning Modes
-**Flashcard System**
-- Digital flashcards with images, audio, and example sentences
-- Swipe-based interface for quick reviewing
-- Customizable card sets and difficulty levels
+### Word Practice System
+- **Word Display**: Shows age-appropriate words one at a time
+- **Typing Practice**: Child types the displayed word in an input field
+- **Immediate Feedback**: Provides instant feedback when the child submits their answer
+- **Configurable Word Packs**: Different themed vocabulary sets (Disney, school, fruit, etc.)
 
-**Quiz Challenges**
-- Multiple choice, fill-in-the-blank, and matching exercises
-- Timed challenges for competitive learning
-- Adaptive question difficulty based on performance
-
-**Word Games**
-- Crossword puzzles and word searches
-- Hangman and spelling bee challenges
-- Context-based usage scenarios
-
-### Social Learning
-- Study groups and collaborative challenges
-- Peer-to-peer vocabulary sharing
-- Community-created word lists
-- Progress sharing and friendly competitions
+### Educational Focus
+- **Reading Skills**: Helps children recognize and read words
+- **Spelling Practice**: Reinforces correct spelling through repetition
+- **Typing Skills**: Develops basic keyboard familiarity and typing accuracy
+- **Vocabulary Building**: Expands word knowledge through themed collections
 
 ## Technical Implementation
 
-### Frontend Architecture
-**Vue.js Application**
-- Component-based architecture with Vue 3 Composition API
-- State management using Pinia for complex application state
-- Responsive design optimized for mobile and desktop
-- Progressive Web App (PWA) capabilities for offline learning
+### React Frontend
+**Component Architecture**
+- Clean React component structure for maintainability
+- State management for word progression and user input
+- Responsive design suitable for tablets and computers
+- Simple, child-friendly interface with large, clear text
 
-**Interactive Features**
-- Real-time multiplayer games using WebSockets
-- Audio pronunciation with Web Speech API
-- Drag-and-drop interfaces for engaging interactions
-- Smooth animations and transitions using CSS3 and GSAP
+**Game Logic**
+- Word pack configuration system for different themes
+- Input validation and comparison logic
+- Feedback system for correct/incorrect answers
+- Progress tracking through word lists
 
-### Backend Infrastructure
-**Node.js Backend**
-- RESTful API with Express.js framework
-- Real-time communication using Socket.io
-- MongoDB for user data and vocabulary storage
-- Redis for session management and caching
+### Development Approach
+**AI-Assisted Development**
+- First "vibe coded" application using GPT-4o Mini
+- 11 chat interactions via Abacus.AI platform
+- Rapid prototyping with AI assistance
+- Learning to leverage AI for practical development tasks
 
-**Learning Algorithm**
-- Custom spaced repetition algorithm implementation
-- Machine learning model for difficulty prediction
-- Performance analytics and progress tracking
-- Personalized learning path generation
+**Frontend-Only Architecture**
+- Pure client-side application using React
+- No backend server required
+- Runs locally in any modern browser
+- Simple deployment and distribution
 
-## Key Technical Challenges
+## Development Experience
 
-### Offline Functionality
-Implemented service workers and local storage to enable offline learning. Users can download vocabulary sets and continue learning without internet connection, with automatic sync when connectivity is restored.
+### AI-Powered Workflow
+This project represents an exploration of AI-assisted development:
+- Used GPT-4o Mini through Abacus.AI interface
+- 11 focused chat sessions to build the application
+- Learned effective prompting and iteration techniques
+- Demonstrated practical AI collaboration in software development
 
-### Performance Optimization
-Optimized for mobile devices with limited resources. Implemented lazy loading, code splitting, and efficient data structures to ensure smooth performance even on low-end devices.
+### Rapid Prototyping
+- Quick development cycle with AI assistance
+- Focus on core functionality over complex features
+- Iterative refinement based on testing with target user
+- Minimal viable product approach for educational needs
 
-### Real-time Multiplayer
-Built scalable real-time multiplayer features using WebSockets with room-based architecture. Implemented conflict resolution and state synchronization for smooth multiplayer experience.
+## Technical Challenges
 
-## Educational Impact
+### Child-Friendly Design
+- Large, readable fonts suitable for young children
+- Simple, intuitive interface without distractions
+- Immediate, clear feedback for learning reinforcement
+- Responsive design for different screen sizes
 
-The Vocabulary Game platform has demonstrated significant learning outcomes:
-- **45% improvement** in vocabulary retention compared to traditional methods
-- **3x increase** in daily study time through gamification
-- **10,000+ active users** across 50+ countries
-- **Average user rating** of 4.8/5 stars
+### Word Pack Management
+- Configurable system for different vocabulary themes
+- Easy addition of new word collections
+- Age-appropriate word selection and organization
+- Flexible content management for educational variety
 
-## Accessibility Features
+## Project Impact
 
-- Screen reader compatibility with ARIA labels
-- Keyboard navigation support
-- High contrast mode and adjustable text sizes
-- Audio-only learning mode for visually impaired users
-- Multi-language interface support
+### Educational Value
+- Provides targeted practice for early literacy skills
+- Creates engaging learning experience for young children
+- Supports individualized learning pace
+- Builds foundation for typing and computer skills
+
+### Technical Learning
+- First experience with AI-assisted development
+- Understanding of AI collaboration workflows
+- Practical application of React for educational tools
+- Insight into rapid prototyping methodologies
 
 ## Technology Stack
 
-**Frontend**: Vue.js 3, Pinia, Tailwind CSS, WebSockets, PWA
-**Backend**: Node.js, Express.js, MongoDB, Redis, Socket.io
-**DevOps**: Docker, AWS, GitHub Actions, Nginx
-**Testing**: Vitest, Cypress, Postman
-**Analytics**: Custom dashboard with real-time metrics
+**Frontend**: React, JavaScript, HTML5, CSS3
+**Development Tools**: GPT-4o Mini via Abacus.AI
+**Environment**: Modern web browser (local use)
+**Version Control**: Git
 
-## Future Enhancements
+## Future Considerations
 
-- AI-powered personalized learning paths
-- Integration with popular language learning platforms
-- Voice recognition for pronunciation practice
-- Augmented reality features for immersive learning
-- Advanced analytics dashboard for educators
+### Potential Enhancements
+- Audio pronunciation for words
+- Visual rewards and progress tracking
+- More sophisticated word difficulty progression
+- Touch-friendly mobile interface
 
-The project showcases expertise in educational technology, gamification design, and building scalable real-time applications that deliver measurable learning outcomes.
+### Learning Outcomes
+- Demonstrated effectiveness of AI-assisted development
+- Created practical educational tool for personal use
+- Gained experience in modern development workflows
+- Established foundation for future educational projects
+
+This project showcases the practical application of AI-assisted development for creating meaningful educational tools, demonstrating how modern development approaches can be leveraged for personal and educational purposes.
