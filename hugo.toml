@@ -1,0 +1,50 @@
+baseURL = 'https://peterwarnock.com/'
+languageCode = 'en-us'
+title = 'Peter Warnock'
+description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
+
+[author]
+name = 'Peter Warnock'
+
+[params]
+  # Site configuration
+  subtitle = 'Fullstack Developer & Technology Leader'
+  description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
+  
+  # Social links
+  github = 'https://github.com/pwarnock'
+  linkedin = 'https://www.linkedin.com/in/peterwarnock'
+  twitter = 'https://x.com/pwarnock'
+  discord = 'https://discord.gg/pwarnock'
+  
+  # Newsletter
+  newsletter_url = '#'
+  
+  # Build settings
+  minify = true
+  
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = 'github'
+    lineNos = true
+
+[build]
+  writeStats = true
+
+[build.buildStats]
+  enable = true
+
+[[build.cachebusters]]
+  source = 'assets/.*\.(js|ts|jsx|tsx)'
+  target = '(js|css|json)'
+
+[[build.cachebusters]]
+  source = 'assets/.*\.(css|scss|sass)$'
+  target = '(css|json)'
+
+[[build.cachebusters]]
+  source = 'data/.*\.(ya?ml|json)$'
+  target = '(html|json)'

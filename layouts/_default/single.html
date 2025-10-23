@@ -1,0 +1,93 @@
+{{ define "main" }}
+<article class="prose prose-lg max-w-none">
+  <header class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+    
+    <div class="flex items-center justify-between text-base-content/60 mb-4">
+      <div class="flex items-center gap-4">
+        <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+        
+        {{ if .Params.readingTime }}
+        <span class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {{ .Params.readingTime }} min read
+        </span>
+        {{ end }}
+      </div>
+      
+      {{ if .Params.tags }}
+      <div class="flex gap-2">
+        {{ range .Params.tags }}
+        <span class="badge badge-outline">{{ . }}</span>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    
+    {{ if .Params.summary }}
+    <div class="alert alert-info mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>{{ .Params.summary }}</span>
+    </div>
+    {{ end }}
+  </header>
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  {{ if .Params.tags }}
+  <footer class="mt-12 pt-8 border-t border-base-300">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="text-lg font-semibold mb-2">Tags</h3>
+        <div class="flex gap-2">
+          {{ range .Params.tags }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-primary badge-lg">
+            {{ . }}
+          </a>
+          {{ end }}
+        </div>
+      </div>
+      
+      <div class="flex gap-2">
+        <button class="btn btn-outline btn-sm" onclick="window.history.back()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back
+        </button>
+        
+        <button class="btn btn-primary btn-sm" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+          Top
+        </button>
+      </div>
+    </div>
+  </footer>
+  {{ end }}
+</article>
+
+{{ if and (not .Params.hideComments) (ne .Type "page") }}
+<section class="mt-12">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Comments</h2>
+      <p class="text-base-content/60">Comments section coming soon...</p>
+      <!-- Add your comment system here (Disqus, Giscus, etc.) -->
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
