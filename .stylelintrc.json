@@ -1,28 +1,31 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-  "at-rule-no-unknown": [
-  true,
-  {
-  "ignoreAtRules": [
-  "tailwind",
-  "apply",
-  "variants",
-  "responsive",
-  "screen",
-  "plugin"
-  ]
-  }
-  ],
+"at-rule-no-unknown": [
+   true,
+   {
+   "ignoreAtRules": [
+   "tailwind",
+   "apply",
+   "variants",
+   "responsive",
+   "screen",
+   "plugin",
+   "theme",
+   "layer"
+   ]
+   }
+   ],
   "import-notation": null,
     "no-descending-specificity": null
   },
-  "ignoreFiles": [
-  "node_modules/**/*",
-  "themes/**/*",
-  "public/**/*",
-  "static/**/*",
-  "assets/css/tailwind.css",
-    "temp-tailwind-output.css"
-  ]
+"ignoreFiles": [
+   "node_modules/**/*",
+   "themes/**/*",
+   "public/**/*",
+   "static/**/*",
+   "assets/css/tailwind.css",
+   "assets/css/main.css",
+     "temp-tailwind-output.css"
+   ]
 }

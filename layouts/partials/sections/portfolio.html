@@ -49,7 +49,24 @@
             {{ if .Params.technologies }}
               <div class="flex flex-wrap gap-2 mt-3">
                 {{ range .Params.technologies }}
-                  <span class="badge badge-primary badge-outline">{{ . }}</span>
+                  {{ $tech := . }}
+                  {{ if or (eq $tech "React") (eq $tech "Next.js") (eq $tech "JavaScript") (eq $tech "HTML5") (eq $tech "CSS3") (eq $tech "Tailwind CSS") }}
+                    <div class="tooltip" data-tip="{{ if eq $tech "React" }}Modern frontend framework{{ else if eq $tech "Next.js" }}Full-stack React framework{{ else if eq $tech "JavaScript" }}Core programming language{{ else if eq $tech "HTML5" }}Web markup standard{{ else if eq $tech "CSS3" }}Styling language{{ else if eq $tech "Tailwind CSS" }}Utility-first CSS framework{{ end }}">
+                      <span class="badge badge-info badge-outline mr-2">{{ . }}</span>
+                    </div>
+                  {{ else if or (eq $tech "Laravel") (eq $tech "PHP") (eq $tech "MySQL") (eq $tech "Supabase") (eq $tech "PostgreSQL") }}
+                    <div class="tooltip" data-tip="{{ if eq $tech "Laravel" }}PHP web framework{{ else if eq $tech "PHP" }}Backend scripting language{{ else if eq $tech "MySQL" }}Relational database{{ else if eq $tech "Supabase" }}Backend-as-a-service{{ else if eq $tech "PostgreSQL" }}Advanced relational database{{ end }}">
+                      <span class="badge badge-success badge-outline mr-2">{{ . }}</span>
+                    </div>
+                  {{ else if or (eq $tech "Filament") (eq $tech "Vercel") (eq $tech "Docker") (eq $tech "Git") (eq $tech "OpenAI") (eq $tech "ElevenLabs Music API") (eq $tech "SendGrid") }}
+                    <div class="tooltip" data-tip="{{ if eq $tech "Filament" }}Laravel admin panel{{ else if eq $tech "Vercel" }}Deployment platform{{ else if eq $tech "Docker" }}Containerization platform{{ else if eq $tech "Git" }}Version control system{{ else if eq $tech "OpenAI" }}AI API service{{ else if eq $tech "ElevenLabs Music API" }}AI music generation{{ else if eq $tech "SendGrid" }}Email delivery service{{ end }}">
+                      <span class="badge badge-warning badge-outline mr-2">{{ . }}</span>
+                    </div>
+                  {{ else }}
+                    <div class="tooltip" data-tip="Architecture pattern">
+                      <span class="badge badge-secondary badge-outline mr-2">{{ . }}</span>
+                    </div>
+                  {{ end }}
                 {{ end }}
               </div>
             {{ end }}
