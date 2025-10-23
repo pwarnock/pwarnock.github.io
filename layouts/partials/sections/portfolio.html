@@ -1,0 +1,85 @@
+{{/* Default data */}}{{ $title := "Portfolio" }}
+{{ $subtitle := "Featured projects and work" }}
+{{ $showViewAll := true }}
+{{ $viewAllText := "View All Portfolio" }}
+{{ $viewAllLink := "/portfolio" }}
+
+{{/* Custom data from configuration file */}}{{ with site.Data.sections.portfolio }}
+  {{ if .title }}{{ $title = .title }}{{ end }}
+  {{ if .subtitle }}{{ $subtitle = .subtitle }}{{ end }}
+  {{ if .portfolio.show_view_all }}{{ $showViewAll = .portfolio.show_view_all }}{{ end }}
+  {{ if .portfolio.view_all_text }}{{ $viewAllText = .portfolio.view_all_text }}{{ end }}
+  {{ if .portfolio.view_all_link }}{{ $viewAllLink = .portfolio.view_all_link }}{{ end }}
+{{ end }}
+
+{{/* Get portfolio items */}}
+{{ $portfolioItems := where site.RegularPages "Type" "portfolio" | first 6 }}
+
+<div class="container mx-auto px-4 py-16">
+  <div class="text-center mb-12">
+    <h2 class="text-center text-3xl md:text-4xl lg:text-5xl p-5 font-medium font-poppins text-base-content">
+      {{ $title }}
+    </h2>
+    <p class="text-lg text-base-content/80 max-w-2xl mx-auto">
+      {{ $subtitle }}
+    </p>
+  </div>
+  
+  {{ if $portfolioItems }}
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {{ range $portfolioItems }}
+        <div class="card bg-base-200 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          {{ if .Params.featured_image }}
+            <figure class="h-48 overflow-hidden">
+              <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" class="w-full h-full object-cover">
+            </figure>
+          {{ end }}
+          <div class="card-body">
+            <h3 class="card-title text-xl font-medium text-base-content">
+              <a href="{{ .Permalink }}" class="hover:text-primary transition-colors">
+                {{ .Title }}
+              </a>
+            </h3>
+            {{ if .Params.client }}
+              <p class="text-sm text-base-content/60">Client: {{ .Params.client }}</p>
+            {{ end }}
+            <p class="text-base-content/80 line-clamp-3">
+              {{ .Description | default .Summary }}
+            </p>
+            {{ if .Params.technologies }}
+              <div class="flex flex-wrap gap-2 mt-3">
+                {{ range .Params.technologies }}
+                  <span class="badge badge-primary badge-outline">{{ . }}</span>
+                {{ end }}
+              </div>
+            {{ end }}
+            <div class="card-actions justify-end mt-4">
+              {{ if .Params.live_url }}
+                <a href="{{ .Params.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  Live Demo
+                </a>
+              {{ end }}
+              {{ if .Params.github_url }}
+                <a href="{{ .Params.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                  GitHub
+                </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="text-center py-12">
+      <p class="text-base-content/60">Portfolio items will appear here once created.</p>
+    </div>
+  {{ end }}
+
+  {{ if and $showViewAll $portfolioItems }}
+    <div class="text-center mt-12">
+      <a href="{{ $viewAllLink }}" class="btn btn-primary btn-lg">
+        {{ $viewAllText }}
+      </a>
+    </div>
+  {{ end }}
+</div>

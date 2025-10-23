@@ -1,0 +1,8 @@
+title = "Portfolio"
+
+[portfolio]
+  title = "Portfolio"
+  subtitle = "Featured projects and work"
+  show_view_all = true
+  view_all_text = "View All Portfolio"
+  view_all_link = "/portfolio"

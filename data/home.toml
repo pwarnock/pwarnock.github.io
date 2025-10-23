@@ -19,6 +19,11 @@ enabled = true
 weight  = 4
 
 [[section]]
+  id      = "portfolio"
+  enabled = true
+  weight  = 5
+
+[[section]]
   id      = "projects"
   enabled = false
   weight  = 6
