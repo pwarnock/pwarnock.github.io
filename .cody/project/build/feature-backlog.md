@@ -25,14 +25,14 @@ Project setup and base architecture: Establish the foundation with Hugo, Tailwin
 | F3  | Daisy UI Integration    | Add Daisy UI component library to the project | High     | 🔴 Not Started |
 | F4  | Base Layout Templates   | Create base layout templates with consistent Daisy UI components | High     | 🔴 Not Started |
 
-## v0.2.0-content - 🟡 In Progress
+## v0.2.0-content - 🟢 Completed
 Content migration and basic layouts: Migrate existing content and establish basic page structures.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F5  | Blog Content Migration  | Migrate existing blog posts to new Hugo structure | High     | 🟡 In Progress |
-| F6  | Portfolio Migration     | Migrate portfolio content and sections | High     | 🟡 In Progress |
-| F7  | Basic Page Layouts      | Implement basic page layouts and navigation | High     | 🟡 In Progress |
+| F5  | Blog Content Migration  | Migrate existing blog posts to new Hugo structure | High     | 🟢 Completed |
+| F6  | Portfolio Migration     | Migrate portfolio content and sections | High     | 🟢 Completed |
+| F7  | Basic Page Layouts      | Implement basic page layouts and navigation | High     | 🟢 Completed |
 
 ## v0.3.0-components - 🟡 In Progress
 Component implementation and responsive design: Build responsive components and layouts.
