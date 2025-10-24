@@ -6,14 +6,71 @@
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="{{ .Site.Params.Author.name | default .Site.Title }}">
+    <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}, {{ end }}{{ .Site.Params.keywords | default "fullstack developer, devops, cloud engineering, technology leader" }}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="{{ .Site.LanguageCode }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}">
+    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:locale" content="{{ .Site.LanguageCode }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ .Permalink }}">
+    <meta property="twitter:title" content="{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}">
+    <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
+    {{ if .Site.Params.twitter }}<meta property="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ .Permalink }}">
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//linkedin.com">
+    <link rel="dns-prefetch" href="//x.com">
+    
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico">
     
+    <!-- RSS Feed -->
+    {{ with .OutputFormats.Get "rss" }}
+    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+    {{ end }}
+    
     {{ $css := resources.Get "css/main.css" | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": {{ if .IsHome }}"WebSite"{{ else if .IsPage }}"BlogPosting"{{ else }}"WebPage"{{ end }},
+        "name": "{{ .Site.Title }}",
+        "description": "{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+        "url": "{{ .Permalink }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ .Site.Params.Author.name | default .Site.Title }}",
+            "url": "{{ .Site.BaseURL }}"
+        }{{ if .IsPage }},
+        "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+        "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+        "headline": "{{ .Title }}"{{ if .Params.tags }},
+        "keywords": "{{ delimit .Params.tags ", " }}"{{ end }}{{ end }}
+    }
+    </script>
 </head>
 <body class="min-h-screen bg-base-100 flex flex-col">
     {{ partial "header.html" . }}
