@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{/* Default data */}}
+  {{ $sections := slice
+    (dict "id" "hero" "enabled" true "weight" 1 )
+    (dict "id" "skills" "enabled" true "weight" 2 )
+    (dict "id" "posts" "enabled" true "weight" 3 )
+    (dict "id" "portfolio" "enabled" true "weight" 4 )
+  }}
+
+  {{/* Custom data from configuration file */}}
+  {{ with site.Data.home }}
+    {{ $sections = slice }}
+    {{ if .section }}{{ $sections = .section }}{{ end }}
+  {{ end }}
+
+  {{ range sort $sections ".weight" }}
+    {{ if .enabled }}
+      <section id="{{ .id }}">
+        {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
+      </section>
+    {{ end }}
+  {{ end }}
+{{ end }}

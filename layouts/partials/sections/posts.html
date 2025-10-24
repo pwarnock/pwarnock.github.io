@@ -1,0 +1,73 @@
+<!-- Posts Section -->
+<div class="py-16 bg-base-200/30">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl lg:text-5xl font-bold mb-4">Latest Blog Posts</h2>
+      <p class="text-xl text-base-content/80">Thoughts on technology, leadership, and development</p>
+    </div>
+    
+    <div class="grid gap-8">
+      {{ range first 3 (where site.RegularPages "Type" "posts") }}
+      <article class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="card-body p-6">
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+            <h3 class="card-title text-xl lg:text-2xl">
+              <a href="{{ .Permalink }}" class="link link-hover text-primary no-underline hover:underline">
+                {{ .Title }}
+              </a>
+            </h3>
+            {{ if .Params.tags }}
+            <div class="flex flex-wrap gap-2 lg:gap-1">
+              {{ range .Params.tags }}
+              <span class="badge badge-outline text-xs">{{ . }}</span>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+          
+          {{ if .Params.summary }}
+          <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Params.summary }}</p>
+          {{ else }}
+          <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Summary }}</p>
+          {{ end }}
+          
+          <div class="card-actions justify-between items-center">
+            <div class="text-sm text-base-content/60">
+              <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {{ .Date.Format "January 2, 2006" }}
+              </time>
+              {{ if .Params.readingTime }}
+              <span class="ml-2 flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {{ .Params.readingTime }} min
+              </span>
+              {{ end }}
+            </div>
+            
+            <a href="{{ .Permalink }}" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
+              Read More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/posts" class="btn btn-primary btn-lg">
+        View All Posts
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>

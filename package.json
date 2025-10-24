@@ -1,23 +1,36 @@
 {
-  "name": "cody-demo",
+  "name": "pwarnock.github.io",
   "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
+  "description": "Peter Warnock's personal website",
+  "main": "postcss.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "hugo --gc --ignoreCache --minify",
+    "clean": "rm -rf public",
+    "dev": "hugo server -D",
+    "lint": "npm run lint:yaml && npm run lint:toml && npm run lint:css",
+    "lint:check": "stylelint \"assets/css/**/*.css\" \"static/css/**/*.css\"",
+    "lint:yaml": "npx yaml-lint .github/workflows/*.yml",
+    "lint:toml": "npx @taplo/cli lint **/*.toml",
+    "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
+    "postinstall": "husky install"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["hugo", "personal-website", "portfolio", "blog"],
+  "author": "Peter Warnock",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@taplo/cli": "^0.7.0",
     "@tailwindcss/postcss": "^4.1.16",
     "@tailwindcss/typography": "^0.5.19",
     "autoprefixer": "^10.4.21",
+    "daisyui": "^5.3.8",
+    "husky": "^9.1.7",
+    "markdownlint-cli": "^0.45.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.16"
-  },
-  "dependencies": {
-    "daisyui": "^5.3.8"
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
+    "tailwindcss": "^4.1.16",
+    "yaml-lint": "^1.7.0"
   }
 }
