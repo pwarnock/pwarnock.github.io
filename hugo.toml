@@ -1,4 +1,7 @@
 baseURL = 'https://peterwarnock.com/'
+# For GitHub Pages, this will be automatically set to:
+# baseURL = 'https://pwarnock.github.io/cody-demo/' when deploying to GitHub Pages
+# But for production, we want the custom domain
 languageCode = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
@@ -6,7 +9,18 @@ description = 'Personal portfolio and blog of Peter Warnock - Fullstack Develope
 [author]
 name = 'Peter Warnock'
 
+# RSS configuration
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML"]
+section = ["HTML", "RSS"]
+
 [params]
+  # SEO configuration
+  keywords = "fullstack developer, devops, cloud engineering, technology leader, software development, SaaS, rapid prototyping"
+  og_image = "/img/og-image.png"
+  twitter_card = "summary_large_image"
+  
   # Site configuration
   subtitle = 'Fullstack Developer & Technology Leader'
   description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
@@ -22,6 +36,9 @@ name = 'Peter Warnock'
   
   # Build settings
   minify = true
+  
+  # Deployment settings
+  enableGitInfo = true
   
 [markup]
   [markup.goldmark]

@@ -45,15 +45,15 @@ Component implementation and responsive design: Build responsive components and 
 | F11 | Newsletter Component    | Add newsletter subscription component | Medium   | 🟢 Completed |
 | F12 | Social Links Component  | Implement social media links component | Medium   | 🟢 Completed |
 
-## v0.4.0-testing - 🔴 Not Started
+## v0.4.0-testing - 🟢 Completed
 Testing, SEO verification, and deployment preparation: Ensure everything works and prepare for deployment.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F13 | Responsiveness Testing  | Test and fix responsive design across devices | High     | 🔴 Not Started |
-| F14 | Component Alignment     | Ensure navbar and content edges align properly | High     | 🔴 Not Started |
-| F15 | SEO Configuration       | Configure SEO settings and verify URL preservation | High     | 🔴 Not Started |
-| F16 | GitHub Pages Setup      | Prepare project for GitHub Pages deployment | High     | 🔴 Not Started |
+| F13 | Responsiveness Testing  | Test and fix responsive design across devices | High     | 🟢 Completed |
+| F14 | Component Alignment     | Ensure navbar and content edges align properly | High     | 🟢 Completed |
+| F15 | SEO Configuration       | Configure SEO settings and verify URL preservation | High     | 🟢 Completed |
+| F16 | GitHub Pages Setup      | Prepare project for GitHub Pages deployment | High     | 🟢 Completed |
 
 ## v0.5.0-deployment - 🔴 Not Started
 Final deployment and post-launch validation: Deploy and validate the rebuilt site.

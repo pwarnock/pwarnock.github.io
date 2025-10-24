@@ -1,0 +1,48 @@
+name: Test Hugo build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: 'latest'
+        extended: true
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Test Hugo build
+      run: hugo --minify --gc
+
+    - name: Check for broken internal links
+      run: |
+        # Check if all internal links resolve to existing files
+        find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+        while read line; do
+          url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
+          if [ -n "$url" ]; then
+            if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+              echo "Broken link found: /$url"
+              exit 1
+            fi
+          fi
+        done
+        echo "All internal links are valid"
