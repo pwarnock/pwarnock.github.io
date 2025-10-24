@@ -18,7 +18,7 @@ name = 'Peter Warnock'
   discord = 'https://discord.gg/pwarnock'
   
   # Newsletter
-  newsletter_url = '#'
+  newsletter_url = 'https://gmail.us8.list-manage.com/subscribe/post?u=174f78659f6d3dd707f265f33&id=daaddd52e4&f_id=005f13e1f0'
   
   # Build settings
   minify = true

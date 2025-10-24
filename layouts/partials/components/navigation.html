@@ -1,0 +1,55 @@
+{{/* Responsive Navigation Component */}}
+<nav class="navbar bg-base-100 shadow-lg" role="navigation" aria-label="Main navigation">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden" aria-label="Toggle navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" role="menu">
+        <li role="menuitem"><a href="{{ "/" | relLangURL }}" class="justify-between">Home</a></li>
+        <li role="menuitem"><a href="{{ "/blog" | relLangURL }}" class="justify-between">Blog</a></li>
+        <li role="menuitem"><a href="{{ "/portfolio" | relLangURL }}" class="justify-between">Portfolio</a></li>
+        <li role="menuitem"><a href="{{ "/about" | relLangURL }}" class="justify-between">About</a></li>
+      </ul>
+    </div>
+    <a href="{{ "/" | relLangURL }}" class="btn btn-ghost text-xl font-bold flex items-center gap-2" aria-label="Home">
+      <img src="/img/logo.png" alt="{{ .Site.Title }}" class="h-8 w-8 rounded">
+      <span class="hidden sm:inline">{{ .Site.Title }}</span>
+      <span class="sm:hidden">{{ .Site.Title }}</span>
+    </a>
+  </div>
+  
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1" role="menubar">
+      <li role="none"><a href="{{ "/" | relLangURL }}" class="btn btn-ghost" role="menuitem">Home</a></li>
+      <li role="none"><a href="{{ "/blog" | relLangURL }}" class="btn btn-ghost" role="menuitem">Blog</a></li>
+      <li role="none"><a href="{{ "/portfolio" | relLangURL }}" class="btn btn-ghost" role="menuitem">Portfolio</a></li>
+      <li role="none"><a href="{{ "/about" | relLangURL }}" class="btn btn-ghost" role="menuitem">About</a></li>
+    </ul>
+  </div>
+  
+  <div class="navbar-end">
+    <div class="flex items-center gap-2">
+      {{ partial "components/theme-selector.html" . }}
+      <div class="hidden md:flex">
+        {{ partial "components/social-links.html" . }}
+      </div>
+      <!-- Mobile social links dropdown -->
+      <div class="dropdown dropdown-end md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Social links">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+          </svg>
+        </div>
+        <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-48">
+          <li class="menu-title"><span>Connect</span></li>
+          <div class="flex gap-2 p-2">
+            {{ partial "components/social-links.html" . }}
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

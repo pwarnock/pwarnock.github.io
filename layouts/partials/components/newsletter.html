@@ -1,0 +1,19 @@
+{{/* Newsletter Signup Component */}}
+{{ if .Site.Params.newsletter_url }}
+<div class="w-full max-w-md">
+  <form action="{{ .Site.Params.newsletter_url }}" method="post" target="_blank">
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Subscribe to my newsletter</span>
+      </label>
+      <div class="join">
+        <input type="email" name="EMAIL" placeholder="your@email.com" class="input input-bordered join-item flex-1" required />
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="b_174f78659f6d3dd707f265f33_daaddd52e4" tabindex="-1" value="">
+        </div>
+        <button type="submit" class="btn btn-primary join-item">Subscribe</button>
+      </div>
+    </div>
+  </form>
+</div>
+{{ end }}
