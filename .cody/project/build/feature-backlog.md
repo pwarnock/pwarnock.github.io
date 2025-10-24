@@ -55,11 +55,21 @@ Testing, SEO verification, and deployment preparation: Ensure everything works a
 | F15 | SEO Configuration       | Configure SEO settings and verify URL preservation | High     | 🟢 Completed |
 | F16 | GitHub Pages Setup      | Prepare project for GitHub Pages deployment | High     | 🟢 Completed |
 
-## v0.5.0-deployment - 🔴 Not Started
+## v0.5.0-deployment - 🟡 In Progress
 Final deployment and post-launch validation: Deploy and validate the rebuilt site.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F17 | GitHub Pages Deployment | Deploy the site to GitHub Pages | High     | 🔴 Not Started |
-| F18 | Feature Validation      | Validate all features work correctly | High     | 🔴 Not Started |
-| F19 | SEO Validation          | Verify SEO and performance post-launch | High     | 🔴 Not Started |
+| F17 | GitHub Pages Deployment | Deploy the site to GitHub Pages | High     | 🟡 In Progress |
+| F18 | Feature Validation      | Validate all features work correctly | High     | 🟡 In Progress |
+| F19 | SEO Validation          | Verify SEO and performance post-launch | High     | 🟡 In Progress |
+
+## v0.6.0-hero-recreation - 🟡 In Progress
+Hero section recreation and enhancement: Recreate and enhance the hero section with improved design and functionality.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F20 | Hero Section Analysis   | Analyze current hero section and identify improvements | High     | 🟡 In Progress |
+| F21 | Hero Design Recreation  | Recreate hero section with enhanced visual design | High     | 🔴 Not Started |
+| F22 | Hero Content Optimization | Optimize hero content and messaging | Medium   | 🔴 Not Started |
+| F23 | Hero Interactive Elements | Add interactive elements and animations | Medium   | 🔴 Not Started |

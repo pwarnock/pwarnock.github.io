@@ -1,0 +1,19 @@
+[[section]]
+  id      = "hero"
+  enabled = true
+  weight  = 1
+
+[[section]]
+  id      = "skills"
+  enabled = true
+  weight  = 2
+
+[[section]]
+  id      = "posts"
+  enabled = true
+  weight  = 3
+
+[[section]]
+  id      = "portfolio"
+  enabled = true
+  weight  = 4

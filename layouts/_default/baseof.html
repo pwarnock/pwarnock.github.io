@@ -75,12 +75,16 @@
 <body class="min-h-screen bg-base-100 flex flex-col">
     {{ partial "header.html" . }}
     
-    <main class="flex-grow container mx-auto px-4 py-8">
+    <main class="flex-grow {{ if .IsHome }}{{ else }}container mx-auto px-4 py-8{{ end }}">
         {{ block "main" . }}
-        <div class="prose prose-lg max-w-none">
-            <h1 class="text-4xl font-bold mb-6">{{ .Title }}</h1>
+        {{ if .IsHome }}
             {{ .Content }}
-        </div>
+        {{ else }}
+            <div class="prose prose-lg max-w-none">
+                <h1 class="text-4xl font-bold mb-6">{{ .Title }}</h1>
+                {{ .Content }}
+            </div>
+        {{ end }}
         {{ end }}
     </main>
     
