@@ -1,7 +1,7 @@
 {
   "name": "pwarnock.github.io",
   "version": "1.0.0",
-  "description": "Peter Warnock's personal website",
+  "description": "",
   "main": "postcss.config.js",
   "scripts": {
     "build": "hugo --gc --ignoreCache --minify",
@@ -12,25 +12,26 @@
     "lint:yaml": "npx yaml-lint .github/workflows/*.yml",
     "lint:toml": "npx @taplo/cli lint **/*.toml",
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
+    "validate": "./scripts/validate.sh",
     "postinstall": "husky install"
   },
-  "keywords": ["hugo", "personal-website", "portfolio", "blog"],
-  "author": "Peter Warnock",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@taplo/cli": "^0.7.0",
-    "@tailwindcss/postcss": "^4.1.16",
-    "@tailwindcss/typography": "^0.5.19",
-    "autoprefixer": "^10.4.21",
-    "daisyui": "^5.3.8",
+    "daisyui": "^5.0.0",
     "husky": "^9.1.7",
     "markdownlint-cli": "^0.45.0",
-    "postcss": "^8.5.6",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.0.0",
     "yaml-lint": "^1.7.0"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.19"
   }
 }
