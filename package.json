@@ -37,6 +37,7 @@
     "yaml-lint": "^1.7.0"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.0.0"
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.19"
   }
 }
