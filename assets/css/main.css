@@ -24,3 +24,38 @@ html {
 .backdrop-blur-xs {
   backdrop-filter: blur(2px);
 }
+
+/* Hero section animations */
+.hero-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Staircase layout responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-staircase {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .hero-cards {
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-staircase {
+    gap: 1.5rem;
+  }
+  
+  .hero-cards {
+    gap: 1rem;
+  }
+}
+

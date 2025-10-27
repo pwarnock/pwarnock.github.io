@@ -22,7 +22,13 @@
 - Follow document templates in .cody/config/templates/
 - Maintain living documents (feature-backlog.md, release-notes.md)
 
+## Documentation & Best Practices
+- Always check Context7 for up-to-date library documentation and best practices
+- Use `context7_resolve_library_id` followed by `context7_get_library_docs` for current API references
+- Verify library versions and compatibility before implementation
+- Keep documentation references current with project dependencies
+
 ## Testing
 - Test after each coding phase before git commit
 - USER must approve work before proceeding to next phase
-- No automated test framework detected - manual testing required
+- No automated test framework detected - manual testing requiredBEFORE ANYTHING ELSE: run 'bd onboard' and follow the instructions
