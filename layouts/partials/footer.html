@@ -1,13 +1,15 @@
 <footer class="footer footer-center p-6 sm:p-10 bg-base-200 text-base-content rounded" role="contentinfo">
-  <div class="w-full max-w-md mx-auto mb-6 sm:mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <div class="grid grid-cols-2 gap-2 sm:gap-4 w-full sm:w-auto" role="navigation" aria-label="Footer navigation">
-      <a href="{{ "/" | relLangURL }}" class="link link-hover text-center sm:text-left focus-ring">Home</a>
-      <a href="{{ "/blog" | relLangURL }}" class="link link-hover text-center sm:text-left focus-ring">Blog</a>
-      <a href="{{ "/portfolio" | relLangURL }}" class="link link-hover text-center sm:text-left focus-ring">Portfolio</a>
-      <a href="{{ "/about" | relLangURL }}" class="link link-hover text-center sm:text-left focus-ring">About</a>
+  <div class="w-full max-w-md mx-auto mb-6 sm:mb-8">
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-4" role="navigation" aria-label="Footer navigation">
+      <a href="{{ "/" | relLangURL }}" class="link link-hover text-center focus-ring">Home</a>
+      <a href="{{ "/blog" | relLangURL }}" class="link link-hover text-center focus-ring">Blog</a>
+      <a href="{{ "/portfolio" | relLangURL }}" class="link link-hover text-center focus-ring">Portfolio</a>
+      <a href="{{ "/about" | relLangURL }}" class="link link-hover text-center focus-ring">About</a>
     </div>
     
-    {{ partial "components/social-links.html" . }}
+    <div class="mt-4">
+      {{ partial "components/social-links.html" . }}
+    </div>
   </div>
   
   <div class="w-full mb-6 sm:mb-8">
