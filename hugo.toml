@@ -36,7 +36,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   twitter_card = "summary_large_image"
   
   # Site configuration
-  subtitle = 'Fullstack Developer & Technology Leader'
+  subtitle = 'Fullstack Developer & TECHNOLOGY LEADER'
   description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
   
   # Social links
@@ -55,7 +55,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   enableGitInfo = true
   
   # Version
-  version = "0.8.1"
+  version = "0.8.2"
   
 [markup]
   [markup.goldmark]
