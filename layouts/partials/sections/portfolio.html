@@ -8,47 +8,17 @@
     
     <div class="grid gap-8">
       {{ range first 3 (where site.RegularPages "Type" "portfolio") }}
-      <article class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="card-body p-6">
-          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-            <h3 class="card-title text-xl lg:text-2xl">
-              <a href="{{ .Permalink }}" class="link link-hover text-primary no-underline hover:underline">
-                {{ .Title }}
-              </a>
-            </h3>
-            {{ if .Params.type }}
-            <div class="flex flex-wrap gap-2 lg:gap-1">
-              <span class="badge badge-primary text-xs">{{ .Params.type }}</span>
-            </div>
-            {{ end }}
-          </div>
-          
-          {{ if .Params.summary }}
-          <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Params.summary }}</p>
-          {{ else }}
-          <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Summary }}</p>
-          {{ end }}
-          
-          <div class="card-actions justify-between items-center">
-            <div class="text-sm text-base-content/60">
-              {{ if .Params.technologies }}
-              <div class="flex flex-wrap gap-1">
-                {{ range .Params.technologies }}
-                <span class="badge badge-outline text-xs">{{ . }}</span>
-                {{ end }}
-              </div>
-              {{ end }}
-            </div>
-            
-            <a href="{{ .Permalink }}" class="btn btn-secondary btn-sm hover:btn-secondary-focus transition-colors">
-              View Details
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </article>
+      {{ $tags := slice }}
+{{ if .Params.type }}{{ $tags = $tags | append .Params.type }}{{ end }}
+{{ if .Params.technologies }}{{ range .Params.technologies }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
+{{ partial "components/card.html" (dict 
+        "title" .Title 
+        "content" (or .Params.summary .Summary)
+        "url" .Permalink
+        "tags" $tags
+        "btnText" "View Details"
+        "size" "medium"
+      ) }}
       {{ end }}
     </div>
     
