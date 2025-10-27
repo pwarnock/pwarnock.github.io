@@ -49,6 +49,113 @@
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{ end }}
     
+    <!-- JSON-LD Structured Data -->
+    {{- $site := .Site }}
+    {{- $page := . }}
+    {{- $url := .Permalink }}
+    {{- $title := .Title }}
+    {{- $description := .Description | default .Site.Params.description }}
+    {{- $image := .Params.image | default "/img/logo.png" }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {{- if eq .Kind "home" }}
+        {
+          "@type": "Person",
+          "@id": "{{ $site.BaseURL }}#person",
+          "name": "Peter Warnock",
+          "url": "{{ $site.BaseURL }}",
+          "description": "{{ $description }}",
+          "jobTitle": "Cloud & Platform Engineering Leader",
+          "knowsAbout": [
+            "Cloud Engineering",
+            "DevOps",
+            "Fullstack Development",
+            "Software Architecture",
+            "Team Leadership"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/peterwarnock/",
+            "https://github.com/pwarnock/",
+            "https://x.com/pwarnock/"
+          ],
+          "image": "{{ $image | absURL }}"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ $site.BaseURL }}#website",
+          "url": "{{ $site.BaseURL }}",
+          "name": "{{ $site.Title }}",
+          "description": "{{ $description }}",
+          "publisher": {
+            "@id": "{{ $site.BaseURL }}#person"
+          },
+          "inLanguage": "en-US"
+        }
+        {{- else if eq .Kind "section" }}
+        {
+          "@type": "Blog",
+          "@id": "{{ $url }}#blog",
+          "url": "{{ $url }}",
+          "name": "{{ $title }}",
+          "description": "{{ $description }}",
+          "publisher": {
+            "@id": "{{ $site.BaseURL }}#person"
+          },
+          "inLanguage": "en-US"
+        }
+        {{- else if eq .Kind "page" }}
+        {
+          "@type": "Article",
+          "@id": "{{ $url }}#article",
+          "url": "{{ $url }}",
+          "headline": "{{ $title }}",
+          "description": "{{ $description }}",
+          "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+          {{- if .Lastmod }}
+          "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+          {{- end }}
+          "author": {
+            "@id": "{{ $site.BaseURL }}#person"
+          },
+          "publisher": {
+            "@id": "{{ $site.BaseURL }}#person"
+          },
+          "image": "{{ $image | absURL }}",
+          "inLanguage": "en-US"
+          {{- if .Params.categories }},
+          "about": [
+            {{- range $i, $category := .Params.categories }}
+            {{- if $i }}, {{ end }}"{{ $category }}"
+            {{- end }}
+          ]
+          {{- end }}
+          {{- if .Params.tags }},
+          "keywords": [
+            {{- range $i, $tag := .Params.tags }}
+            {{- if $i }}, {{ end }}"{{ $tag }}"
+            {{- end }}
+          ]
+          {{- end }}
+        }
+        {{- else }}
+        {
+          "@type": "WebPage",
+          "@id": "{{ $url }}#webpage",
+          "url": "{{ $url }}",
+          "name": "{{ $title }}",
+          "description": "{{ $description }}",
+          "isPartOf": {
+            "@id": "{{ $site.BaseURL }}#website"
+          },
+          "inLanguage": "en-US"
+        }
+        {{- end }}
+      ]
+    }
+    </script>
+    
     <!-- Google Analytics -->
     {{ if eq (getenv "HUGO_ENV") "production" }}
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKDDM2GBXN"></script>
