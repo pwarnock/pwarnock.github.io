@@ -97,6 +97,60 @@ If Site Styling Breaks:
 ### Problem
 Deployment fails with "The process '/usr/bin/git' failed with exit code 128"
 
+### Simple Solution (REVERTED)
+Use the proven `peaceiris/actions-gh-pages@v4` workflow:
+```yaml
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: 'latest'
+        extended: true
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build with Hugo
+      run: hugo --minify --gc
+
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+```
+
+### Why This Works
+- No complex Pages configuration needed
+- Proven deployment method
+- Simple permissions (contents: read, deployments: write)
+- No Git authentication issues
+
 ### Root Causes
 1. **Repository Settings**: GitHub Pages not configured to accept deployments from GitHub Actions
 2. **Token Permissions**: GITHUB_TOKEN lacks necessary permissions
