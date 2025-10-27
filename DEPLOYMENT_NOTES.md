@@ -189,4 +189,85 @@ After fixing, check:
 **Last Updated**: October 27, 2025  
 **Critical Issues**: 
 1. ✅ CSS processing with Tailwind directives - RESOLVED
-2. 🔄 GitHub Pages deployment failure - IN PROGRESS# Deployment test Sun Oct 26 20:45:53 PDT 2025
+2. ✅ GitHub Pages deployment failure - RESOLVED
+
+---
+
+## 🚨 CI/CD Pipeline Configuration - CRITICAL
+
+### Problem
+Multiple workflow files caused confusion and deployment failures:
+- `deploy.yml` - Simple single-job workflow (limited functionality)
+- `cicd.yml` - Robust multi-job pipeline (correct approach)
+
+### Solution - ALWAYS USE THE ROBUST CI/CD PIPELINE
+
+The correct CI/CD pipeline (`cicd.yml`) must have:
+
+#### 1. Proper Permissions
+```yaml
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+```
+
+#### 2. Separate Build and Deploy Jobs
+```yaml
+jobs:
+  build:    # Builds and tests
+  deploy:   # Only runs after successful build
+```
+
+#### 3. Concurrency Control
+```yaml
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+```
+
+#### 4. Official GitHub Pages Actions
+- `actions/configure-pages@v5`
+- `actions/upload-pages-artifact@v3`
+- `actions/deploy-pages@v4`
+
+#### 5. Environment Configuration
+```yaml
+deploy:
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+```
+
+### Why This Matters
+- **Single-job workflows** (like `deploy.yml`) have limited functionality
+- **Multi-job pipelines** provide proper artifact handling and testing
+- **Official actions** ensure compatibility and security
+- **Environment setup** enables proper GitHub Pages integration
+
+### Prevention Checklist
+Before any deployment changes:
+1. ✅ Verify `cicd.yml` is the active workflow
+2. ✅ Check permissions include `pages: write` and `id-token: write`
+3. ✅ Ensure separate build/deploy jobs exist
+4. ✅ Confirm official GitHub Pages actions are used
+5. ✅ Validate environment configuration is present
+6. ✅ Remove or disable `deploy.yml` if it exists
+
+### Recovery Steps
+If deployment fails:
+1. **Check workflow**: Verify `cicd.yml` is being used
+2. **Verify permissions**: Ensure proper GitHub Pages permissions
+3. **Check environment**: Confirm `github-pages` environment exists
+4. **Review logs**: Look for artifact upload/deployment errors
+5. **Restore pipeline**: Copy from this document if needed
+
+### NEVER USE
+- Single-job workflows for production deployments
+- `peaceiris/actions-gh-pages@v4` (use official `actions/deploy-pages@v4`)
+- Missing environment configuration
+- Incorrect permissions (only `contents: read` is insufficient)
+
+---
+
+**CRITICAL REMINDER**: Always maintain the robust `cicd.yml` pipeline structure. Never revert to simplified single-job workflows for production deployments.
