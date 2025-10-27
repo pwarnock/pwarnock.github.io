@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Pre-commit hook for internal link validation
+# Catches broken internal links before they reach CI/CD
+
+echo "🔍 Running internal link validation..."
+
+# Build the site first to generate public directory
+if ! npm run build > /dev/null 2>&1; then
+    echo "❌ Build failed - cannot validate links"
+    exit 1
+fi
+
+# Check for broken internal links using htmlproofer (local version)
+if command -v htmlproofer &> /dev/null; then
+    echo "🔗 Checking internal links..."
+    if ! htmlproofer ./public --check-internal --check-html --disable-external --log-level :debug; then
+        echo "❌ Internal link validation failed"
+        echo "💡 Fix broken links before committing"
+        exit 1
+    fi
+else
+    # Fallback: grep-based internal link check
+    echo "⚠️  htmlproofer not found, using basic link check..."
+    
+    # Extract all internal links from markdown files
+    broken_links=()
+    for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'); do
+        if [ -f "$file" ]; then
+            # Find internal links to /tools/ pages
+            links=$(grep -oE '\[([^\]]+)\]\(/tools/[^)]+\)' "$file" | grep -oE '(/tools/[^)]+)' | sort -u)
+            
+            for link in $links; do
+                # Remove trailing slash if present for file check
+                check_path=${link%/}
+                check_path="content${check_path}/index.md"
+                
+                if [ ! -f "$check_path" ]; then
+                    # Check if it's a valid alias
+                    tool_name=$(basename "$link")
+                    if [ -f "content/tools/${tool_name}.md" ]; then
+                        # Valid short slug - check if it has the right alias
+                        if ! grep -q "aliases = \[\"${link}\"\]" "content/tools/${tool_name}.md"; then
+                            broken_links+=("$file: $link (missing alias)")
+                        fi
+                    else
+                        broken_links+=("$file: $link (file not found)")
+                    fi
+                fi
+            done
+        fi
+    done
+    
+    if [ ${#broken_links[@]} -gt 0 ]; then
+        echo "❌ Broken internal links found:"
+        for link in "${broken_links[@]}"; do
+            echo "  - $link"
+        done
+        echo "💡 Fix these links before committing"
+        exit 1
+    fi
+fi
+
+echo "✅ Internal link validation passed"
+exit 0

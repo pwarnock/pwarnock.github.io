@@ -44,6 +44,20 @@ jobs:
     - name: Install Node.js dependencies
       run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+    - name: Security vulnerability scan
+      run: |
+        echo "Running security vulnerability scan..."
+        npm audit --audit-level=moderate
+        if [ $? -ne 0 ]; then
+          echo "Security vulnerabilities found. Consider updating dependencies."
+          exit 1
+        fi
+
+    - name: Dependency security check
+      run: |
+        echo "Checking for known security vulnerabilities in dependencies..."
+        npx audit-ci --moderate
+
     - name: Build
       run: npm run build
 
@@ -63,15 +77,52 @@ jobs:
 
     - name: SEO validation
       run: |
+        echo "Running comprehensive SEO validation..."
+        
+        # Check for meta descriptions
         echo "Checking for meta descriptions..."
-        # Exclude paginated pages (/page/) and generated index pages that don't need unique descriptions
         missing=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | wc -l)
         if [ "$missing" -gt 0 ]; then
           echo "Warning: $missing pages missing meta descriptions"
           find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | head -5
         else
-          echo "SEO check passed"
+          echo "✅ Meta descriptions check passed"
         fi
+        
+        # Check for title tags
+        echo "Checking for title tags..."
+        missing_titles=$(find public -name "*.html" | xargs grep -L '<title>' | wc -l)
+        if [ "$missing_titles" -gt 0 ]; then
+          echo "❌ Error: $missing_titles pages missing title tags"
+          exit 1
+        else
+          echo "✅ Title tags check passed"
+        fi
+        
+        # Check for Open Graph tags
+        echo "Checking for Open Graph tags..."
+        missing_og=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L 'property="og:title"' | wc -l)
+        if [ "$missing_og" -gt 0 ]; then
+          echo "Warning: $missing_og pages missing Open Graph tags"
+        else
+          echo "✅ Open Graph tags check passed"
+        fi
+        
+        # Check for structured data (JSON-LD)
+        echo "Checking for structured data..."
+        pages_with_structured=$(find public -name "*.html" | xargs grep -l 'application/ld+json' | wc -l)
+        echo "✅ $pages_with_structured pages have structured data"
+        
+        # Check for canonical URLs
+        echo "Checking for canonical URLs..."
+        missing_canonical=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L 'rel="canonical"' | wc -l)
+        if [ "$missing_canonical" -gt 0 ]; then
+          echo "Warning: $missing_canonical pages missing canonical URLs"
+        else
+          echo "✅ Canonical URLs check passed"
+        fi
+        
+        echo "✅ SEO validation completed"
 
     - name: Upload pages artifact
       if: github.ref == 'refs/heads/main'
