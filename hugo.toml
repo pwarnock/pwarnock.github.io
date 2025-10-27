@@ -39,6 +39,9 @@ section = ["HTML", "RSS"]
   # Deployment settings
   enableGitInfo = true
   
+  # Version
+  version = "0.8.0"
+  
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
