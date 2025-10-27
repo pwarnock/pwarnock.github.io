@@ -130,4 +130,4 @@ For more details, see README.md and QUICKSTART.md.
 ## Testing
 - Test after each coding phase before git commit
 - USER must approve work before proceeding to next phase
-- No automated test framework detected - manual testing requiredBEFORE ANYTHING ELSE: run 'bd onboard' and follow the instructions
+- No automated test framework detected - manual testing required
