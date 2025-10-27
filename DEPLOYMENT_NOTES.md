@@ -271,3 +271,57 @@ If deployment fails:
 ---
 
 **CRITICAL REMINDER**: Always maintain the robust `cicd.yml` pipeline structure. Never revert to simplified single-job workflows for production deployments.
+
+---
+
+## 🏷️ Version Management & Releases
+
+### Version Synchronization
+- **Package.json**: Must match Cody framework version
+- **Hugo Config**: `version` parameter in `hugo.toml`
+- **Footer Display**: Version shown in site footer
+- **Git Tag**: Annotated tag for release point
+- **GitHub Release**: Release notes and rollback information
+
+### Version Update Process
+1. **Update package.json**: `"version": "x.y.z"`
+2. **Update hugo.toml**: `version = "x.y.z"`
+3. **Create Git Tag**: `git tag -a vx.y.z -m "Release notes"`
+4. **Push Tag**: `git push upstream vx.y.z`
+5. **Create GitHub Release**: `gh release create vx.y.z --title "vx.y.z" --notes "..."`
+
+### Rollback Strategy
+**GitHub Releases make rollback easy:**
+```bash
+# Emergency rollback to previous stable version
+git checkout vx.y.z
+git push upstream main --force
+```
+
+**Benefits of GitHub Releases:**
+- ✅ **Immutable Snapshot**: Exact point-in-time code state
+- ✅ **Documentation**: Release notes capture changes
+- ✅ **Rollback Safety**: Quick recovery from deployment issues
+- ✅ **Team Visibility**: Clear communication of deployed versions
+- ✅ **Asset Management**: Can attach build artifacts
+
+### Release Checklist
+Before creating release:
+1. ✅ Version numbers synchronized (package.json, hugo.toml, footer)
+2. ✅ All tests passing locally
+3. ✅ CI/CD pipeline successful
+4. ✅ Site loads correctly on custom domain
+5. ✅ Git tag created and pushed
+6. ✅ GitHub release created with notes
+
+### Current Version Information
+- **Version**: v0.8.0
+- **Release Date**: October 27, 2025
+- **Git Tag**: v0.8.0
+- **GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.8.0
+- **Footer Display**: Shows "v0.8.0"
+
+### Version History
+- v0.8.0 - Upstream Integration with footer version display
+- v0.1.0 - Initial setup
+- Previous tags: bd-12, pipeline-14-green (development tags)
