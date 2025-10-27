@@ -19,6 +19,19 @@
     if (dropdown) {
       dropdown.classList.remove('dropdown-content');
     }
+    
+    // Announce theme change to screen readers
+    const announcement = document.createElement('div');
+    announcement.setAttribute('role', 'status');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.className = 'sr-only';
+    announcement.textContent = `Theme changed to ${theme}`;
+    document.body.appendChild(announcement);
+    
+    // Remove announcement after it's read
+    setTimeout(() => {
+      document.body.removeChild(announcement);
+    }, 1000);
   }
   
   function isHalloweenSeason() {
@@ -82,4 +95,27 @@
       }
     });
   }
+  
+  // Keyboard shortcuts for theme selection
+  document.addEventListener('keydown', function(e) {
+    // Alt + T for theme toggle
+    if (e.altKey && e.key === 't') {
+      e.preventDefault();
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    }
+    
+    // Alt + L for light theme
+    if (e.altKey && e.key === 'l') {
+      e.preventDefault();
+      setTheme('light');
+    }
+    
+    // Alt + D for dark theme
+    if (e.altKey && e.key === 'd') {
+      e.preventDefault();
+      setTheme('dark');
+    }
+  });
 </script>

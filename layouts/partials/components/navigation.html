@@ -7,7 +7,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
         </svg>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" role="menu">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" role="menu" aria-label="Mobile navigation menu">
         <li role="menuitem"><a href="{{ "/" | relLangURL }}" class="justify-between">Home</a></li>
         <li role="menuitem"><a href="{{ "/blog" | relLangURL }}" class="justify-between">Blog</a></li>
         <li role="menuitem"><a href="{{ "/portfolio" | relLangURL }}" class="justify-between">Portfolio</a></li>
@@ -23,7 +23,7 @@
   </div>
   
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1" role="menubar">
+    <ul class="menu menu-horizontal px-1" role="menubar" aria-label="Desktop navigation menu">
       <li role="none"><a href="{{ "/" | relLangURL }}" class="btn btn-ghost" role="menuitem">Home</a></li>
       <li role="none"><a href="{{ "/blog" | relLangURL }}" class="btn btn-ghost" role="menuitem">Blog</a></li>
       <li role="none"><a href="{{ "/portfolio" | relLangURL }}" class="btn btn-ghost" role="menuitem">Portfolio</a></li>
@@ -45,7 +45,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
           </svg>
         </div>
-        <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-48">
+        <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-48" role="menu" aria-label="Social links menu">
           <li class="menu-title"><span>Connect</span></li>
           <div class="flex gap-2 p-2">
             {{ partial "components/social-links.html" . }}

@@ -1,0 +1,76 @@
+# Security Policy for peterwarnock.com
+
+## Reporting Security Vulnerabilities
+
+If you discover a security vulnerability on this website, please report it responsibly.
+
+### How to Report
+- Email: security@peterwarnock.com
+- Include detailed description of the vulnerability
+- Provide steps to reproduce (if applicable)
+- Allow reasonable time for remediation before public disclosure
+
+### What to Expect
+- Response within 48 hours
+- Acknowledgment of receipt
+- Timeline for remediation
+- Recognition in security hall of fame (with permission)
+
+## Security Measures Implemented
+
+### Network Security
+- HTTPS-only connections
+- HSTS with preload
+- Secure cookies
+- DNSSEC validation
+
+### Application Security
+- Content Security Policy (CSP)
+- Subresource Integrity (SRI)
+- XSS protection headers
+- Clickjacking protection
+- Input validation and sanitization
+
+### Data Protection
+- Encrypted data transmission
+- Minimal data collection
+- Regular security updates
+- Privacy by design principles
+
+## Security Headers
+
+The following security headers are implemented:
+- Content-Security-Policy
+- X-Frame-Options: DENY
+- X-XSS-Protection: 1; mode=block
+- X-Content-Type-Options: nosniff
+- Strict-Transport-Security
+- Referrer-Policy: strict-origin-when-cross-origin
+- Permissions-Policy
+
+## Third-Party Services
+
+### Google Analytics
+- Anonymized IP addresses
+- No sensitive data collection
+- Cookie-based tracking only
+
+### Mailchimp (Newsletter)
+- Email-only data collection
+- Unsubscribe option available
+- No data sharing with third parties
+
+## Security Best Practices
+
+This website follows OWASP security best practices:
+- Regular security audits
+- Dependency updates
+- Secure coding practices
+- Privacy compliance (GDPR, CCPA)
+
+## Disclaimer
+
+This website is provided "as is" without warranties. While I strive to maintain high security standards, no system is completely secure.
+
+---
+Last updated: October 27, 2025

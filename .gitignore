@@ -24,6 +24,7 @@ yarn-error.log*
 .hugo_build.lock
 public/
 resources/
+.hugo_cache/
 
 # Environment variables
 .env
