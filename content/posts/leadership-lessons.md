@@ -1,7 +1,7 @@
 ---
 title: "Leadership Lessons from 10 Years in Tech"
 date: 2025-01-05T09:15:00Z
-draft: true
+draft: false
 tags: ["Leadership", "Management", "Career", "Technology"]
 author: "Peter Warnock"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Modern Web Development in 2025"
 date: 2025-01-10T14:30:00Z
-draft: true
+draft: false
 tags: ["Web Development", "JavaScript", "React", "Performance"]
 author: "Peter Warnuck"
 ---
