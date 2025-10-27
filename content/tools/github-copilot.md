@@ -8,7 +8,6 @@ author = "Peter Warnock"
 description = "An updated look at GitHub Copilot in 2025, now a multi-model AI assistant."
 external_url = "https://github.com/features/copilot"
 tool_category = "AI-Assisted Development"
-slug = "github-copilot-2025-update"
 series = ["GitHub Copilot"]
 +++
 

@@ -1,0 +1,56 @@
+<!doctype html>
+<html
+  lang="{{ or site.Language.LanguageCode site.Language.Lang }}"
+  dir="{{ or site.Language.LanguageDirection `ltr` }}"
+  data-theme="light">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body class="relative"
+    x-data="{
+    themes: ['light', 'dark', 'retro', 'cyberpunk', 'halloween'],
+    init() {
+    let saved = localStorage.getItem('theme');
+    if (!saved) {
+      const now = new Date();
+      const month = now.getMonth(); // 0-11, 9 is October
+      if (month === 9) { // October
+        saved = 'halloween';
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // User prefers dark mode
+        saved = 'dark';
+      } else {
+        // Random theme otherwise
+        saved = this.themes[Math.floor(Math.random() * this.themes.length)];
+      }
+    }
+    this.applyTheme(saved);
+    },
+    applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    },
+    nextTheme() {
+    const current = this.getCurrentTheme();
+    const currentIndex = this.themes.indexOf(current);
+    const nextIndex = (currentIndex + 1) % this.themes.length;
+    const nextTheme = this.themes[nextIndex];
+    this.applyTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    },
+    getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+    }"
+    x-init="init()">
+    {{ partial "navbar.html" . }}
+    <div class="relative max-w-screen-xl mx-auto px-5">
+    <main>
+    {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+    {{ partial "footer.html" . }}
+    </footer>
+    </div>
+  </body>
+</html>

@@ -749,3 +749,190 @@ If you wish to set tracking information for this branch you can do so with:
     git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
 
 
+[2025-10-26 17:26:57] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-26 17:26:57] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:26:57] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:26:57] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-26 17:26:57] RPC server ready (socket listening)
+[2025-10-26 17:26:57] Starting sync cycle...
+[2025-10-26 17:26:57] Exported to JSONL
+[2025-10-26 17:27:03] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:31:57] Starting sync cycle...
+[2025-10-26 17:31:57] Exported to JSONL
+[2025-10-26 17:32:00] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:32:50] Received signal terminated, shutting down gracefully...
+[2025-10-26 17:32:53] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-26 17:32:53] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:32:53] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:32:53] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-26 17:32:53] RPC server ready (socket listening)
+[2025-10-26 17:32:53] Starting sync cycle...
+[2025-10-26 17:32:53] Exported to JSONL
+[2025-10-26 17:33:00] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:33:43] Received signal terminated, shutting down gracefully...
+[2025-10-26 17:33:59] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-26 17:33:59] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:33:59] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:33:59] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-26 17:33:59] RPC server ready (socket listening)
+[2025-10-26 17:33:59] Starting sync cycle...
+[2025-10-26 17:33:59] Exported to JSONL
+[2025-10-26 17:34:06] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:36:05] Received signal terminated, shutting down gracefully...
+[2025-10-26 17:36:05] Daemon started (interval: 5m0s, auto-commit: false, auto-push: false)
+[2025-10-26 17:36:05] Using database: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:36:05] Database opened: /Users/peter/pwarnock.github.io/.beads/pwarnock.github.io.db
+[2025-10-26 17:36:05] Starting RPC server: /Users/peter/pwarnock.github.io/.beads/bd.sock
+[2025-10-26 17:36:05] RPC server ready (socket listening)
+[2025-10-26 17:36:05] Starting sync cycle...
+[2025-10-26 17:36:05] Exported to JSONL
+[2025-10-26 17:36:10] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:41:05] Starting sync cycle...
+[2025-10-26 17:41:05] Exported to JSONL
+[2025-10-26 17:41:07] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:46:05] Starting sync cycle...
+[2025-10-26 17:46:05] Exported to JSONL
+[2025-10-26 17:46:07] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 17:51:05] Starting sync cycle...
+[2025-10-26 17:51:05] Exported to JSONL
+[2025-10-26 17:52:06] Pull failed: git pull failed: exit status 1
+sign_and_send_pubkey: signing failed for ED25519 "/Users/peter/.ssh/id_ed25519.pub" from agent: communication with agent failed
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+[2025-10-26 17:56:05] Starting sync cycle...
+[2025-10-26 17:56:05] Exported to JSONL
+[2025-10-26 17:56:11] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 18:01:05] Starting sync cycle...
+[2025-10-26 18:01:05] Exported to JSONL
+[2025-10-26 18:01:07] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 18:06:05] Starting sync cycle...
+[2025-10-26 18:06:05] Exported to JSONL
+[2025-10-26 18:06:07] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+
+[2025-10-26 18:11:05] Starting sync cycle...
+[2025-10-26 18:11:05] Exported to JSONL
+[2025-10-26 18:11:07] Pull failed: git pull failed: exit status 1
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> feature/pwarnock.github.io-portfolio-section
+
+

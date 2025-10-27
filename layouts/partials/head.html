@@ -1,50 +1,16 @@
-  <meta name="generator" content="Hugo {{ hugo.Version }}" />
-  {{ $desc := .Description | default .Summary | default .Site.Params.description }}
-  {{ if .IsNode }}
-    {{ if .Paginator }}
-      {{ $desc = printf "Page %d of %s" .Paginator.PageNumber .Title }}
-    {{ else if eq .Type "taxonomy" }}
-      {{ $desc = printf "Posts in %s: %s" .Title .Site.Params.description }}
-    {{ end }}
-  {{ end }}
-  <meta name="description" content="{{ $desc }}" />
-  {{ $canonical := .Permalink }}
-  {{ if and .IsNode .Paginator }}
-    {{ if gt .Paginator.PageNumber 1 }}
-      {{ $canonical = .Paginator.URL }}
-    {{ end }}
-  {{ end }}
-  <link rel="canonical" href="{{ $canonical }}" />
-  {{ template "_internal/opengraph.html" . }}
- <link rel="stylesheet" href="/fonts/fonts.css" />
-  <link rel="preload" href="/fonts/fonts.css" as="style" />
+<meta charset="utf-8" />
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 
-   <link rel="dns-prefetch" href="https://unpkg.com">
+{{ partial "head/fonts.html" . }}
+{{ partial "head/meta.html" . }}
+{{ partial "head/favicon.html" . }}
+{{ partial "head/scripts.html" . }}
+{{ partial "head/styles.html" . }}
+{{ partial "head/structured-data.html" . }}
 
-  
+{{ template "_internal/google_analytics.html" . }}
 
- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-{{ $scripts := resources.Get "scripts.js" }}
-{{ if $scripts }}
-{{ if .Site.IsServer }}
-<script src="{{ $scripts.RelPermalink }}" defer></script>
-{{ else }}
-{{ $scripts = $scripts | minify | fingerprint }}
-<script
-src="{{ $scripts.RelPermalink }}"
-integrity="{{ $scripts.Data.Integrity }}"
-crossorigin="anonymous"
-defer></script>
-{{ end }}
-{{ end }}
-
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js');
-    });
-  }
-</script>

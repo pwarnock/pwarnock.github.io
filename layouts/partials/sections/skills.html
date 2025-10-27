@@ -17,17 +17,17 @@
 {{ end }}
 
 
-<h2 class="text-3xl md:text-4xl lg:text-5xl p-5 text-center font-medium font-poppins text-base-content">
+<h2 class="text-2xl md:text-3xl lg:text-4xl p-5 text-center font-medium font-poppins text-light-text-secondary dark:text-dark-text-secondary">
   {{ $title }}
 </h2>
-<div class="-mx-5 flex flex-wrap text-base-content text-center">
+<div class="-mx-5 flex flex-wrap text-light-text-primary dark:text-dark-text-primary text-center">
   {{ range $skills }}
     <div class="w-full md:w-1/2 lg:w-1/3 px-5">
-      <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-base-200">
-        <i class="bx {{ .icon }} text-5xl mx-auto pb-5 text-base-content"></i>
+      <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-light-bg-secondary dark:bg-dark-bg-secondary">
+        <i class="bx {{ .icon }} text-5xl mx-auto pb-5"></i>
         <div>
-          <h3 class="mb-4 text-lg font-medium sm:text-xl lg:text-lg xl:text-xl text-base-content">{{ .title }}</h3>
-          <p class="text-lg font-light text-base-content">
+          <h3 class="mb-4 text-lg font-medium sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
+          <p class="text-lg font-light">
             {{ .text }}
           </p>
         </div>

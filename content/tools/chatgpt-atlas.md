@@ -8,7 +8,6 @@ author = "Peter Warnock"
 description = "OpenAI's AI-powered web browser that integrates ChatGPT for enhanced browsing, research, and automation capabilities."
 external_url = "https://chatgpt.com/atlas"
 tool_category = "AI Tools"
-slug = "chatgpt-atlas-ai-powered-browser"
 +++
 
 ChatGPT Atlas is OpenAI's groundbreaking AI-powered web browser that fundamentally reimagines how we interact with the internet. Launched on October 21, 2025, it integrates ChatGPT directly into the browsing experience, offering unprecedented levels of assistance and automation.

@@ -8,7 +8,6 @@ author = "Peter Warnock"
 description = "AI-first code editor built on VS Code foundation"
 external_url = "https://cursor.com"
 tool_category = "Developer-Centric"
-slug = "cursor-ai-native-code-editor"
 +++
 
 Cursor represents a bold bet on AI-first development. Rather than trying to retrofit AI capabilities into existing tools, the team forked VS Code and rebuilt it around AI interaction patterns.
