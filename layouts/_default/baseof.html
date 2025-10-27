@@ -167,8 +167,7 @@
     </script>
     {{ end }}
     
-    {{ $css := resources.Get "css/main.css" | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
