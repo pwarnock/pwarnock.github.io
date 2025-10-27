@@ -172,7 +172,8 @@
     </script>
     {{ end }}
     
-    <link rel="stylesheet" href="/css/main.css">
+    {{ $css := resources.Get "css/main.css" | css.PostCSS | minify }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
     
     <!-- Accessibility enhancements -->
     <style>
