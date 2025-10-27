@@ -42,7 +42,9 @@ jobs:
       uses: actions/configure-pages@v5
 
     - name: Install Node.js dependencies
-      run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      run: |
+        npm cache clean --force
+        npm install
 
     - name: Security vulnerability scan
       run: |
