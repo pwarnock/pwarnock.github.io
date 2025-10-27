@@ -1,0 +1,2 @@
+# This file ensures the .pids directory is tracked by git
+# PM2 process logs and PIDs will be stored here

@@ -29,6 +29,7 @@
     "daisyui": "^5.0.0",
     "husky": "^9.1.7",
     "markdownlint-cli": "^0.45.0",
+    "pm2": "^5.4.2",
     "postcss": "^8.4.47",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
