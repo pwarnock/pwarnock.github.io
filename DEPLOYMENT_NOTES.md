@@ -1,6 +1,8 @@
 # Deployment Notes & Critical Fixes
 
-## 🚨 CRITICAL: CSS Processing Issue
+## 🚨 Critical Issues
+
+### 1. CSS Processing Issue
 
 ### Problem
 When moving CSS files from `assets/` to `static/` to bypass PostCSS issues, the CSS file still contained unprocessed Tailwind directives:
@@ -90,6 +92,47 @@ If Site Styling Breaks:
 
 ---
 
+### 2. GitHub Pages Deployment Issue
+
+### Problem
+Deployment fails with "The process '/usr/bin/git' failed with exit code 128"
+
+### Root Causes
+1. **Repository Settings**: GitHub Pages not configured to accept deployments from GitHub Actions
+2. **Token Permissions**: GITHUB_TOKEN lacks necessary permissions
+3. **Branch Protection**: Main branch has restrictions preventing deployment
+
+### Solutions
+
+#### Option 1: Repository Settings (Recommended)
+1. Go to repository Settings → Pages
+2. Set "Source" to "GitHub Actions" 
+3. Ensure deployment branch is "main"
+4. Save settings
+
+#### Option 2: Branch Protection
+1. Go to Settings → Branches → main
+2. Check if restrictions prevent GitHub Actions
+3. Add GitHub Actions to allowed list if needed
+
+#### Option 3: Token Permissions
+1. Verify workflow has correct permissions:
+   ```yaml
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
+   ```
+
+### Verification
+After fixing, check:
+- [ ] Pages source is set to "GitHub Actions"
+- [ ] No branch protection conflicts
+- [ ] Workflow completes successfully
+
+---
+
 **Last Updated**: October 27, 2025  
-**Critical Issue**: CSS processing with Tailwind directives  
-**Status**: RESOLVED - Pre-process CSS with Tailwind CLI
+**Critical Issues**: 
+1. ✅ CSS processing with Tailwind directives - RESOLVED
+2. 🔄 GitHub Pages deployment failure - IN PROGRESS
