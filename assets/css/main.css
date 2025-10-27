@@ -8,6 +8,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Enhanced accessibility styles */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Custom utility styles */
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -33,6 +40,17 @@ html {
 .hero-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    transition: none;
+  }
+  
+  .hero-card:hover {
+    transform: none;
+  }
 }
 
 /* Staircase layout responsive adjustments */

@@ -1,5 +1,5 @@
 {{ define "main" }}
-<article class="prose prose-lg max-w-none lg:prose-xl">
+<article class="prose prose-lg max-w-none lg:prose-xl" role="article">
   <header class="mb-8 lg:mb-12">
     <h1 class="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight">{{ .Title }}</h1>
     
@@ -41,7 +41,7 @@
     {{ end }}
   </header>
   
-  <div class="content prose-headings:scroll-mt-20">
+  <div class="content prose-headings:scroll-mt-20" role="document">
     {{ .Content }}
   </div>
   
@@ -60,15 +60,15 @@
       </div>
       
       <div class="flex gap-2">
-        <button class="btn btn-outline btn-sm" onclick="window.history.back()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button class="btn btn-outline btn-sm" onclick="window.history.back()" aria-label="Go back to previous page">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back
         </button>
         
-        <button class="btn btn-primary btn-sm" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button class="btn btn-primary btn-sm" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
           Top

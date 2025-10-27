@@ -14,6 +14,21 @@ home = ["HTML", "RSS", "JSON"]
 page = ["HTML"]
 section = ["HTML", "RSS"]
 
+# Security settings
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+  [security.funcs]
+    getenv = ['^HUGO_']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+# Suppress warnings
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [params]
   # SEO configuration
   keywords = "fullstack developer, devops, cloud engineering, technology leader, software development, SaaS, rapid prototyping"
@@ -40,7 +55,7 @@ section = ["HTML", "RSS"]
   enableGitInfo = true
   
   # Version
-  version = "0.8.0"
+  version = "0.8.1"
   
 [markup]
   [markup.goldmark]
@@ -52,9 +67,23 @@ section = ["HTML", "RSS"]
 
 [build]
   writeStats = true
+  useResourceCache = true
+  cacheDir = ".hugo_cache"
 
 [build.buildStats]
   enable = true
+
+# Performance optimizations
+[minify]
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+      keepCSS2 = true
+      precision = 0
+    [minify.tdewolff.html]
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      keepVarNames = false
 
 [[build.cachebusters]]
   source = 'assets/.*\.(js|ts|jsx|tsx)'
