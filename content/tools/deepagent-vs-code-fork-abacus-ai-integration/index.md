@@ -4,8 +4,8 @@ description: "Advanced VS Code fork with integrated Abacus AI for next-generatio
 date: 2025-09-18T10:00:00-07:00
 categories: ["development-tools"]
 tags: ["ai-coding", "developer-tools", "vscode", "abacus-ai", "code-intelligence"]
-external_url: "https://deepagent.dev/"
-website: "deepagent.dev"
+external_url: "https://deepagent-desktop.abacus.ai/"
+website: "deepagent-desktop.abacus.ai"
 tool_category: "AI-Enhanced Editors"
 slug: "deepagent-vs-code-fork-abacus-ai-integration"
 aliases: ["/tools/deepagent/"]
@@ -72,7 +72,7 @@ DeepAgent is specifically designed for enterprise development environments, with
 
 ## Getting Started
 
-1. **Download**: Install DeepAgent from deepagent.dev (automatic migration from existing VS Code installation)
+1. **Download**: Install DeepAgent from deepagent-desktop.abacus.ai (automatic migration from existing VS Code installation)
 2. **Account Setup**: Create an Abacus AI account and configure your AI preferences and usage limits
 3. **Project Import**: Open existing projects to initialize AI indexing and analysis
 4. **Explore AI Features**: Try intelligent code completion, AI-powered navigation, and automated refactoring
@@ -83,7 +83,7 @@ DeepAgent is specifically designed for enterprise development environments, with
 
 ## External Links
 
-- [Official Website →](https://deepagent.dev/)
+- [Official Website →](https://deepagent-desktop.abacus.ai/)
 - [Documentation →](https://docs.deepagent.dev)
 - [GitHub Repository →](https://github.com/deepagent/deepagent)
 - [Community Forum →](https://community.deepagent.dev)

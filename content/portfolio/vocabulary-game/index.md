@@ -6,6 +6,7 @@ description: 'An educational game designed to help young children (5 years old) 
 client: 'Personal Project - Child Education'
 technologies: ['React', 'JavaScript', 'HTML5', 'CSS3']
 github_url: 'https://github.com/pwarnock/vocabulary-game'
+demo_url: 'https://pwarnock.github.io/vocabulary-game/'
 completion_date: '2024-11'
 category: 'Educational Game'
 ---
@@ -109,6 +110,12 @@ This project represents an exploration of AI-assisted development:
 **Development Tools**: GPT-4o Mini via Abacus.AI
 **Environment**: Modern web browser (local use)
 **Version Control**: Git
+
+## Live Demo
+
+Try the Vocabulary Game online: [https://pwarnock.github.io/vocabulary-game/](https://pwarnock.github.io/vocabulary-game/)
+
+The demo provides the full interactive experience where children can practice typing and spelling with immediate feedback.
 
 ## Future Considerations
 

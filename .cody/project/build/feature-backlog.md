@@ -58,14 +58,14 @@ Testing, SEO verification, and deployment preparation: Ensure everything works a
 | F15 | SEO Configuration       | Configure SEO settings and verify URL preservation | High     | 🟢 Completed |
 | F16 | GitHub Pages Setup      | Prepare project for GitHub Pages deployment | High     | 🟢 Completed |
 
-## v0.5.0-deployment - 🟡 In Progress
+## v0.5.0-deployment - 🟢 Completed
 Final deployment and post-launch validation: Deploy and validate the rebuilt site.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F17 | GitHub Pages Deployment | Deploy the site to GitHub Pages | High     | 🟡 In Progress |
-| F18 | Feature Validation      | Validate all features work correctly | High     | 🟡 In Progress |
-| F19 | SEO Validation          | Verify SEO and performance post-launch | High     | 🟡 In Progress |
+| F17 | GitHub Pages Deployment | Deploy the site to GitHub Pages | High     | 🟢 Completed |
+| F18 | Feature Validation      | Validate all features work correctly | High     | 🟢 Completed |
+| F19 | SEO Validation          | Verify SEO and performance post-launch | High     | 🟢 Completed |
 
 ## v0.6.0-hero-recreation - 🟢 Completed
 Hero section recreation and enhancement: Recreate and enhance hero section with improved design and functionality.
@@ -90,3 +90,23 @@ Tools section implementation: Create comprehensive tools directory with all tool
 | F32 | Tools Content Enhancement | Enhance all 18 tools with production-quality content matching peterwarnock.com standards | High     | 🟢 Completed |
 | F33 | Tools Metadata Standardization | Add comprehensive metadata (tool_category, slug, aliases) to all tools | Medium   | 🟢 Completed |
 | F34 | Tools Content Structure | Implement consistent template structure across all tools with detailed sections | High     | 🟢 Completed |
+
+## v0.8.0-upstream-integration - 🟢 Completed
+Upstream integration and content preservation: Integrate upstream improvements while preserving enhanced tools content.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F35 | Upstream Integration    | Integrate upstream Hugo improvements and optimizations | High     | 🟢 Completed |
+| F36 | Content Preservation    | Preserve all enhanced tools content during integration | High     | 🟢 Completed |
+| F37 | Build Process Validation | Validate build process works correctly after integration | High     | 🟢 Completed |
+| F38 | Content Quality Assurance | Ensure all tools content remains intact and functional | High     | 🟢 Completed |
+
+## v0.8.1-bug-fixes - 🟢 Completed
+Critical bug fixes and content corrections: Address user-facing issues for improved experience.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F39 | DeepAgent URL Fix       | Correct DeepAgent tool URL from incorrect domain to proper https://deepagent-desktop.abacus.ai/ | High     | 🟢 Completed |
+| F40 | Vocabulary Game Demo    | Add working demo link to vocabulary game portfolio item | High     | 🟢 Completed |
+| F41 | Content Validation      | Validate and correct content accuracy issues | Medium   | 🟢 Completed |
+| F42 | Release Documentation   | Complete patch release documentation and retrospective | Medium   | 🟢 Completed |
