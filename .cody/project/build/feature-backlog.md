@@ -13,6 +13,9 @@ This document lists features and enhancements derived from the plan. It is a liv
 
 | ID  | Feature             | Description                               | Priority | Status |
 |-----|---------------------|-------------------------------------------|----------|--------|
+| F24 | Google Analytics Integration | Add GA4 tracking with production-only loading | Medium | 🟢 Completed |
+| F25 | Enhanced Analytics Tracking | Add custom events for tools, portfolio, and blog interactions | Medium | 🔴 Not Started |
+| F26 | Privacy Compliance | Add cookie consent banner for GDPR compliance | Medium | 🔴 Not Started |
 |     |                     |                                           |          |        |
 
 ## v0.1.0-setup - 🟢 Completed
@@ -64,12 +67,23 @@ Final deployment and post-launch validation: Deploy and validate the rebuilt sit
 | F18 | Feature Validation      | Validate all features work correctly | High     | 🟡 In Progress |
 | F19 | SEO Validation          | Verify SEO and performance post-launch | High     | 🟡 In Progress |
 
-## v0.6.0-hero-recreation - 🟡 In Progress
-Hero section recreation and enhancement: Recreate and enhance the hero section with improved design and functionality.
+## v0.6.0-hero-recreation - 🟢 Completed
+Hero section recreation and enhancement: Recreate and enhance hero section with improved design and functionality.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F20 | Hero Section Analysis   | Analyze current hero section and identify improvements | High     | 🟡 In Progress |
-| F21 | Hero Design Recreation  | Recreate hero section with enhanced visual design | High     | 🔴 Not Started |
-| F22 | Hero Content Optimization | Optimize hero content and messaging | Medium   | 🔴 Not Started |
-| F23 | Hero Interactive Elements | Add interactive elements and animations | Medium   | 🔴 Not Started |
+| F20 | Hero Section Analysis   | Analyze current hero section and identify improvements | High     | 🟢 Completed |
+| F21 | Hero Design Recreation  | Recreate hero section with enhanced visual design | High     | 🟢 Completed |
+| F22 | Hero Content Optimization | Optimize hero content and messaging | Medium   | 🟢 Completed |
+| F23 | Hero Interactive Elements | Add interactive elements and animations | Medium   | 🟢 Completed |
+
+## v0.7.0-tools-section - 🟢 Completed
+Tools section implementation: Create comprehensive tools directory with all tools from peterwarnock.com.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F27 | Tools Content Creation  | Create content for all 18 tools from peterwarnock.com | High     | 🟢 Completed |
+| F28 | Tools Layout Template   | Create dedicated layout template for tools section | High     | 🟢 Completed |
+| F29 | Tools Navigation        | Add Tools link to main navigation | Medium   | 🟢 Completed |
+| F30 | Tools Pagination       | Implement pagination for tools section (6 per page) | Medium   | 🟢 Completed |
+| F31 | Tools SEO Optimization  | Optimize tools pages for SEO and search visibility | Low      | 🟢 Completed |
