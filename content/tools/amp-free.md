@@ -8,7 +8,8 @@ author = "Peter Warnock"
 description = "Ad-supported CLI AI coding tool launched October 2025"
 external_url = "https://ampcode.com/free"
 tool_category = "Developer-Centric"
-slug = "amp-free-ai-cli-tool"
+slug = "amp-free-ad-supported-cli-ai-coding-tool"
+aliases = ["/tools/amp-free/"]
 +++
 
 Amp Free represents a new business model in AI coding tools—offering powerful CLI-based AI assistance in exchange for training data and displaying small text ads. Launched on October 15, 2025, it's the newest entry in the vibe coding space.

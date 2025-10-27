@@ -16,32 +16,32 @@ This directory contains detailed information about the leading vibe coding tools
 
 These tools focus on augmenting traditional development workflows with AI assistance:
 
-- [Visual Studio Code](/tools/visual-studio-code-extensible-editor/) - The lightweight, extensible foundation
-- [Cursor](/tools/cursor-ai-native-code-editor/) - AI-first VS Code fork
-- [GitHub Copilot](/tools/github-copilot-2025-update/) - Microsoft's AI pair programmer
-- [Claude Code](/tools/claude-code-conversational-ai/) - Conversational AI coding assistant
-- [DeepAgent](/tools/deepagent-abacus-ai-integration/) - VS Code fork with Abacus.AI integration
-- [Gemini CLI](/tools/gemini-cli-google-ai-agent/) - Google's terminal-based AI agent
-- [OpenAI Codex](/tools/openai-codex-cli-coding-assistant/) - Direct access to OpenAI's coding model
-- [OpenCode](/tools/opencode-multi-provider-ai-coding/) - Multi-provider AI coding platform
-- [Amp Free](/tools/amp-free-ai-cli-tool/) - Ad-supported CLI AI tool
+- [Visual Studio Code](/tools/visual-studio-code/) - The lightweight, extensible foundation
+- [Cursor](/tools/cursor/) - AI-first VS Code fork
+- [GitHub Copilot](/tools/github-copilot/) - Microsoft's AI pair programmer
+- [Claude Code](/tools/claude-code/) - Conversational AI coding assistant
+- [DeepAgent](/tools/deepagent/) - VS Code fork with Abacus.AI integration
+- [Gemini CLI](/tools/gemini-cli/) - Google's terminal-based AI agent
+- [OpenAI Codex](/tools/openai-codex/) - Direct access to OpenAI's coding model
+- [OpenCode](/tools/opencode/) - Multi-provider AI coding platform
+- [Amp Free](/tools/amp-free/) - Ad-supported CLI AI tool
 
 ## Product-Centric Tools
 
 These tools enable rapid application development for teams moving from concept to working software:
 
-- [Lovable](/tools/lovable-frontend-prototyping-tool/) - Entry-level frontend vibe coding
-- [Bolt.new](/tools/bolt-new-frontend-platform/) - Streamlined frontend development
-- [Windsurf](/tools/windsurf-agentic-ide-cognition-ai/) - Agentic IDE (acquired by Cognition AI)
-- [v0](/tools/v0-vercel-ai-coding-agent/) - Vercel's framework-optimized AI agent
+- [Lovable](/tools/lovable/) - Entry-level frontend vibe coding
+- [Bolt.new](/tools/bolt-new/) - Streamlined frontend development
+- [Windsurf](/tools/windsurf/) - Agentic IDE (acquired by Cognition AI)
+- [v0](/tools/v0/) - Vercel's framework-optimized AI agent
 
 ## Platforms & Frameworks
 
 Supporting infrastructure and frameworks that power modern vibe coding:
 
-- [Vercel](/tools/vercel-web-development-platform/) - Modern web development platform
-- [Next.js](/tools/nextjs-react-framework-for-production/) - React framework for production
-- [Nuxt](/tools/nuxt-vuejs-framework-for-universal-apps/) - Vue.js framework for universal applications
+- [Vercel](/tools/vercel/) - Modern web development platform
+- [Next.js](/tools/nextjs/) - React framework for production
+- [Nuxt](/tools/nuxt/) - Vue.js framework for universal applications
 
 ---
 

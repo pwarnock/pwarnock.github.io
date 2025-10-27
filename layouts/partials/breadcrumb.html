@@ -1,0 +1,40 @@
+{{- $url := .Permalink -}}
+{{- $baseURL := .Site.BaseURL -}}
+{{- $path := replace $url $baseURL "" -}}
+{{- $path = trim $path "/" -}}
+{{- if ne $path "" -}}
+{{- $segments := split $path "/" -}}
+<nav aria-label="Breadcrumb" class="breadcrumb text-sm text-base-content/60 mb-4">
+  <ol class="flex items-center space-x-2">
+    <li>
+      <a href="{{ $baseURL }}" class="hover:text-primary transition-colors">
+        <i class="bx bx-home text-lg"></i>
+        <span class="sr-only">Home</span>
+      </a>
+    </li>
+    {{- range $index, $segment := $segments -}}
+    {{- $partialPath := delimit (first (add $index 1) $segments) "/" -}}
+    {{- $partialURL := printf "%s%s" $baseURL $partialPath -}}
+    {{- if not (eq $index (sub (len $segments) 1)) -}}
+    <li class="flex items-center">
+      <i class="bx bx-chevron-right text-base-content/40"></i>
+      <a href="{{ $partialURL }}" class="ml-2 hover:text-primary transition-colors capitalize">
+        {{- $segment | replaceRE "-" " " | title -}}
+      </a>
+    </li>
+    {{- else -}}
+    <li class="flex items-center" aria-current="page">
+      <i class="bx bx-chevron-right text-base-content/40"></i>
+      <span class="ml-2 text-base-content font-medium capitalize">
+        {{- if $.Title -}}
+          {{ $.Title }}
+        {{- else -}}
+          {{ $segment | replaceRE "-" " " | title }}
+        {{- end -}}
+      </span>
+    </li>
+    {{- end -}}
+    {{- end -}}
+  </ol>
+</nav>
+{{- end -}}

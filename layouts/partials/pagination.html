@@ -137,22 +137,10 @@
             aria-label="First"
             class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content transition duration-300 hover:bg-base-200 focus:bg-base-200 focus:text-primary focus:outline-none focus:ring-0 active:bg-base-200 active:text-primary page-link"
             role="button">
-            <span aria-hidden="true">««</span>
+            <span aria-hidden="true">&laquo;&laquo;</span>
           </a>
         </li>
       {{- end }}
-    {{- else }}
-      <li class="page-item disabled">
-        <a
-          href="#"
-          aria-disabled="true"
-          aria-label="First"
-          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content"
-          role="button"
-          tabindex="-1">
-          <span aria-hidden="true">««</span>
-        </a>
-      </li>
     {{- end }}
 
     {{- with .Prev }}
@@ -162,19 +150,7 @@
           aria-label="Previous"
           class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content transition duration-300 hover:bg-base-200 focus:bg-base-200 focus:text-primary focus:outline-none focus:ring-0 active:bg-base-200 active:text-primary page-link"
           role="button">
-          <span aria-hidden="true">«</span>
-        </a>
-      </li>
-    {{- else }}
-      <li class="page-item disabled">
-        <a
-          href="#"
-          aria-disabled="true"
-          aria-label="Previous"
-          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content"
-          role="button"
-          tabindex="-1">
-          <span aria-hidden="true">«</span>
+          <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
     {{- end }}
@@ -218,19 +194,7 @@
           aria-label="Next"
           class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content transition duration-300 hover:bg-base-200 focus:bg-base-200 focus:text-primary focus:outline-none focus:ring-0 active:bg-base-200 active:text-primary page-link"
           role="button">
-          <span aria-hidden="true">»</span>
-        </a>
-      </li>
-    {{- else }}
-      <li class="page-item disabled">
-        <a
-          href="#"
-          aria-disabled="true"
-          aria-label="Next"
-          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content"
-          role="button"
-          tabindex="-1">
-          <span aria-hidden="true">»</span>
+          <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
     {{- end }}
@@ -243,22 +207,10 @@
             aria-label="Last"
             class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content transition duration-300 hover:bg-base-200 focus:bg-base-200 focus:text-primary focus:outline-none focus:ring-0 active:bg-base-200 active:text-primary page-link"
             role="button">
-            <span aria-hidden="true">»»</span>
+            <span aria-hidden="true">&raquo;&raquo;</span>
           </a>
         </li>
       {{- end }}
-    {{- else }}
-      <li class="page-item disabled">
-        <a
-          href="#"
-          aria-disabled="true"
-          aria-label="Last"
-          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-base-content"
-          role="button"
-          tabindex="-1">
-          <span aria-hidden="true">»»</span>
-        </a>
-      </li>
     {{- end }}
   {{- end }}
 {{- end -}}

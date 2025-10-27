@@ -16,6 +16,39 @@ npm run build
 echo "Running HTML validation..."
 htmlproofer ./public --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph" || exit 1
 
+# Internal link validation for tools
+echo "Running internal link validation..."
+for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.md$'); do
+    if [ -f "$file" ]; then
+        # Find internal links to /tools/ pages
+        links=$(grep -oE '\[([^\]]+)\]\(/tools/[^)]+\)' "$file" | grep -oE '(/tools/[^)]+)' | sort -u)
+        
+        for link in $links; do
+            # Remove trailing slash if present for file check
+            check_path=${link%/}
+            check_path="content${check_path}/index.md"
+            
+            if [ ! -f "$check_path" ]; then
+                # Check if it's a valid alias
+                tool_name=$(basename "$link")
+                if [ -f "content/tools/${tool_name}.md" ]; then
+                    # Valid short slug - check if it has the right alias
+                    if ! grep -q "aliases = \[\"${link}\"\]" "content/tools/${tool_name}.md"; then
+                        echo "❌ Broken internal link in $file: $link (missing alias)"
+                        echo "💡 Add 'aliases = [\"${link}\"]' to content/tools/${tool_name}.md"
+                        exit 1
+                    fi
+                else
+                    echo "❌ Broken internal link in $file: $link (file not found)"
+                    echo "💡 Create content${check_path} or fix the link"
+                    exit 1
+                fi
+            fi
+        done
+    fi
+done
+echo "✅ Internal link validation passed"
+
 # SEO validation (warning only - doesn't block commit)
 echo "Running SEO validation..."
 missing=$(find public -name "*.html" -exec grep -L '<meta name="description\"' {} \; | wc -l)

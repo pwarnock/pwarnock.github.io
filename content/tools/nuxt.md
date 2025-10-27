@@ -8,7 +8,8 @@ author = "Peter Warnock"
 description = "Vue.js framework for universal applications"
 external_url = "https://nuxt.com/"
 tool_category = "Framework"
-slug = "nuxt-vuejs-framework-for-universal-apps"
+slug = "nuxt-vuejs-framework-universal-applications"
+aliases = ["/tools/nuxt/"]
 +++
 
 Nuxt brings to Vue.js what Next.js brings to React—a production-ready framework with server-side rendering, static site generation, and performance optimizations built in.
