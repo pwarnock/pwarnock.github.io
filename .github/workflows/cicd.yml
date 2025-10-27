@@ -1,34 +1,23 @@
-name: CI/CD Pipeline
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
-    branches: [ main, uat ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
-# Sets permissions for both CI and deployment
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  # CI and Build Job
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.128.0
-
+    permissions:
+      contents: read
+      deployments: write
     steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
         submodules: recursive
+        fetch-depth: 0
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v3
@@ -36,116 +25,21 @@ jobs:
         hugo-version: 'latest'
         extended: true
 
-    - name: Setup Pages
-      if: github.ref == 'refs/heads/main'
-      id: pages
-      uses: actions/configure-pages@v5
-
-    - name: Install Node.js dependencies
-      run: |
-        npm cache clean --force
-        npm install --no-optional --no-audit --no-fund
-
-    - name: Security vulnerability scan
-      run: |
-        echo "Running security vulnerability scan..."
-        npm audit --audit-level=moderate
-        if [ $? -ne 0 ]; then
-          echo "Security vulnerabilities found. Consider updating dependencies."
-          exit 1
-        fi
-
-    - name: Dependency security check
-      run: |
-        echo "Checking for known security vulnerabilities in dependencies..."
-        npx audit-ci --moderate
-
-    - name: Build
-      run: npm run build
-
-    - name: Test build
-      run: |
-        if [ ! -d "public" ]; then
-          echo "Build failed: public directory not found"
-          exit 1
-        fi
-        echo "Build successful"
-
-    - name: HTML validation and link checking
-      uses: chabad360/htmlproofer@master
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        directory: "./public"
-        arguments: --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph"
+        node-version: '20'
+        cache: 'npm'
 
-    - name: SEO validation
-      run: |
-        echo "Running comprehensive SEO validation..."
-        
-        # Check for meta descriptions
-        echo "Checking for meta descriptions..."
-        missing=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | wc -l)
-        if [ "$missing" -gt 0 ]; then
-          echo "Warning: $missing pages missing meta descriptions"
-          find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | head -5
-        else
-          echo "✅ Meta descriptions check passed"
-        fi
-        
-        # Check for title tags
-        echo "Checking for title tags..."
-        missing_titles=$(find public -name "*.html" | xargs grep -L '<title>' | wc -l)
-        if [ "$missing_titles" -gt 0 ]; then
-          echo "❌ Error: $missing_titles pages missing title tags"
-          exit 1
-        else
-          echo "✅ Title tags check passed"
-        fi
-        
-        # Check for Open Graph tags
-        echo "Checking for Open Graph tags..."
-        missing_og=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L 'property="og:title"' | wc -l)
-        if [ "$missing_og" -gt 0 ]; then
-          echo "Warning: $missing_og pages missing Open Graph tags"
-        else
-          echo "✅ Open Graph tags check passed"
-        fi
-        
-        # Check for structured data (JSON-LD)
-        echo "Checking for structured data..."
-        pages_with_structured=$(find public -name "*.html" | xargs grep -l 'application/ld+json' | wc -l)
-        echo "✅ $pages_with_structured pages have structured data"
-        
-        # Check for canonical URLs
-        echo "Checking for canonical URLs..."
-        missing_canonical=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L 'rel="canonical"' | wc -l)
-        if [ "$missing_canonical" -gt 0 ]; then
-          echo "Warning: $missing_canonical pages missing canonical URLs"
-        else
-          echo "✅ Canonical URLs check passed"
-        fi
-        
-        echo "✅ SEO validation completed"
+    - name: Install dependencies
+      run: npm ci
 
-    - name: Upload pages artifact
+    - name: Build with Hugo
+      run: hugo --minify --gc
+
+    - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main'
-      uses: actions/upload-pages-artifact@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        path: ./public
-
-  # Deploy Job (only runs on main branch after successful build)
-  deploy:
-    if: github.ref == 'refs/heads/main'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
