@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with Hugo and Daisy UI"
 date: 2025-01-15T10:00:00Z
-draft: true
+draft: false
 tags: ["Hugo", "Daisy UI", "Web Development"]
 author: "Peter Warnock"
 ---
