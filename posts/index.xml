@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Peter Warnock</title><link>https://peterwarnock.com/posts/</link><description>Recent content in Posts on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 21 Oct 2025 10:00:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenAI Launches ChatGPT Atlas: Revolutionizing Web Browsing with AI</title><link>https://peterwarnock.com/posts/openai-launches-chatgpt-atlas-ai-powered-browser/</link><pubDate>Tue, 21 Oct 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/posts/openai-launches-chatgpt-atlas-ai-powered-browser/</guid><description>&lt;p&gt;OpenAI has just unveiled &lt;strong&gt;ChatGPT Atlas&lt;/strong&gt;, their ambitious entry into the AI-powered browser space. This innovative web browser puts ChatGPT at its core, fundamentally rethinking how we interact with the internet. Available starting today on macOS, with Windows, iOS, and Android versions coming soon, ChatGPT Atlas represents OpenAI&amp;rsquo;s latest challenge to Google&amp;rsquo;s dominance in web search and browsing.&lt;/p&gt;
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"&gt;
+ &lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8UWKxJbjriY?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+&lt;h2 id="what-makes-chatgpt-atlas-revolutionary"&gt;What Makes ChatGPT Atlas Revolutionary?&lt;/h2&gt;
+&lt;p&gt;ChatGPT Atlas isn&amp;rsquo;t just another browser with AI features—it&amp;rsquo;s built with ChatGPT as its foundation. Key features include:&lt;/p&gt;</description></item><item><title>The Vibe Coding Revolution: Developer-Centric vs Product-Centric Tools in 2025</title><link>https://peterwarnock.com/posts/vibe-coding-revolution/</link><pubDate>Thu, 16 Oct 2025 06:43:31 -0700</pubDate><guid>https://peterwarnock.com/posts/vibe-coding-revolution/</guid><description>&lt;p&gt;The coding landscape has transformed dramatically in past year. What started as simple &lt;a href="https://en.wikipedia.org/wiki/Autocomplete" target="_blank" 
+ rel="nofollow noopener noreferrer"&gt;
+ autocomplete
+&lt;/a&gt; has evolved into something entirely different—&lt;a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" 
+ rel="nofollow noopener noreferrer"&gt;
+ vibe coding
+&lt;/a&gt; tools that understand intent, context, and can generate entire applications from natural language descriptions.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve used several code augmentation/generation tools over last year, and evolution has been remarkable. Let me walk you through the landscape as it stands today, broken down into two distinct categories that serve very different needs.&lt;/p&gt;</description></item><item><title>Principles Over Methods</title><link>https://peterwarnock.com/posts/principles-over-methods-emerson-quote/</link><pubDate>Thu, 03 Jul 2025 11:55:15 -0700</pubDate><guid>https://peterwarnock.com/posts/principles-over-methods-emerson-quote/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;As to methods, there may be a million and then some, but principles are few. The person who grasps principles can successfully select their own methods. The person who tries methods, ignoring principles, is sure to have trouble.&amp;rdquo;
+—&lt;a href="https://en.wikipedia.org/wiki/Harrington_Emerson" target="_blank" 
+ rel="nofollow noopener noreferrer"&gt;
+ Harrington Emerson
+&lt;/a&gt;, &lt;em&gt;The Clothier and Furnisher&lt;/em&gt; (July 1911), via &lt;a href="https://jamesclear.com/3-2-1/july-3-2025" target="_blank" 
+ rel="nofollow noopener noreferrer"&gt;
+ James Clear&amp;rsquo;s 3-2-1 Thursday, July 3, 2025
+&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This quote feels incredibly relevant today. In an era defined by rapid innovation and the rise of &lt;a href="https://www.ibm.com/think/topics/agentic-ai" target="_blank" 
+ rel="nofollow noopener noreferrer"&gt;
+ agentic AI
+&lt;/a&gt;, new methods and tools emerge constantly. It&amp;rsquo;s easy to get lost in the sheer volume of techniques. However, Emerson&amp;rsquo;s insight reminds us that understanding fundamental principles is paramount. Methods will always evolve, but a strong grasp of underlying principles allows us to adapt, innovate, and navigate this fast-changing landscape effectively.&lt;/p&gt;</description></item><item><title>My First Post</title><link>https://peterwarnock.com/posts/my-first-post-lorem-ipsum/</link><pubDate>Tue, 24 Jun 2025 15:08:06 -0700</pubDate><guid>https://peterwarnock.com/posts/my-first-post-lorem-ipsum/</guid><description>&lt;h2 id="what-is-lorem-ipsum"&gt;What is Lorem Ipsum?&lt;/h2&gt;
+&lt;p&gt;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&amp;rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/p&gt;</description></item><item><title>Getting Started with Hugo and Daisy UI</title><link>https://peterwarnock.com/posts/first-post/</link><pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/posts/first-post/</guid><description>&lt;h1 id="getting-started-with-hugo-and-daisy-ui"&gt;Getting Started with Hugo and Daisy UI&lt;/h1&gt;
+&lt;p&gt;In this post, I&amp;rsquo;ll share my experience setting up a new personal website using Hugo static site generator combined with Daisy UI component library.&lt;/p&gt;
+&lt;h2 id="why-hugo"&gt;Why Hugo?&lt;/h2&gt;
+&lt;p&gt;Hugo is an excellent choice for personal blogs and portfolios because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lightning fast&lt;/strong&gt; build times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zero JavaScript&lt;/strong&gt; required for basic functionality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rich templating&lt;/strong&gt; system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Great documentation&lt;/strong&gt; and community support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="adding-daisy-ui"&gt;Adding Daisy UI&lt;/h2&gt;
+&lt;p&gt;Daisy UI brings the power of Tailwind CSS with pre-built components:&lt;/p&gt;</description></item><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/posts/modern-web-development/</guid><description>&lt;h1 id="modern-web-development-in-2025"&gt;Modern Web Development in 2025&lt;/h1&gt;
+&lt;p&gt;The web development landscape continues to evolve rapidly. Here are my thoughts on the current state and future directions.&lt;/p&gt;
+&lt;h2 id="the-component-revolution"&gt;The Component Revolution&lt;/h2&gt;
+&lt;p&gt;Component-based architectures have become the standard:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;React&lt;/strong&gt; continues to dominate with its ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vue 3&lt;/strong&gt; offers excellent developer experience&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Svelte&lt;/strong&gt; provides compile-time optimizations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Astro&lt;/strong&gt; brings island architecture to the mainstream&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="performance-matters-more-than-ever"&gt;Performance Matters More Than Ever&lt;/h2&gt;
+&lt;p&gt;Core Web Vitals are now crucial for SEO:&lt;/p&gt;</description></item><item><title>Leadership Lessons from 10 Years in Tech</title><link>https://peterwarnock.com/posts/leadership-lessons/</link><pubDate>Sun, 05 Jan 2025 09:15:00 +0000</pubDate><guid>https://peterwarnock.com/posts/leadership-lessons/</guid><description>&lt;h1 id="leadership-lessons-from-10-years-in-tech"&gt;Leadership Lessons from 10 Years in Tech&lt;/h1&gt;
+&lt;p&gt;After a decade in technology leadership roles, I&amp;rsquo;ve learned valuable lessons about managing teams, projects, and careers. Here are my key takeaways.&lt;/p&gt;
+&lt;h2 id="1-technical-excellence-isnt-enough"&gt;1. Technical Excellence Isn&amp;rsquo;t Enough&lt;/h2&gt;
+&lt;p&gt;Being a great developer doesn&amp;rsquo;t automatically make you a great leader. The skills that got you here won&amp;rsquo;t get you there.&lt;/p&gt;
+&lt;div class="alert alert-warning"&gt;
+ &lt;svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /&gt;&lt;/svg&gt;
+ &lt;span&gt;Warning: The transition from individual contributor to leader requires learning new skills.&lt;/span&gt;
+&lt;/div&gt;
+&lt;h2 id="2-communication-is-your-superpower"&gt;2. Communication is Your Superpower&lt;/h2&gt;
+&lt;p&gt;Clear communication solves 80% of team problems:&lt;/p&gt;</description></item></channel></rss>

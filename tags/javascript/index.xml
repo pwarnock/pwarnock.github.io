@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on Peter Warnock</title><link>https://peterwarnock.com/tags/javascript/</link><description>Recent content in JavaScript on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 10 Jan 2025 14:30:00 +0000</lastBuildDate><atom:link href="https://peterwarnock.com/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/posts/modern-web-development/</guid><description>&lt;h1 id="modern-web-development-in-2025"&gt;Modern Web Development in 2025&lt;/h1&gt;
+&lt;p&gt;The web development landscape continues to evolve rapidly. Here are my thoughts on the current state and future directions.&lt;/p&gt;
+&lt;h2 id="the-component-revolution"&gt;The Component Revolution&lt;/h2&gt;
+&lt;p&gt;Component-based architectures have become the standard:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;React&lt;/strong&gt; continues to dominate with its ecosystem&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vue 3&lt;/strong&gt; offers excellent developer experience&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Svelte&lt;/strong&gt; provides compile-time optimizations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Astro&lt;/strong&gt; brings island architecture to the mainstream&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="performance-matters-more-than-ever"&gt;Performance Matters More Than Ever&lt;/h2&gt;
+&lt;p&gt;Core Web Vitals are now crucial for SEO:&lt;/p&gt;</description></item></channel></rss>

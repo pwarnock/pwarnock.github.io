@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /hugo_stats.json
+Disallow: /*.json$
+
+# Allow search engines to crawl the site
+Sitemap: https://peterwarnock.com/sitemap.xml
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl delay for well-behaved bots
+Crawl-delay: 1
