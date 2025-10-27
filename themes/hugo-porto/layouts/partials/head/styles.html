@@ -1,0 +1,15 @@
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+{{ $css := resources.Get "css/main.css" }}
+{{ if $css }}
+  {{ if hugo.IsServer }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+  {{ else }}
+    {{ $css := $css | minify | fingerprint }}
+    <link
+      rel="stylesheet"
+      href="{{ $css.RelPermalink }}"
+      integrity="{{ $css.Data.Integrity }}"
+      crossorigin="anonymous" />
+  {{ end }}
+{{ end }}

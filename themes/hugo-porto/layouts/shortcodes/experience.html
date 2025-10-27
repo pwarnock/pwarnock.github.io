@@ -1,0 +1,51 @@
+{{/* Default data */}}
+{{ $title := "Professional milestones" }}
+{{ $companies := slice
+  (dict "name" "GlobalWidgets" "role" "Team Leader" "date" "2019 - Present" "text" (slice "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc." "Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc."))
+  (dict "name" "TechNova Solutions" "role" "CTO" "date" "2017 - 2019" "text" (slice "Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+  (dict "name" "BrightMind Inc." "role" "Software Engineer" "date" "2015 - 2017" "text" (slice "Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit."))
+}}
+
+{{/* Custom data from configuration file */}}
+{{ with site.Data.sections.experience }}
+  {{ $companies = slice }}
+  {{ if .title }}{{ $title = .title }}{{ end }}
+  {{ if .company }}{{ $companies = .company }}{{ end }}
+{{ end }}
+
+
+<div class="relative mx-auto mt-12 flex w-full flex-col text-center text-base-content">
+  <span class="left-1/4 absolute inset-y-0 ml-10 hidden w-1 bg-gradient-to-b from-base-300 to-base-content/20 md:block"></span>
+  {{ range $companies }}
+    <div class="mt-12 flex flex-col text-center md:flex-row md:text-left transition-opacity duration-300 hover:opacity-80">
+      <div class="md:w-1/4">
+        <div class="justify-center md:justify-start font-semibold text-xl">
+          {{ .name }}
+          {{ with .former }}
+          <div class="text-sm text-base-content/70 mt-1">
+            (formerly {{ . }})
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      <div class="md:w-3/4">
+        <div class="relative flex md:pl-16">
+          <span
+            class="absolute left-7 top-1 hidden h-6 w-6 rounded-full border-2 border-base-300 bg-base-100 transition-transform hover:scale-125 md:block"></span>
+
+          <div class="mt-1 flex">
+             <div class="md:-mt-1 md:pl-16">
+               <span class="block pt-2 font-header text-xl font-semibold">{{ .role }}</span>
+               <span class="block text-sm text-base-content/70">({{ .date }})</span>
+              <span class="block pt-2 text-xl font-light">
+                {{ range .text }}
+                  <p class="py-2">{{ . }}</p>
+                {{ end }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>

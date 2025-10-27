@@ -1,0 +1,52 @@
+{
+  "name": "hugo-porto",
+  "version": "0.2.0",
+  "description": "The personal portfolio theme for Hugo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugo-porto/theme.git"
+  },
+  "keywords": [
+    "portfolio",
+    "resume",
+    "projects",
+    "minimalist",
+    "responsive",
+    "customizable",
+    "google analytics",
+    "tailwinds css"
+  ],
+  "author": "Andrew Molyuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugo-porto/theme/issues"
+  },
+  "homepage": "https://github.com/hugo-porto/theme#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "daisyui": "^5.3.7",
+    "husky": "^9.1.7",
+    "markdownlint-cli": "^0.45.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-go-template": "^0.0.15",
+    "semantic-release": "^24.2.9",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "tailwindcss": "^4.1.14"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "10.4.21",
+    "postcss": "^8.5.6",
+    "postcss-cli": "11.0.1",
+    "tailwindcss": "^4.1.14"
+  },
+  "scripts": {
+    "prepare": "husky"
+  }
+}

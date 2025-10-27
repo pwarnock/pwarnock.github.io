@@ -1,4 +1,0 @@
-[submodule "themes/hugo-porto"]
-	path = themes/hugo-porto
-	url = https://github.com/pwarnock/hugo-porto-theme.git
-	branch = main

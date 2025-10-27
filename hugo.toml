@@ -30,7 +30,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   [params.processing.js]
     minify = true
 
-theme = 'hugo-porto'
+# Theme integrated directly - no longer using submodule
 
 [sitemap]
   changefreq = 'monthly'

@@ -1,0 +1,7 @@
+<div class="my-2 flex flex-wrap items-center gap-1">
+  {{ range .Params.tags }}
+  <a class="badge badge-ghost hover:badge-neutral px-2 py-1 text-sm transition-colors" href="/tags/{{ urlize . }}" aria-label="{{ . }}">
+    {{ . }}
+  </a>
+  {{ end }}
+</div>
