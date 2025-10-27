@@ -5,6 +5,7 @@ baseURL = 'https://peterwarnock.com/'
 languageCode = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
+googleAnalytics = 'G-SKDDM2GBXN'
 
 [author]
 name = 'Peter Warnock'
@@ -65,3 +66,12 @@ section = ["HTML", "RSS"]
 [[build.cachebusters]]
   source = 'data/.*\.(ya?ml|json)$'
   target = '(html|json)'
+
+# Redirects
+[redirects]
+  "/posts/" = "/blog/"
+  "/posts" = "/blog/"
+
+# Pagination
+[pagination]
+  pagerSize = 6
