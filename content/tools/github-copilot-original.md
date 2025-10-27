@@ -13,7 +13,7 @@ slug = "github-copilot-original-ai-pair-programmer"
 aliases = ["/tools/github-copilot-original/"]
 +++
 
-**Update:** For the latest information on GitHub Copilot in 2025, including its evolution from OpenAI Codex to a multi-model AI assistant, please see our new [GitHub Copilot page](/tools/github-copilot-2025-update/).
+**Update:** For the latest information on GitHub Copilot in 2025, including its evolution from OpenAI Codex to a multi-model AI assistant, please see our new [GitHub Copilot page](/tools/github-copilot/).
 
 GitHub Copilot popularized the concept of AI pair programming. Built on OpenAI's Codex, it brought AI code generation to millions of developers through seamless IDE integration.
 
