@@ -1,7 +1,5 @@
 baseURL = 'https://peterwarnock.com/'
-# For GitHub Pages, this will be automatically set to:
-# baseURL = 'https://pwarnock.github.io/cody-demo/' when deploying to GitHub Pages
-# But for production, we want the custom domain
+# Custom domain deployment URL
 languageCode = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
