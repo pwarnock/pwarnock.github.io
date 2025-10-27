@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "Google's open-source terminal-based AI agent"
 external_url = "https://geminicli.com/"
 tool_category = "Developer-Centric"
+slug = "gemini-cli-google-terminal-ai-agent"
+aliases = ["/tools/gemini-cli/"]
 +++
 
 Gemini CLI represents Google's approach to terminal-native AI assistance. As an open-source project, it brings Google's Gemini AI capabilities directly to the command line where many developers feel most productive.

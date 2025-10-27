@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "The lightweight, open-source foundation of modern development"
 external_url = "https://code.visualstudio.com/"
 tool_category = "Developer-Centric"
+slug = "visual-studio-code-lightweight-open-source-editor"
+aliases = ["/tools/visual-studio-code/"]
 +++
 
 Visual Studio Code revolutionized code editing by proving that lightweight doesn't mean limited. Built by Microsoft as an open-source alternative to their full Visual Studio IDE, VS Code struck the perfect balance between simplicity and power.

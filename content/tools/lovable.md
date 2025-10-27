@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "Entry-level frontend vibe coding platform"
 external_url = "https://lovable.dev/"
 tool_category = "Product-Centric"
+slug = "lovable-frontend-development-platform"
+aliases = ["/tools/lovable/"]
 +++
 
 Lovable focuses on making web application development accessible to teams without deep technical expertise. As an entry-level frontend vibe coding tool, it bridges the gap between idea and working application.

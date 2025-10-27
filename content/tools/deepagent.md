@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "VS Code fork with Abacus.AI integration and CLI capabilities"
 external_url = "https://deepagent.abacus.ai/"
 tool_category = "Developer-Centric"
+slug = "deepagent-vs-code-fork-abacus-ai-integration"
+aliases = ["/tools/deepagent/"]
 +++
 
 DeepAgent bridges traditional development environments with advanced AI capabilities. As both a VS Code fork and CLI tool, it connects developers with Abacus.AI's powerful machine learning platform.

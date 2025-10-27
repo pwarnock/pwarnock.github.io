@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "OpenAI's command-line coding assistant"
 external_url = "https://openai.com/codex/"
 tool_category = "Developer-Centric"
+slug = "openai-codex-command-line-coding-assistant"
+aliases = ["/tools/openai-codex/"]
 +++
 
 OpenAI Codex powers many AI coding tools, but also offers direct access through command-line interfaces. As the technology behind GitHub Copilot, Codex has proven capabilities across numerous programming languages and scenarios.

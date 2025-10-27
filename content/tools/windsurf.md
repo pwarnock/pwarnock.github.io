@@ -8,6 +8,8 @@ author = "Peter Warnock"
 description = "Agentic IDE acquired by Cognition AI"
 external_url = "https://windsurf.com/"
 tool_category = "Product-Centric"
+slug = "windsurf-agentic-ide-cognition-ai"
+aliases = ["/tools/windsurf/"]
 +++
 
 Windsurf's story illustrates the rapid evolution and high stakes in the AI coding space. Originally an independent agentic IDE, its acquisition journey—from nearly being bought by OpenAI to ultimately joining Cognition AI—highlights the strategic importance of AI coding technologies.
