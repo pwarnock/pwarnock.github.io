@@ -1,0 +1,73 @@
+{{- $title := .title | default "" -}}
+{{- $content := .content | default "" -}}
+{{- $url := .url | default "" -}}
+{{- $tags := .tags | default slice -}}
+{{- $date := .date | default "" -}}
+{{- $readingTime := .readingTime | default "" -}}
+{{- $btnText := .btnText | default "Read More" -}}
+{{- $size := .size | default "medium" -}}
+{{- $variant := .variant | default "default" -}}
+
+{{- $sizeClasses := dict "small" "p-4" "medium" "p-6" "large" "p-8" -}}
+{{- $titleSizeClasses := dict "small" "text-lg" "medium" "text-xl lg:text-2xl" "large" "text-2xl lg:text-3xl" -}}
+
+<article class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+  <div class="card-body {{ index $sizeClasses $size }}">
+    {{- if $title }}
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+      <h3 class="card-title {{ index $titleSizeClasses $size }}">
+        {{- if $url }}
+        <a href="{{ $url }}" class="link link-hover text-primary no-underline hover:underline">
+          {{ $title }}
+        </a>
+        {{- else }}
+          {{ $title }}
+        {{- end }}
+      </h3>
+      {{- if $tags }}
+      <div class="flex flex-wrap gap-2 lg:gap-1">
+        {{- range $tags }}
+        <span class="badge badge-outline text-xs">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- if $content }}
+    <p class="text-base-content/80 mb-6 line-clamp-3">{{ $content }}</p>
+    {{- end }}
+
+    {{- if or $date $url }}
+    <div class="card-actions justify-between items-center">
+      <div class="text-sm text-base-content/60">
+        {{- if $date }}
+        <time datetime="{{ $date }}" class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {{ $date }}
+        </time>
+        {{- end }}
+        {{- if $readingTime }}
+        <span class="ml-2 flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {{ $readingTime }} min
+        </span>
+        {{- end }}
+      </div>
+      
+      {{- if $url }}
+      <a href="{{ $url }}" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
+        {{ $btnText }}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</article>
