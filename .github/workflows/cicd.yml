@@ -50,7 +50,7 @@ jobs:
     - name: Install Node.js dependencies
       run: |
         npm install --no-optional --no-audit --no-fund
-        npx postcss --version
+        npm install -g postcss-cli
 
     - name: Build
       run: npm run build
