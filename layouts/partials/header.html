@@ -14,10 +14,13 @@
     html.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     
-    // Close dropdown after selection
-    const dropdown = document.querySelector('[role="menu"]');
-    if (dropdown) {
-      dropdown.classList.remove('dropdown-content');
+    // Close theme dropdown after selection (be specific to avoid affecting mobile nav)
+    const themeDropdown = document.querySelector('[aria-label="Theme selection menu"]');
+    if (themeDropdown) {
+      themeDropdown.style.display = 'none';
+      setTimeout(() => {
+        themeDropdown.style.display = '';
+      }, 100);
     }
     
     // Announce theme change to screen readers
