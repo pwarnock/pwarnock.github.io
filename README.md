@@ -233,8 +233,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - **GitHub**: [@pwarnock](https://github.com/pwarnock)
-- **LinkedIn**: [linkedin.com/in/petewarnock](https://linkedin.com/in/petewarnock)
-- **Email**: pete@warnock.dev
+- **LinkedIn**: [linkedin.com/in/peterwarnock](https://linkedin.com/in/peterwarnock)
+- **Email**: github@peterwarnock.com
 
 ---
 
