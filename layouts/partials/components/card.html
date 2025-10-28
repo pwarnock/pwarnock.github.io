@@ -37,29 +37,27 @@
   <div class="card-body">
     {{- if $title }}
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-      <h3 class="card-title {{ index $titleSizeClasses $size }}">
-        {{- if $url }}
-        <a href="{{ $url }}" class="link link-hover text-primary no-underline hover:underline">
-          {{ $title }}
-        </a>
-        {{- else }}
-          {{ $title }}
-        {{- end }}
-      </h3>
-      <div class="flex justify-between items-start gap-4">
-        {{- if eq $type "tool" }}
-          {{- if $context.Params.tool_category }}
-          <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
+      <div class="flex items-center gap-3">
+        <h3 class="card-title {{ index $titleSizeClasses $size }}">
+          {{- if $url }}
+          <a href="{{ $url }}" class="link link-hover text-primary no-underline hover:underline">
+            {{ $title }}
+          </a>
+          {{- else }}
+            {{ $title }}
           {{- end }}
-        {{- end }}
-        {{- if $tags }}
-          <div class="flex flex-wrap gap-2 lg:gap-1 max-w-xs">
-            {{- range $tags }}
-            <span class="badge badge-sm badge-ghost">{{ . }}</span>
-            {{- end }}
-          </div>
+        </h3>
+        {{- if and (eq $type "tool") ($context.Params.tool_category) }}
+        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
         {{- end }}
       </div>
+      {{- if $tags }}
+      <div class="flex flex-wrap gap-2 lg:gap-1">
+        {{- range $tags }}
+        <span class="badge badge-sm badge-ghost">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
     </div>
     {{- end }}
 
