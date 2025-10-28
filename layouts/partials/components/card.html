@@ -46,18 +46,18 @@
           {{ $title }}
         {{- end }}
       </h3>
-      {{- if eq $type "tool" }}
-        {{- if $context.Params.tool_category }}
-        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
-        {{- end }}
-      {{- end }}
-      {{- if $tags }}
       <div class="flex flex-wrap gap-2 lg:gap-1">
-        {{- range $tags }}
-        <span class="badge badge-sm badge-ghost">{{ . }}</span>
+        {{- if eq $type "tool" }}
+          {{- if $context.Params.tool_category }}
+          <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
+          {{- end }}
+        {{- end }}
+        {{- if $tags }}
+          {{- range $tags }}
+          <span class="badge badge-sm badge-ghost">{{ . }}</span>
+          {{- end }}
         {{- end }}
       </div>
-      {{- end }}
     </div>
     {{- end }}
 
