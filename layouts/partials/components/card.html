@@ -1,131 +1,143 @@
+{{/* Enhanced Unified Card Component - Replaces 6 card variants */}}
 {{- $context := .context -}}
-{{- $type := .type | default "default" -}}
+{{- $variant := .variant | default "default" -}}
 {{- $title := .title | default $context.Title -}}
 {{- $url := .url | default $context.Permalink -}}
-{{- $size := .size | default "medium" -}}
-{{- $cardStyle := .cardStyle | default "default" -}}
+{{- $size := .size | default "md" -}}
+{{- $content := .content -}}
+{{- $tags := .tags -}}
+{{- $metadata := .metadata -}}
+{{- $actions := .actions -}}
+{{- $class := .class | default "" -}}
+{{- $ariaLabel := .ariaLabel -}}
 
-{{- $content := "" -}}
-{{- $tags := slice -}}
-{{- $date := "" -}}
-{{- $readingTime := "" -}}
-{{- $btnText := "Read More" -}}
-
-{{- if eq $type "tool" -}}
-  {{- $content = $context.Params.description | default $context.Summary -}}
-  {{- $tags = $context.Params.tags -}}
-  {{- $date = $context.Date.Format "January 2006" -}}
-  {{- $btnText = "View Details" -}}
-{{- else if eq $type "post" -}}
-  {{- $content = $context.Summary -}}
-  {{- $tags = $context.Params.tags -}}
-  {{- $date = $context.Date.Format "January 2006" -}}
-  {{- $readingTime = $context.ReadingTime -}}
-{{- else if eq $type "portfolio" -}}
-  {{- $content = $context.Params.description | default $context.Summary -}}
-  {{- $tags = $context.Params.tags -}}
-  {{- $date = $context.Date.Format "January 2006" -}}
-  {{- $btnText = "View Project" -}}
-{{- else -}}
-  {{- $content = .content | default "" -}}
-  {{- $tags = .tags | default slice -}}
-  {{- $date = .date | default "" -}}
-  {{- $readingTime = .readingTime | default "" -}}
-  {{- $btnText = .btnText | default "Read More" -}}
+{{/* Extract content based on context type */}}
+{{- if not $content -}}
+  {{- if eq $context.Type "tools" -}}
+    {{- $content = $context.Params.description | default $context.Summary -}}
+    {{- $tags = $context.Params.tags -}}
+  {{- else if eq $context.Type "posts" -}}
+    {{- $content = $context.Params.summary | default $context.Summary -}}
+    {{- $tags = $context.Params.tags -}}
+  {{- else if eq $context.Type "portfolio" -}}
+    {{- $content = $context.Params.summary | default $context.Summary -}}
+    {{- $tags = $context.Params.technologies | default $context.Params.tags -}}
+  {{- else -}}
+    {{- $content = .content | default "" -}}
+    {{- $tags = .tags | default slice -}}
+  {{- end -}}
 {{- end -}}
 
-{{- $sizeClasses := dict "small" "card-xs" "medium" "card-sm" "large" "card-md" "list" "card-md" -}}
-{{- $titleSizeClasses := dict "small" "text-lg" "medium" "text-xl lg:text-2xl" "large" "text-2xl lg:text-3xl" -}}
-{{- $cardClasses := dict "default" "card-border shadow-lg hover:shadow-xl transition-shadow" "list" "card-border shadow-xl hover:shadow-2xl transition-shadow duration-300" -}}
+{{/* Build metadata */}}
+{{- $metadataItems := slice -}}
+{{- if $context.Date -}}
+  {{- $metadataItems = $metadataItems | append (dict "icon" "calendar" "text" ($context.Date.Format "January 2, 2006") "datetime" ($context.Date.Format "2006-01-02")) -}}
+{{- end -}}
+{{- if $context.Params.readingTime -}}
+  {{- $metadataItems = $metadataItems | append (dict "icon" "clock" "text" (printf "%d min read" $context.Params.readingTime)) -}}
+{{- end -}}
+{{- if $context.Params.client -}}
+  {{- $metadataItems = $metadataItems | append (dict "icon" "user" "text" $context.Params.client) -}}
+{{- end -}}
+{{- if $metadata -}}
+  {{- $metadataItems = $metadata | append $metadataItems -}}
+{{- end -}}
 
-<article class="card bg-base-100 {{ index $sizeClasses $size }} {{ index $cardClasses $cardStyle }}">
-  <div class="card-body">
+{{/* Build actions */}}
+{{- $actionButtons := slice -}}
+{{- if $context.Params.external_url -}}
+  {{- $actionButtons = $actionButtons | append (dict "href" $context.Params.external_url "text" "Visit Tool" "variant" "primary" "target" "_blank" "icon" "arrow-right") -}}
+{{- end -}}
+{{- if $url -}}
+  {{- $btnText := "Read More" -}}
+  {{- if eq $context.Type "tools" -}}
+    {{- $btnText = "View Details" -}}
+  {{- else if eq $context.Type "portfolio" -}}
+    {{- $btnText = "View Project" -}}
+  {{- end -}}
+  {{- $actionButtons = $actionButtons | append (dict "href" $url "text" $btnText "variant" "outline" "icon" "arrow-right") -}}
+{{- end -}}
+{{- if $actions -}}
+  {{- $actionButtons = $actions | append $actionButtons -}}
+{{- end -}}
+
+{{/* Build CSS classes */}}
+{{- $classes := slice "card-system" -}}
+{{- $classes = $classes | append (printf "card-system--%s" $variant) -}}
+{{- $classes = $classes | append (printf "card-system--%s" $size) -}}
+{{- $classes = $classes | append $class -}}
+
+{{/* Build attributes */}}
+{{- $attributes := dict "class" (delimit $classes " ") -}}
+{{- if $ariaLabel -}}
+  {{- $attributes = merge $attributes (dict "aria-label" $ariaLabel) -}}
+{{- end -}}
+{{- if $url -}}
+  {{- $attributes = merge $attributes (dict "role" "article") -}}
+{{- end -}}
+
+{{/* Render card */}}
+<div {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+  <div class="card-system__content">
     {{- if $title }}
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-      <div class="flex items-center gap-3">
-        <h3 class="card-title {{ index $titleSizeClasses $size }}">
-          {{- if $url }}
-          <a href="{{ $url }}" class="link link-hover text-primary no-underline hover:underline">
-            {{ $title }}
-          </a>
-          {{- else }}
-            {{ $title }}
-          {{- end }}
-        </h3>
-        {{- if and (eq $type "tool") ($context.Params.tool_category) }}
-        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
+    <div class="card-system__header">
+      <h3 class="card-system__title">
+        {{- if $url }}
+        <a href="{{ $url }}" class="card-system__title-link">
+          {{ $title }}
+        </a>
+        {{- else }}
+          {{ $title }}
         {{- end }}
-      </div>
-      {{- if $tags }}
-      <div class="flex flex-wrap gap-2 lg:gap-1">
-        {{- range $tags }}
-        <span class="badge badge-sm badge-ghost">{{ . }}</span>
-        {{- end }}
-      </div>
+      </h3>
+      {{- if and $context.Params.tool_category }}
+        {{ partial "components/badge.html" (dict "text" $context.Params.tool_category "variant" "secondary" "size" "sm") }}
       {{- end }}
     </div>
     {{- end }}
 
     {{- if $content }}
-    <p class="text-base-content/80 mb-6 line-clamp-3">{{ $content }}</p>
+    <div class="card-system__body">
+      <p class="card-system__text">{{ $content }}</p>
+    </div>
     {{- end }}
 
-    {{- if or $date $url }}
-    <div class="card-actions justify-between items-center">
-      <div class="text-sm text-base-content/60">
-        {{- if $date }}
-        <time datetime="{{ $date }}" class="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          {{ $date }}
-        </time>
-        {{- end }}
-        {{- if and (eq $type "tool") ($context.Params.website) }}
-        <span class="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-          </svg>
-          {{ $context.Params.website }}
-        </span>
-        {{- end }}
-        {{- if and (eq $type "portfolio") ($context.Params.client) }}
-        <span class="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          {{ $context.Params.client }}
-        </span>
-        {{- end }}
-        {{- if $readingTime }}
-        <span class="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          {{ $readingTime }} min
-        </span>
+    {{- if $tags }}
+    <div class="card-system__tags">
+      {{- range $tags }}
+        {{ partial "components/badge.html" (dict "text" . "variant" "default" "size" "sm") }}
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- if or $metadataItems $actionButtons }}
+    <div class="card-system__footer">
+      {{- if $metadataItems }}
+      <div class="card-system__metadata">
+        {{- range $metadataItems }}
+        <div class="card-system__metadata-item">
+          {{ partial "components/icon.html" (dict "name" .icon "size" "sm") }}
+          <span>{{ .text }}</span>
+        </div>
         {{- end }}
       </div>
-      
-      <div class="flex gap-2">
-        {{- if and (eq $type "tool") ($context.Params.external_url) }}
-        <a href="{{ $context.Params.external_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
-          Visit Tool
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
-        {{- end }}
-        {{- if $url }}
-        <a href="{{ $url }}" class="btn btn-outline btn-sm hover:btn-outline-focus transition-colors">
-          {{ $btnText }}
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
+      {{- end }}
+
+      {{- if $actionButtons }}
+      <div class="card-system__actions">
+        {{- range $actionButtons }}
+          {{ partial "components/button.html" (dict 
+            "href" .href 
+            "text" .text 
+            "variant" .variant 
+            "size" "sm" 
+            "icon" .icon 
+            "class" "card-system__button"
+          ) }}
         {{- end }}
       </div>
+      {{- end }}
     </div>
     {{- end }}
   </div>
-</article>
+</div>
