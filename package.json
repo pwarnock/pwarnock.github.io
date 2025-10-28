@@ -18,7 +18,7 @@
     "dev:agent": "./scripts/pm2-agent-integration.sh",
     "dev:cleanup": "pm2 flush",
     "build:production": "npm run css:build && npm run build",
-    "css:build": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss --minify",
+    "css:build": "npx postcss ./assets/css/main.css -o ./static/css/main.css",
     "css:watch": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss --watch",
     "analyze": "hugo --gc --minify --buildStats && npx bundle-analyzer public/",
     "lint": "npm run lint:yaml && npm run lint:toml && npm run lint:css",
