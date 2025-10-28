@@ -86,9 +86,22 @@ v0.9.0 represents a major architectural milestone with the implementation of a c
 - **Template Structure**: Component-based architecture
 - **Build Process**: Requires Tailwind CSS v4
 
+## 🆕 v0.9.1 (October 28, 2025)
+
+### Content Expansion
+- **Grokipedia 0.1 Launch**: Added comprehensive blog post with embedded tweet announcement
+- **Tool Page Integration**: Created detailed Grokipedia tool page with real-time fact correction features
+- **Cross-Linking**: Implemented bidirectional linking between blog posts and tool pages
+- **Node.js Update**: Updated requirement to LTS@latest for better compatibility
+
+### Technical Updates
+- **Hugo Stats**: Updated CSS classes and content statistics
+- **Build Performance**: Maintained sub-second build times with new content
+- **Page Count**: Increased to 222 pages from 221
+
 ## 🚀 What's Next
 
-### v0.9.1 (Planned)
+### v0.9.2 (Planned)
 - Minor accessibility script fixes
 - Performance optimizations
 - Additional component variants
