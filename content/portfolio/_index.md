@@ -1,17 +1,6 @@
 ---
 title: "Portfolio"
-date: 2025-01-01T00:00:00Z
-draft: false
+description: "Full-stack development portfolio featuring SaaS prototypes, AI-powered applications, and rapid deployment solutions built with modern architectures and cutting-edge tools."
+featured_subtitle: "Demonstrating expertise in rapid prototyping, multi-tenant systems, and AI integration across diverse technology stacks."
+cta_text: "Interested in collaboration or have a project in mind? Let's connect and discuss how we can build something remarkable together."
 ---
-
-# Portfolio
-
-Welcome to my portfolio showcasing my work in cloud engineering, DevOps leadership, and fullstack development.
-
-## Featured Projects
-
-Here you'll find examples of my work in SaaS development, rapid prototyping, and modern web architecture.
-
----
-
-*Interested in collaborating or learning more about my work? Feel free to reach out!*

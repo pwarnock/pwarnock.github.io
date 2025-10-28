@@ -1,6 +1,8 @@
-{{- $title := .title | default "" -}}
+{{- $context := .context -}}
+{{- $type := .type | default "default" -}}
+{{- $title := .title | default $context.Title -}}
 {{- $content := .content | default "" -}}
-{{- $url := .url | default "" -}}
+{{- $url := .url | default $context.Permalink -}}
 {{- $tags := .tags | default slice -}}
 {{- $date := .date | default "" -}}
 {{- $readingTime := .readingTime | default "" -}}
@@ -9,6 +11,23 @@
 {{- $variant := .variant | default "default" -}}
 {{- $cardStyle := .cardStyle | default "default" -}}
 {{- $titleLevel := .titleLevel | default "h3" -}}
+
+{{- if eq $type "tool" -}}
+  {{- $content = $context.Params.description | default $context.Summary -}}
+  {{- $tags = $context.Params.tags -}}
+  {{- $date = $context.Date.Format "January 2006" -}}
+  {{- $btnText = "View Details" -}}
+{{- else if eq $type "post" -}}
+  {{- $content = $context.Summary -}}
+  {{- $tags = $context.Params.tags -}}
+  {{- $date = $context.Date.Format "January 2006" -}}
+  {{- $readingTime = $context.ReadingTime -}}
+{{- else if eq $type "portfolio" -}}
+  {{- $content = $context.Params.description | default $context.Summary -}}
+  {{- $tags = $context.Params.tags -}}
+  {{- $date = $context.Date.Format "January 2006" -}}
+  {{- $btnText = "View Project" -}}
+{{- end -}}
 
 {{- $sizeClasses := dict "small" "card-xs" "medium" "card-sm" "large" "card-md" "list" "card-md" -}}
 {{- $titleSizeClasses := dict "small" "text-lg" "medium" "text-xl lg:text-2xl" "large" "text-2xl lg:text-3xl" -}}
@@ -27,10 +46,15 @@
           {{ $title }}
         {{- end }}
       </h3>
+      {{- if eq $type "tool" }}
+        {{- if $context.Params.tool_category }}
+        <div class="badge badge-outline">{{ $context.Params.tool_category }}</div>
+        {{- end }}
+      {{- end }}
       {{- if $tags }}
       <div class="flex flex-wrap gap-2 lg:gap-1">
         {{- range $tags }}
-        <span class="badge badge-outline text-xs">{{ . }}</span>
+        <span class="badge badge-sm badge-secondary">{{ . }}</span>
         {{- end }}
       </div>
       {{- end }}
@@ -52,6 +76,22 @@
           {{ $date }}
         </time>
         {{- end }}
+        {{- if and (eq $type "tool") ($context.Params.website) }}
+        <span class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          {{ $context.Params.website }}
+        </span>
+        {{- end }}
+        {{- if and (eq $type "portfolio") ($context.Params.client) }}
+        <span class="flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          {{ $context.Params.client }}
+        </span>
+        {{- end }}
         {{- if $readingTime }}
         <span class="flex items-center gap-1">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,14 +102,24 @@
         {{- end }}
       </div>
       
-      {{- if $url }}
-      <a href="{{ $url }}" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
-        {{ $btnText }}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      {{- end }}
+      <div class="flex gap-2">
+        {{- if and (eq $type "tool") ($context.Params.external_url) }}
+        <a href="{{ $context.Params.external_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
+          Visit Tool
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        {{- end }}
+        {{- if $url }}
+        <a href="{{ $url }}" class="btn btn-outline btn-sm hover:btn-outline-focus transition-colors">
+          {{ $btnText }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        {{- end }}
+      </div>
     </div>
     {{- end }}
   </div>

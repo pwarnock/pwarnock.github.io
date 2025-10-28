@@ -1,12 +1,17 @@
-<div class="prose prose-lg max-w-none" role="main">
-  <header class="mb-8 lg:mb-12">
-    <h1 class="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6">{{ .Title }}</h1>
-    
-    {{ if .Content }}
-    <div class="prose-lg text-base-content/80">
-      {{ .Content }}
-    </div>
-    {{ end }}
-  </header>
+<header class="mb-8 lg:mb-12">
+  <h1 class="blog-hero-title">{{ .Title }}</h1>
   
-  <div class="grid gap-6 lg:gap-8">
+  {{ if .Params.description }}
+  <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">
+    {{ .Params.description }}
+  </div>
+  {{ end }}
+  
+  {{ if .Content }}
+  <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">
+    {{ .Content }}
+  </div>
+  {{ end }}
+</header>
+
+<div class="grid gap-6 lg:gap-8">

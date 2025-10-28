@@ -1,75 +1,10 @@
 {{ define "main" }}
 <div class="prose prose-lg max-w-none">
-  <header class="mb-8 lg:mb-12">
-    <h1 class="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6">{{ .Title }}</h1>
-    
-    {{ if .Content }}
-    <div class="prose-lg text-base-content/80">
-      {{ .Content }}
-    </div>
-    {{ end }}
-  </header>
+  {{ partial "list-header" . }}
   
   <div class="grid gap-6 lg:gap-8">
     {{ range .Pages }}
-    <article class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
-      <div class="card-body p-6 lg:p-8">
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-          <h2 class="card-title text-xl lg:text-2xl">
-            <a href="{{ .Permalink }}" class="link link-hover text-primary no-underline hover:underline">
-              {{ .Title }}
-            </a>
-          </h2>
-          {{ if .Params.category }}
-          <div class="badge badge-outline">{{ .Params.category }}</div>
-          {{ end }}
-        </div>
-        
-        {{ if .Params.description }}
-        <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Params.description }}</p>
-        {{ else }}
-        <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Summary }}</p>
-        {{ end }}
-        
-        {{ if .Params.tags }}
-        <div class="flex flex-wrap gap-2 mb-6">
-          {{ range .Params.tags }}
-          <span class="badge badge-sm badge-secondary">{{ . }}</span>
-          {{ end }}
-        </div>
-        {{ end }}
-        
-        <div class="card-actions justify-between items-center">
-          <div class="text-sm text-base-content/60">
-            <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              {{ .Date.Format "January 2006" }}
-            </time>
-            {{ if .Params.website }}
-            <span class="flex items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-              {{ .Params.website }}
-            </span>
-            {{ end }}
-          </div>
-          
-          <div class="flex gap-2">
-            {{ if .Params.external_url }}
-            <a href="{{ .Params.external_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
-              Visit Tool
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-            {{ end }}
-          </div>
-        </div>
-      </div>
-    </article>
+      {{ partial "components/card" (dict "context" . "type" "tool") }}
     {{ end }}
   </div>
   

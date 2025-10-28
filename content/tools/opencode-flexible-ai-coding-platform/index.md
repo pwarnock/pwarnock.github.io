@@ -13,6 +13,8 @@ aliases: ["/tools/opencode/", "/tools/flexible-ai-platform/"]
 
 OpenCode emerges as a revolutionary force in the AI coding landscape, specifically designed to address the growing need for flexibility and customization in AI-powered development tools. Unlike rigid, one-size-fits-all solutions, OpenCode's modular architecture allows development teams to tailor AI assistance to their specific workflows, coding standards, and project requirements, making it the ideal choice for organizations with diverse development needs.
 
+{{< placeholder size="large" aspect="16/9" title="OpenCode Dashboard" >}}
+
 ## Core Features
 
 ### Modular AI Architecture
