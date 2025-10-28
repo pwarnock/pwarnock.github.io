@@ -20,18 +20,18 @@ html {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Enhanced blog page h1 styling */
-.blog-hero-title {
+/* Page title styling */
+.page-title {
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   line-height: 1.4;
   font-weight: 400;
   margin-bottom: 2rem;
-  color: oklch(var(--p) / 0.9);
+  color: oklch(var(--p));
   letter-spacing: 0;
 }
 
 /* Alternative gradient version */
-.blog-hero-title-gradient {
+.page-title-gradient {
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   line-height: 1.4;
   font-weight: 400;
