@@ -152,25 +152,20 @@ DevOps & Tools
 <div class="card bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20 mb-8">
   <div class="card-body text-center">
     <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
-    <p class="text-base-content/80 mb-6 max-w-2xl mx-auto">
-      I'm always interested in connecting with fellow developers, discussing new opportunities, 
-      and collaborating on exciting projects. Whether you're looking for technical leadership, 
-      mentorship, or just want to chat about the latest in tech, I'd love to hear from you.
-    </p>
+    <p class="text-base-content/80 mb-6 max-w-2xl mx-auto">I'm always interested in connecting with fellow developers, discussing new opportunities, and collaborating on exciting projects. Whether you're looking for technical leadership, mentorship, or just want to chat about the latest in tech, I'd love to hear from you.</p>
     
     <div class="flex justify-center mb-6">
-      {{ partial "components/social-links.html" . }}
-    </div>
-    
-    <div class="alert alert-info">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-      <div>
-        <strong>Subscribe to my newsletter</strong> for regular updates on web development, 
-        cloud architecture, and technology trends.
-      </div>
-    </div>
+{{ partial "components/social-links.html" . }}
+</div>
+
+<div class="alert alert-info">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div>
+<strong>Subscribe to my newsletter</strong> for regular updates on web development, cloud architecture, and technology trends.
+</div>
+</div>
   </div>
 </div>
 
