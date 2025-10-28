@@ -36,3 +36,7 @@ resources/
 # PM2 and runtime files
 .pids/
 *.log
+
+# Hugo binary (OS-specific)
+hugo
+hugo.exe
