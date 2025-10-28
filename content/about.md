@@ -154,7 +154,7 @@ DevOps & Tools
     <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
     <p class="text-base-content/80 mb-6 max-w-2xl mx-auto">I'm always interested in connecting with fellow developers, discussing new opportunities, and collaborating on exciting projects. Whether you're looking for technical leadership, mentorship, or just want to chat about the latest in tech, I'd love to hear from you.</p>
     
-    <!-- Social links will be rendered via template -->
+    
 
 <div class="alert alert-info">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
