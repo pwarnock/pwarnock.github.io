@@ -1,6 +1,4 @@
-</div>
-  
-  {{ if gt .Paginator.TotalPages 1 }}
+{{ if gt .Paginator.TotalPages 1 }}
   <div class="flex justify-center mt-8 lg:mt-12">
     <div class="join">
       {{ if .Paginator.HasPrev }}
@@ -30,4 +28,3 @@
     </div>
   </div>
   {{ end }}
-</div>

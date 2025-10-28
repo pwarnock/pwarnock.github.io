@@ -15,24 +15,38 @@
   {{ $items := .Paginator.Pages }}
   {{ $showPagination := true }}
   {{ $sectionTitle := "" }}
+  {{ $pageDescription := .Description }}
   
   {{ if eq .Type "posts" }}
     {{ $cardType = "card-list" }}
     {{ if not .Paginator }}
       {{ $items = first 6 (where site.RegularPages "Type" "posts") }}
       {{ $showPagination = false }}
-      {{ $sectionTitle = "Recent Posts" }}
+      {{ $sectionData := index (where site.Data.home.section "id" "posts") 0 }}
+      {{ $sectionTitle = $sectionData.title | default "Recent Posts" }}
     {{ end }}
+  {{ else if eq .Type "blog" }}
+    {{ $cardType = "card-list" }}
+    {{ $items := .Paginator.Pages }}
+    {{ $sectionData := index (where site.Data.home.section "id" "blog") 0 }}
+    {{ $sectionTitle = $sectionData.title | default "Insights & Articles" }}
   {{ else if eq .Type "portfolio" }}
-    {{ $cardType = "card-portfolio" }}
+    {{ $cardType = "card-unified" }}
+    {{ $sectionData := index (where site.Data.home.section "id" "portfolio") 0 }}
+    {{ $sectionTitle = $sectionData.title | default "Featured Projects" }}
   {{ else if eq .Type "tools" }}
-    {{ $cardType = "card-portfolio" }}
+    {{ $cardType = "card-unified" }}
+    {{ $sectionData := index (where site.Data.home.section "id" "tools") 0 }}
+    {{ $sectionTitle = $sectionData.title | default "AI Development Tools" }}
   {{ end }}
   
-  <!-- Section with title if needed -->
+  <!-- Section with title and description -->
   {{ if $sectionTitle }}
-  <section>
-    <h2 class="text-2xl lg:text-3xl font-semibold text-secondary mb-6 lg:mb-8">{{ $sectionTitle }}</h2>
+  <section class="mb-8">
+    {{ if $pageDescription }}
+    <p class="text-lg text-base-content/70 mb-4">{{ $pageDescription }}</p>
+    {{ end }}
+    <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-6 lg:mb-8">{{ $sectionTitle }}</h2>
     <div class="grid gap-6 lg:gap-8">
       {{ range $items }}
         {{ partial (printf "components/%s.html" $cardType) . }}

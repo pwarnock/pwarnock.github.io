@@ -80,8 +80,8 @@ VS Code provides identical functionality across Windows, macOS, and Linux, ensur
 - [Extension Marketplace →](https://marketplace.visualstudio.com)
 - [GitHub Repository →](https://github.com/microsoft/vscode)
 - [Community Forum →](https://github.com/microsoft/vscode/discussions)
-- [Back to Vibe Coding Overview →](/posts/vibe-coding-revolution/)
+- [Back to Vibe Coding Overview →](/blog/posts/vibe-coding-revolution/)
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*

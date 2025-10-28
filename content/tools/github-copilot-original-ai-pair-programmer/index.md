@@ -81,8 +81,8 @@ Copilot serves as an educational tool, exposing developers to new programming pa
 - [GitHub Repository →](https://github.com/features/copilot)
 - [OpenAI Codex Research →](https://openai.com/research/codex)
 - [Community Forum →](https://github.community/c/copilot)
-- [Back to Vibe Coding Overview →](/posts/vibe-coding-revolution/)
+- [Back to Vibe Coding Overview →](/blog/posts/vibe-coding-revolution/)
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*

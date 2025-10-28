@@ -84,8 +84,8 @@ The platform excels at implementing and maintaining consistent design systems ac
 - [GitHub Repository →](https://github.com/lovable-dev/lovable)
 - [Community Forum →](https://community.lovable.dev/)
 - [Template Gallery →](https://templates.lovable.dev/)
-- [Back to Vibe Coding Overview →](/posts/vibe-coding-revolution/)
+- [Back to Vibe Coding Overview →](/blog/posts/vibe-coding-revolution/)
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*

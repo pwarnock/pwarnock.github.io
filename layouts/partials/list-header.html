@@ -1,11 +1,7 @@
-<header class="mb-8 lg:mb-12">
-  <h1 class="blog-hero-title">{{ .Title }}</h1>
+<header class="mb-4 lg:mb-6">
+  <h1 class="text-primary text-3xl lg:text-4xl font-light">{{ .Title }}</h1>
   
-  {{ if .Params.description }}
-  <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">
-    {{ .Params.description }}
-  </div>
-  {{ end }}
+  
   
   {{ if .Content }}
   <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">

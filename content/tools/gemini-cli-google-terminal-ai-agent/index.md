@@ -81,8 +81,8 @@ Google's enterprise-grade security features are built into Gemini CLI, including
 - [GitHub Repository →](https://github.com/google/gemini-cli)
 - [Google Cloud Console →](https://console.cloud.google.com)
 - [Community Forum →](https://groups.google.com/g/gemini-cli)
-- [Back to Vibe Coding Overview →](/posts/vibe-coding-revolution/)
+- [Back to Vibe Coding Overview →](/blog/posts/vibe-coding-revolution/)
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*

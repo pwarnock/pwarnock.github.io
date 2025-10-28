@@ -87,8 +87,8 @@ Claude Code excels at knowledge transfer and skill development. Its ability to e
 - [Documentation →](https://docs.anthropic.com/claude-code)
 - [GitHub Repository →](https://github.com/anthropics/claude-code)
 - [Community Forum →](https://community.anthropic.com)
-- [Back to Vibe Coding Overview →](/posts/vibe-coding-revolution/)
+- [Back to Vibe Coding Overview →](/blog/posts/vibe-coding-revolution/)
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
