@@ -3,7 +3,7 @@
   {{ partial "list-header" . }}
   
   <div class="grid gap-6 lg:gap-8">
-    {{ range .Pages }}
+    {{ range .Paginator.Pages }}
       {{ partial "components/card" (dict "context" . "type" "tool") }}
     {{ end }}
   </div>
