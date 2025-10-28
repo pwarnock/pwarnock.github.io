@@ -32,3 +32,7 @@ resources/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# PM2 and runtime files
+.pids/
+*.log
