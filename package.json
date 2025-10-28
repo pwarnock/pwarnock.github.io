@@ -3,11 +3,11 @@
   "version": "0.9.0",
   "description": "",
   "type": "module",
-  "main": "postcss.config.js",
+  "main": "postcss.config.cjs",
   "scripts": {
     "build": "hugo --gc --minify",
     "clean": "rm -rf public",
-    "dev": "npx pm2 start ecosystem.config.js",
+    "dev": "npx pm2 start ecosystem.config.cjs",
     "dev:stop": "npx pm2 stop hugo-dev",
     "dev:restart": "npx pm2 restart hugo-dev",
     "dev:status": "npx pm2 status hugo-dev",

@@ -48,7 +48,7 @@ start_dev_server() {
     pm2 delete hugo-dev 2>/dev/null || true
     
     # Start new process
-    pm2 start ecosystem.config.js
+    pm2 start ecosystem.config.cjs
     
     # Save PM2 list
     pm2 save
