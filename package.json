@@ -29,7 +29,7 @@
     "postinstall": "husky install"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pete Warnock",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
