@@ -1,7 +1,8 @@
 {
   "name": "pwarnock.github.io",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "",
+  "type": "module",
   "main": "postcss.config.js",
   "scripts": {
     "build": "hugo --gc --minify",
@@ -35,18 +36,17 @@
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@taplo/cli": "^0.7.0",
-    "daisyui": "^5.0.0",
+    "daisyui": "^5.3.10",
     "husky": "^9.1.7",
     "markdownlint-cli": "^0.45.0",
     "pm2": "^5.4.2",
     "postcss": "^8.5.6",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.0.0",
     "yaml-lint": "^1.7.0"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.0.0",
-    "@tailwindcss/typography": "^0.5.19"
+    "@tailwindcss/postcss": "^4.0.0-alpha.31"
   }
 }
