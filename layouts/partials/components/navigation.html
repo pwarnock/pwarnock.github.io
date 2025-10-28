@@ -18,15 +18,10 @@
         <li role="none"><a href="{{ "/about" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring" role="menuitem">About</a></li>
       </ul>
     </div>
-    {{ partial "components/button.html" (dict 
-        "href" ("/" | relLangURL)
-        "variant" "ghost"
-        "size" "lg"
-        "class" "text-xl font-bold flex items-center gap-2 touch-manipulation"
-        "ariaLabel" "Go to homepage"
-        "text" .Site.Title
-        "icon" (printf `<img src="/img/logo.png" alt="%s logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200">` .Site.Title)
-      )}}
+    <a href="{{ "/" | relLangURL }}" class="btn-system btn-system--ghost btn-system--lg text-xl font-bold flex items-center gap-2 touch-manipulation" aria-label="Go to homepage" role="button">
+      <img src="/img/logo.png" alt="{{ .Site.Title }} logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200">
+      {{ .Site.Title }}
+    </a>
   </div>
   
   <div class="navbar-center hidden lg:flex">
