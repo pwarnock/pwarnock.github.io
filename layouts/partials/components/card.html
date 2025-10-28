@@ -46,7 +46,7 @@
           {{ $title }}
         {{- end }}
       </h3>
-      <div class="flex flex-wrap gap-2 lg:gap-1">
+      <div class="grid grid-cols-3 gap-2 lg:gap-1">
         {{- if eq $type "tool" }}
           {{- if $context.Params.tool_category }}
           <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
