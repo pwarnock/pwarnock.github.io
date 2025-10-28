@@ -46,14 +46,14 @@
           {{ $title }}
         {{- end }}
       </h3>
-      <div class="flex flex-wrap items-center gap-3 lg:gap-2">
+      <div class="flex justify-between items-start gap-4">
         {{- if eq $type "tool" }}
           {{- if $context.Params.tool_category }}
           <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
           {{- end }}
         {{- end }}
         {{- if $tags }}
-          <div class="flex flex-wrap gap-2 lg:gap-1">
+          <div class="flex flex-wrap gap-2 lg:gap-1 max-w-xs">
             {{- range $tags }}
             <span class="badge badge-sm badge-ghost">{{ . }}</span>
             {{- end }}
