@@ -1,0 +1,12 @@
+{{- $size := .size | default "medium" -}}
+{{- $aspect := .aspect | default "16/9" -}}
+{{- $title := .title | default "Screenshot" -}}
+
+<div class="screenshot-placeholder {{- if .class }} {{ .class }}{{- end }}">
+  <div class="skeleton {{ if eq $size "small" }}h-32 w-48{{ else if eq $size "large" }}h-64 w-full{{ else }}h-48 w-full{{- end }} rounded-lg" 
+       style="aspect-ratio: {{ $aspect }};">
+  </div>
+  <div class="flex items-center justify-center mt-2">
+    <span class="text-xs text-base-content/60 font-mono">{{ $title }}</span>
+  </div>
+</div>
