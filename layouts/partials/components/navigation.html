@@ -32,12 +32,12 @@
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1" role="menubar" aria-label="Desktop navigation menu">
       {{ $homeActive := eq .Permalink .Site.BaseURL }}
-{{ $blogActive := eq .Section "blog" }}
-{{ $portfolioActive := eq .Section "portfolio" }}
-{{ $toolsActive := eq .Section "tools" }}
-{{ $aboutActive := eq .Section "about" }}
+      {{ $blogActive := eq .Section "blog" }}
+      {{ $portfolioActive := eq .Section "portfolio" }}
+      {{ $toolsActive := eq .Section "tools" }}
+      {{ $aboutActive := eq .Section "about" }}
 
-<li role="none">{{ partial "components/button.html" (dict "href" ("/" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Home" "role" "menuitem" "ariaCurrent" (cond $homeActive "page" "")) }}</li>
+      <li role="none">{{ partial "components/button.html" (dict "href" ("/" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Home" "role" "menuitem" "ariaCurrent" (cond $homeActive "page" "")) }}</li>
       <li role="none">{{ partial "components/button.html" (dict "href" ("/blog" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Blog" "role" "menuitem" "ariaCurrent" (cond $blogActive "page" "")) }}</li>
       <li role="none">{{ partial "components/button.html" (dict "href" ("/portfolio" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Portfolio" "role" "menuitem" "ariaCurrent" (cond $portfolioActive "page" "")) }}</li>
       <li role="none">{{ partial "components/button.html" (dict "href" ("/tools" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Tools" "role" "menuitem" "ariaCurrent" (cond $toolsActive "page" "")) }}</li>
