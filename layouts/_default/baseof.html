@@ -263,9 +263,27 @@
         {{ if .IsHome }}
             {{ .Content }}
         {{ else }}
-            <div class="prose prose-lg max-w-none">
-                <h1 class="text-4xl font-bold mb-6">{{ .Title }}</h1>
-                {{ .Content }}
+            <!-- Global breadcrumbs for non-home pages -->
+            {{ if not .Params.hideBreadcrumbs }}
+            <div class="breadcrumbs text-sm mb-6">
+                <ul class="flex-nowrap">
+                    <li><a href="/">Home</a></li>
+                    {{ if and .Parent (ne .Parent.Kind "home") }}
+                        <li><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></li>
+                    {{ end }}
+                    <li>{{ .Title }}</li>
+                </ul>
+            </div>
+            {{ end }}
+            
+            <!-- Page content -->
+            <div class="max-w-none">
+                {{ block "content" . }}
+                    <div class="prose prose-lg max-w-none">
+                        <h1 class="text-3xl lg:text-4xl font-bold mb-6">{{ .Title }}</h1>
+                        {{ .Content }}
+                    </div>
+                {{ end }}
             </div>
         {{ end }}
         {{ end }}

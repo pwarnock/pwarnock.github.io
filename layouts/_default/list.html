@@ -1,13 +1,4 @@
-{{ define "main" }}
-<div class="max-w-none" role="main">
-  <!-- Breadcrumbs -->
-  <div class="breadcrumbs text-sm mb-6">
-    <ul class="flex-nowrap">
-      <li><a href="/">Home</a></li>
-      <li>{{ .Title }}</li>
-    </ul>
-  </div>
-  
+{{ define "content" }}
   {{ partial "list-header.html" . }}
   
   <!-- Determine card type based on section -->
@@ -75,5 +66,4 @@
       </a>
     </div>
   {{ end }}
-</div>
 {{ end }}

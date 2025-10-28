@@ -99,6 +99,34 @@ Then use `mcp__beads__*` functions instead of CLI commands.
 
 For more details, see README.md and QUICKSTART.md.
 
+## Project Documentation
+
+This project maintains comprehensive documentation to guide development:
+
+### Core Guides
+- **STYLE_GUIDE.md** - Hugo site architecture, design system, template conventions, and development workflow
+- **ACCESSIBILITY.md** - Accessibility standards and WCAG compliance requirements
+- **VERSIONING_GUIDELINES.md** - Semantic versioning and release management
+- **RELEASE_MANAGEMENT.md** - Release process and deployment procedures
+
+### Development Guides  
+- **IMPLEMENTATION_SUMMARY.md** - Project overview and implementation details
+- **DEV_SERVER_MANAGEMENT.md** - Development server setup and management
+- **DEPLOYMENT_NOTES.md** - Deployment configuration and procedures
+
+### Content Structure
+- All content follows the structure defined in STYLE_GUIDE.md
+- Use `/content/` for site content, `/layouts/` for templates
+- Section pages use `_default/list.html`, single pages use `_default/single.html`
+
+### Template System
+- Base template: `layouts/_default/baseof.html`
+- Reusable components: `layouts/partials/components/`
+- Page sections: `layouts/partials/sections/`
+- Follow naming conventions: kebab-case for files, BEM for CSS classes
+
+Refer to STYLE_GUIDE.md for the complete architecture and workflow guidelines.
+
 ## Build Commands
 - `:cody help` - Show all available commands
 - `:cody plan` - Start planning phase (discovery, PRD, plan documents)
