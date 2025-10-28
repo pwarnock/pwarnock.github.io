@@ -1,10 +1,12 @@
 {{/* Theme Selector Component */}}
 <div class="dropdown dropdown-end">
-  <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Theme selector">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-    </svg>
-  </div>
+  {{ partial "components/button.html" (dict 
+    "variant" "ghost"
+    "size" "md"
+    "class" "btn-circle"
+    "ariaLabel" "Theme selector"
+    "icon" (partial "components/icon.html" (dict "name" "theme" "size" "sm"))
+  )}}
   <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto" role="menu" aria-label="Theme selection menu">
     <li class="menu-title"><span>Choose Theme</span></li>
     <li><a href="#" onclick="setTheme('light')" role="menuitem" aria-keyshortcuts="l">☀️ Light</a></li>

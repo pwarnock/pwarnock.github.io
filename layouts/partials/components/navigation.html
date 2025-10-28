@@ -2,11 +2,14 @@
 <nav class="navbar bg-base-100 shadow-lg sticky top-0 z-40" role="navigation" aria-label="Main navigation">
   <div class="navbar-start">
     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden touch-manipulation focus-ring" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-haspopup="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
+      {{ partial "components/button.html" (dict 
+        "variant" "ghost"
+        "size" "md"
+        "class" "lg:hidden touch-manipulation"
+        "ariaLabel" "Toggle mobile navigation menu"
+        "icon" (partial "components/icon.html" (dict "name" "menu" "size" "sm"))
+        "onclick" "this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"
+      )}}
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-60 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Mobile navigation menu" aria-orientation="vertical">
         <li role="none"><a href="{{ "/" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring" role="menuitem">Home</a></li>
         <li role="none"><a href="{{ "/blog" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring" role="menuitem">Blog</a></li>
@@ -15,20 +18,30 @@
         <li role="none"><a href="{{ "/about" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring" role="menuitem">About</a></li>
       </ul>
     </div>
-    <a href="{{ "/" | relLangURL }}" class="btn btn-ghost text-xl font-bold flex items-center gap-2 touch-manipulation focus-ring" aria-label="Go to homepage">
-      <img src="/img/logo.png" alt="{{ .Site.Title }} logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200">
-      <span class="hidden sm:inline">{{ .Site.Title }}</span>
-      <span class="sm:hidden text-lg">{{ .Site.Title }}</span>
-    </a>
+    {{ partial "components/button.html" (dict 
+        "href" ("/" | relLangURL)
+        "variant" "ghost"
+        "size" "lg"
+        "class" "text-xl font-bold flex items-center gap-2 touch-manipulation"
+        "ariaLabel" "Go to homepage"
+        "text" .Site.Title
+        "icon" (printf `<img src="/img/logo.png" alt="%s logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200">` .Site.Title)
+      )}}
   </div>
   
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1" role="menubar" aria-label="Desktop navigation menu">
-      <li role="none"><a href="{{ "/" | relLangURL }}" class="btn btn-ghost focus-ring" role="menuitem" aria-current="{{ if eq .Permalink .Site.BaseURL }}page{{ end }}">Home</a></li>
-      <li role="none"><a href="{{ "/blog" | relLangURL }}" class="btn btn-ghost focus-ring" role="menuitem" aria-current="{{ if eq .Section "blog" }}page{{ end }}">Blog</a></li>
-      <li role="none"><a href="{{ "/portfolio" | relLangURL }}" class="btn btn-ghost focus-ring" role="menuitem" aria-current="{{ if eq .Section "portfolio" }}page{{ end }}">Portfolio</a></li>
-      <li role="none"><a href="{{ "/tools" | relLangURL }}" class="btn btn-ghost focus-ring" role="menuitem" aria-current="{{ if eq .Section "tools" }}page{{ end }}">Tools</a></li>
-      <li role="none"><a href="{{ "/about" | relLangURL }}" class="btn btn-ghost focus-ring" role="menuitem" aria-current="{{ if eq .Section "about" }}page{{ end }}">About</a></li>
+      {{ $homeActive := eq .Permalink .Site.BaseURL }}
+{{ $blogActive := eq .Section "blog" }}
+{{ $portfolioActive := eq .Section "portfolio" }}
+{{ $toolsActive := eq .Section "tools" }}
+{{ $aboutActive := eq .Section "about" }}
+
+<li role="none">{{ partial "components/button.html" (dict "href" ("/" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Home" "role" "menuitem" "ariaCurrent" (cond $homeActive "page" "")) }}</li>
+      <li role="none">{{ partial "components/button.html" (dict "href" ("/blog" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Blog" "role" "menuitem" "ariaCurrent" (cond $blogActive "page" "")) }}</li>
+      <li role="none">{{ partial "components/button.html" (dict "href" ("/portfolio" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Portfolio" "role" "menuitem" "ariaCurrent" (cond $portfolioActive "page" "")) }}</li>
+      <li role="none">{{ partial "components/button.html" (dict "href" ("/tools" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Tools" "role" "menuitem" "ariaCurrent" (cond $toolsActive "page" "")) }}</li>
+      <li role="none">{{ partial "components/button.html" (dict "href" ("/about" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "About" "role" "menuitem" "ariaCurrent" (cond $aboutActive "page" "")) }}</li>
     </ul>
   </div>
   
@@ -40,11 +53,14 @@
       </div>
       <!-- Mobile social links dropdown -->
       <div class="dropdown dropdown-end md:hidden">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle touch-manipulation focus-ring" aria-label="Social links menu" aria-expanded="false" aria-haspopup="menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform hover:rotate-12 duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-          </svg>
-        </div>
+        {{ partial "components/button.html" (dict 
+        "variant" "ghost"
+        "size" "md"
+        "class" "btn-circle touch-manipulation"
+        "ariaLabel" "Social links menu"
+        "icon" (partial "components/icon.html" (dict "name" "share" "size" "sm"))
+        "onclick" "this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"
+      )}}
         <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Social links menu" aria-orientation="vertical">
           <li class="menu-title" role="presentation"><span>Connect</span></li>
           <div class="flex gap-3 p-3 justify-center" role="group" aria-label="Social media links">
