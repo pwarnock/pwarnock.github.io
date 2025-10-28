@@ -1,16 +1,15 @@
 {{- $context := .context -}}
 {{- $type := .type | default "default" -}}
 {{- $title := .title | default $context.Title -}}
-{{- $content := .content | default "" -}}
 {{- $url := .url | default $context.Permalink -}}
-{{- $tags := .tags | default slice -}}
-{{- $date := .date | default "" -}}
-{{- $readingTime := .readingTime | default "" -}}
-{{- $btnText := .btnText | default "Read More" -}}
 {{- $size := .size | default "medium" -}}
-{{- $variant := .variant | default "default" -}}
 {{- $cardStyle := .cardStyle | default "default" -}}
-{{- $titleLevel := .titleLevel | default "h3" -}}
+
+{{- $content := "" -}}
+{{- $tags := slice -}}
+{{- $date := "" -}}
+{{- $readingTime := "" -}}
+{{- $btnText := "Read More" -}}
 
 {{- if eq $type "tool" -}}
   {{- $content = $context.Params.description | default $context.Summary -}}
@@ -27,6 +26,12 @@
   {{- $tags = $context.Params.tags -}}
   {{- $date = $context.Date.Format "January 2006" -}}
   {{- $btnText = "View Project" -}}
+{{- else -}}
+  {{- $content = .content | default "" -}}
+  {{- $tags = .tags | default slice -}}
+  {{- $date = .date | default "" -}}
+  {{- $readingTime = .readingTime | default "" -}}
+  {{- $btnText = .btnText | default "Read More" -}}
 {{- end -}}
 
 {{- $sizeClasses := dict "small" "card-xs" "medium" "card-sm" "large" "card-md" "list" "card-md" -}}
