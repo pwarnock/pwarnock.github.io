@@ -69,6 +69,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   writeStats = true
   useResourceCache = true
   cacheDir = ".hugo_cache"
+  noJSConfigInAssets = true
 
 [build.buildStats]
   enable = true
