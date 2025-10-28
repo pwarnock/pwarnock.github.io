@@ -48,13 +48,13 @@
       </h3>
       {{- if eq $type "tool" }}
         {{- if $context.Params.tool_category }}
-        <div class="badge badge-outline">{{ $context.Params.tool_category }}</div>
+        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
         {{- end }}
       {{- end }}
       {{- if $tags }}
       <div class="flex flex-wrap gap-2 lg:gap-1">
         {{- range $tags }}
-        <span class="badge badge-sm badge-secondary">{{ . }}</span>
+        <span class="badge badge-sm badge-ghost">{{ . }}</span>
         {{- end }}
       </div>
       {{- end }}
