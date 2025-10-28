@@ -14,7 +14,7 @@ A modern, fast portfolio website and blog built with Hugo static site generator,
 ## 📋 Prerequisites
 
 - **Hugo Extended** v0.152.2 or later (required for Sass/SCSS support)
-- **Node.js** v18+ (for npm scripts and asset processing)
+- **Node.js** LTS@latest (for npm scripts and asset processing)
 - **Git** (for version control)
 
 ## 🛠️ Installation
