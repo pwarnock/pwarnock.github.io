@@ -99,19 +99,19 @@ customHTML: true
     </div>
 
     <div>
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-        <span class="w-2 h-2 bg-secondary rounded-full"></span>
-        Backend Development
-      </h3>
-      <div class="flex flex-wrap gap-2">
-        <span class="badge badge-secondary">Node.js</span>
-        <span class="badge badge-secondary">Python</span>
-        <span class="badge badge-secondary">Go</span>
-        <span class="badge badge-secondary">PostgreSQL</span>
-        <span class="badge badge-secondary">MongoDB</span>
-        <span class="badge badge-secondary">Redis</span>
-      </div>
-    </div>
+<h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+Backend Development
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="badge badge-secondary">Node.js</span>
+<span class="badge badge-secondary">Python</span>
+<span class="badge badge-secondary">Go</span>
+<span class="badge badge-secondary">PostgreSQL</span>
+<span class="badge badge-secondary">MongoDB</span>
+<span class="badge badge-secondary">Redis</span>
+</div>
+</div>
   </div>
 
   <div class="space-y-6">
@@ -131,19 +131,19 @@ customHTML: true
     </div>
 
     <div>
-      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-        <span class="w-2 h-2 bg-primary rounded-full"></span>
-        DevOps & Tools
-      </h3>
-      <div class="flex flex-wrap gap-2">
-        <span class="badge badge-primary">GitHub Actions</span>
-        <span class="badge badge-primary">GitLab CI</span>
-        <span class="badge badge-primary">ArgoCD</span>
-        <span class="badge badge-primary">Prometheus</span>
-        <span class="badge badge-primary">Grafana</span>
-        <span class="badge badge-primary">Hugo</span>
-      </div>
-    </div>
+<h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+DevOps & Tools
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="badge badge-primary">GitHub Actions</span>
+<span class="badge badge-primary">GitLab CI</span>
+<span class="badge badge-primary">ArgoCD</span>
+<span class="badge badge-primary">Prometheus</span>
+<span class="badge badge-primary">Grafana</span>
+<span class="badge badge-primary">Hugo</span>
+</div>
+</div>
   </div>
 </div>
 
