@@ -15,92 +15,112 @@
     {{ end }}
   {{ else }}
     <!-- Blog post layout -->
-    <article class="prose prose-lg max-w-none lg:prose-xl" role="article">
-      <header class="mb-8 lg:mb-12">
-        <h1 class="text-3xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight">{{ .Title }}</h1>
+    <article class="max-w-4xl mx-auto" role="article">
+      <!-- Hero Header Section -->
+      <header class="text-center mb-12 lg:mb-16 relative">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl -z-10"></div>
         
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-base-content/60 mb-6">
-          <div class="flex flex-wrap items-center gap-4 text-sm">
-            <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              {{ .Date.Format "January 2, 2006" }}
-            </time>
-            
+        <div class="p-8 lg:p-12">
+          <!-- Published date badge -->
+          <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {{ .Date.Format "January 2, 2006" }}
             {{ if .Params.readingTime }}
-            <span class="flex items-center gap-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {{ .Params.readingTime }} min read
+            <span class="text-primary/70">• {{ .Params.readingTime }} min read</span>
+            {{ end }}
+          </div>
+          
+          <!-- Main title with gradient -->
+          <h1 class="text-4xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            {{ .Title }}
+          </h1>
+          
+          <!-- Tags -->
+          {{ if .Params.tags }}
+          <div class="flex flex-wrap justify-center gap-2 mb-8">
+            {{ range .Params.tags }}
+            <span class="badge badge-outline badge-lg hover:bg-primary/10 hover:border-primary/30 transition-all duration-300 cursor-default">
+              {{ . }}
             </span>
             {{ end }}
           </div>
+          {{ end }}
           
-          {{ if .Params.tags }}
-          <div class="flex flex-wrap gap-2">
-            {{ range .Params.tags }}
-            <span class="badge badge-outline text-xs">{{ . }}</span>
-            {{ end }}
+          <!-- Summary alert -->
+          {{ if .Params.summary }}
+          <div class="alert bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20 backdrop-blur-sm max-w-2xl mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6 text-primary">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="text-base-content/80">{{ .Params.summary }}</span>
           </div>
           {{ end }}
         </div>
-        
-        {{ if .Params.summary }}
-        <div class="alert alert-info mb-6 lg:mb-8">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span>{{ .Params.summary }}</span>
-        </div>
-        {{ end }}
       </header>
       
-      <div class="content prose-headings:scroll-mt-20" role="document">
+      <!-- Main Content -->
+      <div class="prose prose-lg lg:prose-xl max-w-none prose-headings:scroll-mt-20 prose-headings:font-bold prose-headings:text-base-content prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:p-4 prose-blockquote:rounded-lg prose-code:bg-base-200 prose-code:px-1 prose-code:rounded" role="document">
         {{ .Content }}
       </div>
       
+      <!-- Footer Section -->
       {{ if .Params.tags }}
-      <footer class="mt-12 lg:mt-16 pt-8 border-t border-base-300">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div>
-            <h3 class="text-lg font-semibold mb-3">Tags</h3>
-            <div class="flex flex-wrap gap-2">
-              {{ range .Params.tags }}
-              <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-primary badge-lg hover:badge-primary-focus transition-colors">
-                {{ . }}
-              </a>
-              {{ end }}
-            </div>
+      <footer class="mt-16 lg:mt-20 relative">
+        <!-- Decorative divider -->
+        <div class="flex items-center justify-center mb-8">
+          <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+          <div class="px-4">
+            <div class="w-2 h-2 bg-primary rounded-full"></div>
           </div>
-          
-          <div class="flex gap-2">
-            <button class="btn btn-outline btn-sm" onclick="window.history.back()" aria-label="Go back to previous page">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-              Back
-            </button>
+          <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-base-100 to-base-200 rounded-2xl p-8 lg:p-10 shadow-lg border border-base-300">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <!-- Tags section -->
+            <div class="flex-1">
+              <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Explore Topics</h3>
+              <div class="flex flex-wrap gap-2">
+                {{ range .Params.tags }}
+                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-primary badge-lg hover:badge-primary-focus hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg">
+                  {{ . }}
+                </a>
+                {{ end }}
+              </div>
+            </div>
             
-            <button class="btn btn-primary btn-sm" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-              Top
-            </button>
+            <!-- Navigation buttons -->
+            <div class="flex gap-3">
+              <button class="btn btn-outline btn-md hover:btn-primary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.history.back()" aria-label="Go back to previous page">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back
+              </button>
+              
+              <button class="btn btn-primary btn-md hover:btn-secondary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+                Top
+              </button>
+            </div>
           </div>
         </div>
       </footer>
       {{ end }}
     </article>
 
+    <!-- Comments Section -->
     {{ if and (not .Params.hideComments) (ne .Type "page") }}
-    <section class="mt-12">
-      <div class="card bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">Comments</h2>
-          <p class="text-base-content/60">Comments section coming soon...</p>
+    <section class="mt-16 max-w-4xl mx-auto">
+      <div class="card bg-gradient-to-br from-base-100 to-base-200 shadow-2xl border border-base-300">
+        <div class="card-body p-8 lg:p-10">
+          <h2 class="card-title text-2xl mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Join the Conversation</h2>
+          <p class="text-base-content/60 text-lg">Comments section coming soon...</p>
           <!-- Add your comment system here (Disqus, Giscus, etc.) -->
         </div>
       </div>

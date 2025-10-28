@@ -159,6 +159,27 @@ When `customHTML: true`:
 - Consistent with design system
 - Accessibility compliant (WCAG AA)
 
+### Gradient Text Style
+For branded gradient text effects, use this pattern:
+```html
+<h1 class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Your Text</h1>
+```
+
+**Variations for different elements:**
+- **h2**: `text-3xl lg:text-4xl`
+- **h3**: `text-2xl lg:text-3xl`
+- **subtitle**: `text-xl lg:text-2xl`
+- **card title**: `text-lg lg:text-xl`
+
+**Key classes for gradient effect:**
+- `bg-gradient-to-r from-primary to-secondary` - Creates left-to-right gradient
+- `bg-clip-text text-transparent` - Applies gradient to text only
+
+**Usage examples:**
+- "Apply gradient text to hero titles"
+- "Use gradient effect on section headings"
+- "Add gradient to feature cards"
+
 ## Development Workflow
 
 ### Adding New Content Type
