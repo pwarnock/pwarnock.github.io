@@ -49,7 +49,6 @@ jobs:
 
     - name: Install Node.js dependencies
       run: |
-        npm cache clean --force
         npm install --no-optional --no-audit --no-fund
 
     - name: Build
