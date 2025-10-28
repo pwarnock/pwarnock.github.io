@@ -7,12 +7,15 @@
 {{- $btnText := .btnText | default "Read More" -}}
 {{- $size := .size | default "medium" -}}
 {{- $variant := .variant | default "default" -}}
+{{- $cardStyle := .cardStyle | default "default" -}}
+{{- $titleLevel := .titleLevel | default "h3" -}}
 
-{{- $sizeClasses := dict "small" "p-4" "medium" "p-6" "large" "p-8" -}}
+{{- $sizeClasses := dict "small" "card-xs" "medium" "card-sm" "large" "card-md" "list" "card-md" -}}
 {{- $titleSizeClasses := dict "small" "text-lg" "medium" "text-xl lg:text-2xl" "large" "text-2xl lg:text-3xl" -}}
+{{- $cardClasses := dict "default" "card-border shadow-lg hover:shadow-xl transition-shadow" "list" "card-border shadow-xl hover:shadow-2xl transition-shadow duration-300" -}}
 
-<article class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
-  <div class="card-body {{ index $sizeClasses $size }}">
+<article class="card bg-base-100 {{ index $sizeClasses $size }} {{ index $cardClasses $cardStyle }}">
+  <div class="card-body">
     {{- if $title }}
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
       <h3 class="card-title {{ index $titleSizeClasses $size }}">

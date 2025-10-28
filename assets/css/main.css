@@ -20,6 +20,29 @@ html {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Enhanced blog page h1 styling */
+.blog-hero-title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: oklch(var(--p) / 0.9);
+  letter-spacing: 0;
+}
+
+/* Alternative gradient version */
+.blog-hero-title-gradient {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, oklch(var(--p) / 0.9) 0%, oklch(var(--s) / 0.8) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0;
+}
+
 .text-shadow-md {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }

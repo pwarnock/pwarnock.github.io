@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="max-w-none" role="main">
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs text-sm mb-6">
+    <ul class="flex-nowrap">
+      <li><a href="/">Home</a></li>
+      <li>{{ .Title }}</li>
+    </ul>
+  </div>
+  
+  <header class="mb-8 lg:mb-12">
+    <h1 class="blog-hero-title">{{ .Title }}</h1>
+    
+    {{ if .Content }}
+    <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">
+      {{ .Content }}
+    </div>
+    {{ end }}
+  </header>
+  
+  <!-- Recent Posts Section -->
+  <section>
+    <h2 class="text-2xl lg:text-3xl font-semibold text-secondary mb-6 lg:mb-8">Recent Posts</h2>
+    <div class="grid gap-6 lg:gap-8">
+      {{ range first 6 (where site.RegularPages "Type" "posts") }}
+        {{ partial "components/card-list.html" . }}
+      {{ end }}
+    </div>
+  </section>
+  
+  <!-- View All Posts Button -->
+  <div class="text-center mt-12">
+    <a href="/posts" class="btn btn-primary btn-lg">
+      View All Posts
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</div>
+{{ end }}

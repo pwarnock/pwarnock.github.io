@@ -1,0 +1,33 @@
+</div>
+  
+  {{ if gt .Paginator.TotalPages 1 }}
+  <div class="flex justify-center mt-8 lg:mt-12">
+    <div class="join">
+      {{ if .Paginator.HasPrev }}
+      <a href="{{ .Paginator.Prev.URL }}" class="join-item btn btn-outline" aria-label="Previous page">«</a>
+      {{ end }}
+      
+      {{ $currentPage := .Paginator.PageNumber }}
+      {{ $totalPages := .Paginator.TotalPages }}
+      {{ $adjacentLinks := 2 }}
+      
+      {{ range $pages := .Paginator.Pagers }}
+        {{ $pageNumber := .PageNumber }}
+        {{ if eq $pageNumber $currentPage }}
+          <a href="{{ .URL }}" class="join-item btn btn-active" aria-label="Page {{ $pageNumber }}" aria-current="page">{{ $pageNumber }}</a>
+        {{ else if or (le (sub $pageNumber $currentPage) $adjacentLinks) (le (sub $currentPage $pageNumber) $adjacentLinks) }}
+          <a href="{{ .URL }}" class="join-item btn btn-outline" aria-label="Page {{ $pageNumber }}">{{ $pageNumber }}</a>
+        {{ else if (eq $pageNumber (sub $currentPage $adjacentLinks)) }}
+          <span class="join-item btn btn-disabled">...</span>
+        {{ else if (eq $pageNumber (add $currentPage $adjacentLinks)) }}
+          <span class="join-item btn btn-disabled">...</span>
+        {{ end }}
+      {{ end }}
+      
+      {{ if .Paginator.HasNext }}
+      <a href="{{ .Paginator.Next.URL }}" class="join-item btn btn-outline" aria-label="Next page">»</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
