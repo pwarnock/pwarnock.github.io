@@ -5,6 +5,11 @@
       <!-- Page with custom HTML (no prose wrapper) -->
       <div class="max-w-none">
         {{ .Content }}
+        {{ if eq .Title "About" }}
+        <div class="flex justify-center mb-6">
+          {{ partial "components/social-links.html" . }}
+        </div>
+        {{ end }}
       </div>
     {{ else }}
       <!-- Standard page with prose styling -->
