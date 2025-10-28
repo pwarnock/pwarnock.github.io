@@ -55,7 +55,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   enableGitInfo = true
   
   # Version
-  version = "0.9.0"
+  version = "0.9.1"
   
 [markup]
   [markup.goldmark]
