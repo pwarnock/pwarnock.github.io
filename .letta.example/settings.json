@@ -2,13 +2,14 @@
   "localSharedBlockIds": {
     "project": "block-<UUID-from-letta-cli>"
   },
+  "pathPlaceholder": "{{PROJECT_ROOT}}",
   "permissions": {
     "allow": [
-      "Bash(cd /path/to/your/repo && git status:*)",
+      "Bash(cd {{PROJECT_ROOT}} && git status:*)",
       "Bash(npm audit:*)",
       "Bash(pwd:*)",
       "Bash(npm run dev:status:*)",
-      "Bash(ls:*)"
+      "Bash(npm run version:*)"
     ]
   }
 }
