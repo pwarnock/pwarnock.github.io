@@ -1,0 +1,14 @@
+{
+  "localSharedBlockIds": {
+    "project": "block-<UUID-from-letta-cli>"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cd /path/to/your/repo && git status:*)",
+      "Bash(npm audit:*)",
+      "Bash(pwd:*)",
+      "Bash(npm run dev:status:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

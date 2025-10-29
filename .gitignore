@@ -40,3 +40,7 @@ resources/
 # Hugo binary (OS-specific)
 hugo
 hugo.exe
+
+# Letta settings (contains local absolute paths)
+.letta/
+.letta-sync.sh
