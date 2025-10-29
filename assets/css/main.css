@@ -402,12 +402,6 @@ html {
   border: 1px solid #fecaca;
 }
 
-.badge-system--ghost {
-  background-color: transparent;
-  color: var(--color-base-content);
-  border: 1px solid var(--color-base-300);
-}
-
 /* Icon Component Base Styles */
 .icon-system {
   display: inline-block;
