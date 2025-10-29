@@ -15,7 +15,7 @@ This document formalizes the idea and defines the what and the why of the produc
 | Dependencies      | Identifies blockers and critical integrations — valuable for planning dependencies and realism. |
 
 ## Summary
-Rebuilding peterwarnock.com, a personal portfolio and blog site, with a stable, maintainable frontend using Hugo, Tailwind CSS v4, and Daisy UI to resolve style conflicts, improve component architecture, and enable easier maintenance and modifications. The project has evolved through multiple versions (v0.1.0 through v0.9.3) and is currently implementing v0.10.0 spacing scale improvements.
+Rebuilding peterwarnock.com, a personal portfolio and blog site, with a stable, maintainable frontend using Hugo, Tailwind CSS, and Daisy UI to resolve style conflicts, improve component architecture, and enable easier maintenance and modifications.
 
 ## Goals
 - Create a website foundation that's easy to maintain and modify without style conflicts
@@ -23,8 +23,6 @@ Rebuilding peterwarnock.com, a personal portfolio and blog site, with a stable, 
 - Ensure proper responsive design and component alignment (e.g., navbar edges matching content)
 - Preserve all existing functionality while building on a better architectural foundation
 - Enable quick iteration and changes that are immediately visible
-- Implement systematic spacing scale using CSS variables to replace hardcoded utilities
-- Establish maintainable design patterns and refactoring guidelines
 
 ## Target Users
 Primary audience includes recruiters, colleagues, and potential clients who visit the site to:
@@ -43,10 +41,6 @@ Primary audience includes recruiters, colleagues, and potential clients who visi
 - Clear component architecture compatible with Tailwind themes
 - SEO-optimized structure maintaining existing URLs
 - GitHub Pages hosting compatibility
-- CSS variable-based spacing system for maintainable design
-- Automated development server management with PM2
-- Comprehensive linting and validation pipeline
-- Security headers and accessibility compliance
 
 ## Success Criteria
 - Agents can make changes (adding sections, modifying layouts, updating components) without encountering style conflicts
@@ -55,10 +49,6 @@ Primary audience includes recruiters, colleagues, and potential clients who visi
 - Consistent Daisy UI styling throughout the site
 - All existing features (blog, portfolio, newsletter, social links) are preserved and functional
 - Site loads and performs well on GitHub Pages
-- Spacing scale implementation reduces hardcoded utilities by 250+ instances
-- Zero visual regressions during refactoring phases
-- Automated testing and validation pipeline passes
-- Security vulnerabilities are promptly addressed (e.g., PM2 updates)
 
 ## Out of Scope
 - Complete visual redesign or rebranding
@@ -74,24 +64,16 @@ Primary audience includes recruiters, colleagues, and potential clients who visi
 - As Peter, I want to modify site components and see changes applied quickly and consistently
 
 ## Assumptions
-- Hugo, Tailwind CSS v4, and Daisy UI are suitable and compatible for this rebuild
+- Hugo, Tailwind CSS, and Daisy UI are suitable and compatible for this rebuild
 - Existing content (blog posts, portfolio data) can be migrated without data loss
 - GitHub Pages will continue to host the site adequately
 - No additional budget for premium tools or services
 - We may explore minimal themes but will avoid complex community themes that cause conflicts; the custom Daisy UI approach simplifies maintenance
-- CSS variable-based spacing system will improve maintainability without breaking existing functionality
-- PM2 process management provides stable development environment
-- Automated linting and validation ensures code quality
 
 ## Dependencies
 - Hugo static site generator
-- Tailwind CSS v4 framework
+- Tailwind CSS framework
 - Daisy UI component library
 - GitHub Pages for hosting
 - Existing content management (markdown files for posts)
 - Current domain and SEO setup
-- PM2 for development server management
-- PostCSS for CSS processing
-- Stylelint for CSS linting
-- Husky for git hooks
-- Automated validation scripts

@@ -20,7 +20,7 @@
 set -e
 
 # Configuration
-PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LAYOUTS_DIR="${PROJECT_ROOT}/layouts"
 DRY_RUN=false
 BACKUP=false
@@ -71,57 +71,61 @@ EOF
 # Refactoring Rules
 ##############################################################################
 
-# Map hardcoded utilities to CSS variables
-declare -A SPACING_MAP=(
-    # Margins
-    ["mb-0"]="margin-bottom: var(--space-0)"
-    ["mb-1"]="margin-bottom: var(--space-1)"
-    ["mb-2"]="margin-bottom: var(--space-2)"
-    ["mb-3"]="margin-bottom: var(--space-3)"
-    ["mb-4"]="margin-bottom: var(--space-4)"
-    ["mb-5"]="margin-bottom: var(--space-5)"
-    ["mb-6"]="margin-bottom: var(--space-6)"
-    ["mb-8"]="margin-bottom: var(--space-8)"
-    ["mb-10"]="margin-bottom: var(--space-10)"
-    ["mb-12"]="margin-bottom: var(--space-12)"
-    ["mb-16"]="margin-bottom: var(--space-16)"
-    ["mt-0"]="margin-top: var(--space-0)"
-    ["mt-1"]="margin-top: var(--space-1)"
-    ["mt-2"]="margin-top: var(--space-2)"
-    ["mt-3"]="margin-top: var(--space-3)"
-    ["mt-4"]="margin-top: var(--space-4)"
-    ["mt-5"]="margin-top: var(--space-5)"
-    ["mt-6"]="margin-top: var(--space-6)"
-    ["mt-8"]="margin-top: var(--space-8)"
-    ["mt-10"]="margin-top: var(--space-10)"
-    ["mt-12"]="margin-top: var(--space-12)"
-    ["mt-16"]="margin-top: var(--space-16)"
-    ["ml-2"]="margin-left: var(--space-2)"
-    ["ml-4"]="margin-left: var(--space-4)"
-    ["mr-2"]="margin-right: var(--space-2)"
-    ["mr-4"]="margin-right: var(--space-4)"
-    # Padding
-    ["p-2"]="padding: var(--space-2)"
-    ["p-3"]="padding: var(--space-3)"
-    ["p-4"]="padding: var(--space-4)"
-    ["p-6"]="padding: var(--space-6)"
-    ["p-8"]="padding: var(--space-8)"
-    ["px-1"]="padding-left: var(--space-1); padding-right: var(--space-1)"
-    ["px-2"]="padding-left: var(--space-2); padding-right: var(--space-2)"
-    ["px-3"]="padding-left: var(--space-3); padding-right: var(--space-3)"
-    ["px-4"]="padding-left: var(--space-4); padding-right: var(--space-4)"
-    ["px-6"]="padding-left: var(--space-6); padding-right: var(--space-6)"
-    ["py-1"]="padding-top: var(--space-1); padding-bottom: var(--space-1)"
-    ["py-2"]="padding-top: var(--space-2); padding-bottom: var(--space-2)"
-    ["py-3"]="padding-top: var(--space-3); padding-bottom: var(--space-3)"
-    ["py-4"]="padding-top: var(--space-4); padding-bottom: var(--space-4)"
-    # Gap
-    ["gap-2"]="gap: var(--space-2)"
-    ["gap-3"]="gap: var(--space-3)"
-    ["gap-4"]="gap: var(--space-4)"
-    ["gap-6"]="gap: var(--space-6)"
-    ["gap-8"]="gap: var(--space-8)"
-)
+# Get spacing mapping using case statement (bash 3.2 compatible)
+get_spacing_mapping() {
+    local utility="$1"
+    case "$utility" in
+        # Margins
+        "mb-0") echo "margin-bottom: var(--space-0)" ;;
+        "mb-1") echo "margin-bottom: var(--space-1)" ;;
+        "mb-2") echo "margin-bottom: var(--space-2)" ;;
+        "mb-3") echo "margin-bottom: var(--space-3)" ;;
+        "mb-4") echo "margin-bottom: var(--space-4)" ;;
+        "mb-5") echo "margin-bottom: var(--space-5)" ;;
+        "mb-6") echo "margin-bottom: var(--space-6)" ;;
+        "mb-8") echo "margin-bottom: var(--space-8)" ;;
+        "mb-10") echo "margin-bottom: var(--space-10)" ;;
+        "mb-12") echo "margin-bottom: var(--space-12)" ;;
+        "mb-16") echo "margin-bottom: var(--space-16)" ;;
+        "mt-0") echo "margin-top: var(--space-0)" ;;
+        "mt-1") echo "margin-top: var(--space-1)" ;;
+        "mt-2") echo "margin-top: var(--space-2)" ;;
+        "mt-3") echo "margin-top: var(--space-3)" ;;
+        "mt-4") echo "margin-top: var(--space-4)" ;;
+        "mt-5") echo "margin-top: var(--space-5)" ;;
+        "mt-6") echo "margin-top: var(--space-6)" ;;
+        "mt-8") echo "margin-top: var(--space-8)" ;;
+        "mt-10") echo "margin-top: var(--space-10)" ;;
+        "mt-12") echo "margin-top: var(--space-12)" ;;
+        "mt-16") echo "margin-top: var(--space-16)" ;;
+        "ml-2") echo "margin-left: var(--space-2)" ;;
+        "ml-4") echo "margin-left: var(--space-4)" ;;
+        "mr-2") echo "margin-right: var(--space-2)" ;;
+        "mr-4") echo "margin-right: var(--space-4)" ;;
+        # Padding
+        "p-2") echo "padding: var(--space-2)" ;;
+        "p-3") echo "padding: var(--space-3)" ;;
+        "p-4") echo "padding: var(--space-4)" ;;
+        "p-6") echo "padding: var(--space-6)" ;;
+        "p-8") echo "padding: var(--space-8)" ;;
+        "px-1") echo "padding-left: var(--space-1); padding-right: var(--space-1)" ;;
+        "px-2") echo "padding-left: var(--space-2); padding-right: var(--space-2)" ;;
+        "px-3") echo "padding-left: var(--space-3); padding-right: var(--space-3)" ;;
+        "px-4") echo "padding-left: var(--space-4); padding-right: var(--space-4)" ;;
+        "px-6") echo "padding-left: var(--space-6); padding-right: var(--space-6)" ;;
+        "py-1") echo "padding-top: var(--space-1); padding-bottom: var(--space-1)" ;;
+        "py-2") echo "padding-top: var(--space-2); padding-bottom: var(--space-2)" ;;
+        "py-3") echo "padding-top: var(--space-3); padding-bottom: var(--space-3)" ;;
+        "py-4") echo "padding-top: var(--space-4); padding-bottom: var(--space-4)" ;;
+        # Gap
+        "gap-2") echo "gap: var(--space-2)" ;;
+        "gap-3") echo "gap: var(--space-3)" ;;
+        "gap-4") echo "gap: var(--space-4)" ;;
+        "gap-6") echo "gap: var(--space-6)" ;;
+        "gap-8") echo "gap: var(--space-8)" ;;
+        *) echo "" ;;
+    esac
+}
 
 ##############################################################################
 # Main Refactoring Logic
@@ -147,19 +151,25 @@ refactor_file() {
     local original_content="$content"
     
     # Apply refactoring rules
-    for utility in "${!SPACING_MAP[@]}"; do
-        value="${SPACING_MAP[$utility]}"
-        
-        # Count occurrences
-        count=$(echo "$content" | grep -c "class=\"[^\"]*\b${utility}\b" || echo 0)
-        
-        if [ "$count" -gt 0 ]; then
-            changes=$((changes + count))
-            
-            if [ "$DRY_RUN" = false ]; then
-                # Replace class-based utilities with inline styles
-                # This is a simplified approach; complex cases need manual review
-                content=$(echo "$content" | sed "s/class=\"\([^\"]*\)\b${utility}\b\([^\"]*\)\"/class=\"\1\2\" style=\"${value}\"/g")
+    # List of all utilities to check (bash 3.2 compatible)
+    local utilities="mb-0 mb-1 mb-2 mb-3 mb-4 mb-5 mb-6 mb-8 mb-10 mb-12 mb-16 mt-0 mt-1 mt-2 mt-3 mt-4 mt-5 mt-6 mt-8 mt-10 mt-12 mt-16 ml-2 ml-4 mr-2 mr-4 p-2 p-3 p-4 p-6 p-8 px-1 px-2 px-3 px-4 px-6 py-1 py-2 py-3 py-4 gap-2 gap-3 gap-4 gap-6 gap-8"
+
+    for utility in $utilities; do
+        value=$(get_spacing_mapping "$utility")
+
+        if [ -n "$value" ]; then
+            # Count occurrences
+            count=$(echo "$content" | grep -c "class=\"[^\"]*\b${utility}\b" 2>/dev/null || echo "0")
+            count=$(echo "$count" | tr -d '\n' | tr -d '\r')
+
+            if [ "$count" -gt 0 ]; then
+                changes=$((changes + count))
+
+                if [ "$DRY_RUN" = false ]; then
+                    # Replace class-based utilities with inline styles
+                    # This is a simplified approach; complex cases need manual review
+                    content=$(echo "$content" | sed "s/class=\"\([^\"]*\)\b${utility}\b\([^\"]*\)\"/class=\"\1\2\" style=\"${value}\"/g")
+                fi
             fi
         fi
     done

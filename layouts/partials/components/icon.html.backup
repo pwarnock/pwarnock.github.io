@@ -1,0 +1,34 @@
+{{/* Centralized Icon Component - Replaces 67 inline SVG patterns */}}
+{{ $name := .name }}
+{{ $size := .size | default "md" }}
+{{ $class := .class | default "" }}
+{{ $ariaLabel := .ariaLabel }}
+{{ $ariaHidden := .ariaHidden | default true }}
+
+{{/* Get icon from data file */}}
+{{ $iconData := index site.Data.icons.icons $name }}
+
+{{/* Build CSS classes */}}
+{{ $classes := slice "icon-system" }}
+{{ $classes = $classes | append (printf "icon-system--%s" $size) }}
+{{ $classes = $classes | append $class }}
+
+{{/* Build attributes */}}
+{{ $attributes := dict "class" (delimit $classes " ") }}
+{{ if $ariaLabel }}
+  {{ $attributes = merge $attributes (dict "aria-label" $ariaLabel "aria-hidden" "false") }}
+{{ else if $ariaHidden }}
+  {{ $attributes = merge $attributes (dict "aria-hidden" "true") }}
+{{ end }}
+
+{{ if $iconData }}
+  {{ $attributes = merge $attributes (dict "viewBox" $iconData.viewBox) }}
+  <svg xmlns="http://www.w3.org/2000/svg" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+    {{ $iconData.svg | safeHTML }}
+  </svg>
+{{ else }}
+  <!-- Fallback icon if not found in library -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+  </svg>
+{{ end }}
