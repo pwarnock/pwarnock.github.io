@@ -54,6 +54,17 @@ Your `.letta/settings.json` is synchronized with Letta's memory block:
 
 No external tools needed—syncing happens via git hooks + Letta memory.
 
+## Schema Updates
+
+Configuration schema is defined in `.letta.schema.json`:
+
+- **After pulling**: `post-merge` hook alerts if schema changed
+- **Review updates**: Run `npm run letta:config:update`
+- **Auto-check**: Script compares current config against schema
+- **Accept changes**: Prompts to merge new properties
+
+This ensures you always inherit new Letta features and properties while maintaining explicit control.
+
 ## If Moving to Another Machine
 
 1. Clone the repo
