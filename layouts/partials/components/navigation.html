@@ -8,7 +8,6 @@
         "class" "lg:hidden touch-manipulation"
         "ariaLabel" "Toggle mobile navigation menu"
         "icon" (partial "components/icon.html" (dict "name" "menu" "size" "sm"))
-        "onclick" "this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"
       )}}
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-60 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Mobile navigation menu" aria-orientation="vertical">
         <li role="none"><a href="{{ "/" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring" role="menuitem">Home</a></li>
@@ -48,7 +47,6 @@
         "class" "btn-circle touch-manipulation"
         "ariaLabel" "Social links menu"
         "icon" (partial "components/icon.html" (dict "name" "share" "size" "sm"))
-        "onclick" "this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"
       )}}
         <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Social links menu" aria-orientation="vertical">
           <li class="menu-title" role="presentation"><span>Connect</span></li>
