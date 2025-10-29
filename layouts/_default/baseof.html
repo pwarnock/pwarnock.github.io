@@ -252,20 +252,20 @@
 </head>
 <body class="min-h-screen bg-base-100 flex flex-col">
     <!-- Skip to main content link for keyboard users -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-content px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-primary-focus">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-content rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-primary-focus" style="padding: var(--space-2) var(--space-4)">
         Skip to main content
     </a>
     
     {{ partial "header.html" . }}
     
-    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else }}container mx-auto px-4 py-8{{ end }}" role="main">
+    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else }}container mx-auto{{ end }}" style="{{ if not .IsHome }}padding: var(--space-8) var(--space-4){{ end }}" role="main">
         {{ block "main" . }}
         {{ if .IsHome }}
             {{ .Content }}
         {{ else }}
             <!-- Global breadcrumbs for non-home pages -->
             {{ if not .Params.hideBreadcrumbs }}
-            <div class="breadcrumbs text-sm mb-6">
+            <div class="breadcrumbs text-sm" style="margin-bottom: var(--space-6)">
                 <ul class="flex-nowrap">
                     <li><a href="/">Home</a></li>
                     {{ if and .Parent (ne .Parent.Kind "home") }}
@@ -280,7 +280,7 @@
             <div class="max-w-none">
                 {{ block "content" . }}
                     <div class="prose prose-lg max-w-none">
-                        <h1 class="text-3xl lg:text-4xl font-bold mb-6">{{ .Title }}</h1>
+                        <h1 class="text-3xl lg:text-4xl font-bold" style="margin-bottom: var(--space-6)">{{ .Title }}</h1>
                         {{ .Content }}
                     </div>
                 {{ end }}

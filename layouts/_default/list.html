@@ -33,12 +33,12 @@
   
   <!-- Section with title and description -->
   {{ if $sectionTitle }}
-  <section class="mb-8">
+  <section style="margin-bottom: var(--space-8)">
     {{ if $pageDescription }}
-    <p class="text-lg text-base-content/70 mb-4">{{ $pageDescription }}</p>
+    <p class="text-lg text-base-content/70" style="margin-bottom: var(--space-4)">{{ $pageDescription }}</p>
     {{ end }}
-    <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-6 lg:mb-8">{{ $sectionTitle }}</h2>
-    <div class="grid gap-6 lg:gap-8">
+    <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">{{ $sectionTitle }}</h2>
+    <div class="grid gap-responsive-md">
       {{ range $items }}
         {{ partial (printf "components/%s.html" $cardType) . }}
       {{ end }}
@@ -46,7 +46,7 @@
   </section>
   {{ else }}
     <!-- Regular grid layout -->
-    <div class="grid gap-6 lg:gap-8">
+    <div class="grid gap-responsive-md">
       {{ range $items }}
         {{ partial (printf "components/%s.html" $cardType) . }}
       {{ end }}
@@ -57,10 +57,10 @@
   {{ if $showPagination }}
     {{ partial "list-pagination.html" . }}
   {{ else if eq .Type "posts" }}
-    <div class="text-center mt-12">
+    <div class="text-center" style="margin-top: var(--space-12)">
       <a href="/posts" class="btn btn-primary btn-lg">
         View All Posts
-        <svg xmlns="http://www.w0.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w0.org/2000/svg" class="h-5 w-5" style="margin-left: var(--space-2)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </a>

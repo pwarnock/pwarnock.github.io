@@ -620,5 +620,16 @@ html {
       padding: var(--space-10);
     }
   }
+
+  /* Responsive gap */
+  .gap-responsive-md {
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .gap-responsive-md {
+      gap: var(--space-8);
+    }
+  }
 }
 
