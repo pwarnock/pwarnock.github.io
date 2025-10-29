@@ -1,5 +1,62 @@
 # Environment Configuration
 
+## Version Management
+
+### Version Display Strategy
+
+The site displays version information in the footer using Hugo's best practices:
+
+**Example:** `v0.10.0-spacing-scale (a1c39b2)`
+
+The footer shows:
+- Version from `hugo.toml` (`site.Params.version`)
+- Git commit hash when available (`.GitInfo.AbbreviatedHash`)
+
+The git commit hash provides visibility into what's deployed:
+- Local dev builds show the current commit
+- Production builds show the commit that was deployed
+- Different commits = different versions = easy to track changes
+
+### Automatic Version Bumping
+
+Version is automatically extracted from the latest Cody version directory and synced to `hugo.toml` before each build.
+
+**Script:** `scripts/bump-version.sh`
+
+**How it works:**
+1. Finds latest version in `.cody/project/build/v*/`
+2. Extracts version number (e.g., `v0.10.0-spacing-scale`)
+3. Updates `hugo.toml` with the version
+
+**Usage:**
+
+Automatic (runs before build):
+```bash
+npm run build  # automatically bumps version first
+```
+
+Manual:
+```bash
+bash scripts/bump-version.sh
+```
+
+Example output:
+```
+✅ Version bumped to: 0.10.0-spacing-scale
+   From: .cody/project/build/v0.10.0-spacing-scale
+```
+
+### Workflow
+
+1. Complete work in a version branch (e.g., `v0.10.0-spacing-scale`)
+2. Create `version.md` in `.cody/project/build/v{version}/`
+3. Run `npm run build` - automatically syncs version to `hugo.toml`
+4. Version displays in footer with git commit
+
+No manual version management needed!
+
+---
+
 ## baseURL Configuration
 
 The site uses Hugo's `baseURL` to generate absolute URLs for:

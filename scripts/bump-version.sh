@@ -1,33 +1,29 @@
 #!/bin/bash
 
-# Bump patch version in package.json and hugo.toml
-# Usage: ./scripts/bump-version.sh
+##############################################################################
+# Version Bump Script
+# Extracts version from Cody framework and updates hugo.toml
+# Run this before building to ensure version is in sync
+##############################################################################
 
 set -e
 
-CURRENT=$(grep -m 1 '"version"' package.json | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
-IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
-NEW_PATCH=$((PATCH + 1))
-NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+# Find the latest version directory
+LATEST_VERSION_DIR=$(find .cody/project/build/v* -maxdepth 0 -type d 2>/dev/null | sort -V | tail -1)
 
-echo "📦 Bumping version: $CURRENT → $NEW_VERSION"
-
-# Update package.json - match exact pattern with description field after it
-SED_CMD="s/\"version\": \"$CURRENT\",$/\"version\": \"$NEW_VERSION\",/"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  sed -i "" "$SED_CMD" package.json
-  sed -i "" "s/version = \"$CURRENT\"/version = \"$NEW_VERSION\"/" hugo.toml
-else
-  sed -i "$SED_CMD" package.json
-  sed -i "s/version = \"$CURRENT\"/version = \"$NEW_VERSION\"/" hugo.toml
+if [ -z "$LATEST_VERSION_DIR" ]; then
+  echo "⚠️  No version directories found in .cody/project/build/"
+  echo "Version remains: $(grep '^version' hugo.toml | head -1)"
+  exit 0
 fi
 
-echo "✓ Updated package.json"
-echo "✓ Updated hugo.toml"
-echo ""
-echo "Version is now: $NEW_VERSION"
-echo ""
-echo "Next steps:"
-echo "  1. Review changes: git diff"
-echo "  2. Commit: git add -A && git commit -m 'Bump version to $NEW_VERSION'"
-echo "  3. Create release with changelog"
+# Extract version from directory name (e.g., v0.10.0-spacing-scale → 0.10.0-spacing-scale)
+FULL_VERSION=$(basename "$LATEST_VERSION_DIR")
+VERSION=${FULL_VERSION#v}  # Remove leading 'v'
+
+# Update hugo.toml
+sed -i.bak "s/version = \".*\"/version = \"$VERSION\"/" hugo.toml
+rm -f hugo.toml.bak
+
+echo "✅ Version bumped to: $VERSION"
+echo "   From: $LATEST_VERSION_DIR"
