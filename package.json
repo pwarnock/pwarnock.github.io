@@ -27,6 +27,7 @@
     "lint:toml": "npx @taplo/cli lint **/*.toml",
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
     "validate": "./scripts/validate.sh",
+    "version": "./scripts/bump-version.sh",
     "postinstall": "husky install"
   },
   "keywords": [],
