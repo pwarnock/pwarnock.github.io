@@ -17,7 +17,7 @@ This guide covers automation for Phase 2-3.
 
 ## Automation Script
 
-**Location:** `.cody/scripts/refactor-spacing-scale.sh`
+**Location:** `scripts/refactor-spacing-scale.sh`
 
 ### What It Does
 
@@ -42,7 +42,7 @@ Test without making changes:
 
 ```bash
 cd /Users/peter/github/pwarnock.github.io
-.cody/scripts/refactor-spacing-scale.sh --dry-run
+./scripts/refactor-spacing-scale.sh --dry-run
 ```
 
 Output shows:
@@ -55,7 +55,7 @@ Output shows:
 Create backups of all files before refactoring:
 
 ```bash
-.cody/scripts/refactor-spacing-scale.sh --backup
+./scripts/refactor-spacing-scale.sh --backup
 ```
 
 Backups saved as `filename.html.backup` in same directory.
@@ -66,19 +66,19 @@ Process only certain files:
 
 ```bash
 # Refactor only component files
-.cody/scripts/refactor-spacing-scale.sh --backup --file "components/*.html"
+./scripts/refactor-spacing-scale.sh --backup --file "components/*.html"
 
 # Refactor only section files
-.cody/scripts/refactor-spacing-scale.sh --backup --file "sections/*.html"
+./scripts/refactor-spacing-scale.sh --backup --file "sections/*.html"
 
 # Refactor only shortcodes
-.cody/scripts/refactor-spacing-scale.sh --backup --file "*.html"  # runs on shortcodes/
+./scripts/refactor-spacing-scale.sh --backup --file "*.html"  # runs on shortcodes/
 ```
 
 ### Full Refactoring (All 30 Files)
 
 ```bash
-.cody/scripts/refactor-spacing-scale.sh --backup
+./scripts/refactor-spacing-scale.sh --backup
 ```
 
 Processes all files in:
@@ -97,14 +97,14 @@ Processes all files in:
 
 1. Run dry-run on components only:
    ```bash
-   .cody/scripts/refactor-spacing-scale.sh --dry-run --file "components/*.html"
+   ./scripts/refactor-spacing-scale.sh --dry-run --file "components/*.html"
    ```
 
 2. Review report for expected changes
 
 3. Execute with backup:
    ```bash
-   .cody/scripts/refactor-spacing-scale.sh --backup --file "components/*.html"
+   ./scripts/refactor-spacing-scale.sh --backup --file "components/*.html"
    ```
 
 4. Build and test:
@@ -124,14 +124,14 @@ After Phase 2 is committed:
 
 1. Sections (6 files):
    ```bash
-   .cody/scripts/refactor-spacing-scale.sh --backup --file "sections/*.html"
+   ./scripts/refactor-spacing-scale.sh --backup --file "sections/*.html"
    npm run build
    git commit -m "refactor(css): replace spacing utilities in sections (6 files)"
    ```
 
 2. Shortcodes (5 files):
    ```bash
-   .cody/scripts/refactor-spacing-scale.sh --backup --file "*.html"  # Will process shortcodes
+   ./scripts/refactor-spacing-scale.sh --backup --file "*.html"  # Will process shortcodes
    npm run build
    git commit -m "refactor(css): replace spacing utilities in shortcodes (5 files)"
    ```
@@ -141,7 +141,7 @@ After Phase 2 is committed:
 Other partial files not in components/sections:
 
 ```bash
-.cody/scripts/refactor-spacing-scale.sh --backup
+./scripts/refactor-spacing-scale.sh --backup
 npm run build
 git commit -m "refactor(css): replace spacing utilities in remaining partials (9 files)"
 ```
