@@ -1,8 +1,8 @@
 module.exports = {
   apps: [{
     name: 'hugo-dev',
-    script: 'hugo',
-    args: 'server --buildDrafts --buildFuture --disableFastRender',
+    script: 'bash',
+    args: ['-c', 'node scripts/generate-version.js && hugo server --buildDrafts --buildFuture --disableFastRender'],
     cwd: __dirname,
     instances: 1,
     autorestart: true,
