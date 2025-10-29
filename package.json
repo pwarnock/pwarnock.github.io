@@ -29,6 +29,7 @@
     "validate": "./scripts/validate.sh",
     "version": "./scripts/bump-version.sh",
     "letta:config:init": "./scripts/letta-config-init.sh",
+    "letta:config:update": "./scripts/letta-config-update.sh",
     "postinstall": "husky install"
   },
   "keywords": [],

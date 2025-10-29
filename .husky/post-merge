@@ -1,0 +1,12 @@
+#!/bin/sh
+# Check if Letta schema changed after merge/pull
+
+if [ -f ".letta.schema.json" ]; then
+  # Check if schema was updated in this pull
+  if git diff --name-only HEAD@{1}..HEAD | grep -q ".letta.schema.json"; then
+    echo ""
+    echo "⚠️  Letta configuration schema has been updated!"
+    echo "Run: npm run letta:config:update"
+    echo ""
+  fi
+fi
