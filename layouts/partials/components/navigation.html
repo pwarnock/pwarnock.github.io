@@ -1,7 +1,7 @@
 {{/* Responsive Navigation Component */}}
 <nav class="navbar bg-base-100 shadow-lg sticky top-0 z-40" role="navigation" aria-label="Main navigation" x-data="{ mobileMenuOpen: false, socialMenuOpen: false }">
   <div class="navbar-start">
-    <div class="dropdown" :class="{ 'dropdown-open': mobileMenuOpen }">
+    <div class="dropdown" :class="{ 'dropdown-open': mobileMenuOpen }" @click.outside="mobileMenuOpen = false">
       <button tabindex="0" @click="mobileMenuOpen = !mobileMenuOpen" class="btn-system btn-system--ghost btn-system--md lg:hidden touch-manipulation" aria-label="Toggle mobile navigation menu">
         {{ partial "components/icon.html" (dict "name" "menu" "size" "md") }}
       </button>
@@ -36,7 +36,7 @@
         {{ partial "components/social-links.html" . }}
       </div>
       <!-- Mobile social links dropdown -->
-      <div class="dropdown dropdown-end md:hidden" :class="{ 'dropdown-open': socialMenuOpen }">
+      <div class="dropdown dropdown-end md:hidden" :class="{ 'dropdown-open': socialMenuOpen }" @click.outside="socialMenuOpen = false">
         <button tabindex="0" @click="socialMenuOpen = !socialMenuOpen" class="btn-system btn-system--ghost btn-system--md btn-circle touch-manipulation" aria-label="Social links menu">
           {{ partial "components/icon.html" (dict "name" "share" "size" "md") }}
         </button>
