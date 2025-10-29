@@ -28,15 +28,15 @@
           {{- end }}
         </h3>
         {{- if $context.Params.category }}
-        <div class="badge badge-ghost">{{ $context.Params.category }}</div>
+        <div class="badge badge-primary badge-outline">{{ $context.Params.category }}</div>
         {{- else if $context.Params.tool_category }}
-        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
+        <div class="badge badge-primary badge-outline">{{ $context.Params.tool_category }}</div>
         {{- end }}
       </div>
       {{- if $tags }}
       <div class="flex flex-wrap gap-2 lg:gap-1">
         {{- range $tags }}
-        <span class="badge badge-sm badge-ghost">{{ . }}</span>
+        <span class="badge badge-sm badge-secondary badge-outline">{{ . }}</span>
         {{- end }}
       </div>
       {{- end }}

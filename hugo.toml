@@ -1,4 +1,4 @@
-baseURL = 'https://peterwarnock.com/'
+baseURL = "https://peterwarnock.com/"
 # Custom domain deployment URL
 languageCode = 'en-us'
 title = 'Peter Warnock'

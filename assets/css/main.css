@@ -566,6 +566,30 @@ html {
   }
 }
 
+/* Embed Centering - Global for all embed types */
+.embed-container {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-8) 0;
+}
+
+.embed-container iframe,
+.embed-container blockquote {
+  margin: 0 auto;
+}
+
+/* Prose context embeds */
+.prose .embed-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose .embed-x {
+  max-width: 100%;
+}
+
 /* Spacing Scale - Template Utility Classes */
 @layer components {
   /* Responsive margin-bottom */
