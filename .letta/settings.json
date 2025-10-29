@@ -1,0 +1,11 @@
+{
+  "localSharedBlockIds": {
+    "project": "block-f5850164-132b-41b1-bd73-3170cec9203c"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cd /home/pwarnock/git status:*)",
+      "Bash(cd /home/pwarnock/github/pwarnock.github.io && grep -A 15 \"class=\\\"dropdown\\\"\" layouts/partials/components/navigation.html | head -20)"
+    ]
+  }
+}
