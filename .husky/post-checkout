@@ -1,0 +1,11 @@
+#!/bin/sh
+# Sync memory block to .letta/settings.json after checkout/pull
+# Usage: called automatically by git on checkout or pull
+
+mkdir -p .letta
+
+# Check if .letta/settings.json exists
+if [ ! -f ".letta/settings.json" ]; then
+  # Create from template
+  cp .letta.example/settings.json .letta/settings.json 2>/dev/null || true
+fi

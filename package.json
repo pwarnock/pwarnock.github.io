@@ -28,6 +28,7 @@
     "lint:css": "stylelint \"**/*.css\" --ignore-path .gitignore",
     "validate": "./scripts/validate.sh",
     "version": "./scripts/bump-version.sh",
+    "letta:config:init": "./scripts/letta-config-init.sh",
     "postinstall": "husky install"
   },
   "keywords": [],
