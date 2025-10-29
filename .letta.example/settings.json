@@ -3,6 +3,11 @@
     "project": "block-<UUID-from-letta-cli>"
   },
   "pathPlaceholder": "{{PROJECT_ROOT}}",
+  "metadata": {
+    "lastSyncedMachine": "{{MACHINE_HOSTNAME}}",
+    "lastSyncedAt": "{{SYNC_TIMESTAMP}}",
+    "version": "1.0"
+  },
   "permissions": {
     "allow": [
       "Bash(cd {{PROJECT_ROOT}} && git status:*)",
