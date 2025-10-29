@@ -534,3 +534,58 @@ html {
   }
 }
 
+/* Spacing Scale - Template Utility Classes */
+
+/* Responsive margin-bottom */
+.mb-responsive-lg {
+  margin-bottom: var(--space-12);
+}
+
+@media (min-width: 1024px) {
+  .mb-responsive-lg {
+    margin-bottom: var(--space-16);
+  }
+}
+
+.mb-responsive-md {
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .mb-responsive-md {
+    margin-bottom: var(--space-8);
+  }
+}
+
+/* Responsive margin-top */
+.mt-responsive-lg {
+  margin-top: var(--space-16);
+}
+
+@media (min-width: 1024px) {
+  .mt-responsive-lg {
+    margin-top: var(--space-20);
+  }
+}
+
+/* Responsive padding */
+.p-responsive-md {
+  padding: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .p-responsive-md {
+    padding: var(--space-12);
+  }
+}
+
+.p-responsive-sm {
+  padding: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .p-responsive-sm {
+    padding: var(--space-10);
+  }
+}
+
