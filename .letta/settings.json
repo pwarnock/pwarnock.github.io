@@ -5,7 +5,10 @@
   "permissions": {
     "allow": [
       "Bash(cd /home/pwarnock/git status:*)",
-      "Bash(cd /home/pwarnock/github/pwarnock.github.io && grep -A 15 \"class=\\\"dropdown\\\"\" layouts/partials/components/navigation.html | head -20)"
+      "Bash(cd /home/pwarnock/github/pwarnock.github.io && grep -A 15 \"class=\\\"dropdown\\\"\" layouts/partials/components/navigation.html | head -20)",
+      "Bash(npm audit:*)",
+      "Bash(pwd:*)",
+      "Bash(npm run dev:status:*)"
     ]
   }
 }
