@@ -5,18 +5,22 @@
 
 set -e
 
-CURRENT=$(grep '"version"' package.json | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
+CURRENT=$(grep -m 1 '"version"' package.json | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
 IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
 NEW_PATCH=$((PATCH + 1))
 NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
 
 echo "📦 Bumping version: $CURRENT → $NEW_VERSION"
 
-# Update package.json
-sed -i "" "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/" package.json
-
-# Update hugo.toml
-sed -i "" "s/version = \"$CURRENT\"/version = \"$NEW_VERSION\"/" hugo.toml
+# Update package.json - match exact pattern with description field after it
+SED_CMD="s/\"version\": \"$CURRENT\",$/\"version\": \"$NEW_VERSION\",/"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sed -i "" "$SED_CMD" package.json
+  sed -i "" "s/version = \"$CURRENT\"/version = \"$NEW_VERSION\"/" hugo.toml
+else
+  sed -i "$SED_CMD" package.json
+  sed -i "s/version = \"$CURRENT\"/version = \"$NEW_VERSION\"/" hugo.toml
+fi
 
 echo "✓ Updated package.json"
 echo "✓ Updated hugo.toml"
