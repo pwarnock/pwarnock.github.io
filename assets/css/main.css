@@ -534,58 +534,91 @@ html {
   }
 }
 
+/* Prose Content Spacing */
+@layer base {
+  .prose h1 {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-6);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-3xl);
+  }
+
+  .prose h2 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-2xl);
+  }
+
+  .prose h3 {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-normal);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-xl);
+  }
+
+  .prose p {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
 /* Spacing Scale - Template Utility Classes */
-
-/* Responsive margin-bottom */
-.mb-responsive-lg {
-  margin-bottom: var(--space-12);
-}
-
-@media (min-width: 1024px) {
+@layer components {
+  /* Responsive margin-bottom */
   .mb-responsive-lg {
-    margin-bottom: var(--space-16);
+    margin-bottom: var(--space-12);
   }
-}
 
-.mb-responsive-md {
-  margin-bottom: var(--space-6);
-}
+  @media (min-width: 1024px) {
+    .mb-responsive-lg {
+      margin-bottom: var(--space-16);
+    }
+  }
 
-@media (min-width: 1024px) {
   .mb-responsive-md {
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
   }
-}
 
-/* Responsive margin-top */
-.mt-responsive-lg {
-  margin-top: var(--space-16);
-}
+  @media (min-width: 1024px) {
+    .mb-responsive-md {
+      margin-bottom: var(--space-8);
+    }
+  }
 
-@media (min-width: 1024px) {
+  /* Responsive margin-top */
   .mt-responsive-lg {
-    margin-top: var(--space-20);
+    margin-top: var(--space-16);
   }
-}
 
-/* Responsive padding */
-.p-responsive-md {
-  padding: var(--space-8);
-}
+  @media (min-width: 1024px) {
+    .mt-responsive-lg {
+      margin-top: var(--space-20);
+    }
+  }
 
-@media (min-width: 1024px) {
+  /* Responsive padding */
   .p-responsive-md {
-    padding: var(--space-12);
+    padding: var(--space-8);
   }
-}
 
-.p-responsive-sm {
-  padding: var(--space-8);
-}
+  @media (min-width: 1024px) {
+    .p-responsive-md {
+      padding: var(--space-12);
+    }
+  }
 
-@media (min-width: 1024px) {
   .p-responsive-sm {
-    padding: var(--space-10);
+    padding: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .p-responsive-sm {
+      padding: var(--space-10);
+    }
   }
 }
 
