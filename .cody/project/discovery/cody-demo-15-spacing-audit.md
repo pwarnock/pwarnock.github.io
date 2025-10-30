@@ -1,4 +1,4 @@
-# Discovery: Spacing Scale & CSS Organization (cody-demo-15)
+# Discovery: Spacing Scale & CSS Organization (pw-15)
 
 ## Current State Assessment
 

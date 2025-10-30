@@ -1,4 +1,4 @@
-# Discovery: Mobile Navigation & Responsive Patterns (cody-demo-16)
+# Discovery: Mobile Navigation & Responsive Patterns (pw-16)
 
 ## Current Architecture (Post v0.9.2)
 

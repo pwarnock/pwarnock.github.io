@@ -305,8 +305,8 @@ Co-Authored-By: Letta <noreply@letta.com>
 
 Once spacing scale is complete:
 
-1. **Plan v0.11.0** - Mobile navigation & responsive patterns (cody-demo-16)
-2. **Plan v0.12.0** - Accessibility enhancements (cody-demo-17)
-3. **Plan v0.13.0** - Component partials (cody-demo-18)
+1. **Plan v0.11.0** - Mobile navigation & responsive patterns (pw-16)
+2. **Plan v0.12.0** - Accessibility enhancements (pw-17)
+3. **Plan v0.13.0** - Component partials (pw-18)
 
 Spacing scale established = foundation for cleaner, more maintainable templates.

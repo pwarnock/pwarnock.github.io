@@ -12,7 +12,7 @@ This patch version addresses critical issues discovered after the v0.8.0-upstrea
 
 ## Issues Addressed
 
-### 1. DeepAgent URL Correction (cody-demo-8)
+### 1. DeepAgent URL Correction (pw-8)
 **Problem**: The DeepAgent tool page was pointing to an incorrect URL `https://deepagent.dev/` instead of the correct `https://deepagent-desktop.abacus.ai/`.
 
 **Solution**: 
@@ -23,7 +23,7 @@ This patch version addresses critical issues discovered after the v0.8.0-upstrea
 
 **Impact**: Users can now correctly access the DeepAgent tool website.
 
-### 2. Vocabulary Game Demo Link (cody-demo-9)
+### 2. Vocabulary Game Demo Link (pw-9)
 **Problem**: The vocabulary game portfolio item was missing a live demo link, making it difficult for users to experience the working application.
 
 **Solution**:

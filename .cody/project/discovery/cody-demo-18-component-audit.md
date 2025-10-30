@@ -1,4 +1,4 @@
-# Discovery: Reusable Component Partials (cody-demo-18)
+# Discovery: Reusable Component Partials (pw-18)
 
 ## Executive Summary
 

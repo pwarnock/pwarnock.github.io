@@ -7,7 +7,7 @@
 
 ## Completed Tasks ✅
 
-### 1. Fix DeepAgent URL (cody-demo-8)
+### 1. Fix DeepAgent URL (pw-8)
 - [x] Identify incorrect URL in DeepAgent tool page
 - [x] Update external_url in frontmatter from `https://deepagent.dev/` to `https://deepagent-desktop.abacus.ai/`
 - [x] Update website field in frontmatter
@@ -15,7 +15,7 @@
 - [x] Update external links section URL reference
 - [x] Close issue with proper resolution notes
 
-### 2. Add Vocabulary Game Demo Link (cody-demo-9)
+### 2. Add Vocabulary Game Demo Link (pw-9)
 - [x] Identify missing demo link in vocabulary game portfolio
 - [x] Add demo_url field to frontmatter pointing to `https://pwarnock.github.io/vocabulary-game/`
 - [x] Add live demo section with descriptive text
