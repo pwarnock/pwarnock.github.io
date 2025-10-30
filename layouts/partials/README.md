@@ -7,9 +7,11 @@ This directory contains reusable Hugo partial components to reduce duplication a
 ### Core Components
 
 #### `card.html`
+
 A flexible card component for displaying content with optional links, badges, and footers.
 
 **Parameters:**
+
 - `class` - Additional CSS classes
 - `title` - Card title text
 - `title_id` - ID for title (for accessibility)
@@ -22,6 +24,7 @@ A flexible card component for displaying content with optional links, badges, an
 - `aria_labelledby` - ARIA labelledby attribute
 
 **Example:**
+
 ```hugo
 {{ partial "components/card.html" (dict
   "title" "My Card Title"
@@ -32,9 +35,11 @@ A flexible card component for displaying content with optional links, badges, an
 ```
 
 #### `section-header.html`
+
 Standardized section header with title, subtitle, and divider.
 
 **Parameters:**
+
 - `title` - Section title
 - `subtitle` - Section subtitle/description
 - `title_id` - ID for title (for accessibility)
@@ -42,6 +47,7 @@ Standardized section header with title, subtitle, and divider.
 - `container_class` - Additional container classes
 
 **Example:**
+
 ```hugo
 {{ partial "components/section-header.html" (dict
   "title" "Featured Projects"
@@ -51,18 +57,21 @@ Standardized section header with title, subtitle, and divider.
 ```
 
 #### `button.html`
+
 Reusable button component with optional icons.
 
 **Parameters:**
+
 - `href` - Button URL/link
 - `text` - Button text
 - `class` - Additional CSS classes
 - `icon` - SVG icon content (optional)
 - `icon_position` - "left" or "right" (default: "right")
 - `aria_label` - ARIA label for accessibility
-- `target` - Link target (default: "_self")
+- `target` - Link target (default: "\_self")
 
 **Example:**
+
 ```hugo
 {{ partial "components/button.html" (dict
   "href" "/about"
@@ -73,15 +82,18 @@ Reusable button component with optional icons.
 ```
 
 #### `badge-list.html`
+
 Displays a list of badges/tags.
 
 **Parameters:**
+
 - `items` - Array of badge items
 - `class` - Additional CSS classes for container
 - `badge_class` - Badge CSS classes (default: "badge-outline")
 - `badge_size` - Badge size (default: "badge-xs sm:badge-sm")
 
 **Example:**
+
 ```hugo
 {{ partial "components/badge-list.html" (dict
   "items" (slice "React" "Vue" "Angular")
@@ -92,9 +104,11 @@ Displays a list of badges/tags.
 ### Specialized Components
 
 #### `hero-card.html`
+
 Specialized card for hero section with gradient borders and backdrop blur.
 
 **Parameters:**
+
 - `title` - Card title
 - `title_id` - ID for title (for accessibility)
 - `content` - Card content
@@ -103,9 +117,11 @@ Specialized card for hero section with gradient borders and backdrop blur.
 - `class` - Additional CSS classes
 
 #### `expertise-card.html`
+
 Card for expertise sections with icons and technology badges.
 
 **Parameters:**
+
 - `title` - Card title
 - `title_id` - ID for title (for accessibility)
 - `content` - Card content
@@ -116,9 +132,11 @@ Card for expertise sections with icons and technology badges.
 - `class` - Additional CSS classes
 
 #### `content-card.html`
+
 High-level component for blog posts and portfolio items.
 
 **Parameters:**
+
 - `page` - Hugo page object
 - `type` - "post" or "portfolio" (affects styling)
 - `show_date` - Whether to show date (default: true for posts)
@@ -127,9 +145,11 @@ High-level component for blog posts and portfolio items.
 - `summary_override` - Override for summary text
 
 #### `content-card-footer.html`
+
 Footer component for content cards with metadata and action buttons.
 
 **Parameters:**
+
 - `page` - Hugo page object
 - `type` - "post" or "portfolio"
 - `show_date` - Whether to show date
@@ -156,6 +176,7 @@ Footer component for content cards with metadata and action buttons.
 ## Migration Notes
 
 The following sections have been migrated to use reusable components:
+
 - Hero section cards → `hero-card.html`
 - Expertise cards → `expertise-card.html`
 - Portfolio items → `content-card.html`

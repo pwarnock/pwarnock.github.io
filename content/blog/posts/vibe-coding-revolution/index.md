@@ -2,11 +2,11 @@
 title: 'The Vibe Coding Revolution: Developer-Centric vs Product-Centric Tools in 2025'
 date: 2025-10-16T06:43:31-07:00
 draft: false
-tags: ["ai-coding", "developer-tools", "vibe-coding", "productivity"]
-categories: ["Technology", "Development Tools"]
-author: "Peter Warnock"
-description: "A comprehensive look at emerging vibe coding tools landscape, from developer-centric IDEs to product-focused app builders"
-image: "vibe-coding-revolution.webp"
+tags: ['ai-coding', 'developer-tools', 'vibe-coding', 'productivity']
+categories: ['Technology', 'Development Tools']
+author: 'Peter Warnock'
+description: 'A comprehensive look at emerging vibe coding tools landscape, from developer-centric IDEs to product-focused app builders'
+image: 'vibe-coding-revolution.webp'
 ---
 
 The coding landscape has transformed dramatically in past year. What started as simple [autocomplete](https://en.wikipedia.org/wiki/Autocomplete) has evolved into something entirely different—[vibe coding](https://en.wikipedia.org/wiki/Vibe_coding) tools that understand intent, context, and can generate entire applications from natural language descriptions.
@@ -109,4 +109,4 @@ The tools are here. The question isn't whether to adopt them—it's how to choos
 
 ---
 
-*Have you experimented with vibe coding tools? I'd love to hear about your experiences and which tools have worked best for your team's specific needs. Connect with me on [LinkedIn](https://www.linkedin.com/in/peterwarnock/), [GitHub](https://github.com/pwarnock/), [X (Twitter)](https://twitter.com/pwarnock/), or [Discord](https://discord.gg/pwarnock) to continue the conversation.*
+_Have you experimented with vibe coding tools? I'd love to hear about your experiences and which tools have worked best for your team's specific needs. Connect with me on [LinkedIn](https://www.linkedin.com/in/peterwarnock/), [GitHub](https://github.com/pwarnock/), [X (Twitter)](https://twitter.com/pwarnock/), or [Discord](https://discord.gg/pwarnock) to continue the conversation._

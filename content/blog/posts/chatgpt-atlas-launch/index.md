@@ -1,13 +1,13 @@
 ---
-title: "OpenAI Launches ChatGPT Atlas: Revolutionizing Web Browsing with AI"
+title: 'OpenAI Launches ChatGPT Atlas: Revolutionizing Web Browsing with AI'
 date: 2025-10-21T10:00:00-07:00
 description: "Discover ChatGPT Atlas, OpenAI's groundbreaking AI-powered browser that integrates ChatGPT directly into web browsing, featuring agent mode, browser memories, and personalized assistance."
-image: "chatgpt-atlas-launch.webp"
-tags: ["OpenAI", "ChatGPT", "AI Browser", "ChatGPT Atlas", "Web Technology", "AI Innovation"]
+image: 'chatgpt-atlas-launch.webp'
+tags: ['OpenAI', 'ChatGPT', 'AI Browser', 'ChatGPT Atlas', 'Web Technology', 'AI Innovation']
 draft: false
-slug: "openai-launches-chatgpt-atlas-ai-powered-browser"
-categories: ["Technology", "AI", "Web Development"]
-author: "Peter Warnock"
+slug: 'openai-launches-chatgpt-atlas-ai-powered-browser'
+categories: ['Technology', 'AI', 'Web Development']
+author: 'Peter Warnock'
 ---
 
 OpenAI has just unveiled **ChatGPT Atlas**, their ambitious entry into the AI-powered browser space. This innovative web browser puts ChatGPT at its core, fundamentally rethinking how we interact with the internet. Available starting today on macOS, with Windows, iOS, and Android versions coming soon, ChatGPT Atlas represents OpenAI's latest challenge to Google's dominance in web search and browsing.
@@ -19,16 +19,19 @@ OpenAI has just unveiled **ChatGPT Atlas**, their ambitious entry into the AI-po
 ChatGPT Atlas isn't just another browser with AI features—it's built with ChatGPT as its foundation. Key features include:
 
 ### Integrated ChatGPT Experience
+
 - **Ask ChatGPT Sidebar**: Instantly chat about any webpage content without copying and pasting
 - **Context-Aware Conversations**: ChatGPT understands what's on your screen in real-time
 - **Personalized Assistance**: Browser memories allow ChatGPT to remember your browsing history and preferences
 
 ### Agent Mode for Automation
+
 - **Task Automation**: ChatGPT can book reservations, research topics, and complete complex workflows
 - **Preview Available**: Currently in preview for Plus, Pro, and Business users
 - **Enhanced Productivity**: Streamlines routine tasks while you focus on what matters
 
 ### Privacy and Control
+
 - **Browser Memories**: Optional feature that learns from your browsing to provide better assistance
 - **User Control**: View, archive, or delete memories anytime
 - **No Training by Default**: Your browsing data isn't used to train models unless you opt-in
@@ -57,4 +60,4 @@ Learn more about [ChatGPT Atlas and how it works →](/tools/chatgpt-atlas-ai-po
 
 ---
 
-*This post covers the launch of ChatGPT Atlas as announced by OpenAI on October 21, 2025. For the latest updates, visit the [official OpenAI announcement](https://openai.com/index/introducing-chatgpt-atlas/).*
+_This post covers the launch of ChatGPT Atlas as announced by OpenAI on October 21, 2025. For the latest updates, visit the [official OpenAI announcement](https://openai.com/index/introducing-chatgpt-atlas/)._

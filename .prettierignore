@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+public/
+resources/
+.hugo_build.lock
+.hugo_cache/
+
+# Generated files
+data/version.toml
+hugo_stats.json
+
+# Hugo templates (preserve Go template formatting)
+layouts/**/*.html
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Git and version control
+.git/
+.gitignore
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.cache
+
+# Hugo specific
+archetypes/
+themes/
+
+# Configuration that should preserve formatting
+.pre-commit-config.yaml
+.eslintrc*
+stylelint.config.*
+
+# Binary files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
+*.woff
+*.woff2
+*.ttf
+*.eot

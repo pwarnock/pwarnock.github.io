@@ -10,12 +10,12 @@ Hero section recreation and enhancement: Recreate and enhance the hero section w
 
 ## Features
 
-| ID  | Feature                 | Description                              | Priority | Status |
-|-----|-------------------------|------------------------------------------|----------|--------|
-| F20 | Hero Section Analysis   | Analyze current hero section and identify improvements | High     | ✅ Completed |
-| F21 | Hero Design Recreation  | Recreate hero section with enhanced visual design | High     | ✅ Completed |
-| F22 | Hero Content Optimization | Optimize hero content and messaging | Medium   | ✅ Completed |
-| F23 | Hero Interactive Elements | Add interactive elements and animations | Medium   | ✅ Completed |
+| ID  | Feature                   | Description                                            | Priority | Status       |
+| --- | ------------------------- | ------------------------------------------------------ | -------- | ------------ |
+| F20 | Hero Section Analysis     | Analyze current hero section and identify improvements | High     | ✅ Completed |
+| F21 | Hero Design Recreation    | Recreate hero section with enhanced visual design      | High     | ✅ Completed |
+| F22 | Hero Content Optimization | Optimize hero content and messaging                    | Medium   | ✅ Completed |
+| F23 | Hero Interactive Elements | Add interactive elements and animations                | Medium   | ✅ Completed |
 
 ## Implementation Notes
 

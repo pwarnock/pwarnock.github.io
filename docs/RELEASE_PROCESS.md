@@ -33,6 +33,7 @@ To work on a specific version:
 ```
 
 This will:
+
 - Ask which version to build from the feature backlog
 - Create version folder with design.md and tasklist.md
 - Guide you through implementation
@@ -42,6 +43,7 @@ This will:
 Follow the tasklist and implement features. **Critical process**:
 
 1. **Before each commit**: Run validation
+
    ```bash
    npm run lint        # Linting
    npm run validate    # Validation
@@ -56,32 +58,35 @@ Follow the tasklist and implement features. **Critical process**:
 When all tasks are completed:
 
 1. **Create Retrospective** - Copy `.cody/config/templates/build/version/retrospective.md` and document:
-    - What went well
-    - Challenges encountered
-    - Key learnings
-    - Metrics
+   - What went well
+   - Challenges encountered
+   - Key learnings
+   - Metrics
 
 2. **Reconcile Beads Issues** - Ensure all beads issues related to this version are closed and Cody reports are updated:
-    ```bash
-    bd list --json  # Review all issues
-    bd close [issue-id] --reason "Completed in vX.X.X" --json  # Close completed issues
-    ```
-    - Beads is the source of truth and DAG for issue tracking
-    - Cody provides planning and reporting - ensure alignment
+
+   ```bash
+   bd list --json  # Review all issues
+   bd close [issue-id] --reason "Completed in vX.X.X" --json  # Close completed issues
+   ```
+
+   - Beads is the source of truth and DAG for issue tracking
+   - Cody provides planning and reporting - ensure alignment
 
 3. **Update Feature Backlog** - Mark version as `🟢 Completed`
 
 4. **Create/Update Release Notes** - Document changes in `.cody/project/build/release-notes.md`
 
 5. **Tag Release**
-    ```bash
-    git tag -a vX.X.X -m "Release vX.X.X: [Description]"
-    ```
+
+   ```bash
+   git tag -a vX.X.X -m "Release vX.X.X: [Description]"
+   ```
 
 6. **Create GitHub Release**
-    ```bash
-    gh release create vX.X.X --title "vX.X.X - [Name]" --notes-file docs/releases/RELEASE_NOTES_vX.X.X.md
-    ```
+   ```bash
+   gh release create vX.X.X --title "vX.X.X - [Name]" --notes-file docs/releases/RELEASE_NOTES_vX.X.X.md
+   ```
 
 ### Step 5: Refresh Project Documents
 
@@ -117,6 +122,7 @@ bd close bd-123 --reason "Completed" --json
 ```
 
 ### Priority Levels
+
 - `0` - Critical (security, data loss, broken builds)
 - `1` - High (major features, important bugs)
 - `2` - Medium (default, nice-to-have)
@@ -124,6 +130,7 @@ bd close bd-123 --reason "Completed" --json
 - `4` - Backlog (future ideas)
 
 ### Issue Types
+
 - `bug` - Something broken
 - `feature` - New functionality
 - `task` - Work item (tests, docs, refactoring)
@@ -139,6 +146,7 @@ v[major.minor.patch]-[descriptive-name]
 ```
 
 Examples:
+
 - `v0.10.0-spacing-scale` (feature branch during development)
 - `v0.10.0` (production release - NO feature name)
 
@@ -161,6 +169,7 @@ Before creating a GitHub release:
 ## Release Guardrails
 
 ✅ **DO:**
+
 - Use PR-based workflow (release branch → PR → review → merge)
 - Run pre-commit validation (lint, validate, build)
 - Create retrospectives documenting learnings
@@ -168,6 +177,7 @@ Before creating a GitHub release:
 - Use `bd` for issue tracking
 
 ❌ **DON'T:**
+
 - Commit directly to main
 - Skip validation steps
 - Use feature branch names in production versions

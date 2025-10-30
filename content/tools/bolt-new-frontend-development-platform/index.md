@@ -1,14 +1,14 @@
 ---
-title: "Bolt.new"
-description: "Streamlined AI-powered frontend development platform for rapid prototyping and deployment with visual development tools"
+title: 'Bolt.new'
+description: 'Streamlined AI-powered frontend development platform for rapid prototyping and deployment with visual development tools'
 date: 2025-09-03T10:00:00-07:00
-categories: ["product-centric"]
-tags: ["ai-coding", "developer-tools", "product-centric", "frontend", "rapid-prototyping"]
-external_url: "https://bolt.new/"
-website: "bolt.new"
-tool_category: "AI Development Platforms"
-slug: "bolt-new-frontend-development-platform"
-aliases: ["/tools/bolt-new/"]
+categories: ['product-centric']
+tags: ['ai-coding', 'developer-tools', 'product-centric', 'frontend', 'rapid-prototyping']
+external_url: 'https://bolt.new/'
+website: 'bolt.new'
+tool_category: 'AI Development Platforms'
+slug: 'bolt-new-frontend-development-platform'
+aliases: ['/tools/bolt-new/']
 ---
 
 # Bolt.new
@@ -18,18 +18,21 @@ Bolt.new represents a paradigm shift in frontend development, offering an AI-pow
 ## Core Features
 
 ### AI-Powered Visual Development
+
 - **Drag-and-Drop Interface**: Visual component assembly with real-time preview
 - **Natural Language to Code**: Describe components and features in plain English
 - **Smart Component Generation**: AI creates reusable components based on design requirements
 - **Live Preview**: Instant visual feedback as you build and iterate
 
 ### Rapid Prototyping Engine
+
 - **Template Library**: Pre-built templates for common web application patterns
 - **One-Click Deployment**: Direct deployment to popular hosting platforms
 - **Responsive Design**: Mobile-first approach with automatic breakpoint optimization
 - **Component Marketplace**: Access to a library of pre-built, customizable components
 
 ### Intelligent Code Generation
+
 - **Framework Agnostic**: Works with React, Vue, Angular, and vanilla JavaScript
 - **Best Practices Integration**: Generated code follows industry standards and accessibility guidelines
 - **Performance Optimization**: Automatic code splitting and lazy loading implementation
@@ -47,12 +50,15 @@ Bolt.new represents a paradigm shift in frontend development, offering an AI-pow
 ## Unique Advantages
 
 ### Democratization of Frontend Development
+
 Bolt.new significantly lowers the barrier to entry for web development, enabling non-technical team members to contribute meaningfully to frontend projects while maintaining professional code quality and standards.
 
 ### Speed to Market
+
 The platform's combination of visual development and AI code generation enables teams to launch fully functional web applications in hours rather than weeks, making it ideal for startups and rapid prototyping scenarios.
 
 ### Professional Code Quality
+
 Unlike many low-code platforms that generate bloated or unmaintainable code, Bolt.new produces clean, readable, and production-ready code that experienced developers can easily extend and customize.
 
 ## Use Cases
@@ -85,4 +91,4 @@ Unlike many low-code platforms that generate bloated or unmaintainable code, Bol
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+_This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025._

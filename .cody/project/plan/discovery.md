@@ -1,7 +1,9 @@
 # Discovery
+
 This document captures the raw, unfiltered idea or initial AI prompt that sparked the project.
 
 ## Starting Prompt
+
 I want to rebuild my Hugo website with a more stable frontend https://peterwarnock.com/
 
 ## Questions
@@ -31,15 +33,18 @@ I want to rebuild my Hugo website with a more stable frontend https://peterwarno
 **USER A8:** when i can make subsequent changes and i quickly see the changes have been made
 
 ## Discovery Summary
+
 You want to rebuild your Hugo website (peterwarnock.com) with a more stable frontend foundation. The key issues are:
 
 **Current Problems:**
+
 - Maintenance challenges due to conflicting styles between theme and base project
 - Agents struggle with basic changes because of unclear page architecture
 - Component positioning and responsiveness issues (like navbar/content misalignment)
 - Color conflicts (though you've worked through many)
 
 **Desired Solution:**
+
 - Integrate Daisy UI consistently throughout the site
 - Build on a better foundation with clearly defined elements compatible with Tailwind themes
 - Prefer integration over complete rebuild, but prepared to start over if needed
@@ -47,6 +52,7 @@ You want to rebuild your Hugo website (peterwarnock.com) with a more stable fron
 - Create a system where changes are immediately visible and easy to make
 
 **Technical Requirements:**
+
 - Hugo + Tailwind + Daisy UI tech stack
 - Preserve all existing elements (blog, portfolio, newsletter, social links, etc.)
 - Maintain SEO and GitHub Pages hosting
@@ -54,6 +60,7 @@ You want to rebuild your Hugo website (peterwarnock.com) with a more stable fron
 - Target audience: recruiters, colleagues, potential clients (all actions mentioned)
 
 **Success Criteria:**
+
 - When you can make changes and quickly see them applied
 - Consistent, responsive design with proper alignment
 - Clear component architecture that agents can work with effectively

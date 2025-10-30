@@ -1,9 +1,9 @@
 ---
-title: "Getting Started with Hugo and Daisy UI"
+title: 'Getting Started with Hugo and Daisy UI'
 date: 2025-01-15T10:00:00Z
 draft: false
-tags: ["Hugo", "Daisy UI", "Web Development"]
-author: "Peter Warnock"
+tags: ['Hugo', 'Daisy UI', 'Web Development']
+author: 'Peter Warnock'
 ---
 
 # Getting Started with Hugo and Daisy UI
@@ -31,12 +31,12 @@ Then configure your `tailwind.config.js`:
 
 ```javascript
 module.exports = {
-  content: ["./layouts/**/*.{html,htm}"],
+  content: ['./layouts/**/*.{html,htm}'],
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
-}
+  plugins: [require('daisyui')],
+};
 ```
 
 ## Sample Components
@@ -68,4 +68,4 @@ Combining Hugo with Daisy UI gives you the best of both worlds - fast static sit
 
 ---
 
-*Tags: Hugo, Daisy UI, Web Development*
+_Tags: Hugo, Daisy UI, Web Development_

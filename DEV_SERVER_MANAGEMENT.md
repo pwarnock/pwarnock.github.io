@@ -1,10 +1,13 @@
 # Development Server Management
 
-This document outlines the PM2-based development server management system implemented for robust development workflow.
+This document outlines the PM2-based development server management system
+implemented for robust development workflow.
 
 ## Overview
 
-The project uses PM2 (Process Manager 2) to manage the Hugo development server, providing:
+The project uses PM2 (Process Manager 2) to manage the Hugo development server,
+providing:
+
 - Automatic restarts on crashes
 - Log management and rotation
 - Agent-aware process signaling
@@ -15,6 +18,7 @@ The project uses PM2 (Process Manager 2) to manage the Hugo development server, 
 ### 1. PM2 Configuration (`ecosystem.config.js`)
 
 Defines the Hugo development server process with:
+
 - Process name: `hugo-dev`
 - Hugo server arguments for development
 - Log file locations
@@ -23,6 +27,7 @@ Defines the Hugo development server process with:
 ### 2. Management Script (`scripts/pm2-agent-integration.sh`)
 
 Bash script providing:
+
 - Start/stop/restart commands
 - Status monitoring
 - Log viewing
@@ -31,6 +36,7 @@ Bash script providing:
 ### 3. Process Directory (`.pids/`)
 
 Stores:
+
 - Process ID files
 - Application logs
 - Error logs
@@ -130,6 +136,7 @@ The existing `npm run dev` command can be updated to use PM2:
 ### Agent Awareness
 
 The system provides hooks for AI agents to signal activity:
+
 - Track when agents are working on the project
 - Monitor agent productivity
 - Coordinate between multiple agents
@@ -139,11 +146,13 @@ The system provides hooks for AI agents to signal activity:
 ### Common Issues
 
 1. **Port already in use**
+
    ```bash
    ./scripts/pm2-agent-integration.sh restart
    ```
 
 2. **PM2 not found**
+
    ```bash
    npm install -g pm2
    ```
@@ -179,16 +188,19 @@ pm2 reset hugo-dev
 ## Migration from Direct Hugo Server
 
 Previous workflow:
+
 ```bash
 hugo server -D --bind 0.0.0.0 --baseURL http://192.168.86.25:1313
 ```
 
 New workflow:
+
 ```bash
 ./scripts/pm2-agent-integration.sh start
 ```
 
 Benefits:
+
 - Automatic restart on crashes
 - Better log management
 - Agent integration capabilities

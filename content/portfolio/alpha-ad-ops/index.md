@@ -4,7 +4,8 @@ draft: false
 title: 'Alpha Ad Ops'
 description: 'A rapid prototype advertising operations platform built with Laravel and Filament, demonstrating full-stack development capabilities and modern SaaS architecture patterns.'
 client: 'Proof of Concept'
-technologies: ['Laravel', 'Filament', 'SaasyKit-compatible', 'Laravel Cloud', 'Multi-tenant Architecture']
+technologies:
+  ['Laravel', 'Filament', 'SaasyKit-compatible', 'Laravel Cloud', 'Multi-tenant Architecture']
 live_url: 'https://alpha-ad-operations-dev-s9qwhp.laravel.cloud/'
 github_url: 'https://github.com/pwarnock/alpha-ad-operations'
 completion_date: '2025-10'
@@ -22,41 +23,50 @@ This prototype showcases the ability to quickly translate business requirements 
 ## Technical Implementation
 
 ### Laravel Framework & Architecture
+
 **Core Application**
+
 - Laravel 11 application with clean architecture patterns
 - Multi-tenant architecture using SaasyKit for tenant isolation
 - Database migrations and seeders for rapid setup
 - RESTful API design with proper resource controllers
 
 **Admin Panel with Filament**
+
 - Custom Filament admin panels for campaign and client management
 - Resource pages with filtering, sorting, and bulk actions
 - Form components with validation and relationship handling
 - Role-based access control and permissions system
 
 ### Multi-tenant SaaS Features
+
 **Tenant Management**
+
 - Subdomain-based tenant identification
 - Database-per-tenant isolation strategy
 - Tenant-specific configuration and settings
 - Centralized tenant administration dashboard
 
 **SaaS Infrastructure**
+
 - User registration and authentication flows
 - Subscription and billing integration points
 - Tenant onboarding and setup processes
 - Data isolation and security boundaries
 
-*Note: Implemented SaasyKit-compatible multi-tenant architecture patterns without requiring the commercial SaasyKit license.*
+_Note: Implemented SaasyKit-compatible multi-tenant architecture patterns without requiring the commercial SaasyKit license._
 
 ### Deployment & Infrastructure
+
 **Laravel Cloud Integration**
+
 - Zero-downtime deployment pipeline
 - Environment-specific configuration management
 - Automated SSL certificate provisioning
 - Scalable infrastructure with load balancing
 
 **Development Workflow**
+
 - Local development with Docker containers
 - Database migrations and seeding for rapid prototyping
 - Feature-based development approach
@@ -65,6 +75,7 @@ This prototype showcases the ability to quickly translate business requirements 
 ## Rapid Development Process
 
 ### Requirements to Prototype (24 hours)
+
 1. **Requirements Gathering** (2 hours): Client consultation and feature definition
 2. **Architecture Planning** (1 hour): Multi-tenant strategy and tech stack selection
 3. **Core Development** (12 hours): Laravel app, Filament panels, and tenant setup
@@ -73,6 +84,7 @@ This prototype showcases the ability to quickly translate business requirements 
 6. **Documentation** (4 hours): Code documentation and deployment notes
 
 ### Key Development Decisions
+
 - **Laravel + Filament**: Chosen for rapid admin panel development
 - **SaasyKit**: Selected for proven multi-tenant patterns
 - **Laravel Cloud**: Utilized for seamless deployment and scaling
@@ -81,18 +93,21 @@ This prototype showcases the ability to quickly translate business requirements 
 ## Technical Demonstrations
 
 ### Full-Stack Capabilities
+
 - Backend API development with Laravel
 - Frontend admin interface with Filament
 - Database design and relationships
 - Authentication and authorization systems
 
 ### SaaS Architecture Patterns
+
 - Multi-tenant data isolation
 - Subdomain-based tenant routing
 - Centralized administration
 - Scalable deployment strategy
 
 ### Modern Development Practices
+
 - Clean code principles and SOLID design
 - Environment-based configuration
 - Automated deployment workflows
@@ -101,12 +116,14 @@ This prototype showcases the ability to quickly translate business requirements 
 ## Project Outcomes
 
 ### Technical Achievements
+
 - **Fully functional prototype** deployed to production environment
 - **Multi-tenant architecture** supporting unlimited tenants
 - **Admin interface** with comprehensive CRUD operations
 - **Scalable infrastructure** ready for production use
 
 ### Development Speed
+
 - **Concept to deployment** in under 24 hours
 - **Rapid prototyping** demonstrating agile development capabilities
 - **Production-ready code** following best practices
@@ -124,6 +141,7 @@ This prototype showcases the ability to quickly translate business requirements 
 ## Future Considerations
 
 While this prototype will not be continued, it demonstrates:
+
 - Rapid prototyping capabilities
 - Full-stack development expertise
 - Modern SaaS architecture implementation

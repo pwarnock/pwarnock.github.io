@@ -1,14 +1,16 @@
 ---
-command: ":cody upgrade"
+command: ':cody upgrade'
 description: Upgrades the Cody framework to the latest version from GitHub.
 ---
 
 # UPGRADE CODY FRAMEWORK
 
 ### ANNOUNCE TO THE **USER**
+
 - Tell the **USER** that you (**AGENT**) are checking for Cody framework updates.
 
 ### CHECK FOR UPDATES
+
 - Use the Bash tool to run and execute: `{{cfScripts}}/upgrade-check.sh`
 - Parse the JSON output from the script and extract:
   - status (required): "update_available", "up_to_date", or "error"
@@ -18,6 +20,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 - If JSON parsing fails, treat it as an error condition
 
 ### HANDLE CHECK RESULTS
+
 - If the status is "up_to_date":
   - Tell the **USER** that their Cody framework is already up to date
   - Display the `local_version`.
@@ -38,6 +41,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Wait for **USER** response
 
 ### HANDLE USER RESPONSE (only if update was available)
+
 - If the **USER** declines (says no or anything close to it):
   - Tell the **USER** that the upgrade was cancelled
   - Remind them they can run `:cody upgrade` again anytime to upgrade
@@ -46,6 +50,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Continue to DOWNLOAD UPGRADE section
 
 ### DOWNLOAD UPGRADE
+
 - Tell the **USER** that you (**AGENT**) are downloading the new Cody framework version
 - Use the Bash tool to run: `{{cfScripts}}/upgrade-download.sh [remote_version]` (use the remote_version from the check script output)
 - Parse the JSON output from the download script and extract:
@@ -55,6 +60,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 - If JSON parsing fails, treat it as an error condition
 
 ### HANDLE DOWNLOAD RESULTS
+
 - If the status is "success":
   - Tell the **USER** that the download completed successfully
   - Continue to INSTALL UPGRADE section
@@ -69,6 +75,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Skip to COMPLETION section
 
 ### INSTALL UPGRADE
+
 - Tell the **USER** that you (**AGENT**) are now installing the upgrade
 - Use the Bash tool to run: `./.cody/config.upgrade/scripts/upgrade-install.sh`
 - Parse the JSON output from the install script and extract:
@@ -80,6 +87,7 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 - If JSON parsing fails, treat it as an error condition
 
 ### HANDLE INSTALL RESULTS
+
 - If the status is "success":
   - Congratulate the **USER** on the successful upgrade
   - Display: "Upgraded from version [from_version] to [to_version]"
@@ -99,8 +107,10 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Skip to COMPLETION section
 
 ### RELEARN AFTER UPGRADE (only if upgrade was successful)
+
 - Tell the **USER** that since the framework was upgraded, the **AGENT** will now relearn the framework
 - Execute the command `:cody relearn`
 
 ### COMPLETION
+
 - Tell the **USER** that the upgrade process is complete and you're ready to continue working

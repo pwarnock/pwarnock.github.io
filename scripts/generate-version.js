@@ -17,7 +17,8 @@ const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const packageVersion = packageJson.version;
 
 // Determine version to use
-const version = (branch === 'main' || branch === 'master') ? packageVersion : `${branch}-${shortHash}`;
+const version =
+  branch === 'main' || branch === 'master' ? packageVersion : `${branch}-${shortHash}`;
 
 // Remove 'v' prefix if present (template adds it)
 const cleanVersion = version.startsWith('v') ? version.substring(1) : version;

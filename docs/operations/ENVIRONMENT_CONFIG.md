@@ -9,10 +9,12 @@ The site displays version information in the footer using Hugo's best practices:
 **Example:** `v0.10.0-spacing-scale (a1c39b2)`
 
 The footer shows:
+
 - Version from `hugo.toml` (`site.Params.version`)
 - Git commit hash when available (`.GitInfo.AbbreviatedHash`)
 
 The git commit hash provides visibility into what's deployed:
+
 - Local dev builds show the current commit
 - Production builds show the commit that was deployed
 - Different commits = different versions = easy to track changes
@@ -24,6 +26,7 @@ Version is automatically extracted from the latest Cody version directory and sy
 **Script:** `scripts/bump-version.sh`
 
 **How it works:**
+
 1. Finds latest version in `.cody/project/build/v*/`
 2. Extracts version number (e.g., `v0.10.0-spacing-scale`)
 3. Updates `hugo.toml` with the version
@@ -31,16 +34,19 @@ Version is automatically extracted from the latest Cody version directory and sy
 **Usage:**
 
 Automatic (runs before build):
+
 ```bash
 npm run build  # automatically bumps version first
 ```
 
 Manual:
+
 ```bash
 bash scripts/bump-version.sh
 ```
 
 Example output:
+
 ```
 ✅ Version bumped to: 0.10.0-spacing-scale
    From: .cody/project/build/v0.10.0-spacing-scale
@@ -60,6 +66,7 @@ No manual version management needed!
 ## baseURL Configuration
 
 The site uses Hugo's `baseURL` to generate absolute URLs for:
+
 - Internal links (for SEO crawlability)
 - Open Graph meta tags (for social sharing)
 - Canonical URLs (for SEO deduplication)
@@ -68,6 +75,7 @@ The site uses Hugo's `baseURL` to generate absolute URLs for:
 ### Why Absolute URLs Matter
 
 Search engines prefer absolute URLs in:
+
 - Canonical tags: `<link rel="canonical" href="https://domain.com/page">`
 - OpenGraph: `<meta property="og:url" content="https://domain.com/page">`
 - Sitemap.xml: `<loc>https://domain.com/page</loc>`
@@ -78,6 +86,7 @@ Search engines prefer absolute URLs in:
 The `baseURL` is set in `hugo.toml` but can be overridden via command line flags.
 
 **Production default (in hugo.toml):**
+
 ```toml
 baseURL = "https://peterwarnock.com/"
 ```
@@ -87,6 +96,7 @@ To use a different `baseURL`, pass it as a flag to Hugo.
 ### Usage
 
 #### Development (Local)
+
 ```bash
 npm run dev
 # Uses: http://localhost:1313/
@@ -94,17 +104,20 @@ npm run dev
 ```
 
 #### Production Build (Default)
+
 ```bash
 npm run build
 # Uses: https://peterwarnock.com/ (from hugo.toml)
 ```
 
 #### Staging Build
+
 ```bash
 npm run build -- -b https://staging.peterwarnock.com/
 ```
 
 #### Direct Hugo Commands
+
 ```bash
 # Development
 hugo server -b http://localhost:1313/
@@ -123,6 +136,7 @@ hugo -b https://staging.peterwarnock.com/
 If you need different baseURLs for different environments, modify your build command:
 
 **GitHub Actions (Production):**
+
 ```yaml
 - name: Build
   run: npm run build
@@ -130,6 +144,7 @@ If you need different baseURLs for different environments, modify your build com
 ```
 
 **GitHub Actions (Staging):**
+
 ```yaml
 - name: Build
   run: npm run build -- -b https://staging.peterwarnock.com/
@@ -140,6 +155,7 @@ If you need different baseURLs for different environments, modify your build com
 ### Why Absolute URLs in Cards
 
 The site uses `.Permalink` (absolute URLs) in card components:
+
 - Better for SEO crawlers
 - Required for OpenGraph meta tags
 - Required for JSON-LD structured data

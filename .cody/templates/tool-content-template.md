@@ -1,14 +1,14 @@
 ---
-title: "Tool Name"
+title: 'Tool Name'
 description: "Comprehensive description of the tool's purpose and key features"
 date: 2025-09-27T10:00:00-07:00
-categories: ["developer-centric"]
-tags: ["ai-coding", "developer-tools", "developer-centric", "specific-tag"]
-external_url: "https://example.com"
-website: "example.com"
-tool_category: "AI Coding Tools"
-slug: "descriptive-url-slug-for-seo"
-aliases: ["/tools/short-slug/"]
+categories: ['developer-centric']
+tags: ['ai-coding', 'developer-tools', 'developer-centric', 'specific-tag']
+external_url: 'https://example.com'
+website: 'example.com'
+tool_category: 'AI Coding Tools'
+slug: 'descriptive-url-slug-for-seo'
+aliases: ['/tools/short-slug/']
 ---
 
 # Tool Name
@@ -18,16 +18,19 @@ aliases: ["/tools/short-slug/"]
 ## Core Features
 
 ### Primary Feature 1
+
 - **Detailed capability**: Specific description of what this feature does
 - **User benefit**: How this helps developers
 - **Technical aspect**: Implementation details or technology used
 
 ### Primary Feature 2
+
 - **Advanced functionality**: More sophisticated features
 - **Integration options**: How it works with other tools
 - **Customization**: Available settings and configurations
 
 ### Unique Innovation
+
 - **What makes it different**: Standout capabilities
 - **Competitive advantage**: Why choose this over alternatives
 - **Recent updates**: Latest feature additions
@@ -44,12 +47,15 @@ aliases: ["/tools/short-slug/"]
 ## Unique Advantages
 
 ### Advantage 1
+
 [Detailed explanation of what makes this tool unique in the market, including specific technical capabilities or innovative approaches.]
 
 ### Advantage 2
+
 [Another key differentiator with specific examples of how it outperforms competitors or solves unique problems.]
 
 ### Developer Experience
+
 [How the tool specifically improves developer workflow, productivity, or code quality.]
 
 ## Use Cases
@@ -78,4 +84,4 @@ aliases: ["/tools/short-slug/"]
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+_This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025._

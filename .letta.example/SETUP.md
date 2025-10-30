@@ -17,6 +17,7 @@ npm run letta:config:init
 ```
 
 Or manually:
+
 ```bash
 mkdir -p .letta
 cp .letta.example/settings.json .letta/settings.json
@@ -29,6 +30,7 @@ cp .letta.example/settings.json .letta/settings.json
    - Keep permissions as-is or customize for your workflow
 
 2. **Find your Block ID**:
+
    ```bash
    letta code  # Start Letta Code in this project
    # Block ID will appear in logs

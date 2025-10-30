@@ -1,14 +1,16 @@
 ---
-command: ":cody refresh"
+command: ':cody refresh'
 description: Refreshes the memory about the current project of the AI AGENT.
 ---
 
 # REFRESH AGENT MEMORY
 
 ### ANNOUNCE TO THE **USER**
+
 - Tell the **USER** that you (**AGENT**) are refreshing your memory of the project.
 
 ### REVIEW DOCUMENTS AND PROJECT STRUCTURE
+
 - Read {{cfPlanPhase}}/plan.md
 - If you need more information, read {{cfPlanPhase}}/prd.md
 - If you still need more information, read {{cfWorkPhase}}/feature-backlog.md
@@ -17,4 +19,5 @@ description: Refreshes the memory about the current project of the AI AGENT.
 - If you still need more information, ask the **USER**.
 
 ### DONE REVIEWING THE ENTIRE PROJECT
+
 - Please tell the **USER** that your memory is refreshed and that you are ready to start working.

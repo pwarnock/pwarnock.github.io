@@ -1,16 +1,18 @@
 ---
-command: ":cody plan"
+command: ':cody plan'
 description: Creates a Cody project and starts the PLAN phase.
 ---
 
 ### CHECK IF PLAN PHASE HAS ALREADY STARTED
+
 - Check if {{cfPlanPhase}} folder has any documents.
-    - If it does, list the documents already started.
-    - Tell the **USER** that the plan phase was already started.
-    - End here.
+  - If it does, list the documents already started.
+  - Tell the **USER** that the plan phase was already started.
+  - End here.
 - If it does not, continue to the next section.
 
 - **AGENT** show the **USER** the following:
+
 ```
 +-----------------+
 PLAN PHASE : START
@@ -18,11 +20,13 @@ PLAN PHASE : START
 ```
 
 # TALK ABOUT IDEA
+
 - Start by asking the **USER**:
   `What do you want to create?` **STOP**
 - After the **USER** responds, display this message:
 
 - **AGENT** show the **USER** the following:
+
 ```
 Great. I’m going to ask you questions to fully understand the outcome you want.
 If you are not sure how to answer, just type "help me" and I’ll provide you with some example answers based on your idea.
@@ -58,12 +62,12 @@ Keep asking as many questions as needed until you can confidently describe the f
 
 - Generate and adapt your own questions dynamically based on the **USER’s** previous answers.
 - Number each question in the format:
-`Question {n} of {total}: [your question]`
-Update `{total}` dynamically depending on how many more questions are required to satisfy the **Knowledge Criteria**.
+  `Question {n} of {total}: [your question]`
+  Update `{total}` dynamically depending on how many more questions are required to satisfy the **Knowledge Criteria**.
 - If earlier answers already cover a new question, confirm them instead of asking again.
 - The goal is not to “get through a list” but to **reach full understanding of the outcome**.
 - Stop only once all **Knowledge Criteria** are satisfied, or the **USER** insists on `no more`. If stopping early, include the warning:
-*“Based on the limited information provided, outcomes may not be optimal.”*
+  _“Based on the limited information provided, outcomes may not be optimal.”_
 
 ---
 
@@ -80,13 +84,16 @@ These are not required, but you may use or adapt them if helpful, especially whe
 - What risks or assumptions should we note early?
 
 # PROVIDE YOUR UNDERSTANDING TO THE **USER**
+
 - Summarize your understanding of the idea back to the **USER**.
 - Ask for approval explicitly. **STOP** for **USER APPROVAL**.
 - If not approved, continue asking targeted questions and refine until approved.
 
 # CREATE DISCOVERY DOCUMENT
+
 - Create folder `{{cProject}}` if it doesn't exist.
 - Create the following folder structure in the `{{cProject}}` folder:
+
 ```
 /build
 /library
@@ -94,10 +101,12 @@ These are not required, but you may use or adapt them if helpful, especially whe
     /docs
 /plan
 ```
+
 - Copy `{{cTemplates}}/plan/discovery.md` to `{{cfPlanPhase}}/discovery.md`.
 - Update all sections based on what you learned.
 - Make sure you update the "DISCOVERY SUMMARY" section in the discovery.md file with your understanding summary listed previously.
 - Tell the **USER**:
+
 ```
 I've created the Discovery Document summarizing our conversation.
 I stored it at {{cProject}}/plan/discovery.md.
@@ -107,11 +116,13 @@ If you didn't, just say “continue”.
 ```
 
 ### CREATE PRD DOCUMENT
+
 - Copy from {{cfTemplates}}/plan/prd.md into {{cfPlanPhase}}
 - You (**AGENT**) will review the discovery.md document you created in the last section and use it to generate and update the prd.md document you just copied.
 - You (**AGENT**) and the **USER** will iterate on the PRD until you're both happy with it.
 
 ### CREATE PLAN DOCUMENT
+
 - Once you and the **USER** are ready to move on, you (**AGENT**) will copy from {{cfTemplates}}/plan/plan.md into {{cfPlanPhase}}
 - You will review the prd.md document and use it to generate and update the plan.md document you just copied.
 - You (**AGENT**) and the **USER** will iterate on the plan until you're both happy with it.
@@ -119,10 +130,12 @@ If you didn't, just say “continue”.
 ### PLAN PHASE ENDS
 
 - **AGENT** show the **USER** the following:
+
 ```
 +--------------------+
 PLAN PHASE : COMPLETED
 +--------------------+
 ```
+
 - Tell the **USER** the plan phase has ended and if they want to start building, they can just type `:cody build` to create the feature backlog.
 - Stop here.

@@ -1,9 +1,9 @@
 ---
-title: "Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction"
+title: 'Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction'
 date: 2025-10-28T10:00:00Z
 draft: false
-tags: ["AI", "Knowledge Management", "Developer Tools", "Launch", "Grok"]
-author: "Peter Warnock"
+tags: ['AI', 'Knowledge Management', 'Developer Tools', 'Launch', 'Grok']
+author: 'Peter Warnock'
 ---
 
 # Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction
@@ -16,4 +16,4 @@ I'm excited to see Grokipedia take on Wikipedia. Wikipedia, is a good resource, 
 
 ---
 
-*Tags: AI, Knowledge Management, Developer Tools, Launch, Grok*
+_Tags: AI, Knowledge Management, Developer Tools, Launch, Grok_

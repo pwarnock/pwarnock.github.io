@@ -1,14 +1,14 @@
 ---
-title: "Nuxt"
-description: "Intuitive Vue.js framework for building universal applications with server-side rendering, static site generation, and full-stack capabilities"
+title: 'Nuxt'
+description: 'Intuitive Vue.js framework for building universal applications with server-side rendering, static site generation, and full-stack capabilities'
 date: 2025-09-19T10:00:00-07:00
-categories: ["framework"]
-tags: ["framework", "vuejs", "web-development", "ssr", "universal", "full-stack"]
-external_url: "https://nuxt.com/"
-website: "nuxt.com"
-tool_category: "Frameworks"
-slug: "nuxt-vuejs-framework-universal-applications"
-aliases: ["/tools/nuxt/"]
+categories: ['framework']
+tags: ['framework', 'vuejs', 'web-development', 'ssr', 'universal', 'full-stack']
+external_url: 'https://nuxt.com/'
+website: 'nuxt.com'
+tool_category: 'Frameworks'
+slug: 'nuxt-vuejs-framework-universal-applications'
+aliases: ['/tools/nuxt/']
 ---
 
 # Nuxt
@@ -18,18 +18,21 @@ Nuxt has emerged as the premier framework for building universal Vue.js applicat
 ## Core Features
 
 ### Universal Rendering Engine
+
 - **Hybrid Rendering**: Seamlessly combine server-side rendering (SSR), static site generation (SSG), and client-side rendering (CSR) on a per-page basis
 - **Incremental Static Regeneration**: Update static content after build time without full redeployment
 - **Payload Extraction**: Pre-render pages and extract payloads for instant navigation and improved performance
 - **Streaming SSR**: Progressive HTML rendering for faster perceived load times and better user experience
 
 ### Developer Experience Excellence
+
 - **File-based Routing**: Automatic route generation based on file structure with dynamic routes and nested layouts
 - **Auto-imports**: Intelligent auto-importing of components, composables, and utilities without manual imports
 - **Hot Module Replacement**: Instant development feedback with state preservation during component updates
 - **TypeScript First**: Full TypeScript support with auto-generated types and zero-configuration setup
 
 ### Performance Optimization Suite
+
 - **Automatic Code Splitting**: Intelligent bundle optimization that loads only necessary code for each route
 - **Image Optimization**: Advanced image processing with nuxt/image module for responsive, optimized images
 - **Caching Strategies**: Smart caching for API responses, static assets, and rendered pages
@@ -47,12 +50,15 @@ Nuxt has emerged as the premier framework for building universal Vue.js applicat
 ## Unique Advantages
 
 ### Vue.js Ecosystem Integration
+
 Nuxt leverages the full power of the Vue.js ecosystem while adding enterprise-grade capabilities. The framework maintains Vue's reactive programming model and component-based architecture while providing the structure and tooling needed for production applications.
 
 ### Nitro Server Engine
+
 The introduction of Nitro as Nuxt's server engine represents a significant architectural advancement, enabling deployment to any JavaScript runtime including Node.js, Deno, Cloudflare Workers, and edge environments. This universal deployment capability ensures optimal performance regardless of hosting infrastructure.
 
 ### Convention over Configuration
+
 Nuxt follows the principle of convention over configuration, providing sensible defaults that work out of the box while remaining highly configurable. This approach reduces decision fatigue and accelerates development without sacrificing flexibility.
 
 ## Use Cases
@@ -87,4 +93,4 @@ Nuxt follows the principle of convention over configuration, providing sensible 
 
 ---
 
-*This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025.*
+_This tool overview is part of our comprehensive guide to [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October 26, 2025._

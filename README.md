@@ -1,6 +1,7 @@
 # Pete Warnock - Personal Portfolio & Blog
 
-A modern, fast portfolio website and blog built with Hugo static site generator, featuring a unified design system and responsive design.
+A modern, fast portfolio website and blog built with Hugo static site generator,
+featuring a unified design system and responsive design.
 
 ## 🚀 Features
 
@@ -22,11 +23,13 @@ A modern, fast portfolio website and blog built with Hugo static site generator,
 ### 1. Install Hugo Extended
 
 **macOS (Homebrew):**
+
 ```bash
 brew install hugo
 ```
 
 **Linux:**
+
 ```bash
 # Download latest Hugo Extended
 curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.152.2_linux-amd64.tar.gz | tar -xz
@@ -38,6 +41,7 @@ curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_
 ```
 
 **Windows:**
+
 ```powershell
 # Download from https://github.com/gohugoio/hugo/releases/latest
 # Extract and add to PATH
@@ -49,6 +53,7 @@ Expand-Archive -Path "hugo.zip" -DestinationPath "."
 ```
 
 **Verify installation:**
+
 ```bash
 hugo version
 # Should show v0.152.2 or later with "extended" in the output
@@ -150,14 +155,21 @@ npm run analyze
 
 ## 🏗️ Development Framework
 
-This project uses the [Cody Framework](https://github.com/icodewith-ai/cody-framework) for professional development workflow management:
+This project uses the
+[Cody Framework](https://github.com/icodewith-ai/cody-framework) for
+professional development workflow management:
 
-- **Version Planning**: Structured feature development with discovery, planning, and implementation phases
-- **Issue Tracking**: Integrated with beads (beads) for dependency-aware task management
-- **Release Process**: Automated versioning, retrospectives, and release management
+- **Version Planning**: Structured feature development with discovery, planning,
+  and implementation phases
+- **Issue Tracking**: Integrated with beads (beads) for dependency-aware task
+  management
+- **Release Process**: Automated versioning, retrospectives, and release
+  management
 - **Documentation**: Living documentation that evolves with the codebase
 
-**Credits**: Special thanks to **Marcelo** of [Red Pill Blue Pill Studios, LLC](https://github.com/icodewith-ai) for creating and maintaining the Cody Framework. Contact: marcelo@redpillbluepillstudios.com
+**Credits**: Special thanks to **Marcelo** of
+[Red Pill Blue Pill Studios, LLC](https://github.com/icodewith-ai) for creating
+and maintaining the Cody Framework. Contact: marcelo@redpillbluepillstudios.com
 
 ## 🎨 Design System
 
@@ -210,7 +222,8 @@ This project uses a unified design system with:
 
 ### GitHub Pages (Current)
 
-The site is automatically deployed via GitHub Actions when pushing to `main` branch.
+The site is automatically deployed via GitHub Actions when pushing to `main`
+branch.
 
 ### Manual Deployment
 
@@ -239,14 +252,18 @@ npm run build
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 📞 Contact
 
 - **GitHub**: [@pwarnock](https://github.com/pwarnock)
-- **LinkedIn**: [linkedin.com/in/peterwarnock](https://linkedin.com/in/peterwarnock)
+- **LinkedIn**:
+  [linkedin.com/in/peterwarnock](https://linkedin.com/in/peterwarnock)
 - **Email**: github@peterwarnock.com
 
 ---
 
-Built with ❤️ using [Hugo](https://gohugo.io/), [Tailwind CSS](https://tailwindcss.com/), and [Cody Framework](https://github.com/icodewith-ai/cody-framework)
+Built with ❤️ using [Hugo](https://gohugo.io/),
+[Tailwind CSS](https://tailwindcss.com/), and
+[Cody Framework](https://github.com/icodewith-ai/cody-framework)

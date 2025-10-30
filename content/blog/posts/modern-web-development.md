@@ -1,9 +1,9 @@
 ---
-title: "Modern Web Development in 2025"
+title: 'Modern Web Development in 2025'
 date: 2025-01-10T14:30:00Z
 draft: false
-tags: ["Web Development", "JavaScript", "React", "Performance"]
-author: "Peter Warnuck"
+tags: ['Web Development', 'JavaScript', 'React', 'Performance']
+author: 'Peter Warnuck'
 ---
 
 # Modern Web Development in 2025
@@ -72,6 +72,7 @@ For this site, I'm using:
 <div class="badge badge-info">GitHub Pages</div>
 
 This combination gives me:
+
 - ⚡ Lightning-fast builds
 - 🎨 Beautiful components out of the box
 - 📱 Responsive design
@@ -80,6 +81,7 @@ This combination gives me:
 ## Looking Forward
 
 The future of web development looks exciting with:
+
 - WebAssembly gaining traction
 - AI-powered development tools
 - Better developer tooling
@@ -87,4 +89,4 @@ The future of web development looks exciting with:
 
 ---
 
-*What's your favorite web development stack in 2025? Let me know!*
+_What's your favorite web development stack in 2025? Let me know!_

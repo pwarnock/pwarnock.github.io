@@ -5,28 +5,35 @@
 ### 1. CSS Processing Issue
 
 ### Problem
+
 When moving CSS files from `assets/` to `static/` to bypass PostCSS issues, the CSS file still contained unprocessed Tailwind directives:
+
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
   themes: all;
 }
 ```
 
 ### Solution
+
 **ALWAYS** process CSS with Tailwind CLI before moving to static:
+
 ```bash
 npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss
 ```
 
 ### Why This Happens
+
 - Hugo's `assets/` directory processes files with PostCSS
 - Moving to `static/` bypasses PostCSS processing
 - Unprocessed `@import` directives break styling
 - CSS loads but contains no actual styles
 
 ### Prevention Checklist
+
 Before any deployment:
+
 1. ✅ Check if CSS contains `@import` or `@plugin` directives
 2. ✅ If yes, process with Tailwind CLI first
 3. ✅ Verify generated CSS contains actual utility classes
@@ -35,6 +42,7 @@ Before any deployment:
 ## 🔄 Deployment Process
 
 ### Standard Deployment
+
 ```bash
 # 1. Build and test locally
 npm run build
@@ -52,6 +60,7 @@ git push upstream main
 ```
 
 ### CI/CD Pipeline Issues
+
 - PostCSS binary not found in CI environment
 - Solution: Pre-process CSS or use static files
 - Never rely on Hugo's PostCSS in CI
@@ -59,18 +68,21 @@ git push upstream main
 ## 📋 Pre-Deployment Checklist
 
 ### CSS Validation
+
 - [ ] CSS file contains actual styles (not just @import directives)
 - [ ] All Tailwind classes are present in compiled CSS
 - [ ] DaisyUI components are styled correctly
 - [ ] No PostCSS processing errors
 
 ### Build Validation
+
 - [ ] `npm run build` completes successfully
 - [ ] 209+ pages generated
 - [ ] No CSS processing errors
 - [ ] Site loads correctly in dev server
 
 ### Git Validation
+
 - [ ] All changes committed
 - [ ] Pushed to upstream/main
 - [ ] CI/CD pipeline completes successfully
@@ -78,6 +90,7 @@ git push upstream main
 ## 🚨 Recovery Steps
 
 If Site Styling Breaks:
+
 1. **Immediate**: Check CSS file content
 2. **Process**: `npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss`
 3. **Test**: `npm run build`
@@ -95,16 +108,19 @@ If Site Styling Breaks:
 ### 2. GitHub Pages Deployment Issue
 
 ### Problem
+
 Deployment fails with "The process '/usr/bin/git' failed with exit code 128"
 
 ### Simple Solution (REVERTED)
+
 Use the proven `peaceiris/actions-gh-pages@v4` workflow:
+
 ```yaml
 name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-deploy:
@@ -113,45 +129,47 @@ jobs:
       contents: read
       deployments: write
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
-        fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
 
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v3
-      with:
-        hugo-version: 'latest'
-        extended: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build with Hugo
-      run: hugo --minify --gc
+      - name: Build with Hugo
+        run: hugo --minify --gc
 
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
 ```
 
 ### Why This Works
+
 - No complex Pages configuration needed
 - Proven deployment method
 - Simple permissions (contents: read, deployments: write)
 - No Git authentication issues
 
 ### Root Causes
+
 1. **Repository Settings**: GitHub Pages not configured to accept deployments from GitHub Actions
 2. **Token Permissions**: GITHUB_TOKEN lacks necessary permissions
 3. **Branch Protection**: Main branch has restrictions preventing deployment
@@ -159,17 +177,20 @@ jobs:
 ### Solutions
 
 #### Option 1: Repository Settings (Recommended)
+
 1. Go to repository Settings → Pages
 2. Set "Source" to "GitHub Actions"
 3. Ensure deployment branch is "main"
 4. Save settings
 
 #### Option 2: Branch Protection
+
 1. Go to Settings → Branches → main
 2. Check if restrictions prevent GitHub Actions
 3. Add GitHub Actions to allowed list if needed
 
 #### Option 3: Token Permissions
+
 1. Verify workflow has correct permissions:
    ```yaml
    permissions:
@@ -179,7 +200,9 @@ jobs:
    ```
 
 ### Verification
+
 After fixing, check:
+
 - [ ] Pages source is set to "GitHub Actions"
 - [ ] No branch protection conflicts
 - [ ] Workflow completes successfully
@@ -188,6 +211,7 @@ After fixing, check:
 
 **Last Updated**: October 27, 2025
 **Critical Issues**:
+
 1. ✅ CSS processing with Tailwind directives - RESOLVED
 2. ✅ GitHub Pages deployment failure - RESOLVED
 
@@ -196,7 +220,9 @@ After fixing, check:
 ## 🚨 CI/CD Pipeline Configuration - CRITICAL
 
 ### Problem
+
 Multiple workflow files caused confusion and deployment failures:
+
 - `deploy.yml` - Simple single-job workflow (limited functionality)
 - `cicd.yml` - Robust multi-job pipeline (correct approach)
 
@@ -205,6 +231,7 @@ Multiple workflow files caused confusion and deployment failures:
 The correct CI/CD pipeline (`cicd.yml`) must have:
 
 #### 1. Proper Permissions
+
 ```yaml
 permissions:
   contents: read
@@ -213,25 +240,29 @@ permissions:
 ```
 
 #### 2. Separate Build and Deploy Jobs
+
 ```yaml
 jobs:
-  build:    # Builds and tests
-  deploy:   # Only runs after successful build
+  build: # Builds and tests
+  deploy: # Only runs after successful build
 ```
 
 #### 3. Concurrency Control
+
 ```yaml
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 ```
 
 #### 4. Official GitHub Pages Actions
+
 - `actions/configure-pages@v5`
 - `actions/upload-pages-artifact@v3`
 - `actions/deploy-pages@v4`
 
 #### 5. Environment Configuration
+
 ```yaml
 deploy:
   environment:
@@ -240,13 +271,16 @@ deploy:
 ```
 
 ### Why This Matters
+
 - **Single-job workflows** (like `deploy.yml`) have limited functionality
 - **Multi-job pipelines** provide proper artifact handling and testing
 - **Official actions** ensure compatibility and security
 - **Environment setup** enables proper GitHub Pages integration
 
 ### Prevention Checklist
+
 Before any deployment changes:
+
 1. ✅ Verify `cicd.yml` is the active workflow
 2. ✅ Check permissions include `pages: write` and `id-token: write`
 3. ✅ Ensure separate build/deploy jobs exist
@@ -255,7 +289,9 @@ Before any deployment changes:
 6. ✅ Remove or disable `deploy.yml` if it exists
 
 ### Recovery Steps
+
 If deployment fails:
+
 1. **Check workflow**: Verify `cicd.yml` is being used
 2. **Verify permissions**: Ensure proper GitHub Pages permissions
 3. **Check environment**: Confirm `github-pages` environment exists
@@ -263,6 +299,7 @@ If deployment fails:
 5. **Restore pipeline**: Copy from this document if needed
 
 ### NEVER USE
+
 - Single-job workflows for production deployments
 - `peaceiris/actions-gh-pages@v4` (use official `actions/deploy-pages@v4`)
 - Missing environment configuration
@@ -277,6 +314,7 @@ If deployment fails:
 ## 🏷️ Version Management & Releases
 
 ### Version Synchronization
+
 - **Package.json**: Must match Cody framework version
 - **Hugo Config**: `version` parameter in `hugo.toml`
 - **Footer Display**: Version shown in site footer
@@ -284,6 +322,7 @@ If deployment fails:
 - **GitHub Release**: Release notes and rollback information
 
 ### Version Update Process
+
 1. **Update package.json**: `"version": "x.y.z"`
 2. **Update hugo.toml**: `version = "x.y.z"`
 3. **Create Git Tag**: `git tag -a vx.y.z -m "Release notes"`
@@ -291,7 +330,9 @@ If deployment fails:
 5. **Create GitHub Release**: `gh release create vx.y.z --title "vx.y.z" --notes "..."`
 
 ### Rollback Strategy
+
 **GitHub Releases make rollback easy:**
+
 ```bash
 # Emergency rollback to previous stable version
 git checkout vx.y.z
@@ -299,6 +340,7 @@ git push upstream main --force
 ```
 
 **Benefits of GitHub Releases:**
+
 - ✅ **Immutable Snapshot**: Exact point-in-time code state
 - ✅ **Documentation**: Release notes capture changes
 - ✅ **Rollback Safety**: Quick recovery from deployment issues
@@ -306,7 +348,9 @@ git push upstream main --force
 - ✅ **Asset Management**: Can attach build artifacts
 
 ### Release Checklist
+
 Before creating release:
+
 1. ✅ Version numbers synchronized (package.json, hugo.toml, footer)
 2. ✅ All tests passing locally
 3. ✅ CI/CD pipeline successful
@@ -315,6 +359,7 @@ Before creating release:
 6. ✅ GitHub release created with notes
 
 ### Current Version Information
+
 - **Version**: v0.10.0
 - **Release Date**: October 30, 2025
 - **Git Tag**: v0.10.0
@@ -323,12 +368,14 @@ Before creating release:
 - **Main Branch Status**: ✅ Synced with production
 
 ### Version Bumping Strategy
+
 - **Development version bumps**: Happen at next `:cody build` command
 - **Patch bumps**: Requested manually when `patch` is specified
 - **Main branch**: Always matches production version after release
 - **Feature branches**: May have development version tags (e.g., `v0.10.0-spacing-scale`)
 
 ### Post-Release Process
+
 1. ✅ Version number synchronized (package.json, hugo.toml, footer)
 2. ✅ Git tag created and pushed
 3. ✅ GitHub release created with release notes
@@ -337,6 +384,7 @@ Before creating release:
 6. **Next version bump**: Happens only at `:cody build` or patch request
 
 ### Version History
+
 - v0.10.0 - Spacing Scale with version tracking in footer
 - v0.9.0 - Design System implementation
 - v0.8.0 - Upstream Integration with footer version display

@@ -1,8 +1,8 @@
 ---
-title: "Accessibility Statement"
+title: 'Accessibility Statement'
 date: 2025-01-01T00:00:00Z
 draft: false
-description: "Our commitment to web accessibility and inclusive design"
+description: 'Our commitment to web accessibility and inclusive design'
 ---
 
 # Accessibility Statement
@@ -134,4 +134,4 @@ This website may contain third-party content or links to external websites. Whil
 **Last Updated**: January 1, 2025
 **Next Review**: July 1, 2025
 
-*This accessibility statement is part of our commitment to creating an inclusive web experience for all users.*
+_This accessibility statement is part of our commitment to creating an inclusive web experience for all users._

@@ -1,6 +1,6 @@
 ---
-description: "Activate Cody Framework"
-allowed-tools: ["Read"]
+description: 'Activate Cody Framework'
+allowed-tools: ['Read']
 ---
 
 # Activate Cody Framework
@@ -16,5 +16,6 @@ After activation, respond with the appropriate Cody Framework welcome message an
 ## Context Files
 
 Reference these files to understand the Cody Framework:
+
 - [Agent Configuration](../../.cody/config/agent.md)
 - [Activation Instructions](../../.cody/config/activate.md)

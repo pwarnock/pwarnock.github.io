@@ -21,6 +21,18 @@ repos:
     hooks:
       - id: gitleaks
 
+  # Code formatting with Prettier
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        exclude: |
+          (?x)(
+            layouts/.*\.html$|
+            .*\.lock$|
+            package-lock\.json$
+          )
+
   # JavaScript/TypeScript security and quality
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v9.21.0

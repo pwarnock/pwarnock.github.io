@@ -1,9 +1,9 @@
 ---
-title: "Leadership Lessons from 10 Years in Tech"
+title: 'Leadership Lessons from 10 Years in Tech'
 date: 2025-01-05T09:15:00Z
 draft: false
-tags: ["Leadership", "Management", "Career", "Technology"]
-author: "Peter Warnock"
+tags: ['Leadership', 'Management', 'Career', 'Technology']
+author: 'Peter Warnock'
 ---
 
 # Leadership Lessons from 10 Years in Tech
@@ -87,6 +87,7 @@ Teams perform best when they feel safe to:
 ## 6. Lead by Example
 
 Your team watches everything you do:
+
 - How you handle pressure
 - How you admit mistakes
 - How you treat others
@@ -95,6 +96,7 @@ Your team watches everything you do:
 ## 7. Continuous Learning is Non-negotiable
 
 The tech landscape changes constantly. Stay curious:
+
 - Read widely (not just tech)
 - Attend conferences and meetups
 - Find mentors and be a mentor
@@ -106,4 +108,4 @@ Leadership is a journey, not a destination. The best leaders are always learning
 
 ---
 
-*What leadership lessons have you learned in your career? I'd love to hear your experiences!*
+_What leadership lessons have you learned in your career? I'd love to hear your experiences!_

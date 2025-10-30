@@ -11,6 +11,7 @@ The release management process follows semantic versioning with automated CI/CD 
 ### Semantic Versioning
 
 We follow `MAJOR.MINOR.PATCH` semantic versioning:
+
 - **MAJOR**: Breaking changes, major redesigns, technology stack changes
 - **MINOR**: New features, significant content additions, UI improvements
 - **PATCH**: Bug fixes, content updates, minor improvements
@@ -18,11 +19,13 @@ We follow `MAJOR.MINOR.PATCH` semantic versioning:
 ### Version Naming Convention
 
 Versions use descriptive names for better tracking:
+
 ```
 v[major.minor.patch]-[descriptive-name]
 ```
 
 Examples:
+
 - `v0.8.2-tailwind-v4-upgrade`
 - `v0.9.0-design-system-overhaul`
 - `v1.0.0-production-launch`
@@ -30,11 +33,13 @@ Examples:
 ### Branch Strategy
 
 #### Main Branches
+
 - **main**: Production-ready code, always deployable
 - **develop**: Integration branch for features (future use)
 - **release/vX.X.X**: Release preparation branch
 
 #### Feature Branches
+
 - **feature/feature-name**: New feature development
 - **bugfix/issue-description**: Bug fixes
 - **hotfix/critical-fix**: Emergency production fixes
@@ -44,6 +49,7 @@ Examples:
 ### Critical Guardrails
 
 ⚠️ **MANDATORY**: All changes to main must come through Pull Requests.
+
 - ❌ **NO** direct commits to main
 - ✅ **YES** Release branch → PR → Review → Merge
 - ✅ **YES** Lint and validate before creating PR
@@ -52,6 +58,7 @@ Examples:
 ### Pre-Release Checklist
 
 #### Pre-Commit Validation (MUST PASS)
+
 - [ ] `npm run lint` - No linting errors
 - [ ] `npm run validate` - All validation checks pass
 - [ ] `npm run build` - Site builds successfully
@@ -59,24 +66,28 @@ Examples:
 - [ ] No uncommitted changes
 
 #### Code Quality
+
 - [ ] All code reviewed and approved (via PR)
 - [ ] No linting errors or warnings
 - [ ] All tests passing
 - [ ] Documentation updated
 
 #### Content Review
+
 - [ ] All content proofread
 - [ ] Images optimized and accessible
 - [ ] Links verified and working
 - [ ] SEO metadata complete
 
 #### Performance & Accessibility
+
 - [ ] Core Web Vitals within acceptable ranges
 - [ ] Lighthouse accessibility score > 90
 - [ ] Mobile responsiveness verified
 - [ ] Cross-browser compatibility tested
 
 #### Security
+
 - [ ] Dependencies scanned for vulnerabilities
 - [ ] Content Security Policy validated
 - [ ] Security headers configured
@@ -85,6 +96,7 @@ Examples:
 ### Release Steps
 
 #### 1. Preparation
+
 ```bash
 # Pull latest main to ensure release branch includes all changes
 git checkout main
@@ -100,6 +112,7 @@ git checkout -b release/vX.X.X
 ```
 
 #### 2. Pre-Commit Validation
+
 ```bash
 # REQUIRED: Run linting before any commit
 npm run lint
@@ -114,6 +127,7 @@ npm run build
 **All checks must pass before proceeding. Do not commit with lint/build errors.**
 
 #### 3. Testing
+
 ```bash
 # Local testing
 npm run dev
@@ -125,6 +139,7 @@ npm run build:production
 ```
 
 #### 4. Documentation
+
 ```bash
 # Update docs/releases/RELEASE_NOTES_vX.X.X.md
 # Update docs/operations/DEPLOYMENT_NOTES.md with current version
@@ -133,6 +148,7 @@ git tag -a vX.X.X -m "Release vX.X.X: [Description]"
 ```
 
 #### 5. Create Release PR
+
 ```bash
 # Push release branch to upstream
 git push upstream release/vX.X.X
@@ -146,6 +162,7 @@ gh pr create --base main --head release/vX.X.X \
 **Important**: Do NOT merge directly. Wait for PR approval.
 
 #### 6. GitHub Actions & Merge
+
 ```bash
 # After PR is approved:
 # - GitHub Actions runs automated checks
@@ -161,6 +178,7 @@ gh release create vX.X.X --title "vX.X.X - [Release Name]" \
 ```
 
 #### 7. Post-Release Cleanup
+
 ```bash
 # Delete release branch locally
 git branch -d release/vX.X.X
@@ -179,11 +197,13 @@ git log --oneline -1  # Should show version bump commit
 The `.github/workflows/deploy.yml` handles automatic deployment:
 
 #### Triggers
+
 - Push to `main` branch
 - Creation of new tag
 - Pull request to `main`
 
 #### Pipeline Stages
+
 1. **Setup**: Node.js environment, Hugo installation
 2. **Build**: Hugo static site generation
 3. **Optimize**: Asset minification, compression
@@ -192,6 +212,7 @@ The `.github/workflows/deploy.yml` handles automatic deployment:
 6. **Notify**: Release notifications
 
 #### Environment Variables
+
 - `HUGO_VERSION`: Hugo version to use
 - `NODE_VERSION`: Node.js version
 - `GITHUB_TOKEN`: Deployment permissions
@@ -199,12 +220,14 @@ The `.github/workflows/deploy.yml` handles automatic deployment:
 ### Deployment Environments
 
 #### Production (GitHub Pages)
+
 - **URL**: `https://pwarnock.github.io`
 - **Branch**: `main`
 - **Trigger**: Automatic on merge
 - **Domain**: Custom domain support
 
 #### Staging (Local)
+
 - **URL**: `http://localhost:1313`
 - **Method**: PM2 development server
 - **Command**: `./scripts/pm2-agent-integration.sh start`
@@ -214,6 +237,7 @@ The `.github/workflows/deploy.yml` handles automatic deployment:
 ### Emergency Rollback
 
 #### Quick Rollback (Previous Version)
+
 ```bash
 # Identify previous stable tag
 git tag --sort=-version:refname | head -5
@@ -226,6 +250,7 @@ git push --force origin main
 ```
 
 #### Full Rollback Procedure
+
 1. **Assess Impact**: Determine affected users and systems
 2. **Communicate**: Notify stakeholders of rollback
 3. **Execute Rollback**: Use quick rollback procedure
@@ -236,6 +261,7 @@ git push --force origin main
 ### Hotfix Process
 
 #### Critical Hotfix
+
 ```bash
 # Create hotfix branch from main
 git checkout -b hotfix/critical-issue main
@@ -262,33 +288,41 @@ git push origin vX.X.X+1
 # Release vX.X.X - [Release Name]
 
 ## 🚀 Features
+
 - [Feature description]
 - [Another feature]
 
 ## 🐛 Bug Fixes
+
 - [Bug fix description]
 - [Another bug fix]
 
 ## 🔧 Improvements
+
 - [Improvement description]
 - [Performance optimization]
 
 ## 📚 Documentation
+
 - [Documentation update]
 
 ## 🛠️ Technical Changes
+
 - [Technical change]
 - [Dependency update]
 
 ## 📈 Performance
+
 - [Performance improvement]
 - [Core Web Vitals update]
 
 ## 🔒 Security
+
 - [Security fix]
 - [Dependency security update]
 
 ## 🚦 Deployment
+
 - Deployed to production: [Date]
 - Rollback available: vX.X.X-previous
 ```
@@ -296,11 +330,13 @@ git push origin vX.X.X+1
 ### Communication Channels
 
 #### Internal Team
+
 - GitHub release notes
 - Team chat notifications
 - Email summary for major releases
 
 #### Public (if applicable)
+
 - Blog post for major releases
 - Twitter announcements
 - LinkedIn updates
@@ -310,6 +346,7 @@ git push origin vX.X.X+1
 ### Post-Release Checks
 
 #### Automated Monitoring
+
 - [ ] Site accessibility from multiple locations
 - [ ] Core Web Vitals within thresholds
 - [ ] No 404 errors in logs
@@ -317,6 +354,7 @@ git push origin vX.X.X+1
 - [ ] DNS resolution correct
 
 #### Manual Validation
+
 - [ ] Homepage loads correctly
 - [ ] Navigation functional
 - [ ] Forms and interactive elements working
@@ -325,6 +363,7 @@ git push origin vX.X.X+1
 - [ ] Search functionality (if implemented)
 
 #### Performance Monitoring
+
 - [ ] Google Analytics data flowing
 - [ ] Core Web Vitals metrics
 - [ ] Page load times
@@ -333,12 +372,14 @@ git push origin vX.X.X+1
 ### Alerting
 
 #### Critical Alerts
+
 - Site downtime (> 5 minutes)
 - 404 error rate > 5%
 - Performance degradation > 50%
 - Security vulnerabilities detected
 
 #### Warning Alerts
+
 - Performance metrics degradation
 - Broken links detected
 - Accessibility score drop
@@ -346,11 +387,13 @@ git push origin vX.X.X+1
 ## Release Schedule
 
 ### Regular Releases
+
 - **Monthly**: Minor releases with accumulated features
 - **Quarterly**: Major releases with significant features
 - **As Needed**: Patch releases for critical bugs
 
 ### Release Planning
+
 1. **Sprint Planning**: Feature selection and prioritization
 2. **Development**: Feature implementation and testing
 3. **Stabilization**: Bug fixes and performance optimization
@@ -360,18 +403,21 @@ git push origin vX.X.X+1
 ## Tools and Resources
 
 ### Development Tools
+
 - **Git**: Version control
 - **GitHub**: Code hosting and CI/CD
 - **PM2**: Development server management
 - **Hugo**: Static site generator
 
 ### Monitoring Tools
+
 - **Google Analytics**: Traffic and user behavior
 - **Google Search Console**: SEO and search performance
 - **Lighthouse**: Performance and accessibility
 - **GTmetrix**: Performance monitoring
 
 ### Communication Tools
+
 - **GitHub Releases**: Release notes and versioning
 - **GitHub Issues**: Bug tracking and feature requests
 - **Email**: Formal communications
@@ -380,6 +426,7 @@ git push origin vX.X.X+1
 ## Best Practices
 
 ### Guardrails & Quality Gates
+
 1. **PR-Based Workflow**: All main changes through Pull Requests
    - Prevents accidental commits
    - Enables code review
@@ -398,18 +445,21 @@ git push origin vX.X.X+1
    - Deployment readiness
 
 ### Development Practices
+
 1. **Small, Frequent Releases**: Reduce risk and improve feedback
 2. **Automated Testing**: Catch issues early in the pipeline
 3. **Comprehensive Documentation**: Enable knowledge sharing
 4. **Rollback Planning**: Always have a recovery strategy
 
 ### Release Practices
+
 1. **Feature Flags**: Gradual feature rollout when possible
 2. **Blue-Green Deployment**: Zero-downtime deployments
 3. **Monitoring**: Comprehensive post-release validation
 4. **Communication**: Clear, timely stakeholder updates
 
 ### Security Practices
+
 1. **Dependency Scanning**: Regular vulnerability assessments
 2. **Code Review**: Security-focused review process
 3. **Access Control**: Principle of least privilege
@@ -420,18 +470,21 @@ git push origin vX.X.X+1
 ### Common Issues
 
 #### Build Failures
+
 - Check Hugo version compatibility
 - Validate template syntax
 - Verify content front matter
 - Check dependency versions
 
 #### Deployment Issues
+
 - Verify GitHub Actions configuration
 - Check repository permissions
 - Validate custom domain settings
 - Review GitHub Pages configuration
 
 #### Performance Issues
+
 - Analyze Core Web Vitals
 - Check image optimization
 - Review CSS/JS minification
@@ -440,16 +493,19 @@ git push origin vX.X.X+1
 ### Escalation Procedures
 
 #### Level 1: Developer
+
 - Initial troubleshooting
 - Log analysis
 - Basic fixes
 
 #### Level 2: Senior Developer/Lead
+
 - Complex issues
 - Architecture decisions
 - Rollback decisions
 
 #### Level 3: Management
+
 - Critical incidents
 - Stakeholder communication
 - Incident post-mortem
@@ -457,12 +513,14 @@ git push origin vX.X.X+1
 ## Continuous Improvement
 
 ### Process Reviews
+
 - **Quarterly**: Release process evaluation
 - **Incident Post-mortems**: Learning from failures
 - **Stakeholder Feedback**: User and team input
 - **Industry Best Practices**: Staying current
 
 ### Metrics and KPIs
+
 - **Release Frequency**: How often we release
 - **Lead Time**: Time from code to production
 - **Failure Rate**: Percentage of failed deployments

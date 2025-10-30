@@ -41,12 +41,6 @@ export default [
     },
   },
   {
-    ignores: [
-      'node_modules/',
-      'public/',
-      'resources/',
-      '.hugo_cache/',
-      'static/js/vendor/',
-    ],
+    ignores: ['node_modules/', 'public/', 'resources/', '.hugo_cache/', 'static/js/vendor/'],
   },
 ];

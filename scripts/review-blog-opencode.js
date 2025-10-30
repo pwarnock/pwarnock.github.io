@@ -15,7 +15,7 @@ async function reviewBlogTemplate() {
   // Connect to existing server
   const { createAsyncClient } = await import('@opencode-ai/sdk');
   const client = createAsyncClient({
-    baseURL: 'http://localhost:4096'
+    baseURL: 'http://localhost:4096',
   });
 
   try {
@@ -26,9 +26,9 @@ async function reviewBlogTemplate() {
         agent: 'build',
         model: {
           providerID: 'anthropic',
-          modelID: HAIKU_MODEL
-        }
-      }
+          modelID: HAIKU_MODEL,
+        },
+      },
     });
 
     const sessionId = session.id || Object.keys(session)[0];
@@ -56,16 +56,16 @@ async function reviewBlogTemplate() {
 5. Component reusability patterns
 6. Typography and font sizing
 
-Focus on practical, actionable improvements.`
+Focus on practical, actionable improvements.`,
           },
           {
             type: 'file',
             url: `file://${TEMPLATE_FILE}`,
             filename: 'single.html',
-            mime: 'text/html'
-          }
-        ]
-      }
+            mime: 'text/html',
+          },
+        ],
+      },
     });
 
     // Poll for session updates
@@ -74,7 +74,7 @@ Focus on practical, actionable improvements.`
       await new Promise(resolve => setTimeout(resolve, 500));
 
       const sessionInfo = await client.session.get({
-        path: { id: sessionId }
+        path: { id: sessionId },
       });
 
       if (sessionInfo.messages && sessionInfo.messages.length > 0) {
