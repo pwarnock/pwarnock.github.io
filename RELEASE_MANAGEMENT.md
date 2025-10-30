@@ -41,10 +41,25 @@ Examples:
 
 ## Release Process
 
+### Critical Guardrails
+
+⚠️ **MANDATORY**: All changes to main must come through Pull Requests. 
+- ❌ **NO** direct commits to main
+- ✅ **YES** Release branch → PR → Review → Merge
+- ✅ **YES** Lint and validate before creating PR
+- ✅ **YES** GitHub Actions must pass before merge
+
 ### Pre-Release Checklist
 
+#### Pre-Commit Validation (MUST PASS)
+- [ ] `npm run lint` - No linting errors
+- [ ] `npm run validate` - All validation checks pass
+- [ ] `npm run build` - Site builds successfully
+- [ ] Local testing passes
+- [ ] No uncommitted changes
+
 #### Code Quality
-- [ ] All code reviewed and approved
+- [ ] All code reviewed and approved (via PR)
 - [ ] No linting errors or warnings
 - [ ] All tests passing
 - [ ] Documentation updated
@@ -71,20 +86,34 @@ Examples:
 
 #### 1. Preparation
 ```bash
-# Create release branch
+# Pull latest main to ensure release branch includes all changes
+git checkout main
+git pull upstream main
+
+# Create release branch from main
 git checkout -b release/vX.X.X
 
 # Update version numbers
 # Update hugo.toml version
 # Update package.json version
 # Update any other version references
+```
 
-# Run full test suite
+#### 2. Pre-Commit Validation
+```bash
+# REQUIRED: Run linting before any commit
+npm run lint
+
+# REQUIRED: Run validation
 npm run validate
+
+# REQUIRED: Test build
 npm run build
 ```
 
-#### 2. Testing
+**All checks must pass before proceeding. Do not commit with lint/build errors.**
+
+#### 3. Testing
 ```bash
 # Local testing
 npm run dev
@@ -92,40 +121,55 @@ npm run dev
 # Production build test
 npm run build:production
 
-# Link checking
-npm run test:links  # if available
+# Verify site loads correctly
 ```
 
-#### 3. Documentation
+#### 4. Documentation
 ```bash
-# Update CHANGELOG.md
-# Update release notes
-# Update any relevant documentation
-```
-
-#### 4. Release
-```bash
-# Merge to main
-git checkout main
-git merge release/vX.X.X
-
-# Create tag
+# Update RELEASE_NOTES_vX.X.X.md
+# Update DEPLOYMENT_NOTES.md with current version
+# Create git tag locally (do not push yet)
 git tag -a vX.X.X -m "Release vX.X.X: [Description]"
-
-# Push changes and tags
-git push origin main
-git push origin vX.X.X
 ```
 
-#### 5. Post-Release
+#### 5. Create Release PR
 ```bash
-# Delete release branch
+# Push release branch to upstream
+git push upstream release/vX.X.X
+
+# Create PR via GitHub CLI (creates PR automatically merged to main on approval)
+gh pr create --base main --head release/vX.X.X \
+  --title "Release: vX.X.X - [Release Name]" \
+  --body "Automated release PR. See RELEASE_NOTES_vX.X.X.md for details."
+```
+
+**Important**: Do NOT merge directly. Wait for PR approval.
+
+#### 6. GitHub Actions & Merge
+```bash
+# After PR is approved:
+# - GitHub Actions runs automated checks
+# - Merge PR via GitHub UI or:
+gh pr merge release/vX.X.X --merge
+
+# Push git tag after successful merge
+git push upstream vX.X.X
+
+# Create GitHub Release
+gh release create vX.X.X --title "vX.X.X - [Release Name]" \
+  --notes-file RELEASE_NOTES_vX.X.X.md
+```
+
+#### 7. Post-Release Cleanup
+```bash
+# Delete release branch locally
 git branch -d release/vX.X.X
 
-# Update develop branch (if exists)
-git checkout develop
-git merge main
-git push origin develop
+# Delete release branch on upstream
+git push upstream --delete release/vX.X.X
+
+# Verify main matches production version
+git log --oneline -1  # Should show version bump commit
 ```
 
 ## Automated Deployment
@@ -334,6 +378,24 @@ git push origin vX.X.X+1
 - **Team Chat**: Real-time coordination
 
 ## Best Practices
+
+### Guardrails & Quality Gates
+1. **PR-Based Workflow**: All main changes through Pull Requests
+   - Prevents accidental commits
+   - Enables code review
+   - Creates audit trail
+2. **Pre-Commit Validation**: Lint, validate, build before PR
+   - Catches issues early
+   - Prevents broken builds
+   - Maintains code quality
+3. **Release Branch Strategy**: Release branch includes latest main
+   - Seamless merge on approval
+   - Avoids conflicts
+   - Easy rollback
+4. **GitHub Actions Checks**: Automated verification before merge
+   - Second validation layer
+   - CI/CD confidence
+   - Deployment readiness
 
 ### Development Practices
 1. **Small, Frequent Releases**: Reduce risk and improve feedback

@@ -143,16 +143,119 @@ When `customHTML: true`:
 
 ## CSS Guidelines
 
-### Class Naming
-- Component-based: `.component-name`
-- Modifiers: `.component-name--modifier`
-- Elements: `.component-name__element`
+### CSS Organization Strategy
+
+**CRITICAL PRINCIPLE**: Separation of Concerns
+- **`assets/css/main.css`**: Design system ONLY (colors, spacing tokens, custom components)
+  - Used for global styles, design tokens, component definitions
+  - Processed by PostCSS → Tailwind → minified
+- **Templates**: Tailwind utility classes for layout and styling
+  - Use `class="text-lg font-bold"` in HTML
+  - Never define Tailwind classes in `assets/css/main.css`
+- **Why**: Prevents CSS bloat, enables tree-shaking, maintains performance
+
+**DO:**
+```css
+/* assets/css/main.css - Component definitions */
+@import "tailwindcss";
+@plugin "daisyui" { themes: all; }
+
+:root {
+  --color-primary: #3b82f6;
+  --space-4: 1rem;
+}
+
+.btn-system { @apply px-4 py-2; }
+```
+
+**DON'T:**
+```css
+/* DON'T - This goes in templates, not CSS */
+.my-button { padding: 1rem; color: blue; }
+.hidden { display: none; } /* Tailwind already handles this */
+```
+
+### BEM Naming Convention
+
+**Pattern**: `.component[-element][--modifier]`
+
+```css
+/* Component */
+.btn-system { 
+  @apply px-4 py-2 rounded; 
+}
+
+/* Element (use single underscore for sub-parts) */
+.btn-system__icon { 
+  @apply ml-2; 
+}
+
+/* Modifier (use double dash for variants) */
+.btn-system--primary { 
+  @apply bg-primary text-white; 
+}
+
+/* Multiple modifiers allowed */
+.btn-system--primary--lg { 
+  @apply px-6 py-3 text-lg; 
+}
+```
+
+**Key Rules:**
+- Component names are descriptive: `.card-unified`, `.btn-system`, `.badge-system`
+- Elements describe parts of a component: `__header`, `__body`, `__footer`
+- Modifiers describe state or variation: `--primary`, `--disabled`, `--active`
+- Always use kebab-case for readability
+
+### Color & Alpha Standards
+
+**Color Function Notation** (consistent with v0.10.0):
+```css
+/* STANDARD: Use rgba() - more readable for transparency */
+background-color: rgba(255, 255, 255, 0.8);
+color: rgba(0, 0, 0, 0.5);
+
+/* STANDARD: Use decimal alpha values (not percentages) */
+opacity: 0.1;      /* YES - decimal */
+opacity: 10%;      /* NO - use decimals in this project */
+```
+
+**Why decimals?** Matches design token scale (0.05, 0.1, 0.2, etc.) and is more precise.
+
+**Color Variables** (define in `:root`):
+```css
+:root {
+  --color-primary: rgb(59, 130, 246);      /* Base color */
+  --color-primary-50: rgba(59, 130, 246, 0.05);
+  --color-primary-25: rgba(59, 130, 246, 0.25);
+  --color-primary-80: rgba(59, 130, 246, 0.8);
+}
+```
+
+### Vendor Prefixes Policy
+
+**ALLOWED ONLY when necessary** (must have inline comment explaining):
+
+```css
+/* Allowed: gradient text effect requires -webkit prefix */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+/* Allowed: font rendering enhancement */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+
+/* NOT allowed: random prefixes without reason */
+/* -moz-transform: rotate(45deg); */  ← This is handled by browsers natively now
+```
+
+**Rule**: Each vendor prefix must have a comment explaining why it's needed.
 
 ### Responsive Design
 - Mobile-first approach
 - Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
-- Use Tailwind CSS utility classes
-- Custom CSS only when necessary
+- Use Tailwind CSS utility classes in templates
+- Custom CSS in `assets/css/main.css` only for design tokens and components
 
 ### Color Usage
 - Semantic color names (primary, secondary, accent)
@@ -179,6 +282,80 @@ For branded gradient text effects, use this pattern:
 - "Apply gradient text to hero titles"
 - "Use gradient effect on section headings"
 - "Add gradient to feature cards"
+
+### CSS Build & Processing
+
+**Development Workflow**:
+```bash
+# Watch CSS changes during development
+npm run css:watch
+
+# Build CSS with PostCSS + Tailwind
+npm run css:build
+
+# Full build with Hugo
+npm run build
+```
+
+**Production Workflow**:
+```bash
+# Always rebuild CSS before production build
+npm run css:build
+
+# Verify build succeeds
+npm run build
+
+# Run linting before commit
+npm run lint
+```
+
+**CRITICAL**: CSS must be processed by PostCSS before deployment. Static CSS files must not contain `@import` or `@plugin` directives.
+
+### Linting & Code Quality
+
+**Before Committing:**
+```bash
+npm run lint      # Must pass
+npm run validate  # Must pass
+npm run build     # Must succeed
+```
+
+**Linting Exemptions** (only when absolutely necessary):
+```css
+/* stylelint-disable rule-name -- Reason: Explain why this exception is needed */
+.my-class {
+  /* Exemption code here */
+}
+/* stylelint-enable rule-name */
+```
+
+**Exemption Rules:**
+- Only exempt if: (1) browser bug requires it, (2) design requirement, (3) temp workaround with issue created
+- Always include comment explaining why
+- Use narrowest possible scope (`disable-line` preferred over disabling entire block)
+- Create GitHub issue for temporary exemptions
+
+### Design System Architecture
+
+**Layer Structure**:
+```
+1. @import "tailwindcss"      ← Core Tailwind utilities
+2. @plugin "daisyui"          ← DaisyUI component library
+3. :root { --custom-props }   ← Custom design tokens
+4. .component-system { }      ← Custom component definitions
+5. @media queries             ← Responsive overrides
+```
+
+**Valid Content in `assets/css/main.css`**:
+- ✅ Design tokens (`--color-*`, `--space-*`)
+- ✅ Custom component definitions (`.btn-system`)
+- ✅ Custom utilities with `@apply`
+- ✅ Override Tailwind defaults
+
+**Invalid Content in `assets/css/main.css`**:
+- ❌ Tailwind utility classes (use in templates instead)
+- ❌ Page-specific styles (create in templates)
+- ❌ Random one-off rules (add to components or utilities)
 
 ## Development Workflow
 
