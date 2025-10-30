@@ -18,10 +18,11 @@ Implement systematic spacing scale across all templates using CSS variables. Rep
 - Consistent spacing scale across all components
 
 ## Release Summary
-- **Status**: 🔄 IN PROGRESS
-- **Branch**: v0.10.0-spacing-scale
-- **Target**: Complete refactoring of 33 template files
-- **Phase 1**: Pattern documentation + single.html proof of concept
+- **Status**: 🟢 COMPLETED
+- **Branch**: v0.10.0-spacing-scale (merged to main)
+- **Released**: October 30, 2025
+- **Tag**: v0.10.0
+- **GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
 
 ## Changes
 1. **Pattern Documentation** - Created refactoring guide with 5 pattern types
