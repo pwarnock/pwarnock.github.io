@@ -55,8 +55,8 @@ enableGitInfo = true
   minify = true
   
   # Version
-  version = "0.10.0-spacing-scale"
-  gitHash = "e39bf60"
+  version = "0.10.0"
+  gitHash = "5761548"
   
 [markup]
   [markup.goldmark]
