@@ -29,6 +29,9 @@ section = ["HTML", "RSS"]
 # Suppress warnings
 ignoreLogs = ['warning-goldmark-raw-html']
 
+# Enable git info for commit hash in footer
+enableGitInfo = true
+
 [params]
   # SEO configuration
   keywords = "fullstack developer, devops, cloud engineering, technology leader, software development, SaaS, rapid prototyping"
@@ -51,11 +54,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
   # Build settings
   minify = true
   
-  # Deployment settings
-  enableGitInfo = true
-  
   # Version
-  version = "0.9.3"
+  version = "0.10.0-spacing-scale"
+  gitHash = "e39bf60"
   
 [markup]
   [markup.goldmark]

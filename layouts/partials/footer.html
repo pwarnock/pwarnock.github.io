@@ -20,7 +20,7 @@
     <p class="text-sm sm:text-base">Copyright © {{ now.Year }} - {{ .Site.Title }}</p>
     <p class="text-xs sm:text-sm opacity-70 mt-1">{{ .Site.Params.description }}</p>
     <p class="text-xs opacity-50 mt-1">
-      v{{ site.Params.version }}{{ if .GitInfo }} ({{ .GitInfo.AbbreviatedHash }}){{ end }}
+      v{{ .Site.Params.version }}{{ if .Site.Params.gitHash }} ({{ .Site.Params.gitHash }}){{ end }}
     </p>
     <div class="text-xs opacity-50 mt-2 space-x-2">
       <a href="/privacy" class="link link-hover">Privacy Policy</a>
