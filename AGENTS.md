@@ -233,6 +233,50 @@ workflow guidelines.
 - Verify library versions and compatibility before implementation
 - Keep documentation references current with project dependencies
 
+## Context7 MCP Server Setup
+
+**IMPORTANT**: Ensure Context7 MCP server is available for library documentation access.
+
+### Installation
+```bash
+# Install Context7 MCP server
+npm install -g @context7/mcp-server
+# or
+pip install context7-mcp
+```
+
+### Configuration
+Add to your MCP client configuration (e.g., Claude Desktop `claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "context7-mcp",
+      "args": [],
+      "env": {}
+    }
+  }
+}
+```
+
+### Verification
+Test Context7 MCP availability:
+```bash
+# Check if MCP server responds
+curl -X POST http://localhost:3000/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"method": "context7/resolve", "params": {"libraryName": "hugo"}}'
+```
+
+### Troubleshooting
+- **Server not responding**: Restart MCP client and check logs
+- **Library not found**: Verify library name spelling and availability
+- **Connection issues**: Check firewall and network settings
+- **Version conflicts**: Update to latest Context7 MCP server version
+
+**Without Context7 MCP, agents cannot access current library documentation and may provide outdated information.**
+
 ## .cody Directory Access Rules
 
 **STRICT RULE: Never manually edit .cody files**
