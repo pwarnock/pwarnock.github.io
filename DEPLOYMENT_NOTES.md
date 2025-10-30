@@ -315,13 +315,30 @@ Before creating release:
 6. ✅ GitHub release created with notes
 
 ### Current Version Information
-- **Version**: v0.8.0
-- **Release Date**: October 27, 2025
-- **Git Tag**: v0.8.0
-- **GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.8.0
-- **Footer Display**: Shows "v0.8.0"
+- **Version**: v0.10.0
+- **Release Date**: October 30, 2025
+- **Git Tag**: v0.10.0
+- **GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
+- **Footer Display**: Shows "v0.10.0 (5761548)"
+- **Main Branch Status**: ✅ Synced with production
+
+### Version Bumping Strategy
+- **Development version bumps**: Happen at next `:cody build` command
+- **Patch bumps**: Requested manually when `patch` is specified
+- **Main branch**: Always matches production version after release
+- **Feature branches**: May have development version tags (e.g., `v0.10.0-spacing-scale`)
+
+### Post-Release Process
+1. ✅ Version number synchronized (package.json, hugo.toml, footer)
+2. ✅ Git tag created and pushed
+3. ✅ GitHub release created with release notes
+4. ✅ CI/CD pipeline deployed to production
+5. ✅ Main branch updated to match prod version
+6. **Next version bump**: Happens only at `:cody build` or patch request
 
 ### Version History
+- v0.10.0 - Spacing Scale with version tracking in footer
+- v0.9.0 - Design System implementation
 - v0.8.0 - Upstream Integration with footer version display
 - v0.1.0 - Initial setup
 - Previous tags: bd-12, pipeline-14-green (development tags)
