@@ -99,20 +99,43 @@ Then use `mcp__beads__*` functions instead of CLI commands.
 
 For more details, see README.md and QUICKSTART.md.
 
+## Documentation for Agents
+
+When working on this project:
+
+1. **Check `/docs/` namespace first** - For all operational and workflow documentation
+2. **Reference root-level guides** - STYLE_GUIDE.md, ACCESSIBILITY.md for architecture
+3. **Consult `.cody/` for version tracking** - Feature backlog, retrospectives, version status
+4. **Never create TodoWrite lists** - Use `bd` for all work tracking
+
+Key docs to bookmark:
+- `/docs/RELEASE_PROCESS.md` - How to run the professional release workflow
+- `/docs/RELEASE_MANAGEMENT.md` - Detailed release steps and post-release checklist
+- `/docs/DEPLOYMENT_NOTES.md` - Troubleshooting and deployment recovery
+- `STYLE_GUIDE.md` - CSS, template, and architecture conventions
+
 ## Project Documentation
 
-This project maintains comprehensive documentation to guide development:
+### Documentation Namespace
 
-### Core Guides
+**All project operational documentation lives in `/docs/`** - this is the authoritative source for all developers.
+
+**Separation of concerns:**
+- **`/docs/`** - Operational guides (development workflow, deployment, release process)
+- **`/.cody/`** - Cody Framework internals (version tracking, feature backlog, retrospectives)
+- **Root level files** - Quick reference (AGENTS.md, STYLE_GUIDE.md, ACCESSIBILITY.md, VERSIONING_GUIDELINES.md)
+
+### Operational Guides in `/docs/`
+- **RELEASE_PROCESS.md** - Cody Framework release workflow, versioning, and process guardrails
+- **RELEASE_MANAGEMENT.md** - Detailed release procedures and post-release validation
+- **DEPLOYMENT_NOTES.md** - Deployment configuration, troubleshooting, and recovery steps
+- **ENVIRONMENT_CONFIG.md** - Environment setup and configuration
+
+### Quick Reference (Root Level)
 - **STYLE_GUIDE.md** - Hugo site architecture, design system, template conventions, and development workflow
 - **ACCESSIBILITY.md** - Accessibility standards and WCAG compliance requirements
-- **VERSIONING_GUIDELINES.md** - Semantic versioning and release management
-- **RELEASE_MANAGEMENT.md** - Release process and deployment procedures
-
-### Development Guides  
-- **IMPLEMENTATION_SUMMARY.md** - Project overview and implementation details
-- **DEV_SERVER_MANAGEMENT.md** - Development server setup and management
-- **DEPLOYMENT_NOTES.md** - Deployment configuration and procedures
+- **VERSIONING_GUIDELINES.md** - Semantic versioning principles
+- **AGENTS.md** - Agent workflow and development process (this file)
 
 ### Content Structure
 - All content follows the structure defined in STYLE_GUIDE.md
