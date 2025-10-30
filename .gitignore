@@ -6,6 +6,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+desktop.ini
+*.lnk
 
 # Editor files
 .vscode/
@@ -13,18 +15,25 @@ Thumbs.db
 *.swp
 *.swo
 *~
+*.tmp
+*.temp
 
 # Node.js
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
+.npm/
+.yarn/
+.yarnrc.yml
 
 # Hugo
 .hugo_build.lock
 public/
 resources/
 .hugo_cache/
+hugo_stats.json
 
 # Environment variables
 .env
@@ -32,10 +41,14 @@ resources/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*.local
 
 # PM2 and runtime files
 .pids/
 *.log
+*.pid
+*.out
+*.error
 
 # Hugo binary (OS-specific)
 hugo
@@ -44,3 +57,25 @@ hugo.exe
 # Letta settings (contains local absolute paths)
 .letta/
 .letta-sync.sh
+
+# Backup files
+*.backup
+*.bak
+*.orig
+*.old
+
+# Build artifacts
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Miscellaneous
+*.tgz
+*.tar.gz
+.cache/
