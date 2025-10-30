@@ -18,8 +18,10 @@ Check that {{cfTemplates}}/build/feature-backlog.md does not exist.
 If it does not exist:
 
 - Copy from {{cfTemplates}}/build/feature-backlog.md into {{cfWorkPhase}}
-- Review the `plan.md` document you created in the discovery phase, then generate and update the `feature-backlog.md` document.
-- When you are done, tell the **USER** to review it. Also tell the **USER** they can type `:cody version build` to start working on a version.
+- Review the `plan.md` document you created in the discovery phase, then
+  generate and update the `feature-backlog.md` document.
+- When you are done, tell the **USER** to review it. Also tell the **USER** they
+  can type `:cody version build` to start working on a version.
 - Stop here.
 
 If it does exist:

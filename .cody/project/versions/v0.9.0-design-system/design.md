@@ -148,7 +148,9 @@ Flexible container for content with consistent styling and behavior.
       {{ end }}
       <div class="card__content">{{ .content }}</div>
       {{ if .badge }}
-      <div class="card__badge">{{ partial "components/badge.html" (dict "text" .badge) }}</div>
+      <div class="card__badge">
+        {{ partial "components/badge.html" (dict "text" .badge) }}
+      </div>
       {{ end }}
     </div>
     {{ if .href }}
@@ -437,4 +439,6 @@ Small status indicators and tags.
 - Headless CMS compatibility
 - Advanced theming capabilities
 
-This design system overhaul will establish a solid foundation for consistent, maintainable, and scalable web development while improving user experience and developer productivity.
+This design system overhaul will establish a solid foundation for consistent,
+maintainable, and scalable web development while improving user experience and
+developer productivity.

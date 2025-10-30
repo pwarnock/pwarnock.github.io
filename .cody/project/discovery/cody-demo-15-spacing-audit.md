@@ -4,15 +4,20 @@
 
 ### ✅ What's Working
 
-- **Spacing tokens defined** in `assets/css/main.css` (--space-0 through --space-32)
-- **Design system structure** is solid (colors, typography, component base styles)
-- **Component base classes** exist (.btn-system, .card-system, .badge-system, .icon-system)
+- **Spacing tokens defined** in `assets/css/main.css` (--space-0 through
+  --space-32)
+- **Design system structure** is solid (colors, typography, component base
+  styles)
+- **Component base classes** exist (.btn-system, .card-system, .badge-system,
+  .icon-system)
 
 ### ❌ What's Broken
 
 - **250+ hardcoded spacing utilities** scattered across 33 template files
-- **No use of CSS variables** in templates — templates use `mb-6`, `p-8`, `gap-4` directly
-- **Inconsistent patterns** across files (some use responsive spacing, some don't)
+- **No use of CSS variables** in templates — templates use `mb-6`, `p-8`,
+  `gap-4` directly
+- **Inconsistent patterns** across files (some use responsive spacing, some
+  don't)
 - **No documentation** of how to apply spacing tokens in templates
 
 ## Audit Results
@@ -27,8 +32,10 @@
 
 **Partials - Components (10 files):**
 
-- Components: badge, button, card, card-list, card-portfolio, card-tools, card-unified
-- Content cards: content-card, content-card-blog, content-card-portfolio, content-card-tools
+- Components: badge, button, card, card-list, card-portfolio, card-tools,
+  card-unified
+- Content cards: content-card, content-card-blog, content-card-portfolio,
+  content-card-tools
 - Navigation: footer-nav, navigation, theme-selector
 
 **Partials - Sections (6 files):**
@@ -37,11 +44,13 @@
 
 **Shortcodes (5 files):**
 
-- about-hero, call-to-action, expertise-cards, hero, newsletter-section, placeholder, screenshot, technology-stack
+- about-hero, call-to-action, expertise-cards, hero, newsletter-section,
+  placeholder, screenshot, technology-stack
 
 **Other Partials (9 files):**
 
-- footer, header, hero, list-header, list-pagination, newsletter-section, screenshot-placeholder, screenshot-with-caption, social-links
+- footer, header, hero, list-header, list-pagination, newsletter-section,
+  screenshot-placeholder, screenshot-with-caption, social-links
 
 ### Common Violations Pattern
 
@@ -62,8 +71,10 @@ pb-{n}    → var(--space-{n})
 
 **Examples from audit:**
 
-- `p-8 lg:p-12` (single.html:24) → Should use CSS variables + responsive fallback
-- `mb-12 lg:mb-16` (single.html:20) → var(--space-12) on mobile, var(--space-16) on lg
+- `p-8 lg:p-12` (single.html:24) → Should use CSS variables + responsive
+  fallback
+- `mb-12 lg:mb-16` (single.html:20) → var(--space-12) on mobile, var(--space-16)
+  on lg
 - `gap-2`, `mb-6`, `mb-8` hardcoded throughout
 - `px-4 py-2` (badge, buttons) → Should be vars
 
@@ -75,7 +86,8 @@ Current approach uses responsive Tailwind utilities:
 <div class="p-8 lg:p-12"><!-- Works, but not using tokens --></div>
 ```
 
-With CSS variables, we need to handle responsive differently since CSS variables can't use media queries directly. Options:
+With CSS variables, we need to handle responsive differently since CSS variables
+can't use media queries directly. Options:
 
 1. **Keep Tailwind responsive** but map to token values
 2. **Use CSS @apply** to create token-based utilities in main.css
@@ -115,11 +127,14 @@ With CSS variables, we need to handle responsive differently since CSS variables
 
 **For v0.10.0, should we:**
 
-1. **Document + Proof of Concept** (single.html) → Then schedule remaining files for v0.11.0+
+1. **Document + Proof of Concept** (single.html) → Then schedule remaining files
+   for v0.11.0+
 2. **Full refactoring** → All 33 files in one release
-3. **Component layer first** (15 files) → Highest impact for template reusability
+3. **Component layer first** (15 files) → Highest impact for template
+   reusability
 
-Recommended: **Option 1** — Document well, prove pattern works, keep scope tight for agent-driven development.
+Recommended: **Option 1** — Document well, prove pattern works, keep scope tight
+for agent-driven development.
 
 ## Next Steps
 

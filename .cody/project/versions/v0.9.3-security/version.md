@@ -27,7 +27,8 @@ Security patch addressing PM2 vulnerability and dependency updates.
 
 ## Changes
 
-1. **PM2 Security Update** - Updated from previous version to v6.0.13 to address security vulnerability
+1. **PM2 Security Update** - Updated from previous version to v6.0.13 to address
+   security vulnerability
 2. **Dependency Audit** - Ran security audit and resolved reported issues
 
 ## Security Notes

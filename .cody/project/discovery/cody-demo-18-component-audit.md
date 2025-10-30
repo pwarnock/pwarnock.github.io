@@ -4,10 +4,13 @@
 
 **Current State:** 19 component partials with mixed maturity
 
-- **Well-designed:** 7 partials (card.html, badge.html, button.html, icon.html, content-card.html, etc.)
-- **Redundant/Unused:** 12 partials (card variants, content-card variants, legacy files)
+- **Well-designed:** 7 partials (card.html, badge.html, button.html, icon.html,
+  content-card.html, etc.)
+- **Redundant/Unused:** 12 partials (card variants, content-card variants,
+  legacy files)
 
-**Problem:** Over-parameterized unified components coexist with hardcoded variants, causing:
+**Problem:** Over-parameterized unified components coexist with hardcoded
+variants, causing:
 
 1. Confusion about which to use
 2. Duplicate functionality
@@ -82,7 +85,8 @@
 ) }}
 ```
 
-**Benefit:** Remove 50 lines of duplicate HTML, use single parameterized component
+**Benefit:** Remove 50 lines of duplicate HTML, use single parameterized
+component
 
 #### 2️⃣ Replace `card-unified.html` → `card.html`
 
@@ -109,7 +113,8 @@ These are never called. `content-card.html` handles all variants via params.
 
 #### 4️⃣ Consolidate Screenshot Partials
 
-Merge `screenshot-placeholder.html` and `screenshot-with-caption.html` into card.html as image variants:
+Merge `screenshot-placeholder.html` and `screenshot-with-caption.html` into
+card.html as image variants:
 
 ```hugo
 {{ partial "components/card.html" (dict
@@ -352,7 +357,8 @@ dict "context" .
 ### Naming Conventions:
 
 - `component-name.html` - Reusable across site
-- `component-variant.html` - Variant of base component (avoid this, use params instead)
+- `component-variant.html` - Variant of base component (avoid this, use params
+  instead)
 - Avoid: `card-blog.html`, `card-portfolio.html` → Use `card.html` with params
 
 ---

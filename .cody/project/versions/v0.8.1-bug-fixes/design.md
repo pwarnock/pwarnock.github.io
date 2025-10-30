@@ -9,13 +9,17 @@
 
 ## Overview
 
-This patch version addresses critical issues discovered after the v0.8.0-upstream-integration release. The focus is on fixing incorrect URLs and adding missing demo links to improve user experience and content accuracy.
+This patch version addresses critical issues discovered after the
+v0.8.0-upstream-integration release. The focus is on fixing incorrect URLs and
+adding missing demo links to improve user experience and content accuracy.
 
 ## Issues Addressed
 
 ### 1. DeepAgent URL Correction (pw-8)
 
-**Problem**: The DeepAgent tool page was pointing to an incorrect URL `https://deepagent.dev/` instead of the correct `https://deepagent-desktop.abacus.ai/`.
+**Problem**: The DeepAgent tool page was pointing to an incorrect URL
+`https://deepagent.dev/` instead of the correct
+`https://deepagent-desktop.abacus.ai/`.
 
 **Solution**:
 
@@ -28,15 +32,18 @@ This patch version addresses critical issues discovered after the v0.8.0-upstrea
 
 ### 2. Vocabulary Game Demo Link (pw-9)
 
-**Problem**: The vocabulary game portfolio item was missing a live demo link, making it difficult for users to experience the working application.
+**Problem**: The vocabulary game portfolio item was missing a live demo link,
+making it difficult for users to experience the working application.
 
 **Solution**:
 
 - Added `demo_url` field to frontmatter
-- Added live demo section with link to `https://pwarnock.github.io/vocabulary-game/`
+- Added live demo section with link to
+  `https://pwarnock.github.io/vocabulary-game/`
 - Provided clear call-to-action for trying the demo
 
-**Impact**: Users can now immediately try the vocabulary game without needing to clone and build the repository.
+**Impact**: Users can now immediately try the vocabulary game without needing to
+clone and build the repository.
 
 ## Technical Implementation
 
@@ -111,4 +118,5 @@ This patch version addresses critical issues discovered after the v0.8.0-upstrea
 
 ---
 
-_This design document outlines the focused patch release addressing critical user experience issues while maintaining system stability._
+_This design document outlines the focused patch release addressing critical
+user experience issues while maintaining system stability._

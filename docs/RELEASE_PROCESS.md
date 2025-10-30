@@ -1,14 +1,17 @@
 # Cody Framework Release Process
 
-This document describes the professional release workflow for this project using the Cody Framework.
+This document describes the professional release workflow for this project using
+the Cody Framework.
 
 ## Overview
 
-The Cody Framework provides a structured approach to version management, issue tracking, and releases:
+The Cody Framework provides a structured approach to version management, issue
+tracking, and releases:
 
 1. **Planning Phase** (`:cody plan`) - Discover requirements, create PRD
 2. **Building Phase** (`:cody build`) - Create feature backlog and versions
-3. **Version Development** (`:cody version build`) - Implement features and conclude with retrospective
+3. **Version Development** (`:cody version build`) - Implement features and
+   conclude with retrospective
 4. **Release** - Tag version and create GitHub release
 5. **Refresh** (`:cody refresh update`) - Update project documents
 
@@ -57,13 +60,15 @@ Follow the tasklist and implement features. **Critical process**:
 
 When all tasks are completed:
 
-1. **Create Retrospective** - Copy `.cody/config/templates/build/version/retrospective.md` and document:
+1. **Create Retrospective** - Copy
+   `.cody/config/templates/build/version/retrospective.md` and document:
    - What went well
    - Challenges encountered
    - Key learnings
    - Metrics
 
-2. **Reconcile Beads Issues** - Ensure all beads issues related to this version are closed and Cody reports are updated:
+2. **Reconcile Beads Issues** - Ensure all beads issues related to this version
+   are closed and Cody reports are updated:
 
    ```bash
    bd list --json  # Review all issues
@@ -75,7 +80,8 @@ When all tasks are completed:
 
 3. **Update Feature Backlog** - Mark version as `🟢 Completed`
 
-4. **Create/Update Release Notes** - Document changes in `.cody/project/build/release-notes.md`
+4. **Create/Update Release Notes** - Document changes in
+   `.cody/project/build/release-notes.md`
 
 5. **Tag Release**
 
@@ -150,7 +156,8 @@ Examples:
 - `v0.10.0-spacing-scale` (feature branch during development)
 - `v0.10.0` (production release - NO feature name)
 
-**Important**: Feature branch names should NOT leak to production version strings.
+**Important**: Feature branch names should NOT leak to production version
+strings.
 
 ## Pre-Release Checklist
 
@@ -204,6 +211,5 @@ When ready to start v0.11.0:
 
 ---
 
-**Last Updated**: October 30, 2025 (v0.10.0 closure)
-**Framework**: Cody Framework v1
-**Status**: Professional multi-version workflow established
+**Last Updated**: October 30, 2025 (v0.10.0 closure) **Framework**: Cody
+Framework v1 **Status**: Professional multi-version workflow established

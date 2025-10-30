@@ -1,6 +1,7 @@
 # Release Notes
 
-This document lists new features, bug fixed and other changes implemented during a particular build, also know as a version.
+This document lists new features, bug fixed and other changes implemented during
+a particular build, also know as a version.
 
 [TOC]
 
@@ -8,7 +9,8 @@ This document lists new features, bug fixed and other changes implemented during
 
 ## Overview
 
-Implement systematic spacing scale across all templates using CSS variables to replace 250+ hardcoded Tailwind spacing utilities.
+Implement systematic spacing scale across all templates using CSS variables to
+replace 250+ hardcoded Tailwind spacing utilities.
 
 ## Key Features
 

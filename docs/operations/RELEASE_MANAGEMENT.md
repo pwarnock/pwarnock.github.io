@@ -1,10 +1,14 @@
 # Release Management
 
-This document outlines the release management process for the Peter Warnock portfolio website, ensuring consistent, reliable deployments with proper versioning and rollback capabilities.
+This document outlines the release management process for the Peter Warnock
+portfolio website, ensuring consistent, reliable deployments with proper
+versioning and rollback capabilities.
 
 ## Overview
 
-The release management process follows semantic versioning with automated CI/CD pipelines through GitHub Actions. Each release is tagged, documented, and deployed to GitHub Pages with comprehensive testing and validation.
+The release management process follows semantic versioning with automated CI/CD
+pipelines through GitHub Actions. Each release is tagged, documented, and
+deployed to GitHub Pages with comprehensive testing and validation.
 
 ## Versioning Strategy
 
@@ -124,7 +128,8 @@ npm run validate
 npm run build
 ```
 
-**All checks must pass before proceeding. Do not commit with lint/build errors.**
+**All checks must pass before proceeding. Do not commit with lint/build
+errors.**
 
 #### 3. Testing
 
@@ -526,4 +531,5 @@ git push origin vX.X.X+1
 - **Failure Rate**: Percentage of failed deployments
 - **Recovery Time**: Time to restore service
 
-This release management process ensures reliable, consistent deployments while maintaining high quality and security standards for the portfolio website.
+This release management process ensures reliable, consistent deployments while
+maintaining high quality and security standards for the portfolio website.

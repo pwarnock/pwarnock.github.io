@@ -13,9 +13,12 @@ description: Adds a new version to the feature-backlog.md file.
 
 ### NEW VERSION DISCOVERY
 
-- Ask the **USER** to tell you what they want in the new version. Tell them to be as detailed as possible.
-- Wait for **USER** to tell you. Ask as many questions as you need. Iterate until you (**AGENT**) are satisfied.
-- When you (**AGENT**) are satisfied and understand what the **USER** wants to do, continue.
+- Ask the **USER** to tell you what they want in the new version. Tell them to
+  be as detailed as possible.
+- Wait for **USER** to tell you. Ask as many questions as you need. Iterate
+  until you (**AGENT**) are satisfied.
+- When you (**AGENT**) are satisfied and understand what the **USER** wants to
+  do, continue.
 
 ### ADD NEW VERSION TO FEATURE BACKLOG
 
@@ -23,7 +26,9 @@ description: Adds a new version to the feature-backlog.md file.
 
 ### TELL **USER** VERSION READY TO BUILD
 
-- Tell the **USER** that the version has been added to the feature-backlog.md file in {{cfWorkPhase}}
+- Tell the **USER** that the version has been added to the feature-backlog.md
+  file in {{cfWorkPhase}}
 - Ask the **USER** if they want to start working on this version.
-- If the **USER** confirms (says yes or anything close to it), execute the command `:cody version build [and add the version number and name here]`
+- If the **USER** confirms (says yes or anything close to it), execute the
+  command `:cody version build [and add the version number and name here]`
 - If the **USER** doesn't confirm or says nothing, stop here.

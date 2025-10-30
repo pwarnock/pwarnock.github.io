@@ -1,9 +1,7 @@
 # v0.8.0-upstream-integration Task List
 
-**Version**: v0.8.0-upstream-integration
-**Status**: ✅ Completed
-**Start Date**: October 26, 2025
-**Completion Date**: October 27, 2025
+**Version**: v0.8.0-upstream-integration **Status**: ✅ Completed **Start
+Date**: October 26, 2025 **Completion Date**: October 27, 2025
 
 ## 🎯 Integration Tasks
 
@@ -16,7 +14,8 @@
 
 ### Phase 2: Selective Upstream Integration
 
-- [ ] **External Link Handling**: Integrate advanced link processing from upstream
+- [ ] **External Link Handling**: Integrate advanced link processing from
+      upstream
   - [ ] Check upstream link handling improvements
   - [ ] Integrate security attributes (rel="nofollow noopener noreferrer")
   - [ ] Add bracket code support ([nt], [ot], [nf], [f])
@@ -93,8 +92,7 @@
 
 ### External Link Handling Integration
 
-**Source**: upstream/main README.md
-**Features to Integrate**:
+**Source**: upstream/main README.md **Features to Integrate**:
 
 - Automatic external link detection
 - Security attributes (rel="nofollow noopener noreferrer")
@@ -110,8 +108,7 @@
 
 ### SEO Enhancement Integration
 
-**Source**: upstream layouts and configuration
-**Features to Check**:
+**Source**: upstream layouts and configuration **Features to Check**:
 
 - Meta tag optimizations
 - Structured data improvements
@@ -127,8 +124,7 @@
 
 ### Content Validation Integration
 
-**Source**: upstream scripts and workflows
-**Features to Check**:
+**Source**: upstream scripts and workflows **Features to Check**:
 
 - Link validation scripts
 - HTML validation tools
@@ -165,4 +161,5 @@
 3. **Document Changes**: Keep detailed change log
 4. **Prepare Release**: Get ready for upstream submission
 
-This task list ensures systematic integration while preserving our enhanced content quality and user experience improvements.
+This task list ensures systematic integration while preserving our enhanced
+content quality and user experience improvements.

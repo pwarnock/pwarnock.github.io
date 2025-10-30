@@ -1,16 +1,18 @@
 # Release Notes v0.8.2
 
-**Release Date**: October 27, 2025
-**Version Type**: Patch Release
-**Previous Version**: v0.8.1-bug-fixes
+**Release Date**: October 27, 2025 **Version Type**: Patch Release **Previous
+Version**: v0.8.1-bug-fixes
 
 ## 🐛 Bug Fixes
 
 ### Alpine.js SRI Hash Correction
 
-- **Issue**: Alpine.js Subresource Integrity (SRI) hash mismatch causing browser security warnings
-- **Fix**: Updated SRI hash to correct value `sha384-LppgMw8v3P4d8R1c1g9i/7R5O1xv7mQK7tO1xv7mQK7tO1xv7mQK7tO1xv7mQK7tO`
-- **Impact**: Eliminates browser security warnings and ensures proper content integrity verification
+- **Issue**: Alpine.js Subresource Integrity (SRI) hash mismatch causing browser
+  security warnings
+- **Fix**: Updated SRI hash to correct value
+  `sha384-LppgMw8v3P4d8R1c1g9i/7R5O1xv7mQK7tO1xv7mQK7tO1xv7mQK7tO1xv7mQK7tO`
+- **Impact**: Eliminates browser security warnings and ensures proper content
+  integrity verification
 - **Files Modified**: `layouts/partials/sections/hero.html`
 
 ### Hero Title Consistency
@@ -25,7 +27,8 @@
 ### Tailwind CSS v4 Integration
 
 - **Enhancement**: Successfully upgraded to Tailwind CSS v4.1.16
-- **Benefits**: Improved performance, smaller bundle size, enhanced developer experience
+- **Benefits**: Improved performance, smaller bundle size, enhanced developer
+  experience
 - **Impact**: Better site performance and maintainability
 - **Files Modified**: `package.json`, `assets/css/main.css`
 
@@ -33,7 +36,8 @@
 
 - **Enhancement**: Implemented comprehensive security headers and policies
 - **Features**: CSP headers, XSS protection, secure transport requirements
-- **Impact**: Enhanced security posture and protection against common web vulnerabilities
+- **Impact**: Enhanced security posture and protection against common web
+  vulnerabilities
 - **Files Modified**: `layouts/partials/security-headers.html`, `hugo.toml`
 
 ### Accessibility Compliance
@@ -184,4 +188,6 @@
 
 ---
 
-_This patch release focuses on critical fixes, performance improvements, and security enhancements while maintaining full backward compatibility and improving the overall user experience._
+_This patch release focuses on critical fixes, performance improvements, and
+security enhancements while maintaining full backward compatibility and
+improving the overall user experience._

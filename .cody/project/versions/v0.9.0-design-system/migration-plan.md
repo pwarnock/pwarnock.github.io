@@ -2,7 +2,9 @@
 
 ## Executive Summary
 
-This migration plan addresses **177 hardcoded patterns** across the Hugo site, consolidating them into **5 reusable components** for a **97% reduction** in code duplication.
+This migration plan addresses **177 hardcoded patterns** across the Hugo site,
+consolidating them into **5 reusable components** for a **97% reduction** in
+code duplication.
 
 ## Pattern Inventory Analysis
 
@@ -84,8 +86,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 1.1 Design Tokens Implementation
 
-**File:** `assets/css/main.css`
-**Actions:**
+**File:** `assets/css/main.css` **Actions:**
 
 - Add comprehensive CSS custom properties
 - Define color system, typography, spacing
@@ -93,8 +94,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 1.2 Button Component Creation
 
-**File:** `layouts/partials/components/button.html`
-**Actions:**
+**File:** `layouts/partials/components/button.html` **Actions:**
 
 - Create unified button component
 - Support all variants and sizes
@@ -103,8 +103,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 1.3 Badge Component Creation
 
-**File:** `layouts/partials/components/badge.html`
-**Actions:**
+**File:** `layouts/partials/components/badge.html` **Actions:**
 
 - Create unified badge component
 - Support all variants and sizes
@@ -112,9 +111,8 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 1.4 Icon Component Creation
 
-**File:** `layouts/partials/components/icon.html`
-**Data File:** `data/icons.yaml`
-**Actions:**
+**File:** `layouts/partials/components/icon.html` **Data File:**
+`data/icons.yaml` **Actions:**
 
 - Create centralized icon system
 - Migrate all 67 SVG icons to data file
@@ -124,8 +122,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 2.1 Enhanced Base Card Component
 
-**File:** `layouts/partials/components/card.html`
-**Actions:**
+**File:** `layouts/partials/components/card.html` **Actions:**
 
 - Enhance existing unified card
 - Add comprehensive variant support
@@ -164,8 +161,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 3.1 Navigation Component Migration
 
-**File:** `layouts/partials/components/navigation.html`
-**Actions:**
+**File:** `layouts/partials/components/navigation.html` **Actions:**
 
 - Replace 6 button patterns with Button component
 - Replace 3 icon patterns with Icon component
@@ -174,8 +170,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 3.2 Social Links Component Migration
 
-**File:** `layouts/partials/components/social-links.html`
-**Actions:**
+**File:** `layouts/partials/components/social-links.html` **Actions:**
 
 - Replace 4 button patterns with Button component
 - Replace 4 icon patterns with Icon component
@@ -183,8 +178,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 3.3 Theme Selector Migration
 
-**File:** `layouts/partials/components/theme-selector.html`
-**Actions:**
+**File:** `layouts/partials/components/theme-selector.html` **Actions:**
 
 - Replace 1 button pattern with Button component
 - Replace 1 icon pattern with Icon component
@@ -192,8 +186,7 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 #### 3.4 Newsletter Component Migration
 
-**File:** `layouts/partials/components/newsletter.html`
-**Actions:**
+**File:** `layouts/partials/components/newsletter.html` **Actions:**
 
 - Replace 1 button pattern with Button component
 - Maintain form functionality
@@ -314,6 +307,10 @@ This migration plan addresses **177 hardcoded patterns** across the Hugo site, c
 
 ## Conclusion
 
-This migration plan provides a comprehensive approach to eliminating 177 hardcoded patterns and establishing a robust design system. The phased approach ensures minimal disruption while maximizing code reusability and maintainability.
+This migration plan provides a comprehensive approach to eliminating 177
+hardcoded patterns and establishing a robust design system. The phased approach
+ensures minimal disruption while maximizing code reusability and
+maintainability.
 
-The expected 97% reduction in pattern duplication will significantly improve development efficiency and establish a solid foundation for future development.
+The expected 97% reduction in pattern duplication will significantly improve
+development efficiency and establish a solid foundation for future development.

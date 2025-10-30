@@ -2,7 +2,8 @@
 
 ## Overview
 
-This patch release focused on addressing a critical security vulnerability in PM2 and performing dependency audits.
+This patch release focused on addressing a critical security vulnerability in
+PM2 and performing dependency audits.
 
 ## Architecture Changes
 
@@ -22,11 +23,14 @@ This patch release focused on addressing a critical security vulnerability in PM
 
 ## Technical Decisions
 
-1. **PM2 Version Selection**: Chose v6.0.13 as it's the stable version addressing known vulnerabilities without major breaking changes
+1. **PM2 Version Selection**: Chose v6.0.13 as it's the stable version
+   addressing known vulnerabilities without major breaking changes
 
-2. **Minimal Change Approach**: Focused only on security updates, avoiding unnecessary refactoring or feature additions that could introduce regressions
+2. **Minimal Change Approach**: Focused only on security updates, avoiding
+   unnecessary refactoring or feature additions that could introduce regressions
 
-3. **Dependency Audit**: Performed npm audit to catch any additional vulnerabilities in the dependency tree
+3. **Dependency Audit**: Performed npm audit to catch any additional
+   vulnerabilities in the dependency tree
 
 ## Security Considerations
 

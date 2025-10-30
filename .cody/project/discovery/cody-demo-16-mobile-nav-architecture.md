@@ -4,7 +4,9 @@
 
 ### Overview
 
-Mobile navigation implemented with **Alpine.js** for lightweight, framework-free interactivity. Fixed iPhone Safari quirks that caused menu stickiness post-v0.9.2.
+Mobile navigation implemented with **Alpine.js** for lightweight, framework-free
+interactivity. Fixed iPhone Safari quirks that caused menu stickiness
+post-v0.9.2.
 
 ### Implementation
 
@@ -82,7 +84,8 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 
 ### 2. Why @click.outside Instead of CSS?
 
-- iPhone Safari issue: CSS `:hover` and pseudo-elements don't work reliably with touch events
+- iPhone Safari issue: CSS `:hover` and pseudo-elements don't work reliably with
+  touch events
 - Solution: Explicit JavaScript click detection
 - Trade-off: Requires Alpine.js, but necessary for iPhone compatibility
 
@@ -106,7 +109,9 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 
 ```html
 <div class="dropdown" @click.outside="mobileMenuOpen = false">
-  <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden">Menu</button>
+  <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden">
+    Menu
+  </button>
   <ul v-show="mobileMenuOpen" class="dropdown-content">
     <!-- Menu items -->
   </ul>
@@ -123,7 +128,8 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 </div>
 ```
 
-**Pattern:** Separate implementations for each breakpoint, not responsive components.
+**Pattern:** Separate implementations for each breakpoint, not responsive
+components.
 
 ---
 
@@ -167,7 +173,8 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
    - Pattern assumes flat menu structure
    - Would need additional Alpine.js logic for multi-level menus
 
-3. **Animation Timing:** `transition-all duration-300` may feel slow on poor networks
+3. **Animation Timing:** `transition-all duration-300` may feel slow on poor
+   networks
    - Trade-off: Smooth UX vs perceived performance
 
 ---
@@ -176,7 +183,8 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 
 **Potential improvement (v0.11.0+):**
 
-Instead of viewport breakpoints, use container queries for component-level responsiveness:
+Instead of viewport breakpoints, use container queries for component-level
+responsiveness:
 
 ```html
 <nav class="@container">
@@ -187,7 +195,8 @@ Instead of viewport breakpoints, use container queries for component-level respo
 </nav>
 ```
 
-**Benefit:** Menu adapts to nav width, not viewport width (more flexible for responsive designs)
+**Benefit:** Menu adapts to nav width, not viewport width (more flexible for
+responsive designs)
 
 ---
 
@@ -232,6 +241,9 @@ Instead of viewport breakpoints, use container queries for component-level respo
 3. Separate implementations (mobile dropdown vs desktop bar) for clarity
 4. Strong accessibility baseline (ARIA, keyboard nav)
 
-**For future v0.11.0+:** Consider container queries and deeper accessibility enhancements (Escape key, focus management).
+**For future v0.11.0+:** Consider container queries and deeper accessibility
+enhancements (Escape key, focus management).
 
-**Governance:** Any changes to dropdown behavior, breakpoints, or Alpine.js usage should be approved to maintain consistency across all dropdowns (nav, social, theme selector).
+**Governance:** Any changes to dropdown behavior, breakpoints, or Alpine.js
+usage should be approved to maintain consistency across all dropdowns (nav,
+social, theme selector).

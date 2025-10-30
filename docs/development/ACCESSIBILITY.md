@@ -1,10 +1,12 @@
 # Accessibility Implementation Guide
 
-This document outlines the accessibility improvements implemented in this Hugo site to achieve WCAG 2.1 AA compliance.
+This document outlines the accessibility improvements implemented in this Hugo
+site to achieve WCAG 2.1 AA compliance.
 
 ## Overview
 
-This website has been enhanced with comprehensive accessibility features including:
+This website has been enhanced with comprehensive accessibility features
+including:
 
 - Semantic HTML5 structure
 - Keyboard navigation support
@@ -19,7 +21,8 @@ This website has been enhanced with comprehensive accessibility features includi
 
 #### Changes Made:
 
-- Added proper HTML5 semantic elements (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`)
+- Added proper HTML5 semantic elements (`<header>`, `<nav>`, `<main>`,
+  `<section>`, `<article>`, `<footer>`)
 - Implemented ARIA landmarks and roles
 - Added proper heading hierarchy (h1-h6)
 - Enhanced document structure for screen readers
@@ -97,7 +100,8 @@ This website has been enhanced with comprehensive accessibility features includi
 
 #### Files Modified:
 
-- `layouts/partials/components/newsletter.html` - Complete form accessibility overhaul
+- `layouts/partials/components/newsletter.html` - Complete form accessibility
+  overhaul
 
 ### 6. Mobile & Touch Accessibility
 
@@ -224,10 +228,10 @@ This website has been enhanced with comprehensive accessibility features includi
 For accessibility-related questions or to report issues:
 
 - **Email**: accessibility@example.com
-- **GitHub Issues**: [Create accessibility issue](https://github.com/yourusername/yourrepo/issues/new?template=accessibility.md)
+- **GitHub Issues**:
+  [Create accessibility issue](https://github.com/yourusername/yourrepo/issues/new?template=accessibility.md)
 - **Accessibility Statement**: [/accessibility](/accessibility)
 
 ---
 
-**Last Updated**: January 1, 2025
-**Next Review**: July 1, 2025
+**Last Updated**: January 1, 2025 **Next Review**: July 1, 2025

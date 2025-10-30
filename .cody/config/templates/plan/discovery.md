@@ -1,6 +1,7 @@
 # Discovery
 
-This document captures the raw, unfiltered idea or initial AI prompt that sparked the project.
+This document captures the raw, unfiltered idea or initial AI prompt that
+sparked the project.
 
 ## Starting Prompt
 
@@ -8,11 +9,12 @@ This document captures the raw, unfiltered idea or initial AI prompt that sparke
 
 ## Questions
 
-**[AI AGENT TODO: Add all the questions and the answer from the **USER** below in the format listed below.]**
+**[AI AGENT TODO: Add all the questions and the answer from the **USER** below
+in the format listed below.]**
 
-**AGENT Q1:** [**AGENT** Question]
-**USER A1:** [**USER** Answer]
+**AGENT Q1:** [**AGENT** Question] **USER A1:** [**USER** Answer]
 
 ## Discovery Summary
 
-**[AI AGENT TODO: Summarize your understanding of the project here based on the original prompt and the Q&A.]**
+**[AI AGENT TODO: Summarize your understanding of the project here based on the
+original prompt and the Q&A.]**

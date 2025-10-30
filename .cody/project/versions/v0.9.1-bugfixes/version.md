@@ -2,7 +2,8 @@
 
 ## Overview
 
-Post-release bug fixes and CI/CD pipeline stabilization for v0.9.0 design system.
+Post-release bug fixes and CI/CD pipeline stabilization for v0.9.0 design
+system.
 
 ## Objectives
 
@@ -27,9 +28,12 @@ Post-release bug fixes and CI/CD pipeline stabilization for v0.9.0 design system
 
 ## Changes
 
-1. **Navigation Logo Fix** - Refactored button partial usage in navigation component to restore logo display
-2. **CI/CD Updates** - Removed --no-optional flag, added PostCSS CLI, configured Hugo build settings
-3. **Build Configuration** - Added .stylelintrc.json for CSS validation, disabled JS config in Hugo assets
+1. **Navigation Logo Fix** - Refactored button partial usage in navigation
+   component to restore logo display
+2. **CI/CD Updates** - Removed --no-optional flag, added PostCSS CLI, configured
+   Hugo build settings
+3. **Build Configuration** - Added .stylelintrc.json for CSS validation,
+   disabled JS config in Hugo assets
 
 ## Dependencies
 

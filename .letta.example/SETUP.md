@@ -4,9 +4,11 @@ This directory contains templates for `.letta/` configuration.
 
 ## Why .letta is not committed
 
-The `.letta/settings.json` contains absolute paths specific to each developer's machine, so it's excluded from git via `.gitignore`.
+The `.letta/settings.json` contains absolute paths specific to each developer's
+machine, so it's excluded from git via `.gitignore`.
 
-The configuration is synced via Letta's memory block system—persisted between sessions and machines without needing external services.
+The configuration is synced via Letta's memory block system—persisted between
+sessions and machines without needing external services.
 
 ## Setup
 
@@ -65,7 +67,8 @@ Configuration schema is defined in `.letta.schema.json`:
 - **Auto-check**: Script compares current config against schema
 - **Accept changes**: Prompts to merge new properties
 
-This ensures you always inherit new Letta features and properties while maintaining explicit control.
+This ensures you always inherit new Letta features and properties while
+maintaining explicit control.
 
 ## If Moving to Another Machine
 

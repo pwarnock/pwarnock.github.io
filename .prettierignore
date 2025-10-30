@@ -14,6 +14,7 @@ hugo_stats.json
 
 # Hugo templates (preserve Go template formatting)
 layouts/**/*.html
+layouts/**/*.json
 
 # Lock files
 package-lock.json

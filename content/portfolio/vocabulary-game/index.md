@@ -2,7 +2,9 @@
 date: 2024-11-23
 draft: false
 title: 'Vocabulary Game'
-description: 'An educational game designed to help young children (5 years old) practice typing, spelling, and reading skills through interactive vocabulary exercises.'
+description:
+  'An educational game designed to help young children (5 years old) practice
+  typing, spelling, and reading skills through interactive vocabulary exercises.'
 client: 'Personal Project - Child Education'
 technologies: ['React', 'JavaScript', 'HTML5', 'CSS3']
 github_url: 'https://github.com/pwarnock/vocabulary-game'
@@ -13,11 +15,17 @@ category: 'Educational Game'
 
 # Vocabulary Game - Educational Typing Practice
 
-Vocabulary Game is a simple, focused educational application designed to help young children (specifically 5-year-olds) practice typing, spelling, and reading skills. The project demonstrates the practical application of AI-assisted development for creating educational tools.
+Vocabulary Game is a simple, focused educational application designed to help
+young children (specifically 5-year-olds) practice typing, spelling, and reading
+skills. The project demonstrates the practical application of AI-assisted
+development for creating educational tools.
 
 ## Project Overview
 
-This frontend-only application provides an engaging way for children to learn vocabulary through typing practice. The game displays words that the child types, with immediate feedback on submission. It's designed as a personal educational tool for early childhood development.
+This frontend-only application provides an engaging way for children to learn
+vocabulary through typing practice. The game displays words that the child
+types, with immediate feedback on submission. It's designed as a personal
+educational tool for early childhood development.
 
 ## Core Features
 
@@ -25,8 +33,10 @@ This frontend-only application provides an engaging way for children to learn vo
 
 - **Word Display**: Shows age-appropriate words one at a time
 - **Typing Practice**: Child types the displayed word in an input field
-- **Immediate Feedback**: Provides instant feedback when the child submits their answer
-- **Configurable Word Packs**: Different themed vocabulary sets (Disney, school, fruit, etc.)
+- **Immediate Feedback**: Provides instant feedback when the child submits their
+  answer
+- **Configurable Word Packs**: Different themed vocabulary sets (Disney, school,
+  fruit, etc.)
 
 ### Educational Focus
 
@@ -121,16 +131,17 @@ This project represents an exploration of AI-assisted development:
 
 ## Technology Stack
 
-**Frontend**: React, JavaScript, HTML5, CSS3
-**Development Tools**: GPT-4o Mini via Abacus.AI
-**Environment**: Modern web browser (local use)
-**Version Control**: Git
+**Frontend**: React, JavaScript, HTML5, CSS3 **Development Tools**: GPT-4o Mini
+via Abacus.AI **Environment**: Modern web browser (local use) **Version
+Control**: Git
 
 ## Live Demo
 
-Try the Vocabulary Game online: [https://pwarnock.github.io/vocabulary-game/](https://pwarnock.github.io/vocabulary-game/)
+Try the Vocabulary Game online:
+[https://pwarnock.github.io/vocabulary-game/](https://pwarnock.github.io/vocabulary-game/)
 
-The demo provides the full interactive experience where children can practice typing and spelling with immediate feedback.
+The demo provides the full interactive experience where children can practice
+typing and spelling with immediate feedback.
 
 ## Future Considerations
 
@@ -148,4 +159,6 @@ The demo provides the full interactive experience where children can practice ty
 - Gained experience in modern development workflows
 - Established foundation for future educational projects
 
-This project showcases the practical application of AI-assisted development for creating meaningful educational tools, demonstrating how modern development approaches can be leveraged for personal and educational purposes.
+This project showcases the practical application of AI-assisted development for
+creating meaningful educational tools, demonstrating how modern development
+approaches can be leveraged for personal and educational purposes.

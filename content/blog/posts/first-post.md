@@ -8,7 +8,8 @@ author: 'Peter Warnock'
 
 # Getting Started with Hugo and Daisy UI
 
-In this post, I'll share my experience setting up a new personal website using Hugo static site generator combined with Daisy UI component library.
+In this post, I'll share my experience setting up a new personal website using
+Hugo static site generator combined with Daisy UI component library.
 
 ## Why Hugo?
 
@@ -64,7 +65,9 @@ Here are some Daisy UI components I'm using:
 
 ## Conclusion
 
-Combining Hugo with Daisy UI gives you the best of both worlds - fast static sites with modern, responsive components. I'm excited to continue building out this site!
+Combining Hugo with Daisy UI gives you the best of both worlds - fast static
+sites with modern, responsive components. I'm excited to continue building out
+this site!
 
 ---
 

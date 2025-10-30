@@ -2,7 +2,8 @@
 
 ## Overview
 
-This release focused on improving mobile user experience and automating release processes while expanding content offerings.
+This release focused on improving mobile user experience and automating release
+processes while expanding content offerings.
 
 ## Architecture Changes
 
@@ -29,13 +30,17 @@ This release focused on improving mobile user experience and automating release 
 
 ## Technical Decisions
 
-1. **Alpine.js for Interactivity**: Used Alpine.js `@click.outside` for lightweight, performant dropdown detection without additional dependencies
+1. **Alpine.js for Interactivity**: Used Alpine.js `@click.outside` for
+   lightweight, performant dropdown detection without additional dependencies
 
-2. **Touch Event Handling**: Implemented specific iPhone touch event handling to work around Safari quirks with pseudo-element detection
+2. **Touch Event Handling**: Implemented specific iPhone touch event handling to
+   work around Safari quirks with pseudo-element detection
 
-3. **Version Automation**: Created bash script to automate version bumping, reducing manual errors and ensuring consistency
+3. **Version Automation**: Created bash script to automate version bumping,
+   reducing manual errors and ensuring consistency
 
-4. **Content Versioning**: Added tool version tracking to support future tool updates and migrations
+4. **Content Versioning**: Added tool version tracking to support future tool
+   updates and migrations
 
 ## Dependencies
 

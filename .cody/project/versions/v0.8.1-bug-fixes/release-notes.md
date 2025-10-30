@@ -1,22 +1,25 @@
 # Release Notes v0.8.1-bug-fixes
 
-**Release Date**: October 27, 2025
-**Version Type**: Patch Release
-**Previous Version**: v0.8.0-upstream-integration
+**Release Date**: October 27, 2025 **Version Type**: Patch Release **Previous
+Version**: v0.8.0-upstream-integration
 
 ## 🐛 Bug Fixes
 
 ### DeepAgent URL Correction
 
-- **Issue**: The DeepAgent tool page was pointing to an incorrect URL `https://deepagent.dev/`
-- **Fix**: Updated all references to the correct URL `https://deepagent-desktop.abacus.ai/`
+- **Issue**: The DeepAgent tool page was pointing to an incorrect URL
+  `https://deepagent.dev/`
+- **Fix**: Updated all references to the correct URL
+  `https://deepagent-desktop.abacus.ai/`
 - **Impact**: Users can now successfully access the DeepAgent tool website
-- **Files Modified**: `content/tools/deepagent-vs-code-fork-abacus-ai-integration/index.md`
+- **Files Modified**:
+  `content/tools/deepagent-vs-code-fork-abacus-ai-integration/index.md`
 
 ### Vocabulary Game Demo Link
 
 - **Issue**: Missing live demo link in the vocabulary game portfolio item
-- **Fix**: Added demo URL and live demo section with link to `https://pwarnock.github.io/vocabulary-game/`
+- **Fix**: Added demo URL and live demo section with link to
+  `https://pwarnock.github.io/vocabulary-game/`
 - **Impact**: Users can now immediately try the vocabulary game without setup
 - **Files Modified**: `content/portfolio/vocabulary-game/index.md`
 
@@ -139,4 +142,5 @@
 
 ---
 
-_This patch release focuses on critical user experience improvements while maintaining system stability and backward compatibility._
+_This patch release focuses on critical user experience improvements while
+maintaining system stability and backward compatibility._

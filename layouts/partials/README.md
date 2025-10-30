@@ -1,6 +1,7 @@
 # Reusable Component Partials
 
-This directory contains reusable Hugo partial components to reduce duplication and maintain consistency across the site.
+This directory contains reusable Hugo partial components to reduce duplication
+and maintain consistency across the site.
 
 ## Components Overview
 
@@ -8,7 +9,8 @@ This directory contains reusable Hugo partial components to reduce duplication a
 
 #### `card.html`
 
-A flexible card component for displaying content with optional links, badges, and footers.
+A flexible card component for displaying content with optional links, badges,
+and footers.
 
 **Parameters:**
 
@@ -141,7 +143,8 @@ High-level component for blog posts and portfolio items.
 - `type` - "post" or "portfolio" (affects styling)
 - `show_date` - Whether to show date (default: true for posts)
 - `show_reading_time` - Whether to show reading time (default: true for posts)
-- `show_technologies` - Whether to show technologies (default: true for portfolio)
+- `show_technologies` - Whether to show technologies (default: true for
+  portfolio)
 - `summary_override` - Override for summary text
 
 #### `content-card-footer.html`
@@ -159,9 +162,12 @@ Footer component for content cards with metadata and action buttons.
 
 ## Usage Guidelines
 
-1. **Consistency**: Use these components instead of writing custom HTML for common patterns
-2. **Accessibility**: Always provide `title_id` for cards when possible for screen readers
-3. **Flexibility**: Components accept optional parameters - only provide what you need
+1. **Consistency**: Use these components instead of writing custom HTML for
+   common patterns
+2. **Accessibility**: Always provide `title_id` for cards when possible for
+   screen readers
+3. **Flexibility**: Components accept optional parameters - only provide what
+   you need
 4. **Documentation**: Each component includes inline parameter documentation
 5. **Testing**: Test components across different screen sizes and devices
 

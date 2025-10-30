@@ -6,7 +6,8 @@
 
 ### Problem
 
-When moving CSS files from `assets/` to `static/` to bypass PostCSS issues, the CSS file still contained unprocessed Tailwind directives:
+When moving CSS files from `assets/` to `static/` to bypass PostCSS issues, the
+CSS file still contained unprocessed Tailwind directives:
 
 ```css
 @import 'tailwindcss';
@@ -92,7 +93,8 @@ git push upstream main
 If Site Styling Breaks:
 
 1. **Immediate**: Check CSS file content
-2. **Process**: `npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss`
+2. **Process**:
+   `npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss`
 3. **Test**: `npm run build`
 4. **Deploy**: Commit and push
 
@@ -170,7 +172,8 @@ jobs:
 
 ### Root Causes
 
-1. **Repository Settings**: GitHub Pages not configured to accept deployments from GitHub Actions
+1. **Repository Settings**: GitHub Pages not configured to accept deployments
+   from GitHub Actions
 2. **Token Permissions**: GITHUB_TOKEN lacks necessary permissions
 3. **Branch Protection**: Main branch has restrictions preventing deployment
 
@@ -209,8 +212,7 @@ After fixing, check:
 
 ---
 
-**Last Updated**: October 27, 2025
-**Critical Issues**:
+**Last Updated**: October 27, 2025 **Critical Issues**:
 
 1. ✅ CSS processing with Tailwind directives - RESOLVED
 2. ✅ GitHub Pages deployment failure - RESOLVED
@@ -307,7 +309,8 @@ If deployment fails:
 
 ---
 
-**CRITICAL REMINDER**: Always maintain the robust `cicd.yml` pipeline structure. Never revert to simplified single-job workflows for production deployments.
+**CRITICAL REMINDER**: Always maintain the robust `cicd.yml` pipeline structure.
+Never revert to simplified single-job workflows for production deployments.
 
 ---
 
@@ -327,7 +330,8 @@ If deployment fails:
 2. **Update hugo.toml**: `version = "x.y.z"`
 3. **Create Git Tag**: `git tag -a vx.y.z -m "Release notes"`
 4. **Push Tag**: `git push upstream vx.y.z`
-5. **Create GitHub Release**: `gh release create vx.y.z --title "vx.y.z" --notes "..."`
+5. **Create GitHub Release**:
+   `gh release create vx.y.z --title "vx.y.z" --notes "..."`
 
 ### Rollback Strategy
 
@@ -363,7 +367,8 @@ Before creating release:
 - **Version**: v0.10.0
 - **Release Date**: October 30, 2025
 - **Git Tag**: v0.10.0
-- **GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
+- **GitHub Release**:
+  https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
 - **Footer Display**: Shows "v0.10.0 (5761548)"
 - **Main Branch Status**: ✅ Synced with production
 
@@ -372,7 +377,8 @@ Before creating release:
 - **Development version bumps**: Happen at next `:cody build` command
 - **Patch bumps**: Requested manually when `patch` is specified
 - **Main branch**: Always matches production version after release
-- **Feature branches**: May have development version tags (e.g., `v0.10.0-spacing-scale`)
+- **Feature branches**: May have development version tags (e.g.,
+  `v0.10.0-spacing-scale`)
 
 ### Post-Release Process
 

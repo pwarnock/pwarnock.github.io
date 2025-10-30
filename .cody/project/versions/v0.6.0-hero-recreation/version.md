@@ -1,12 +1,12 @@
 # v0.6.0-hero-recreation
 
-**Status**: ✅ Completed
-**Start Date**: 2025-10-23
-**Completion Date**: 2025-10-23
+**Status**: ✅ Completed **Start Date**: 2025-10-23 **Completion Date**:
+2025-10-23
 
 ## Version Summary
 
-Hero section recreation and enhancement: Recreate and enhance the hero section with improved design and functionality.
+Hero section recreation and enhancement: Recreate and enhance the hero section
+with improved design and functionality.
 
 ## Features
 

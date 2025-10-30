@@ -7,7 +7,8 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 
 ### ANNOUNCE TO THE **USER**
 
-- Tell the **USER** that you (**AGENT**) are checking for Cody framework updates.
+- Tell the **USER** that you (**AGENT**) are checking for Cody framework
+  updates.
 
 ### CHECK FOR UPDATES
 
@@ -36,7 +37,8 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Skip to COMPLETION section
 - If the status is "update_available":
   - Tell the **USER** that a newer version is available
-  - Display: "Current version: [local_version]" and "Available version: [remote_version]"
+  - Display: "Current version: [local_version]" and "Available version:
+    [remote_version]"
   - Ask the **USER**: "Would you like to upgrade to version [remote_version]?"
   - Wait for **USER** response
 
@@ -51,8 +53,10 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 
 ### DOWNLOAD UPGRADE
 
-- Tell the **USER** that you (**AGENT**) are downloading the new Cody framework version
-- Use the Bash tool to run: `{{cfScripts}}/upgrade-download.sh [remote_version]` (use the remote_version from the check script output)
+- Tell the **USER** that you (**AGENT**) are downloading the new Cody framework
+  version
+- Use the Bash tool to run: `{{cfScripts}}/upgrade-download.sh [remote_version]`
+  (use the remote_version from the check script output)
 - Parse the JSON output from the download script and extract:
   - status (required): "success" or "error"
   - target_version (optional): Version being downloaded
@@ -92,14 +96,16 @@ description: Upgrades the Cody framework to the latest version from GitHub.
   - Congratulate the **USER** on the successful upgrade
   - Display: "Upgraded from version [from_version] to [to_version]"
   - Tell the **USER** that their Cody framework is now up to date
-  - Inform the **USER** that a backup of their previous configuration was created
+  - Inform the **USER** that a backup of their previous configuration was
+    created
   - If backup_path is provided, tell them the backup location: [backup_path]
   - Let them know they can delete the backup folder if they no longer need it
   - Continue to RELEARN AFTER UPGRADE section
 - If the status is "error":
   - Tell the **USER** that the upgrade installation encountered an error
   - Display the error message from the JSON output
-  - If backup_path is provided, inform them that a backup was created at: [backup_path]
+  - If backup_path is provided, inform them that a backup was created at:
+    [backup_path]
   - Provide helpful suggestions based on common installation issues:
     - Check that they have write permissions to the .cody directory
     - Verify available disk space
@@ -108,9 +114,11 @@ description: Upgrades the Cody framework to the latest version from GitHub.
 
 ### RELEARN AFTER UPGRADE (only if upgrade was successful)
 
-- Tell the **USER** that since the framework was upgraded, the **AGENT** will now relearn the framework
+- Tell the **USER** that since the framework was upgraded, the **AGENT** will
+  now relearn the framework
 - Execute the command `:cody relearn`
 
 ### COMPLETION
 
-- Tell the **USER** that the upgrade process is complete and you're ready to continue working
+- Tell the **USER** that the upgrade process is complete and you're ready to
+  continue working

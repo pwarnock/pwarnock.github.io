@@ -2,7 +2,8 @@
 
 ## Overview
 
-Mobile interaction improvements and new content expansion featuring Grokipedia tool launch.
+Mobile interaction improvements and new content expansion featuring Grokipedia
+tool launch.
 
 ## Objectives
 
@@ -29,10 +30,12 @@ Mobile interaction improvements and new content expansion featuring Grokipedia t
 
 ## Changes
 
-1. **Mobile Navigation** - Fixed dropdown menus with Alpine.js click-outside detection for all devices
+1. **Mobile Navigation** - Fixed dropdown menus with Alpine.js click-outside
+   detection for all devices
 2. **iPhone Support** - Added specific touch event handling for iPhone Safari
 3. **Theme Selector** - Enhanced Alpine.js integration for theme switching
-4. **Content Expansion** - Added Grokipedia 0.1 launch post and tool documentation
+4. **Content Expansion** - Added Grokipedia 0.1 launch post and tool
+   documentation
 5. **Automation** - Created version bump script with npm integration
 
 ## Dependencies

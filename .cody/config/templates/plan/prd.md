@@ -1,6 +1,7 @@
 # Product Requirements Document (PRD)
 
-This document formalizes the idea and defines the what and the why of the product the USER is building.
+This document formalizes the idea and defines the what and the why of the
+product the USER is building.
 
 ## Section Explanations
 
@@ -54,7 +55,8 @@ _What won't be included in the first version?_
 
 ## User Stories (Optional)
 
-_What does the user want to accomplish? Keep these high-level to focus on user goals, not implementation details._
+_What does the user want to accomplish? Keep these high-level to focus on user
+goals, not implementation details._
 
 - **[AI AGENT TODO: Add user story 1]**
 

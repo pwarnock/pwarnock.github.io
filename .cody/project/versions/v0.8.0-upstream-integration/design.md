@@ -1,13 +1,13 @@
 # v0.8.0-upstream-integration Design Document
 
-**Version**: v0.8.0-upstream-integration
-**Status**: ✅ Completed
-**Start Date**: October 26, 2025
-**Completion Date**: October 27, 2025
+**Version**: v0.8.0-upstream-integration **Status**: ✅ Completed **Start
+Date**: October 26, 2025 **Completion Date**: October 27, 2025
 
 ## 🎯 Project Overview
 
-v0.8.0-upstream-integration focuses on integrating our enhanced tools section with the upstream pwarnock.github.io repository while preserving our superior content structure and quality improvements.
+v0.8.0-upstream-integration focuses on integrating our enhanced tools section
+with the upstream pwarnock.github.io repository while preserving our superior
+content structure and quality improvements.
 
 ## 📋 Integration Analysis
 
@@ -19,7 +19,8 @@ v0.8.0-upstream-integration focuses on integrating our enhanced tools section wi
 
 ### Integration Strategy
 
-**Approach**: Preserve our enhanced structure while selectively integrating upstream improvements
+**Approach**: Preserve our enhanced structure while selectively integrating
+upstream improvements
 
 ### Priority Integration Items
 
@@ -179,4 +180,5 @@ content/
 4. **Prepare Release**: Documentation and release notes
 5. **Submit PR**: Create pull request for upstream integration
 
-This integration will combine the best of both repositories while maintaining our superior content quality and user experience.
+This integration will combine the best of both repositories while maintaining
+our superior content quality and user experience.

@@ -2,7 +2,8 @@
 
 ## Overview
 
-Design system overhaul to create consistent, reusable components and improve maintainability across the portfolio website.
+Design system overhaul to create consistent, reusable components and improve
+maintainability across the portfolio website.
 
 ## Objectives
 

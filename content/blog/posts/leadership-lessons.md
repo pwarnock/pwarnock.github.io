@@ -8,11 +8,13 @@ author: 'Peter Warnock'
 
 # Leadership Lessons from 10 Years in Tech
 
-After a decade in technology leadership roles, I've learned valuable lessons about managing teams, projects, and careers. Here are my key takeaways.
+After a decade in technology leadership roles, I've learned valuable lessons
+about managing teams, projects, and careers. Here are my key takeaways.
 
 ## 1. Technical Excellence Isn't Enough
 
-Being a great developer doesn't automatically make you a great leader. The skills that got you here won't get you there.
+Being a great developer doesn't automatically make you a great leader. The
+skills that got you here won't get you there.
 
 <div class="alert alert-warning">
   <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
@@ -104,8 +106,10 @@ The tech landscape changes constantly. Stay curious:
 
 ## Final Thoughts
 
-Leadership is a journey, not a destination. The best leaders are always learning, adapting, and growing alongside their teams.
+Leadership is a journey, not a destination. The best leaders are always
+learning, adapting, and growing alongside their teams.
 
 ---
 
-_What leadership lessons have you learned in your career? I'd love to hear your experiences!_
+_What leadership lessons have you learned in your career? I'd love to hear your
+experiences!_

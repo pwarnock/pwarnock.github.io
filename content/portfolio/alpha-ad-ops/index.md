@@ -2,10 +2,19 @@
 date: 2025-10-22
 draft: false
 title: 'Alpha Ad Ops'
-description: 'A rapid prototype advertising operations platform built with Laravel and Filament, demonstrating full-stack development capabilities and modern SaaS architecture patterns.'
+description:
+  'A rapid prototype advertising operations platform built with Laravel and
+  Filament, demonstrating full-stack development capabilities and modern SaaS
+  architecture patterns.'
 client: 'Proof of Concept'
 technologies:
-  ['Laravel', 'Filament', 'SaasyKit-compatible', 'Laravel Cloud', 'Multi-tenant Architecture']
+  [
+    'Laravel',
+    'Filament',
+    'SaasyKit-compatible',
+    'Laravel Cloud',
+    'Multi-tenant Architecture',
+  ]
 live_url: 'https://alpha-ad-operations-dev-s9qwhp.laravel.cloud/'
 github_url: 'https://github.com/pwarnock/alpha-ad-operations'
 completion_date: '2025-10'
@@ -14,11 +23,17 @@ category: 'SaaS Prototype'
 
 # Alpha Ad Ops - Rapid Prototype Development
 
-Alpha Ad Ops is a proof-of-concept advertising operations platform developed as a rapid prototype to demonstrate full-stack development capabilities and modern SaaS architecture patterns. The project was built from concept to deployment in a single day based on prospect requirements.
+Alpha Ad Ops is a proof-of-concept advertising operations platform developed as
+a rapid prototype to demonstrate full-stack development capabilities and modern
+SaaS architecture patterns. The project was built from concept to deployment in
+a single day based on prospect requirements.
 
 ## Project Overview
 
-This prototype showcases the ability to quickly translate business requirements into a functional SaaS application using modern Laravel ecosystem tools. The platform demonstrates multi-tenant architecture, admin panel development, and cloud deployment capabilities.
+This prototype showcases the ability to quickly translate business requirements
+into a functional SaaS application using modern Laravel ecosystem tools. The
+platform demonstrates multi-tenant architecture, admin panel development, and
+cloud deployment capabilities.
 
 ## Technical Implementation
 
@@ -54,7 +69,8 @@ This prototype showcases the ability to quickly translate business requirements 
 - Tenant onboarding and setup processes
 - Data isolation and security boundaries
 
-_Note: Implemented SaasyKit-compatible multi-tenant architecture patterns without requiring the commercial SaasyKit license._
+_Note: Implemented SaasyKit-compatible multi-tenant architecture patterns
+without requiring the commercial SaasyKit license._
 
 ### Deployment & Infrastructure
 
@@ -76,9 +92,12 @@ _Note: Implemented SaasyKit-compatible multi-tenant architecture patterns withou
 
 ### Requirements to Prototype (24 hours)
 
-1. **Requirements Gathering** (2 hours): Client consultation and feature definition
-2. **Architecture Planning** (1 hour): Multi-tenant strategy and tech stack selection
-3. **Core Development** (12 hours): Laravel app, Filament panels, and tenant setup
+1. **Requirements Gathering** (2 hours): Client consultation and feature
+   definition
+2. **Architecture Planning** (1 hour): Multi-tenant strategy and tech stack
+   selection
+3. **Core Development** (12 hours): Laravel app, Filament panels, and tenant
+   setup
 4. **Testing & Refinement** (3 hours): Feature testing and UI polish
 5. **Deployment** (2 hours): Laravel Cloud setup and production deployment
 6. **Documentation** (4 hours): Code documentation and deployment notes
@@ -131,12 +150,10 @@ _Note: Implemented SaasyKit-compatible multi-tenant architecture patterns withou
 
 ## Technology Stack
 
-**Backend**: Laravel 11, PHP 8.3, MySQL
-**Admin Panel**: Filament 3, Livewire
-**Multi-tenant**: SaasyKit-compatible patterns
-**Deployment**: Laravel Cloud
-**Development**: Docker, Composer, NPM
-**Version Control**: Git with feature branch workflow
+**Backend**: Laravel 11, PHP 8.3, MySQL **Admin Panel**: Filament 3, Livewire
+**Multi-tenant**: SaasyKit-compatible patterns **Deployment**: Laravel Cloud
+**Development**: Docker, Composer, NPM **Version Control**: Git with feature
+branch workflow
 
 ## Future Considerations
 
@@ -148,4 +165,6 @@ While this prototype will not be continued, it demonstrates:
 - Cloud deployment proficiency
 - Client requirement translation to technical solutions
 
-The project serves as a testament to the ability to quickly deliver functional, production-ready software that addresses specific business needs while maintaining high code quality and architectural standards.
+The project serves as a testament to the ability to quickly deliver functional,
+production-ready software that addresses specific business needs while
+maintaining high code quality and architectural standards.

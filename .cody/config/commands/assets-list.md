@@ -1,6 +1,8 @@
 ---
 command: ':cody assets list'
-description: Lists all the files stored in the assets folder, along with their known descriptions of what they are used for.
+description:
+  Lists all the files stored in the assets folder, along with their known
+  descriptions of what they are used for.
 ---
 
 # LIST ALL ASSETS
@@ -13,7 +15,8 @@ List of Assets in the Assets Folder
 +---------------------------------+
 ```
 
-- List all the assets available in the `{{cfAssets}}` folder. But follow the format instructions below.
+- List all the assets available in the `{{cfAssets}}` folder. But follow the
+  format instructions below.
 - Provide any details you know about each asset below each file.
 - Do not provide the information in a table format.
 

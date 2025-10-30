@@ -7,7 +7,8 @@
 **Scope:** This audit verifies compliance for:
 
 1. **Disabilities** - Screen readers, keyboard navigation, focus management
-2. **Machine readability** - Semantic HTML, structured data, schema.org compliance
+2. **Machine readability** - Semantic HTML, structured data, schema.org
+   compliance
 
 ---
 
@@ -18,7 +19,8 @@
 #### 1. Semantic Markup (59 instances found)
 
 - Heading hierarchy (`<h1>` → `<h6>`)
-- Landmark elements: `<main>`, `<section>`, `<article>`, `<header>`, `<footer>`, `<nav>`
+- Landmark elements: `<main>`, `<section>`, `<article>`, `<header>`, `<footer>`,
+  `<nav>`
 - List elements: `<ul>`, `<ol>`, `<li>` for navigation menus
 
 **Example:**
@@ -48,13 +50,19 @@
 **Example:**
 
 ```html
-<img loading="lazy" src="image.jpg" alt="Image description" title="Optional title" />
+<img
+  loading="lazy"
+  src="image.jpg"
+  alt="Image description"
+  title="Optional title"
+/>
 ```
 
 #### 4. Color Contrast
 
 - DaisyUI components ensure 4.5:1+ contrast
-- Text shadow utilities (`text-shadow`, `text-shadow-md`, `text-shadow-lg`) use dark overlays
+- Text shadow utilities (`text-shadow`, `text-shadow-md`, `text-shadow-lg`) use
+  dark overlays
 - Theme system provides sufficient contrast in light/dark modes
 
 #### 5. Focus Indicators
@@ -216,7 +224,8 @@ Alpine.js implementation:
 
 ### 4. High Contrast Mode
 
-**Enhancement:** Detect `prefers-contrast: high` and apply stronger borders/colors
+**Enhancement:** Detect `prefers-contrast: high` and apply stronger
+borders/colors
 
 ```css
 @media (prefers-contrast: high) {
@@ -369,4 +378,5 @@ All new components must include:
 - High contrast mode support
 - Expanded schema.org markup
 
-**Recommendation:** Conduct user testing with assistive technology users to validate real-world accessibility (not just compliance).
+**Recommendation:** Conduct user testing with assistive technology users to
+validate real-world accessibility (not just compliance).

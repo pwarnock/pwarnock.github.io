@@ -3,7 +3,9 @@ title: 'About'
 date: 2025-01-01T00:00:00Z
 draft: false
 type: 'page'
-description: 'Learn about Peter Warnock - fullstack developer and technology leader with 15+ years of experience building scalable web applications.'
+description:
+  'Learn about Peter Warnock - fullstack developer and technology leader with
+  15+ years of experience building scalable web applications.'
 customHTML: true
 ---
 

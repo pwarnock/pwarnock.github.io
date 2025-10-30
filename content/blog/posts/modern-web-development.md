@@ -8,7 +8,8 @@ author: 'Peter Warnuck'
 
 # Modern Web Development in 2025
 
-The web development landscape continues to evolve rapidly. Here are my thoughts on the current state and future directions.
+The web development landscape continues to evolve rapidly. Here are my thoughts
+on the current state and future directions.
 
 ## The Component Revolution
 

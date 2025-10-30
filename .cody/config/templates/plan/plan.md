@@ -24,7 +24,9 @@ _A quick summary of what this plan is for and what product it's implementing._
 
 ## Architecture
 
-_High-level structure and major technical decisions. Include how the system is organized (e.g., client-server, monolith, microservices) and the proposed tech stack (frameworks, languages, storage, deployment)._
+_High-level structure and major technical decisions. Include how the system is
+organized (e.g., client-server, monolith, microservices) and the proposed tech
+stack (frameworks, languages, storage, deployment)._
 
 **[AI AGENT TODO: Describe the architecture and proposed tech stack.]**
 
@@ -42,7 +44,10 @@ _What are the main types of data or objects the system will manage?_
 
 ## Major Technical Steps
 
-_What are the major technical steps required to implement this product? Keep the tasks high-level and milestone-focused (e.g., "Build user input form," not "Write handleInput() function"). These will guide the AGENT or dev team in breaking down the work further._
+_What are the major technical steps required to implement this product? Keep the
+tasks high-level and milestone-focused (e.g., "Build user input form," not
+"Write handleInput() function"). These will guide the AGENT or dev team in
+breaking down the work further._
 
 - **[AI AGENT TODO: Add task 1]**
 

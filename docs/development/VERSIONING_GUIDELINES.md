@@ -1,6 +1,7 @@
 # Versioning Guidelines
 
-This document establishes versioning standards and conventions for the Peter Warnock portfolio website project.
+This document establishes versioning standards and conventions for the Peter
+Warnock portfolio website project.
 
 ## Versioning Strategy
 
@@ -549,4 +550,5 @@ git branch -d release/$VERSION
 5. Investigate root cause
 6. Plan proper fix
 
-This versioning system ensures consistent, predictable releases while maintaining high quality and reliability standards.
+This versioning system ensures consistent, predictable releases while
+maintaining high quality and reliability standards.

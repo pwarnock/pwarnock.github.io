@@ -13,7 +13,8 @@ aliases: ['/tools/short-slug/']
 
 # Tool Name
 
-[Comprehensive introduction paragraph explaining what the tool is, who makes it, when it was launched, and its primary purpose in the AI coding landscape.]
+[Comprehensive introduction paragraph explaining what the tool is, who makes it,
+when it was launched, and its primary purpose in the AI coding landscape.]
 
 ## Core Features
 
@@ -48,15 +49,18 @@ aliases: ['/tools/short-slug/']
 
 ### Advantage 1
 
-[Detailed explanation of what makes this tool unique in the market, including specific technical capabilities or innovative approaches.]
+[Detailed explanation of what makes this tool unique in the market, including
+specific technical capabilities or innovative approaches.]
 
 ### Advantage 2
 
-[Another key differentiator with specific examples of how it outperforms competitors or solves unique problems.]
+[Another key differentiator with specific examples of how it outperforms
+competitors or solves unique problems.]
 
 ### Developer Experience
 
-[How the tool specifically improves developer workflow, productivity, or code quality.]
+[How the tool specifically improves developer workflow, productivity, or code
+quality.]
 
 ## Use Cases
 
@@ -84,4 +88,6 @@ aliases: ['/tools/short-slug/']
 
 ---
 
-_This tool overview is part of our comprehensive guide to [vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October 26, 2025._
+_This tool overview is part of our comprehensive guide to
+[vibe coding tools](/posts/vibe-coding-revolution/). Last updated: October
+26, 2025._
