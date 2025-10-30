@@ -15,7 +15,7 @@ v0.10.0 introduces a comprehensive spacing scale refactoring that standardizes a
 - **Unified Spacing System**: Replaced arbitrary margins/padding with systematic scale
 - **CSS Variables**: Implemented custom properties for maintainable spacing tokens
 - **Consistency**: Applied spacing scale across all components and sections
-- **Documentation**: STYLE_GUIDE.md updated with spacing guidelines
+- **Documentation**: docs/development/STYLE_GUIDE.md updated with spacing guidelines
 
 ### 🏷️ Version Management & Display
 - **Git Hash Tracking**: Footer now displays commit hash (e.g., v0.10.0-spacing-scale (e39bf60))

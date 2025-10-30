@@ -229,7 +229,7 @@ version = "0.8.2"  # Update this
 
 #### Version Documentation
 - `CHANGELOG.md`: Release notes and history
-- `RELEASE_MANAGEMENT.md`: Process documentation
+- `docs/operations/RELEASE_MANAGEMENT.md`: Process documentation
 - Version-specific release notes
 
 ### Git Tags

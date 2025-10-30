@@ -148,6 +148,17 @@ npm run analyze
 └── scripts/         # Utility scripts
 ```
 
+## 🏗️ Development Framework
+
+This project uses the [Cody Framework](https://github.com/icodewith-ai/cody-framework) for professional development workflow management:
+
+- **Version Planning**: Structured feature development with discovery, planning, and implementation phases
+- **Issue Tracking**: Integrated with beads (beads) for dependency-aware task management
+- **Release Process**: Automated versioning, retrospectives, and release management
+- **Documentation**: Living documentation that evolves with the codebase
+
+**Credits**: Special thanks to **Marcelo** of [Red Pill Blue Pill Studios, LLC](https://github.com/icodewith-ai) for creating and maintaining the Cody Framework. Contact: marcelo@redpillbluepillstudios.com
+
 ## 🎨 Design System
 
 This project uses a unified design system with:
@@ -238,4 +249,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Built with ❤️ using [Hugo](https://gohugo.io/) and [Tailwind CSS](https://tailwindcss.com/)
+Built with ❤️ using [Hugo](https://gohugo.io/), [Tailwind CSS](https://tailwindcss.com/), and [Cody Framework](https://github.com/icodewith-ai/cody-framework)

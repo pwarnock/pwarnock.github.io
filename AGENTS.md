@@ -1,5 +1,23 @@
 # AGENTS.md - Cody Framework Development Guide
 
+## Agent Initialization
+
+**Before starting work, run the agent initialization script:**
+
+```bash
+./scripts/agent-init.sh
+```
+
+This script will:
+- ✅ Check for Cody Framework updates
+- ✅ Verify `.cody` directory health
+- ✅ Display key guidelines and commands
+- ✅ Show available tasks
+
+**Update Check**: The script automatically checks for Cody Framework updates on initialization. If updates are available, you'll be notified to run `:cody upgrade`.
+
+**Manual Update Check**: Run `./.cody/config/scripts/upgrade-check.sh` to check for updates at any time.
+
 ## Issue Tracking with bd (beads)
 
 **IMPORTANT**: This project uses **bd (beads)** for ALL issue tracking. Do NOT use markdown TODOs, task lists, or other tracking methods.
@@ -104,15 +122,15 @@ For more details, see README.md and QUICKSTART.md.
 When working on this project:
 
 1. **Check `/docs/` namespace first** - For all operational and workflow documentation
-2. **Reference root-level guides** - STYLE_GUIDE.md, ACCESSIBILITY.md for architecture
+2. **Reference development guides** - docs/development/STYLE_GUIDE.md, docs/development/ACCESSIBILITY.md for architecture
 3. **Consult `.cody/` for version tracking** - Feature backlog, retrospectives, version status
 4. **Never create TodoWrite lists** - Use `bd` for all work tracking
 
 Key docs to bookmark:
 - `/docs/RELEASE_PROCESS.md` - How to run the professional release workflow
-- `/docs/RELEASE_MANAGEMENT.md` - Detailed release steps and post-release checklist
-- `/docs/DEPLOYMENT_NOTES.md` - Troubleshooting and deployment recovery
-- `STYLE_GUIDE.md` - CSS, template, and architecture conventions
+- `docs/operations/RELEASE_MANAGEMENT.md` - Detailed release steps and post-release checklist
+- `docs/operations/DEPLOYMENT_NOTES.md` - Troubleshooting and deployment recovery
+- `docs/development/STYLE_GUIDE.md` - CSS, template, and architecture conventions
 
 ## Project Documentation
 
@@ -123,22 +141,21 @@ Key docs to bookmark:
 **Separation of concerns:**
 - **`/docs/`** - Operational guides (development workflow, deployment, release process)
 - **`/.cody/`** - Cody Framework internals (version tracking, feature backlog, retrospectives)
-- **Root level files** - Quick reference (AGENTS.md, STYLE_GUIDE.md, ACCESSIBILITY.md, VERSIONING_GUIDELINES.md)
+- **Root level files** - Quick reference (AGENTS.md, README.md)
 
 ### Operational Guides in `/docs/`
-- **RELEASE_PROCESS.md** - Cody Framework release workflow, versioning, and process guardrails
-- **RELEASE_MANAGEMENT.md** - Detailed release procedures and post-release validation
-- **DEPLOYMENT_NOTES.md** - Deployment configuration, troubleshooting, and recovery steps
-- **ENVIRONMENT_CONFIG.md** - Environment setup and configuration
+- **docs/operations/RELEASE_MANAGEMENT.md** - Detailed release procedures and post-release validation
+- **docs/operations/DEPLOYMENT_NOTES.md** - Deployment configuration, troubleshooting, and recovery steps
+- **docs/operations/ENVIRONMENT_CONFIG.md** - Environment setup and configuration
 
 ### Quick Reference (Root Level)
-- **STYLE_GUIDE.md** - Hugo site architecture, design system, template conventions, and development workflow
-- **ACCESSIBILITY.md** - Accessibility standards and WCAG compliance requirements
-- **VERSIONING_GUIDELINES.md** - Semantic versioning principles
+- **docs/development/STYLE_GUIDE.md** - Hugo site architecture, design system, template conventions, and development workflow
+- **docs/development/ACCESSIBILITY.md** - Accessibility standards and WCAG compliance requirements
+- **docs/development/VERSIONING_GUIDELINES.md** - Semantic versioning principles
 - **AGENTS.md** - Agent workflow and development process (this file)
 
 ### Content Structure
-- All content follows the structure defined in STYLE_GUIDE.md
+- All content follows the structure defined in docs/development/STYLE_GUIDE.md
 - Use `/content/` for site content, `/layouts/` for templates
 - Section pages use `_default/list.html`, single pages use `_default/single.html`
 
@@ -148,7 +165,7 @@ Key docs to bookmark:
 - Page sections: `layouts/partials/sections/`
 - Follow naming conventions: kebab-case for files, BEM for CSS classes
 
-Refer to STYLE_GUIDE.md for the complete architecture and workflow guidelines.
+Refer to docs/development/STYLE_GUIDE.md for the complete architecture and workflow guidelines.
 
 ## Build Commands
 - `:cody help` - Show all available commands
@@ -177,6 +194,94 @@ Refer to STYLE_GUIDE.md for the complete architecture and workflow guidelines.
 - Use `context7_resolve_library_id` followed by `context7_get_library_docs` for current API references
 - Verify library versions and compatibility before implementation
 - Keep documentation references current with project dependencies
+
+## .cody Directory Access Rules
+
+**STRICT RULE: Never manually edit .cody files**
+- `.cody` is framework-managed territory controlled by Cody Framework
+- Only `:cody` commands should modify contents
+- Manual edits risk breaking framework functionality and version management
+
+### Legitimate Access Reasons (Read-Only Only)
+
+**1. Framework Documentation Reference**
+- Reading `config/commands/` for available `:cody` commands
+- Consulting `templates/` to understand framework structure
+- Reviewing framework settings in `config/settings.json`
+
+**2. Emergency Debugging**
+- When `:cody` commands fail unexpectedly
+- Investigating framework state for troubleshooting
+- Checking version-specific logs in `project/versions/`
+
+**3. Framework Understanding & Customization**
+- Studying framework templates for customization needs
+- Understanding project history in `project/build/`
+- Learning from retrospectives in version folders
+
+**4. Maintenance & Cleanup**
+- Manual cleanup when framework leaves orphaned files
+- Backup before framework upgrades
+- Verification after framework updates
+
+**5. Audit & Compliance**
+- Reviewing change history in version folders
+- Verifying framework-generated documentation
+- Compliance checks on project planning docs
+
+### Access Request Process
+
+1. **Document the reason** in issue tracker (`bd create "Need .cody access for [reason]"`)
+2. **Attempt framework solution first** (`:cody refresh`, `:cody relearn`)
+3. **Read-only access only** - never modify files
+4. **Log what was accessed** for audit trail
+5. **Report findings** to improve framework
+
+### Emergency Access Protocol
+
+- Only when `:cody` commands are completely non-functional
+- First run health check: `./scripts/check-cody-health.sh`
+- Create backup: `./scripts/backup-cody.sh`
+- Document all access and findings in bd issue
+- Consider framework reinstall if corruption suspected
+
+### Files That Should Never Be Touched
+
+**Framework Core:**
+- `config/settings.json` - Framework configuration
+- `config/commands/*.md` - Command definitions
+- `config/scripts/*.sh` - Framework scripts
+- `templates/**/*.md` - Framework templates
+
+**Generated Content:**
+- `project/build/feature-backlog.md` - Managed by `:cody build`
+- `project/versions/**` - Managed by `:cody version` commands
+- `project/work/**` - Active work managed by framework
+
+### Exceptions Requiring Framework Team Approval
+
+- Framework upgrades or patches
+- Migration between framework versions
+- Recovery from framework corruption
+- Custom framework extensions
+
+### .cody Utility Scripts
+
+**Agent Initialization** (`./scripts/agent-init.sh`):
+- Checks for Cody Framework updates on startup
+- Verifies `.cody` directory health
+- Displays key guidelines and available tasks
+- Run at the start of each work session
+
+**Health Check** (`./scripts/check-cody-health.sh`):
+- Verifies `.cody` directory integrity
+- Checks for missing critical files
+- Run before considering emergency access
+
+**Backup** (`./scripts/backup-cody.sh`):
+- Creates timestamped backup of `.cody` directory
+- Essential before any emergency investigation
+- Includes verification of backup integrity
 
 ## Testing
 - Test after each coding phase before git commit

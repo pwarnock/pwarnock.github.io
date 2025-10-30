@@ -49,7 +49,7 @@ v0.9.0 represents a major architectural milestone with the implementation of a c
 - **Component-Based**: Reusable partials system
 - **Consistent Naming**: BEM methodology for CSS classes
 - **Template Organization**: Logical structure in `/layouts/partials/`
-- **Documentation**: Comprehensive STYLE_GUIDE.md
+- **Documentation**: Comprehensive docs/development/STYLE_GUIDE.md
 
 ## 📊 Metrics & Impact
 

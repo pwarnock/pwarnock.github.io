@@ -126,8 +126,8 @@ npm run build:production
 
 #### 4. Documentation
 ```bash
-# Update RELEASE_NOTES_vX.X.X.md
-# Update DEPLOYMENT_NOTES.md with current version
+# Update docs/releases/RELEASE_NOTES_vX.X.X.md
+# Update docs/operations/DEPLOYMENT_NOTES.md with current version
 # Create git tag locally (do not push yet)
 git tag -a vX.X.X -m "Release vX.X.X: [Description]"
 ```
@@ -140,7 +140,7 @@ git push upstream release/vX.X.X
 # Create PR via GitHub CLI (creates PR automatically merged to main on approval)
 gh pr create --base main --head release/vX.X.X \
   --title "Release: vX.X.X - [Release Name]" \
-  --body "Automated release PR. See RELEASE_NOTES_vX.X.X.md for details."
+  --body "Automated release PR. See docs/releases/RELEASE_NOTES_vX.X.X.md for details."
 ```
 
 **Important**: Do NOT merge directly. Wait for PR approval.
@@ -157,7 +157,7 @@ git push upstream vX.X.X
 
 # Create GitHub Release
 gh release create vX.X.X --title "vX.X.X - [Release Name]" \
-  --notes-file RELEASE_NOTES_vX.X.X.md
+  --notes-file docs/releases/RELEASE_NOTES_vX.X.X.md
 ```
 
 #### 7. Post-Release Cleanup

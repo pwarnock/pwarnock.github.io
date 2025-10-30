@@ -10,13 +10,13 @@ v0.10.0 successfully introduced a comprehensive spacing scale refactoring and pr
 - ✅ Replaced 250+ hardcoded Tailwind utilities with systematic CSS variable approach
 - ✅ Applied spacing scale consistently across 30+ template files
 - ✅ Zero visual regressions - all components maintain identical output
-- ✅ Documented CSS organization principles in STYLE_GUIDE.md
+- ✅ Documented CSS organization principles in docs/development/STYLE_GUIDE.md
 
 ### Release Process Establishment
 - ✅ Established PR-based release workflow (no direct commits to main)
 - ✅ Created mandatory pre-commit validation (lint, validate, build)
 - ✅ Implemented GitHub Actions CI/CD pipeline
-- ✅ Documented version management strategy in RELEASE_MANAGEMENT.md
+- ✅ Documented version management strategy in docs/operations/RELEASE_MANAGEMENT.md
 
 ### Code Quality
 - ✅ Updated .stylelintrc.json to properly handle generated CSS
@@ -25,7 +25,7 @@ v0.10.0 successfully introduced a comprehensive spacing scale refactoring and pr
 - ✅ All linting passes on source CSS
 
 ### Documentation
-- ✅ Created comprehensive CSS guidelines in STYLE_GUIDE.md
+- ✅ Created comprehensive CSS guidelines in docs/development/STYLE_GUIDE.md
 - ✅ Documented linting strategy for source vs generated CSS
 - ✅ Updated release management guardrails
 - ✅ Created release notes and GitHub release

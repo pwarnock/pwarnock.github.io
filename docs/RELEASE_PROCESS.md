@@ -56,24 +56,32 @@ Follow the tasklist and implement features. **Critical process**:
 When all tasks are completed:
 
 1. **Create Retrospective** - Copy `.cody/config/templates/build/version/retrospective.md` and document:
-   - What went well
-   - Challenges encountered
-   - Key learnings
-   - Metrics
+    - What went well
+    - Challenges encountered
+    - Key learnings
+    - Metrics
 
-2. **Update Feature Backlog** - Mark version as `🟢 Completed`
+2. **Reconcile Beads Issues** - Ensure all beads issues related to this version are closed and Cody reports are updated:
+    ```bash
+    bd list --json  # Review all issues
+    bd close [issue-id] --reason "Completed in vX.X.X" --json  # Close completed issues
+    ```
+    - Beads is the source of truth and DAG for issue tracking
+    - Cody provides planning and reporting - ensure alignment
 
-3. **Create/Update Release Notes** - Document changes in `.cody/project/build/release-notes.md`
+3. **Update Feature Backlog** - Mark version as `🟢 Completed`
 
-4. **Tag Release**
-   ```bash
-   git tag -a vX.X.X -m "Release vX.X.X: [Description]"
-   ```
+4. **Create/Update Release Notes** - Document changes in `.cody/project/build/release-notes.md`
 
-5. **Create GitHub Release**
-   ```bash
-   gh release create vX.X.X --title "vX.X.X - [Name]" --notes-file RELEASE_NOTES_vX.X.X.md
-   ```
+5. **Tag Release**
+    ```bash
+    git tag -a vX.X.X -m "Release vX.X.X: [Description]"
+    ```
+
+6. **Create GitHub Release**
+    ```bash
+    gh release create vX.X.X --title "vX.X.X - [Name]" --notes-file docs/releases/RELEASE_NOTES_vX.X.X.md
+    ```
 
 ### Step 5: Refresh Project Documents
 
