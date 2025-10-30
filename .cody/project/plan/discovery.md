@@ -6,28 +6,28 @@ I want to rebuild my Hugo website with a more stable frontend https://peterwarno
 
 ## Questions
 
-**AGENT Q1:** What specific stability issues are you experiencing with your current Hugo website's frontend? (e.g., slow loading times, broken layouts, browser compatibility issues, maintenance challenges, etc.)  
+**AGENT Q1:** What specific stability issues are you experiencing with your current Hugo website's frontend? (e.g., slow loading times, broken layouts, browser compatibility issues, maintenance challenges, etc.)
 **USER A1:** maintenance challenges. I would like to use Daisy UI consistently, but agents struggle with basic changes because conflicting styles coming from theme and base project and page architecture or lack of
 
-**AGENT Q2:** What specific types of changes do you or agents typically need to make to the website that are currently difficult due to these style conflicts? (e.g., adding new sections, modifying layouts, updating colors, adding new components, etc.)  
+**AGENT Q2:** What specific types of changes do you or agents typically need to make to the website that are currently difficult due to these style conflicts? (e.g., adding new sections, modifying layouts, updating colors, adding new components, etc.)
 **USER A2:** i've worked through a lot of color issues, but probably not all. moving components around for consistent, responsiveness has been a challenge. right now, the edges of the navbar don't align with the edges of the main content (visually)
 
-**AGENT Q3:** Are you looking to completely replace the current Hugo theme with a custom Daisy UI-based design system, or would you prefer to integrate Daisy UI while keeping some existing theme elements?  
+**AGENT Q3:** Are you looking to completely replace the current Hugo theme with a custom Daisy UI-based design system, or would you prefer to integrate Daisy UI while keeping some existing theme elements?
 **USER A3:** integration preferred, but i'm prepared to start over
 
-**AGENT Q4:** What's your target audience for this website, and what primary actions should they be able to take? (e.g., read your blog, view your portfolio, contact you, subscribe to newsletter, etc.)  
+**AGENT Q4:** What's your target audience for this website, and what primary actions should they be able to take? (e.g., read your blog, view your portfolio, contact you, subscribe to newsletter, etc.)
 **USER A4:** all of the above
 
-**AGENT Q5:** What are the must-have features that need to be preserved or improved in the rebuild? (e.g., blog functionality, portfolio sections, newsletter subscription, social links, search functionality, etc.)  
+**AGENT Q5:** What are the must-have features that need to be preserved or improved in the rebuild? (e.g., blog functionality, portfolio sections, newsletter subscription, social links, search functionality, etc.)
 **USER A5:** keep all elements, just build on a better foundation that has clearly defined elements and are compatible with common tailwind themes
 
-**AGENT Q6:** What's your preferred tech stack for the frontend rebuild? (e.g., Hugo with custom CSS/JS, Hugo + Tailwind + Daisy UI, or are you open to considering other static site generators?)  
+**AGENT Q6:** What's your preferred tech stack for the frontend rebuild? (e.g., Hugo with custom CSS/JS, Hugo + Tailwind + Daisy UI, or are you open to considering other static site generators?)
 **USER A6:** hugo tailwind daisy ui .. i'm thinking i no longer want to consider community themes, though there could be an opportunity to offer changes back upstream
 
-**AGENT Q7:** What constraints should we keep in mind? (e.g., need to maintain existing URLs/SEO, hosting requirements, timeline, budget, any specific integrations needed)  
+**AGENT Q7:** What constraints should we keep in mind? (e.g., need to maintain existing URLs/SEO, hosting requirements, timeline, budget, any specific integrations needed)
 **USER A7:** seo, github pages, $0 budget
 
-**AGENT Q8:** What does success look like for this project? How will we know the rebuild was successful? (e.g., easier maintenance, consistent styling, faster development, better user experience, etc.)  
+**AGENT Q8:** What does success look like for this project? How will we know the rebuild was successful? (e.g., easier maintenance, consistent styling, faster development, better user experience, etc.)
 **USER A8:** when i can make subsequent changes and i quickly see the changes have been made
 
 ## Discovery Summary

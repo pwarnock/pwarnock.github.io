@@ -1,8 +1,8 @@
 # v0.6.0-hero-recreation
 
-**Status**: ✅ Completed  
-**Start Date**: 2025-10-23  
-**Completion Date**: 2025-10-23  
+**Status**: ✅ Completed
+**Start Date**: 2025-10-23
+**Completion Date**: 2025-10-23
 
 ## Version Summary
 

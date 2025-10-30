@@ -43,6 +43,54 @@ hugo_stats.json
 .env.production.local
 .env.*.local
 
+# Secrets and credentials
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.p7b
+*.p7c
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+secrets.json
+secrets.yml
+secrets.yaml
+config/secrets.*
+credentials.*
+service-account*.json
+
+# Security and authentication files
+.auth
+.auth.json
+.auth.yml
+.auth.yaml
+.netrc
+.npmrc
+.pypirc
+.ssh/
+aws-credentials
+azure-credentials
+gcp-credentials
+firebase-credentials
+docker-credentials
+kubeconfig
+.kube/config
+
+# API keys and tokens
+*.token
+*.apikey
+*.api_key
+*.access_token
+*.refresh_token
+*.bearer_token
+*.jwt
+*.oauth
+
 # PM2 and runtime files
 .pids/
 *.log

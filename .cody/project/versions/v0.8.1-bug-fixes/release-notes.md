@@ -1,7 +1,7 @@
 # Release Notes v0.8.1-bug-fixes
 
-**Release Date**: October 27, 2025  
-**Version Type**: Patch Release  
+**Release Date**: October 27, 2025
+**Version Type**: Patch Release
 **Previous Version**: v0.8.0-upstream-integration
 
 ## 🐛 Bug Fixes

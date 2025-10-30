@@ -1,7 +1,7 @@
 # v0.4.0-testing Retrospective
 
-**Date**: 2025-10-23  
-**Team**: Peter Warnock  
+**Date**: 2025-10-23
+**Team**: Peter Warnock
 **Version**: v0.4.0-testing
 
 ## What Went Well ✅
@@ -92,7 +92,7 @@
 
 ### SEO Implementation
 - Meta Tags: ✅ Complete
-- Open Graph: ✅ Complete  
+- Open Graph: ✅ Complete
 - Twitter Cards: ✅ Complete
 - Structured Data: ✅ Complete
 - RSS Feeds: ✅ Complete

@@ -37,27 +37,27 @@ enableGitInfo = true
   keywords = "fullstack developer, devops, cloud engineering, technology leader, software development, SaaS, rapid prototyping"
   og_image = "/img/og-image.png"
   twitter_card = "summary_large_image"
-  
+
   # Site configuration
   subtitle = 'Fullstack Developer & TECHNOLOGY LEADER'
   description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
-  
+
   # Social links
   github = 'https://github.com/pwarnock'
   linkedin = 'https://www.linkedin.com/in/peterwarnock'
   twitter = 'https://x.com/pwarnock'
   discord = 'https://discord.gg/pwarnock'
-  
+
   # Newsletter
   newsletter_url = 'https://gmail.us8.list-manage.com/subscribe/post?u=174f78659f6d3dd707f265f33&id=daaddd52e4&f_id=005f13e1f0'
-  
+
   # Build settings
   minify = true
-  
+
   # Version
   version = "0.10.0"
   gitHash = "5761548"
-  
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

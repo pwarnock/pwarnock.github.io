@@ -26,7 +26,7 @@
 
 <a href="{{ $href }}"
    {{- if $shouldOpenBlank }} target="_blank"{{ end -}}
-   {{- if or $shouldNoFollow $shouldOpenBlank }} 
+   {{- if or $shouldNoFollow $shouldOpenBlank }}
       rel="{{ if $shouldNoFollow }}nofollow {{ end }}noopener noreferrer"
    {{- end -}}
    {{- with $title }} title="{{ . }}"{{ end -}}>

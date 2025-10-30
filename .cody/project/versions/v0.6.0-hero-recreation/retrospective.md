@@ -1,7 +1,7 @@
 # v0.6.0-hero-recreation Retrospective
 
-**Date**: October 26, 2025  
-**Version**: v0.6.0-hero-recreation  
+**Date**: October 26, 2025
+**Version**: v0.6.0-hero-recreation
 **Status**: ✅ Completed
 
 ## Overview

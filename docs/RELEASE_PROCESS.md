@@ -194,6 +194,6 @@ When ready to start v0.11.0:
 
 ---
 
-**Last Updated**: October 30, 2025 (v0.10.0 closure)  
-**Framework**: Cody Framework v1  
+**Last Updated**: October 30, 2025 (v0.10.0 closure)
+**Framework**: Cody Framework v1
 **Status**: Professional multi-version workflow established

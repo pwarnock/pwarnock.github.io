@@ -23,7 +23,7 @@ A flexible card component for displaying content with optional links, badges, an
 
 **Example:**
 ```hugo
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "title" "My Card Title"
   "content" "Card content goes here"
   "href" "/my-page"
@@ -43,7 +43,7 @@ Standardized section header with title, subtitle, and divider.
 
 **Example:**
 ```hugo
-{{ partial "components/section-header.html" (dict 
+{{ partial "components/section-header.html" (dict
   "title" "Featured Projects"
   "subtitle" "Recent work and personal projects"
   "divider_class" "divider-secondary"
@@ -64,7 +64,7 @@ Reusable button component with optional icons.
 
 **Example:**
 ```hugo
-{{ partial "components/button.html" (dict 
+{{ partial "components/button.html" (dict
   "href" "/about"
   "text" "Learn More"
   "class" "btn-primary"
@@ -83,7 +83,7 @@ Displays a list of badges/tags.
 
 **Example:**
 ```hugo
-{{ partial "components/badge-list.html" (dict 
+{{ partial "components/badge-list.html" (dict
   "items" (slice "React" "Vue" "Angular")
   "badge_class" "badge-primary"
 )}}

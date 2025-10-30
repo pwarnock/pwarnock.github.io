@@ -1,9 +1,9 @@
 # Release Notes v0.10.0 - Spacing Scale
 
 ## Release Summary
-**Date**: October 30, 2025  
-**Version**: 0.10.0  
-**Type**: Minor Feature Release  
+**Date**: October 30, 2025
+**Version**: 0.10.0
+**Type**: Minor Feature Release
 
 ## 🎯 Overview
 
@@ -83,8 +83,8 @@ This release continues the refinement of the site's design system, focusing on c
 
 ---
 
-**Build Status**: ✅ Passing  
-**Accessibility**: ✅ WCAG 2.1 AA Compliant  
-**Performance**: ✅ Optimized  
-**Documentation**: ✅ Complete  
+**Build Status**: ✅ Passing
+**Accessibility**: ✅ WCAG 2.1 AA Compliant
+**Performance**: ✅ Optimized
+**Documentation**: ✅ Complete
 **Deployment Ready**: ✅ Yes

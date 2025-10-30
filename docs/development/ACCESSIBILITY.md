@@ -202,5 +202,5 @@ For accessibility-related questions or to report issues:
 
 ---
 
-**Last Updated**: January 1, 2025  
+**Last Updated**: January 1, 2025
 **Next Review**: July 1, 2025

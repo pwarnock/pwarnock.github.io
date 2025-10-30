@@ -74,7 +74,7 @@ v0.10.0 successfully established professional development practices and moderniz
 
 ---
 
-**Released**: October 30, 2025  
-**GitHub Tag**: v0.10.0  
-**GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0  
+**Released**: October 30, 2025
+**GitHub Tag**: v0.10.0
+**GitHub Release**: https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
 **Production Status**: ✅ Deployed

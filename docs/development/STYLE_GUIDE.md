@@ -181,23 +181,23 @@ When `customHTML: true`:
 
 ```css
 /* Component */
-.btn-system { 
-  @apply px-4 py-2 rounded; 
+.btn-system {
+  @apply px-4 py-2 rounded;
 }
 
 /* Element (use single underscore for sub-parts) */
-.btn-system__icon { 
-  @apply ml-2; 
+.btn-system__icon {
+  @apply ml-2;
 }
 
 /* Modifier (use double dash for variants) */
-.btn-system--primary { 
-  @apply bg-primary text-white; 
+.btn-system--primary {
+  @apply bg-primary text-white;
 }
 
 /* Multiple modifiers allowed */
-.btn-system--primary--lg { 
-  @apply px-6 py-3 text-lg; 
+.btn-system--primary--lg {
+  @apply px-6 py-3 text-lg;
 }
 ```
 
@@ -462,9 +462,9 @@ npm run build     # Must succeed
 
 ### Hero Section
 ```html
-{{ partial "sections/hero.html" (dict 
-  "context" . 
-  "title" .Title 
+{{ partial "sections/hero.html" (dict
+  "context" .
+  "title" .Title
   "description" .Params.description
   "image" .Params.image
 ) }}

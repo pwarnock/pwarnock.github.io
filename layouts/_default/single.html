@@ -20,7 +20,7 @@
       <header class="text-center mb-responsive-lg relative">
         <!-- Background decoration -->
         <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl -z-10"></div>
-        
+
         <div class="p-responsive-md">
           <!-- Published date badge -->
           <div class="inline-flex items-center bg-primary/10 text-primary rounded-full text-sm font-medium" style="gap: var(--space-2); padding: var(--space-2) var(--space-4); margin-bottom: var(--space-6)">
@@ -32,12 +32,12 @@
             <span class="text-primary/70">• {{ .Params.readingTime }} min read</span>
             {{ end }}
           </div>
-          
+
           <!-- Main title with gradient -->
           <h1 class="text-4xl lg:text-6xl font-bold mb-responsive-md leading-tight bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
             {{ .Title }}
           </h1>
-          
+
           <!-- Tags -->
           {{ if .Params.tags }}
           <div class="flex flex-wrap justify-center" style="gap: var(--space-2); margin-bottom: var(--space-8)">
@@ -48,7 +48,7 @@
             {{ end }}
           </div>
           {{ end }}
-          
+
           <!-- Summary alert -->
           {{ if .Params.summary }}
           <div class="alert bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20 backdrop-blur-sm max-w-2xl mx-auto">
@@ -60,12 +60,12 @@
           {{ end }}
         </div>
       </header>
-      
+
       <!-- Main Content -->
       <div class="prose prose-lg lg:prose-xl max-w-none prose-headings:scroll-mt-20 prose-headings:font-bold prose-headings:text-base-content prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:p-4 prose-blockquote:rounded-lg prose-code:bg-base-200 prose-code:px-1 prose-code:rounded" role="document">
         {{ .Content }}
       </div>
-      
+
       <!-- Footer Section -->
       {{ if .Params.tags }}
       <footer class="mt-responsive-lg relative">
@@ -77,7 +77,7 @@
           </div>
           <div class="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent flex-1"></div>
         </div>
-        
+
         <div class="bg-gradient-to-br from-base-100 to-base-200 rounded-2xl p-responsive-sm shadow-lg border border-base-300">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between" style="gap: var(--space-8)">
             <!-- Tags section -->
@@ -91,7 +91,7 @@
                 {{ end }}
               </div>
             </div>
-            
+
             <!-- Navigation buttons -->
             <div class="flex" style="gap: var(--space-3)">
               <button class="btn btn-outline btn-md hover:btn-primary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.history.back()" aria-label="Go back to previous page">
@@ -100,7 +100,7 @@
                 </svg>
                 Back
               </button>
-              
+
               <button class="btn btn-primary btn-md hover:btn-secondary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />

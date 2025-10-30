@@ -4,7 +4,7 @@
     <div class="text-center max-w-3xl mx-auto">
       <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "tools") 0).title | default "AI Development Tools" }}</h2>
       <p class="text-lg text-base-content/70 mb-8">{{ .description | default "In-depth analysis of cutting-edge AI-powered development tools" }}</p>
-      
+
       <div class="text-center">
         <a href="/tools" class="btn btn-primary btn-lg">
           Explore All Tools

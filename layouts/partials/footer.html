@@ -6,16 +6,16 @@
       <a href="{{ "/portfolio" | relLangURL }}" class="link link-hover text-center focus-ring">Portfolio</a>
       <a href="{{ "/about" | relLangURL }}" class="link link-hover text-center focus-ring">About</a>
     </div>
-    
+
     <div class="mt-4">
       {{ partial "components/social-links.html" . }}
     </div>
   </div>
-  
+
   <div class="w-full mb-6 sm:mb-8">
     {{ partial "components/newsletter.html" . }}
   </div>
-  
+
   <aside class="w-full max-w-md px-2 sm:px-0">
     <p class="text-sm sm:text-base">Copyright © {{ now.Year }} - {{ .Site.Title }}</p>
     <p class="text-xs sm:text-sm opacity-70 mt-1">{{ .Site.Params.description }}</p>

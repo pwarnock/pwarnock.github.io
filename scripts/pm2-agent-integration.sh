@@ -42,17 +42,17 @@ check_pm2() {
 start_dev_server() {
     log "Starting Hugo dev server with PM2..."
     cd "$PROJECT_ROOT"
-    
+
     # Stop any existing process
     pm2 stop hugo-dev 2>/dev/null || true
     pm2 delete hugo-dev 2>/dev/null || true
-    
+
     # Start new process
     pm2 start ecosystem.config.cjs
-    
+
     # Save PM2 list
     pm2 save
-    
+
     log "Hugo dev server started successfully"
     log "PM2 process list:"
     pm2 list
@@ -62,11 +62,11 @@ start_dev_server() {
 stop_dev_server() {
     log "Stopping Hugo dev server..."
     cd "$PROJECT_ROOT"
-    
+
     pm2 stop hugo-dev 2>/dev/null || warn "No hugo-dev process found"
     pm2 delete hugo-dev 2>/dev/null || warn "No hugo-dev process to delete"
     pm2 save
-    
+
     log "Hugo dev server stopped"
 }
 
@@ -83,7 +83,7 @@ show_status() {
     log "PM2 Process Status:"
     cd "$PROJECT_ROOT"
     pm2 list
-    
+
     if [ -f "$PIDS_DIR/hugo-dev-0.pid" ]; then
         log "PID file exists: $(cat "$PIDS_DIR/hugo-dev-0.pid")"
     else

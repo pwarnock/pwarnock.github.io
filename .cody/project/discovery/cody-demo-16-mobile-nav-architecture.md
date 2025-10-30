@@ -19,7 +19,7 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 
 #### Click-Outside Detection (iPhone Fix)
 ```html
-<div class="dropdown" :class="{ 'dropdown-open': mobileMenuOpen }" 
+<div class="dropdown" :class="{ 'dropdown-open': mobileMenuOpen }"
      @click.outside="mobileMenuOpen = false">
 ```
 
@@ -31,7 +31,7 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 
 #### Toggle Mechanism
 ```html
-<button @click="mobileMenuOpen = !mobileMenuOpen" 
+<button @click="mobileMenuOpen = !mobileMenuOpen"
         class="btn-system btn-system--ghost btn-system--md lg:hidden">
 ```
 
@@ -140,7 +140,7 @@ x-data="{ mobileMenuOpen: false, socialMenuOpen: false }"
 ### ⚠️ Considerations:
 1. **JavaScript Required:** Falls back to no menu on JS-disabled browsers
    - Future: Consider server-side menu rendering as fallback
-   
+
 2. **Nested Dropdowns:** Not currently implemented
    - Pattern assumes flat menu structure
    - Would need additional Alpine.js logic for multi-level menus

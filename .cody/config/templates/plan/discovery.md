@@ -7,7 +7,7 @@ This document captures the raw, unfiltered idea or initial AI prompt that sparke
 ## Questions
 **[AI AGENT TODO: Add all the questions and the answer from the **USER** below in the format listed below.]**
 
-**AGENT Q1:** [**AGENT** Question]  
+**AGENT Q1:** [**AGENT** Question]
 **USER A1:** [**USER** Answer]
 
 ## Discovery Summary

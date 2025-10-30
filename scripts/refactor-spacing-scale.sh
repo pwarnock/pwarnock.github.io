@@ -2,8 +2,8 @@
 
 ##############################################################################
 # Spacing Scale Refactoring Automation Script
-# 
-# Purpose: Systematically replace 250+ hardcoded spacing utilities with 
+#
+# Purpose: Systematically replace 250+ hardcoded spacing utilities with
 #          CSS variable tokens across 30 remaining template files
 #
 # Usage:
@@ -134,22 +134,22 @@ get_spacing_mapping() {
 refactor_file() {
     local file="$1"
     local changes=0
-    
+
     if [ ! -f "$file" ]; then
         log_error "File not found: $file"
         return 1
     fi
-    
+
     # Create backup if requested
     if [ "$BACKUP" = true ]; then
         cp "$file" "${file}.backup"
         log_info "Backed up: $file"
     fi
-    
+
     # Read file content
     local content=$(cat "$file")
     local original_content="$content"
-    
+
     # Apply refactoring rules
     # List of all utilities to check (bash 3.2 compatible)
     local utilities="mb-0 mb-1 mb-2 mb-3 mb-4 mb-5 mb-6 mb-8 mb-10 mb-12 mb-16 mt-0 mt-1 mt-2 mt-3 mt-4 mt-5 mt-6 mt-8 mt-10 mt-12 mt-16 ml-2 ml-4 mr-2 mr-4 p-2 p-3 p-4 p-6 p-8 px-1 px-2 px-3 px-4 px-6 py-1 py-2 py-3 py-4 gap-2 gap-3 gap-4 gap-6 gap-8"
@@ -173,13 +173,13 @@ refactor_file() {
             fi
         fi
     done
-    
+
     # Write changes if not dry-run and changes were made
     if [ "$DRY_RUN" = false ] && [ "$changes" -gt 0 ]; then
         echo "$content" > "$file"
         REFACTORED_COUNT=$((REFACTORED_COUNT + 1))
     fi
-    
+
     # Report
     if [ "$changes" -gt 0 ]; then
         local status="[DRY-RUN]"
@@ -234,20 +234,20 @@ clear_report() {
 
 main() {
     clear_report
-    
+
     echo "=========================================="
     echo "Spacing Scale Refactoring"
     echo "=========================================="
     echo ""
-    
+
     log_info "Project root: $PROJECT_ROOT"
     log_info "Processing pattern: $FILE_PATTERN"
     echo ""
-    
+
     # Find and refactor files
     local total_files=0
     local refactored_files=0
-    
+
     # Refactor components
     if [ -d "$LAYOUTS_DIR/partials/components" ]; then
         log_info "Refactoring components..."
@@ -260,7 +260,7 @@ main() {
             fi
         done
     fi
-    
+
     # Refactor sections
     if [ -d "$LAYOUTS_DIR/partials/sections" ]; then
         log_info "Refactoring sections..."
@@ -273,7 +273,7 @@ main() {
             fi
         done
     fi
-    
+
     # Refactor shortcodes
     if [ -d "$LAYOUTS_DIR/shortcodes" ]; then
         log_info "Refactoring shortcodes..."
@@ -286,7 +286,7 @@ main() {
             fi
         done
     fi
-    
+
     # Refactor other partials
     if [ -d "$LAYOUTS_DIR/partials" ]; then
         log_info "Refactoring other partials..."
@@ -299,20 +299,20 @@ main() {
             fi
         done
     fi
-    
+
     echo ""
     echo "=========================================="
     echo "Summary"
     echo "=========================================="
     log_info "Total files scanned: $total_files"
     log_info "Files with changes: $refactored_files"
-    
+
     if [ "$DRY_RUN" = true ]; then
         log_warn "DRY-RUN: No files were modified"
     else
         log_info "Refactoring complete!"
     fi
-    
+
     echo ""
     log_info "Detailed report saved to: $REPORT_FILE"
     cat "$REPORT_FILE"

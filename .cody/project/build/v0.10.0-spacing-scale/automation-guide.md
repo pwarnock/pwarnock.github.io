@@ -207,7 +207,7 @@ The automation script handles **~80% of cases** via simple pattern matching. Som
      ```html
      <!-- Before -->
      <div class="grid gap-6 lg:gap-8">
-     
+
      <!-- After (manual) -->
      <div class="grid gap-responsive-md">
      ```

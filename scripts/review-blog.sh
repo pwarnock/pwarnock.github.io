@@ -56,14 +56,14 @@ ATTEMPT=0
 while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
   SESSION_DATA=$(curl -s "$OPENCODE_URL/session/$SESSION_ID")
   STATUS=$(echo "$SESSION_DATA" | jq -r '.status // empty')
-  
+
   if [ "$STATUS" = "completed" ]; then
     # Get messages
     MESSAGES=$(echo "$SESSION_DATA" | jq -r '.messages[]?.content // empty')
     if [ ! -z "$MESSAGES" ]; then
       echo "$MESSAGES"
     fi
-    
+
     echo ""
     echo "─────────────"
     COST=$(echo "$SESSION_DATA" | jq -r '.cost // "N/A"')
@@ -73,7 +73,7 @@ while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
     echo "📊 Tokens: $TOKENS"
     exit 0
   fi
-  
+
   ATTEMPT=$((ATTEMPT + 1))
   sleep 1
 done

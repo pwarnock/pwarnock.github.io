@@ -1,8 +1,8 @@
 # v0.8.0-upstream-integration Design Document
 
-**Version**: v0.8.0-upstream-integration  
-**Status**: ✅ Completed  
-**Start Date**: October 26, 2025  
+**Version**: v0.8.0-upstream-integration
+**Status**: ✅ Completed
+**Start Date**: October 26, 2025
 **Completion Date**: October 27, 2025
 
 ## 🎯 Project Overview

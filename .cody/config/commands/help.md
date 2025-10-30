@@ -3,7 +3,7 @@ command: ":cody help"
 description: Provides the USER with help about Cody.
 ---
 
-- **AGENT** show the **USER** the following: 
+- **AGENT** show the **USER** the following:
 ```
 +------------------------------------------+
 Cody Spec Driven Development (SDD) Framework
@@ -16,7 +16,7 @@ Created and maintained by iCodeWith.ai
 - Provide the **USER** with a short overview of the Cody Framework.
 - Provide the **USER** the current version of the Cody Framework.  You can it from the "version" key in {{cfConfig}}/settings.json.
 
-- **AGENT** show the **USER** the following: 
+- **AGENT** show the **USER** the following:
 ```
 +---------------------+
 Available Help Commands
@@ -26,7 +26,7 @@ Available Help Commands
 - Provide the **USER** with a list of all available commands and a short description of what they do.
 
 
-- **AGENT** show the **USER** the following: 
+- **AGENT** show the **USER** the following:
 ```
 +-----------------------+
 Storing Images and Assets

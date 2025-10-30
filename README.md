@@ -172,15 +172,15 @@ This project uses a unified design system with:
 
 ```hugo
 {{/* Button component */}}
-{{ partial "components/button.html" (dict 
+{{ partial "components/button.html" (dict
   "href" "/about"
-  "variant" "primary" 
+  "variant" "primary"
   "size" "md"
   "text" "Learn More"
 ) }}
 
 {{/* Icon component */}}
-{{ partial "components/icon.html" (dict 
+{{ partial "components/icon.html" (dict
   "name" "github"
   "size" "sm"
 ) }}

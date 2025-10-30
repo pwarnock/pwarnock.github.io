@@ -159,7 +159,7 @@
 
 **Solution:**
 ```alpine
-<div @click.outside="mobileMenuOpen = false" 
+<div @click.outside="mobileMenuOpen = false"
      :aria-expanded="mobileMenuOpen">
   <button aria-controls="mobile-menu">Toggle Menu</button>
   <ul id="mobile-menu" v-show="mobileMenuOpen">...</ul>

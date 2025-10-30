@@ -18,7 +18,7 @@
       {{ .Site.Title }}
     </a>
   </div>
-  
+
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1" role="menubar" aria-label="Desktop navigation menu">
       <li role="none">{{ partial "components/button.html" (dict "href" ("/" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Home" "role" "menuitem" "ariaCurrent" (cond (eq .Permalink .Site.BaseURL) "page" "")) }}</li>
@@ -28,7 +28,7 @@
       <li role="none">{{ partial "components/button.html" (dict "href" ("/about" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "About" "role" "menuitem" "ariaCurrent" (cond (eq .Section "about") "page" "")) }}</li>
     </ul>
   </div>
-  
+
   <div class="navbar-end">
     <div class="flex items-center gap-2">
       {{ partial "components/theme-selector.html" . }}

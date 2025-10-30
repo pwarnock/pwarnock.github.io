@@ -70,7 +70,7 @@
 **Proposed:**
 ```hugo
 <!-- list.html: Use card.html with params -->
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "context" .
   "variant" "list"    <!-- New variant -->
   "showDate" true
@@ -85,7 +85,7 @@
 **Same as card-list.html**, use different variant params:
 
 ```hugo
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "context" .
   "variant" "unified"    <!-- Different variant -->
   "showMetadata" true
@@ -108,7 +108,7 @@ These are never called. `content-card.html` handles all variants via params.
 Merge `screenshot-placeholder.html` and `screenshot-with-caption.html` into card.html as image variants:
 
 ```hugo
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "context" .
   "type" "screenshot"    <!-- New type -->
   "image" "path/to/img"
@@ -146,16 +146,16 @@ dict "context" .             // Current page/post context
 {{ partial "components/card.html" (dict "context" . "variant" "list") }}
 
 <!-- Portfolio project (with actions) -->
-{{ partial "components/card.html" (dict 
-  "context" . 
+{{ partial "components/card.html" (dict
+  "context" .
   "variant" "unified"
-  "actions" (slice 
+  "actions" (slice
     (dict "href" "/project" "text" "View" "variant" "primary")
   )
 ) }}
 
 <!-- Screenshot (image focus) -->
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "context" .
   "type" "screenshot"
   "image" .Params.image
@@ -213,7 +213,7 @@ dict "context" .
 
 ```hugo
 {{/* Import a component partial with parameters */}}
-{{ partial "components/COMPONENT.html" (dict 
+{{ partial "components/COMPONENT.html" (dict
   "param1" value1
   "param2" value2
 ) }}
@@ -227,7 +227,7 @@ dict "context" .
 
 #### `badge.html`
 ```hugo
-{{ partial "components/badge.html" (dict 
+{{ partial "components/badge.html" (dict
   "text" "Tag name"
   "variant" "default|primary|secondary|accent|success|warning|error"
   "size" "sm|md|lg"
@@ -236,7 +236,7 @@ dict "context" .
 
 #### `button.html`
 ```hugo
-{{ partial "components/button.html" (dict 
+{{ partial "components/button.html" (dict
   "href" "/path"
   "text" "Click me"
   "variant" "primary|secondary|ghost|outline|accent"
@@ -250,7 +250,7 @@ dict "context" .
 
 #### `icon.html`
 ```hugo
-{{ partial "components/icon.html" (dict 
+{{ partial "components/icon.html" (dict
   "name" "menu|share|calendar|clock|arrow-right|etc"
   "size" "xs|sm|md|lg|xl"
 ) }}
@@ -260,7 +260,7 @@ dict "context" .
 
 #### `card.html` (Multi-purpose)
 ```hugo
-{{ partial "components/card.html" (dict 
+{{ partial "components/card.html" (dict
   "context" .          // Current page/post
   "variant" "list"     // Visual style
   "size" "md"          // Card size

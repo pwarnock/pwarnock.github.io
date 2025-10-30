@@ -1,7 +1,7 @@
 # v0.6.0-hero-recreation Release Notes
 
-**Release Date**: October 26, 2025  
-**Version**: v0.6.0-hero-recreation  
+**Release Date**: October 26, 2025
+**Version**: v0.6.0-hero-recreation
 **Status**: ✅ Completed
 
 ## 🚀 Overview

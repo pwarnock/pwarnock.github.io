@@ -30,7 +30,7 @@ async function reviewBlogTemplate() {
         }
       }
     });
-    
+
     const sessionId = session.id || Object.keys(session)[0];
     console.log(`✓ Session created: ${sessionId}\n`);
 
@@ -72,7 +72,7 @@ Focus on practical, actionable improvements.`
     let completed = false;
     while (!completed) {
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       const sessionInfo = await client.session.get({
         path: { id: sessionId }
       });

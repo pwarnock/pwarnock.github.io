@@ -16,7 +16,7 @@
   --color-primary-700: #1d4ed8;
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
-  
+
   --color-secondary-50: #f8fafc;
   --color-secondary-100: #f1f5f9;
   --color-secondary-200: #e2e8f0;
@@ -27,7 +27,7 @@
   --color-secondary-700: #334155;
   --color-secondary-800: #1e293b;
   --color-secondary-900: #0f172a;
-  
+
   --color-accent-50: #fdf4ff;
   --color-accent-100: #fae8ff;
   --color-accent-200: #f5d0fe;
@@ -38,7 +38,7 @@
   --color-accent-700: #a21caf;
   --color-accent-800: #86198f;
   --color-accent-900: #701a75;
-  
+
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f5;
   --color-neutral-200: #e5e5e5;
@@ -49,12 +49,12 @@
   --color-neutral-700: #404040;
   --color-neutral-800: #262626;
   --color-neutral-900: #171717;
-  
+
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
-  
+
   /* Typography Scale */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -65,18 +65,18 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
-  
+
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  
+
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.75;
-  
+
   /* Spacing System */
   --space-0: 0;
   --space-1: 0.25rem;
@@ -92,7 +92,7 @@
   --space-20: 5rem;
   --space-24: 6rem;
   --space-32: 8rem;
-  
+
   /* Border Radius */
   --radius-none: 0;
   --radius-sm: 0.125rem;
@@ -103,7 +103,7 @@
   --radius-2xl: 1rem;
   --radius-3xl: 1.5rem;
   --radius-full: 9999px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -111,12 +111,12 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Z-Index Scale */
   --z-dropdown: 1000;
   --z-sticky: 1020;
@@ -125,20 +125,20 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
-  
+
   /* Component Specific Tokens */
   --button-height-sm: 2rem;
   --button-height-md: 2.5rem;
   --button-height-lg: 3rem;
-  
+
   --card-padding-sm: 1rem;
   --card-padding-md: 1.5rem;
   --card-padding-lg: 2rem;
-  
+
   --badge-height-sm: 1.5rem;
   --badge-height-md: 2rem;
   --badge-height-lg: 2.5rem;
-  
+
   --icon-size-xs: 1rem;
   --icon-size-sm: 1.25rem;
   --icon-size-md: 1.5rem;
@@ -213,11 +213,11 @@ html {
   .hero-card {
     transition: none;
   }
-  
+
   .hero-card:hover {
     transform: none;
   }
-  
+
   :root {
     --transition-fast: 0ms;
     --transition-base: 0ms;
@@ -516,7 +516,7 @@ html {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .hero-cards {
     flex-direction: column;
     width: 100%;
@@ -528,7 +528,7 @@ html {
   .hero-staircase {
     gap: 1.5rem;
   }
-  
+
   .hero-cards {
     gap: 1rem;
   }
@@ -656,4 +656,3 @@ html {
     }
   }
 }
-

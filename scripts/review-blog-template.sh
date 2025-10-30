@@ -68,14 +68,14 @@ echo ""
 timeout 120 curl -s -N "$OPENCODE_URL/event" | while IFS= read -r line; do
   if [[ $line == "data:"* ]]; then
     json="${line#data:}"
-    
+
     # Extract text from message updates
     if echo "$json" | jq -e '.type == "message.part.updated"' > /dev/null 2>&1; then
       if echo "$json" | jq -e '.properties.part.type == "text"' > /dev/null 2>&1; then
         echo "$json" | jq -r '.properties.part.text'
       fi
     fi
-    
+
     # Check for completion
     if echo "$json" | jq -e '.type == "session.updated" and .properties.info.status == "completed"' > /dev/null 2>&1; then
       cost=$(echo "$json" | jq -r '.properties.info.cost // "N/A"')

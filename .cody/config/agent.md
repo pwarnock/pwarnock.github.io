@@ -78,31 +78,31 @@ The **USER** at times may want to tell the **AGENT** about a particular file tha
 - If you (**AGENT**) are reading this file to get familiar (or re-familiarize yourself) with it, please make sure you read all the files in the {{commands}} folder.
 
 > ### `:cody assets list`
-**[AGENT TODO: Read and execute {{cfCommands}}/assets-list.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/assets-list.md]**
 
 > ### `:cody build`
-**[AGENT TODO: Read and execute {{cfCommands}}/build.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/build.md]**
 
-> ###  `:cody help` 
-**[AGENT TODO: Read and execute {{cfCommands}}/help.md ]** 
+> ###  `:cody help`
+**[AGENT TODO: Read and execute {{cfCommands}}/help.md ]**
 
 > ### `:cody plan`
-**[AGENT TODO: Read and execute {{cfCommands}}/plan.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/plan.md]**
 
 > ### `:cody refresh update`
-**[AGENT TODO: Read and execute {{cfCommands}}/refresh-update.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/refresh-update.md]**
 
 > ### `:cody refresh`
-**[AGENT TODO: Read and execute {{cfCommands}}/refresh.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/refresh.md]**
 
 > ### `:cody relearn`
-**[AGENT TODO: Read and execute {{cfCommands}}/relearn.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/relearn.md]**
 
 > ### `:cody version add`
-**[AGENT TODO: Read and execute {{cfCommands}}/version-add.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/version-add.md]**
 
 > ### `:cody upgrade`
 **[AGENT TODO: Read and execute {{cfCommands}}/upgrade.md]**
 
 > ### `:cody version build`
-**[AGENT TODO: Read and execute {{cfCommands}}/version-build.md]** 
+**[AGENT TODO: Read and execute {{cfCommands}}/version-build.md]**

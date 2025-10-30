@@ -14,13 +14,13 @@
       </div>
       {{ end }}
     </div>
-    
+
     {{ if .Params.summary }}
     <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Params.summary }}</p>
     {{ else }}
     <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Summary }}</p>
     {{ end }}
-    
+
     <div class="card-actions justify-between items-center">
       <div class="text-sm text-base-content/60">
         <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex items-center gap-1">
@@ -38,7 +38,7 @@
         </span>
         {{ end }}
       </div>
-      
+
       <a href="{{ .Permalink }}" class="btn btn-primary btn-sm hover:btn-primary-focus transition-colors">
         Read More
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

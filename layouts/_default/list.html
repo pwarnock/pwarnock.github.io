@@ -1,13 +1,13 @@
 {{ define "content" }}
   {{ partial "list-header.html" . }}
-  
+
   <!-- Determine card type based on section -->
   {{ $cardType := "card-list" }}
   {{ $items := .Paginator.Pages }}
   {{ $showPagination := true }}
   {{ $sectionTitle := "" }}
   {{ $pageDescription := .Description }}
-  
+
   {{ if eq .Type "posts" }}
     {{ $cardType = "card-list" }}
     {{ if not .Paginator }}
@@ -30,7 +30,7 @@
     {{ $sectionData := index (where site.Data.home.section "id" "tools") 0 }}
     {{ $sectionTitle = $sectionData.title | default "AI Development Tools" }}
   {{ end }}
-  
+
   <!-- Section with title and description -->
   {{ if $sectionTitle }}
   <section style="margin-bottom: var(--space-8)">
@@ -52,7 +52,7 @@
       {{ end }}
     </div>
   {{ end }}
-  
+
   <!-- Pagination or View All button -->
   {{ if $showPagination }}
     {{ partial "list-pagination.html" . }}

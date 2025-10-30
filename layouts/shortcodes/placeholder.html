@@ -3,9 +3,9 @@
 {{- $title := .Get "title" | default "Screenshot" -}}
 {{- $class := .Get "class" -}}
 
-{{ partial "components/screenshot-placeholder.html" (dict 
-  "size" $size 
-  "aspect" $aspect 
-  "title" $title 
+{{ partial "components/screenshot-placeholder.html" (dict
+  "size" $size
+  "aspect" $aspect
+  "title" $title
   "class" $class
 ) }}

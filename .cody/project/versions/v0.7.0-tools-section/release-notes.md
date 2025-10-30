@@ -1,8 +1,8 @@
 # v0.7.0-tools-section Release Notes
 
 ## Release Summary
-**Date:** October 26, 2025  
-**Version:** v0.7.0-tools-section  
+**Date:** October 26, 2025
+**Version:** v0.7.0-tools-section
 **Status:** ✅ Completed
 
 ## Overview

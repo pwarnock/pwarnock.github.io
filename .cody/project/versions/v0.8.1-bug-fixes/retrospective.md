@@ -1,7 +1,7 @@
 # Version v0.8.1-bug-fixes Retrospective
 
-**Release Date**: October 27, 2025  
-**Retrospective Date**: October 27, 2025  
+**Release Date**: October 27, 2025
+**Retrospective Date**: October 27, 2025
 **Version Type**: Patch Release
 
 ## 🎯 Overview

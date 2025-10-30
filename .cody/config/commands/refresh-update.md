@@ -19,7 +19,7 @@ description: Refreshes the memory about the current project of the AI AGENT and 
 ### UPDATING PRD
 - Tell the **USER** that you are reading and updating the PRD document with the latest project information.
 - Find the PRD file in `{{cfPlanPhase}}` root folder.
-- Read that file completely and thoroughly.   
+- Read that file completely and thoroughly.
 - Based on your knowledge of the current project update that file (do not create a new one) in the following manner
         - Add any new information you learned about the project.
         - Remove any outdated information. (e.g. If a table from the DB was deleted, we can remove any references to that table from the document)
@@ -28,7 +28,7 @@ description: Refreshes the memory about the current project of the AI AGENT and 
 # UPDATING PLAN
 - Tell the **USER** that you are reading and updating the Plan document with the latest project information.
 - Find the plan.md file in `{{cfPlanPhase}}` root folder.
-- Read that file completely and thoroughly.   
+- Read that file completely and thoroughly.
 - Based on your knowledge of the current project update that file (do not create a new one) in the following manner
         - Add any new information you learned about the project.
         - Remove any outdated information. (e.g. If a table from the DB was deleted, we can remove any references to that table from the document)
@@ -40,7 +40,7 @@ description: Refreshes the memory about the current project of the AI AGENT and 
         - If it does not exist, tell the **USER** you will now create the Release Notes document.
                 - Copy from `{{cfTemplates}}/build/release-notes.md` to `{{cfWorkPhase}}/release-notes.md`.
 - Read that file completely and thoroughly.
-- Review the all the available versions in the `{{cfWorkPhase}}\build` folder. 
+- Review the all the available versions in the `{{cfWorkPhase}}\build` folder.
 - Add any new versions that are missing `{{cfWorkPhase}}/release-notes.md`.
 - Make any other necessary changes you see fit to keep this document updated.
 

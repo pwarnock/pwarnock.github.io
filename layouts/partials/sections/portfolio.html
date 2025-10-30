@@ -5,14 +5,14 @@
       <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "portfolio") 0).title | default "Featured Projects" }}</h2>
       <p class="text-lg text-base-content/70">Recent work and personal projects</p>
     </div>
-    
+
     <div class="grid gap-8">
       {{ range first 3 (where site.RegularPages "Type" "portfolio") }}
       {{ $tags := slice }}
 {{ if .Params.type }}{{ $tags = $tags | append .Params.type }}{{ end }}
 {{ if .Params.technologies }}{{ range .Params.technologies }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
-{{ partial "components/card.html" (dict 
-        "title" .Title 
+{{ partial "components/card.html" (dict
+        "title" .Title
         "content" (or .Params.summary .Summary)
         "url" .Permalink
         "tags" $tags
@@ -21,7 +21,7 @@
       ) }}
       {{ end }}
     </div>
-    
+
     <div class="text-center mt-12">
       <a href="/portfolio" class="btn btn-secondary btn-lg">
         View All Projects

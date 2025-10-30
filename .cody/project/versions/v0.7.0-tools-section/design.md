@@ -1,8 +1,8 @@
 # v0.7.0-tools-section Design Document
 
-**Version**: v0.7.0-tools-section  
-**Status**: 📋 In Progress  
-**Start Date**: October 26, 2025  
+**Version**: v0.7.0-tools-section
+**Status**: 📋 In Progress
+**Start Date**: October 26, 2025
 **Target Completion**: October 26, 2025
 
 ## 🎯 Project Overview

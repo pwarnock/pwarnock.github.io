@@ -32,12 +32,12 @@ echo ""
 # Poll for messages
 for i in {1..120}; do
   MESSAGES=$(curl -s "$API/session/$SESSION_ID/message" | jq '.[-1].info.role // empty' 2>/dev/null)
-  
+
   if [ "$MESSAGES" = '"assistant"' ]; then
     # Got assistant response
     curl -s "$API/session/$SESSION_ID/message" | jq -r '.[-1].parts[] | select(.type=="text") | .text'
     break
   fi
-  
+
   sleep 1
 done

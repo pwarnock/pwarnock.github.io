@@ -126,12 +126,12 @@
       {{- if $actionButtons }}
       <div class="card-system__actions">
         {{- range $actionButtons }}
-          {{ partial "components/button.html" (dict 
-            "href" .href 
-            "text" .text 
-            "variant" .variant 
-            "size" "sm" 
-            "icon" .icon 
+          {{ partial "components/button.html" (dict
+            "href" .href
+            "text" .text
+            "variant" .variant
+            "size" "sm"
+            "icon" .icon
             "class" "card-system__button"
           ) }}
         {{- end }}

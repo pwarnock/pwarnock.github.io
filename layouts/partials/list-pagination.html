@@ -4,11 +4,11 @@
       {{ if .Paginator.HasPrev }}
       <a href="{{ .Paginator.Prev.URL }}" class="join-item btn btn-outline" aria-label="Previous page">«</a>
       {{ end }}
-      
+
       {{ $currentPage := .Paginator.PageNumber }}
       {{ $totalPages := .Paginator.TotalPages }}
       {{ $adjacentLinks := 2 }}
-      
+
       {{ range $pages := .Paginator.Pagers }}
         {{ $pageNumber := .PageNumber }}
         {{ if eq $pageNumber $currentPage }}
@@ -21,7 +21,7 @@
           <span class="join-item btn btn-disabled">...</span>
         {{ end }}
       {{ end }}
-      
+
       {{ if .Paginator.HasNext }}
       <a href="{{ .Paginator.Next.URL }}" class="join-item btn btn-outline" aria-label="Next page">»</a>
       {{ end }}

@@ -60,12 +60,12 @@ LayoutComponent
   --color-primary-50: #f0f9ff;
   --color-primary-500: #3b82f6;
   --color-primary-900: #1e3a8a;
-  
+
   /* Semantic Colors */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
-  
+
   /* Neutral Colors */
   --color-gray-50: #f9fafb;
   --color-gray-900: #111827;

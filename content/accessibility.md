@@ -41,7 +41,7 @@ We are working to achieve full WCAG 2.1 AA conformance by addressing the followi
 - **Tab Order**: Logical tab order through all interactive elements
 - **Skip Links**: "Skip to main content" link available for keyboard users
 - **Focus Indicators**: Clear visual focus indicators on all interactive elements
-- **Keyboard Shortcuts**: 
+- **Keyboard Shortcuts**:
   - `Alt + T`: Toggle between light and dark themes
   - `Alt + L`: Switch to light theme
   - `Alt + D`: Switch to dark theme
@@ -131,7 +131,7 @@ This website may contain third-party content or links to external websites. Whil
 
 ---
 
-**Last Updated**: January 1, 2025  
+**Last Updated**: January 1, 2025
 **Next Review**: July 1, 2025
 
 *This accessibility statement is part of our commitment to creating an inclusive web experience for all users.*

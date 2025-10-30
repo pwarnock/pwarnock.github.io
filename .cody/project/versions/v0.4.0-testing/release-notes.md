@@ -1,7 +1,7 @@
 # v0.4.0-testing Release Notes
 
-**Release Date**: October 23, 2025  
-**Version**: v0.4.0-testing  
+**Release Date**: October 23, 2025
+**Version**: v0.4.0-testing
 **Status**: ✅ Completed
 
 ## Overview

@@ -68,7 +68,7 @@ This ensures you always inherit new Letta features and properties while maintain
 ## If Moving to Another Machine
 
 1. Clone the repo
-2. Run `npm run letta:config:init` 
+2. Run `npm run letta:config:init`
 3. Update local paths in `.letta/settings.json`
 4. Letta will use the same memory block ID for context persistence
 

@@ -26,7 +26,7 @@ description: Creates a version using the feature-backlog.md file.  The USER will
 - Tell the **USER** to review the tasklist.md document in the current version and when they are done, to tell you.
 - Stop and wait for the **USER**.
 
-### CHOOSE WHAT TO BUILD 
+### CHOOSE WHAT TO BUILD
 - Ask the **USER** which task or phase in the tasklist.md file they would like to start working on.
 - Stop here and wait for **USER** to tell you.
 

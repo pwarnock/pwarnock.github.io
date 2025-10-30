@@ -15,7 +15,7 @@ v[MAJOR].[MINOR].[PATCH]-[NAME]
 
 #### Components
 - **MAJOR**: Breaking changes, major redesigns, technology stack changes
-- **MINOR**: New features, significant content additions, UI improvements  
+- **MINOR**: New features, significant content additions, UI improvements
 - **PATCH**: Bug fixes, content updates, minor improvements
 - **NAME**: Descriptive identifier (max 30 chars, lowercase, dashes only)
 

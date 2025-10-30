@@ -43,7 +43,7 @@ Examples:
 
 ### Critical Guardrails
 
-⚠️ **MANDATORY**: All changes to main must come through Pull Requests. 
+⚠️ **MANDATORY**: All changes to main must come through Pull Requests.
 - ❌ **NO** direct commits to main
 - ✅ **YES** Release branch → PR → Review → Merge
 - ✅ **YES** Lint and validate before creating PR

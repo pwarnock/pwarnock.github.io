@@ -15,9 +15,9 @@ This patch version addresses critical issues discovered after the v0.8.0-upstrea
 ### 1. DeepAgent URL Correction (pw-8)
 **Problem**: The DeepAgent tool page was pointing to an incorrect URL `https://deepagent.dev/` instead of the correct `https://deepagent-desktop.abacus.ai/`.
 
-**Solution**: 
+**Solution**:
 - Updated `external_url` in frontmatter
-- Updated `website` field in frontmatter  
+- Updated `website` field in frontmatter
 - Updated content references in getting started section
 - Updated external links section
 

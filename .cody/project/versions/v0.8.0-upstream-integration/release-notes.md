@@ -1,8 +1,8 @@
 # v0.8.0-upstream-integration Release Notes
 
 ## Release Summary
-**Date:** October 26, 2025  
-**Version:** v0.8.0-upstream-integration  
+**Date:** October 26, 2025
+**Version:** v0.8.0-upstream-integration
 **Status:** ✅ Completed
 
 ## Overview
@@ -11,13 +11,13 @@ Successfully integrated upstream pwarnock.github.io improvements while preservin
 ## 🚀 Major Integrations
 
 ### ✅ Advanced Link Handling System
-**Source**: pwarnock.github.io upstream  
+**Source**: pwarnock.github.io upstream
 **Features Integrated**:
 - **Automatic External Link Detection**: Links starting with `http://` or `https://` automatically open in new tabs
 - **Security-Enhanced Attributes**: External links get `rel="nofollow noopener noreferrer"` for security and SEO
 - **Per-Link Control System**: Override default behavior using bracket codes:
   - `[nt]` - **No Tab**: Prevents external links from opening in new tab
-  - `[ot]` - **Open Tab**: Forces any link to open in new tab  
+  - `[ot]` - **Open Tab**: Forces any link to open in new tab
   - `[nf]` - **No Follow**: Forces nofollow attribute
   - `[f]` - **Follow**: Prevents nofollow attribute (only uses noopener)
 
@@ -30,14 +30,14 @@ Successfully integrated upstream pwarnock.github.io improvements while preservin
 ```
 
 ### ✅ Enhanced Image Processing
-**Source**: pwarnock.github.io upstream  
+**Source**: pwarnock.github.io upstream
 **Features Integrated**:
 - **Automatic Image Optimization**: Local images automatically resized to 800px width
 - **Lazy Loading**: All images get `loading="lazy"` attribute for performance
 - **Responsive Image Handling**: Hugo resource processing for optimal image delivery
 
 ### ✅ Comprehensive Structured Data (JSON-LD)
-**Source**: pwarnock.github.io upstream  
+**Source**: pwarnock.github.io upstream
 **Features Integrated**:
 - **Schema.org Markup**: Full structured data implementation for SEO
 - **Content-Type Detection**: Different schemas for home, section, page, and other content types

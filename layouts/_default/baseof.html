@@ -6,13 +6,13 @@
     <meta name="color-scheme" content="light dark">
     <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    
+
     <!-- SEO Meta Tags -->
     <meta name="author" content="{{ .Site.Params.Author.name | default .Site.Title }}">
     <meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}, {{ end }}{{ .Site.Params.keywords | default "fullstack developer, devops, cloud engineering, technology leader" }}">
     <meta name="robots" content="index, follow">
     <meta name="language" content="{{ .Site.LanguageCode }}">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
@@ -21,7 +21,7 @@
     <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:locale" content="{{ .Site.LanguageCode }}">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ .Permalink }}">
@@ -29,29 +29,29 @@
     <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
     {{ if .Site.Params.twitter }}<meta property="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ .Permalink }}">
-    
+
     {{ partial "security-headers.html" . }}
-    
+
     <!-- DNS Prefetch for performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//github.com">
     <link rel="dns-prefetch" href="//linkedin.com">
     <link rel="dns-prefetch" href="//x.com">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" href="/favicon.ico">
-    
+
     <!-- RSS Feed -->
     {{ with .OutputFormats.Get "rss" }}
     <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{ end }}
-    
+
     <!-- JSON-LD Structured Data -->
     {{- $site := .Site }}
     {{- $page := . }}
@@ -158,11 +158,11 @@
       ]
     }
     </script>
-    
+
     <!-- Google Analytics -->
     {{ if eq (getenv "HUGO_ENV") "production" }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKDDM2GBXN" 
-            integrity="sha384-b09a09c8b43890ff33d5719418be60824692ec88924af821c2d3f46b7b30341329b49799866e6161f2d02424c0e33b45" 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKDDM2GBXN"
+            integrity="sha384-b09a09c8b43890ff33d5719418be60824692ec88924af821c2d3f46b7b30341329b49799866e6161f2d02424c0e33b45"
             crossorigin="anonymous"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -171,10 +171,10 @@
       gtag('config', 'G-SKDDM2GBXN');
     </script>
     {{ end }}
-    
+
     {{ $css := resources.Get "css/main.css" | css.PostCSS | minify }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-    
+
     <!-- Accessibility enhancements -->
     <style>
         /* Enhanced focus indicators for better keyboard navigation */
@@ -182,7 +182,7 @@
             outline: 2px solid currentColor;
             outline-offset: 2px;
         }
-        
+
         /* Skip link styling */
         .sr-only {
             position: absolute;
@@ -195,7 +195,7 @@
             white-space: nowrap;
             border: 0;
         }
-        
+
         /* Respect reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -205,7 +205,7 @@
                 scroll-behavior: auto !important;
             }
         }
-        
+
         /* Enhanced focus for interactive elements */
         a:focus-visible,
         button:focus-visible,
@@ -216,7 +216,7 @@
             outline-offset: 2px;
             box-shadow: 0 0 0 2px currentColor;
         }
-        
+
         /* High contrast mode support */
         @media (prefers-contrast: high) {
             .card {
@@ -224,12 +224,12 @@
             }
         }
     </style>
-    
+
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" 
-            integrity="sha384-l8f0VcPi/M1iHPv8egOnY/15TDwqgbOR1anMIJWvU6nLRgZVLTLSaNqi/TOoT5Fh" 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+            integrity="sha384-l8f0VcPi/M1iHPv8egOnY/15TDwqgbOR1anMIJWvU6nLRgZVLTLSaNqi/TOoT5Fh"
             crossorigin="anonymous"></script>
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -255,9 +255,9 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-content rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-primary-focus" style="padding: var(--space-2) var(--space-4)">
         Skip to main content
     </a>
-    
+
     {{ partial "header.html" . }}
-    
+
     <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else }}container mx-auto{{ end }}" style="{{ if not .IsHome }}padding: var(--space-8) var(--space-4){{ end }}" role="main">
         {{ block "main" . }}
         {{ if .IsHome }}
@@ -275,7 +275,7 @@
                 </ul>
             </div>
             {{ end }}
-            
+
             <!-- Page content -->
             <div class="max-w-none">
                 {{ block "content" . }}
@@ -288,7 +288,7 @@
         {{ end }}
         {{ end }}
     </main>
-    
+
     {{ partial "footer.html" . }}
 </body>
 </html>

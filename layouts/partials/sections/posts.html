@@ -5,11 +5,11 @@
       <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "posts") 0).title | default "Latest Blog Posts" }}</h2>
       <p class="text-lg text-base-content/70">Thoughts on technology, leadership, and development</p>
     </div>
-    
+
     <div class="grid gap-8">
       {{ range first 3 (where site.RegularPages "Section" "blog/posts") }}
-      {{ partial "components/card.html" (dict 
-        "title" .Title 
+      {{ partial "components/card.html" (dict
+        "title" .Title
         "content" (or .Params.summary .Summary)
         "url" .Permalink
         "tags" .Params.tags
@@ -19,7 +19,7 @@
       ) }}
       {{ end }}
     </div>
-    
+
     <div class="text-center mt-12">
       <a href="/blog" class="btn btn-primary btn-lg">
         View All Posts
