@@ -235,9 +235,11 @@ workflow guidelines.
 
 ## Context7 MCP Server Setup
 
-**IMPORTANT**: Ensure Context7 MCP server is available for library documentation access.
+**IMPORTANT**: Ensure Context7 MCP server is available for library documentation
+access.
 
 ### Installation
+
 ```bash
 # Install Context7 MCP server
 npm install -g @context7/mcp-server
@@ -246,7 +248,12 @@ pip install context7-mcp
 ```
 
 ### Configuration
-Add to your MCP client configuration (e.g., Claude Desktop `claude_desktop_config.json`):
+
+Add to your MCP client configuration (e.g., Claude Desktop
+`claude_desktop_config.json`):
+
+> **⚠️ Security Note**: The following examples use placeholder values. Replace
+> with your actual configuration when implementing.
 
 ```json
 {
@@ -254,28 +261,35 @@ Add to your MCP client configuration (e.g., Claude Desktop `claude_desktop_confi
     "context7": {
       "command": "context7-mcp",
       "args": [],
-      "env": {}
+      "env": {
+        "API_KEY": "your-api-key-here"
+      }
     }
   }
 }
 ```
 
 ### Verification
+
 Test Context7 MCP availability:
-```bash
+
+````bash
 # Check if MCP server responds
+```bash
 curl -X POST http://localhost:3000/mcp \
   -H "Content-Type: application/json" \
-  -d '{"method": "context7/resolve", "params": {"libraryName": "hugo"}}'
-```
+  -d '{"method": "context7/resolve", "params": {"libraryName": "example-library"}}'
+````
 
 ### Troubleshooting
+
 - **Server not responding**: Restart MCP client and check logs
 - **Library not found**: Verify library name spelling and availability
 - **Connection issues**: Check firewall and network settings
 - **Version conflicts**: Update to latest Context7 MCP server version
 
-**Without Context7 MCP, agents cannot access current library documentation and may provide outdated information.**
+**Without Context7 MCP, agents cannot access current library documentation and
+may provide outdated information.**
 
 ## .cody Directory Access Rules
 

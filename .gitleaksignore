@@ -1,3 +1,4 @@
-# Ignore AGENTS.md file entirely - contains documentation examples that may trigger false positives
-# The file contains configuration examples and sample code that are not actual secrets
-AGENTS.md
+# Ignore specific lines in AGENTS.md that contain example configurations
+# These lines use placeholder values and are not actual secrets
+AGENTS.md:254-261
+AGENTS.md:267-270
