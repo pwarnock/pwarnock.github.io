@@ -1,2 +1,4 @@
 # Ignore specific lines in AGENTS.md that may contain example configurations
-AGENTS.md
+# Lines with example JSON configs and example URLs that might trigger false positives
+AGENTS.md:248-270
+AGENTS.md:265-270
