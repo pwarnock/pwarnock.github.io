@@ -1,4 +1,4 @@
-# Cody Demo Hugo Site - Style Guide
+# Peter Warnock - Personal Site Style Guide
 
 ## Project Architecture
 
