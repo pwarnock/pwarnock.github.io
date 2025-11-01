@@ -1,33 +1,65 @@
-<footer class="footer footer-center p-6 sm:p-10 bg-base-200 text-base-content rounded" role="contentinfo">
-  <div class="w-full max-w-md mx-auto mb-6 sm:mb-8">
-    <div class="flex flex-wrap justify-center gap-2 sm:gap-4" role="navigation" aria-label="Footer navigation">
-      <a href="{{ "/" | relLangURL }}" class="link link-hover text-center focus-ring">Home</a>
-      <a href="{{ "/blog" | relLangURL }}" class="link link-hover text-center focus-ring">Blog</a>
-      <a href="{{ "/portfolio" | relLangURL }}" class="link link-hover text-center focus-ring">Portfolio</a>
-      <a href="{{ "/about" | relLangURL }}" class="link link-hover text-center focus-ring">About</a>
+<footer class="footer p-6 sm:p-10 bg-base-200 text-base-content rounded" role="contentinfo">
+  <!-- Main Footer Grid: 3 columns -->
+  <div class="w-full max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-start">
+
+      <!-- Column 1: Navigation + Social -->
+      <div class="space-y-6">
+        <!-- Main Navigation -->
+        <nav aria-label="Main footer navigation" class="w-full">
+          <ul class="flex flex-wrap justify-center gap-2 sm:gap-3">
+            <li><a href="{{ "/" | relLangURL }}" class="link link-hover text-center focus-ring text-sm">Home</a></li>
+            <li><a href="{{ "/blog" | relLangURL }}" class="link link-hover text-center focus-ring text-sm">Blog</a></li>
+            <li><a href="{{ "/portfolio" | relLangURL }}" class="link link-hover text-center focus-ring text-sm">Portfolio</a></li>
+            <li><a href="{{ "/about" | relLangURL }}" class="link link-hover text-center focus-ring text-sm">About</a></li>
+          </ul>
+        </nav>
+
+        <!-- Social Media -->
+        <section aria-labelledby="social-heading" class="w-full">
+          {{ partial "components/social-links.html" . }}
+        </section>
+      </div>
+
+      <!-- Column 2: Newsletter -->
+      <div class="space-y-6">
+        <!-- Newsletter -->
+        <section aria-labelledby="newsletter-heading" class="w-full">
+          {{ partial "components/newsletter.html" . }}
+        </section>
+      </div>
+
+      <!-- Column 3: Legal + Description (right-aligned) -->
+      <div class="flex flex-col">
+        <!-- Legal Navigation (top right) -->
+        <nav aria-label="Legal information" class="flex flex-wrap justify-end gap-2 text-xs opacity-70 mb-2">
+          <a href="/privacy" class="link link-hover">Privacy</a>
+          <a href="/accessibility" class="link link-hover">Accessibility</a>
+          <a href="/security.txt" class="link link-hover">Security</a>
+        </nav>
+
+        <!-- Site Description (under legal) -->
+        <p class="text-xs opacity-60 text-right">{{ .Site.Params.description }}</p>
+      </div>
+
     </div>
 
-    <div class="mt-4">
-      {{ partial "components/social-links.html" . }}
-    </div>
   </div>
 
-  <div class="w-full mb-6 sm:mb-8">
-    {{ partial "components/newsletter.html" . }}
-  </div>
-
-  <aside class="w-full max-w-md px-2 sm:px-0">
-    <p class="text-sm sm:text-base">Copyright © {{ now.Year }} - {{ .Site.Title }}</p>
-    <p class="text-xs sm:text-sm opacity-70 mt-1">{{ .Site.Params.description }}</p>
-    <p class="text-xs opacity-50 mt-1">
-      v{{ .Site.Params.version }}{{ if .Site.Params.gitHash }} ({{ .Site.Params.gitHash }}){{ end }}
-    </p>
-    <div class="text-xs opacity-50 mt-2 space-x-2">
-      <a href="/privacy" class="link link-hover">Privacy Policy</a>
-           <span>•</span>
-      <a href="/accessibility" class="link link-hover">Accessibility</a>
-      <span>•</span>
-      <a href="/security.txt" class="link link-hover">Security</a>
-    </div>
-  </aside>
+   <!-- Full-width Copyright Row -->
+   <div class="w-full mt-8 pt-6 border-t border-base-content/10">
+     <div class="flex flex-wrap justify-between items-center gap-2 max-w-6xl mx-auto px-4 sm:px-0">
+       <div class="flex flex-wrap items-center gap-2">
+         <p class="text-xs opacity-70">Copyright © {{ now.Year }}</p>
+         <p class="text-xs opacity-70">{{ .Site.Title }}</p>
+         <p class="text-xs opacity-50">
+           v{{ .Site.Params.version }}{{ if .Site.Params.gitHash }} ({{ .Site.Params.gitHash }}){{ end }}
+         </p>
+       </div>
+       <a href="#top" class="link link-hover text-xs opacity-70 inline-flex items-center gap-1 ml-auto" aria-label="Back to top of page">
+         <span>↑</span>
+         <span>Back to top</span>
+       </a>
+     </div>
+   </div>
 </footer>
