@@ -55,7 +55,7 @@ enableGitInfo = true
   minify = true
 
   # Version
-  version = "0.10.1"
+  version = "0.10.2"
   gitHash = "5761548"
 
 [markup]
