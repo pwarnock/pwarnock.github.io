@@ -258,7 +258,7 @@
 
     {{ partial "header.html" . }}
 
-    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else }}container mx-auto{{ end }}" style="{{ if not .IsHome }}padding: var(--space-8) var(--space-4){{ end }}" role="main">
+    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else if eq .Layout "about" }}{{ else }}container mx-auto{{ end }}" style="{{ if and (not .IsHome) (ne .Layout "about") }}padding: var(--space-8) var(--space-4){{ end }}" role="main">
         {{ block "main" . }}
         {{ if .IsHome }}
             {{ .Content }}
