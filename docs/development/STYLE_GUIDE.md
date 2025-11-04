@@ -580,12 +580,14 @@ env:
 
 **Dynamic Git Hash Display (v0.10.2+):**
 
-Footer automatically shows current commit hash:
+Footer automatically shows current commit hash (with safe null checking):
 ```html
-v{{ .Site.Params.version }}{{ if and .GitInfo .GitInfo.Hash }} ({{ slice .GitInfo.Hash.String 0 7 }}){{ end }}
+v{{ .Site.Params.version }}{{ with .GitInfo }}{{ with .Hash }}{{ with .String }} ({{ slice . 0 7 }}){{ end }}{{ end }}{{ end }}
 ```
 
 Example: `v0.10.2 (3c83c7e)`
+
+**Why nested `with` blocks?** Safely handles cases where `.GitInfo`, `.Hash`, or `.String` might be nil, preventing build failures.
 
 ## Maintenance Guidelines
 
