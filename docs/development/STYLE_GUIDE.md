@@ -580,14 +580,17 @@ env:
 
 **Dynamic Git Hash Display (v0.10.2+):**
 
-Footer automatically shows current commit hash (with safe null checking):
+Footer automatically shows current commit hash using data from `generate-version.js`:
 ```html
-v{{ .Site.Params.version }}{{ with .GitInfo }}{{ with .Hash }}{{ with .String }} ({{ slice . 0 7 }}){{ end }}{{ end }}{{ end }}
+v{{ .Site.Params.version }}{{ with .Site.Data.version.hash }} ({{ . }}){{ end }}
 ```
 
-Example: `v0.10.2 (3c83c7e)`
+Example: `v0.10.2 (163b213)`
 
-**Why nested `with` blocks?** Safely handles cases where `.GitInfo`, `.Hash`, or `.String` might be nil, preventing build failures.
+**How it works:**
+- `generate-version.js` runs during build and creates `data/version.toml` with git hash
+- Template reads from `.Site.Data.version.hash` (more reliable than `.GitInfo`)
+- Falls back gracefully when data file is unavailable
 
 ## Maintenance Guidelines
 
