@@ -242,9 +242,45 @@ When `customHTML: true`:
 - Modifiers describe state or variation: `--primary`, `--disabled`, `--active`
 - Always use kebab-case for readability
 
+### Theme-Aware Color System
+
+**DaisyUI Theme Variables** (v0.10.2+):
+
+For theme-aware components that work across all DaisyUI themes (light, dark, dracula, etc.):
+
+```css
+/* Use DaisyUI theme variables instead of hardcoded colors */
+.btn-system--ghost {
+  background-color: transparent;
+  color: oklch(var(--bc)); /* Base content - adapts to theme */
+  border-color: transparent;
+}
+
+.btn-system--ghost:hover:not(:disabled) {
+  background-color: oklch(var(--b2)); /* Base-200 - subtle theme-aware background */
+  color: oklch(var(--bc));
+}
+
+/* Primary color that adapts to theme */
+.btn-system--outline {
+  color: oklch(var(--p)); /* Primary color */
+  border-color: oklch(var(--p));
+}
+```
+
+**Available DaisyUI Theme Variables:**
+- `--bc`: Base content (text color)
+- `--b1`, `--b2`, `--b3`: Base color variations
+- `--p`: Primary color
+- `--pc`: Primary content (text on primary)
+- `--s`: Secondary color
+- `--a`: Accent color
+
+**Why theme-aware?** Ensures proper contrast ratios across all themes, WCAG compliance, and consistent user experience.
+
 ### Color & Alpha Standards
 
-**Color Function Notation** (consistent with v0.10.0):
+**Color Function Notation** (consistent with v0.10.2):
 
 ```css
 /* STANDARD: Use rgba() - more readable for transparency */
@@ -511,6 +547,46 @@ npm run build     # Must succeed
 - Provide descriptive link text
 - Test with screen readers
 
+## Environment Variables & Security
+
+### Hugo Security Policy (v0.10.2+)
+
+**Environment Variable Access:**
+
+Hugo restricts `getenv()` calls to variables starting with `HUGO_` for security:
+
+```toml
+# hugo.toml - Only HUGO_* vars are accessible via getenv()
+[security.funcs]
+  getenv = ['^HUGO_']
+```
+
+**Google Analytics Setup:**
+```yaml
+# GitHub Actions workflow
+env:
+  HUGO_ENV: production
+  HUGO_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+# Hugo template
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ getenv "HUGO_GOOGLE_ANALYTICS_ID" }}">
+```
+
+**GitHub Repository Secrets Required:**
+- `GOOGLE_ANALYTICS_ID`: Your GA tracking ID (e.g., `G-SKDDM2GBXN`)
+
+### Footer Git Information
+
+**Dynamic Git Hash Display (v0.10.2+):**
+
+Footer automatically shows current commit hash:
+```html
+v{{ .Site.Params.version }}{{ if and .GitInfo .GitInfo.Hash }} ({{ slice .GitInfo.Hash.String 0 7 }}){{ end }}
+```
+
+Example: `v0.10.2 (3c83c7e)`
+
 ## Maintenance Guidelines
 
 ### Documentation
@@ -556,6 +632,18 @@ npm run build     # Must succeed
 {{ partial "components/content-card.html" (dict "context" . "item" .item
 "cardType" .cardType "showDate" true "showDescription" true ) }}
 ```
+
+## Recent Updates
+
+- **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git hash
+- **v0.10.1**: Hero section enhancement
+- **v0.10.0**: Spacing scale refactoring, version tracking in footer
+
+## Version History
+
+- **v0.10.2** (Nov 2025): Accessibility improvements, theme-aware components, security hardening
+- **v0.10.1** (Oct 2025): Hero section redesign with 3-column layout
+- **v0.10.0** (Oct 2025): Comprehensive spacing scale, footer version display
 
 This style guide should be updated as the project evolves and should serve as
 the single source of truth for design and development decisions.
