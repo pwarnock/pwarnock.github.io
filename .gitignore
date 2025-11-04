@@ -41,6 +41,9 @@ static/css/main.css
 # Beads daemon lock file
 .beads/daemon.lock
 
+# Git hooks (local development only)
+.git/hooks/
+
 # Environment variables
 .env
 .env.local
