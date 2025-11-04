@@ -592,6 +592,41 @@ Example: `v0.10.2 (163b213)`
 - Template reads from `.Site.Data.version.hash` (more reliable than `.GitInfo`)
 - Falls back gracefully when data file is unavailable
 
+## Push Guardrail System
+
+### Pre-Push Confirmation (v0.10.2+)
+
+**All pushes require explicit confirmation** to prevent accidental deployments.
+
+#### How It Works
+- **Pre-push git hook** runs automatically before any `git push`
+- Shows summary of commits being pushed
+- Requires typing `'yes'` to confirm
+- Prevents accidental production deployments
+
+#### Normal Workflow
+```bash
+git add .
+git commit -m "feat: add new feature"
+git push
+# → Hook prompts: "Type 'yes' to confirm and push"
+# → Type: yes
+# → Push proceeds
+```
+
+#### Emergency Bypass
+**Only use in critical situations:**
+```bash
+./scripts/emergency-push.sh
+# → Requires typing 'emergency' to confirm
+```
+
+#### Benefits
+- ✅ **Prevents accidental pushes** during development
+- ✅ **Forces review** of changes before deployment
+- ✅ **Maintains production stability**
+- ✅ **Easy bypass** for emergencies
+
 ## Maintenance Guidelines
 
 ### Documentation
