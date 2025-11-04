@@ -161,14 +161,14 @@
 
     <!-- Google Analytics -->
     {{ if eq (getenv "HUGO_ENV") "production" }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKDDM2GBXN"
-            integrity="sha384-b09a09c8b43890ff33d5719418be60824692ec88924af821c2d3f46b7b30341329b49799866e6161f2d02424c0e33b45"
-            crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ getenv "GOOGLE_ANALYTICS_ID" }}"
+    integrity="sha384-b09a09c8b43890ff33d5719418be60824692ec88924af821c2d3f46b7b30341329b49799866e6161f2d02424c0e33b45"
+    crossorigin="anonymous"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SKDDM2GBXN');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ getenv "GOOGLE_ANALYTICS_ID" }}');
     </script>
     {{ end }}
 
