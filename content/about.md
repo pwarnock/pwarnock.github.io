@@ -9,7 +9,7 @@ description:
   15+ years of experience building scalable web applications.'
 ---
 
-<h2 class="text-3xl lg:text-4xl font-semibold text-secondary mb-6">Core Expertise</h2>
+<h2 class="text-3xl lg:text-4xl font-semibold text-secondary mb-6 mt-12">Core Expertise</h2>
 
 {{< expertise-cards >}}
 
