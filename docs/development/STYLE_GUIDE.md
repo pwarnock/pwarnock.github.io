@@ -599,10 +599,12 @@ Example: `v0.10.2 (163b213)`
 **All pushes require explicit confirmation** to prevent accidental deployments.
 
 #### How It Works
-- **Pre-push git hook** runs automatically before any `git push`
+- **Pre-push git hook** runs automatically before any `git push` (in local git environments)
 - Shows summary of commits being pushed
-- Requires typing `'yes'` to confirm
+- Requires typing `'yes'` to confirm deployment
 - Prevents accidental production deployments
+
+**Note:** Hook executes in your local terminal when you run `git push`. CI/CD systems bypass git hooks.
 
 #### Normal Workflow
 ```bash
