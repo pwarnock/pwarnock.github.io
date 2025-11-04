@@ -1,0 +1,37 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Pre-push hook that requires user confirmation
+# This prevents accidental pushes without review
+
+echo "🔒 PRE-PUSH GUARDRAIL ACTIVATED"
+echo "================================="
+echo ""
+echo "You are about to push the following commits:"
+echo ""
+
+# Show what will be pushed (limit to avoid too much output)
+git log --oneline --graph --decorate --color origin/main..HEAD 2>/dev/null | head -20 || git log --oneline --graph --decorate --color -5
+
+echo ""
+echo "⚠️  PUSH GUARDRAIL: This will deploy changes to production!"
+echo ""
+echo "Please confirm you want to proceed:"
+echo "  • Have you tested the build locally?"
+echo "  • Have you reviewed all changes?"
+echo "  • Are you ready to deploy to production?"
+echo ""
+
+# Ask for confirmation
+printf "Type 'yes' to confirm and push, or anything else to cancel: "
+read confirm
+
+if [ "$confirm" != "yes" ]; then
+    echo ""
+    echo "❌ Push cancelled. Changes not deployed."
+    echo "💡 Run 'git push' again when ready, or use './scripts/emergency-push.sh' to bypass."
+    exit 1
+fi
+
+echo ""
+echo "✅ Push confirmed. Proceeding with deployment..."
