@@ -35,6 +35,12 @@ resources/
 .hugo_cache/
 hugo_stats.json
 
+# Generated CSS
+static/css/main.css
+
+# Beads daemon lock file
+.beads/daemon.lock
+
 # Environment variables
 .env
 .env.local
