@@ -1,0 +1,11 @@
+<!-- Homepage Hero Layout -->
+<div class="hero-grid grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+  <!-- Profile Picture - Left Column -->
+  {{ partial "components/hero-profile" . }}
+
+  <!-- Stacked Hero Role Cards - Center Column -->
+  {{ partial "components/hero-roles" . }}
+
+  <!-- Latest Blog Post - Right Column -->
+  {{ partial "components/hero-latest-post" . }}
+</div>

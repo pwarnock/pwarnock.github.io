@@ -1,0 +1,27 @@
+{{ define "main" }}
+<!-- Breadcrumbs (placed above hero for better UX and accessibility) -->
+{{ if not .Params.hideBreadcrumbs }}
+<div class="container mx-auto px-4 py-4">
+  <div class="breadcrumbs text-sm">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>{{ .Title }}</li>
+    </ul>
+  </div>
+</div>
+{{ end }}
+
+<!-- About Page Hero -->
+{{ partial "components/hero" (dict 
+  "context" . 
+  "size" "full" 
+  "background" "gradient-primary"
+  "title" "About Peter Warnock"
+  "layout" "about"
+) }}
+
+<!-- About Page Content -->
+<div class="container mx-auto px-4">
+  {{ .Content }}
+</div>
+{{ end }}
