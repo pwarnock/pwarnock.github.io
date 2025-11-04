@@ -599,12 +599,12 @@ Example: `v0.10.2 (163b213)`
 **All pushes require explicit confirmation** to prevent accidental deployments.
 
 #### How It Works
-- **Pre-push git hook** runs automatically before any `git push` (in local git environments)
+- **Husky-managed pre-push hook** runs automatically before any `git push`
 - Shows summary of commits being pushed
 - Requires typing `'yes'` to confirm deployment
 - Prevents accidental production deployments
 
-**Note:** Hook executes in your local terminal when you run `git push`. CI/CD systems bypass git hooks.
+**Note:** Hook executes on all developer machines (Husky ensures consistency). CI/CD systems bypass git hooks.
 
 #### Normal Workflow
 ```bash
@@ -621,7 +621,11 @@ git push
 ```bash
 ./scripts/emergency-push.sh
 # → Requires typing 'emergency' to confirm
+# → Bypasses Husky hook entirely
 ```
+
+#### Setup for New Developers
+Husky hooks are automatically installed when running `npm install` (via postinstall script). The pre-push guardrail will be active immediately.
 
 #### Benefits
 - ✅ **Prevents accidental pushes** during development
