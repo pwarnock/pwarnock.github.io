@@ -56,7 +56,6 @@ enableGitInfo = true
 
   # Version
   version = "0.10.2"
-  gitHash = "5761548"
 
 [markup]
   [markup.goldmark]
