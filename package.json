@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.16",
+    "@tailwindcss/typography": "^0.5.19",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.1.16"
   }
