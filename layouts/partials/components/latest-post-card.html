@@ -1,4 +1,4 @@
-{{ $latest_post := first 1 (sort (where (where .Site.RegularPages "Kind" "page") "Section" "blog") ".Date" "desc") }}
+{{ $latest_post := first 1 (sort (where .Site.RegularPages "Section" "blog") ".Date" "desc") }}
 {{ with $latest_post }}
   {{ $title := "Latest Blog Posts" }}
   {{ $description := .Title }}
