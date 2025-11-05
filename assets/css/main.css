@@ -2,6 +2,7 @@
 @plugin "daisyui" {
 themes: all;
 }
+@plugin "@tailwindcss/typography";
 
 /* Design System Tokens */
 :root {
