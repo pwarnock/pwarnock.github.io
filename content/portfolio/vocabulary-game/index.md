@@ -2,13 +2,12 @@
 date: 2024-11-23
 draft: false
 title: 'Vocabulary Game'
-description:
-  'An educational game designed to help young children (5 years old) practice
+description: 'An educational game designed to help young children (5 years old) practice
   typing, spelling, and reading skills through interactive vocabulary exercises.'
 client: 'Personal Project - Child Education'
 technologies: ['React', 'JavaScript', 'HTML5', 'CSS3']
 github_url: 'https://github.com/pwarnock/vocabulary-game'
-demo_url: 'https://pwarnock.github.io/vocabulary-game/'
+live_url: 'https://peterwarnock.com/vocabulary-game/'
 completion_date: '2024-11'
 category: 'Educational Game'
 ---
@@ -138,7 +137,7 @@ Control**: Git
 ## Live Demo
 
 Try the Vocabulary Game online:
-[https://pwarnock.github.io/vocabulary-game/](https://pwarnock.github.io/vocabulary-game/)
+[https://peterwarnock.com/vocabulary-game/](https://peterwarnock.com/vocabulary-game/)
 
 The demo provides the full interactive experience where children can practice
 typing and spelling with immediate feedback.

@@ -132,6 +132,40 @@ When `customHTML: true`:
 - **Tool Pages**: `/content/tools/[tool-name]/index.md`
 - **Static Pages**: `/content/[page-name].md`
 
+#### Portfolio Frontmatter Structure
+
+Portfolio items require specific frontmatter fields for consistent display in the card grid and detail pages:
+
+```yaml
+---
+title: 'Project Name' # Required: Display title
+date: 2024-11-23 # Required: Publication date
+draft: false # Required: Set to false for live projects
+description: 'Brief project description' # Required: Used in cards and SEO
+client: 'Personal Project - Category' # Required: Project context
+technologies: ['Tech1', 'Tech2'] # Required: Array of technologies used
+github_url: 'https://github.com/user/repo' # Optional: GitHub repository link
+live_url: 'https://example.com/demo' # Optional: Live demo URL (displays "Live Demo" button)
+completion_date: '2024-11' # Required: When project was completed
+category: 'Web App' # Required: Project category for badges
+---
+```
+
+**Required Fields:**
+
+- `title`, `date`, `draft`, `description`, `client`, `technologies`, `completion_date`, `category`
+
+**Optional Fields:**
+
+- `github_url`: Displays GitHub icon button linking to repository
+- `live_url`: Displays "Live Demo" button with external link
+
+**Validation:**
+
+- Use `live_url` (not `demo_url`) to match template expectations
+- Technologies array should use consistent naming (e.g., 'React', 'Node.js')
+- Categories should be consistent across projects (e.g., 'Web App', 'Educational Game')
+
 ### URL Structure
 
 - Blog: `/blog/posts/[slug]/`

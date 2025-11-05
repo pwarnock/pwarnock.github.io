@@ -27,14 +27,81 @@ const cleanVersion = version.startsWith('v') ? version.substring(1) : version;
 const dataDir = path.join(__dirname, '..', 'data');
 const versionFile = path.join(dataDir, 'version.toml');
 
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
+console.log(`📁 Creating data directory: ${dataDir}`);
+console.log(`📄 Writing version file: ${versionFile}`);
 
-const content = `current = "${cleanVersion}"
+try {
+  // Ensure data directory exists and is writable
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true, mode: 0o755 });
+    console.log(`✓ Created data directory`);
+  } else {
+    console.log(`✓ Data directory already exists`);
+    // Try to set permissions on existing directory
+    try {
+      fs.chmodSync(dataDir, 0o755);
+      console.log(`✓ Set directory permissions`);
+    } catch (permError) {
+      console.log(`⚠️ Could not set directory permissions: ${permError.message}`);
+    }
+  }
+
+  const content = `current = "${cleanVersion}"
 branch = "${branch}"
 hash = "${shortHash}"
 `;
 
-fs.writeFileSync(versionFile, content);
-console.log(`✓ Generated version: ${version} (branch: ${branch})`);
+  // Remove existing file if it exists (to avoid permission issues)
+  if (fs.existsSync(versionFile)) {
+    try {
+      fs.unlinkSync(versionFile);
+      console.log(`✓ Removed existing version file`);
+    } catch (removeError) {
+      console.log(`⚠️ Could not remove existing file: ${removeError.message}`);
+    }
+  }
+
+  // Try to write file, if it fails, try alternative approach
+  try {
+    fs.writeFileSync(versionFile, content, { mode: 0o644 });
+    console.log(`✓ Generated version file: ${version} (branch: ${branch})`);
+  } catch (writeError) {
+    console.log(`⚠️ Direct write failed, trying alternative approach: ${writeError.message}`);
+
+    // Alternative: Use shell command to write file
+    execSync(`printf '%s\\n' '${content.replace(/'/g, "'\\''")}' > "${versionFile}"`, { stdio: 'inherit' });
+    console.log(`✓ Generated version file using alternative method: ${version} (branch: ${branch})`);
+  }
+
+  // Verify file was created and is readable
+  if (fs.existsSync(versionFile)) {
+    const stats = fs.statSync(versionFile);
+    console.log(`✓ Version file exists (size: ${stats.size} bytes)`);
+
+    // Try to read it back to verify content
+    const readContent = fs.readFileSync(versionFile, 'utf8');
+    if (readContent.includes(cleanVersion)) {
+      console.log(`✓ Version file content verified`);
+    } else {
+      console.log(`⚠️ Version file content may be incorrect`);
+    }
+  } else {
+    throw new Error('Version file was not created');
+  }
+
+} catch (error) {
+  console.error(`❌ Error creating version file:`, error.message);
+  console.error(`Data dir: ${dataDir}`);
+  console.error(`Version file: ${versionFile}`);
+  console.error(`Current working directory: ${process.cwd()}`);
+
+  // Try to list directory contents for debugging
+  try {
+    const files = fs.readdirSync(dataDir);
+    console.error(`Data directory contents: [${files.join(', ')}]`);
+  } catch (listError) {
+    console.error(`Could not list data directory: ${listError.message}`);
+  }
+
+  process.exit(1);
+}
