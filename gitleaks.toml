@@ -12,18 +12,11 @@ paths = [
   '''\.gitleaksignore''',
 ]
 
-# Allow specific patterns that are false positives
-[[allowlist.regexes]]
-description = "Allow API_KEY placeholder in documentation"
-regex = '''"API_KEY":\s*"your-api-key-here"'''
-
-[[allowlist.regexes]]
-description = "Allow example secret placeholders"
-regex = '''your-[a-z-]+-here'''
-
-[[allowlist.regexes]]
-description = "Allow example configuration values"
-regex = '''placeholder[_-]?value[s]?'''
+regexes = [
+  '''"API_KEY":\s*"your-api-key-here"''',
+  '''your-[a-z-]+-here''',
+  '''placeholder[_-]?value[s]?''',
+]
 
 # Allow specific commits (if needed for historical reasons)
 # [[allowlist.commits]]
