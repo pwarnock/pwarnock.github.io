@@ -1,5 +1,4 @@
-{{ $blog_section := .Site.GetPage "section" "posts" }}
-{{ $latest_post := first 1 $blog_section.Pages }}
+{{ $latest_post := first 1 (where (where .Site.RegularPages "Kind" "page") "Section" "blog") }}
 {{ with $latest_post }}
   {{ $title := "Latest Blog Posts" }}
   {{ $description := .Title }}
