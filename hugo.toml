@@ -54,8 +54,6 @@ enableGitInfo = true
   # Build settings
   minify = true
 
-  # Version
-  version = "0.10.3"
 
 [markup]
   [markup.goldmark]
