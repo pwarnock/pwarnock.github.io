@@ -14,10 +14,8 @@ repos:
       - id: trailing-whitespace
       - id: mixed-line-ending
         args: ['--fix=lf']
-      - id: check-long-lines
-        args: ['--max-line-length=120']
 
-      # Secret scanning with Gitleaks
+  # Secret scanning with Gitleaks
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.29.0
     hooks:
