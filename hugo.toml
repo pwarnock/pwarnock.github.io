@@ -81,6 +81,12 @@ enableGitInfo = true
       precision = 0
     [minify.tdewolff.html]
       keepWhitespace = false
+      keepComments = false
+      keepConditionalComments = false
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = false
     [minify.tdewolff.js]
       keepVarNames = false
 
