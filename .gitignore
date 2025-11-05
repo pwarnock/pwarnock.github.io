@@ -136,3 +136,4 @@ coverage/
 *.tgz
 *.tar.gz
 .cache/
+data/version.toml

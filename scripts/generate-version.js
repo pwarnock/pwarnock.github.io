@@ -51,6 +51,16 @@ branch = "${branch}"
 hash = "${shortHash}"
 `;
 
+  // Remove existing file if it exists (to avoid permission issues)
+  if (fs.existsSync(versionFile)) {
+    try {
+      fs.unlinkSync(versionFile);
+      console.log(`✓ Removed existing version file`);
+    } catch (removeError) {
+      console.log(`⚠️ Could not remove existing file: ${removeError.message}`);
+    }
+  }
+
   // Try to write file, if it fails, try alternative approach
   try {
     fs.writeFileSync(versionFile, content, { mode: 0o644 });
