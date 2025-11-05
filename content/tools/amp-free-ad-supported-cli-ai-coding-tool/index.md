@@ -14,8 +14,6 @@ slug: 'amp-free-ad-supported-cli-ai-coding-tool'
 aliases: ['/tools/amp-free/']
 ---
 
-# Amp Free
-
 Amp Free represents a revolutionary business model in AI coding tools—offering
 powerful CLI-based AI assistance completely free of charge through an innovative
 ad-supported and data contribution model. Launched on October 15, 2025, by

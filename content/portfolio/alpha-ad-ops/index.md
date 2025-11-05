@@ -21,8 +21,6 @@ completion_date: '2025-10'
 category: 'SaaS Prototype'
 ---
 
-# Alpha Ad Ops - Rapid Prototype Development
-
 Alpha Ad Ops is a proof-of-concept advertising operations platform developed as
 a rapid prototype to demonstrate full-stack development capabilities and modern
 SaaS architecture patterns. The project was built from concept to deployment in

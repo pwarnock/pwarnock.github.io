@@ -132,9 +132,64 @@ When `customHTML: true`:
 - **Tool Pages**: `/content/tools/[tool-name]/index.md`
 - **Static Pages**: `/content/[page-name].md`
 
+### Heading Structure Guidelines
+
+**CRITICAL: No H1 Titles in Markdown Content**
+
+All content types (blog posts, portfolio items, tools, static pages) must
+**NOT** include H1 titles (`# Title`) in their markdown content.
+
+**Why?**
+
+- Hero templates already display the title as an H1 from frontmatter
+- Duplicate H1s create accessibility issues for screen readers
+- Maintains SEO optimization while ensuring a11y compliance
+
+**Template H1 Display:**
+
+- **Blog Posts**: `hero-blog.html` displays `{{ .context.Title }}` as H1
+- **Tools**: `hero-tools.html` displays `{{ .context.Title }}` as H1
+- **Portfolio**: `hero-portfolio.html` displays `{{ .context.Title }}` as H1
+- **Static Pages**: `single.html` displays `{{ .Title }}` as H1
+
+**Correct Structure:**
+
+```markdown
+---
+title: 'Page Title'
+date: 2025-01-01T00:00:00Z
+draft: false
+---
+
+# NO H1 HERE - Title comes from frontmatter
+
+## Start with H2 for first section
+
+Content begins here...
+```
+
+**Incorrect Structure:**
+
+```markdown
+---
+title: 'Page Title'
+---
+
+# Page Title ← REMOVE THIS - creates duplicate H1
+
+## Content
+```
+
+**Content Starts With:**
+
+- **H2** (`## Section Title`) for main content sections
+- **Images**, **paragraphs**, or **other elements** directly after frontmatter
+- Never H1 titles in markdown content
+
 #### Portfolio Frontmatter Structure
 
-Portfolio items require specific frontmatter fields for consistent display in the card grid and detail pages:
+Portfolio items require specific frontmatter fields for consistent display in
+the card grid and detail pages:
 
 ```yaml
 ---
@@ -153,7 +208,8 @@ category: 'Web App' # Required: Project category for badges
 
 **Required Fields:**
 
-- `title`, `date`, `draft`, `description`, `client`, `technologies`, `completion_date`, `category`
+- `title`, `date`, `draft`, `description`, `client`, `technologies`,
+  `completion_date`, `category`
 
 **Optional Fields:**
 
@@ -164,7 +220,8 @@ category: 'Web App' # Required: Project category for badges
 
 - Use `live_url` (not `demo_url`) to match template expectations
 - Technologies array should use consistent naming (e.g., 'React', 'Node.js')
-- Categories should be consistent across projects (e.g., 'Web App', 'Educational Game')
+- Categories should be consistent across projects (e.g., 'Web App', 'Educational
+  Game')
 
 ### URL Structure
 
@@ -292,7 +349,9 @@ dracula, etc.):
 }
 
 .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(var(--b2)); /* Base-200 - subtle theme-aware background */
+  background-color: oklch(
+    var(--b2)
+  ); /* Base-200 - subtle theme-aware background */
   color: oklch(var(--bc));
 }
 
@@ -566,9 +625,18 @@ npm run build     # Must succeed
 ### Semantic HTML
 
 - Use proper heading hierarchy (h1-h6)
+- **CRITICAL: Only ONE H1 per page** (handled by templates, not markdown)
 - Implement ARIA labels where needed
 - Ensure keyboard navigation
 - Provide alt text for images
+
+**Heading Best Practices:**
+
+- **H1**: Page title (displayed by hero template from frontmatter)
+- **H2**: Main content sections (`## Section Title`)
+- **H3**: Subsections (`### Subsection`)
+- **H4-H6**: Nested content as needed
+- **Never**: H1 titles in markdown content (creates duplicates)
 
 ### Color Contrast
 
@@ -715,8 +783,8 @@ postinstall script). The pre-push guardrail will be active immediately.
 
 ```html
 <!-- Place hero OUTSIDE main element for edge-to-edge layout -->
-{{ partial "components/hero" (dict "context" . "size" "full" "background" "gradient-primary" "title"
-.Title "layout" "homepage"
+{{ partial "components/hero" (dict "context" . "size" "full" "background"
+"gradient-primary" "title" .Title "layout" "homepage"
 <!-- or "blog", "portfolio", "tools" -->
 ) }}
 ```
@@ -736,8 +804,8 @@ postinstall script). The pre-push guardrail will be active immediately.
     </ul>
   </div>
 </div>
-{{ end }} {{ partial "components/hero" (dict "context" . "size" "full" "background"
-"gradient-primary" "title" .Title "layout" "blog" ) }} {{ end }}
+{{ end }} {{ partial "components/hero" (dict "context" . "size" "full"
+"background" "gradient-primary" "title" .Title "layout" "blog" ) }} {{ end }}
 ```
 
 **Key Pattern: Hero Outside Main Container**
@@ -750,19 +818,21 @@ postinstall script). The pre-push guardrail will be active immediately.
 ### Content Grid
 
 ```html
-{{ partial "sections/content-grid.html" (dict "context" . "items" .Pages "title" "Recent Posts"
-"cardType" "blog" ) }}
+{{ partial "sections/content-grid.html" (dict "context" . "items" .Pages "title"
+"Recent Posts" "cardType" "blog" ) }}
 ```
 
 ### Card Component
 
 ```html
-{{ partial "components/content-card.html" (dict "context" . "item" .item "cardType" .cardType
-"showDate" true "showDescription" true ) }}
+{{ partial "components/content-card.html" (dict "context" . "item" .item
+"cardType" .cardType "showDate" true "showDescription" true ) }}
 ```
 
 ## Recent Updates
 
+- **v0.11.0**: H1 duplicate removal across all content types, accessibility
+  compliance
 - **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git
   hash
 - **v0.10.1**: Hero section enhancement
@@ -770,6 +840,8 @@ postinstall script). The pre-push guardrail will be active immediately.
 
 ## Version History
 
+- **v0.11.0** (Nov 2025): H1 duplicate removal across all content types, heading
+  structure standardization
 - **v0.10.2** (Nov 2025): Accessibility improvements, theme-aware components,
   security hardening
 - **v0.10.1** (Oct 2025): Hero section redesign with 3-column layout

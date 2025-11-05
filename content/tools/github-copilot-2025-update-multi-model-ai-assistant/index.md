@@ -23,8 +23,6 @@ slug: 'github-copilot-2025-update-multi-model-ai-assistant'
 aliases: ['/tools/copilot-2025/']
 ---
 
-# GitHub Copilot 2025
-
 GitHub Copilot 2025 represents the culmination of years of AI development,
 transforming from a simple code completion tool into a comprehensive multi-model
 AI development assistant. This latest version integrates OpenAI's groundbreaking

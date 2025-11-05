@@ -13,8 +13,6 @@ slug: 'nextjs-react-framework-production-applications'
 aliases: ['/tools/nextjs/']
 ---
 
-# Next.js
-
 Next.js has established itself as the de facto standard for building production
 React applications, developed and maintained by Vercel. Since its initial
 release in 2016, Next.js has evolved from a simple React framework into a

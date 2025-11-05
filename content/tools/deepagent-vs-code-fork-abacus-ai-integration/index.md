@@ -14,8 +14,6 @@ slug: 'deepagent-vs-code-fork-abacus-ai-integration'
 aliases: ['/tools/deepagent/']
 ---
 
-# DeepAgent
-
 DeepAgent represents one of the most ambitious projects in the AI coding space—a
 sophisticated fork of Visual Studio Code that deeply integrates Abacus AI's
 advanced capabilities to create a truly next-generation development environment.

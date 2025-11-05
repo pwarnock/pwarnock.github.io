@@ -20,8 +20,6 @@ slug: 'claude-code-conversational-ai-coding-assistant'
 aliases: ['/tools/claude-code/']
 ---
 
-# Claude Code
-
 Claude Code represents Anthropic's flagship entry into the AI coding assistant
 space, bringing the company's renowned conversational AI expertise and
 commitment to AI safety to software development. Launched in 2024, Claude Code

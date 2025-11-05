@@ -6,8 +6,6 @@ tags: ['Leadership', 'Management', 'Career', 'Technology']
 author: 'Peter Warnock'
 ---
 
-# Leadership Lessons from 10 Years in Tech
-
 After a decade in technology leadership roles, I've learned valuable lessons
 about managing teams, projects, and careers. Here are my key takeaways.
 

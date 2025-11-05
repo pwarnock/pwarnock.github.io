@@ -1,4 +1,8 @@
 {{/* Custom link renderer to prevent line breaking in long URLs */}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} rel="noopener noreferrer" target="_blank"{{ end }}>
+{{ $href := .Destination }}
+{{ if not (strings.HasPrefix $href "http") }}
+  {{ $href = .Destination | absURL }}
+{{ end }}
+<a href="{{ $href }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} rel="noopener noreferrer" target="_blank"{{ end }}>
   {{- .Text | safeHTML -}}
 </a>

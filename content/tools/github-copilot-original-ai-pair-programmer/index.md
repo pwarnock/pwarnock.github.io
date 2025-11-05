@@ -22,8 +22,6 @@ slug: 'github-copilot-original-ai-pair-programmer'
 aliases: ['/tools/copilot-original/']
 ---
 
-# GitHub Copilot Original
-
 GitHub Copilot Original represents the pioneering AI pair programmer that
 launched the AI coding revolution in June 2021. Built on OpenAI's groundbreaking
 Codex model and developed through the strategic collaboration between GitHub and

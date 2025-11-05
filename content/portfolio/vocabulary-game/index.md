@@ -2,7 +2,8 @@
 date: 2024-11-23
 draft: false
 title: 'Vocabulary Game'
-description: 'An educational game designed to help young children (5 years old) practice
+description:
+  'An educational game designed to help young children (5 years old) practice
   typing, spelling, and reading skills through interactive vocabulary exercises.'
 client: 'Personal Project - Child Education'
 technologies: ['React', 'JavaScript', 'HTML5', 'CSS3']
@@ -11,8 +12,6 @@ live_url: 'https://peterwarnock.com/vocabulary-game/'
 completion_date: '2024-11'
 category: 'Educational Game'
 ---
-
-# Vocabulary Game - Educational Typing Practice
 
 Vocabulary Game is a simple, focused educational application designed to help
 young children (specifically 5-year-olds) practice typing, spelling, and reading

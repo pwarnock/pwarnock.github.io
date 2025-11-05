@@ -4,8 +4,6 @@ date: 2025-10-27T00:00:00Z
 draft: false
 ---
 
-# Privacy Policy
-
 **Last Updated:** October 27, 2025
 
 This Privacy Policy describes how Peter Warnock ("I", "me", "my") collects,

@@ -22,8 +22,6 @@ slug: 'gemini-cli-google-terminal-ai-agent'
 aliases: ['/tools/gemini-cli/']
 ---
 
-# Gemini CLI
-
 Gemini CLI represents Google's ambitious entry into the AI-powered terminal
 space, bringing the sophisticated capabilities of the Gemini AI model directly
 to developers' command-line environments. Launched in 2024 as part of Google's

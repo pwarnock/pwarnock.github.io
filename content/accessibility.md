@@ -5,8 +5,6 @@ draft: false
 description: 'Our commitment to web accessibility and inclusive design'
 ---
 
-# Accessibility Statement
-
 This website is committed to ensuring digital accessibility for people with
 disabilities. We are continually improving the user experience for everyone and
 applying the relevant accessibility standards.
@@ -104,8 +102,10 @@ technologies:
 We welcome your feedback on the accessibility of this website. Please let us
 know if you encounter accessibility barriers:
 
-- **Email**: [accessibility@peterwarnock.com](mailto:accessibility@peterwarnock.com)
-- **GitHub**: [Create an issue](https://github.com/pwarnock/pwarnock.github.io/issues)
+- **Email**:
+  [accessibility@peterwarnock.com](mailto:accessibility@peterwarnock.com)
+- **GitHub**:
+  [Create an issue](https://github.com/pwarnock/pwarnock.github.io/issues)
 - **X (Twitter)**: [@pwarnock](https://x.com/pwarnock)
 
 We try to respond to accessibility feedback within **5 business days** and will

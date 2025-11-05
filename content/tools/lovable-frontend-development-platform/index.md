@@ -23,8 +23,6 @@ slug: 'lovable-frontend-development-platform'
 aliases: ['/tools/lovable/']
 ---
 
-# Lovable
-
 Lovable represents a paradigm shift in frontend development, offering a
 product-centric platform that democratizes web application creation through
 AI-powered visual development tools. Founded in 2023 on the principle that great

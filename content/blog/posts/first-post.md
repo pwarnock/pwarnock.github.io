@@ -6,8 +6,6 @@ tags: ['Hugo', 'Daisy UI', 'Web Development']
 author: 'Peter Warnock'
 ---
 
-# Getting Started with Hugo and Daisy UI
-
 In this post, I'll share my experience setting up a new personal website using
 Hugo static site generator combined with Daisy UI component library.
 

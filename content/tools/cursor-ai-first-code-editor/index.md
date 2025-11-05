@@ -14,8 +14,6 @@ slug: 'cursor-ai-first-code-editor'
 aliases: ['/tools/cursor/']
 ---
 
-# Cursor
-
 Cursor represents a fundamental reimagining of the code editor experience—built
 from the ground up with artificial intelligence as the core paradigm rather than
 an afterthought. Launched in 2024 by a team of experienced developers and AI

@@ -20,8 +20,6 @@ slug: 'bolt-new-frontend-development-platform'
 aliases: ['/tools/bolt-new/']
 ---
 
-# Bolt.new
-
 Bolt.new represents a paradigm shift in frontend development, offering an
 AI-powered platform that transforms how teams move from ideas to
 production-ready web applications. Launched by the Bolt team in 2024, this

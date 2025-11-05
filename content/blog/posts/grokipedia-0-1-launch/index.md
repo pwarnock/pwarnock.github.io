@@ -7,8 +7,6 @@ tags: ['AI', 'Knowledge Management', 'Developer Tools', 'Launch', 'Grok']
 author: 'Peter Warnock'
 ---
 
-# Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction
-
 {{< x user="Thomasslabbers" id="1983083667980276131" >}}
 
 I'm excited to see Grokipedia take on Wikipedia. Wikipedia, is a good resource,

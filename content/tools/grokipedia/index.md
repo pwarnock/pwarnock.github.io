@@ -20,8 +20,6 @@ slug: 'grokipedia'
 aliases: ['/tools/grokipedia/']
 ---
 
-# Grokipedia
-
 Grokipedia represents a revolutionary leap forward in knowledge
 management—combining the power of AI with human judgment to create a dynamic,
 self-correcting encyclopedia that evolves in real-time. Launched in October

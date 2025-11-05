@@ -14,8 +14,6 @@ slug: 'nuxt-vuejs-framework-universal-applications'
 aliases: ['/tools/nuxt/']
 ---
 
-# Nuxt
-
 Nuxt has emerged as the premier framework for building universal Vue.js
 applications, transforming the single-file component experience into a
 full-stack development platform. Originally created to solve the challenges of

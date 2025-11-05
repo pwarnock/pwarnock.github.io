@@ -22,8 +22,6 @@ completion_date: '2025-10'
 category: 'Hackathon Project'
 ---
 
-# YouSong - AI Scripture Music Generator
-
 YouSong is an AI-powered application that generates children's scripture-based
 songs, built during the Gloo AI Hackathon 2025. The project demonstrates rapid
 full-stack development using cutting-edge AI tools and modern web technologies
