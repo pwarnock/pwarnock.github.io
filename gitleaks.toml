@@ -1,0 +1,31 @@
+title = "Gitleaks Configuration"
+
+# Extend the base gitleaks config
+[extend]
+useDefault = true
+
+# Allowlist for known false positives
+[allowlist]
+description = "Global allowlist"
+paths = [
+  '''gitleaks.toml''',
+  '''\.gitleaksignore''',
+]
+
+# Allow specific patterns that are false positives
+[[allowlist.regexes]]
+description = "Allow API_KEY placeholder in documentation"
+regex = '''"API_KEY":\s*"your-api-key-here"'''
+
+[[allowlist.regexes]]
+description = "Allow example secret placeholders"
+regex = '''your-[a-z-]+-here'''
+
+[[allowlist.regexes]]
+description = "Allow example configuration values"
+regex = '''placeholder[_-]?value[s]?'''
+
+# Allow specific commits (if needed for historical reasons)
+# [[allowlist.commits]]
+# hash = "commit-hash-here"
+# message = "Commit message containing false positive"
