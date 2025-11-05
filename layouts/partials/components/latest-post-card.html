@@ -1,4 +1,4 @@
-{{ $blog_section := .Site.GetPage "section" "blog" }}
+{{ $blog_section := .Site.GetPage "section" "posts" }}
 {{ $latest_post := first 1 $blog_section.Pages }}
 {{ with $latest_post }}
   {{ $title := "Latest Blog Posts" }}
