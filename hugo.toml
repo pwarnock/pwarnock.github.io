@@ -107,6 +107,7 @@ enableGitInfo = true
   "/posts/vibe-coding-revolution/" = "/blog/posts/vibe-coding-revolution/"
   "/posts/chatgpt-atlas-launch/" = "/blog/posts/chatgpt-atlas-launch/"
   "/posts/first-post/" = "/blog/posts/first-post/"
+   "/tools/astro-starlight-documentation-website-builder/" = "/tools/astro-starlight/"
 
 # Pagination
 [pagination]

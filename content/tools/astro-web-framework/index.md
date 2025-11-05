@@ -45,4 +45,4 @@ Astro is a modern frontend framework designed for building fast, content-driven 
 
 ## Projects using Astro
 
-- [Astro Starlight Demo](/portfolio/astro-starlight-demo/): A demo project showcasing the ease of getting started with Astro Starlight for building modern websites.
+- [Astro Starlight](/tools/astro-starlight/): The documentation website builder that makes creating stellar docs effortless.
