@@ -1,20 +1,11 @@
 ---
-title: 'OpenAI Launches ChatGPT Atlas: Revolutionizing Web Browsing with AI'
+title: 'ChatGPT Atlas: AI-Powered Web Browsing Revolution'
 date: 2025-10-21T10:00:00-07:00
-description:
-  "Discover ChatGPT Atlas, OpenAI's groundbreaking AI-powered browser that
+description: "Discover ChatGPT Atlas, OpenAI's groundbreaking AI-powered browser that
   integrates ChatGPT directly into web browsing, featuring agent mode, browser
   memories, and personalized assistance."
 image: 'chatgpt-atlas-launch.webp'
-tags:
-  [
-    'OpenAI',
-    'ChatGPT',
-    'AI Browser',
-    'ChatGPT Atlas',
-    'Web Technology',
-    'AI Innovation',
-  ]
+tags: ['OpenAI', 'ChatGPT', 'AI Browser', 'ChatGPT Atlas', 'Web Technology', 'AI Innovation']
 draft: false
 slug: 'openai-launches-chatgpt-atlas-ai-powered-browser'
 categories: ['Technology', 'AI', 'Web Development']

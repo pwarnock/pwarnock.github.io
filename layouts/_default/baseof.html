@@ -41,6 +41,65 @@
     <link rel="dns-prefetch" href="https://linkedin.com">
     <link rel="dns-prefetch" href="https://x.com">
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {{ if eq .Type "page" }}
+      {{ if eq .Title "About" }}
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Peter Warnock",
+          "jobTitle": "Cloud Engineering & DevOps Leadership",
+          "url": "{{ .Site.BaseURL }}",
+          "sameAs": [
+            "https://github.com/pwarnock",
+            "https://www.linkedin.com/in/peterwarnock",
+            "https://x.com/pwarnock"
+          ],
+          "knowsAbout": [
+            "Cloud Engineering",
+            "DevOps",
+            "Fullstack Development",
+            "AI Tools",
+            "Technology Leadership"
+          ]
+        }
+      {{ else }}
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "{{ .Site.Title }}",
+          "url": "{{ .Site.BaseURL }}",
+          "description": "{{ .Site.Params.description }}",
+          "author": {
+            "@type": "Person",
+            "name": "Peter Warnock"
+          },
+          "publisher": {
+            "@type": "Person",
+            "name": "Peter Warnock"
+          }
+        }
+      {{ end }}
+    {{ else }}
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "{{ .Site.Title }}",
+        "url": "{{ .Site.BaseURL }}",
+        "description": "{{ .Site.Params.description }}",
+        "author": {
+          "@type": "Person",
+          "name": "Peter Warnock"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Peter Warnock"
+        }
+      }
+    {{ end }}
+    </script>
+
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

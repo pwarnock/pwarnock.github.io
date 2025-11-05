@@ -1,14 +1,11 @@
 ---
-title:
-  'The Vibe Coding Revolution: Developer-Centric vs Product-Centric Tools in
-  2025'
+title: 'Vibe Coding Revolution: Developer vs Product Tools 2025'
 date: 2025-10-16T06:43:31-07:00
 draft: false
 tags: ['ai-coding', 'developer-tools', 'vibe-coding', 'productivity']
 categories: ['Technology', 'Development Tools']
 author: 'Peter Warnock'
-description:
-  'A comprehensive look at emerging vibe coding tools landscape, from
+description: 'A comprehensive look at emerging vibe coding tools landscape, from
   developer-centric IDEs to product-focused app builders'
 image: 'vibe-coding-revolution.webp'
 ---
