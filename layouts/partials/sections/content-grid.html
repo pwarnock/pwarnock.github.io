@@ -3,7 +3,16 @@
   <div class="container mx-auto px-4">
     <div class="grid gap-8 lg:grid-cols-3">
       <!-- Blog Posts Card -->
-      {{ partial "components/latest-post-card.html" . }}
+      {{ partial "components/content-card.html" (dict
+        "id" "posts"
+        "title" "Latest Blog Posts"
+        "description" "Thoughts on technology, leadership, and development"
+        "color" "primary"
+        "icon" "book"
+        "buttonText" "View All Posts"
+        "url" "/blog"
+        "subtext" "Explore insights on modern web development, AI tools, and technology leadership"
+      ) }}
 
       <!-- Portfolio Card -->
       {{ partial "components/content-card.html" (dict

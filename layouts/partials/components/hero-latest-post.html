@@ -1,30 +1,37 @@
 <!-- Hero Latest Blog Post Column -->
+{{ $blogPosts := where site.RegularPages "Section" "blog" }}
+{{ $latestPost := index $blogPosts 0 }}
+{{ if $latestPost }}
 <div class="card bg-base-100/90 backdrop-blur-sm shadow-lg border-2 border-accent/20 flex flex-col h-full" role="article" aria-labelledby="latest-post-title">
   <div class="card-body p-4 lg:p-6 flex flex-col justify-between h-full">
     <div>
       <div class="flex items-center gap-2 mb-3">
         <span class="badge badge-accent">Latest Post</span>
-        <span class="text-xs text-base-content/60">Oct 31, 2025</span>
+        <span class="text-xs text-base-content/60">{{ $latestPost.Date.Format "Jan 2, 2006" }}</span>
       </div>
-      
+
       <!-- Blog Image -->
+      {{ $image := $latestPost.Params.thumbnail | default $latestPost.Params.image }}
+      {{ if $image }}
       <div class="mb-3">
-        <a href="/blog/posts/stay-grounded-calvin-hobbes-reflection/" class="block hover:opacity-90 transition-opacity">
-          <img src="/images/calvin-hobbes-2025-10-31.jpg" alt="Calvin and Hobbes comic strip" class="w-full h-auto rounded-lg shadow-sm" loading="lazy" />
+        <a href="{{ $latestPost.Permalink }}" class="block hover:opacity-90 transition-opacity">
+          <img src="{{ $image }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
         </a>
       </div>
-      
+      {{ end }}
+
       <h3 id="latest-post-title" class="card-title text-lg lg:text-xl mb-3">
-        <a href="/blog/posts/stay-grounded-calvin-hobbes-reflection/" class="hover:text-accent transition-colors">
-          Stay Grounded: A Calvin and Hobbes Reflection
+        <a href="{{ $latestPost.Permalink }}" class="hover:text-accent transition-colors">
+          {{ $latestPost.Title }}
         </a>
       </h3>
-      <p class="text-xs lg:text-sm text-base-content/80 mb-4 leading-relaxed">
-        How Calvin and Hobbes reminds us that we should make things easier without making them emptier.
+      <p class="text-xs lg:text-sm text-base-content/80 mb-4 leading-relaxed line-clamp-3">
+        {{ or $latestPost.Params.summary $latestPost.Params.description $latestPost.Summary }}
       </p>
     </div>
-    <a href="/blog/posts/stay-grounded-calvin-hobbes-reflection/" class="btn btn-accent btn-outline btn-sm mt-auto">
+    <a href="{{ $latestPost.Permalink }}" class="btn btn-accent btn-outline btn-sm mt-auto">
       Read More
     </a>
   </div>
 </div>
+{{ end }}

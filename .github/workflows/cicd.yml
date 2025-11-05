@@ -56,9 +56,12 @@ jobs:
 
       - name: Secret Scanning
         uses: gitleaks/gitleaks-action@v2
+        with:
+          config_path: gitleaks.toml
+          detect_branch: main
+          scan_destination: 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_CONFIG: gitleaks.toml
 
       - name: Code Quality & Security Scan
         uses: github/super-linter/slim@v5
