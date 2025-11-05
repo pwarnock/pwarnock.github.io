@@ -27,14 +27,36 @@ const cleanVersion = version.startsWith('v') ? version.substring(1) : version;
 const dataDir = path.join(__dirname, '..', 'data');
 const versionFile = path.join(dataDir, 'version.toml');
 
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
+console.log(`📁 Creating data directory: ${dataDir}`);
+console.log(`📄 Writing version file: ${versionFile}`);
 
-const content = `current = "${cleanVersion}"
+try {
+  // Ensure data directory exists with proper permissions
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true, mode: 0o755 });
+    console.log(`✓ Created data directory`);
+  }
+
+  const content = `current = "${cleanVersion}"
 branch = "${branch}"
 hash = "${shortHash}"
 `;
 
-fs.writeFileSync(versionFile, content);
-console.log(`✓ Generated version: ${version} (branch: ${branch})`);
+  // Write file with explicit permissions
+  fs.writeFileSync(versionFile, content, { mode: 0o644 });
+  console.log(`✓ Generated version file: ${version} (branch: ${branch})`);
+
+  // Verify file was created
+  if (fs.existsSync(versionFile)) {
+    console.log(`✓ Version file exists and is readable`);
+  } else {
+    throw new Error('Version file was not created');
+  }
+
+} catch (error) {
+  console.error(`❌ Error creating version file:`, error.message);
+  console.error(`Data dir: ${dataDir}`);
+  console.error(`Version file: ${versionFile}`);
+  console.error(`Current working directory: ${process.cwd()}`);
+  process.exit(1);
+}

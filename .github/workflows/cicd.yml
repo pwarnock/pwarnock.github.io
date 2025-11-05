@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [main, release/**]
   pull_request:
-    branches: [main]
+    branches: [main, release/**]
 
 # Sets permissions for both CI and deployment
 permissions:
@@ -24,7 +24,7 @@ jobs:
     env:
       HUGO_VERSION: latest
       HUGO_ENV: production
-      HUGO_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+      HUGO_GTM_CONTAINER_ID: GTM-N9CR6KJ5
 
     steps:
       - name: Checkout
@@ -49,10 +49,13 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
 
+      - name: Install Bun
+        run: npm install -g bun
+
       - name: Install Node.js dependencies
         run: |
-          npm install --no-audit --no-fund
-          npm install -g postcss-cli
+          bun install --no-audit
+          bun add -g postcss-cli
 
       - name: Secret Scanning
         uses: gitleaks/gitleaks-action@v2
@@ -75,7 +78,7 @@ jobs:
           VALIDATE_MARKDOWN: true
 
       - name: Build
-        run: npm run build:production
+        run: bun run build:production
 
       - name: Test build
         run: |
@@ -84,6 +87,9 @@ jobs:
             exit 1
           fi
           echo "Build successful"
+
+      - name: Test Google Analytics tracking
+        run: bun run test:ga
 
       - name: Upload pages artifact
         if: github.ref == 'refs/heads/main'

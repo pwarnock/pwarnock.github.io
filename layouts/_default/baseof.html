@@ -159,17 +159,13 @@
     }
     </script>
 
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
     {{ if eq (getenv "HUGO_ENV") "production" }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ getenv "HUGO_GOOGLE_ANALYTICS_ID" }}"
-    integrity="sha384-b09a09c8b43890ff33d5719418be60824692ec88924af821c2d3f46b7b30341329b49799866e6161f2d02424c0e33b45"
-    crossorigin="anonymous"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ getenv "HUGO_GOOGLE_ANALYTICS_ID" }}');
-    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ getenv "HUGO_GTM_CONTAINER_ID" }}');</script>
     {{ end }}
 
     {{ $css := resources.Get "css/main.css" | css.PostCSS | minify }}
@@ -251,6 +247,12 @@
     </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ getenv "HUGO_GTM_CONTAINER_ID" }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {{ end }}
+
     <!-- Skip to main content link for keyboard users -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-content rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-primary-focus" style="padding: var(--space-2) var(--space-4)">
         Skip to main content

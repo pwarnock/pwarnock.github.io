@@ -364,13 +364,15 @@ Before creating release:
 
 ### Current Version Information
 
-- **Version**: v0.10.0
-- **Release Date**: October 30, 2025
-- **Git Tag**: v0.10.0
+- **Version**: v0.11.0
+- **Release Date**: November 5, 2025
+- **Git Tag**: v0.11.0
 - **GitHub Release**:
-  https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.10.0
-- **Footer Display**: Shows "v0.10.0 (5761548)"
+  https://github.com/pwarnock/pwarnock.github.io/releases/tag/v0.11.0
+- **Footer Display**: Shows "v0.11.0 (commit-hash)"
 - **Main Branch Status**: ✅ Synced with production
+- **GTM Container**: GTM-N9CR6KJ5
+- **Build Runtime**: Bun
 
 ### Version Bumping Strategy
 
@@ -391,6 +393,7 @@ Before creating release:
 
 ### Version History
 
+- v0.11.0 - Major platform enhancements: GTM integration, Bun runtime, portfolio validation, action buttons
 - v0.10.0 - Spacing Scale with version tracking in footer
 - v0.9.0 - Design System implementation
 - v0.8.0 - Upstream Integration with footer version display
