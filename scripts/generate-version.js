@@ -9,7 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Get current branch and commit hash
-const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+// Use GITHUB_REF_NAME if available (GitHub Actions), otherwise git command
+const branch =
+  process.env.GITHUB_REF_NAME || execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
 const shortHash = execSync('git rev-parse --short HEAD').toString().trim();
 
 // Get package version
@@ -69,8 +71,12 @@ hash = "${shortHash}"
     console.log(`⚠️ Direct write failed, trying alternative approach: ${writeError.message}`);
 
     // Alternative: Use shell command to write file
-    execSync(`printf '%s\\n' '${content.replace(/'/g, "'\\''")}' > "${versionFile}"`, { stdio: 'inherit' });
-    console.log(`✓ Generated version file using alternative method: ${version} (branch: ${branch})`);
+    execSync(`printf '%s\\n' '${content.replace(/'/g, "'\\''")}' > "${versionFile}"`, {
+      stdio: 'inherit',
+    });
+    console.log(
+      `✓ Generated version file using alternative method: ${version} (branch: ${branch})`
+    );
   }
 
   // Verify file was created and is readable
@@ -88,7 +94,6 @@ hash = "${shortHash}"
   } else {
     throw new Error('Version file was not created');
   }
-
 } catch (error) {
   console.error(`❌ Error creating version file:`, error.message);
   console.error(`Data dir: ${dataDir}`);
