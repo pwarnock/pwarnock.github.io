@@ -5,7 +5,7 @@ module.exports = {
       script: 'bash',
       args: [
         '-c',
-        'node scripts/generate-version.js && hugo server --buildDrafts --buildFuture --disableFastRender --port 1313',
+        'node scripts/generate-version.js && hugo server --buildDrafts --buildFuture --disableFastRender --port 1313 --baseURL http://localhost:1313/',
       ],
       cwd: __dirname,
       instances: 1,

@@ -1,0 +1,116 @@
+<!-- Tools Hero Layout -->
+<div class="hero-content flex-col lg:flex-row gap-8">
+  <div class="text-center lg:text-left max-w-4xl">
+    {{ if .isSingle }}
+      <!-- Single tool hero with date and tags -->
+      <div class="inline-flex items-center bg-primary/10 text-primary-content rounded-full text-sm font-medium mb-6" style="gap: var(--space-2); padding: var(--space-2) var(--space-4)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2V12a2 2 0 002 2z" />
+        </svg>
+        {{ .context.Date.Format "January 2, 2006" }}
+        {{ if .context.Params.readingTime }}
+        <span class="text-primary-content/70">• {{ .context.Params.readingTime }} min read</span>
+        {{ end }}
+      </div>
+
+      <h1 id="tools-title" class="font-bold text-primary-content mb-6 leading-tight" style="font-size: clamp(1.75rem, 4vw + 1rem, 3rem);">
+        {{ .context.Title }}
+      </h1>
+
+      <!-- Tags for single tools -->
+      {{ if and .showTags .context.Params.tags }}
+      <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+        {{ range .context.Params.tags }}
+        <span class="badge badge-outline badge-lg text-primary-content border-primary-content/30 hover:bg-primary/20 transition-all duration-300 cursor-default">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <!-- Description for single tools -->
+      {{ if .description }}
+      <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
+        {{ .description }}
+      </p>
+      {{ end }}
+    {{ else }}
+      <!-- Section page hero -->
+      <h1 id="tools-title" class="font-bold text-primary-content mb-4" style="font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);">
+        {{ .context.Title }}
+      </h1>
+      <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
+        {{ .context.Description }}
+      </p>
+
+      <!-- Enhanced Features (Feature Flagged) -->
+      {{ if or (.context.Params.enableEnhancedHero) (.context.Site.Params.enhancedHero) }}
+        <div class="mt-8 space-y-6">
+          <!-- Tools Stats -->
+          <div class="stats stats-horizontal bg-base-100/60 backdrop-blur-sm shadow-lg border border-primary/20">
+            <div class="stat">
+              <div class="stat-value text-primary">{{ len (where site.RegularPages "Type" "tools") }}</div>
+              <div class="stat-title text-xs">Tools Reviewed</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value text-secondary">{{ len (where site.RegularPages "Type" "tools") }}</div>
+              <div class="stat-title text-xs">AI-Powered</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value text-accent">{{ len (where (where site.RegularPages "Type" "tools") ".Params.categories" "intersect" (slice "Traditional")) }}</div>
+              <div class="stat-title text-xs">Traditional</div>
+            </div>
+          </div>
+
+          <!-- Tools Actions -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Search Section -->
+            <div class="space-y-3">
+              <h3 class="text-sm font-bold text-primary-content/80 uppercase tracking-wider">Search Tools</h3>
+              <div class="form-control">
+                <input type="search" placeholder="Search development tools..." class="input input-bordered input-primary w-full" aria-label="Search development tools">
+              </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="space-y-3">
+              <h3 class="text-sm font-bold text-primary-content/80 uppercase tracking-wider">Filter by Type</h3>
+              <div class="btn-group w-full">
+                <button class="btn btn-primary btn-active">All Tools</button>
+                <button class="btn btn-outline">AI Tools</button>
+                <button class="btn btn-outline">Traditional</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Latest Reviews Highlight -->
+          <div class="card bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
+            <div class="card-body p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <h3 class="text-lg font-bold text-primary-content">Latest Reviews</h3>
+              </div>
+
+              <div class="grid gap-4">
+                {{ $latestTools := first 3 (where (where site.RegularPages "Type" "tools") "Draft" false) }}
+                {{ range $latestTools }}
+                  <div class="flex items-center justify-between p-3 bg-base-100/40 rounded-lg">
+                    <div class="flex-1">
+                      <h4 class="text-sm font-bold text-primary-content mb-1">
+                        <a href="{{ .Permalink }}" class="link link-hover">{{ .Title }}</a>
+                      </h4>
+                      <p class="text-xs text-primary-content/60">{{ .Description }}</p>
+                    </div>
+                    <div class="flex-shrink-0 ml-4">
+                      <a href="{{ .Permalink }}" class="btn btn-primary btn-xs">Review</a>
+                    </div>
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

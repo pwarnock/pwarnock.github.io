@@ -1,0 +1,16 @@
+<nav aria-label="Breadcrumb" class="breadcrumbs text-sm">
+  <ul>
+    <li><a href="/" class="link-hover">Home</a></li>
+    {{ $currentSection := .Section }}
+    {{ if $currentSection }}
+      {{ if eq $currentSection "posts" }}
+        <li><a href="/blog/" class="link-hover">Blog</a></li>
+      {{ else if ne $currentSection "" }}
+        <li><a href="/{{ $currentSection }}/" class="link-hover capitalize">{{ $currentSection }}</a></li>
+      {{ end }}
+    {{ end }}
+    {{ if ne .Kind "section" }}
+      <li class="text-base-content/60">{{ .Title }}</li>
+    {{ end }}
+  </ul>
+</nav>
