@@ -37,7 +37,8 @@
     "postinstall": "bun x husky",
     "generate-version": "bun run ./scripts/generate-version.js",
     "portfolio-validate": "bun run ./scripts/validate-portfolio-frontmatter.js",
-    "test-ga": "bun run ./scripts/test-ga-tracking.js"
+    "test-ga": "bun run ./scripts/test-ga-tracking.js",
+    "test-security": "bun run ./scripts/test-security.js"
   },
   "keywords": [],
   "author": "Pete Warnock",

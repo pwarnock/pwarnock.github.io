@@ -16,7 +16,11 @@ This document lists features and enhancements derived from the plan. It is a liv
 | F24 | Google Analytics Integration | Add GA4 tracking with production-only loading | Medium | 🟢 Completed |
 | F25 | Enhanced Analytics Tracking | Add custom events for tools, portfolio, and blog interactions | Medium | 🔴 Not Started |
 | F26 | Privacy Compliance | Add cookie consent banner for GDPR compliance | Medium | 🔴 Not Started |
-|     |                     |                                           |          |        |
+| F27 | Enhanced Navigation ARIA | Add comprehensive ARIA roles and landmarks to navigation components | Medium | 🔴 Not Started |
+| F28 | Breadcrumb Navigation | Implement breadcrumb navigation for section pages | Medium | 🔴 Not Started |
+| F29 | Image Alt Text Audit | Review and enhance image alt text descriptions for better screen reader support | Low | 🔴 Not Started |
+| F30 | Focus Management Enhancement | Implement focus trapping for modals and improved keyboard navigation | Medium | 🔴 Not Started |
+| F31 | Loading States ARIA | Add ARIA busy states and live regions for dynamic content | Low | 🔴 Not Started |
 
 ## v0.1.0-setup - 🟢 Completed
 Project setup and base architecture: Establish the foundation with Hugo, Tailwind CSS, and Daisy UI.
