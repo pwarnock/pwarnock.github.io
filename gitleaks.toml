@@ -16,6 +16,9 @@ regexes = [
   '''"API_KEY":\s*"your-api-key-here"''',
   '''your-[a-z-]+-here''',
   '''placeholder[_-]?value[s]?''',
+  '''\033\[[0-9;]+m''',  # ANSI color codes from pre-push hook
+  '''FORCE_PUSH''',           # Environment variable for automation
+  '''RED|GREEN|YELLOW|BLUE|NC''',  # Color variables in hook
 ]
 
 # Allow specific commits (if needed for historical reasons)
