@@ -1,22 +1,14 @@
 {{ define "main" }}
-  {{/* Default data */}}
-  {{ $sections := slice
-    (dict "id" "hero" "enabled" true "weight" 1 )
-    (dict "id" "skills" "enabled" true "weight" 2 )
-    (dict "id" "content-grid" "enabled" true "weight" 3 )
-  }}
-
   {{/* Custom data from configuration file */}}
   {{ with site.Data.home }}
-    {{ $sections = slice }}
-    {{ if .section }}{{ $sections = .section }}{{ end }}
-  {{ end }}
-
-  {{ range sort $sections ".weight" }}
-    {{ if .enabled }}
-      <section id="{{ .id }}">
-        {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
-      </section>
+    {{ range sort .section ".weight" }}
+      {{ if .enabled }}
+        <section id="{{ .id }}">
+          {{ $sectionId := .id }}
+          {{ $sectionFile := replace (lower $sectionId) " " "-" }}
+          {{ partial (printf "sections/%s.html" $sectionFile) . }}
+        </section>
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

@@ -8,7 +8,35 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://gmail.us8.list-manage.com; upgrade-insecure-requests;">
 
-    <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    {{ $title := .Title }}
+    {{ $siteTitle := .Site.Title }}
+    {{ $cleanTitle := $title }}
+    
+    {{ if and $title (ne $title "") }}
+        {{/* Remove common redundant phrases to avoid word repetitions */}}
+        {{ $cleanTitle = replace $title "Peter Warnock" "" }}
+        {{ $cleanTitle = replace $cleanTitle "Personal portfolio and blog of" "" }}
+        {{ $cleanTitle = replace $cleanTitle "  " " " }}
+        {{ $cleanTitle = replace $cleanTitle "- " "" }}
+        {{ $cleanTitle = replace $cleanTitle " - " "" }}
+        {{ $cleanTitle = trim $cleanTitle " " }}
+        
+        {{/* Check if title is too long (rough character count > 50 for 580px limit) */}}
+        {{ if gt (len $cleanTitle) 50 }}
+            {{/* For long titles, truncate smartly */}}
+            <title>{{ slicestr $cleanTitle 45 }} | {{ $siteTitle }}</title>
+        {{ else if ne $cleanTitle "" }}
+            {{/* For normal titles, use full title */}}
+            <title>{{ $cleanTitle }} | {{ $siteTitle }}</title>
+        {{ else }}
+            {{/* Fallback if title becomes empty after cleaning */}}
+            <title>{{ $title }} | {{ $siteTitle }}</title>
+        {{ end }}
+    {{ else }}
+        {{/* Homepage or pages without title - use site title with tagline */}}
+        <title>{{ $siteTitle }} | Fullstack Developer & Technology Leader</title>
+        {{ $cleanTitle = "Fullstack Developer & Technology Leader" }}
+    {{ end }}
     <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
     <!-- SEO Meta Tags -->
@@ -20,7 +48,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}">
+    <meta property="og:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) 50 }}{{ slicestr $cleanTitle 45 }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | Fullstack Developer & Technology Leader{{ end }}">
     <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -29,7 +57,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ .Permalink }}">
-    <meta property="twitter:title" content="{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}">
+    <meta property="twitter:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) 50 }}{{ slicestr $cleanTitle 45 }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | Fullstack Developer & Technology Leader{{ end }}">
     <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.og_image | default "/img/og-image.png" | absURL }}{{ end }}">
     {{ if .Site.Params.twitter }}<meta property="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
