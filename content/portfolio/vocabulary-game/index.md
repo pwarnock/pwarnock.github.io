@@ -137,7 +137,7 @@ Control**: Git
 ## Live Demo
 
 Try the Vocabulary Game online:
-[https://peterwarnock.com/vocabulary-game/](https://peterwarnock.com/vocabulary-game/)
+[Try the Vocabulary Game](https://peterwarnock.com/vocabulary-game/)
 
 The demo provides the full interactive experience where children can practice
 typing and spelling with immediate feedback.

@@ -112,7 +112,7 @@ changes by posting the new policy on this page.
 If you have questions about this Privacy Policy, please contact me:
 
 - Email: privacy@peterwarnock.com
-- Website: https://peterwarnock.com
+- Website: [peterwarnock.com](https://peterwarnock.com)
 
 ---
 

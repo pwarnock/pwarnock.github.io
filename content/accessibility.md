@@ -104,9 +104,9 @@ technologies:
 We welcome your feedback on the accessibility of this website. Please let us
 know if you encounter accessibility barriers:
 
-- **Email**: [accessibility@example.com](mailto:accessibility@example.com)
-- **GitHub**: [Create an issue](https://github.com/yourusername/yourrepo/issues)
-- **Twitter**: [@yourusername](https://twitter.com/yourusername)
+- **Email**: [accessibility@peterwarnock.com](mailto:accessibility@peterwarnock.com)
+- **GitHub**: [Create an issue](https://github.com/pwarnock/pwarnock.github.io/issues)
+- **X (Twitter)**: [@pwarnock](https://x.com/pwarnock)
 
 We try to respond to accessibility feedback within **5 business days** and will
 provide updates on the status of reported issues.
