@@ -46,7 +46,7 @@ experience and added it as a new project to my
 My positive experience with Astro and Starlight led me to add them to the
 [Tools](/tools/) section of my website. You can now find dedicated pages for
 both [Astro](/tools/astro-web-framework/) and
-[Astro Starlight](/tools/astro-starlight/), where
+<a href="/tools/astro-starlight/">Astro Starlight</a>, where
 I share my thoughts and some getting-started information.
 
 This little journey, sparked by a visit to a single website, was a great
