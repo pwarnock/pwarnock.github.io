@@ -14,10 +14,12 @@ repos:
       - id: trailing-whitespace
       - id: mixed-line-ending
         args: ['--fix=lf']
+      - id: check-long-lines
+        args: ['--max-line-length=120']
 
-  # Secret scanning with Gitleaks
+      # Secret scanning with Gitleaks
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.21.2
+    rev: v8.29.0
     hooks:
       - id: gitleaks
 
@@ -35,7 +37,7 @@ repos:
 
   # JavaScript/TypeScript security and quality
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.21.0
+    rev: v9.39.1
     hooks:
       - id: eslint
         files: \.(js|ts|tsx|jsx)$
@@ -49,13 +51,13 @@ repos:
 
   # YAML security checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-yaml
         args: ['--unsafe']
 
   # TOML validation
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-toml
