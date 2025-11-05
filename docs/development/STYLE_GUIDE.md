@@ -246,7 +246,8 @@ When `customHTML: true`:
 
 **DaisyUI Theme Variables** (v0.10.2+):
 
-For theme-aware components that work across all DaisyUI themes (light, dark, dracula, etc.):
+For theme-aware components that work across all DaisyUI themes (light, dark,
+dracula, etc.):
 
 ```css
 /* Use DaisyUI theme variables instead of hardcoded colors */
@@ -269,6 +270,7 @@ For theme-aware components that work across all DaisyUI themes (light, dark, dra
 ```
 
 **Available DaisyUI Theme Variables:**
+
 - `--bc`: Base content (text color)
 - `--b1`, `--b2`, `--b3`: Base color variations
 - `--p`: Primary color
@@ -276,7 +278,8 @@ For theme-aware components that work across all DaisyUI themes (light, dark, dra
 - `--s`: Secondary color
 - `--a`: Accent color
 
-**Why theme-aware?** Ensures proper contrast ratios across all themes, WCAG compliance, and consistent user experience.
+**Why theme-aware?** Ensures proper contrast ratios across all themes, WCAG
+compliance, and consistent user experience.
 
 ### Color & Alpha Standards
 
@@ -562,6 +565,7 @@ Hugo restricts `getenv()` calls to variables starting with `HUGO_` for security:
 ```
 
 **Google Analytics Setup:**
+
 ```yaml
 # GitHub Actions workflow
 env:
@@ -574,13 +578,16 @@ env:
 ```
 
 **GitHub Repository Secrets Required:**
+
 - `GOOGLE_ANALYTICS_ID`: Your GA tracking ID (e.g., `G-SKDDM2GBXN`)
 
 ### Footer Git Information
 
 **Dynamic Git Hash Display (v0.10.2+):**
 
-Footer automatically shows current commit hash using data from `generate-version.js`:
+Footer automatically shows current commit hash using data from
+`generate-version.js`:
+
 ```html
 v{{ .Site.Params.version }}{{ with .Site.Data.version.hash }} ({{ . }}){{ end }}
 ```
@@ -588,7 +595,9 @@ v{{ .Site.Params.version }}{{ with .Site.Data.version.hash }} ({{ . }}){{ end }}
 Example: `v0.10.2 (163b213)`
 
 **How it works:**
-- `generate-version.js` runs during build and creates `data/version.toml` with git hash
+
+- `generate-version.js` runs during build and creates `data/version.toml` with
+  git hash
 - Template reads from `.Site.Data.version.hash` (more reliable than `.GitInfo`)
 - Falls back gracefully when data file is unavailable
 
@@ -599,14 +608,17 @@ Example: `v0.10.2 (163b213)`
 **All pushes require explicit confirmation** to prevent accidental deployments.
 
 #### How It Works
+
 - **Husky-managed pre-push hook** runs automatically before any `git push`
 - Shows summary of commits being pushed
 - Requires typing `'yes'` to confirm deployment
 - Prevents accidental production deployments
 
-**Note:** Hook executes on all developer machines (Husky ensures consistency). CI/CD systems bypass git hooks.
+**Note:** Hook executes on all developer machines (Husky ensures consistency).
+CI/CD systems bypass git hooks.
 
 #### Normal Workflow
+
 ```bash
 git add .
 git commit -m "feat: add new feature"
@@ -617,7 +629,9 @@ git push
 ```
 
 #### Emergency Bypass
+
 **Only use in critical situations:**
+
 ```bash
 ./scripts/emergency-push.sh
 # → Requires typing 'emergency' to confirm
@@ -625,9 +639,12 @@ git push
 ```
 
 #### Setup for New Developers
-Husky hooks are automatically installed when running `npm install` (via postinstall script). The pre-push guardrail will be active immediately.
+
+Husky hooks are automatically installed when running `npm install` (via
+postinstall script). The pre-push guardrail will be active immediately.
 
 #### Benefits
+
 - ✅ **Prevents accidental pushes** during development
 - ✅ **Forces review** of changes before deployment
 - ✅ **Maintains production stability**
@@ -660,34 +677,67 @@ Husky hooks are automatically installed when running `npm install` (via postinst
 
 ### Hero Section
 
+**For Full-Width Heroes (Homepage, Section Pages):**
+
 ```html
-{{ partial "sections/hero.html" (dict "context" . "title" .Title "description"
-.Params.description "image" .Params.image ) }}
+<!-- Place hero OUTSIDE main element for edge-to-edge layout -->
+{{ partial "components/hero" (dict "context" . "size" "full" "background" "gradient-primary" "title"
+.Title "layout" "homepage"
+<!-- or "blog", "portfolio", "tools" -->
+) }}
 ```
+
+**For Section Pages with Breadcrumbs:**
+
+```html
+<!-- Hero outside main container -->
+{{ if eq .Type "blog" }}
+<!-- Breadcrumbs above hero -->
+{{ if not .Params.hideBreadcrumbs }}
+<div class="container mx-auto px-4 py-4">
+  <div class="breadcrumbs text-sm">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>{{ .Title }}</li>
+    </ul>
+  </div>
+</div>
+{{ end }} {{ partial "components/hero" (dict "context" . "size" "full" "background"
+"gradient-primary" "title" .Title "layout" "blog" ) }} {{ end }}
+```
+
+**Key Pattern: Hero Outside Main Container**
+
+- Place hero **outside** `<main>` element for true edge-to-edge layout
+- Main content gets `container mx-auto` for proper content constraints
+- This matches homepage pattern and GitHits best practices
+- Works for blog, portfolio, tools, and other section pages
 
 ### Content Grid
 
 ```html
-{{ partial "sections/content-grid.html" (dict "context" . "items" .Pages "title"
-"Recent Posts" "cardType" "blog" ) }}
+{{ partial "sections/content-grid.html" (dict "context" . "items" .Pages "title" "Recent Posts"
+"cardType" "blog" ) }}
 ```
 
 ### Card Component
 
 ```html
-{{ partial "components/content-card.html" (dict "context" . "item" .item
-"cardType" .cardType "showDate" true "showDescription" true ) }}
+{{ partial "components/content-card.html" (dict "context" . "item" .item "cardType" .cardType
+"showDate" true "showDescription" true ) }}
 ```
 
 ## Recent Updates
 
-- **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git hash
+- **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git
+  hash
 - **v0.10.1**: Hero section enhancement
 - **v0.10.0**: Spacing scale refactoring, version tracking in footer
 
 ## Version History
 
-- **v0.10.2** (Nov 2025): Accessibility improvements, theme-aware components, security hardening
+- **v0.10.2** (Nov 2025): Accessibility improvements, theme-aware components,
+  security hardening
 - **v0.10.1** (Oct 2025): Hero section redesign with 3-column layout
 - **v0.10.0** (Oct 2025): Comprehensive spacing scale, footer version display
 

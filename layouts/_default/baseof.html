@@ -258,21 +258,76 @@
 
     {{ partial "header.html" . }}
 
+    <!-- Hero Sections for Section Pages and Single Posts (outside main) -->
+    {{ if or (and (or (eq .Type "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "section")) (and (or (eq .Type "posts") (eq .Section "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "page")) }}
+      {{ if or (eq .Kind "section") (eq .Kind "page") }}
+        <!-- Section page and single post: Breadcrumbs above hero -->
+        {{ if not .Params.hideBreadcrumbs }}
+        <div class="container mx-auto px-4 py-4">
+          {{ partial "components/breadcrumbs.html" . }}
+        </div>
+        {{ end }}
+      {{ end }}
+
+      <!-- Hero configuration -->
+      {{ $heroLayout := .Type }}
+      {{ $heroBackground := "gradient-primary" }}
+      {{ $heroTitle := .Title }}
+      {{ $heroDescription := "" }}
+      {{ $heroShowDate := false }}
+      {{ $heroShowTags := false }}
+
+      {{ if eq .Kind "section" }}
+        {{ if eq .Type "blog" }}
+          {{ $heroBackground = "gradient-br" }}
+        {{ else if eq .Type "portfolio" }}
+          {{ $heroBackground = "gradient-subtle" }}
+        {{ else if eq .Type "tools" }}
+          {{ $heroBackground = "gradient-primary" }}
+        {{ end }}
+      {{ else if eq .Kind "page" }}
+        <!-- Single post/page hero configuration -->
+        {{ if or (eq .Type "posts") (eq .Section "blog") }}
+          {{ $heroBackground = "gradient-br" }}
+          {{ $heroShowDate = true }}
+          {{ $heroShowTags = true }}
+          {{ $heroDescription = .Description }}
+          {{ $heroLayout = "blog" }}
+        {{ else if eq .Type "portfolio" }}
+          {{ $heroBackground = "gradient-subtle" }}
+          {{ $heroShowDate = true }}
+          {{ $heroShowTags = true }}
+          {{ $heroDescription = .Description }}
+        {{ else if eq .Type "tools" }}
+          {{ $heroBackground = "gradient-primary" }}
+          {{ $heroShowDate = true }}
+          {{ $heroShowTags = true }}
+          {{ $heroDescription = .Description }}
+        {{ end }}
+      {{ end }}
+
+      {{ partial "components/hero" (dict
+        "context" .
+        "size" "full"
+        "background" $heroBackground
+        "title" $heroTitle
+        "description" $heroDescription
+        "layout" $heroLayout
+        "showDate" $heroShowDate
+        "showTags" $heroShowTags
+        "isSingle" (eq .Kind "page")
+      ) }}
+    {{ end }}
+
     <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else if eq .Layout "about" }}{{ else }}container mx-auto{{ end }}" style="{{ if and (not .IsHome) (ne .Layout "about") }}padding: var(--space-8) var(--space-4){{ end }}" role="main">
         {{ block "main" . }}
         {{ if .IsHome }}
             {{ .Content }}
         {{ else }}
-            <!-- Global breadcrumbs for non-home pages -->
-            {{ if not .Params.hideBreadcrumbs }}
+            <!-- Global breadcrumbs for pages without heroes -->
+            {{ if and (not .Params.hideBreadcrumbs) (ne .Kind "home") (not (or (and (or (eq .Type "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "section")) (and (or (eq .Type "posts") (eq .Section "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "page")))) }}
             <div class="breadcrumbs text-sm" style="margin-bottom: var(--space-6)">
-                <ul class="flex-nowrap">
-                    <li><a href="/">Home</a></li>
-                    {{ if and .Parent (ne .Parent.Kind "home") }}
-                        <li><a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a></li>
-                    {{ end }}
-                    <li>{{ .Title }}</li>
-                </ul>
+                {{ partial "components/breadcrumbs.html" . }}
             </div>
             {{ end }}
 

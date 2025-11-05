@@ -1,69 +1,101 @@
-{{ define "content" }}
-  {{ partial "list-header.html" . }}
-
-  <!-- Determine card type based on section -->
-  {{ $cardType := "card-list" }}
-  {{ $items := .Paginator.Pages }}
-  {{ $showPagination := true }}
-  {{ $sectionTitle := "" }}
-  {{ $pageDescription := .Description }}
-
-  {{ if eq .Type "posts" }}
-    {{ $cardType = "card-list" }}
-    {{ if not .Paginator }}
-      {{ $items = first 6 (where site.RegularPages "Type" "posts") }}
-      {{ $showPagination = false }}
-      {{ $sectionData := index (where site.Data.home.section "id" "posts") 0 }}
-      {{ $sectionTitle = $sectionData.title | default "Recent Posts" }}
-    {{ end }}
-  {{ else if eq .Type "blog" }}
-    {{ $cardType = "card-list" }}
-    {{ $items := .Paginator.Pages }}
-    {{ $sectionData := index (where site.Data.home.section "id" "blog") 0 }}
-    {{ $sectionTitle = $sectionData.title | default "Insights & Articles" }}
-  {{ else if eq .Type "portfolio" }}
-    {{ $cardType = "card-unified" }}
-    {{ $sectionData := index (where site.Data.home.section "id" "portfolio") 0 }}
-    {{ $sectionTitle = $sectionData.title | default "Featured Projects" }}
-  {{ else if eq .Type "tools" }}
-    {{ $cardType = "card-unified" }}
-    {{ $sectionData := index (where site.Data.home.section "id" "tools") 0 }}
-    {{ $sectionTitle = $sectionData.title | default "AI Development Tools" }}
-  {{ end }}
-
-  <!-- Section with title and description -->
-  {{ if $sectionTitle }}
-  <section style="margin-bottom: var(--space-8)">
-    {{ if $pageDescription }}
-    <p class="text-lg text-base-content/70" style="margin-bottom: var(--space-4)">{{ $pageDescription }}</p>
-    {{ end }}
-    <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">{{ $sectionTitle }}</h2>
-    <div class="grid gap-responsive-md">
-      {{ range $items }}
-        {{ partial (printf "components/%s.html" $cardType) . }}
+{{ define "main" }}
+  <!-- Main content with container -->
+  <main class="flex-grow container mx-auto" style="padding: var(--space-8) var(--space-4)" role="main">
+    {{ if eq .Type "blog" }}
+      <!-- Blog content without duplicate title -->
+      {{ if .Content }}
+      <div class="prose prose-lg text-base-content/70 mb-8 max-w-4xl prose-headings:text-primary prose-headings:font-semibold">
+        {{ .Content }}
+      </div>
       {{ end }}
-    </div>
-  </section>
-  {{ else }}
-    <!-- Regular grid layout -->
-    <div class="grid gap-responsive-md">
-      {{ range $items }}
-        {{ partial (printf "components/%s.html" $cardType) . }}
-      {{ end }}
-    </div>
-  {{ end }}
 
-  <!-- Pagination or View All button -->
-  {{ if $showPagination }}
-    {{ partial "list-pagination.html" . }}
-  {{ else if eq .Type "posts" }}
-    <div class="text-center" style="margin-top: var(--space-12)">
-      <a href="/posts" class="btn btn-primary btn-lg">
-        View All Posts
-        <svg xmlns="http://www.w0.org/2000/svg" class="h-5 w-5" style="margin-left: var(--space-2)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-  {{ end }}
+      <!-- Blog posts section -->
+      {{ $cardType := "card-list" }}
+      {{ $items := .Paginator.Pages }}
+      {{ $showPagination := true }}
+
+      <section>
+        <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">Recent Posts</h2>
+        <div class="grid gap-responsive-md">
+          {{ range $items }}
+            {{ partial (printf "components/%s.html" $cardType) . }}
+          {{ end }}
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      {{ if $showPagination }}
+        {{ partial "list-pagination.html" . }}
+      {{ end }}
+    {{ else }}
+      <!-- Original list content for other pages -->
+      {{ if not (or (eq .Type "portfolio") (eq .Type "tools")) }}
+        {{ partial "list-header.html" . }}
+      {{ end }}
+
+      <!-- Determine card type based on section -->
+      {{ $cardType := "card-list" }}
+      {{ $items := .Paginator.Pages }}
+      {{ $showPagination := true }}
+      {{ $sectionTitle := "" }}
+      {{ $sectionData := "" }}
+      {{ $pageDescription := .Description }}
+
+      {{ if eq .Type "posts" }}
+        {{ $cardType = "card-list" }}
+        {{ if not .Paginator }}
+          {{ $items = first 6 (where site.RegularPages "Type" "posts") }}
+          {{ $showPagination = false }}
+          {{ $sectionData = index (where site.Data.home.section "id" "posts") 0 }}
+          {{ $sectionTitle = $sectionData.title | default "Recent Posts" }}
+        {{ end }}
+      {{ else if eq .Type "portfolio" }}
+        {{ $cardType = "card-unified" }}
+        {{ $sectionData = index (where site.Data.home.section "id" "portfolio") 0 }}
+        {{ $sectionTitle = $sectionData.title | default "Featured Projects" }}
+      {{ else if eq .Type "tools" }}
+        {{ $cardType = "card-unified" }}
+        {{ $sectionData = index (where site.Data.home.section "id" "tools") 0 }}
+        {{ $sectionTitle = $sectionData.title | default "AI Development Tools" }}
+      {{ end }}
+
+      <!-- Section with title and description -->
+      {{ if $sectionTitle }}
+      <section style="margin-bottom: var(--space-8)">
+        {{ if and $pageDescription (ne .Type "blog") (ne .Type "portfolio") (ne .Type "tools") }}
+        <p class="text-lg text-base-content/70" style="margin-bottom: var(--space-4)">{{ $pageDescription }}</p>
+        {{ end }}
+        {{ if ne .Type "blog" }}
+        <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">{{ $sectionTitle }}</h2>
+        {{ end }}
+        <div class="grid gap-responsive-md">
+          {{ range $items }}
+            {{ partial (printf "components/%s.html" $cardType) . }}
+          {{ end }}
+        </div>
+      </section>
+      {{ else }}
+        <!-- Regular grid layout -->
+        <div class="grid gap-responsive-md">
+          {{ range $items }}
+            {{ partial (printf "components/%s.html" $cardType) . }}
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <!-- Pagination or View All button -->
+      {{ if $showPagination }}
+        {{ partial "list-pagination.html" . }}
+      {{ else if eq .Type "posts" }}
+        <div class="text-center" style="margin-top: var(--space-12)">
+          <a href="/posts" class="btn btn-primary btn-lg">
+            View All Posts
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" style="margin-left: var(--space-2)" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      {{ end }}
+    {{ end }}
+  </main>
 {{ end }}
