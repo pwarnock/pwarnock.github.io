@@ -3,8 +3,8 @@
 {{- $id := .Get "id" -}}
 
 {{- if and $user $id }}
-<div class="embed-container embed-x">
-  <blockquote class="twitter-tweet">
+<div class="embed-container embed-x" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 1rem 0;">
+  <blockquote class="twitter-tweet" style="margin: 0; padding: 1rem; border-left: 4px solid #1da1f2; font-style: italic; background-color: #f5f8fa; border-radius: 8px; max-width: 500px; width: 100%;">
     <a href="https://twitter.com/{{ $user }}/status/{{ $id }}"></a>
   </blockquote>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
