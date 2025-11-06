@@ -169,6 +169,15 @@ Security updates and vulnerability fixes: Address PM2 security vulnerability and
 | F58 | PM2 Security Update     | Update PM2 to v6.0.13 to fix security vulnerability | High     | 🟢 Completed |
 | F59 | Dependency Audit        | Run npm audit and resolve security issues | High     | 🟢 Completed |
 
+## v0.12.1-twitter-embed-fix - 🟢 Completed
+Twitter/X embed centering fix: Resolve CSS specificity issues preventing proper centering of Twitter/X embeds.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F74 | Twitter Embed Centering | Fix CSS specificity conflicts to properly center Twitter/X embeds | High     | 🟢 Completed |
+| F75 | CSS Architecture Review | Review and improve embed styling approach for better maintainability | Medium   | 🟢 Completed |
+| F76 | Embed Testing Suite    | Create comprehensive testing for all embed types | Low      | 🟢 Completed |
+
 ## v0.12.0-blog-layout-optimization - 🟢 Completed
 Blog layout optimization and media embed support: Implement responsive blog design with optimal image sizing and YouTube embed functionality.
 

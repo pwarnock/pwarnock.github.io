@@ -7,14 +7,16 @@
   {{- errorf "YouTube shortcode: missing video ID" -}}
 {{- end -}}
 
-<div class="video-container {{ $class }} my-6">
-  <iframe 
-    src="https://www.youtube-nocookie.com/embed/{{ $id }}?rel=0"
-    title="{{ $title }}"
-    {{- if eq $allowfullscreen "true" }} allowfullscreen{{- end }}
-    loading="lazy"
-    class="w-full h-full rounded-lg shadow-lg"
-    referrerpolicy="no-referrer-when-downgrade"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
-  </iframe>
+<div class="embed-container">
+  <div class="{{ $class }} w-full max-w-4xl">
+    <iframe 
+      src="https://www.youtube-nocookie.com/embed/{{ $id }}?rel=0"
+      title="{{ $title }}"
+      {{- if eq $allowfullscreen "true" }} allowfullscreen{{- end }}
+      loading="lazy"
+      class="w-full h-full rounded-lg shadow-lg"
+      referrerpolicy="no-referrer-when-downgrade"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+    </iframe>
+  </div>
 </div>
