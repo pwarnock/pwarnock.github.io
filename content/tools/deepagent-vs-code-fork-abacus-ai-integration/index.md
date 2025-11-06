@@ -12,6 +12,9 @@ website: 'deepagent-desktop.abacus.ai'
 tool_category: 'AI-Enhanced Editors'
 slug: 'deepagent-vs-code-fork-abacus-ai-integration'
 aliases: ['/tools/deepagent/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Hold'
 ---
 
 DeepAgent represents one of the most ambitious projects in the AI coding space—a

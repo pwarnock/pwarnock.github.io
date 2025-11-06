@@ -11,6 +11,9 @@ website: 'code.visualstudio.com'
 tool_category: 'Code Editors'
 slug: 'visual-studio-code-lightweight-open-source-editor'
 aliases: ['/tools/vscode/', '/tools/visual-studio-code/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Adopt'
 ---
 
 Visual Studio Code has fundamentally transformed the development landscape since

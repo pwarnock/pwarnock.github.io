@@ -18,6 +18,9 @@ tags:
   ]
 external_url: 'https://lovable.dev/'
 website: 'lovable.dev'
+radar:
+  quadrant: 'Platforms'
+  ring: 'Trial'
 tool_category: 'AI Coding Tools'
 slug: 'lovable-frontend-development-platform'
 aliases: ['/tools/lovable/']

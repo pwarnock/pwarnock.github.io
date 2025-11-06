@@ -12,6 +12,9 @@ website: 'ampcode.com'
 tool_category: 'AI Coding Tools'
 slug: 'amp-free-ad-supported-cli-ai-coding-tool'
 aliases: ['/tools/amp-free/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Trial'
 ---
 
 Amp Free represents a revolutionary business model in AI coding tools—offering

@@ -18,6 +18,9 @@ tags:
 external_url: 'https://github.com/features/copilot'
 website: 'github.com'
 tool_category: 'AI Coding Tools'
+radar:
+  quadrant: 'Tools'
+  ring: 'Hold'
 slug: 'github-copilot-original-ai-pair-programmer'
 aliases: ['/tools/copilot-original/']
 ---

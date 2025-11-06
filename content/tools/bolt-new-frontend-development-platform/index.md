@@ -18,6 +18,9 @@ website: 'bolt.new'
 tool_category: 'AI Development Platforms'
 slug: 'bolt-new-frontend-development-platform'
 aliases: ['/tools/bolt-new/']
+radar:
+  quadrant: 'Platforms'
+  ring: 'Trial'
 ---
 
 Bolt.new represents a paradigm shift in frontend development, offering an

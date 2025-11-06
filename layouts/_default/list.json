@@ -1,0 +1,40 @@
+{{- if eq .Kind "section" -}}
+{{- if eq .Section "tools" -}}
+{{- $tools := where .RegularPages "Type" "tools" -}}
+[
+  {{- range $index, $tool := $tools -}}
+  {{- if $tool.Params.radar.quadrant -}}
+    {{- if gt $index 0 }},{{ end }}
+    {
+      "name": {{ $tool.Title | jsonify }},
+      "ring": {{ $tool.Params.radar.ring | jsonify }},
+      "quadrant": {{ $tool.Params.radar.quadrant | jsonify }},
+      "isNew": "FALSE",
+      "description": {{ $tool.Description | jsonify }}
+    }
+  {{- end -}}
+  {{- end -}}
+]
+{{- else -}}
+{{- $pages := .RegularPages -}}
+{
+  "title": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
+  "baseURL": {{ .Site.BaseURL | jsonify }},
+  "pages": [
+    {{- range $index, $page := $pages -}}
+    {{- if gt $index 0 }},{{ end }}
+    {
+      "title": {{ $page.Title | jsonify }},
+      "description": {{ $page.Description | jsonify }},
+      "url": {{ $page.Permalink | jsonify }},
+      "date": {{ $page.Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+      "lastmod": {{ $page.Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+      "tags": {{ $page.Params.tags | jsonify }},
+      "summary": {{ $page.Summary | jsonify }}
+    }
+    {{- end -}}
+  ]
+}
+{{- end -}}
+{{- end -}}

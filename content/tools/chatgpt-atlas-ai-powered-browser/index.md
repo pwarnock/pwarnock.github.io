@@ -18,6 +18,9 @@ tags:
 external_url: 'https://chatgpt.com/atlas'
 website: 'chatgpt.com'
 tool_category: 'AI-Powered Browsers'
+radar:
+  quadrant: 'Tools'
+  ring: 'Assess'
 slug: 'chatgpt-atlas-ai-powered-browser'
 aliases: ['/tools/chatgpt-atlas/']
 ---

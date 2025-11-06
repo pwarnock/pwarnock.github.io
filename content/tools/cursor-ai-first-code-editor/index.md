@@ -12,6 +12,9 @@ website: 'cursor.sh'
 tool_category: 'AI Code Editors'
 slug: 'cursor-ai-first-code-editor'
 aliases: ['/tools/cursor/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Trial'
 ---
 
 Cursor represents a fundamental reimagining of the code editor experience—built

@@ -18,6 +18,9 @@ external_url: 'https://v0.dev/'
 website: 'v0.dev'
 tool_category: 'AI Coding Tools'
 slug: 'v0-vercel-ai-coding-agent-web-frameworks'
+radar:
+  quadrant: 'Tools'
+  ring: 'Trial'
 aliases: ['/tools/v0/', '/tools/vercel-v0/']
 ---
 

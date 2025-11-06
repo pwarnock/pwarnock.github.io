@@ -9,6 +9,9 @@ website: 'starlight.astro.build'
 tool_category: 'Static Site Generators'
 slug: 'astro-starlight'
 image: '/images/tools/astro-starlight.webp'
+radar:
+  quadrant: 'Platforms'
+  ring: 'Adopt'
 ---
 
 ![Astro Starlight Hero Image](/images/tools/astro-starlight.webp)

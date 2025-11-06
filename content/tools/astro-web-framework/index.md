@@ -10,6 +10,9 @@ website: 'astro.build'
 tool_category: 'Web Frameworks'
 slug: 'astro-web-framework'
 image: '/images/tools/astro.png'
+radar:
+  quadrant: 'Languages & Frameworks'
+  ring: 'Adopt'
 ---
 
 ![Astro Logo](/images/tools/astro.png)

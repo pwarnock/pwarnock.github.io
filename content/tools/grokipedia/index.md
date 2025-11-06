@@ -18,6 +18,9 @@ website: 'grokipedia.com'
 tool_category: 'AI Knowledge Tools'
 slug: 'grokipedia'
 aliases: ['/tools/grokipedia/']
+radar:
+  quadrant: 'Platforms'
+  ring: 'Assess'
 ---
 
 Grokipedia represents a revolutionary leap forward in knowledge

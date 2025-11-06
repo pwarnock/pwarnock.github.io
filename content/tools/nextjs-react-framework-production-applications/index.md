@@ -11,6 +11,9 @@ website: 'nextjs.org'
 tool_category: 'Frameworks'
 slug: 'nextjs-react-framework-production-applications'
 aliases: ['/tools/nextjs/']
+radar:
+  quadrant: 'Languages & Frameworks'
+  ring: 'Adopt'
 ---
 
 Next.js has established itself as the de facto standard for building production

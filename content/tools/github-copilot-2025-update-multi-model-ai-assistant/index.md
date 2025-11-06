@@ -21,6 +21,9 @@ website: 'github.com'
 tool_category: 'AI Coding Tools'
 slug: 'github-copilot-2025-update-multi-model-ai-assistant'
 aliases: ['/tools/copilot-2025/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Adopt'
 ---
 
 GitHub Copilot 2025 represents the culmination of years of AI development,

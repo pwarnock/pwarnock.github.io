@@ -5,7 +5,7 @@
   "type": "module",
   "main": "postcss.config.cjs",
   "scripts": {
-    "build": "bun run generate-version && HUGO_ENV=production hugo --gc --minify",
+    "build": "bun run generate-version && HUGO_ENV=production hugo --gc --minify && cp public/tools/index.json public/tools/radar.json",
     "clean": "rm -rf public",
     "dev": "HUGO_ENV=development bun x pm2 start ecosystem.config.cjs",
     "dev:stop": "bun x pm2 stop hugo-dev",

@@ -18,6 +18,9 @@ tags:
 external_url: 'https://gemini.google.dev/cli'
 website: 'gemini.google.dev'
 tool_category: 'AI Coding Tools'
+radar:
+  quadrant: 'Tools'
+  ring: 'Trial'
 slug: 'gemini-cli-google-terminal-ai-agent'
 aliases: ['/tools/gemini-cli/']
 ---

@@ -11,6 +11,9 @@ website: 'openai.com'
 tool_category: 'AI Coding Tools'
 slug: 'openai-codex-command-line-coding-assistant'
 aliases: ['/tools/codex-cli/', '/tools/openai-codex/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Assess'
 ---
 
 OpenAI Codex represents a groundbreaking advancement in AI-powered development,

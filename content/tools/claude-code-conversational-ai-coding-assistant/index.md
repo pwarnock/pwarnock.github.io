@@ -18,6 +18,9 @@ website: 'claude.ai'
 tool_category: 'AI Coding Assistants'
 slug: 'claude-code-conversational-ai-coding-assistant'
 aliases: ['/tools/claude-code/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Adopt'
 ---
 
 Claude Code represents Anthropic's flagship entry into the AI coding assistant

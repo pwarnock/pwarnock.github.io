@@ -9,6 +9,9 @@ website: 'gohugo.io'
 tool_category: 'Static Site Generators'
 slug: 'hugo-static-site-generator'
 image: '/images/tools/hugo.svg'
+radar:
+  quadrant: 'Platforms'
+  ring: 'Adopt'
 ---
 
 ![Hugo Logo](/images/tools/hugo.svg)

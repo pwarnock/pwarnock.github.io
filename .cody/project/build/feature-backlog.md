@@ -190,3 +190,13 @@ Blog layout optimization and media embed support: Implement responsive blog desi
 | F71 | Environment Configuration | Add dev/prod environment-based configuration system | Medium   | 🟢 Completed |
 | F72 | Validation Scripts     | Create blog post validation and hardcoded URL checking scripts | Medium   | 🟢 Completed |
 | F73 | Documentation Updates  | Update STYLE_GUIDE.md with blog post creation guidelines | Medium   | 🟢 Completed |
+
+## v0.13.0-radar - 🔴 Not Started
+Radar data structure preparation: Add radar metadata to tools content and generate JSON data structure for future ThoughtWorks BYOR integration.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F77 | Radar Frontmatter Fields | Add quadrant and ring properties to all tools content frontmatter | High     | 🔴 Not Started |
+| F78 | Radar Data Template     | Create build template to generate /tools/radar.json from tools content | High     | 🔴 Not Started |
+| F79 | Radar View Enhancement  | Update tools view to display quadrant and ring information | Medium   | 🔴 Not Started |
+| F80 | Radar Content Validation | Validate all tools have proper radar metadata assigned | Medium   | 🔴 Not Started |

@@ -14,7 +14,7 @@ name = 'Peter Warnock'
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 page = ["HTML"]
-section = ["HTML", "RSS"]
+section = ["HTML", "RSS", "JSON"]
 
 # Security settings
 [security]

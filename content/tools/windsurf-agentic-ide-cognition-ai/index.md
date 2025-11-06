@@ -11,6 +11,9 @@ website: 'windsurf.ai'
 tool_category: 'AI Coding Tools'
 slug: 'windsurf-agentic-ide-cognition-ai'
 aliases: ['/tools/windsurf/', '/tools/cognition-ide/']
+radar:
+  quadrant: 'Tools'
+  ring: 'Trial'
 ---
 
 Windsurf represents a quantum leap in AI-powered development environments,

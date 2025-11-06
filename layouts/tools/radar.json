@@ -1,0 +1,15 @@
+{{- $tools := where site.RegularPages "Type" "tools" -}}
+[
+  {{- range $index, $tool := $tools -}}
+  {{- if $tool.Params.radar.quadrant and $tool.Params.radar.ring -}}
+    {{- if gt $index 0 }},{{ end }}
+    {
+      "name": {{ $tool.Title | jsonify }},
+      "ring": {{ $tool.Params.radar.ring | jsonify }},
+      "quadrant": {{ $tool.Params.radar.quadrant | jsonify }},
+      "isNew": false,
+      "description": {{ $tool.Description | jsonify }}
+    }
+  {{- end -}}
+  {{- end -}}
+]

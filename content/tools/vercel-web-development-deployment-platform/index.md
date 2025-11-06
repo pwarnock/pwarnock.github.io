@@ -18,6 +18,9 @@ external_url: 'https://vercel.com/'
 website: 'vercel.com'
 tool_category: 'Development Platforms'
 slug: 'vercel-web-development-deployment-platform'
+radar:
+  quadrant: 'Platforms'
+  ring: 'Adopt'
 aliases: ['/tools/vercel/', '/tools/vercel-platform/']
 ---
 
