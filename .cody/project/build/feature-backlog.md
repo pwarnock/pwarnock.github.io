@@ -168,3 +168,16 @@ Security updates and vulnerability fixes: Address PM2 security vulnerability and
 |-----|-------------------------|------------------------------------------|----------|--------|
 | F58 | PM2 Security Update     | Update PM2 to v6.0.13 to fix security vulnerability | High     | 🟢 Completed |
 | F59 | Dependency Audit        | Run npm audit and resolve security issues | High     | 🟢 Completed |
+
+## v0.12.0-blog-layout-optimization - 🟢 Completed
+Blog layout optimization and media embed support: Implement responsive blog design with optimal image sizing and YouTube embed functionality.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F67 | Blog Layout Optimization | Implement DaisyUI card-side layout for responsive blog posts | High     | 🟢 Completed |
+| F68 | Image Sizing Enhancement | Optimize image sizes to 200x150px (mobile) and 192x144px (desktop) | High     | 🟢 Completed |
+| F69 | YouTube Embed Support    | Create YouTube shortcode with privacy-enhanced embeds and CSP fixes | High     | 🟢 Completed |
+| F70 | Image Restoration       | Restore missing blog post images from git history and fix path resolution | High     | 🟢 Completed |
+| F71 | Environment Configuration | Add dev/prod environment-based configuration system | Medium   | 🟢 Completed |
+| F72 | Validation Scripts     | Create blog post validation and hardcoded URL checking scripts | Medium   | 🟢 Completed |
+| F73 | Documentation Updates  | Update STYLE_GUIDE.md with blog post creation guidelines | Medium   | 🟢 Completed |
