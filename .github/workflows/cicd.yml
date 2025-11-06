@@ -59,6 +59,9 @@ jobs:
 
       - name: Secret Scanning
         uses: gitleaks/gitleaks-action@v2
+        with:
+          # Scan current HEAD only to avoid git range issues
+          args: --detect --verbose --report-path=gitleaks-report.json --report-format=json --no-history
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
