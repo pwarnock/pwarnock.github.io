@@ -12,10 +12,11 @@ summary:
 image: '/images/blog/thoughtworks-tech-radar-33.jpg'
 ---
 
-The latest edition of the Thoughtworks Technology Radar, Volume 33, has been
-released, offering its usual insightful perspective on the current technology
-landscape. This edition is particularly interesting to me as it aligns with a
-personal goal I set a year ago to create my own technology radar.
+The latest edition of the
+[Thoughtworks Technology Radar, Volume 33](https://www.thoughtworks.com/radar),
+has been released, offering its usual insightful perspective on the current
+technology landscape. This edition is particularly interesting to me as it
+aligns with a personal goal I set a year ago to create my own technology radar.
 
 {{< figure src="/images/blog/thoughtworks-tech-radar-33.jpg" alt="Thoughtworks Technology Radar Volume 33" caption="Thoughtworks Technology Radar Volume 33" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
@@ -54,8 +55,9 @@ workflows and agents reflects the rapid evolution we're seeing in development
 tools and practices.
 
 The radar continues to be an essential resource for making informed technology
-decisions, and I highly recommend reviewing the full volume for detailed
-analysis of each blip and the reasoning behind their placement.
+decisions, and I highly recommend reviewing the
+[full volume on the Thoughtworks website](https://www.thoughtworks.com/radar)
+for detailed analysis of each blip and the reasoning behind their placement.
 
 ## Looking Forward
 
