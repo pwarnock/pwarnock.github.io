@@ -1,13 +1,37 @@
-<article class="card card-border bg-base-100 card-md shadow-xl hover:shadow-2xl transition-shadow duration-300" role="article">
+<article class="card lg:card-side bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300" role="article">
+  {{/* Blog post image - using DaisyUI card-side layout */}}
+  {{ $image := .Params.thumbnail | default .Params.image }}
+  {{ if $image }}
+  <figure class="p-4">
+    <a href="{{ .Permalink }}" class="block hover:opacity-90 transition-opacity">
+      {{/* Try to get as page resource first, then fall back to static */}}
+      {{ with .Resources.GetMatch (strings.TrimPrefix "/" $image) }}
+        {{ with .Fit "320x240" }}
+          <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="w-80 h-60 lg:w-72 lg:h-54 object-cover rounded-lg shadow-md" loading="lazy" />
+        {{ else }}
+          <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="w-80 h-60 lg:w-72 lg:h-54 object-cover rounded-lg shadow-md" loading="lazy" />
+        {{ end }}
+      {{ else }}
+        {{/* For static images, check if it needs /images/blog/ prefix */}}
+        {{ $imagePath := $image }}
+        {{ if not (hasPrefix $image "/") }}
+          {{ $imagePath = printf "/images/blog/%s" $image }}
+        {{ end }}
+        <img src="{{ $imagePath | relURL }}" alt="{{ .Title }}" class="w-80 h-60 lg:w-72 lg:h-54 object-cover rounded-lg shadow-md" loading="lazy" />
+      {{ end }}
+    </a>
+  </figure>
+  {{ end }}
+
   <div class="card-body">
-    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+    <div class="flex flex-col gap-2 mb-4">
       <h2 class="card-title text-xl lg:text-2xl">
         <a href="{{ .Permalink }}" class="link link-hover text-accent no-underline hover:underline">
           {{ .Title }}
         </a>
       </h2>
       {{ if .Params.tags }}
-      <div class="flex flex-wrap gap-2 lg:gap-1">
+      <div class="flex flex-wrap gap-2">
         {{ range .Params.tags }}
         <span class="badge badge-outline badge-secondary text-xs">{{ . }}</span>
         {{ end }}
@@ -15,11 +39,13 @@
       {{ end }}
     </div>
 
-    {{ if .Params.summary }}
-    <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Params.summary }}</p>
-    {{ else }}
-    <p class="text-base-content/80 mb-6 line-clamp-3">{{ .Summary }}</p>
-    {{ end }}
+    <div class="prose prose-sm text-base-content/80">
+      {{ if .Params.summary }}
+      <p class="line-clamp-4">{{ .Params.summary }}</p>
+      {{ else }}
+      <p class="line-clamp-4">{{ .Summary }}</p>
+      {{ end }}
+    </div>
 
     <div class="card-actions justify-between items-center">
       <div class="text-sm text-base-content/60">

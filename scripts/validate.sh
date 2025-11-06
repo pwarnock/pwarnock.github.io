@@ -21,7 +21,23 @@ npm run lint:toml || exit 1
 npm run lint:css || exit 1
 echo "✅ Linting passed"
 
-# 3. HTML validation
+# 3. Blog post validation
+echo "📝 Validating blog posts..."
+if ! ./scripts/validate-blog-post.sh; then
+    echo "❌ Blog post validation failed"
+    exit 1
+fi
+echo "✅ Blog posts validated"
+
+# 4. URL configuration validation
+echo "🔒 Checking URL configuration..."
+if ! ./scripts/check-hardcoded-urls.sh; then
+    echo "❌ URL configuration validation failed"
+    exit 1
+fi
+echo "✅ URL configuration validated"
+
+# 5. HTML validation
 echo "🔗 Running HTML validation..."
 if ! htmlproofer ./public --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph"; then
     echo "❌ HTML validation failed"
@@ -29,7 +45,7 @@ if ! htmlproofer ./public --allow-hash-href --check-external-hash --disable-exte
 fi
 echo "✅ HTML validation passed"
 
-# 4. SEO validation
+# 6. SEO validation
 echo "📈 Running SEO validation..."
 missing=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | wc -l)
 if [ "$missing" -gt 0 ]; then
@@ -40,14 +56,14 @@ else
     echo "✅ SEO check passed"
 fi
 
-# 5. Security check
+# 7. Security check
 echo "🔒 Running security check..."
 if ! npm audit --audit-level=moderate; then
     echo "⚠️  Security vulnerabilities found"
     echo "💡 Run 'npm audit fix' to resolve"
 fi
 
-# 6. Performance check (basic)
+# 8. Performance check (basic)
 echo "⚡ Running performance check..."
 total_size=$(du -sh public | cut -f1)
 page_count=$(find public -name "*.html" | wc -l)

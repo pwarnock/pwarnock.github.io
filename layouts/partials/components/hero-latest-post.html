@@ -10,12 +10,22 @@
         <span class="text-xs text-base-content/60">{{ $latestPost.Date.Format "Jan 2, 2006" }}</span>
       </div>
 
-      <!-- Blog Image -->
+      <!-- Blog Image - Use frontmatter image parameter -->
       {{ $image := $latestPost.Params.thumbnail | default $latestPost.Params.image }}
       {{ if $image }}
       <div class="mb-3">
         <a href="{{ $latestPost.Permalink }}" class="block hover:opacity-90 transition-opacity">
-          <img src="{{ $image }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+          {{/* Try to get as page resource first, then fall back to static */}}
+          {{ with $latestPost.Resources.GetMatch (strings.TrimPrefix "/" $image) }}
+            {{ with .Fit "400x200" }}
+              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+            {{ else }}
+              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+            {{ end }}
+          {{ else }}
+            {{/* For static images, use direct path */}}
+            <img src="{{ $image | relURL }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+          {{ end }}
         </a>
       </div>
       {{ end }}
@@ -26,7 +36,7 @@
         </a>
       </h3>
       <p class="text-xs lg:text-sm text-base-content/80 mb-4 leading-relaxed line-clamp-3">
-        {{ or $latestPost.Params.summary $latestPost.Params.description $latestPost.Summary }}
+        {{ $latestPost.Params.summary | default $latestPost.Params.description }}
       </p>
     </div>
     <a href="{{ $latestPost.Permalink }}" class="btn btn-accent btn-outline btn-sm mt-auto">

@@ -1,0 +1,20 @@
+{{- $id := .Get 0 -}}
+{{- $class := .Get "class" | default "aspect-video" -}}
+{{- $title := .Get "title" | default "YouTube video player" -}}
+{{- $allowfullscreen := .Get "allowfullscreen" | default "true" -}}
+
+{{- if not $id -}}
+  {{- errorf "YouTube shortcode: missing video ID" -}}
+{{- end -}}
+
+<div class="video-container {{ $class }} my-6">
+  <iframe 
+    src="https://www.youtube-nocookie.com/embed/{{ $id }}?rel=0"
+    title="{{ $title }}"
+    {{- if eq $allowfullscreen "true" }} allowfullscreen{{- end }}
+    loading="lazy"
+    class="w-full h-full rounded-lg shadow-lg"
+    referrerpolicy="no-referrer-when-downgrade"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+  </iframe>
+</div>

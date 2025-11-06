@@ -5,7 +5,7 @@ module.exports = {
       script: 'bash',
       args: [
         '-c',
-        'node scripts/generate-version.js && hugo server --buildDrafts --buildFuture --disableFastRender --port 1313 --baseURL http://localhost:1313/',
+        'node scripts/generate-version.js && HUGO_ENV=development hugo server --buildDrafts --buildFuture --disableFastRender --port 1313 --config config/development/hugo.toml',
       ],
       cwd: __dirname,
       instances: 1,
@@ -14,6 +14,7 @@ module.exports = {
       max_memory_restart: '1G',
       env: {
         NODE_ENV: 'development',
+        HUGO_ENV: 'development',
       },
       error_file: './.pids/hugo-dev-error-0.log',
       out_file: './.pids/hugo-dev-out-0.log',

@@ -1,0 +1,9 @@
+# Production configuration
+baseURL = "https://peterwarnock.com"
+
+[params]
+  # Enable analytics in production
+  googleAnalytics = "G-SKDDM2GBXN"
+  
+  # Production indicators
+  env = "production"

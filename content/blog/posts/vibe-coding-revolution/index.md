@@ -5,7 +5,8 @@ draft: false
 tags: ['ai-coding', 'developer-tools', 'vibe-coding', 'productivity']
 categories: ['Technology', 'Development Tools']
 author: 'Peter Warnock'
-description: 'A comprehensive look at emerging vibe coding tools landscape, from
+description:
+  'A comprehensive look at emerging vibe coding tools landscape, from
   developer-centric IDEs to product-focused app builders'
 image: 'vibe-coding-revolution.webp'
 ---

@@ -5,10 +5,6 @@ description:
   "Exploring the importance of principles over methods in an era of rapid
   innovation and AI, inspired by Harrington Emerson's timeless quote."
 image: 'principles-over-methods-quote-harrington-emerson.webp'
-slug: 'principles-over-methods-emerson-quote'
-tags: ['philosophy', 'innovation', 'ai']
-categories: ['Insights']
-author: 'Peter Warnock'
 ---
 
 > "As to methods, there may be a million and then some, but principles are few.

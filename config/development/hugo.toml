@@ -1,0 +1,10 @@
+# Development configuration
+baseURL = "http://localhost:1313"
+
+# Override production-specific settings for development
+[params]
+  # Disable analytics in development
+  googleAnalytics = ""
+  
+  # Development indicators
+  env = "development"
