@@ -7,7 +7,7 @@ author: 'Peter Warnock'
 description: "Key features that make Amp coding agent unique: Handoff for smooth transitions, message queueing, scoped instructions, and toolboxes for extensibility."
 ---
 
-I'm constantly evaluating new coding agents, but one that's consistently impressed me over the past few months is [Amp](https://ampcode.com/). Hamel Husain recently wrote an excellent [deep dive into Amp's features](https://hamel.dev/notes/coding-agents/amp.html) that highlighted several capabilities I think make it particularly noteworthy for developers.
+I'm constantly evaluating new coding agents, but one that's consistently impressed me over the past few months is [Amp](https://ampcode.com/). Hamel Husain recently wrote an excellent [deep dive into Amp's features](https://hamel.dev/notes/coding-agents/amp.html "Editorial reference") that highlighted several capabilities I think make it particularly noteworthy for developers.
 
 ## Standout Features
 
@@ -58,7 +58,7 @@ Similarly, when I need quick, verified code examples for specific problems, I us
 
 What I appreciate most about Amp is its focus on **developer workflow optimization** rather than just raw coding capability. While tools like Cursor or Claude Code focus on the coding experience itself, Amp thinks about the entire development lifecycle—context management, team collaboration, and workflow continuity.
 
-For Hamel's detailed explanations of these features and more advanced usage tips, [read his full analysis](https://hamel.dev/notes/coding-agents/amp.html). His deep dive covers additional insights about model abstraction, pricing, and practical tips for getting the most out of Amp.
+For Hamel's detailed explanations of these features and more advanced usage tips, [read his full analysis](https://hamel.dev/notes/coding-agents/amp.html "Editorial reference"). His deep dive covers additional insights about model abstraction, pricing, and practical tips for getting the most out of Amp.
 
 ---
 

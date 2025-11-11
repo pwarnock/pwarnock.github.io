@@ -10,13 +10,13 @@ image: 'principles-over-methods-quote-harrington-emerson.webp'
 > "As to methods, there may be a million and then some, but principles are few.
 > The person who grasps principles can successfully select their own methods.
 > The person who tries methods, ignoring principles, is sure to have trouble."
-> —[Harrington Emerson](https://en.wikipedia.org/wiki/Harrington_Emerson), _The
+> —[Harrington Emerson](https://en.wikipedia.org/wiki/Harrington_Emerson "Editorial reference"), _The
 > Clothier and Furnisher_ (July 1911), via
-> [James Clear's 3-2-1 Thursday, July 3, 2025](https://jamesclear.com/3-2-1/july-3-2025).
+> [James Clear's 3-2-1 Thursday, July 3, 2025](https://jamesclear.com/3-2-1/july-3-2025 "Editorial reference").
 
 This quote feels incredibly relevant today. In an era defined by rapid
 innovation and the rise of
-[agentic AI](https://www.ibm.com/think/topics/agentic-ai), new methods and tools
+[agentic AI](https://www.ibm.com/think/topics/agentic-ai "Editorial reference"), new methods and tools
 emerge constantly. It's easy to get lost in the sheer volume of techniques.
 However, Emerson's insight reminds us that understanding fundamental principles
 is paramount. Methods will always evolve, but a strong grasp of underlying

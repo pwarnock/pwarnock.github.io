@@ -1,8 +1,14 @@
-{{/* Custom link renderer to prevent line breaking in long URLs */}}
+{{/* Custom link renderer with SEO-aware rel attributes */}}
 {{ $href := .Destination }}
 {{ if not (strings.HasPrefix $href "http") }}
   {{ $href = .Destination | absURL }}
 {{ end }}
-<a href="{{ $href }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} rel="noopener noreferrer" target="_blank"{{ end }}>
-  {{- .Text | safeHTML -}}
+{{ $isExternal := strings.HasPrefix .Destination "http" }}
+{{ $isEditorial := eq .Title "Editorial reference" }}
+{{ $rel := "noopener noreferrer" }}
+{{ if $isEditorial }}
+  {{ $rel = "noopener" }}
+{{ end }}
+<a href="{{ $href }}"{{ with .Title }}{{ if not $isEditorial }} title="{{ . }}"{{ end }}{{ end }}{{ if $isExternal }} rel="{{ $rel }}" target="_blank"{{ end }}>
+   {{- .Text | safeHTML -}}
 </a>

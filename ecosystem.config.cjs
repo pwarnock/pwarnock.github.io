@@ -2,10 +2,14 @@ module.exports = {
   apps: [
     {
       name: 'hugo-dev',
-      script: 'bash',
+      script: 'hugo',
       args: [
-        '-c',
-        'node scripts/generate-version.js && HUGO_ENV=development hugo server --buildDrafts --buildFuture --disableFastRender --port 1313 --config config/development/hugo.toml',
+        'server',
+        '--buildDrafts',
+        '--buildFuture', 
+        '--disableFastRender',
+        '--port', '1313',
+        '--config', 'config/development/hugo.toml',
       ],
       cwd: __dirname,
       instances: 1,

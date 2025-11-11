@@ -13,7 +13,7 @@ image: '/images/blog/thoughtworks-tech-radar-33.jpg'
 ---
 
 The latest edition of the
-[Thoughtworks Technology Radar, Volume 33](https://www.thoughtworks.com/radar),
+[Thoughtworks Technology Radar, Volume 33](https://www.thoughtworks.com/radar "Editorial reference"),
 has been released, offering its usual insightful perspective on the current
 technology landscape. This edition is particularly interesting to me as it
 aligns with a personal goal I set a year ago to create my own technology radar.
@@ -56,7 +56,7 @@ tools and practices.
 
 The radar continues to be an essential resource for making informed technology
 decisions, and I highly recommend reviewing the
-[full volume on the Thoughtworks website](https://www.thoughtworks.com/radar)
+[full volume on the Thoughtworks website](https://www.thoughtworks.com/radar "Editorial reference")
 for detailed analysis of each blip and the reasoning behind their placement.
 
 ## Looking Forward

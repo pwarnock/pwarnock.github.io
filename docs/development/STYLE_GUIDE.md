@@ -1063,12 +1063,48 @@ postinstall script). The pre-push guardrail will be active immediately.
 "cardType" .cardType "showDate" true "showDescription" true ) }}
 ```
 
+## Link Annotations & SEO
+
+### Editorial Links (Nofollow Override)
+
+For links that are genuine editorial references to authoritative sources (experts, published research, industry standards), use the "Editorial reference" title attribute to exclude them from `nofollow`:
+
+```markdown
+[Expert Name](https://example.com "Editorial reference")
+[James Clear's Newsletter](https://jamesclear.com/3-2-1 "Editorial reference")
+[Thoughtworks Radar](https://www.thoughtworks.com/radar "Editorial reference")
+```
+
+**How it works:**
+- Template detects the "Editorial reference" title attribute
+- Renders with `rel="noopener"` (no nofollow)
+- Hides the title attribute in the HTML output
+- Passes link equity to authoritative sources
+
+**When to use:**
+- ✅ Citations of industry experts or thought leaders
+- ✅ Links to published research or reports
+- ✅ References to authoritative sources (Wikipedia, official docs)
+- ✅ Expert analysis or deep dives you're citing
+- ❌ NOT for affiliate links, sponsored content, or self-promotion
+- ❌ NOT for UGC or links you can't personally vouch for
+
+### Regular External Links
+
+All other external links automatically receive `rel="noopener noreferrer"` and function as expected:
+
+```markdown
+[Regular Link](https://example.com)
+[Link with tooltip](https://example.com "Hover text")
+```
+
 ## Recent Updates
 
-- **v0.11.0**: H1 duplicate removal across all content types, accessibility
-  compliance
+- **v0.12.1**: Editorial link annotation system for SEO optimization
+- **v0.12.0**: H1 duplicate removal across all content types, accessibility
+   compliance
 - **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git
-  hash
+   hash
 - **v0.10.1**: Hero section enhancement
 - **v0.10.0**: Spacing scale refactoring, version tracking in footer
 
