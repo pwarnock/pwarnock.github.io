@@ -834,59 +834,61 @@ npm run build     # Must succeed
 
 ## Environment Variables & Security
 
-### URL Configuration Management (v0.11.0+)
+### URL Configuration Management (v0.12.1+)
 
-**CRITICAL: Never hardcode production URLs in main configuration**
+**Config Merging Strategy: Main + Development Override**
 
-To prevent development/production URL conflicts, use environment-based
-configuration:
+Use Hugo's config merging to avoid duplication:
 
-#### Environment-Specific Configs
+#### Configuration Structure
 
-- **Development**: `config/development/hugo.toml` →
-  `baseURL = "http://localhost:1313"`
-- **Production**: `config/production/hugo.toml` →
-  `baseURL = "https://peterwarnock.com"`
-- **Main**: `hugo.toml` → Contains shared settings only
+- **Main**: `hugo.toml` → ALL production settings + ALL params
+- **Dev Override**: `config/development/hugo.toml` → ONLY dev-specific overrides
+- Hugo merges both: dev config inherits all main params while overriding dev-specific values
 
-#### Usage Patterns
+#### Main Config (hugo.toml)
 
-```bash
-# Development server
-HUGO_ENV=development hugo server --config config/development/hugo.toml
+```toml
+baseURL = "https://peterwarnock.com/"
 
-# Production build
-HUGO_ENV=production hugo --gc --minify --config config/production/hugo.toml
+[params]
+  # All shared parameters (REQUIRED for footer, etc.)
+  github = "https://github.com/pwarnock"
+  linkedin = "https://www.linkedin.com/in/peterwarnock"
+  twitter = "https://x.com/pwarnock"
+  discord = "https://discord.gg/pwarnock"
+  newsletter_url = "https://gmail.us8.list-manage.com/..."
+  googleAnalytics = "G-SKDDM2GBXN"
 ```
 
-#### Prevention Scripts
+#### Development Override (config/development/hugo.toml)
 
-```bash
-# Check for hardcoded URLs
-./scripts/check-hardcoded-urls.sh
+```toml
+baseURL = "http://localhost:1313"
 
-# Full validation includes URL checks
-./scripts/validate.sh
+[params]
+  googleAnalytics = ""  # Disable GA in dev
+  env = "development"
+  # Other params inherited from main config
 ```
 
-#### Package.json Scripts
+#### Config Merging in PM2 (ecosystem.config.cjs)
 
-All scripts must include proper environment variables:
-
-```json
-{
-  "dev": "HUGO_ENV=development bun x pm2 start ecosystem.config.cjs",
-  "build": "HUGO_ENV=production hugo --gc --minify --config config/production/hugo.toml"
-}
+```javascript
+args: [
+  'server',
+  '--config', 'config/development/hugo.toml,hugo.toml'
+  // Hugo merges: dev overrides + main config
+]
 ```
 
-#### Validation Rules
+#### Critical Rules
 
-- ❌ Never hardcode `https://peterwarnock.com` in main `hugo.toml`
-- ❌ Never use `localhost` in production config
-- ✅ Always use `HUGO_ENV` environment variable
-- ✅ Use environment-specific config files
-- ✅ Run validation before commits
+- ✅ Main config (`hugo.toml`) has ALL production params (not empty!)
+- ✅ Development config ONLY overrides what's different
+- ✅ Use `--config dev,main` for proper inheritance order
+- ❌ Never duplicate params across files
+- ❌ Never leave main config with missing params
 
 ### Hugo Security Policy (v0.10.2+)
 

@@ -9,7 +9,7 @@ module.exports = {
         '--buildFuture', 
         '--disableFastRender',
         '--port', '1313',
-        '--config', 'config/development/hugo.toml',
+        '--config', 'config/development/hugo.toml,hugo.toml',
       ],
       cwd: __dirname,
       instances: 1,
