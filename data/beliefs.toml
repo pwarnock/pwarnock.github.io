@@ -1,0 +1,26 @@
+# Belief Cards - Core values and principles
+# Used in /layouts/shortcodes/belief-cards.html
+
+[[belief]]
+title = "Pragmatism over perfectionism"
+color = "primary"
+description = "Ship working software, iterate based on real feedback"
+icon = "M13 10V3L4 14h7v7l9-11h-7z"
+
+[[belief]]
+title = "Fundamentals over hype"
+color = "secondary"
+description = "New tools are exciting, but solid engineering principles endure"
+icon = "M12 6.253v13m0-13C6.596 6.253 2 10.849 2 16.5S6.596 26.747 12 26.747s10-4.596 10-10.247S17.404 6.253 12 6.253z"
+
+[[belief]]
+title = "Building systems, not just code"
+color = "accent"
+description = "The best engineers create environments where others succeed"
+icon = "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2m0 0V7a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m0 0V9a2 2 0 002 2m0 0V11m0 0h.01M9 15h6"
+
+[[belief]]
+title = "Continuous learning"
+color = "info"
+description = "Technology changes constantly; staying curious is essential"
+icon = "M12 6.253v13m0-13C6.596 6.253 2 10.849 2 16.5S6.596 26.747 12 26.747s10-4.596 10-10.247S17.404 6.253 12 6.253z"

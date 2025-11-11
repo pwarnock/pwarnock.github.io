@@ -1,0 +1,83 @@
+<!-- Journey Timeline Shortcode
+Renders 4 career phases as timeline cards with vertical connector
+Data source: data/journey.toml
+Includes IntersectionObserver for fade-in animations
+-->
+
+<div class="journey-timeline relative mb-12" role="region" aria-label="Career journey timeline">
+  <!-- Timeline vertical line (hidden on mobile) -->
+  <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent opacity-20" aria-hidden="true"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    {{ range sort site.Data.journey.phase "order" }}
+    {{ $idSafeTitle := lower (replace .title " " "-") }}
+    {{ $isEven := eq (mod .order 2) 0 }}
+    
+    <!-- Timeline Card -->
+    <div class="journey-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300 {{ if $isEven }}lg:col-start-2{{ else }}lg:col-start-1{{ end }}" role="article" aria-labelledby="phase-{{ $idSafeTitle }}">
+      <!-- Timeline dot (visible on lg+ screens) -->
+      <div class="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-0 w-6 h-6 bg-base-100 border-4 border-{{ .color }} rounded-full z-10 -ml-3" aria-hidden="true"></div>
+
+      <div class="card-body p-6 lg:p-8">
+        <!-- Subtitle (phase label) -->
+        <p class="text-xs font-bold text-{{ .color }} uppercase tracking-wider mb-1">
+          {{ .subtitle }}
+        </p>
+
+        <!-- Title -->
+        <h3 id="phase-{{ $idSafeTitle }}" class="card-title text-xl lg:text-2xl mb-3 text-base-content">
+          {{ .title }}
+        </h3>
+
+        <!-- Description -->
+        <p class="text-sm lg:text-base text-base-content/80 leading-relaxed">
+          {{ .description }}
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+@supports (opacity: 0) {
+  .journey-card {
+    opacity: 0;
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+</style>
+
+<script>
+(function() {
+  if (!window.IntersectionObserver) return;
+  
+  const cards = document.querySelectorAll('.journey-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const delay = index * 100;
+        entry.target.style.opacity = '0';
+        entry.target.style.animation = `fadeInUp 0.7s ease-out ${delay}ms forwards`;
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    observer.observe(card);
+  });
+})();
+</script>

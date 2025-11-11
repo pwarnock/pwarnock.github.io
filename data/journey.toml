@@ -1,0 +1,30 @@
+# Career Journey Timeline - Phases and evolution
+# Used in /layouts/shortcodes/journey-timeline.html
+
+[[phase]]
+title = "Self-Taught Developer"
+subtitle = "Early Career"
+color = "primary"
+description = "I learned to code by building things—websites, applications, tools. No CS degree, just curiosity and persistence. This taught me that you don't need credentials to ship; you need to be willing to break things, read, iterate, and stay hungry."
+order = 1
+
+[[phase]]
+title = "Open Source & Knowledge Translation"
+subtitle = "Growth Phase"
+color = "secondary"
+description = "As I grew, I became obsessed with how organizations consume technology. Instead of contributing to projects, I focused on translating powerful open-source tools for teams who needed them—establishing patterns, writing documentation, mentoring engineers. This shift from 'do the work myself' to 'help others do the work' multiplied my impact."
+order = 2
+
+[[phase]]
+title = "Architecture & Infrastructure"
+subtitle = "Leadership Phase"
+color = "accent"
+description = "My role evolved into system-wide concerns: designing platforms for scale, building reliable deployment processes, establishing SRE practices that improved uptime and reduced incident response time. I led initiatives like modernizing legacy monoliths into microservices, migrating on-premise infrastructure to cloud, and implementing CI/CD pipelines that reduced deployment time from weeks to hours."
+order = 3
+
+[[phase]]
+title = "AI & Modern Development"
+subtitle = "Now"
+color = "info"
+description = "Today I'm at the intersection of traditional engineering and AI. I'm working with AI-powered development tools—exploring how LLMs can augment (not replace) skilled engineers, building AI features into production applications, helping teams adopt these tools without losing sight of reliability and maintainability. I'm excited about AI's potential, but more interested in fundamentals."
+order = 4

@@ -6,8 +6,13 @@
   <!-- About Content -->
   <div class="text-center lg:text-left flex-1 space-y-4">
     <h1 id="about-title" class="text-4xl lg:text-5xl font-bold mb-4 text-primary-content uppercase tracking-wider">
-      PETER WARNOCK
+      {{ .title | default "PETER WARNOCK" }}
     </h1>
+    {{ if .subtitle }}
+    <p class="text-lg text-primary-content max-w-2xl leading-relaxed">
+      {{ .subtitle }}
+    </p>
+    {{ else }}
     <p class="text-xl lg:text-2xl text-primary-content font-medium" role="doc-subtitle">
       Fullstack Developer & Technology Leader
     </p>
@@ -15,6 +20,7 @@
       Building scalable web applications and leading development teams for over 15 years.
       Passionate about cloud architecture, DevOps best practices, and mentoring next generation of developers.
     </p>
+    {{ end }}
     <!-- Call to Action (data-driven) -->
     {{ if .context.Params.ctaLink }}
     <div class="pt-4">

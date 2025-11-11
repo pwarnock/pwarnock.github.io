@@ -1,0 +1,22 @@
+# Hero component configuration
+
+[profile]
+image = "/img/profile.jpg"
+alt = "Peter Warnock professional headshot"
+width = 192
+height = 192
+
+[[roles]]
+title = "AI-FIRST FULLSTACK"
+color = "primary"
+description = "Bridging secure, scalable applications with team-driven innovation."
+
+[[roles]]
+title = "CLOUD ARCHITECT"
+color = "secondary"
+description = "I connect business and technology with a customer-first mindset."
+
+[[roles]]
+title = "TECH LEADER"
+color = "accent"
+description = "Crafting innovative solutions and fostering collaboration."
