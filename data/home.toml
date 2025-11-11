@@ -30,7 +30,7 @@
 
 [[section]]
   id      = "tools"
-  enabled = false
+  enabled = true
   weight  = 4
   title = "AI Development Tools"
   description = "AI-powered development tools and platforms I've reviewed and written about"
