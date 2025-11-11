@@ -1,0 +1,24 @@
+# Gitleaks Ignore List
+# This file allowlists development artifacts and configuration files that trigger
+# false positives in secret scanning but are NOT actual secrets.
+#
+# Guidelines for maintenance:
+# - Only add paths/patterns for development artifacts (build logs, scripts with example output)
+# - NEVER allowlist actual credentials, tokens, or API keys
+# - Document WHY each entry is allowlisted with specific context
+# - Review quarterly and remove entries that are no longer needed
+# - When this file grows beyond 10 entries, investigate if the root cause can be fixed
+
+# Pre-push Hook
+# Contains ANSI escape sequences (e.g., \033[0;31m) for colored terminal output
+# and references to FORCE_PUSH environment variable for CI/CD automation.
+# These are intentional development safety guardrails, not secrets.
+.husky/pre-push
+
+# Gitleaks Configuration
+# This configuration file itself is safe to version control and may contain
+# example patterns or documentation about what false positives exist.
+gitleaks.toml
+
+# This allowlist file - safe to version control
+.gitleaksignore

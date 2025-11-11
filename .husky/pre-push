@@ -2,6 +2,11 @@
 
 # Enhanced pre-push hook with safety checks and flexible confirmation
 # This prevents accidental pushes without proper review
+#
+# NOTE: This script contains ANSI escape sequences and references to FORCE_PUSH
+# environment variable. These are intentional development safety guardrails and
+# are explicitly allowlisted in .gitleaksignore. They are NOT secrets.
+# See .gitleaksignore for more details.
 
 set -e
 
