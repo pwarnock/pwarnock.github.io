@@ -5,20 +5,12 @@ Includes IntersectionObserver for fade-in animations
 -->
 
 <div class="journey-timeline relative mb-12" role="region" aria-label="Career journey timeline">
-  <!-- Timeline wrapper with left border on desktop -->
-  <div class="relative pl-0 lg:pl-12">
-    <!-- Vertical timeline line (visible on lg+ screens) -->
-    <div class="hidden lg:block absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent opacity-30" aria-hidden="true"></div>
-
-    <div class="space-y-8">
+  <div class="space-y-8">
       {{ range sort site.Data.journey.phase "order" }}
       {{ $idSafeTitle := lower (replace .title " " "-") }}
       
       <!-- Timeline Card -->
-      <div class="journey-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300 relative" role="article" aria-labelledby="phase-{{ $idSafeTitle }}">
-        <!-- Timeline dot (visible on lg+ screens) -->
-        <div class="hidden lg:block absolute -left-7 top-8 w-4 h-4 bg-{{ .color }} border-4 border-base-100 rounded-full z-10 shadow-md" aria-hidden="true"></div>
-
+      <div class="journey-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300" role="article" aria-labelledby="phase-{{ $idSafeTitle }}">
         <div class="card-body p-6 lg:p-8">
           <!-- Order indicator + Phase label -->
           <div class="flex items-center gap-3 mb-2">
@@ -41,7 +33,6 @@ Includes IntersectionObserver for fade-in animations
       </div>
       {{ end }}
     </div>
-  </div>
 </div>
 
 <style>
