@@ -5,13 +5,14 @@
       <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "tools") 0).title | default "AI Development Tools" }}</h2>
       <p class="text-lg text-base-content/70 mb-8">{{ .description | default "In-depth analysis of cutting-edge AI-powered development tools" }}</p>
 
-      <div class="text-center">
+      <div class="text-center flex flex-col gap-4 items-center justify-center">
         <a href="/tools" class="btn btn-primary btn-lg">
           Explore All Tools
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
+        <a href="/tools/radar.json" class="link link-primary text-sm">View as Interactive Radar</a>
       </div>
     </div>
   </div>
