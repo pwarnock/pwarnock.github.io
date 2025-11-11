@@ -47,6 +47,17 @@
     <p class="text-base-content/80 mb-6 line-clamp-3">{{ $content }}</p>
     {{- end }}
 
+    {{- if or $context.Params.radar.quadrant $context.Params.radar.ring }}
+    <div class="flex flex-wrap gap-2 mb-4">
+      {{- if $context.Params.radar.quadrant }}
+      <span class="badge badge-sm badge-primary">{{ $context.Params.radar.quadrant }}</span>
+      {{- end }}
+      {{- if $context.Params.radar.ring }}
+      <span class="badge badge-sm badge-secondary">{{ $context.Params.radar.ring }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+
     {{- if or $date $url $context.Params.live_url $context.Params.external_url $context.Params.github_url }}
     <div class="card-actions justify-between items-center">
       <div class="text-sm text-base-content/60">
