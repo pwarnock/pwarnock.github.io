@@ -5,9 +5,12 @@ draft: false
 tags: ['AI-Coding', 'Development-Tools', 'Amp', 'Coding-Agents']
 author: 'Peter Warnock'
 description: "Key features that make Amp coding agent unique: Handoff for smooth transitions, message queueing, scoped instructions, and toolboxes for extensibility."
+image: 'amp-coding-agent-features.png'
 ---
 
-I'm constantly evaluating new coding agents, but one that's consistently impressed me over the past few months is [Amp](https://ampcode.com/). Hamel Husain recently wrote an excellent [deep dive into Amp's features](https://hamel.dev/notes/coding-agents/amp.html "Editorial reference") that highlighted several capabilities I think make it particularly noteworthy for developers.
+I'm constantly evaluating new coding agents, but one that's consistently impressed me over the past few months is [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/). Hamel Husain recently wrote an excellent [deep dive into Amp's features](https://hamel.dev/notes/coding-agents/amp.html "Editorial reference") that highlighted several capabilities I think make it particularly noteworthy for developers.
+
+{{< figure src="amp-coding-agent-features.png" alt="Amp Coding Agent Features" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## Standout Features
 
