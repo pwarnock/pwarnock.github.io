@@ -17,8 +17,8 @@ external_url: 'https://context7.com'
 live_url: 'https://context7.com'
 github_url: ''
 radar:
-  quadrant: 'tools'
-  ring: 'adopt'
+  quadrant: 'Tools'
+  ring: 'Adopt'
 summary: >
   Context7 is a specialized AI platform designed to provide coding agents
   and developers with rapid access to current library documentation and API

@@ -18,8 +18,8 @@ external_url: 'https://githits.com'
 live_url: 'https://githits.com'
 github_url: 'https://github.com/githits/githits'
 radar:
-  quadrant: 'tools'
-  ring: 'adopt'
+  quadrant: 'Tools'
+  ring: 'Adopt'
 summary: >
   GitHits is an AI-powered code search platform that provides short, focused,
   verified code examples from global open source repositories. It helps developers
