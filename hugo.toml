@@ -1,7 +1,4 @@
-# Environment-based baseURL - DO NOT HARDCODE
-# Development: http://localhost:1313 (set via HUGO_ENV=development)
-# Production: https://peterwarnock.com (set via HUGO_ENV=production)
-# baseURL is set in environment-specific config files
+baseURL = "https://peterwarnock.com"
 languageCode = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'

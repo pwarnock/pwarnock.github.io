@@ -84,16 +84,36 @@ Search engines prefer absolute URLs in:
 
 ### Setup
 
-The `baseURL` is set in `hugo.toml` but can be overridden via command line
-flags.
+Hugo uses **config merging** to combine main and environment-specific configs:
 
-**Production default (in hugo.toml):**
+1. **Main config** (`hugo.toml`) - Contains all production settings, all params
+2. **Environment override** (`config/development/hugo.toml`) - Only overrides dev-specific settings
+
+**Main config (hugo.toml):**
 
 ```toml
 baseURL = "https://peterwarnock.com/"
+
+[params]
+  # All production parameters (social links, newsletter, etc.)
+  github = "https://github.com/pwarnock"
+  linkedin = "https://www.linkedin.com/in/peterwarnock"
+  newsletter_url = "https://gmail.us8.list-manage.com/..."
+  googleAnalytics = "G-SKDDM2GBXN"
 ```
 
-To use a different `baseURL`, pass it as a flag to Hugo.
+**Development override (config/development/hugo.toml):**
+
+```toml
+# Development overrides only
+baseURL = "http://localhost:1313"
+
+[params]
+  googleAnalytics = ""  # Disable GA in development
+  env = "development"
+```
+
+**Note:** All other params (github, linkedin, newsletter, etc.) are inherited from the main config during development.
 
 ### Usage
 
@@ -101,34 +121,26 @@ To use a different `baseURL`, pass it as a flag to Hugo.
 
 ```bash
 npm run dev
-# Uses: http://localhost:1313/
-# Pass flag to Hugo: npm run dev -- -b http://localhost:1313/
+# Runs: hugo server --config config/development/hugo.toml,hugo.toml
+# Merges: development baseURL + main params = http://localhost:1313 with all params
 ```
 
 #### Production Build (Default)
 
 ```bash
 npm run build
-# Uses: https://peterwarnock.com/ (from hugo.toml)
-```
-
-#### Staging Build
-
-```bash
-npm run build -- -b https://staging.peterwarnock.com/
+# Runs: hugo --config hugo.toml (main config only)
+# Uses: https://peterwarnock.com/ with all production settings
 ```
 
 #### Direct Hugo Commands
 
 ```bash
-# Development
-hugo server -b http://localhost:1313/
+# Development (merged configs)
+hugo server --config config/development/hugo.toml,hugo.toml
 
-# Production
-hugo -b https://peterwarnock.com/
-
-# Staging
-hugo -b https://staging.peterwarnock.com/
+# Production (main config only)
+hugo --gc --minify --config hugo.toml
 ```
 
 ### CI/CD Deployment
@@ -169,3 +181,96 @@ The site uses `.Permalink` (absolute URLs) in card components:
 Links will show `https://peterwarnock.com/blog/` in production and
 `https://peterwarnock.com/blog/` when built locally (reflecting the configured
 baseURL).
+
+---
+
+## Google Tag Manager (GTM) Configuration
+
+Analytics tracking is environment-aware and only fires in production builds.
+
+### GTM Setup
+
+- **Container ID:** `GTM-N9CR6KJ5` (set via `HUGO_GTM_CONTAINER_ID` env var)
+- **Mode:** Production-only (controlled by `HUGO_ENV` environment variable)
+- **Development Behavior:** GTM script is NOT loaded in dev
+
+### How It Works
+
+**Template (layouts/_default/baseof.html):**
+
+```html
+<!-- Google Tag Manager -->
+{{ if eq (getenv "HUGO_ENV") "production" }}
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ getenv "HUGO_GTM_CONTAINER_ID" }}');</script>
+{{ end }}
+```
+
+The template checks `HUGO_ENV`:
+- `production` → GTM script loads and fires
+- `development` → GTM script is NOT included
+
+### Development (No Tracking)
+
+```bash
+npm run dev
+# HUGO_ENV defaults to "development"
+# GTM script is skipped via {{ if }} condition
+# No analytics data sent to Google
+```
+
+### Production Builds (Tracking Enabled)
+
+```bash
+# Local test build with production environment
+HUGO_ENV=production npm run build
+# GTM script is included
+# Analytics tracking is active
+
+# CI/CD automatically sets HUGO_ENV=production before build
+```
+
+### Verification
+
+To verify GTM is not firing in dev:
+
+```bash
+npm run dev
+# Open: http://localhost:1313
+# Check DevTools Network tab for "googletagmanager.com" requests
+# Should NOT see any requests (GTM script not loaded)
+
+# Compare with production build:
+HUGO_ENV=production npm run build
+# After build, check public/index.html for GTM script
+grep -r "googletagmanager.com" public/ | head -5
+# Should show GTM script in HTML
+```
+
+### Configuration
+
+**Production Settings (hugo.toml):**
+
+```toml
+googleAnalytics = 'G-SKDDM2GBXN'  # Used for GA4
+```
+
+**Development Settings (config/development/hugo.toml):**
+
+```toml
+[params]
+  googleAnalytics = ""  # Explicitly disabled
+  env = "development"
+```
+
+**CI/CD Environment Variables:**
+
+The following must be set for production builds:
+
+```bash
+HUGO_ENV=production
+HUGO_GTM_CONTAINER_ID=GTM-N9CR6KJ5
+```
