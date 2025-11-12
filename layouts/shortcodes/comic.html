@@ -1,10 +1,10 @@
 <figure style="margin: 1.5rem 0; text-align: center;">
   <img loading="lazy" src="{{ .Get "src" }}" alt="{{ .Get "alt" }}" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-  <figcaption style="font-size: 0.9rem; color: #666; margin-top: 0.75rem; line-height: 1.4;">
+  <figcaption style="font-size: 0.9rem; color: oklch(var(--bc) / 0.7); margin-top: 0.75rem; line-height: 1.4;">
     Calvin and Hobbes © Bill Watterson. Distributed by
-    <a href="https://www.gocomics.com/calvinandhobbes" style="color: #666; text-decoration: underline;">GoComics</a>.
+    <a href="https://www.gocomics.com/calvinandhobbes" style="color: oklch(var(--p)); text-decoration: underline; transition: color var(--transition-fast);">GoComics</a>.
     Original strip:
-    <a href="{{ .Get "link" }}" style="color: #666; text-decoration: underline;">{{ .Get "date" }}</a>.
+    <a href="{{ .Get "link" }}" style="color: oklch(var(--p)); text-decoration: underline; transition: color var(--transition-fast);">{{ .Get "date" }}</a>.
     Shared here for commentary and educational purposes.
   </figcaption>
 </figure>
