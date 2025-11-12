@@ -8,13 +8,6 @@ Data source: data/beliefs.toml
   {{ $idSafeTitle := lower (replace .title " " "-") }}
   <div class="belief-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300" role="article" aria-labelledby="belief-{{ $idSafeTitle }}">
     <div class="card-body p-6 flex flex-col h-full">
-      <!-- Icon -->
-      <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-{{ .color }}/10">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-{{ .color }}" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ .icon }}" />
-        </svg>
-      </div>
-
       <!-- Title -->
       <h3 id="belief-{{ $idSafeTitle }}" class="card-title text-lg mb-2 text-{{ .color }}">
         {{ .title }}

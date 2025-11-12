@@ -1,38 +1,32 @@
 <!-- Journey Timeline Shortcode
-Renders 4 career phases as a linear vertical timeline
+Renders 4 career phases as numbered cards with fade-in animations
 Data source: data/journey.toml
 Includes IntersectionObserver for fade-in animations
 -->
 
-<div class="journey-timeline relative mb-12" role="region" aria-label="Career journey timeline">
-  <div class="space-y-8">
-      {{ range sort site.Data.journey.phase "order" }}
-      {{ $idSafeTitle := lower (replace .title " " "-") }}
-      
-      <!-- Timeline Card -->
-      <div class="journey-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300" role="article" aria-labelledby="phase-{{ $idSafeTitle }}">
-        <div class="card-body p-6 lg:p-8">
-          <!-- Order indicator + Phase label -->
-          <div class="flex items-center gap-3 mb-2">
-            <div class="badge badge-lg badge-{{ .color }} font-bold">{{ .order }}</div>
-            <p class="text-xs font-bold text-{{ .color }} uppercase tracking-wider">
-              {{ .subtitle }}
-            </p>
-          </div>
+<div class="space-y-6" role="region" aria-label="Career journey timeline">
+  {{ range sort site.Data.journey.phase "order" }}
+  {{ $idSafeTitle := lower (replace .title " " "-") }}
+  
+  <div class="journey-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20 hover:shadow-xl transition-shadow duration-300" role="article" aria-labelledby="phase-{{ $idSafeTitle }}">
+    <div class="card-body p-6 lg:p-8">
+      <!-- Phase label -->
+      <p class="text-xs font-bold text-{{ .color }} uppercase tracking-wider mb-2">
+        {{ .subtitle }}
+      </p>
 
-          <!-- Title -->
-          <h3 id="phase-{{ $idSafeTitle }}" class="card-title text-xl lg:text-2xl mb-3 text-base-content">
-            {{ .title }}
-          </h3>
+      <!-- Title -->
+      <h3 id="phase-{{ $idSafeTitle }}" class="card-title text-xl lg:text-2xl mb-3 text-base-content">
+        {{ .title }}
+      </h3>
 
-          <!-- Description -->
-          <p class="text-sm lg:text-base text-base-content/80 leading-relaxed">
-            {{ .description }}
-          </p>
-        </div>
-      </div>
-      {{ end }}
+      <!-- Description -->
+      <p class="text-sm lg:text-base text-base-content/80 leading-relaxed">
+        {{ .description }}
+      </p>
     </div>
+  </div>
+  {{ end }}
 </div>
 
 <style>

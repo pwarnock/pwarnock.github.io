@@ -5,7 +5,7 @@
 title = "Self-Taught Developer"
 subtitle = "Early Career"
 color = "primary"
-description = "I learned to code by building things—websites, applications, tools. No CS degree, just curiosity and persistence. This taught me that you don't need credentials to ship; you need to be willing to break things, read, iterate, and stay hungry."
+description = "I learned to code by building things—websites, applications, and tools. My Business Administration degree in Marketing gave me the business perspective to balance my passion for web development and open-source tools. As Seth Godin wrote in Poke the Box: “All it takes is initiative. Even just a bit.” I grounded this phase in XP and agile principles, creating environments for rapid iteration and experimentation—where automated testing and safeguards enabled teams to move fast with confidence and keep learning."
 order = 1
 
 [[phase]]
