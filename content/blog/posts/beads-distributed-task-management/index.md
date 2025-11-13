@@ -1,11 +1,11 @@
 ---
 title: 'Beads: Distributed Task Management for AI Agents'
 date: 2025-11-12T10:00:00Z
-draft: false
+draft: true
 tags: ['AI-Coding', 'Development-Tools', 'Task-Management', 'Agents', 'Project-Planning']
 author: 'Peter Warnock'
 description: "Beads is a distributed issue tracker built for AI agents. Its DAG-based dependency model, priority system, and Git integration make it ideal for complex multi-agent projects—despite early growing pains."
-image: 'beads-distributed-task-management.png'
+image: 'featured-image.png'
 ---
 
 One of the biggest challenges with AI coding agents is maintaining context and continuity across sessions. Steve Yegge's [Beads](https://github.com/steveyegge/beads) addresses this with a novel approach: a graph-based, Git-backed issue tracking system designed specifically for AI agents that need persistent memory across long-running projects.
@@ -30,7 +30,7 @@ Combined with **priority levels (0-4)**, this creates a rich decision space. An 
 bd ready --json
 ```
 
-This is fundamentally different from sorting by priority alone. A task might be P0 critical but still be unblocked because it depends on work elsewhere. The DAG prevents agents from thrashing on impossible tasks.
+This is fundamentally different from sorting by priority alone. A task might be P0 critical but still be blocked because it depends on work elsewhere. The DAG prevents agents from thrashing on impossible tasks.
 
 ## Git-Native Design
 
@@ -52,7 +52,7 @@ As an agent developer, you get something remarkable: **distributed coordination 
 
 ## The Growing Pains
 
-Beads is young, and that shows. When I started using it with the [Cody Framework](https://cody.dev), I hit several rough edges:
+Beads is young, and that shows. When I started using it with the [Cody Framework](https://github.com/icodewith-ai/cody-framework), I hit several rough edges:
 
 ### Migration Challenges
 
@@ -129,4 +129,4 @@ Not quite production-ready for large orgs, but absolutely ready for teams experi
 
 *Have thoughts on Beads or distributed task management for agents? I'd love to hear about your experience. Reach out on [Twitter](https://x.com/pwarnock) or [LinkedIn](https://www.linkedin.com/in/pwarnock/).*
 
-**Related Tools**: Beads integrates well with [Cody Framework](/tools/cody-framework/) for structured agent workflows, and works great with [OpenCode](/tools/opencode-flexible-ai-coding-platform/) for distributed team development.
+**Related Tools**: Beads integrates well with [Cody Framework](https://github.com/icodewith-ai/cody-framework) for structured agent workflows, and works great with [OpenCode](/tools/opencode-flexible-ai-coding-platform/) for distributed team development.

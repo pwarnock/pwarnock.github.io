@@ -193,9 +193,10 @@ beads-mcp
 
 ### With Cody Framework
 
-Use Beads as the execution-layer task tracker while keeping feature backlog and
-retrospectives in `.cody/` directory. Link discovered work with `discovered-from`
-dependencies.
+Use Beads as the execution-layer task tracker within
+[Cody Framework](https://github.com/icodewith-ai/cody-framework) while keeping
+feature backlog and retrospectives in `.cody/` directory. Link discovered work
+with `discovered-from` dependencies.
 
 ### With CI/CD
 
