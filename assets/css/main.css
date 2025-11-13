@@ -599,6 +599,7 @@ html {
     margin-right: 0.05em; /* Small gap for punctuation */
     transition: all var(--transition-fast);
     position: relative;
+    font-weight: var(--font-weight-medium);
   }
 
   .prose a:hover {
