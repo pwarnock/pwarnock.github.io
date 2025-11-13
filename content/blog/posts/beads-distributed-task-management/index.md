@@ -127,6 +127,6 @@ Not quite production-ready for large orgs, but absolutely ready for teams experi
 
 ---
 
-*Have thoughts on Beads or distributed task management for agents? I'd love to hear about your experience. Reach out on [Twitter](https://x.com/pwarnock) or [LinkedIn](https://www.linkedin.com/in/pwarnock/).*
+*Have thoughts on Beads or distributed task management for agents? I'd love to hear about your experience. Reach out on [X](https://x.com/pwarnock) or [LinkedIn](https://www.linkedin.com/in/pwarnock/).*
 
 **Related Tools**: Beads integrates well with [Cody Framework](https://github.com/icodewith-ai/cody-framework) for structured agent workflows, and works great with [OpenCode](/tools/opencode-flexible-ai-coding-platform/) for distributed team development.
