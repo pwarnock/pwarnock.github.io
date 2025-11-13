@@ -391,6 +391,19 @@ may provide outdated information.**
 - Essential before any emergency investigation
 - Includes verification of backup integrity
 
+## Git & Deployment Workflow
+
+**CRITICAL: Wait for explicit 'push' confirmation**
+
+1. After committing changes, show the commit summary and file list
+2. Wait for you to respond with "push"
+3. **Only push if you say "push"** - do not use `FORCE_PUSH=yes` or any bypass
+4. If you don't say "push", do not push and ask again or wait for clarification
+5. Never bypass the pre-push guardrail
+
+**Why**: The guardrail exists to catch mistakes before they reach production. 
+Bypassing it defeats the entire purpose and removes your safety check.
+
 ## Testing
 
 - Test after each coding phase before git commit
