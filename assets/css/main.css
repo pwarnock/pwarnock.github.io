@@ -614,6 +614,26 @@ html {
   }
 
   /* Code block styling */
+  .code-block {
+    @apply bg-base-200 border border-base-300 rounded-lg overflow-hidden;
+  }
+
+  .code-block figcaption {
+    @apply bg-base-300 text-sm font-mono text-base-content px-4 py-2 border-b border-base-300;
+  }
+
+  .code-block pre {
+    @apply bg-base-100 text-base-content p-4 text-sm font-mono leading-relaxed;
+    margin: 0;
+  }
+
+  .code-block code {
+    @apply text-inherit;
+    background: none;
+    color: inherit;
+    padding: 0;
+  }
+
   .prose pre {
     background-color: oklch(var(--bc) / 0.05);
     color: oklch(var(--bc));

@@ -111,15 +111,16 @@ consistency headaches, just Git.
 ### Framework-Agnostic
 
 Beads works _alongside_ other planning systems rather than replacing them.
-Combine with Cody Framework, Cursor, Amp, or traditional planning documents.
+Combine with Cody Framework, [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/), [Cursor](/tools/cursor-ai-first-code-editor/), or traditional planning documents.
 Use Beads for execution-level task management while keeping strategic planning
 elsewhere.
 
 ### Semantic Compaction (Memory Decay)
 
-As agents close tasks, old issues can be semantically compacted into embeddings,
-reducing database clutter while maintaining searchability. Perfect for
-long-running agent projects that accumulate hundreds of closed tasks.
+Beads supports compacting closed issues into embeddings to reduce database size
+while maintaining searchability. This feature is especially useful for
+long-running projects that accumulate hundreds of closed tasks, though it's
+still evolving.
 
 ## Use Cases
 
@@ -216,38 +217,70 @@ separately. Cross-link with task URLs.
 Each agent commits task updates independently. Git merge driver resolves
 concurrent changes. Task statuses propagate on `git pull`.
 
+## Realistic Assessment
+
+Beads solves a genuine problem in distributed AI coordination, but it's not a
+drop-in replacement for existing issue trackers. Success depends on your use
+case and willingness to adapt your workflow to its model.
+
+**Strengths**: The DAG model genuinely prevents agents from attempting blocked
+work. The Git-native design is elegant and requires no infrastructure. The
+`--json` interface is first-class, not bolted on.
+
+**Tradeoffs**: You're adopting early-stage software. You'll hit occasional
+schema migrations. You can't use it as your sole planning system for large
+teams.
+
 ## Known Considerations
 
-### Early Stage
+### Alpha-Quality Development
 
-Beads is young—still v0.20+. Migration between versions can require manual data
-adjustments. Documentation covers basics but not all edge cases. Schema changes
-happen occasionally.
+Beads is under heavy development (v0.20+). Version upgrades occasionally require
+manual data adjustments (e.g., the v0.20.1 transition to hash-based IDs). The
+API surface evolves, though the core model remains stable. Documentation covers
+common paths but not all edge cases.
 
-### Scale Limits
+### Scale Limitations
 
-Designed for project-scoped databases (< 500 issues). Performance degrades on
-larger task sets. Not suitable for organization-wide issue tracking.
+Optimized for project-scoped databases (< 500 issues). Performance degrades
+noticeably beyond 200 tasks. Not suitable for organization-wide issue tracking
+or as a GitHub Issues replacement.
 
-### Limited UI
+### Interface Trade-offs
 
-Web UI is minimal. Most interactions happen via CLI or programmatic API. No rich
-web dashboard like GitHub Issues.
+No rich web dashboard. Most interactions via CLI or `--json` API. Creating
+dependent tasks or visualizing large graphs requires piping JSON through `bd`
+commands. This is intentional—agents are the primary users.
 
 ### Learning Curve
 
-The DAG model takes mental adjustment from linear issue tracking. Understanding
-when to use blocking vs. related relationships requires practice.
+The DAG model requires mental adjustment from linear issue lists. Understanding
+when to use blocking vs. related relationships, and how priority + readiness
+work together, takes practice.
 
-## Why Beads Matters
+## Why It Matters (For Agents)
 
-Beads represents a new category of tools: **agent-native infrastructure**. It
-doesn't try to be GitHub Issues with AI features. Instead, it asks "what would
-an issue tracker look like if designed for distributed AI coordination?" and
-builds exactly that.
+Beads represents a new category: **agent-native infrastructure**. Rather than
+add AI features to existing trackers, it asks "what would task coordination look
+like if designed for distributed AI from the start?"—and builds that.
 
-The DAG model, Git-native architecture, and agent-first interface make it
-uniquely suited for the next generation of AI-driven development workflows.
+The result is a system where agents can reliably discover unblocked work, update
+state concurrently without conflicts, and maintain context across distributed
+machines and sessions. It's not for everyone, but for agent workflows it's a
+genuine innovation.
+
+## Related Tools & Resources
+
+**AI Coding Agents That Benefit from Beads Integration:**
+- [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/) — Free CLI agent with message queueing
+- [Claude Code](/tools/claude-code-conversational-ai-coding-assistant/) — Terminal-based AI assistant
+- [Windsurf](/tools/windsurf-agentic-ide-cognition-ai/) — Agentic IDE with autonomous capabilities
+- [Cursor](/tools/cursor-ai-first-code-editor/) — AI-first code editor
+- [DeepAgent](/tools/deepagent-vs-code-fork-abacus-ai-integration/) — Autonomous agent with CLI
+
+**Planning & Context:**
+- [Vibe Coding Revolution](/blog/posts/vibe-coding-revolution/) — Overview of modern AI coding tools
+- [Amp Features Deep Dive](/blog/posts/amp-coding-agent-features/) — Features for agent coordination
 
 ## External Links
 
@@ -255,7 +288,7 @@ uniquely suited for the next generation of AI-driven development workflows.
 - [Beads MCP Server →](https://github.com/steveyegge/beads-mcp)
 - [Installation Guide →](https://github.com/steveyegge/beads#installation)
 - [CLI Documentation →](https://github.com/steveyegge/beads#usage)
-- [Blog Post: Distributed Task Management for AI Agents →](/blog/posts/beads-distributed-task-management/)
+- [Blog Post: Honest Review & Real-World Integration →](/blog/posts/beads-distributed-task-management/)
 
 ---
 

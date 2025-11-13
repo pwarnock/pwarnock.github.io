@@ -1,0 +1,10 @@
+{{/* Custom code block renderer with daisyUI styling and language indicators */}}
+{{- $language := .Type -}}
+{{- $code := .Inner -}}
+
+<figure class="code-block not-prose my-6">
+  {{- if $language }}
+    <figcaption class="code-language">{{ $language }}</figcaption>
+  {{- end }}
+  <pre class="overflow-x-auto"><code{{- if $language }} class="language-{{ $language }}"{{ end }} >{{- $code | safeHTML -}}</code></pre>
+</figure>

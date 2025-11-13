@@ -61,6 +61,8 @@ Similarly, when I need quick, verified code examples for specific problems, I us
 
 What I appreciate most about Amp is its focus on **developer workflow optimization** rather than just raw coding capability. While tools like Cursor or Claude Code focus on the coding experience itself, Amp thinks about the entire development lifecycle—context management, team collaboration, and workflow continuity.
 
+For teams managing complex, multi-agent projects, Amp pairs particularly well with task management tools like [Beads](/tools/beads-distributed-task-management-for-agents/), which provide the dependency tracking and priority visibility that keep distributed agents coordinated.
+
 For Hamel's detailed explanations of these features and more advanced usage tips, [read his full analysis](https://hamel.dev/notes/coding-agents/amp.html "Editorial reference"). His deep dive covers additional insights about model abstraction, pricing, and practical tips for getting the most out of Amp.
 
 ---
