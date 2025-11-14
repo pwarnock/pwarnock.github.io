@@ -18,16 +18,34 @@ const shortHash = execSync('git rev-parse --short HEAD').toString().trim();
 const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const packageVersion = packageJson.version;
 
-// Determine version to use
-const version =
-  branch === 'main' || branch === 'master' ? packageVersion : `${branch}-${shortHash}`;
-
-// Remove 'v' prefix if present (template adds it)
-const cleanVersion = version.startsWith('v') ? version.substring(1) : version;
-
 // Create data file for Hugo
 const dataDir = path.join(__dirname, '..', 'data');
 const versionFile = path.join(dataDir, 'version.toml');
+
+// Check if version.toml already exists and has correct version
+let existingVersion = null;
+if (fs.existsSync(versionFile)) {
+  try {
+    const versionContent = fs.readFileSync(versionFile, 'utf8');
+    const versionMatch = versionContent.match(/^current\s*=\s*"([^"]+)"/);
+    if (versionMatch) {
+      existingVersion = versionMatch[1];
+    }
+  } catch (err) {
+    console.log('⚠️ Could not read existing version.toml:', err.message);
+  }
+}
+
+// Determine version to use - prioritize existing version.toml if it has correct version
+const version =
+  branch === 'main' || branch === 'master'
+    ? existingVersion
+      ? existingVersion
+      : packageVersion
+    : `${branch}-${shortHash}`;
+
+// Remove 'v' prefix if present (template adds it)
+const cleanVersion = version.startsWith('v') ? version.substring(1) : version;
 
 console.log(`📁 Creating data directory: ${dataDir}`);
 console.log(`📄 Writing version file: ${versionFile}`);
@@ -48,65 +66,29 @@ try {
     }
   }
 
-  const content = `current = "${cleanVersion}"
-branch = "${branch}"
-hash = "${shortHash}"
-`;
+  // Write version file
+  const versionContent = `current = "${cleanVersion}"\nbranch = "${branch}"\nhash = "${shortHash}"\n`;
+  fs.writeFileSync(versionFile, versionContent, 'utf8');
+  console.log(`✓ Generated version file: ${cleanVersion} (branch: ${branch})`);
 
-  // Remove existing file if it exists (to avoid permission issues)
-  if (fs.existsSync(versionFile)) {
-    try {
-      fs.unlinkSync(versionFile);
-      console.log(`✓ Removed existing version file`);
-    } catch (removeError) {
-      console.log(`⚠️ Could not remove existing file: ${removeError.message}`);
-    }
-  }
-
-  // Try to write file, if it fails, try alternative approach
-  try {
-    fs.writeFileSync(versionFile, content, { mode: 0o644 });
-    console.log(`✓ Generated version file: ${version} (branch: ${branch})`);
-  } catch (writeError) {
-    console.log(`⚠️ Direct write failed, trying alternative approach: ${writeError.message}`);
-
-    // Alternative: Use shell command to write file
-    execSync(`printf '%s\\n' '${content.replace(/'/g, "'\\''")}' > "${versionFile}"`, {
-      stdio: 'inherit',
-    });
-    console.log(
-      `✓ Generated version file using alternative method: ${version} (branch: ${branch})`
-    );
-  }
-
-  // Verify file was created and is readable
+  // Verify file was written correctly
   if (fs.existsSync(versionFile)) {
     const stats = fs.statSync(versionFile);
     console.log(`✓ Version file exists (size: ${stats.size} bytes)`);
 
-    // Try to read it back to verify content
-    const readContent = fs.readFileSync(versionFile, 'utf8');
-    if (readContent.includes(cleanVersion)) {
+    // Verify content
+    const writtenContent = fs.readFileSync(versionFile, 'utf8');
+    if (writtenContent.includes(cleanVersion)) {
       console.log(`✓ Version file content verified`);
     } else {
-      console.log(`⚠️ Version file content may be incorrect`);
+      console.log(`❌ Version file content mismatch!`);
+      process.exit(1);
     }
   } else {
-    throw new Error('Version file was not created');
+    console.log(`❌ Version file not created!`);
+    process.exit(1);
   }
 } catch (error) {
-  console.error(`❌ Error creating version file:`, error.message);
-  console.error(`Data dir: ${dataDir}`);
-  console.error(`Version file: ${versionFile}`);
-  console.error(`Current working directory: ${process.cwd()}`);
-
-  // Try to list directory contents for debugging
-  try {
-    const files = fs.readdirSync(dataDir);
-    console.error(`Data directory contents: [${files.join(', ')}]`);
-  } catch (listError) {
-    console.error(`Could not list data directory: ${listError.message}`);
-  }
-
+  console.error(`❌ Failed to create version file: ${error.message}`);
   process.exit(1);
 }
