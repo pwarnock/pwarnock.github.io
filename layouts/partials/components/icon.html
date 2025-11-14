@@ -21,14 +21,14 @@
   {{ $attributes = merge $attributes (dict "aria-hidden" "true") }}
 {{ end }}
 
-{{ if $iconData }}
-  {{ $attributes = merge $attributes (dict "viewBox" $iconData.viewBox) }}
-  <svg xmlns="http://www.w3.org/2000/svg" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
-    {{ $iconData.svg | safeHTML }}
-  </svg>
-{{ else }}
-  <!-- Fallback icon if not found in library -->
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-  </svg>
+ {{ if $iconData }}
+   {{ $attributes = merge $attributes (dict "viewBox" $iconData.viewBox "style" "color: inherit") }}
+   <svg xmlns="http://www.w3.org/2000/svg" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+     {{ $iconData.svg | safeHTML }}
+   </svg>
+ {{ else }}
+   <!-- Fallback icon if not found in library -->
+   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: inherit" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+   </svg>
 {{ end }}

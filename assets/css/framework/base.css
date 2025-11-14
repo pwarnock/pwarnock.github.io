@@ -31,3 +31,30 @@ html {
     --transition-slow: 0ms;
   }
 }
+
+/* Counteract browser dark mode filters on theme-aware elements */
+[data-theme] svg {
+  filter: none !important;
+  color: var(--fallback-bc, oklch(var(--bc))) !important;
+}
+
+[data-theme] svg * {
+  stroke: currentColor !important;
+  fill: currentColor !important;
+}
+
+[data-theme] img {
+  filter: none !important;
+}
+
+/* Ensure interactive elements respect theme colors */
+[data-theme] button,
+[data-theme] a,
+[data-theme] [role='button'] {
+  color: var(--fallback-bc, oklch(var(--bc))) !important;
+}
+
+/* Force color inheritance for icon containers */
+.icon-system {
+  color: inherit !important;
+}

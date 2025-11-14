@@ -14,7 +14,7 @@
        </ul>
     </div>
      <a href="{{ "/" | relLangURL }}" class="btn-system btn-system--ghost btn-system--lg text-xl font-bold flex items-center gap-2 touch-manipulation text-base-content" aria-label="Go to homepage" role="button">
-       <img src="{{ .Site.Params.logo | default "/img/logo.png" }}" alt="{{ .Site.Title }} logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200">
+       <img src="{{ .Site.Params.logo | default "/img/logo.png" }}" alt="{{ .Site.Title }} logo" class="h-8 w-8 rounded transition-transform hover:scale-110 duration-200" style="filter: none !important;">
        {{ .Site.Title }}
      </a>
   </div>
