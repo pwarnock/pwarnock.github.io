@@ -625,11 +625,13 @@ html {
 
   .code-block pre {
     @apply bg-base-100 text-base-content p-4 text-sm font-mono leading-relaxed;
+
     margin: 0;
   }
 
   .code-block code {
     @apply text-inherit;
+
     background: none;
     color: inherit;
     padding: 0;
