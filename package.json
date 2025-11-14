@@ -46,6 +46,8 @@
     "version:minor": "bun pm version minor && ./scripts/version-sync.sh",
     "version:major": "bun pm version major && ./scripts/version-sync.sh",
     "version:sync": "./scripts/version-sync.sh",
+    "version:dev": "./scripts/version-dev.sh",
+    "version:release": "./scripts/release-prep.sh",
     "dev:start": "./scripts/dev-cycle-start.sh",
     "release:prep": "./scripts/release-prep.sh"
   },

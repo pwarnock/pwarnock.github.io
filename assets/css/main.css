@@ -709,7 +709,7 @@ html {
   .prose th,
   .prose td {
     padding: var(--space-3) var(--space-4);
-    text-align: left;
+
     border-bottom: 1px solid oklch(var(--bc) / 0.1);
   }
 

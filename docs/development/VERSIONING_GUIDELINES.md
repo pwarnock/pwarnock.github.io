@@ -191,16 +191,54 @@ Is this a breaking change?
 
 ### Development Workflow
 
+#### Enhanced Bun Version Commands
+
+**Start Development Cycle:**
+
 ```bash
-# 1. Start development cycle
+# Combined version bump + development cycle start
+bun run version:dev "hero-color-fix"
+
+# Equivalent to:
 bun pm version patch  # Updates package.json
 ./scripts/dev-cycle-start.sh "hero-color-fix"  # Adds suffix to hugo.toml
+```
+
+**Prepare for Release:**
+
+```bash
+# Clean release preparation
+bun run version:release
+
+# Equivalent to:
+./scripts/release-prep.sh  # Removes suffix
+```
+
+**Manual Version Management:**
+
+```bash
+# Individual version bumps
+bun run version:patch  # Patch version
+bun run version:minor  # Minor version
+bun run version:major  # Major version
+
+# Manual sync with optional suffix
+bun run version:sync "optional-suffix"
+```
+
+#### Complete Development Cycle
+
+```bash
+# 1. Start development cycle
+bun run version:dev "hero-color-fix"
 
 # 2. Development work happens
 # Version displays as: 0.13.1-hero-color-fix
 
 # 3. Prepare for release
-./scripts/release-prep.sh  # Removes suffix
+bun run version:release
+
+# 4. Commit and tag
 git add . && git commit -m "chore: release v0.13.1"
 git tag v0.13.1
 git push origin main --tags
@@ -440,15 +478,42 @@ git push origin v0.13.1
 
 #### Development Cycle Workflow
 
-**Start Development Cycle:**
+**Start Development Cycle (Enhanced):**
 
 ```bash
-# Start new development with suffix
-bun pm version patch  # Bump package.json version
-./scripts/dev-cycle-start.sh "hero-color-fix"  # Add suffix to hugo.toml
+# Combined version bump + development cycle start
+bun run version:dev "hero-color-fix"
 
-# Optionally add to feature backlog interactively
-# Creates: v0.13.1-hero-color-fix in hugo.toml
+# This automatically:
+# - Bumps package.json version (0.13.0 → 0.13.1)
+# - Adds suffix to hugo.toml (0.13.1-hero-color-fix)
+# - Offers to add to feature backlog
+# - Creates Cody-ready version identifier
+```
+
+**Prepare for Release:**
+
+```bash
+# Remove suffix for clean release
+bun run version:release
+
+# Results in clean semantic version for production
+```
+
+**Manual Version Sync:**
+
+```bash
+# Sync package.json to hugo.toml (with optional suffix)
+bun run version:sync [suffix]
+```
+
+**Legacy Individual Commands:**
+
+```bash
+# Individual steps (if needed)
+bun pm version patch  # Bump package.json only
+./scripts/dev-cycle-start.sh "suffix"  # Add suffix only
+./scripts/release-prep.sh  # Remove suffix only
 ```
 
 **Prepare for Release:**
@@ -475,6 +540,8 @@ bun pm version patch  # Bump package.json version
   "version:minor": "bun pm version minor && ./scripts/version-sync.sh",
   "version:major": "bun pm version major && ./scripts/version-sync.sh",
   "version:sync": "./scripts/version-sync.sh",
+  "version:dev": "./scripts/version-dev.sh",
+  "version:release": "./scripts/release-prep.sh",
   "dev:start": "./scripts/dev-cycle-start.sh",
   "release:prep": "./scripts/release-prep.sh"
 }

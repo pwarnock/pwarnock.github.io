@@ -5,7 +5,7 @@
   {{ $idSafeTitle := lower (replace .title " " "-") }}
   <div class="hero-card card bg-base-100/90 backdrop-blur-sm shadow-lg border border-{{ .color }}/20" role="article" aria-labelledby="role-{{ $idSafeTitle }}">
     <div class="card-body p-4 lg:p-6">
-      <h2 id="role-{{ $idSafeTitle }}" class="text-lg lg:text-2xl font-black text-{{ .color }} mb-2">{{ .title }}</h2>
+      <h3 id="role-{{ $idSafeTitle }}" class="card-title text-lg lg:text-2xl font-black text-{{ .color }} mb-2 text-center">{{ .title }}</h3>
       <p class="text-xs lg:text-sm text-base-content/80 leading-relaxed">
         {{ .description }}
       </p>
