@@ -733,17 +733,17 @@ npm run build     # Must succeed
 
 **Custom Code Block Handler (render-codeblock.html)**
 
-Code blocks are rendered through Hugo's custom markup override system with daisyUI styling:
+Code blocks are rendered through Hugo's custom markup override system with
+daisyUI styling:
 
 ```markdown
 # In your content, use standard fenced code blocks with language indicator
-\`\`\`bash
-bd ready --json
-bd create "Task" -t task
-\`\`\`
+
+\`\`\`bash bd ready --json bd create "Task" -t task \`\`\`
 ```
 
 **Rendering:**
+
 - Automatically wrapped in semantic `<figure>` elements
 - Language label displayed in figcaption header
 - Styled with daisyUI base colors and tokens
@@ -760,6 +760,7 @@ bd create "Task" -t task
 ```
 
 **Implementation:**
+
 - Override file: `layouts/_default/_markup/render-codeblock.html`
 - Styles: `assets/css/main.css` (lines 616-635)
 - Applied to all content types (blog, portfolio, tools)
@@ -880,7 +881,8 @@ Use Hugo's config merging to avoid duplication:
 
 - **Main**: `hugo.toml` → ALL production settings + ALL params
 - **Dev Override**: `config/development/hugo.toml` → ONLY dev-specific overrides
-- Hugo merges both: dev config inherits all main params while overriding dev-specific values
+- Hugo merges both: dev config inherits all main params while overriding
+  dev-specific values
 
 #### Main Config (hugo.toml)
 
@@ -913,9 +915,10 @@ baseURL = "http://localhost:1313"
 ```javascript
 args: [
   'server',
-  '--config', 'config/development/hugo.toml,hugo.toml'
+  '--config',
+  'config/development/hugo.toml,hugo.toml',
   // Hugo merges: dev overrides + main config
-]
+];
 ```
 
 #### Critical Rules
@@ -1105,21 +1108,25 @@ postinstall script). The pre-push guardrail will be active immediately.
 
 ### Editorial Links (Nofollow Override)
 
-For links that are genuine editorial references to authoritative sources (experts, published research, industry standards), use the "Editorial reference" title attribute to exclude them from `nofollow`:
+For links that are genuine editorial references to authoritative sources
+(experts, published research, industry standards), use the "Editorial reference"
+title attribute to exclude them from `nofollow`:
 
 ```markdown
-[Expert Name](https://example.com "Editorial reference")
-[James Clear's Newsletter](https://jamesclear.com/3-2-1 "Editorial reference")
-[Thoughtworks Radar](https://www.thoughtworks.com/radar "Editorial reference")
+[Expert Name](https://example.com 'Editorial reference')
+[James Clear's Newsletter](https://jamesclear.com/3-2-1 'Editorial reference')
+[Thoughtworks Radar](https://www.thoughtworks.com/radar 'Editorial reference')
 ```
 
 **How it works:**
+
 - Template detects the "Editorial reference" title attribute
 - Renders with `rel="noopener"` (no nofollow)
 - Hides the title attribute in the HTML output
 - Passes link equity to authoritative sources
 
 **When to use:**
+
 - ✅ Citations of industry experts or thought leaders
 - ✅ Links to published research or reports
 - ✅ References to authoritative sources (Wikipedia, official docs)
@@ -1129,22 +1136,50 @@ For links that are genuine editorial references to authoritative sources (expert
 
 ### Regular External Links
 
-All other external links automatically receive `rel="noopener noreferrer"` and function as expected:
+All other external links automatically receive `rel="noopener noreferrer"` and
+function as expected:
 
 ```markdown
 [Regular Link](https://example.com)
-[Link with tooltip](https://example.com "Hover text")
+[Link with tooltip](https://example.com 'Hover text')
 ```
 
 ## Recent Updates
 
 - **v0.12.1**: Editorial link annotation system for SEO optimization
 - **v0.12.0**: H1 duplicate removal across all content types, accessibility
-   compliance
+  compliance
 - **v0.10.2**: Theme-aware color system, GA environment variables, dynamic git
-   hash
+  hash
+- **v0.13.1**: Hero card color restoration - fixed semantic color classes for
+  role cards matching production implementation
 - **v0.10.1**: Hero section enhancement
 - **v0.10.0**: Spacing scale refactoring, version tracking in footer
+
+### Hero Card Color Implementation
+
+#### PRODUCTION-APPROVED APPROACH
+
+Use DaisyUI semantic color classes for hero role cards:
+
+- Primary roles: `text-primary` class
+- Secondary roles: `text-secondary` class
+- Accent roles: `text-accent` class
+
+#### FORBIDDEN APPROACH
+
+DO NOT use CSS variables for hero cards:
+
+- ❌ `style="color: oklch(var(--p))"`
+- ❌ `style="color: oklch(var(--s))"`
+- ❌ `style="color: oklch(var(--a))"`
+
+#### RATIONALE
+
+Production site demonstrates correct implementation using semantic DaisyUI
+classes that provide proper theme adaptation and color distinction. CSS
+variables should only be used for custom components where semantic classes don't
+exist.
 
 ## Version History
 
