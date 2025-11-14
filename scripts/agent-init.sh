@@ -74,18 +74,29 @@ else
 fi
 echo ""
 
-# Sync .skills submodule if present
+# Sync .skills submodule if present and feature enabled
 echo "📦 Checking .skills submodule..."
-if [ -f ".gitmodules" ] && grep -q "\.skills" .gitmodules; then
-    echo "🔄 Syncing .skills submodule..."
-    if git submodule update --depth 1 --remote .skills; then
-        echo "✅ .skills submodule synced successfully"
+if [ -f ".cody/config/scripts/feature-flags.sh" ]; then
+    SKILLS_ENABLED=$("./.cody/config/scripts/feature-flags.sh" check skills_integration 2>/dev/null | grep -q "enabled" && echo "true" || echo "false")
+else
+    SKILLS_ENABLED="false"
+fi
+
+if [ "$SKILLS_ENABLED" = "true" ]; then
+    if [ -f ".gitmodules" ] && grep -q "\.skills" .gitmodules; then
+        echo "🔄 Syncing .skills submodule..."
+        if git submodule update --depth 1 --remote .skills; then
+            echo "✅ .skills submodule synced successfully"
+        else
+            echo "⚠️  Failed to sync .skills submodule"
+            echo "   Run 'git submodule update --depth 1 --remote .skills' manually"
+        fi
     else
-        echo "⚠️  Failed to sync .skills submodule"
-        echo "   Run 'git submodule update --depth 1 --remote .skills' manually"
+        echo "ℹ️  .skills submodule not configured"
     fi
 else
-    echo "ℹ️  .skills submodule not configured"
+    echo "ℹ️  .skills integration is disabled"
+    echo "   Enable with: ./.cody/config/scripts/feature-flags.sh enable skills_integration"
 fi
 echo ""
 
