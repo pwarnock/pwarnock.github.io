@@ -3,6 +3,15 @@ title:
   'Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction'
 date: 2025-10-28T10:00:00Z
 draft: false
+description:
+  "Grokipedia 0.1 launches as an AI-powered knowledge platform with real-time
+  fact correction, challenging traditional Wikipedia's gatekeeper model with
+  open, collaborative knowledge management."
+summary:
+  "Grokipedia 0.1 introduces AI-powered knowledge platform with real-time fact
+  correction, offering an open alternative to Wikipedia's gatekeeper model for
+  collaborative knowledge management."
+image: 'grokipedia-0-1-launch.png'
 tags: ['AI', 'Knowledge Management', 'Developer Tools', 'Launch', 'Grok']
 author: 'Peter Warnock'
 ---

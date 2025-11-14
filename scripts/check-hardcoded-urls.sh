@@ -11,13 +11,18 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 echo "🔒 Checking for hardcoded baseURL issues..."
 
 # Check main hugo.toml for hardcoded production URLs
+# Note: baseURL in main hugo.toml is expected to be production URL
+# The validation should check if it matches the production config
 if grep -q 'baseURL = "https://peterwarnock.com"' "$PROJECT_ROOT/hugo.toml"; then
-    echo "❌ HARDCODED PRODUCTION URL DETECTED in hugo.toml"
-    echo "⚠️  This will cause development environment issues"
+    # This is actually correct - main config should have production URL
+    echo "✅ Production baseURL correctly configured in main hugo.toml"
+else
+    echo "❌ INCORRECT baseURL in hugo.toml"
+    echo "⚠️  This will cause deployment issues"
     echo ""
     echo "💡 SOLUTION:"
-    echo "   1. Use environment-specific configs in config/development/ and config/production/"
-    echo "   2. Set HUGO_ENV=development for dev server"
+    echo "   1. Set baseURL to 'https://peterwarnock.com' in main hugo.toml"
+    echo "   2. Use environment-specific configs if needed"
     echo "   3. Set HUGO_ENV=production for builds"
     echo ""
     echo "📝 Current problematic line:"

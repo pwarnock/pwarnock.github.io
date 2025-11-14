@@ -1,8 +1,37 @@
 {{/* Additional security meta tags */}}
 <meta http-equiv="X-DNS-Prefetch-Control" content="on">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="theme-color" content="var(--color-base-100, #ffffff)">
+<meta name="theme-color" content="#ffffff">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+
+<script>
+// Dynamic theme color meta tag update
+function updateThemeColor() {
+  const computedStyle = getComputedStyle(document.documentElement);
+  const baseColor = computedStyle.getPropertyValue('--b1').trim() || '#ffffff';
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute('content', baseColor);
+  }
+}
+
+// Update theme color on DOM load and theme changes
+document.addEventListener('DOMContentLoaded', updateThemeColor);
+
+// Listen for theme changes
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+      updateThemeColor();
+    }
+  });
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['data-theme']
+});
+</script>
 
 <!-- Security Headers -->
 

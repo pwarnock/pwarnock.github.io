@@ -5,8 +5,8 @@
 
 /* Card Component Base Styles */
 .card-system {
-  background-color: var(--color-neutral-50);
-  border: 1px solid var(--color-neutral-200);
+  background-color: oklch(var(--b1));
+  border: 1px solid oklch(var(--b3));
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-base);
   transition: all var(--transition-base);
@@ -27,7 +27,7 @@
 }
 
 .card-system--bordered {
-  border: 2px solid var(--color-neutral-300);
+  border: 2px solid oklch(var(--bc) / 0.2);
   box-shadow: none;
 }
 

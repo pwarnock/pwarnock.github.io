@@ -8,6 +8,10 @@ author: 'Peter Warnock'
 description:
   'A comprehensive look at emerging vibe coding tools landscape, from
   developer-centric IDEs to product-focused app builders'
+summary:
+  'Comprehensive analysis of the 2025 vibe coding revolution, comparing
+  developer-centric IDEs against product-focused app builders in the evolving AI
+  coding landscape.'
 image: 'vibe-coding-revolution.webp'
 ---
 

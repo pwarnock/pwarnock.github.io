@@ -35,27 +35,27 @@
 
 /* Badge Variants */
 .badge-system--default {
-  background-color: var(--color-neutral-100);
-  color: var(--color-neutral-700);
-  border: 1px solid var(--color-neutral-200);
+  background-color: oklch(var(--n) / 0.1);
+  color: oklch(var(--nc));
+  border: 1px solid oklch(var(--n) / 0.2);
 }
 
 .badge-system--primary {
-  background-color: var(--color-primary-100);
-  color: var(--color-primary-700);
-  border: 1px solid var(--color-primary-200);
+  background-color: oklch(var(--p) / 0.1);
+  color: oklch(var(--pc));
+  border: 1px solid oklch(var(--p) / 0.2);
 }
 
 .badge-system--secondary {
-  background-color: var(--color-secondary-100);
-  color: var(--color-secondary-700);
-  border: 1px solid var(--color-secondary-200);
+  background-color: oklch(var(--s) / 0.1);
+  color: oklch(var(--sc));
+  border: 1px solid oklch(var(--s) / 0.2);
 }
 
 .badge-system--accent {
-  background-color: var(--color-accent-100);
-  color: var(--color-accent-700);
-  border: 1px solid var(--color-accent-200);
+  background-color: oklch(var(--a) / 0.1);
+  color: oklch(var(--ac));
+  border: 1px solid oklch(var(--a) / 0.2);
 }
 
 .badge-system--success {

@@ -1,9 +1,14 @@
 ---
 title: 'My First Post'
 date: 2025-06-24T15:08:06-07:00
+draft: false
 description:
-  'Learn about Lorem Ipsum, the standard dummy text used in printing and
-  typesetting since the 1500s.'
+  'Learn about Lorem Ipsum, standard dummy text used in printing and typesetting
+  since 1500s.'
+summary:
+  'Introduction to Lorem Ipsum, the standard dummy text used in printing and
+  typesetting since the 1500s, with its fascinating history and modern
+  applications.'
 image: 'my-first-post.webp'
 ---
 

@@ -1,10 +1,16 @@
 ---
 title: 'ChatGPT Atlas: AI-Powered Web Browsing Revolution'
 date: 2025-10-21T10:00:00-07:00
+draft: false
 description:
   "Discover ChatGPT Atlas, OpenAI's groundbreaking AI-powered browser that
   integrates ChatGPT directly into web browsing, featuring agent mode, browser
   memories, and personalized assistance."
+summary:
+  'ChatGPT Atlas revolutionizes web browsing with AI-powered features including
+  agent mode, browser memories, and personalized assistance integrated directly
+  into the browsing experience.'
+image: 'chatgpt-atlas-launch.png'
 
 tags:
   [
@@ -15,7 +21,6 @@ tags:
     'Web Technology',
     'AI Innovation',
   ]
-draft: false
 slug: 'openai-launches-chatgpt-atlas-ai-powered-browser'
 categories: ['Technology', 'AI', 'Web Development']
 author: 'Peter Warnock'

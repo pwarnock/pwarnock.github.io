@@ -9,9 +9,62 @@
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid var(--color-primary-500);
+  outline: 2px solid oklch(var(--p));
   outline-offset: 2px;
   border-radius: var(--radius-md);
+}
+
+/* Mobile-specific focus enhancements */
+@media (max-width: 768px) {
+  .focus-ring:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+
+  .btn-system:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+
+  /* Enhanced focus for touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .focus-ring:focus-visible {
+      outline-width: 4px;
+      outline-offset: 4px;
+    }
+
+    .btn-system:focus-visible {
+      outline-width: 4px;
+      outline-offset: 4px;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .btn-system {
+    border-width: 2px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .card-system {
+    border: 2px solid oklch(var(--bc));
+  }
+
+  .badge-system {
+    border-width: 2px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .focus-ring:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+
+  .btn-system:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
 }
 
 /* Screen reader only utility */
