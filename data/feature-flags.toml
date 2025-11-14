@@ -1,0 +1,25 @@
+# Feature Flags Configuration
+
+# Enable/disable features dynamically across the site
+
+[flags]
+# Example flags - add your own as needed
+[flags.new_ai_chatbot]
+enabled = true
+description = "Enable AI chatbot widget"
+rollout_percentage = 100
+
+[flags.dark_mode_enhancements]
+enabled = true
+description = "Enhanced dark mode features"
+rollout_percentage = 50
+
+[flags.beta_features]
+enabled = false
+description = "Beta features for testing"
+rollout_percentage = 10
+
+[flags.performance_monitoring]
+enabled = true
+description = "Enable performance monitoring"
+rollout_percentage = 100
