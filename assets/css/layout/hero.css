@@ -1,0 +1,68 @@
+/* ==========================================================================
+   HERO COMPONENT SYSTEM
+   Hero layouts, sizes, and backgrounds
+   ========================================================================== */
+
+/* Hero Component System */
+.hero {
+  @apply relative;
+}
+
+/* Hero Sizes */
+.hero--full {
+  min-height: 30rem;
+}
+
+.hero--section {
+  min-height: 45vh;
+}
+
+.hero--content {
+  min-height: 30vh;
+}
+
+.hero--compact {
+  min-height: 20vh;
+}
+
+/* Hero Backgrounds */
+.hero--gradient-primary {
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+}
+
+/* Theme-aware text colors for gradient backgrounds */
+.hero--gradient-primary .hero-content {
+  color: var(--fallback-bc, oklch(from var(--bc) l c h));
+}
+
+.hero--gradient-primary .breadcrumbs {
+  color: var(--fallback-bc, oklch(from var(--bc) l c h / 0.9));
+}
+
+.hero--gradient-primary .text-base-100 {
+  color: var(--fallback-b1, oklch(from var(--b1) l c h));
+}
+
+.hero--gradient-subtle {
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+}
+
+.hero--gradient-br {
+  background: linear-gradient(to bottom right, var(--color-primary), var(--color-secondary));
+}
+
+/* Hero Grid Layout */
+.hero-grid {
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    transition: none;
+  }
+
+  .hero-card:hover {
+    transform: none;
+  }
+}

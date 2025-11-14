@@ -1,0 +1,77 @@
+/* ==========================================================================
+   BADGE COMPONENT SYSTEM
+   Badge base styles, sizes, and variants
+   ========================================================================== */
+
+/* Badge Component Base Styles */
+.badge-system {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+/* Badge Sizes */
+.badge-system--sm {
+  height: var(--badge-height-sm);
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.badge-system--md {
+  height: var(--badge-height-md);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.badge-system--lg {
+  height: var(--badge-height-lg);
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+/* Badge Variants */
+.badge-system--default {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+  border: 1px solid var(--color-neutral-200);
+}
+
+.badge-system--primary {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-200);
+}
+
+.badge-system--secondary {
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-700);
+  border: 1px solid var(--color-secondary-200);
+}
+
+.badge-system--accent {
+  background-color: var(--color-accent-100);
+  color: var(--color-accent-700);
+  border: 1px solid var(--color-accent-200);
+}
+
+.badge-system--success {
+  background-color: var(--color-success);
+  color: var(--color-success-content);
+  border: 1px solid var(--color-success);
+}
+
+.badge-system--warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-content);
+  border: 1px solid var(--color-warning);
+}
+
+.badge-system--error {
+  background-color: var(--color-error);
+  color: var(--color-error-content);
+  border: 1px solid var(--color-error);
+}

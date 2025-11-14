@@ -1,0 +1,112 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN UTILITIES
+   Responsive utilities and media queries
+   ========================================================================== */
+
+/* Responsive Design Utilities */
+@media (max-width: 640px) {
+  :root {
+    --font-size-5xl: 2rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-3xl: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-system--lg {
+    height: var(--button-height-md);
+    padding: 0 var(--space-4);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Staircase layout responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-staircase {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero-cards {
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-staircase {
+    gap: 1.5rem;
+  }
+
+  .hero-cards {
+    gap: 1rem;
+  }
+}
+
+/* Spacing Scale - Template Utility Classes */
+@layer components {
+  /* Responsive margin-bottom */
+  .mb-responsive-lg {
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 1024px) {
+    .mb-responsive-lg {
+      margin-bottom: var(--space-16);
+    }
+  }
+
+  .mb-responsive-md {
+    margin-bottom: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .mb-responsive-md {
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  /* Responsive margin-top */
+  .mt-responsive-lg {
+    margin-top: var(--space-16);
+  }
+
+  @media (min-width: 1024px) {
+    .mt-responsive-lg {
+      margin-top: var(--space-20);
+    }
+  }
+
+  /* Responsive padding */
+  .p-responsive-md {
+    padding: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .p-responsive-md {
+      padding: var(--space-12);
+    }
+  }
+
+  .p-responsive-sm {
+    padding: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .p-responsive-sm {
+      padding: var(--space-10);
+    }
+  }
+
+  /* Responsive gap */
+  .gap-responsive-md {
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .gap-responsive-md {
+      gap: var(--space-8);
+    }
+  }
+}

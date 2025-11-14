@@ -1,0 +1,54 @@
+/* ==========================================================================
+   CODE BLOCKS AND SYNTAX
+   Code blocks, inline code, and syntax highlighting
+   ========================================================================== */
+
+/* Code block styling */
+.code-block {
+  @apply bg-base-200 border border-base-300 rounded-lg overflow-hidden;
+}
+
+.code-block figcaption {
+  @apply bg-base-300 text-sm font-mono text-base-content px-4 py-2 border-b border-base-300;
+}
+
+.code-block pre {
+  @apply bg-base-100 text-base-content p-4 text-sm font-mono leading-relaxed;
+
+  margin: 0;
+}
+
+.code-block code {
+  @apply text-inherit;
+
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.prose pre {
+  background-color: oklch(var(--bc) / 0.05);
+  color: oklch(var(--bc));
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid oklch(var(--bc) / 0.1);
+  overflow-x: auto;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.prose pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* Inline code styling */
+.prose code:not(pre code) {
+  background-color: oklch(var(--b2));
+  color: oklch(var(--bc));
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875em;
+  font-weight: var(--font-weight-medium);
+}

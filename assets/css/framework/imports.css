@@ -1,0 +1,7 @@
+/* ==========================================================================
+   FRAMEWORK IMPORTS
+   Core framework imports for Tailwind CSS and DaisyUI
+   ========================================================================== */
+
+@import 'tailwindcss';
+@plugin 'daisyui';

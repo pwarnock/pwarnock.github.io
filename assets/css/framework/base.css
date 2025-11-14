@@ -1,0 +1,33 @@
+/* ==========================================================================
+   BASE STYLES
+   HTML base styles and accessibility enhancements
+   ========================================================================== */
+
+/* Custom base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced accessibility styles */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card {
+    transition: none;
+  }
+
+  .hero-card:hover {
+    transform: none;
+  }
+
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}

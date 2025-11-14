@@ -1,0 +1,56 @@
+/* ==========================================================================
+   DESIGN SYSTEM UTILITIES
+   Custom utility classes for common patterns
+   ========================================================================== */
+
+/* Custom utility styles */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.backdrop-blur-xs {
+  backdrop-filter: blur(2px);
+}
+
+/* Page title styling */
+.page-title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: oklch(var(--p));
+  letter-spacing: 0;
+}
+
+/* Alternative gradient version */
+.page-title-gradient {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, oklch(var(--p) / 0.9) 0%, oklch(var(--s) / 0.8) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0;
+}
+
+/* Hero section animations */
+.hero-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

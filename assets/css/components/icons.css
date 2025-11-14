@@ -1,0 +1,37 @@
+/* ==========================================================================
+   ICON COMPONENT SYSTEM
+   Icon base styles and sizes
+   ========================================================================== */
+
+/* Icon Component Base Styles */
+.icon-system {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+/* Icon Sizes */
+.icon-system--xs {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+}
+
+.icon-system--sm {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+
+.icon-system--md {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+.icon-system--lg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
+.icon-system--xl {
+  width: var(--icon-size-xl);
+  height: var(--icon-size-xl);
+}
