@@ -72,6 +72,22 @@ if [ -f "AGENTS.md" ]; then
 else
     echo "⚠️  AGENTS.md not found!"
 fi
+echo ""
+
+# Sync .skills submodule if present
+echo "📦 Checking .skills submodule..."
+if [ -f ".gitmodules" ] && grep -q "\.skills" .gitmodules; then
+    echo "🔄 Syncing .skills submodule..."
+    if git submodule update --depth 1 --remote .skills; then
+        echo "✅ .skills submodule synced successfully"
+    else
+        echo "⚠️  Failed to sync .skills submodule"
+        echo "   Run 'git submodule update --depth 1 --remote .skills' manually"
+    fi
+else
+    echo "ℹ️  .skills submodule not configured"
+fi
+echo ""
 
 echo ""
 echo "🚀 Ready to work! Use 'bd ready --json' to see available tasks."
