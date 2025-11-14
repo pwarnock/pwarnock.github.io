@@ -1,0 +1,45 @@
+# Development Workflow
+
+## Adding New Content Type
+
+1. Create content directory under `/content/`
+2. Add `_index.md` for section page
+3. Configure in `hugo.toml` if needed
+4. Use existing `_default/list.html` and `_default/single.html`
+
+## Modifying Templates
+
+1. Check `_default/` templates first
+2. Create specific templates only when necessary
+3. Use partials for reusable components
+4. Test across all content types
+
+## Adding New Components
+
+1. Create in `partials/components/`
+2. Use BEM-style classes
+3. Make configurable with parameters
+4. Document usage in comments
+
+## Maintenance Guidelines
+
+### Documentation
+
+- Update this style guide when making changes
+- Document custom shortcodes
+- Maintain component library
+- Keep README files current
+
+### Version Control
+
+- Commit templates and content separately
+- Use semantic versioning for releases
+- Tag releases in git
+- Maintain changelog
+
+### Testing
+
+- Test template changes across all content types
+- Validate HTML and CSS
+- Check responsive design
+- Verify accessibility compliance
