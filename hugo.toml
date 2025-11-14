@@ -112,4 +112,4 @@ enableGitInfo = true
 [pagination]
   pagerSize = 6
 
-version = "0.13.2"
+version = "0.13.3"
