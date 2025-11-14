@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light">
 
     <!-- Content Security Policy removed due to GitHub Pages limitations and theme switcher conflicts -->
 
@@ -132,10 +132,10 @@
     </script>
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default "/favicon-32x32.png" }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.favicon_16 | default "/favicon-16x16.png" }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.apple_touch_icon | default "/apple-touch-icon.png" }}">
+    <link rel="icon" href="{{ .Site.Params.favicon_ico | default "/favicon.ico" }}">
 
     <!-- RSS Feed -->
     {{ with .OutputFormats.Get "rss" }}
@@ -148,7 +148,7 @@
     {{- $url := .Permalink }}
     {{- $title := .Title }}
     {{- $description := .Description | default .Site.Params.description }}
-    {{- $image := .Params.image | default "/img/logo.png" }}
+    {{- $image := .Params.image | default .Site.Params.logo }}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

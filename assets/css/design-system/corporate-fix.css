@@ -1,0 +1,26 @@
+/* ==========================================================================
+    CORPORATE THEME CONTRAST FIXES
+    Neutral color overrides for Corporate theme navigation
+    ========================================================================== */
+
+/* Corporate theme uses neutral colors for better contrast */
+[data-theme='corporate'] {
+  /* Override primary colors for better contrast */
+  --p: oklch(0.6 0.1 0.2);
+  --pc: oklch(0.98 0.01 0.1);
+
+  /* Enhanced contrast for navigation hover states */
+}
+
+/* Apply better contrast to Corporate theme navigation */
+[data-theme='corporate'] .hover\:bg-primary\/10 {
+  background-color: oklch(var(--p) / 0.8) !important;
+  color: oklch(var(--pc)) !important;
+}
+
+/* Mobile-specific enhancements for Corporate theme */
+@media (max-width: 768px) {
+  [data-theme='corporate'] .hover\:bg-primary\/10 {
+    background-color: oklch(var(--p) / 0.7) !important;
+  }
+}

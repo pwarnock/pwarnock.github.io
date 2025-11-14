@@ -37,6 +37,31 @@
 - Tag releases in git
 - Maintain changelog
 
+### Theme Management
+
+- **Browser Dark Mode Prevention**: `color-scheme` meta tag set to "light" to
+  prevent Brave iOS night mode from interfering with Alpine.js fonts and
+  components
+- **Explicit Text Colors**: Alpine.js components use `text-base-content` classes
+  to override browser dark mode defaults
+- **Theme Persistence**: User-selected themes are saved to localStorage and
+  persist across sessions
+- **System Preference Handling**: Respects browser preferences for initial theme
+  selection while preventing dark mode interference
+
+### Site Configuration
+
+- **Logo Parameter**: Site logo is configurable via `params.logo` in `hugo.toml`
+  (defaults to `/img/logo.png`)
+- **Favicon Parameters**: Favicon paths are configurable via `params.favicon_*`
+  parameters in `hugo.toml`
+- **Profile Image**: Hero profile image is data-driven via `data/hero.toml` with
+  fallback to `/img/profile.jpg`
+- **Hero Content**: All hero titles, descriptions, and colors are data-driven
+  via `data/hero.toml`
+- **Data-Driven Assets**: All site assets and content should use Hugo parameters
+  or data files for easy customization and maintenance
+
 ### Testing
 
 - Test template changes across all content types

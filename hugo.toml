@@ -40,6 +40,13 @@ enableGitInfo = true
   # Site configuration
   subtitle = 'Fullstack Developer & TECHNOLOGY LEADER'
   description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
+  logo = '/img/logo.png'
+
+  # Favicon configuration
+  favicon_16 = '/favicon-16x16.png'
+  favicon_32 = '/favicon-32x32.png'
+  favicon_ico = '/favicon.ico'
+  apple_touch_icon = '/apple-touch-icon.png'
 
   # Social links
   github = 'https://github.com/pwarnock'

@@ -4,35 +4,35 @@
     {{ partial "components/icon.html" (dict "name" "theme" "size" "md") }}
   </button>
   <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto" role="menu" aria-label="Theme selection menu">
-    <li class="menu-title"><span>Choose Theme</span></li>
-    <li><a href="#" @click.prevent="setTheme('light'); themeOpen = false" role="menuitem" aria-keyshortcuts="l">☀️ Light</a></li>
-    <li><a href="#" @click.prevent="setTheme('dark'); themeOpen = false" role="menuitem" aria-keyshortcuts="d">🌙 Dark</a></li>
-    <li><a href="#" @click.prevent="setTheme('cupcake'); themeOpen = false" role="menuitem">🧁 Cupcake</a></li>
-    <li><a href="#" @click.prevent="setTheme('bumblebee'); themeOpen = false" role="menuitem">🐝 Bumblebee</a></li>
-    <li><a href="#" @click.prevent="setTheme('emerald'); themeOpen = false" role="menuitem">💚 Emerald</a></li>
-    <li><a href="#" @click.prevent="setTheme('corporate'); themeOpen = false" role="menuitem">💼 Corporate</a></li>
-    <li><a href="#" @click.prevent="setTheme('synthwave'); themeOpen = false" role="menuitem">🌃 Synthwave</a></li>
-    <li><a href="#" @click.prevent="setTheme('retro'); themeOpen = false" role="menuitem">📼 Retro</a></li>
-    <li><a href="#" @click.prevent="setTheme('cyberpunk'); themeOpen = false" role="menuitem">🤖 Cyberpunk</a></li>
-    <li><a href="#" @click.prevent="setTheme('valentine'); themeOpen = false" role="menuitem">💝 Valentine</a></li>
-    <li><a href="#" @click.prevent="setTheme('halloween'); themeOpen = false" role="menuitem">🎃 Halloween</a></li>
-    <li><a href="#" @click.prevent="setTheme('garden'); themeOpen = false" role="menuitem">🌻 Garden</a></li>
-    <li><a href="#" @click.prevent="setTheme('forest'); themeOpen = false" role="menuitem">🌲 Forest</a></li>
-    <li><a href="#" @click.prevent="setTheme('aqua'); themeOpen = false" role="menuitem">🌊 Aqua</a></li>
-    <li><a href="#" @click.prevent="setTheme('lofi'); themeOpen = false" role="menuitem">🎧 Lofi</a></li>
-    <li><a href="#" @click.prevent="setTheme('pastel'); themeOpen = false" role="menuitem">🎨 Pastel</a></li>
-    <li><a href="#" @click.prevent="setTheme('fantasy'); themeOpen = false" role="menuitem">🦄 Fantasy</a></li>
-    <li><a href="#" @click.prevent="setTheme('wireframe'); themeOpen = false" role="menuitem">📐 Wireframe</a></li>
-    <li><a href="#" @click.prevent="setTheme('black'); themeOpen = false" role="menuitem">⚫ Black</a></li>
-    <li><a href="#" @click.prevent="setTheme('luxury'); themeOpen = false" role="menuitem">💎 Luxury</a></li>
-    <li><a href="#" @click.prevent="setTheme('dracula'); themeOpen = false" role="menuitem">🧛 Dracula</a></li>
-    <li><a href="#" @click.prevent="setTheme('cmyk'); themeOpen = false" role="menuitem">🖨️ CMYK</a></li>
-    <li><a href="#" @click.prevent="setTheme('autumn'); themeOpen = false" role="menuitem">🍂 Autumn</a></li>
-    <li><a href="#" @click.prevent="setTheme('business'); themeOpen = false" role="menuitem">📊 Business</a></li>
-    <li><a href="#" @click.prevent="setTheme('acid'); themeOpen = false" role="menuitem">🔬 Acid</a></li>
-    <li><a href="#" @click.prevent="setTheme('lemonade'); themeOpen = false" role="menuitem">🍋 Lemonade</a></li>
-    <li><a href="#" @click.prevent="setTheme('night'); themeOpen = false" role="menuitem">🌌 Night</a></li>
-    <li><a href="#" @click.prevent="setTheme('coffee'); themeOpen = false" role="menuitem">☕ Coffee</a></li>
-    <li><a href="#" @click.prevent="setTheme('winter'); themeOpen = false" role="menuitem">❄️ Winter</a></li>
+     <li class="menu-title"><span class="text-base-content">Choose Theme</span></li>
+     <li><a href="#" @click.prevent="setTheme('light'); themeOpen = false" role="menuitem" aria-keyshortcuts="l" class="text-base-content">☀️ Light</a></li>
+     <li><a href="#" @click.prevent="setTheme('dark'); themeOpen = false" role="menuitem" aria-keyshortcuts="d" class="text-base-content">🌙 Dark</a></li>
+     <li><a href="#" @click.prevent="setTheme('cupcake'); themeOpen = false" role="menuitem" class="text-base-content">🧁 Cupcake</a></li>
+     <li><a href="#" @click.prevent="setTheme('bumblebee'); themeOpen = false" role="menuitem" class="text-base-content">🐝 Bumblebee</a></li>
+     <li><a href="#" @click.prevent="setTheme('emerald'); themeOpen = false" role="menuitem" class="text-base-content">💚 Emerald</a></li>
+     <li><a href="#" @click.prevent="setTheme('corporate'); themeOpen = false" role="menuitem" class="text-base-content">💼 Corporate</a></li>
+     <li><a href="#" @click.prevent="setTheme('synthwave'); themeOpen = false" role="menuitem" class="text-base-content">🌃 Synthwave</a></li>
+     <li><a href="#" @click.prevent="setTheme('retro'); themeOpen = false" role="menuitem" class="text-base-content">📼 Retro</a></li>
+     <li><a href="#" @click.prevent="setTheme('cyberpunk'); themeOpen = false" role="menuitem" class="text-base-content">🤖 Cyberpunk</a></li>
+     <li><a href="#" @click.prevent="setTheme('valentine'); themeOpen = false" role="menuitem" class="text-base-content">💝 Valentine</a></li>
+     <li><a href="#" @click.prevent="setTheme('halloween'); themeOpen = false" role="menuitem" class="text-base-content">🎃 Halloween</a></li>
+     <li><a href="#" @click.prevent="setTheme('garden'); themeOpen = false" role="menuitem" class="text-base-content">🌻 Garden</a></li>
+     <li><a href="#" @click.prevent="setTheme('forest'); themeOpen = false" role="menuitem" class="text-base-content">🌲 Forest</a></li>
+     <li><a href="#" @click.prevent="setTheme('aqua'); themeOpen = false" role="menuitem" class="text-base-content">🌊 Aqua</a></li>
+     <li><a href="#" @click.prevent="setTheme('lofi'); themeOpen = false" role="menuitem" class="text-base-content">🎧 Lofi</a></li>
+     <li><a href="#" @click.prevent="setTheme('pastel'); themeOpen = false" role="menuitem" class="text-base-content">🎨 Pastel</a></li>
+     <li><a href="#" @click.prevent="setTheme('fantasy'); themeOpen = false" role="menuitem" class="text-base-content">🦄 Fantasy</a></li>
+     <li><a href="#" @click.prevent="setTheme('wireframe'); themeOpen = false" role="menuitem" class="text-base-content">📐 Wireframe</a></li>
+     <li><a href="#" @click.prevent="setTheme('black'); themeOpen = false" role="menuitem" class="text-base-content">⚫ Black</a></li>
+     <li><a href="#" @click.prevent="setTheme('luxury'); themeOpen = false" role="menuitem" class="text-base-content">💎 Luxury</a></li>
+     <li><a href="#" @click.prevent="setTheme('dracula'); themeOpen = false" role="menuitem" class="text-base-content">🧛 Dracula</a></li>
+     <li><a href="#" @click.prevent="setTheme('cmyk'); themeOpen = false" role="menuitem" class="text-base-content">🖨️ CMYK</a></li>
+     <li><a href="#" @click.prevent="setTheme('autumn'); themeOpen = false" role="menuitem" class="text-base-content">🍂 Autumn</a></li>
+     <li><a href="#" @click.prevent="setTheme('business'); themeOpen = false" role="menuitem" class="text-base-content">📊 Business</a></li>
+     <li><a href="#" @click.prevent="setTheme('acid'); themeOpen = false" role="menuitem" class="text-base-content">🔬 Acid</a></li>
+     <li><a href="#" @click.prevent="setTheme('lemonade'); themeOpen = false" role="menuitem" class="text-base-content">🍋 Lemonade</a></li>
+     <li><a href="#" @click.prevent="setTheme('night'); themeOpen = false" role="menuitem" class="text-base-content">🌌 Night</a></li>
+     <li><a href="#" @click.prevent="setTheme('coffee'); themeOpen = false" role="menuitem" class="text-base-content">☕ Coffee</a></li>
+     <li><a href="#" @click.prevent="setTheme('winter'); themeOpen = false" role="menuitem" class="text-base-content">❄️ Winter</a></li>
   </ul>
 </div>

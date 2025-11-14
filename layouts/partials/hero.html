@@ -1,16 +1,18 @@
 <!-- Hero Section -->
 <div class="hero min-h-[45vh] bg-gradient-to-r from-primary/10 to-secondary/10">
   <div class="hero-content flex-col lg:flex-row-reverse gap-8">
-    <div class="text-center lg:text-left flex-1">
-      <div class="text-4xl lg:text-5xl font-black text-primary mb-4">AI-FIRST FULLSTACK</div>
-      <p class="text-lg lg:text-xl text-base-content/80 mb-6 leading-relaxed">
-        Bridging secure, scalable applications with a focus on team-driven innovation.
-      </p>
-    </div>
+     <div class="text-center lg:text-left flex-1">
+       {{ range $index, $role := .Site.Data.hero.roles }}
+         {{ if eq $index 0 }}
+           <div class="text-4xl lg:text-5xl font-black text-{{ $role.color | default "primary" }} mb-4">{{ $role.title }}</div>
+           <p class="text-lg lg:text-xl text-base-content/80 mb-6 leading-relaxed">{{ $role.description }}</p>
+         {{ end }}
+       {{ end }}
+     </div>
 
     <div class="avatar">
       <div class="w-48 h-48 lg:w-56 lg:h-56 rounded-full ring-4 ring-primary/20 shadow-xl">
-        <img src="/img/profile.jpg" alt="Peter Warnock profile picture" />
+        <img src="{{ (index .Site.Data.hero "profile").image | default "/img/profile.jpg" }}" alt="{{ (index .Site.Data.hero "profile").alt | default "Peter Warnock profile picture" }}" />
       </div>
     </div>
 </div>
@@ -18,25 +20,16 @@
 <!-- Expertise Sections -->
 <div class="container mx-auto px-4 py-16">
   <div class="grid lg:grid-cols-2 gap-12">
-    <!-- Architect Section -->
-    <div class="card bg-base-100 shadow-xl border-2 border-primary/20">
-      <div class="card-body p-8">
-        <div class="text-4xl lg:text-5xl font-black text-primary mb-6">ARCHITECT</div>
-        <p class="text-lg text-base-content/80 leading-relaxed">
-          I connect business and technology with a customer-first mindset and a passion for growth. By aligning technical solutions with strategic goals, I deliver impactful results that drive innovation and lasting value.
-        </p>
-      </div>
-    </div>
-
-    <!-- Leader Section -->
-    <div class="card bg-base-100 shadow-xl border-2 border-secondary/20">
-      <div class="card-body p-8">
-        <div class="text-4xl lg:text-5xl font-black text-secondary mb-6">LEADER</div>
-        <p class="text-lg text-base-content/80 leading-relaxed">
-          As a software engineer and leader, I specialize in crafting innovative solutions, designing robust systems, and fostering collaboration. I thrive on solving complex challenges, leading teams to success, and ensuring quality and efficiency in every project.
-        </p>
-      </div>
-    </div>
+     {{ range $index, $role := .Site.Data.hero.roles }}
+       {{ if gt $index 0 }}
+         <div class="card bg-base-100 shadow-xl border-2 border-{{ $role.color | default "primary" }}/20">
+           <div class="card-body p-8">
+             <div class="text-4xl lg:text-5xl font-black text-{{ $role.color | default "primary" }} mb-6">{{ $role.title }}</div>
+             <p class="text-lg text-base-content/80 leading-relaxed">{{ $role.description }}</p>
+           </div>
+         </div>
+       {{ end }}
+     {{ end }}
   </div>
 </div>
 
