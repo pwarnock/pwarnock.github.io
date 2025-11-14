@@ -168,26 +168,43 @@ hotfix/v1.0.1-mobile-menu-fix
 
 ```
 Is this a breaking change?
-├─ Yes → Increment MAJOR version, reset MINOR and PATCH to 0
+├─ Yes → bun pm version major (X.0.0)
 └─ No
    └─ Is this a new feature or significant addition?
-      ├─ Yes → Increment MINOR version, reset PATCH to 0
+      ├─ Yes → bun pm version minor (X.Y.0)
       └─ No
          └─ Is this a bug fix or minor improvement?
-            ├─ Yes → Increment PATCH version
+            ├─ Yes → bun pm version patch (X.Y.Z)
             └─ No → Consider if it needs versioning at all
 ```
 
 ### Examples
 
-| Current | Change Type     | New Version |
-| ------- | --------------- | ----------- |
-| v0.8.2  | Bug fix         | v0.8.3      |
-| v0.8.2  | New feature     | v0.9.0      |
-| v0.8.2  | Breaking change | v1.0.0      |
-| v1.0.0  | Bug fix         | v1.0.1      |
-| v1.0.0  | New feature     | v1.1.0      |
-| v1.0.0  | Breaking change | v2.0.0      |
+| Current | Change Type     | Command                | New Version |
+| ------- | --------------- | ---------------------- | ----------- |
+| 0.13.0  | Bug fix         | `bun pm version patch` | 0.13.1      |
+| 0.13.0  | New feature     | `bun pm version minor` | 0.14.0      |
+| 0.13.0  | Breaking change | `bun pm version major` | 1.0.0       |
+| 1.0.0   | Bug fix         | `bun pm version patch` | 1.0.1       |
+| 1.0.0   | New feature     | `bun pm version minor` | 1.1.0       |
+| 1.0.0   | Breaking change | `bun pm version major` | 2.0.0       |
+
+### Development Workflow
+
+```bash
+# 1. Start development cycle
+bun pm version patch  # Updates package.json
+./scripts/dev-cycle-start.sh "hero-color-fix"  # Adds suffix to hugo.toml
+
+# 2. Development work happens
+# Version displays as: 0.13.1-hero-color-fix
+
+# 3. Prepare for release
+./scripts/release-prep.sh  # Removes suffix
+git add . && git commit -m "chore: release v0.13.1"
+git tag v0.13.1
+git push origin main --tags
+```
 
 ## Release Planning
 
@@ -234,23 +251,23 @@ Is this a breaking change?
 
 ### Files to Update
 
-#### hugo.toml
-
-```toml
-baseURL = "https://pwarnock.github.io"
-languageCode = "en-us"
-title = "Peter Warnock"
-version = "0.8.2"  # Update this
-```
-
-#### package.json
+#### package.json (Source of Truth)
 
 ```json
 {
   "name": "pwarnock.github.io",
-  "version": "0.8.2",  # Update this
+  "version": "0.13.0",  # Semantic version only - no suffix
   "description": "Peter Warnock Portfolio Website"
 }
+```
+
+#### hugo.toml (Display Version)
+
+```toml
+baseURL = "https://peterwarnock.github.io"
+languageCode = "en-us"
+title = "Peter Warnock"
+version = "0.13.0-hero-color-fix"  # Can include suffix for development
 ```
 
 #### Version Documentation
@@ -258,24 +275,40 @@ version = "0.8.2"  # Update this
 - `CHANGELOG.md`: Release notes and history
 - `docs/operations/RELEASE_MANAGEMENT.md`: Process documentation
 - Version-specific release notes
+- `.cody/project/versions/`: Planning timeline and historical record
+
+### Development vs Release Versions
+
+#### Development Phase
+
+- **package.json**: `0.13.1` (semantic only)
+- **hugo.toml**: `0.13.1-hero-color-fix` (with suffix)
+- **Display**: Shows development context
+
+#### Release Phase
+
+- **package.json**: `0.13.1` (unchanged)
+- **hugo.toml**: `0.13.1` (suffix removed)
+- **Git tag**: `v0.13.1` (matches package.json)
 
 ### Git Tags
 
 #### Tag Creation
 
 ```bash
-# Create annotated tag
-git tag -a v0.8.2 -m "Release v0.8.2: Tailwind v4 upgrade and security fixes"
+# Create annotated tag after release prep
+git tag -a v0.13.1 -m "Release v0.13.1: Hero color restoration"
 
 # Push tags to remote
-git push origin v0.8.2
+git push origin v0.13.1
 ```
 
 #### Tag Format
 
 - **Annotated tags**: Include release notes
-- **Semantic naming**: Follow versioning convention
+- **Semantic naming**: Match package.json exactly
 - **Consistent format**: Always use `v` prefix
+- **Clean versions**: No suffixes in git tags
 
 ## Communication and Documentation
 
@@ -405,11 +438,53 @@ git push origin v0.8.2
 
 ### Automation Scripts
 
-#### Version Update Script
+#### Development Cycle Workflow
+
+**Start Development Cycle:**
+
+```bash
+# Start new development with suffix
+bun pm version patch  # Bump package.json version
+./scripts/dev-cycle-start.sh "hero-color-fix"  # Add suffix to hugo.toml
+
+# Optionally add to feature backlog interactively
+# Creates: v0.13.1-hero-color-fix in hugo.toml
+```
+
+**Prepare for Release:**
+
+```bash
+# Remove suffix for clean release
+./scripts/release-prep.sh
+
+# Results in clean semantic version for production
+```
+
+**Manual Version Sync:**
+
+```bash
+# Sync package.json to hugo.toml (with optional suffix)
+./scripts/version-sync.sh [suffix]
+```
+
+#### Package Scripts
+
+```json
+{
+  "version:patch": "bun pm version patch && ./scripts/version-sync.sh",
+  "version:minor": "bun pm version minor && ./scripts/version-sync.sh",
+  "version:major": "bun pm version major && ./scripts/version-sync.sh",
+  "version:sync": "./scripts/version-sync.sh",
+  "dev:start": "./scripts/dev-cycle-start.sh",
+  "release:prep": "./scripts/release-prep.sh"
+}
+```
+
+#### Version Update Script (Legacy)
 
 ```bash
 #!/bin/bash
-# update-version.sh
+# update-version.sh (deprecated - use new workflow)
 
 NEW_VERSION=$1
 

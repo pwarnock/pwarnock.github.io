@@ -31,7 +31,7 @@
     "validate": "./scripts/validate.sh",
     "validate:portfolio": "bun run portfolio-validate",
     "test:ga": "bun run test-ga",
-    "version": "./scripts/bump-version.sh",
+    "version": "0.13.0",
     "letta:config:init": "./scripts/letta-config-init.sh",
     "letta:config:update": "./scripts/letta-config-update.sh",
     "postinstall": "bun x husky",
@@ -41,7 +41,13 @@
     "test-security": "bun run ./scripts/test-security.js",
     "build:preview": "hugo --gc",
     "test:e2e": "bunx playwright test",
-    "serve:preview": "bun run build:preview && bunx http-server public -p 3000 -s"
+    "serve:preview": "bun run build:preview && bunx http-server public -p 3000 -s",
+    "version:patch": "bun pm version patch && ./scripts/version-sync.sh",
+    "version:minor": "bun pm version minor && ./scripts/version-sync.sh",
+    "version:major": "bun pm version major && ./scripts/version-sync.sh",
+    "version:sync": "./scripts/version-sync.sh",
+    "dev:start": "./scripts/dev-cycle-start.sh",
+    "release:prep": "./scripts/release-prep.sh"
   },
   "keywords": [],
   "author": "Pete Warnock",
