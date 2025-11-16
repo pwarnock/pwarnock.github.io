@@ -1,5 +1,5 @@
 {{/* Social Links Component */}}
-<div class="flex flex-wrap justify-center gap-2 sm:gap-4" role="navigation" aria-label="Social media links">
+<div class="flex flex-wrap justify-center gap-2 sm:gap-4" role="group" aria-label="Social media links">
 {{ if .Site.Params.github }}
 <a href="{{ .Site.Params.github }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
   {{ partial "components/icon.html" (dict "name" "github" "size" "sm" "ariaLabel" "GitHub") }}

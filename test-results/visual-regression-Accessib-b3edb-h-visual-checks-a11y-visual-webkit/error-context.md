@@ -2,7 +2,7 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+  - link "Skip to main content" [ref=e2]:
     - /url: "#main-content"
   - navigation "Main navigation" [ref=e3]:
     - generic [ref=e4]:
@@ -22,7 +22,7 @@
       - button "Theme selector" [ref=e22] [cursor=pointer]:
         - img [ref=e23]:
           - img [ref=e24]
-      - navigation "Social media links" [ref=e27]:
+      - group "Social media links" [ref=e27]:
         - button "GitHub" [ref=e28] [cursor=pointer]:
           - img [ref=e29]:
             - img [ref=e30]
@@ -36,28 +36,28 @@
           - img [ref=e41]:
             - img [ref=e42]
   - main [ref=e44]:
-    - banner "Peter Warnock - Cloud & Platform Engineering Leader" [ref=e46]:
+    - region "Peter Warnock - Cloud & Platform Engineering Leader" [ref=e46]:
       - generic [ref=e47]:
         - heading "Peter Warnock - Cloud & Platform Engineering Leader" [level=1] [ref=e48]
         - generic [ref=e49]:
           - img "Peter Warnock professional headshot" [ref=e51]:
             - img "Peter Warnock professional headshot" [ref=e53]
           - generic [ref=e54]:
-            - article "AI-FIRST FULLSTACK" [ref=e55]:
+            - article [ref=e55]:
               - generic [ref=e56]:
-                - heading "AI-FIRST FULLSTACK" [level=3] [ref=e57]
+                - heading "AI-FIRST FULLSTACK" [level=2] [ref=e57]
                 - paragraph [ref=e58]: Bridging secure, scalable applications with team-driven innovation.
-            - article "CLOUD ARCHITECT" [ref=e59]:
+            - article [ref=e59]:
               - generic [ref=e60]:
-                - heading "CLOUD ARCHITECT" [level=3] [ref=e61]
+                - heading "CLOUD ARCHITECT" [level=2] [ref=e61]
                 - paragraph [ref=e62]: Connecting business and technology with a customer-first mindset.
-            - article "TECH LEADER" [ref=e63]:
+            - article [ref=e63]:
               - generic [ref=e64]:
-                - heading "TECH LEADER" [level=3] [ref=e65]
+                - heading "TECH LEADER" [level=2] [ref=e65]
                 - paragraph [ref=e66]: Crafting innovative solutions and fostering collaboration.
-            - article "DEVSECOPS" [ref=e67]:
+            - article [ref=e67]:
               - generic [ref=e68]:
-                - heading "DEVSECOPS" [level=3] [ref=e69]
+                - heading "DEVSECOPS" [level=2] [ref=e69]
                 - paragraph [ref=e70]: Integrating security into every stage of the development lifecycle.
           - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e71]':
             - generic [ref=e72]:
@@ -65,11 +65,11 @@
                 - generic [ref=e74]:
                   - generic [ref=e75]: Latest Post
                   - generic [ref=e76]: Nov 15, 2025
-                - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e78] [cursor=pointer]':
+                - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e78]':
                   - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
                   - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e79]'
                 - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e80]':
-                  - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e81] [cursor=pointer]':
+                  - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e81]':
                     - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
                 - paragraph [ref=e82]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
               - link "Read More" [ref=e83] [cursor=pointer]:
@@ -173,7 +173,7 @@
               - link "About" [ref=e196] [cursor=pointer]:
                 - /url: /about
         - region [ref=e197]:
-          - navigation "Social media links" [ref=e198]:
+          - group "Social media links" [ref=e198]:
             - button "GitHub" [ref=e199] [cursor=pointer]:
               - img [ref=e200]:
                 - img [ref=e201]

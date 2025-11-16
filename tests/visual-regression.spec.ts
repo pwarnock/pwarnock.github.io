@@ -10,8 +10,8 @@ test.describe('Visual Regression Tests', () => {
   test('homepage visual regression @visual', async ({ page }) => {
     await page.goto('/');
 
-    // Wait for page to fully load
-    await page.waitForLoadState('networkidle');
+    // Wait for page to fully load with timeout
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     // Take full page screenshot
     await expect(page).toHaveScreenshot('homepage-full.png');
@@ -26,28 +26,28 @@ test.describe('Visual Regression Tests', () => {
 
   test('blog page visual regression @visual', async ({ page }) => {
     await page.goto('/blog/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('blog-page.png');
   });
 
   test('portfolio page visual regression @visual', async ({ page }) => {
     await page.goto('/portfolio/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('portfolio-page.png');
   });
 
   test('tools page visual regression @visual', async ({ page }) => {
     await page.goto('/tools/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('tools-page.png');
   });
 
   test('about page visual regression @visual', async ({ page }) => {
     await page.goto('/about/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('about-page.png');
   });
@@ -55,7 +55,7 @@ test.describe('Visual Regression Tests', () => {
   test('mobile responsive visual regression @visual @mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 }); // iPhone dimensions
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('homepage-mobile.png');
   });
@@ -63,7 +63,7 @@ test.describe('Visual Regression Tests', () => {
   test('tablet responsive visual regression @visual @tablet', async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 1024 }); // iPad dimensions
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('homepage-tablet.png');
   });
@@ -72,14 +72,14 @@ test.describe('Visual Regression Tests', () => {
     // Simulate dark mode preference
     await page.emulateMedia({ colorScheme: 'dark' });
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     await expect(page).toHaveScreenshot('homepage-dark.png');
   });
 
   test('theme switching visual regression @visual @theme', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     // Test light theme
     await page.emulateMedia({ colorScheme: 'light' });
@@ -94,7 +94,7 @@ test.describe('Visual Regression Tests', () => {
 test.describe('Component Visual Regression', () => {
   test('theme selector component @visual @component', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     const themeSelector = page.locator('[data-testid="theme-selector"]');
     await expect(themeSelector).toBeVisible();
@@ -109,7 +109,7 @@ test.describe('Component Visual Regression', () => {
 
   test('navigation component @visual @component', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     const navigation = page.locator('header nav');
     await expect(navigation).toHaveScreenshot('navigation-component.png');
@@ -117,7 +117,7 @@ test.describe('Component Visual Regression', () => {
 
   test('footer component @visual @component', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     const footer = page.locator('footer');
     await expect(footer).toHaveScreenshot('footer-component.png');
@@ -127,7 +127,7 @@ test.describe('Component Visual Regression', () => {
 test.describe('Accessibility Visual Tests', () => {
   test('accessibility with visual checks @a11y @visual', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     // Inject axe and run accessibility check
     await injectAxe(page);
@@ -141,7 +141,7 @@ test.describe('Accessibility Visual Tests', () => {
 
   test('focus management visual test @a11y @visual', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     // Test keyboard navigation
     await page.keyboard.press('Tab');
