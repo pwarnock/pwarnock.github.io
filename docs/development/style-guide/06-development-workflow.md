@@ -21,6 +21,28 @@
 3. Make configurable with parameters
 4. Document usage in comments
 
+## Package Management with Bun
+
+### Installation
+
+```bash
+bun install --frozen-lockfile  # Reproducible installs (CI/CD)
+bun install                    # Development installs
+bun update                     # Update dependencies
+```
+
+### Security
+
+```bash
+bun audit --audit-level=moderate  # Security scanning
+```
+
+### Performance
+
+- Bun provides 3-5x faster dependency installation
+- Reduced disk usage and better TypeScript support
+- No need for node_modules cleanup in CI/CD with Bun's cache
+
 ## Maintenance Guidelines
 
 ### Documentation

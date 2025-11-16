@@ -80,7 +80,7 @@ test.describe('Critical Accessibility Fixes', () => {
 
     // Test that focus is visible
     await page.keyboard.press('Tab');
-    const focusedElement = await page.locator(':focus');
+    const focusedElement = page.locator(':focus');
     await expect(focusedElement).toBeVisible();
 
     // Test skip link functionality

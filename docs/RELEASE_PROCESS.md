@@ -1,7 +1,7 @@
 # Cody Framework Release Process
 
 This document describes the professional release workflow for this project using
-the Cody Framework.
+the Cody Framework with Bun-based CI/CD infrastructure.
 
 ## Overview
 

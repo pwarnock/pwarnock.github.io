@@ -1,5 +1,11 @@
 # Testing Documentation
 
+## Overview
+
+This project uses a comprehensive multi-layer testing strategy with
+TypeScript-based E2E tests and Go-based BDD tests for behavior-driven
+development.
+
 ## TypeScript Preference
 
 **All new test specifications should be written in TypeScript (.ts)** rather

@@ -10,6 +10,21 @@ The release management process follows semantic versioning with automated CI/CD
 pipelines through GitHub Actions. Each release is tagged, documented, and
 deployed to GitHub Pages with comprehensive testing and validation.
 
+## Bun-Specific CI/CD Considerations
+
+### Dependency Management
+
+- Use `bun install --frozen-lockfile` for reproducible builds
+- Bun lockfile (`bun.lock`) replaces package-lock.json
+- No global package installs in CI/CD for better reproducibility
+
+### Performance Benefits
+
+- **Installation Speed**: 3-5x faster than npm ci
+- **Disk Usage**: Reduced node_modules footprint
+- **TypeScript**: First-class support with faster compilation
+- **Caching**: Bun's global cache reduces CI/CD build times
+
 ## Versioning Strategy
 
 ### Semantic Versioning

@@ -314,6 +314,8 @@ bun run sync:env
   current API references
 - Verify library versions and compatibility before implementation
 - Keep documentation references current with project dependencies
+- Use Bun for package management and scripts (see
+  `docs/development/BUN_MIGRATION_GUIDE.md`)
 
 ## Context7 MCP Server Setup
 

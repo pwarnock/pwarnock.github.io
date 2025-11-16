@@ -15,13 +15,18 @@ featuring a unified design system and responsive design.
 ## 📋 Prerequisites
 
 - **Hugo Extended** v0.152.2 or later (required for Sass/SCSS support)
-- **Bun** latest (for package management and scripts)
-- **Node.js** LTS@latest (for asset processing compatibility)
+- **Bun** latest (primary package manager and runtime)
 - **Git** (for version control)
 
 ## 🛠️ Installation
 
-### 1. Install Hugo Extended
+### 1. Install Bun
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+### 2. Install Hugo Extended
 
 **macOS (Homebrew):**
 
@@ -35,10 +40,6 @@ brew install hugo
 # Download latest Hugo Extended
 curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.152.2_linux-amd64.tar.gz | tar -xz
 sudo mv hugo /usr/local/bin/hugo
-
-# Or install locally (recommended for development)
-curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.152.2_linux-amd64.tar.gz | tar -xz
-# The hugo binary will be ignored by .gitignore
 ```
 
 **Windows:**
@@ -46,19 +47,34 @@ curl -L https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_
 ```powershell
 # Download from https://github.com/gohugoio/hugo/releases/latest
 # Extract and add to PATH
-
-# Or install locally (recommended for development)
-Invoke-WebRequest -Uri "https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.152.2_windows-amd64.zip" -OutFile "hugo.zip"
-Expand-Archive -Path "hugo.zip" -DestinationPath "."
-# The hugo.exe binary will be ignored by .gitignore
 ```
+
+### 3. Install Dependencies
+
+```bash
+bun install
+```
+
+### 4. Development Server
+
+```bash
+bun run dev
+```
+
+Invoke-WebRequest -Uri
+"https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.152.2_windows-amd64.zip"
+-OutFile "hugo.zip" Expand-Archive -Path "hugo.zip" -DestinationPath "."
+
+# The hugo.exe binary will be ignored by .gitignore
+
+````
 
 **Verify installation:**
 
 ```bash
 hugo version
 # Should show v0.152.2 or later with "extended" in the output
-```
+````
 
 ### 2. Install Dependencies
 
