@@ -15,7 +15,8 @@ featuring a unified design system and responsive design.
 ## 📋 Prerequisites
 
 - **Hugo Extended** v0.152.2 or later (required for Sass/SCSS support)
-- **Node.js** LTS@latest (for npm scripts and asset processing)
+- **Bun** latest (for package management and scripts)
+- **Node.js** LTS@latest (for asset processing compatibility)
 - **Git** (for version control)
 
 ## 🛠️ Installation
@@ -59,10 +60,10 @@ hugo version
 # Should show v0.152.2 or later with "extended" in the output
 ```
 
-### 2. Install Node Dependencies
+### 2. Install Dependencies
 
 ```bash
-npm install
+bun install
 ```
 
 ## 🚦 Development
@@ -71,10 +72,10 @@ npm install
 
 ```bash
 # Using PM2 (recommended for persistent development)
-npm run dev
+bun run dev
 
 # Or using direct Hugo command
-npm run dev:legacy
+bun run dev:legacy
 ```
 
 The site will be available at `http://localhost:1313`
@@ -104,36 +105,36 @@ npm run dev:monitor
 
 ```bash
 # Build optimized site
-npm run build
+bun run build
 
 # Build with CSS processing
-npm run build:production
+bun run build:production
 ```
 
 ### CSS Development
 
 ```bash
 # Build CSS once
-npm run css:build
+bun run css:build
 
 # Watch CSS for changes
-npm run css:watch
+bun run css:watch
 ```
 
 ## 🧪 Testing & Validation
 
 ```bash
 # Run all validation checks
-npm run validate
+bun run validate
 
 # Lint configuration files
-npm run lint
+bun run lint
 
 # Check CSS only
-npm run lint:css
+bun run lint:css
 
 # Analyze bundle size
-npm run analyze
+bun run analyze
 ```
 
 ## 📁 Project Structure
@@ -267,4 +268,5 @@ for details.
 Built with ❤️ using [Hugo](https://gohugo.io/),
 [Tailwind CSS](https://tailwindcss.com/), and
 [Cody Framework](https://github.com/icodewith-ai/cody-framework)
+
 # Test change for guardrail

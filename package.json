@@ -60,7 +60,16 @@
     "test:coverage": "./scripts/dev-test-runner.sh --coverage unit",
     "test:e2e:watch": "./scripts/dev-test-runner.sh --watch e2e",
     "test:visual:watch": "./scripts/dev-test-runner.sh --watch visual",
-    "test:perf:watch": "./scripts/dev-test-runner.sh --watch performance"
+    "test:perf:watch": "./scripts/dev-test-runner.sh --watch performance",
+    "build:path": "./scripts/path-based-build.sh",
+    "build:content": "./scripts/path-based-build.sh --force",
+    "build:infra": "./scripts/path-based-build.sh --force",
+    "deploy:staging": "./scripts/deploy-staging.sh",
+    "deploy:production": "./scripts/deploy-production.sh",
+    "sync:env": "./scripts/sync-environments.sh",
+    "env:staging": "git checkout staging",
+    "env:production": "git checkout production",
+    "env:main": "git checkout main"
   },
   "keywords": [],
   "author": "Pete Warnock",
