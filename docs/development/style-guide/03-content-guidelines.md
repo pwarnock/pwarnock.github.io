@@ -37,19 +37,60 @@ When `customHTML: true`:
 
 ## Content Organization
 
-- **Blog Posts**: `/content/blog/posts/[slug]/index.md`
-- **Portfolio Items**: `/content/portfolio/[project-name]/index.md`
-- **Tool Pages**: `/content/tools/[tool-name]/index.md`
-- **Static Pages**: `/content/[page-name].md`
+- **Blog Posts**: `/content/blog/posts/[slug]/index.md` (Page Bundle -
+  **Recommended**)
+- **Portfolio Items**: `/content/portfolio/[project-name]/index.md` (Page
+  Bundle)
+- **Tool Pages**: `/content/tools/[tool-name]/index.md` (Page Bundle)
+- **Static Pages**: `/content/[page-name].md` (Single File)
+
+### Page Bundles (Recommended for Blog Posts)
+
+Page bundles (directories with `index.md`) are the recommended approach for blog
+posts because they:
+
+- **Keep related assets together** (images, downloads, etc.)
+- **Simplify image paths** (just filename, no full path needed)
+- **Better organization** (self-contained content units)
+- **Easier deployment** (assets travel with content)
+
+#### Page Bundle Structure
+
+```
+content/blog/posts/my-post/
+├── index.md          # Main content with frontmatter
+├── featured-image.png  # Post hero image
+├── screenshot.jpg      # Additional images
+└── diagram.svg        # Supporting assets
+```
+
+#### Frontmatter for Page Bundles
+
+```yaml
+---
+title: 'My Blog Post'
+date: 2025-01-01T00:00:00Z
+draft: false
+description: 'SEO description'
+summary: 'Brief summary for homepage (150-200 chars)'
+image: 'featured-image.png' # Just filename, no path needed
+tags: ['tag1', 'tag2']
+---
+```
 
 ## Blog Post Creation Guidelines
+
+**RECOMMENDED: Use Page Bundles for all blog posts**
+
+Page bundles (directories with `index.md`) are the recommended approach for
+better organization and asset management.
 
 **CRITICAL: Summary field is REQUIRED for all blog posts**
 
 The `summary` field in frontmatter is mandatory for proper display on homepage
 and section pages. Without it, posts will appear incomplete or broken.
 
-### Required Blog Post Frontmatter
+### Required Blog Post Frontmatter (Page Bundle)
 
 ```yaml
 ---
@@ -59,9 +100,23 @@ draft: false # Required: Set to false for published posts
 description: 'SEO description for search engines' # Required: Meta description
 summary: 'Required: Brief summary for homepage and list views (150-200
   characters)' # REQUIRED
+image: 'featured-image.png' # Recommended: Just filename for page bundles
 tags: ['tag1', 'tag2'] # Optional: For categorization
 categories: ['category'] # Optional: For grouping
 ---
+```
+
+### Creating a New Blog Post (Page Bundle)
+
+```bash
+# Create new blog post directory
+mkdir content/blog/posts/my-new-post
+
+# Create index.md with frontmatter
+touch content/blog/posts/my-new-post/index.md
+
+# Add images to the same directory
+cp my-image.png content/blog/posts/my-new-post/featured-image.png
 ```
 
 ### Summary Field Requirements

@@ -60,8 +60,8 @@ validate_post() {
         return 1
     fi
     
-    # Check summary length
-    local summary=$(sed -n '/^summary:/s/^summary: *//p' "$index_file" | tr -d '"')
+    # Check summary length (handle multi-line summaries)
+    local summary=$(sed -n '/^summary:/,/^$/p' "$index_file" | sed '1d;$d' | tr -d '\n"' | tr -s ' ')
     local summary_length=${#summary}
     
     if [[ $summary_length -lt 100 ]]; then
@@ -74,8 +74,17 @@ validate_post() {
     # Check frontmatter image parameter
     local frontmatter_image=$(sed -n '/^image:/s/^image: *//p' "$index_file" | tr -d '"')
     if [[ -n "$frontmatter_image" ]]; then
-        local full_path="$PROJECT_ROOT/static$frontmatter_image"
-        if [[ ! -f "$full_path" ]]; then
+        # Check for page bundle image first (in content directory)
+        local bundle_path="$post_dir/$frontmatter_image"
+        local static_path="$PROJECT_ROOT/static$frontmatter_image"
+        
+        if [[ -f "$bundle_path" ]]; then
+            # Page bundle image found
+            :
+        elif [[ -f "$static_path" ]]; then
+            # Static image found
+            :
+        else
             echo "❌ $(basename "$post_dir"): Frontmatter image not found: $frontmatter_image"
             return 1
         fi

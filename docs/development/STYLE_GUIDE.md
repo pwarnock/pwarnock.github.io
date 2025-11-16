@@ -15,7 +15,7 @@ maintainability and navigation.
 ### Content & Templates
 
 - **[Content Guidelines](style-guide/03-content-guidelines.md)** - Front matter,
-  blog posts, portfolio items, heading structure
+  page bundles, blog posts, portfolio items, heading structure
 - **[Template Conventions](style-guide/04-template-conventions.md)** - Naming
   conventions, partials, template logic, code blocks
 
