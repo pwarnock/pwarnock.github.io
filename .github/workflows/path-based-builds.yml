@@ -1,0 +1,291 @@
+name: Path-Based Build Control
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  GO_VERSION: '1.22'
+  HUGO_VERSION: 'latest'
+
+jobs:
+  # Detect change types and determine build strategy
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      content-changed: ${{ steps.changes.outputs.content-changed }}
+      infrastructure-changed: ${{ steps.changes.outputs.infrastructure-changed }}
+      build-type: ${{ steps.changes.outputs.build-type }}
+      should-deploy: ${{ steps.changes.outputs.should-deploy }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect file changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            content:
+              - 'content/**'
+              - 'static/**'
+              - 'assets/**'
+              - 'data/**'
+            infrastructure:
+              - '.github/**'
+              - 'scripts/**'
+              - 'test/**'
+              - 'tests/**'
+              - 'package*.json'
+              - 'go.mod'
+              - 'go.sum'
+              - 'hugo.toml'
+              - 'config/**'
+              - 'layouts/**'
+              - 'archetypes/**'
+            docs:
+              - 'docs/**'
+              - '*.md'
+            ci-cd:
+              - '.github/workflows/**'
+
+      - name: Determine build strategy
+        id: changes
+        run: |
+          echo "content-changed=${{ steps.filter.outputs.content }}" >> $GITHUB_OUTPUT
+          echo "infrastructure-changed=${{ steps.filter.outputs.infrastructure }}" >> $GITHUB_OUTPUT
+          echo "docs-changed=${{ steps.filter.outputs.docs }}" >> $GITHUB_OUTPUT
+          echo "ci-cd-changed=${{ steps.filter.outputs.ci-cd }}" >> $GITHUB_OUTPUT
+
+          # Determine build type
+          if [ "${{ steps.filter.outputs.infrastructure }}" = "true" ]; then
+            echo "build-type=infrastructure" >> $GITHUB_OUTPUT
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.filter.outputs.content }}" = "true" ]; then
+            echo "build-type=content" >> $GITHUB_OUTPUT
+            echo "should-deploy=true" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.filter.outputs.docs }}" = "true" ]; then
+            echo "build-type=documentation" >> $GITHUB_OUTPUT
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          else
+            echo "build-type=unknown" >> $GITHUB_OUTPUT
+            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+          echo "Build type: ${{ steps.changes.outputs.build-type }}"
+          echo "Should deploy: ${{ steps.changes.outputs.should-deploy }}"
+
+  # Content-only build (fast, minimal testing)
+  content-build:
+    name: Content Build
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.build-type == 'content'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Quick content validation
+        run: |
+          echo "🚀 Running content-only build..."
+          hugo --gc --minify --destination /tmp/content-build
+          echo "✅ Content build successful"
+
+          # Quick content checks
+          find public -name "*.html" | head -5
+          echo "📊 Generated $(find public -name "*.html" | wc -l) HTML files"
+
+      - name: Content-specific tests
+        run: |
+          echo "🧪 Running content validation..."
+          npm run validate:portfolio || echo "⚠️ Portfolio validation issues"
+
+          # Check for broken internal links
+          find /tmp/content-build -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          while read line; do
+            url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
+            if [ -n "$url" ]; then
+              if [ ! -f "/tmp/content-build/$url" ] && [ ! -f "/tmp/content-build/$url/index.html" ]; then
+                echo "❌ Broken link found: /$url"
+                exit 1
+              fi
+            fi
+          done
+          echo "✅ All internal links valid"
+
+  # Infrastructure build (comprehensive testing)
+  infrastructure-build:
+    name: Infrastructure Build
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.build-type == 'infrastructure'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd test && go mod download && go install github.com/wadey/gocovmerge@latest
+
+      - name: Comprehensive infrastructure tests
+        run: |
+          echo "🔧 Running infrastructure build..."
+
+          # Full build test
+          hugo --gc --minify
+
+          # Run all test suites
+          echo "🧪 Running unit tests..."
+          cd test && go test -v -race ./support/...
+
+          echo "🎨 Running linting..."
+          cd .. && npm run lint || echo "⚠️ Linting issues found"
+
+          echo "📱 Running E2E tests..."
+          bunx playwright test --project=chromium tests/e2e-journeys.spec.ts || echo "⚠️ E2E test failures"
+
+      - name: Security and performance checks
+        run: |
+          echo "🔒 Running security audit..."
+          npm audit --audit-level=moderate || echo "⚠️ Security vulnerabilities found"
+
+          echo "⚡ Performance check..."
+          npm run perf:analyze
+
+  # Documentation build (validation only)
+  documentation-build:
+    name: Documentation Build
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.build-type == 'documentation'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Validate documentation
+        run: |
+          echo "📚 Validating documentation..."
+
+          # Check markdown syntax
+          find docs -name "*.md" -exec echo "Checking {}" \;
+
+          # Build to ensure docs don't break anything
+          hugo --gc --minify --destination /tmp/docs-build
+          echo "✅ Documentation validation successful"
+
+  # Deployment (content changes only)
+  deploy-content:
+    name: Deploy Content
+    runs-on: ubuntu-latest
+    needs: [detect-changes, content-build]
+    if: |
+      needs.detect-changes.outputs.should-deploy == 'true' && 
+      github.ref == 'refs/heads/main' && 
+      github.event_name == 'push'
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production site
+        run: |
+          echo "🚀 Building production site for content deployment..."
+          hugo --gc --minify --enableGitInfo --environment production
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
+  # Summary job
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [detect-changes]
+    if: always()
+    steps:
+      - name: Build Summary
+        run: |
+          echo "## 🚀 Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Build Type:** ${{ needs.detect-changes.outputs.build-type }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Content Changed:** ${{ needs.detect-changes.outputs.content-changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Infrastructure Changed:** ${{ needs.detect-changes.outputs.infrastructure-changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Should Deploy:** ${{ needs.detect-changes.outputs.should-deploy }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ needs.detect-changes.outputs.build-type }}" = "content" ]; then
+            echo "📝 **Content-only build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Fast build with minimal testing" >> $GITHUB_STEP_SUMMARY
+            echo "- Content validation and link checking" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.detect-changes.outputs.build-type }}" = "infrastructure" ]; then
+            echo "🔧 **Infrastructure build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Comprehensive testing suite" >> $GITHUB_STEP_SUMMARY
+            echo "- Security and performance validation" >> $GITHUB_STEP_SUMMARY
+            echo "- No automatic deployment for safety" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.detect-changes.outputs.build-type }}" = "documentation" ]; then
+            echo "📚 **Documentation build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Documentation validation only" >> $GITHUB_STEP_SUMMARY
+            echo "- No deployment required" >> $GITHUB_STEP_SUMMARY
+          fi

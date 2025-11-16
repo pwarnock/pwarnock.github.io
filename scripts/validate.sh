@@ -8,7 +8,7 @@ echo "================================"
 
 # 1. Build the site
 echo "📦 Building site..."
-if ! npm run build; then
+if ! bun run build; then
     echo "❌ Build failed"
     exit 1
 fi
@@ -16,9 +16,9 @@ echo "✅ Build successful"
 
 # 2. Run linting
 echo "🔍 Running linters..."
-npm run lint:yaml || exit 1
-npm run lint:toml || exit 1
-npm run lint:css || exit 1
+bun run lint:yaml || exit 1
+bun run lint:toml || exit 1
+bun run lint:css || exit 1
 echo "✅ Linting passed"
 
 # 3. Blog post validation
@@ -58,9 +58,9 @@ fi
 
 # 7. Security check
 echo "🔒 Running security check..."
-if ! npm audit --audit-level=moderate; then
+if ! bun audit --audit-level=moderate; then
     echo "⚠️  Security vulnerabilities found"
-    echo "💡 Run 'npm audit fix' to resolve"
+    echo "💡 Run 'bun audit fix' to resolve"
 fi
 
 # 8. Performance check (basic)
