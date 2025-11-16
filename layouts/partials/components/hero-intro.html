@@ -3,40 +3,42 @@
   currentHero: 'portfolio',
   heroes: {
     portfolio: {
-      title: 'Welcome to My Portfolio',
-      description: 'This site demonstrates modern web development practices and serves as a comprehensive example of my technical expertise. Built with cutting-edge technologies and following enterprise-grade development processes.',
+      title: 'Open Source Portfolio',
+      description: 'This website is an open-source example of modern web development practices. Built with Hugo, DaisyUI, and Tailwind CSS v4, it demonstrates enterprise-grade development workflows, comprehensive testing, and accessibility-first design. All code is available on GitHub for learning and reference.',
       features: [
-        { name: 'Modern Stack', icon: '⚡', items: ['Hugo', 'DaisyUI', 'Alpine.js', 'Tailwind CSS v4', 'Bun package manager'] },
-        { name: 'Enterprise Processes', icon: '🏗️', items: ['Comprehensive testing', 'CI/CD pipelines', 'Accessibility compliance', 'Performance monitoring'] },
-        { name: 'Open Source', icon: '🌟', items: ['All code available on GitHub', 'Detailed documentation', 'Implementation guides'] }
+        { name: 'Modern Stack', icon: '⚡', items: ['Hugo static site', 'DaisyUI components', 'Alpine.js interactivity', 'Tailwind CSS v4', 'Bun package manager'] },
+        { name: 'Development Practices', icon: '🏗️', items: ['Enterprise testing', 'CI/CD pipelines', 'Accessibility compliance', 'Performance monitoring'] },
+        { name: 'Open Source', icon: '🌟', items: 'MIT licensed', 'GitHub repository', 'Implementation guides', 'Learning resource'] }
       ],
-      cta: { text: 'Learn More About My Approach', link: '/about' }
+      cta: { text: 'Explore the Code', link: 'https://github.com/pwarnock/pwarnock.github.io' }
     },
-    construction: {
-      title: 'Site Under Construction',
-      description: 'Currently building new features and improvements. Check back soon for the latest updates.',
+    showcase: {
+      title: 'Featured Projects',
+      description: 'Explore my latest work and technical implementations. Each project demonstrates specific capabilities and modern development practices, with detailed case studies and live demonstrations.',
       features: [
-        { name: 'In Development', icon: '🔧', items: ['New components', 'Performance optimizations', 'Enhanced features'] },
-        { name: 'Coming Soon', icon: '🚀', items: ['Advanced tools', 'Interactive demos', 'Extended documentation'] }
+        { name: 'AI Tools', icon: '🤖', items: 'Comprehensive reviews', 'Implementation examples', 'Performance benchmarks'] },
+        { name: 'Web Applications', icon: '🌐', items: 'Full-stack solutions', 'Cloud architecture', 'API integration'] },
+        { name: 'DevOps Solutions', icon: '🔧', items: 'Automation pipelines', 'Infrastructure as code', 'Monitoring systems'] }
       ],
-      cta: { text: 'View Progress', link: '/tools' }
+      cta: { text: 'View All Projects', link: '/portfolio' }
     },
-    maintenance: {
-      title: 'System Maintenance',
-      description: 'Performing scheduled updates and optimizations. Service will be back shortly.',
+    about: {
+      title: 'About This Approach',
+      description: 'Learn about my development philosophy, technical expertise, and professional experience. Discover how I build scalable, maintainable solutions that balance innovation with reliability.',
       features: [
-        { name: 'Updates', icon: '🔄', items: ['Security patches', 'Performance improvements', 'Bug fixes'] },
-        { name: 'Monitoring', icon: '📊', items: ['System health checks', 'Performance metrics', 'Error tracking'] }
+        { name: 'Technical Leadership', icon: '👔', items: ['15+ years experience', 'Team mentoring', 'Process improvement'] },
+        { name: 'Development Philosophy', icon: '💡', items: ['Pragmatic approach', 'Quality focus', 'Continuous learning'] },
+        { name: 'Open Source Contribution', icon: '🌟', items: 'Community engagement', 'Knowledge sharing', 'Collaborative development'] }
       ],
-      cta: { text: 'Check Status', link: '/status' }
+      cta: { text: 'Read My Story', link: '/about' }
     }
   }
 }">
   <h2 class="text-2xl lg:text-3xl font-semibold text-base-content mb-4" x-text="$heroes[currentHero].title">
     <span x-show="currentHero === 'portfolio'">🎯</span>
-    <span x-show="currentHero === 'construction'">🔧</span>
-    <span x-show="currentHero === 'maintenance'">🔄</span>
-    <span x-text="$heroes[currentHero].title"></span>
+    <span x-show="currentHero === 'showcase'">🚀</span>
+    <span x-show="currentHero === 'about'">👔</span>
+    <span class="capitalize" x-text="$heroes[currentHero].title"></span>
   </h2>
   
   <p class="text-lg text-base-content/80 mb-6 max-w-3xl mx-auto" x-text="$heroes[currentHero].description">
@@ -50,12 +52,42 @@
         :class="currentHero === heroKey ? 'btn btn-primary' : 'btn btn-outline'"
         class="btn-sm">
         <span x-show="heroKey === 'portfolio'">🎯</span>
-        <span x-show="heroKey === 'construction'">🔧</span>
-        <span x-show="heroKey === 'maintenance'">🔄</span>
+        <span x-show="heroKey === 'showcase'">🚀</span>
+        <span x-show="heroKey === 'about'">👔</span>
         <span class="capitalize" x-text="heroKey"></span>
       </button>
     </template>
   </div>
+  
+  <!-- Key Features Section -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <template x-for="feature in heroes[currentHero].features">
+      <div class="card bg-base-100/50 backdrop-blur-sm border border-primary/20">
+        <div class="card-body p-4 text-center">
+          <h3 class="card-title text-lg font-semibold text-primary mb-2">
+            <span x-text="feature.icon"></span>
+            <span x-text="feature.name"></span>
+          </h3>
+          <p class="text-base-content/70">
+            <template x-for="item in feature.items">
+              <span x-text="item"></span>
+              <span x-show="!$last(item)">, </span>
+            </template>
+          </p>
+        </div>
+      </div>
+    </template>
+  </div>
+  
+  <!-- Call to Action -->
+  <div class="text-center">
+    <a 
+      :href="heroes[currentHero].cta.link" 
+      class="btn btn-primary btn-lg"
+      x-text="heroes[currentHero].cta.text">
+    </a>
+  </div>
+</div>
   
   <!-- Key Features Section -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
