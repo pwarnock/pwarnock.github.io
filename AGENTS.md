@@ -225,6 +225,88 @@ workflow guidelines.
 - Follow document templates in .cody/config/templates/
 - Maintain living documents (feature-backlog.md, release-notes.md)
 
+## Testing Infrastructure
+
+This project features a comprehensive, enterprise-grade testing infrastructure:
+
+### Multi-Layer Testing Strategy
+
+#### Unit Tests (Go)
+
+- **Framework**: Go testing with structured logging
+- **Coverage**: 4.5% baseline with automated reporting
+- **Location**: `test/support/` directory
+- **Command**: `go test -v -race ./support/...`
+
+#### Behavior-Driven Development (BDD)
+
+- **Framework**: Godog (Cucumber for Go)
+- **Coverage**: 9/9 scenarios passing
+- **Location**: `test/features/` and `test/step_definitions/`
+- **Command**: `cd test && go test -v ./...`
+
+#### End-to-End Testing (TypeScript)
+
+- **Framework**: Playwright with TypeScript
+- **Coverage**: Visual regression, performance, user journeys
+- **Location**: `tests/` directory
+- **Command**: `bunx playwright test`
+
+### Development Workflow
+
+#### Path-Based Build Control
+
+Automatically detects change types and applies optimal build strategies:
+
+- **Content Changes**: Fast build (~30s) with validation
+- **Infrastructure Changes**: Comprehensive testing (~5min)
+- **Documentation Changes**: Validation only (~1min)
+
+```bash
+# Automatic detection
+bun run build:path
+
+# Force specific builds
+bun run build:infra    # Comprehensive testing
+bun run build:content  # Fast content build
+```
+
+#### Watch Mode Development
+
+```bash
+# Watch all tests
+bun run test:watch
+
+# Watch specific test types
+bun run test:e2e:watch      # End-to-end tests
+bun run test:visual:watch   # Visual regression
+bun run test:perf:watch     # Performance benchmarks
+```
+
+### Environment Management
+
+#### Pseudo Upstream Remotes
+
+Logical environment separation using same physical repository:
+
+```bash
+# Environment branches
+git checkout staging     # Pre-production testing
+git checkout production  # Live deployment
+
+# Deployment commands
+bun run deploy:staging
+bun run deploy:production
+bun run sync:env
+```
+
+#### CI/CD Pipeline
+
+- **Multi-environment matrix**: Ubuntu, Windows, macOS
+- **Cross-browser testing**: Chromium, Firefox, Safari
+- **Coverage gates**: Automated quality assurance
+- **Security scanning**: Dependency vulnerability checks
+
 ## Documentation & Best Practices
 
 - Always check Context7 for up-to-date library documentation and best practices
@@ -401,7 +483,7 @@ may provide outdated information.**
 4. If you don't say "push", do not push and ask again or wait for clarification
 5. Never bypass the pre-push guardrail
 
-**Why**: The guardrail exists to catch mistakes before they reach production. 
+**Why**: The guardrail exists to catch mistakes before they reach production.
 Bypassing it defeats the entire purpose and removes your safety check.
 
 ## Testing

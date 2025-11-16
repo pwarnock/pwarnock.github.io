@@ -1,6 +1,6 @@
 {
   "name": "pwarnock.github.io",
-  "version": "0.13.3",
+  "version": "0.14.0",
   "description": "",
   "type": "module",
   "main": "postcss.config.cjs",
@@ -31,7 +31,6 @@
     "validate": "./scripts/validate.sh",
     "validate:portfolio": "bun run portfolio-validate",
     "test:ga": "bun run test-ga",
-    "version": "0.13.1",
     "letta:config:init": "./scripts/letta-config-init.sh",
     "letta:config:update": "./scripts/letta-config-update.sh",
     "postinstall": "bun x husky",
