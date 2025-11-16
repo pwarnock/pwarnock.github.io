@@ -31,6 +31,9 @@ ignoreLogs = ['warning-goldmark-raw-html']
 # Enable git info for commit hash in footer
 enableGitInfo = true
 
+# Build future-dated content (for tools and scheduled posts)
+buildFuture = true
+
 # Performance and caching configurations
 [caches]
   [caches.getjson]

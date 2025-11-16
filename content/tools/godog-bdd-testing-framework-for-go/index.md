@@ -1,6 +1,6 @@
 ---
 title: 'Godog - BDD Testing Framework for Go'
-date: 2025-11-15T21:35:00-08:00
+date: 2025-11-15T20:35:00-08:00
 description:
   'Godog is a Behavior-Driven Development (BDD) testing framework for Go that
   enables writing human-readable tests using Gherkin syntax, bridging the gap

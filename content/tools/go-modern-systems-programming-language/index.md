@@ -1,6 +1,6 @@
 ---
 title: 'Go - Modern Systems Programming Language'
-date: 2025-11-15T21:05:00-08:00
+date: 2025-11-15T20:05:00-08:00
 description:
   'Go is a modern systems programming language designed for simplicity,
   reliability, and efficiency. Perfect for backend services, CLI tools, and

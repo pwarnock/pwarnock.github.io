@@ -1,6 +1,6 @@
 ---
 title: 'Bun - Lightning-Fast JavaScript Runtime & Package Manager'
-date: 2025-11-15T21:00:00-08:00
+date: 2025-11-15T20:00:00-08:00
 description:
   'Bun is a modern JavaScript runtime and package manager that delivers 20x
   faster dependency installation and near-instant script execution,
