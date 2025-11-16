@@ -72,7 +72,7 @@ validate_post() {
     
     # Check for images and their paths
     # Check frontmatter image parameter
-    local frontmatter_image=$(sed -n '/^image:/s/^image: *//p' "$index_file" | tr -d '"')
+    local frontmatter_image=$(sed -n '/^image:/s/^image: *//p' "$index_file" | tr -d '"' | tr -d "'")
     if [[ -n "$frontmatter_image" ]]; then
         # Check for page bundle image first (in content directory)
         local bundle_path="$post_dir/$frontmatter_image"
