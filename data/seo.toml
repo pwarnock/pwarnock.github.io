@@ -1,0 +1,37 @@
+# Title processing and SEO configuration
+
+[cleaning]
+# Phrases to remove from titles to avoid repetition
+phrases = [
+    "Peter Warnock",
+    "Personal portfolio and blog of",
+    "  ",
+    "- ",
+    " - "
+]
+
+# Character limits for title truncation
+[limits]
+max_title_length = 50
+truncated_length = 45
+
+[defaults]
+# Default tagline for homepage
+tagline = "Fullstack Developer & Technology Leader"
+
+# Default fallback paths
+[paths]
+og_image = "/img/og-image.png"
+favicon_32 = "/favicon-32x32.png"
+favicon_16 = "/favicon-16x16.png"
+apple_touch_icon = "/apple-touch-icon.png"
+favicon_ico = "/favicon.ico"
+
+# Default meta descriptions
+[descriptions]
+homepage = "Fullstack developer, cloud architect, and technology leader specializing in modern web development, DevOps, and AI-driven solutions."
+default = "Personal portfolio and blog showcasing fullstack development, cloud architecture, and technology leadership projects."
+
+# Default keywords
+[keywords]
+default = "fullstack developer, devops, cloud engineering, technology leader, AI tools, software architecture"

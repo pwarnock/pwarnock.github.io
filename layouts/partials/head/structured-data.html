@@ -1,0 +1,56 @@
+{{/* Structured Data based on page type */}}
+{{ if eq .Type "page" }}
+  {{ if eq .Title "About" }}
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "jobTitle": "Cloud Engineering & DevOps Leadership",
+      "url": "{{ .Site.BaseURL }}",
+      "sameAs": [
+        "https://github.com/pwarnock",
+        "https://www.linkedin.com/in/peterwarnock",
+        "https://x.com/pwarnock"
+      ],
+      "knowsAbout": [
+        "Cloud Engineering",
+        "DevOps",
+        "Fullstack Development",
+        "AI Tools",
+        "Technology Leadership"
+      ]
+    }
+  {{ else }}
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ .Site.BaseURL }}",
+      "description": "{{ .Site.Params.description }}",
+      "author": {
+        "@type": "Person",
+        "name": "Peter Warnock"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Peter Warnock"
+      }
+    }
+  {{ end }}
+{{ else }}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description }}",
+    "author": {
+      "@type": "Person",
+      "name": "Peter Warnock"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Peter Warnock"
+    }
+  }
+{{ end }}

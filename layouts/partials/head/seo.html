@@ -1,0 +1,19 @@
+{{/* SEO Meta Tags */}}
+<meta name="author" content="{{ .Site.Params.Author.name | default .Site.Title }}">
+<meta name="keywords" content="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}, {{ end }}{{ .Site.Params.keywords | default "fullstack developer, devops, cloud engineering, technology leader" }}">
+<meta name="robots" content="index, follow">
+<meta name="language" content="{{ .Site.LanguageCode }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ .Permalink }}">
+{{ if .Site.Params.twitter }}<meta property="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ .Permalink }}">

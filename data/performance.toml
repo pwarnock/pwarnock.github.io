@@ -1,0 +1,37 @@
+# External domains for DNS prefetching and performance optimization
+
+[[domains]]
+url = "https://fonts.googleapis.com"
+type = "fonts"
+description = "Google Fonts CDN"
+
+[[domains]]
+url = "https://github.com"
+type = "social"
+description = "GitHub platform"
+
+[[domains]]
+url = "https://linkedin.com"
+type = "social"
+description = "LinkedIn professional network"
+
+[[domains]]
+url = "https://x.com"
+type = "social"
+description = "X (Twitter) platform"
+
+[[domains]]
+url = "https://cdn.jsdelivr.net"
+type = "cdn"
+description = "jsDelivr CDN for Alpine.js"
+
+[[domains]]
+url = "https://www.googletagmanager.com"
+type = "analytics"
+description = "Google Tag Manager"
+
+# Configuration for when to prefetch
+[prefetch]
+enabled = true
+types = ["fonts", "social", "cdn"]
+# Note: analytics domains are only prefetched in production

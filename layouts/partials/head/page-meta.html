@@ -1,0 +1,41 @@
+{{/* Data-driven title processing */}}
+{{ partial "head/title-processing.html . . }}
+
+<!-- SEO Meta Tags -->
+{{ partial "head/seo.html" . }}
+
+<!-- Open Graph / Twitter with data-driven defaults -->
+{{ $seoConfig := site.Data.seo }}
+<meta property="og:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
+<meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description | default $seoConfig.descriptions.default }}{{ end }}">
+<meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ $seoConfig.defaults.paths.og_image | absURL }}{{ end }}">
+
+<meta property="twitter:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
+<meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description | default $seoConfig.descriptions.default }}{{ end }}">
+<meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ $seoConfig.defaults.paths.og_image | absURL }}{{ end }}">
+
+<!-- Data-driven DNS Prefetch for performance -->
+{{ partial "head/dns-prefetch.html" . }}
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{{ partial "head/structured-data.html" . }}
+</script>
+
+<!-- Data-driven Favicons -->
+{{ $seoConfig := site.Data.seo }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default $seoConfig.defaults.paths.favicon_32 }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.favicon_16 | default $seoConfig.defaults.paths.favicon_16 }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.apple_touch_icon | default $seoConfig.defaults.paths.apple_touch_icon }}">
+<link rel="icon" href="{{ .Site.Params.favicon_ico | default $seoConfig.defaults.paths.favicon_ico }}">
+
+<!-- RSS Feed -->
+{{ with .OutputFormats.Get "rss" }}
+<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+{{ end }}
+
+<!-- Analytics -->
+{{ partial "head/analytics.html" . }}
+
+<!-- Accessibility Enhancements -->
+{{ partial "head/accessibility.html" . }}

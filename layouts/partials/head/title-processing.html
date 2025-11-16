@@ -1,0 +1,32 @@
+{{/* Data-driven title processing */}}
+{{ $seoConfig := site.Data.seo }}
+{{ $title := .Title }}
+{{ $siteTitle := .Site.Title }}
+{{ $cleanTitle := $title }}
+
+{{ if and $title (ne $title "") }}
+    {{/* Remove configured phrases to avoid word repetitions */}}
+    {{ range $seoConfig.cleaning.phrases }}
+        {{ $cleanTitle = replace $cleanTitle . "" }}
+    {{ end }}
+    {{ $cleanTitle = trim $cleanTitle " " }}
+    
+    {{/* Check if title exceeds configured max length */}}
+    {{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}
+        {{/* For long titles, truncate to configured length */}}
+        <title>{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ $siteTitle }}</title>
+    {{ else if ne $cleanTitle "" }}
+        {{/* For normal titles, use full cleaned title */}}
+        <title>{{ $cleanTitle }} | {{ $siteTitle }}</title>
+    {{ else }}
+        {{/* Fallback if title becomes empty after cleaning */}}
+        <title>{{ $title }} | {{ $siteTitle }}</title>
+    {{ end }}
+{{ else }}
+    {{/* Homepage or pages without title - use site title with configured tagline */}}
+    <title>{{ $siteTitle }} | {{ $seoConfig.defaults.tagline }}</title>
+    {{ $cleanTitle = $seoConfig.defaults.tagline }}
+{{ end }}
+
+{{/* Use configured description or fallback */}}
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description | default $seoConfig.descriptions.default }}{{ end }}">

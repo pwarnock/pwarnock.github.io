@@ -1,0 +1,6 @@
+{{/* Data-driven DNS prefetching for performance */}}
+{{ $prefetchDomains := where (site.Data.performance.domains) "type" "in" (site.Data.performance.prefetch.types) }}
+
+{{ range $prefetchDomains }}
+<link rel="dns-prefetch" href="{{ .url }}">
+{{ end }}
