@@ -1,16 +1,25 @@
 {{/* Data-driven title processing */}}
-{{ partial "head/title-processing.html . . }}
+{{ partial "head/title-processing.html" . }}
 
 <!-- SEO Meta Tags -->
 {{ partial "head/seo.html" . }}
 
 <!-- Open Graph / Twitter with data-driven defaults -->
 {{ $seoConfig := site.Data.seo }}
-<meta property="og:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
+{{ $title := .Title }}
+{{ $cleanTitle := $title }}
+{{ if and $title (ne $title "") }}
+    {{/* Remove configured phrases to avoid word repetitions */}}
+    {{ range $seoConfig.cleaning.phrases }}
+        {{ $cleanTitle = replace $cleanTitle . "" }}
+    {{ end }}
+    {{ $cleanTitle = trim $cleanTitle " " }}
+{{ end }}
+<meta property="og:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ .Site.Title }}{{ else }}{{ $cleanTitle }} | {{ .Site.Title }}{{ end }}{{ else }}{{ .Site.Title }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description | default $seoConfig.descriptions.default }}{{ end }}">
 <meta property="og:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ $seoConfig.defaults.paths.og_image | absURL }}{{ end }}">
 
-<meta property="twitter:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ $siteTitle }}{{ else }}{{ $cleanTitle }} | {{ $siteTitle }}{{ end }}{{ else }}{{ $siteTitle }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
+<meta property="twitter:title" content="{{ if and $title (ne $title "") }}{{ if gt (len $cleanTitle) $seoConfig.limits.max_title_length }}{{ slicestr $cleanTitle $seoConfig.limits.truncated_length }} | {{ .Site.Title }}{{ else }}{{ $cleanTitle }} | {{ .Site.Title }}{{ end }}{{ else }}{{ .Site.Title }} | {{ $seoConfig.defaults.tagline }}{{ end }}">
 <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description | default $seoConfig.descriptions.default }}{{ end }}">
 <meta property="twitter:image" content="{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ $seoConfig.defaults.paths.og_image | absURL }}{{ end }}">
 
