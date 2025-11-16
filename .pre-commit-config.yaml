@@ -21,7 +21,7 @@ repos:
         name: Bun Tests
         entry: bun run test
         language: system
-        pass: true
+        pass: false
         always_run: true
 
   # Secret scanning with Gitleaks
