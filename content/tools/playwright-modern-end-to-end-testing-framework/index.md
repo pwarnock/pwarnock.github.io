@@ -1,6 +1,6 @@
 ---
 title: 'Playwright - Modern End-to-End Testing Framework'
-date: 2025-11-15T21:10:00-08:00
+date: 2025-11-15T20:10:00-08:00
 description:
   'Playwright is a modern end-to-end testing framework for web applications that
   provides reliable cross-browser testing, mobile emulation, and powerful
