@@ -39,7 +39,7 @@
         </nav>
 
         <!-- Site Description (under legal) -->
-        <p class="text-xs opacity-60 text-right">{{ .Site.Params.description }}</p>
+         <p class="text-xs opacity-70 text-right">{{ .Site.Params.description }}</p>
       </div>
 
     </div>
@@ -52,9 +52,9 @@
        <div class="flex flex-wrap items-center gap-2">
          <p class="text-xs opacity-70">Copyright © {{ now.Year }}</p>
          <p class="text-xs opacity-70">{{ .Site.Title }}</p>
-         <p class="text-xs opacity-50">
-         v{{ .Site.Data.version.current }}{{ with .Site.Data.version.hash }} ({{ . }}){{ end }}
-         </p>
+          <p class="text-xs opacity-70">
+          v{{ .Site.Data.version.current }}{{ with .Site.Data.version.hash }} ({{ . }}){{ end }}
+          </p>
        </div>
        <a href="#top" class="link link-hover text-xs opacity-70 inline-flex items-center gap-1 ml-auto" aria-label="Back to top of page">
          <span>↑</span>

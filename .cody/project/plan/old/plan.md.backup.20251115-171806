@@ -21,12 +21,10 @@ This document defines how the product will be built and when.
 This plan outlines the implementation of rebuilding peterwarnock.com, a personal
 portfolio and blog site, with a stable, maintainable frontend using Hugo,
 Tailwind CSS v4, and Daisy UI. The project has progressed through versions
-v0.1.0 through v0.13.4, completing the spacing scale implementation, design
-system establishment, automated release processes, radar metadata structure, and
-performance optimizations. The site is now production-ready with comprehensive
-tooling and enhanced content management while preserving all existing
-functionality (blog, portfolio, newsletter, social links). Production is
-currently running v0.13.4 (faf6a8e).
+v0.1.0 through v0.9.3, with current work on v0.10.0 spacing scale
+implementation. The goal is to resolve style conflicts, improve component
+architecture, and enable easier maintenance while preserving all existing
+functionality (blog, portfolio, newsletter, social links).
 
 ## Architecture
 
@@ -62,12 +60,10 @@ comprehensive validation pipeline.
 - Add newsletter subscription and social link components
 - Configure SEO and GitHub Pages deployment
 - Test responsiveness and component alignment across devices
-- Implement CSS variable-based spacing scale system (COMPLETED)
-- Set up PM2 development server management (COMPLETED)
-- Create comprehensive linting and validation pipeline (COMPLETED)
-- Address security vulnerabilities and dependency updates (COMPLETED)
-- Add radar metadata structure to tools content for BYOR integration
-- Enhance about page content and SEO optimization
+- Implement CSS variable-based spacing scale system
+- Set up PM2 development server management
+- Create comprehensive linting and validation pipeline
+- Address security vulnerabilities and dependency updates
 
 ## Tools & Services
 
@@ -91,11 +87,9 @@ comprehensive validation pipeline.
 - Time required to resolve remaining color and alignment issues
 - Compatibility of Daisy UI with existing content structure
 - Managing CSS variable scope and inheritance during spacing scale
-  implementation (RESOLVED)
-- Maintaining zero visual regressions during systematic refactoring (ACHIEVED)
-- Balancing automation with manual validation processes (OPTIMIZED)
-- Ensuring radar metadata structure compatibility with future BYOR integration
-- Maintaining content quality during about page enhancement
+  implementation
+- Maintaining zero visual regressions during systematic refactoring
+- Balancing automation with manual validation processes
 
 ## Milestones
 
@@ -106,15 +100,8 @@ comprehensive validation pipeline.
 - Milestone 4: Testing, SEO verification, and deployment preparation - COMPLETED
 - Milestone 5: Final deployment and post-launch validation - COMPLETED
 - Milestone 6: Security updates and dependency management (v0.9.3) - COMPLETED
-- Milestone 7: Spacing scale implementation with CSS variables (v0.10.0) -
-  COMPLETED
-- Milestone 8: Blog layout optimization and media embed support (v0.12.0) -
-  COMPLETED
-- Milestone 9: Radar metadata structure implementation (v0.13.0) - COMPLETED
-- Milestone 10: CSS architecture fixes and DaisyUI v5 compatibility
-  (v0.13.1-v0.13.3) - COMPLETED
-- Milestone 11: Performance optimizations and theme restoration (v0.13.4) -
-  COMPLETED
+- Milestone 7: Spacing scale implementation with CSS variables (v0.10.0) - IN
+  PROGRESS
 
 ## Environment Setup
 

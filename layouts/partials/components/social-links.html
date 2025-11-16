@@ -1,46 +1,26 @@
 {{/* Social Links Component */}}
 <div class="flex flex-wrap justify-center gap-2 sm:gap-4" role="navigation" aria-label="Social media links">
 {{ if .Site.Params.github }}
-{{ partial "components/button.html" (dict
-  "href" .Site.Params.github
-  "variant" "ghost"
-  "size" "md"
-  "class" "btn-circle"
-  "ariaLabel" "GitHub"
-  "icon" (partial "components/icon.html" (dict "name" "github" "size" "sm"))
-) }}
+<a href="{{ .Site.Params.github }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
+  {{ partial "components/icon.html" (dict "name" "github" "size" "sm" "ariaLabel" "GitHub") }}
+</a>
 {{ end }}
 
 {{ if .Site.Params.linkedin }}
-{{ partial "components/button.html" (dict
-  "href" .Site.Params.linkedin
-  "variant" "ghost"
-  "size" "md"
-  "class" "btn-circle"
-  "ariaLabel" "LinkedIn"
-  "icon" (partial "components/icon.html" (dict "name" "linkedin" "size" "sm"))
-) }}
+<a href="{{ .Site.Params.linkedin }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+  {{ partial "components/icon.html" (dict "name" "linkedin" "size" "sm" "ariaLabel" "LinkedIn") }}
+</a>
 {{ end }}
 
 {{ if .Site.Params.twitter }}
-{{ partial "components/button.html" (dict
-  "href" .Site.Params.twitter
-  "variant" "ghost"
-  "size" "md"
-  "class" "btn-circle"
-  "ariaLabel" "Twitter"
-  "icon" (partial "components/icon.html" (dict "name" "twitter" "size" "sm"))
-) }}
+<a href="{{ .Site.Params.twitter }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="Twitter" rel="noopener noreferrer" target="_blank">
+  {{ partial "components/icon.html" (dict "name" "twitter" "size" "sm" "ariaLabel" "Twitter") }}
+</a>
 {{ end }}
 
 {{ if .Site.Params.discord }}
-{{ partial "components/button.html" (dict
-  "href" .Site.Params.discord
-  "variant" "ghost"
-  "size" "md"
-  "class" "btn-circle"
-  "ariaLabel" "Discord"
-  "icon" (partial "components/icon.html" (dict "name" "discord" "size" "sm"))
-) }}
+<a href="{{ .Site.Params.discord }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="Discord" rel="noopener noreferrer" target="_blank">
+  {{ partial "components/icon.html" (dict "name" "discord" "size" "sm" "ariaLabel" "Discord") }}
+</a>
 {{ end }}
 </div>
