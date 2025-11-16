@@ -1,0 +1,88 @@
+<!-- Hero Introduction -->
+<div class="text-center mb-8" x-data="{ 
+  currentHero: 'portfolio',
+  heroes: {
+    portfolio: {
+      title: 'Welcome to My Portfolio',
+      description: 'This site demonstrates modern web development practices and serves as a comprehensive example of my technical expertise. Built with cutting-edge technologies and following enterprise-grade development processes.',
+      features: [
+        { name: 'Modern Stack', icon: '⚡', items: ['Hugo', 'DaisyUI', 'Alpine.js', 'Tailwind CSS v4', 'Bun package manager'] },
+        { name: 'Enterprise Processes', icon: '🏗️', items: ['Comprehensive testing', 'CI/CD pipelines', 'Accessibility compliance', 'Performance monitoring'] },
+        { name: 'Open Source', icon: '🌟', items: ['All code available on GitHub', 'Detailed documentation', 'Implementation guides'] }
+      ],
+      cta: { text: 'Learn More About My Approach', link: '/about' }
+    },
+    construction: {
+      title: 'Site Under Construction',
+      description: 'Currently building new features and improvements. Check back soon for the latest updates.',
+      features: [
+        { name: 'In Development', icon: '🔧', items: ['New components', 'Performance optimizations', 'Enhanced features'] },
+        { name: 'Coming Soon', icon: '🚀', items: ['Advanced tools', 'Interactive demos', 'Extended documentation'] }
+      ],
+      cta: { text: 'View Progress', link: '/tools' }
+    },
+    maintenance: {
+      title: 'System Maintenance',
+      description: 'Performing scheduled updates and optimizations. Service will be back shortly.',
+      features: [
+        { name: 'Updates', icon: '🔄', items: ['Security patches', 'Performance improvements', 'Bug fixes'] },
+        { name: 'Monitoring', icon: '📊', items: ['System health checks', 'Performance metrics', 'Error tracking'] }
+      ],
+      cta: { text: 'Check Status', link: '/status' }
+    }
+  }
+}">
+  <h2 class="text-2xl lg:text-3xl font-semibold text-base-content mb-4" x-text="$heroes[currentHero].title">
+    <span x-show="currentHero === 'portfolio'">🎯</span>
+    <span x-show="currentHero === 'construction'">🔧</span>
+    <span x-show="currentHero === 'maintenance'">🔄</span>
+    <span x-text="$heroes[currentHero].title"></span>
+  </h2>
+  
+  <p class="text-lg text-base-content/80 mb-6 max-w-3xl mx-auto" x-text="$heroes[currentHero].description">
+  </p>
+  
+  <!-- Hero Selector -->
+  <div class="flex justify-center gap-2 mb-8">
+    <template x-for="heroKey in Object.keys(heroes)">
+      <button 
+        @click="currentHero = heroKey"
+        :class="currentHero === heroKey ? 'btn btn-primary' : 'btn btn-outline'"
+        class="btn-sm">
+        <span x-show="heroKey === 'portfolio'">🎯</span>
+        <span x-show="heroKey === 'construction'">🔧</span>
+        <span x-show="heroKey === 'maintenance'">🔄</span>
+        <span class="capitalize" x-text="heroKey"></span>
+      </button>
+    </template>
+  </div>
+  
+  <!-- Key Features Section -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <template x-for="feature in heroes[currentHero].features">
+      <div class="card bg-base-100/50 backdrop-blur-sm border border-primary/20">
+        <div class="card-body p-4 text-center">
+          <h3 class="card-title text-lg font-semibold text-primary mb-2">
+            <span x-text="feature.icon"></span>
+            <span x-text="feature.name"></span>
+          </h3>
+          <p class="text-base-content/70">
+            <template x-for="item in feature.items">
+              <span x-text="item"></span>
+              <span x-show="!$last(item)">, </span>
+            </template>
+          </p>
+        </div>
+      </div>
+    </template>
+  </div>
+  
+  <!-- Call to Action -->
+  <div class="text-center">
+    <a 
+      :href="heroes[currentHero].cta.link" 
+      class="btn btn-primary btn-lg"
+      x-text="heroes[currentHero].cta.text">
+    </a>
+  </div>
+</div>

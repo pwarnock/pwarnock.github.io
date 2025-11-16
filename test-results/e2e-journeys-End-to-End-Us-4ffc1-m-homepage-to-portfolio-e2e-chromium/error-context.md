@@ -40,178 +40,178 @@
       - generic [ref=e47]:
         - heading "Peter Warnock - Cloud & Platform Engineering Leader" [level=1] [ref=e48]
         - generic [ref=e49]:
-          - img "Peter Warnock professional headshot" [ref=e51]:
-            - img "Peter Warnock professional headshot" [ref=e53]
-          - generic [ref=e54]:
-            - article [ref=e55]:
-              - generic [ref=e56]:
-                - heading "AI-FIRST FULLSTACK" [level=2] [ref=e57]
-                - paragraph [ref=e58]: Bridging secure, scalable applications with team-driven innovation.
-            - article [ref=e59]:
-              - generic [ref=e60]:
-                - heading "CLOUD ARCHITECT" [level=2] [ref=e61]
-                - paragraph [ref=e62]: Connecting business and technology with a customer-first mindset.
-            - article [ref=e63]:
-              - generic [ref=e64]:
-                - heading "TECH LEADER" [level=2] [ref=e65]
-                - paragraph [ref=e66]: Crafting innovative solutions and fostering collaboration.
-            - article [ref=e67]:
-              - generic [ref=e68]:
-                - heading "DEVSECOPS" [level=2] [ref=e69]
-                - paragraph [ref=e70]: Integrating security into every stage of the development lifecycle.
-          - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e71]':
-            - generic [ref=e72]:
-              - generic [ref=e73]:
-                - generic [ref=e74]:
-                  - generic [ref=e75]: Latest Post
-                  - generic [ref=e76]: Nov 15, 2025
-                - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e78] [cursor=pointer]':
-                  - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
-                  - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e79]'
-                - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e80]':
-                  - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e81] [cursor=pointer]':
-                    - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
-                - paragraph [ref=e82]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
-              - link "Read More" [ref=e83] [cursor=pointer]:
-                - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
-    - generic [ref=e86]:
-      - generic [ref=e87]:
-        - heading "Technical Skills & Expertise" [level=2] [ref=e88]
-        - paragraph [ref=e89]: Comprehensive skillset across modern development and operations
-      - generic [ref=e90]:
-        - generic [ref=e92]:
-          - heading "Programming Languages" [level=3] [ref=e93]
-          - paragraph [ref=e94]: Experienced in programming languages such as Python, JavaScript/TypeScript, Java, and C#. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.
-          - generic [ref=e95]:
-            - generic [ref=e96]: Python
-            - generic [ref=e97]: JavaScript
-            - generic [ref=e98]: TypeScript
-        - generic [ref=e100]:
-          - heading "Web Development" [level=3] [ref=e101]
-          - paragraph [ref=e102]: Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Next.js, and Hugo. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.
-          - generic [ref=e103]:
-            - generic [ref=e104]: React
-            - generic [ref=e105]: Next.js
-            - generic [ref=e106]: Hugo
-        - generic [ref=e108]:
-          - heading "Backend Development" [level=3] [ref=e109]
-          - paragraph [ref=e110]: Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.
-          - generic [ref=e111]:
-            - generic [ref=e112]: Node.js
-            - generic [ref=e113]: Express
-            - generic [ref=e114]: Django
-        - generic [ref=e116]:
-          - heading "Cloud Technologies" [level=3] [ref=e117]
-          - paragraph [ref=e118]: Experienced in leveraging cloud platforms such as AWS, GCP, and Azure. Proficient in designing and deploying scalable, secure, and cost-effective cloud solutions. Well-versed in cloud-native services, containerization (Docker, Kubernetes), and serverless architectures.
-          - generic [ref=e119]:
-            - generic [ref=e120]: AWS
-            - generic [ref=e121]: GCP
-            - generic [ref=e122]: Azure
-            - generic [ref=e123]: Docker
-        - generic [ref=e125]:
-          - heading "CI/CD Pipelines" [level=3] [ref=e126]
-          - paragraph [ref=e127]: Experienced in setting up CI/CD pipelines using Bitbucket Pipelines, GitHub Actions, and other modern CI/CD platforms. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and Bitbucket.
-          - generic [ref=e128]:
-            - generic [ref=e129]: Bitbucket Pipelines
-            - generic [ref=e130]: GitHub Actions
-        - generic [ref=e132]:
-          - heading "Agile Methodologies" [level=3] [ref=e133]
-          - paragraph [ref=e134]: Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.
-          - generic [ref=e135]:
-            - generic [ref=e136]: Scrum
-            - generic [ref=e137]: Kanban
-            - generic [ref=e138]: Jira
-    - generic [ref=e142]:
-      - generic [ref=e144]:
-        - generic [ref=e145]:
-          - heading "Latest Blog Posts" [level=2] [ref=e146]
-          - paragraph [ref=e147]: Thoughts on technology, leadership, and development
-        - generic [ref=e148]:
-          - img [ref=e149]
-          - paragraph [ref=e151]: Explore insights on modern web development, AI tools, and technology leadership
-        - link "View All Posts" [ref=e153] [cursor=pointer]:
+          - img "Peter Warnock professional headshot" [ref=e52]:
+            - img "Peter Warnock professional headshot" [ref=e54]
+          - generic [ref=e56]:
+            - article [ref=e57]:
+              - generic [ref=e58]:
+                - heading "AI-FIRST FULLSTACK" [level=2] [ref=e59]
+                - paragraph [ref=e60]: Bridging secure, scalable applications with team-driven innovation.
+            - article [ref=e61]:
+              - generic [ref=e62]:
+                - heading "CLOUD ARCHITECT" [level=2] [ref=e63]
+                - paragraph [ref=e64]: Connecting business and technology with a customer-first mindset.
+            - article [ref=e65]:
+              - generic [ref=e66]:
+                - heading "TECH LEADER" [level=2] [ref=e67]
+                - paragraph [ref=e68]: Crafting innovative solutions and fostering collaboration.
+            - article [ref=e69]:
+              - generic [ref=e70]:
+                - heading "DEVSECOPS" [level=2] [ref=e71]
+                - paragraph [ref=e72]: Integrating security into every stage of the development lifecycle.
+          - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e73]':
+            - generic [ref=e74]:
+              - generic [ref=e75]:
+                - generic [ref=e76]:
+                  - generic [ref=e77]: Latest Post
+                  - generic [ref=e78]: Nov 15, 2025
+                - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e80] [cursor=pointer]':
+                  - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                  - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e81]'
+                - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e82]':
+                  - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e83] [cursor=pointer]':
+                    - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                - paragraph [ref=e84]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
+              - link "Read More" [ref=e85] [cursor=pointer]:
+                - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - heading "Technical Skills & Expertise" [level=2] [ref=e90]
+        - paragraph [ref=e91]: Comprehensive skillset across modern development and operations
+      - generic [ref=e92]:
+        - generic [ref=e94]:
+          - heading "Programming Languages" [level=3] [ref=e95]
+          - paragraph [ref=e96]: Experienced in programming languages such as Python, JavaScript/TypeScript, Java, and C#. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.
+          - generic [ref=e97]:
+            - generic [ref=e98]: Python
+            - generic [ref=e99]: JavaScript
+            - generic [ref=e100]: TypeScript
+        - generic [ref=e102]:
+          - heading "Web Development" [level=3] [ref=e103]
+          - paragraph [ref=e104]: Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Next.js, and Hugo. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.
+          - generic [ref=e105]:
+            - generic [ref=e106]: React
+            - generic [ref=e107]: Next.js
+            - generic [ref=e108]: Hugo
+        - generic [ref=e110]:
+          - heading "Backend Development" [level=3] [ref=e111]
+          - paragraph [ref=e112]: Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.
+          - generic [ref=e113]:
+            - generic [ref=e114]: Node.js
+            - generic [ref=e115]: Express
+            - generic [ref=e116]: Django
+        - generic [ref=e118]:
+          - heading "Cloud Technologies" [level=3] [ref=e119]
+          - paragraph [ref=e120]: Experienced in leveraging cloud platforms such as AWS, GCP, and Azure. Proficient in designing and deploying scalable, secure, and cost-effective cloud solutions. Well-versed in cloud-native services, containerization (Docker, Kubernetes), and serverless architectures.
+          - generic [ref=e121]:
+            - generic [ref=e122]: AWS
+            - generic [ref=e123]: GCP
+            - generic [ref=e124]: Azure
+            - generic [ref=e125]: Docker
+        - generic [ref=e127]:
+          - heading "CI/CD Pipelines" [level=3] [ref=e128]
+          - paragraph [ref=e129]: Experienced in setting up CI/CD pipelines using Bitbucket Pipelines, GitHub Actions, and other modern CI/CD platforms. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and Bitbucket.
+          - generic [ref=e130]:
+            - generic [ref=e131]: Bitbucket Pipelines
+            - generic [ref=e132]: GitHub Actions
+        - generic [ref=e134]:
+          - heading "Agile Methodologies" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.
+          - generic [ref=e137]:
+            - generic [ref=e138]: Scrum
+            - generic [ref=e139]: Kanban
+            - generic [ref=e140]: Jira
+    - generic [ref=e144]:
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - heading "Latest Blog Posts" [level=2] [ref=e148]
+          - paragraph [ref=e149]: Thoughts on technology, leadership, and development
+        - generic [ref=e150]:
+          - img [ref=e151]
+          - paragraph [ref=e153]: Explore insights on modern web development, AI tools, and technology leadership
+        - link "View All Posts" [ref=e155] [cursor=pointer]:
           - /url: /blog
           - text: View All Posts
-          - img [ref=e154]
-      - generic [ref=e157]:
-        - generic [ref=e158]:
-          - heading "Featured Projects" [level=2] [ref=e159]
-          - paragraph [ref=e160]: Sample projects showcasing web development skills and technical implementations
-        - generic [ref=e161]:
-          - img [ref=e162]
-          - paragraph [ref=e164]: Explore web development projects showcasing modern technologies and best practices
-        - link "View All Projects" [ref=e166] [cursor=pointer]:
+          - img [ref=e156]
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - heading "Featured Projects" [level=2] [ref=e161]
+          - paragraph [ref=e162]: Sample projects showcasing web development skills and technical implementations
+        - generic [ref=e163]:
+          - img [ref=e164]
+          - paragraph [ref=e166]: Explore web development projects showcasing modern technologies and best practices
+        - link "View All Projects" [ref=e168] [cursor=pointer]:
           - /url: /portfolio
           - text: View All Projects
-          - img [ref=e167]
-      - generic [ref=e170]:
-        - generic [ref=e171]:
-          - heading "AI Development Tools" [level=2] [ref=e172]
-          - paragraph [ref=e173]: AI-powered development tools and platforms I've reviewed and written about
-        - generic [ref=e174]:
-          - img [ref=e175]
-          - paragraph [ref=e178]: Explore comprehensive reviews and analysis of modern AI development tools
-        - link "Explore Tools" [ref=e180] [cursor=pointer]:
+          - img [ref=e169]
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - heading "AI Development Tools" [level=2] [ref=e174]
+          - paragraph [ref=e175]: AI-powered development tools and platforms I've reviewed and written about
+        - generic [ref=e176]:
+          - img [ref=e177]
+          - paragraph [ref=e180]: Explore comprehensive reviews and analysis of modern AI development tools
+        - link "Explore Tools" [ref=e182] [cursor=pointer]:
           - /url: /tools
           - text: Explore Tools
-          - img [ref=e181]
-  - contentinfo [ref=e183]:
-    - generic [ref=e185]:
-      - generic [ref=e186]:
-        - navigation "Main footer navigation" [ref=e187]:
-          - list [ref=e188]:
-            - listitem [ref=e189]:
-              - link "Home" [ref=e190] [cursor=pointer]:
-                - /url: /
+          - img [ref=e183]
+  - contentinfo [ref=e185]:
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - navigation "Main footer navigation" [ref=e189]:
+          - list [ref=e190]:
             - listitem [ref=e191]:
-              - link "Blog" [ref=e192] [cursor=pointer]:
-                - /url: /blog
+              - link "Home" [ref=e192] [cursor=pointer]:
+                - /url: /
             - listitem [ref=e193]:
-              - link "Portfolio" [ref=e194] [cursor=pointer]:
-                - /url: /portfolio
+              - link "Blog" [ref=e194] [cursor=pointer]:
+                - /url: /blog
             - listitem [ref=e195]:
-              - link "About" [ref=e196] [cursor=pointer]:
+              - link "Portfolio" [ref=e196] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e197]:
+              - link "About" [ref=e198] [cursor=pointer]:
                 - /url: /about
-        - region [ref=e197]:
-          - group "Social media links" [ref=e198]:
-            - button "GitHub" [ref=e199] [cursor=pointer]:
-              - img [ref=e200]:
-                - img [ref=e201]
-            - button "LinkedIn" [ref=e203] [cursor=pointer]:
-              - img [ref=e204]:
-                - img [ref=e205]
-            - button "Twitter" [ref=e207] [cursor=pointer]:
-              - img [ref=e208]:
-                - img [ref=e209]
-            - button "Discord" [ref=e211] [cursor=pointer]:
-              - img [ref=e212]:
-                - img [ref=e213]
-      - region [ref=e216]:
-        - group "Subscribe to my newsletter" [ref=e219]:
-          - generic [ref=e221]: Subscribe to my newsletter
-          - generic [ref=e222]:
-            - generic [ref=e223]: Email address
-            - textbox "Email address" [ref=e224]:
+        - region [ref=e199]:
+          - group "Social media links" [ref=e200]:
+            - button "GitHub" [ref=e201] [cursor=pointer]:
+              - img [ref=e202]:
+                - img [ref=e203]
+            - button "LinkedIn" [ref=e205] [cursor=pointer]:
+              - img [ref=e206]:
+                - img [ref=e207]
+            - button "Twitter" [ref=e209] [cursor=pointer]:
+              - img [ref=e210]:
+                - img [ref=e211]
+            - button "Discord" [ref=e213] [cursor=pointer]:
+              - img [ref=e214]:
+                - img [ref=e215]
+      - region [ref=e218]:
+        - group "Subscribe to my newsletter" [ref=e221]:
+          - generic [ref=e223]: Subscribe to my newsletter
+          - generic [ref=e224]:
+            - generic [ref=e225]: Email address
+            - textbox "Email address" [ref=e226]:
               - /placeholder: your@email.com
-            - textbox [ref=e226]
-            - button "Subscribe" [ref=e227] [cursor=pointer]
-          - generic [ref=e228]: Get updates on web development and technology trends. Unsubscribe anytime.
-      - generic [ref=e229]:
-        - navigation "Legal information" [ref=e230]:
-          - link "Privacy" [ref=e231] [cursor=pointer]:
+            - textbox [ref=e228]
+            - button "Subscribe" [ref=e229] [cursor=pointer]
+          - generic [ref=e230]: Get updates on web development and technology trends. Unsubscribe anytime.
+      - generic [ref=e231]:
+        - navigation "Legal information" [ref=e232]:
+          - link "Privacy" [ref=e233] [cursor=pointer]:
             - /url: /privacy
-          - link "Accessibility" [ref=e232] [cursor=pointer]:
+          - link "Accessibility" [ref=e234] [cursor=pointer]:
             - /url: /accessibility
-          - link "Security" [ref=e233] [cursor=pointer]:
+          - link "Security" [ref=e235] [cursor=pointer]:
             - /url: /security.txt
-        - paragraph [ref=e234]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
-    - generic [ref=e236]:
-      - generic [ref=e237]:
-        - paragraph [ref=e238]: Copyright © 2025
-        - paragraph [ref=e239]: Peter Warnock
-        - paragraph [ref=e240]: v0.14.1 (985abe2)
-      - link "Back to top of page" [ref=e241] [cursor=pointer]:
+        - paragraph [ref=e236]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+    - generic [ref=e238]:
+      - generic [ref=e239]:
+        - paragraph [ref=e240]: Copyright © 2025
+        - paragraph [ref=e241]: Peter Warnock
+        - paragraph [ref=e242]: v0.14.1 (985abe2)
+      - link "Back to top of page" [ref=e243] [cursor=pointer]:
         - /url: "#top"
-        - generic [ref=e242]: ↑
-        - generic [ref=e243]: Back to top
+        - generic [ref=e244]: ↑
+        - generic [ref=e245]: Back to top
 ```
