@@ -26,7 +26,8 @@ system establishment, automated release processes, radar metadata structure, and
 performance optimizations. The site is now production-ready with comprehensive
 tooling and enhanced content management while preserving all existing
 functionality (blog, portfolio, newsletter, social links). Production is
-currently running v0.13.4 (faf6a8e).
+currently running v0.14.0 with enterprise-grade testing infrastructure,
+intelligent build systems, and safe deployment workflows.
 
 ## Architecture
 
@@ -115,6 +116,10 @@ comprehensive validation pipeline.
   (v0.13.1-v0.13.3) - COMPLETED
 - Milestone 11: Performance optimizations and theme restoration (v0.13.4) -
   COMPLETED
+- Milestone 12: Major infrastructure overhaul with testing, builds, and
+  deployments (v0.14.0) - COMPLETED
+- Milestone 13: Complete deployment workflows and environment management
+  (v0.15.0) - IN PROGRESS
 
 ## Environment Setup
 

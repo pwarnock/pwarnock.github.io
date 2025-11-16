@@ -191,13 +191,27 @@ Blog layout optimization and media embed support: Implement responsive blog desi
 | F72 | Validation Scripts     | Create blog post validation and hardcoded URL checking scripts | Medium   | 🟢 Completed |
 | F73 | Documentation Updates  | Update STYLE_GUIDE.md with blog post creation guidelines | Medium   | 🟢 Completed |
 
-## v0.13.4 - 🟢 Completed
-Performance optimizations and theme restoration: Optimize Hugo configuration and restore all DaisyUI themes.
+## v0.14.0 - 🟢 Completed
+Major infrastructure overhaul: Enterprise testing, intelligent builds, and safe deployments.
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F81 | Hugo Performance Optimization | Optimize Hugo configuration for better build performance | Medium | 🟢 Completed |
-| F82 | DaisyUI Theme Restoration | Restore all DaisyUI themes with 'themes: all' configuration | High | 🟢 Completed |
+| F83 | Testing Infrastructure  | Comprehensive testing with Go, TypeScript, Playwright | High | 🟢 Completed |
+| F84 | Path-Based Builds       | Intelligent build control with change detection | High | 🟢 Completed |
+| F85 | Environment Management  | Pseudo upstream remotes for staging/production | High | 🟢 Completed |
+| F86 | CI/CD Enhancement       | Multi-environment matrices and coverage gates | High | 🟢 Completed |
+| F87 | Accessibility Compliance| 100% WCAG AA compliance with theme system | High | 🟢 Completed |
+| F88 | Tools Generation Fix    | Fixed Hugo buildFuture and tool page generation | High | 🟢 Completed |
+
+## v0.15.0 - 🟡 In Progress
+Deployment workflows and environment management: Complete infrastructure foundation.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F89 | Manual Promotion Workflow| Safe infrastructure deployment pipeline | High | 🔴 Not Started |
+| F90 | Change Validation       | Environment-specific testing and validation | High | 🔴 Not Started |
+| F91 | Environment Configuration| Settings and permissions for all environments | High | 🔴 Not Started |
+| F92 | Documentation Updates   | Complete deployment and operational docs | Medium | 🔴 Not Started |
 
 ## v0.13.3 - 🟢 Completed
 CSS architecture fixes and DaisyUI v5 compatibility: Resolve critical CSS import errors and update integration.
