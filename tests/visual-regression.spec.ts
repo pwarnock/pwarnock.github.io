@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AxeBuilder } from '@axe-playwright';
+import { injectAxe, getViolations } from 'axe-playwright';
 
 test.describe('Visual Regression Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -129,12 +129,11 @@ test.describe('Accessibility Visual Tests', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Run axe accessibility check
-    const accessibilityScanResults = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
-      .analyze();
+    // Inject axe and run accessibility check
+    await injectAxe(page);
+    const violations = await getViolations(page);
 
-    expect(accessibilityScanResults.violations).toEqual([]);
+    expect(violations).toEqual([]);
 
     // Take screenshot for manual review
     await expect(page).toHaveScreenshot('homepage-accessibility.png');

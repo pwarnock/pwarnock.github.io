@@ -43,19 +43,13 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 'lts/*'
-          cache: 'npm'
+          bun-version: latest
 
-      - name: Install Bun
-        run: npm install -g bun
-
-      - name: Install Node.js dependencies
-        run: |
-          bun install --no-audit
-          bun add -g postcss-cli
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       # Disabled: Secret Scanning was breaking releases
       # - name: Secret Scanning

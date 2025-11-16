@@ -97,14 +97,13 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Quick content validation
         run: |
@@ -119,7 +118,7 @@ jobs:
       - name: Content-specific tests
         run: |
           echo "🧪 Running content validation..."
-          npm run validate:portfolio || echo "⚠️ Portfolio validation issues"
+          bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
 
           # Check for broken internal links
           find /tmp/content-build -name "*.html" -exec grep -H "href=\"/" {} \; | \
@@ -150,11 +149,10 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          bun-version: latest
 
       - name: Setup Go
         uses: actions/setup-go@v4
@@ -163,7 +161,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          bun install --frozen-lockfile
           cd test && go mod download && go install github.com/wadey/gocovmerge@latest
 
       - name: Comprehensive infrastructure tests
@@ -178,7 +176,7 @@ jobs:
           cd test && go test -v -race ./support/...
 
           echo "🎨 Running linting..."
-          cd .. && npm run lint || echo "⚠️ Linting issues found"
+          cd .. && bun run lint || echo "⚠️ Linting issues found"
 
           echo "📱 Running E2E tests..."
           bunx playwright test --project=chromium tests/e2e-journeys.spec.ts || echo "⚠️ E2E test failures"
@@ -186,10 +184,10 @@ jobs:
       - name: Security and performance checks
         run: |
           echo "🔒 Running security audit..."
-          npm audit --audit-level=moderate || echo "⚠️ Security vulnerabilities found"
+          bun audit --audit-level=moderate || echo "⚠️ Security vulnerabilities found"
 
           echo "⚡ Performance check..."
-          npm run perf:analyze
+          bun run perf:analyze
 
   # Documentation build (validation only)
   documentation-build:
@@ -238,14 +236,13 @@ jobs:
           hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Build production site
         run: |
