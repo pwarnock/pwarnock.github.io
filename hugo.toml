@@ -17,7 +17,7 @@ section = ["HTML", "RSS", "JSON"]
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
     osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
   [security.funcs]
     getenv = ['^HUGO_']
@@ -30,6 +30,21 @@ ignoreLogs = ['warning-goldmark-raw-html']
 
 # Enable git info for commit hash in footer
 enableGitInfo = true
+
+# Performance and caching configurations
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.getcsv]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.images]
+    dir = ":cacheDir/images"
+    maxAge = "24h"
+  [caches.assets]
+    dir = ":cacheDir/assets"
+    maxAge = "24h"
 
 [params]
   # SEO configuration
@@ -67,6 +82,9 @@ enableGitInfo = true
   useResourceCache = true
   cacheDir = ".hugo_cache"
   noJSConfigInAssets = true
+  # Performance optimizations
+  enableResourceCache = true
+  enableGitInfo = true
 
 [build.buildStats]
   enable = true
@@ -80,8 +98,15 @@ enableGitInfo = true
       precision = 0
     [minify.tdewolff.html]
       keepWhitespace = false
+      keepComments = false
     [minify.tdewolff.js]
       keepVarNames = false
+    [minify.tdewolff.json]
+      keepNumbers = false
+    [minify.tdewolff.xml]
+      keepWhitespace = false
+    [minify.tdewolff.svg]
+      keepComments = false
 
 [[build.cachebusters]]
   source = 'assets/.*\.(js|ts|jsx|tsx)'
@@ -94,6 +119,12 @@ enableGitInfo = true
 [[build.cachebusters]]
   source = 'data/.*\.(ya?ml|json)$'
   target = '(html|json)'
+
+# Resource optimization settings
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "smart"
 
 # Redirects
 [redirects]
