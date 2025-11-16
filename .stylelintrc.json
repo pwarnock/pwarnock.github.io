@@ -4,7 +4,7 @@
     "at-rule-no-unknown": [
       true,
       {
-        "ignoreAtRules": ["theme", "import", "plugin"]
+        "ignoreAtRules": ["theme", "import", "plugin", "config", "utility", "component", "custom-variant"]
       }
     ],
     "at-rule-empty-line-before": null,
@@ -22,7 +22,8 @@
       {
         "ignoreProperties": ["--*"]
       }
-    ]
+    ],
+    "no-invalid-position-at-import-rule": null
   },
   "ignoreFiles": ["static/css/main.css"]
 }

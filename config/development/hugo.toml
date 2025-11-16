@@ -4,3 +4,16 @@ baseURL = "http://localhost:1313"
 [params]
   googleAnalytics = ""  # Disable GA in development
   env = "development"
+
+# Force development environment
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "smart"
+  
+  [imaging.resizing]
+    [imaging.resizing.blog]
+      width = 800
+      height = 450  # 16:9 aspect ratio
+      filter = "Lanczos"
+      quality = 85

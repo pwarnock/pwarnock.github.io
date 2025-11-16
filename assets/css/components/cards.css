@@ -11,6 +11,9 @@
   box-shadow: var(--shadow-base);
   transition: all var(--transition-base);
   overflow: hidden;
+
+  /* Ensure cards work with all DaisyUI themes */
+  color: oklch(var(--bc));
 }
 
 .card-system:hover {
@@ -48,4 +51,28 @@
 
 .card-system--lg {
   padding: var(--card-padding-lg);
+}
+
+/* Theme-specific glass card enhancements */
+[data-theme='dark'] .card-system--glass {
+  background-color: oklch(var(--b1) / 0.6);
+  border: 1px solid oklch(var(--bc) / 0.2);
+}
+
+[data-theme='light'] .card-system--glass {
+  background-color: oklch(var(--b1) / 0.9);
+  border: 1px solid oklch(var(--bc) / 0.1);
+}
+
+/* Theme-specific card shadows */
+[data-theme='dark'] .card-system {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='light'] .card-system {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }

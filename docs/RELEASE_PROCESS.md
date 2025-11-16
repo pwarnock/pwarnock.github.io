@@ -48,9 +48,9 @@ Follow the tasklist and implement features. **Critical process**:
 1. **Before each commit**: Run validation
 
    ```bash
-   npm run lint        # Linting
-   npm run validate    # Validation
-   npm run build       # Build verification
+    bun run lint        # Linting
+    bun run validate    # Validation
+    bun run build       # Build verification
    ```
 
 2. **Commit to git** with clear commit messages
@@ -164,9 +164,9 @@ strings.
 Before creating a GitHub release:
 
 - [ ] All features implemented and tested
-- [ ] `npm run lint` passes
-- [ ] `npm run validate` passes
-- [ ] `npm run build` succeeds
+- [ ] `bun run lint` passes
+- [ ] `bun run validate` passes
+- [ ] `bun run build` succeeds
 - [ ] Retrospective created and documented
 - [ ] Feature backlog marked as completed
 - [ ] Release notes updated with changes

@@ -20,7 +20,7 @@ deployed to GitHub Pages with comprehensive testing and validation.
 
 ### Performance Benefits
 
-- **Installation Speed**: 3-5x faster than npm ci
+- **Installation Speed**: 3-5x faster than npm ci (legacy)
 - **Disk Usage**: Reduced node_modules footprint
 - **TypeScript**: First-class support with faster compilation
 - **Caching**: Bun's global cache reduces CI/CD build times
@@ -78,9 +78,9 @@ Examples:
 
 #### Pre-Commit Validation (MUST PASS)
 
-- [ ] `npm run lint` - No linting errors
-- [ ] `npm run validate` - All validation checks pass
-- [ ] `npm run build` - Site builds successfully
+- [ ] `bun run lint` - No linting errors
+- [ ] `bun run validate` - All validation checks pass
+- [ ] `bun run build` - Site builds successfully
 - [ ] Local testing passes
 - [ ] No uncommitted changes
 
@@ -134,13 +134,13 @@ git checkout -b release/vX.X.X
 
 ```bash
 # REQUIRED: Run linting before any commit
-npm run lint
+bun run lint
 
 # REQUIRED: Run validation
-npm run validate
+bun run validate
 
 # REQUIRED: Test build
-npm run build
+bun run build
 ```
 
 **All checks must pass before proceeding. Do not commit with lint/build
@@ -150,12 +150,10 @@ errors.**
 
 ```bash
 # Local testing
-npm run dev
+bun run dev
 
 # Production build test
-npm run build:production
-
-# Verify site loads correctly
+bun run build:production
 ```
 
 #### 4. Documentation

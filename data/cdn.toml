@@ -1,12 +1,7 @@
 # CDN and Analytics configuration
 
-[[cdns]]
-name = "alpinejs"
-url = "https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
-integrity = "sha384-l8f0VcPiMB8w4Umacs8iWua7t9d3jNVWqvuF8CIP4ww"
-type = "javascript"
-async = true
-defer = true
+# Alpine.js is now self-hosted in assets/js/ for better performance and reliability
+# See: layouts/partials/head/cdn.html for self-hosted implementation
 
 [[cdns]]
 name = "tailwindcss"
@@ -22,5 +17,5 @@ base_url = "https://www.googletagmanager.com"
 # Configuration for when to load
 [loading]
 enabled = true
-production_only = true
+production_only = false
 # Note: Analytics only load in production environment

@@ -37,7 +37,15 @@ if ! ./scripts/check-hardcoded-urls.sh; then
 fi
 echo "✅ URL configuration validated"
 
-# 5. HTML validation
+# 5. CDN integrity verification
+echo "🌐 Verifying CDN integrity..."
+if ! ./scripts/verify-cdn-integrity.sh; then
+    echo "❌ CDN integrity verification failed"
+    exit 1
+fi
+echo "✅ CDN integrity verified"
+
+# 6. HTML validation
 echo "🔗 Running HTML validation..."
 if ! htmlproofer ./public --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph"; then
     echo "❌ HTML validation failed"

@@ -1,0 +1,47 @@
+{{/* Lazy loading for large content sections */}}
+{{ $perfConfig := site.Data.performance }}
+
+<div class="lazy-content-container" data-threshold="{{ $perfConfig.content_optimization.lazy_load_threshold }}">
+    {{ .Content }}
+    
+    {{/* Add "Read More" for very long content */}}
+    {{ if gt (len .Content) $perfConfig.content_optimization.lazy_load_threshold }}
+        <div class="lazy-load-section mt-8 text-center">
+            <button 
+                class="lazy-load-btn btn-system btn-system--primary"
+                onclick="loadMoreContent(this)"
+                aria-expanded="false">
+                <span class="btn-text">Read More</span>
+                <span class="btn-loading" style="display: none;">Loading...</span>
+                {{ partial "components/icon.html" (dict "name" "chevron-down" "size" "sm") }}
+            </button>
+        </div>
+        
+        <script>
+        let contentLoaded = false;
+        
+        function loadMoreContent(button) {
+            if (contentLoaded) return;
+            
+            const btnText = button.querySelector('.btn-text');
+            const btnLoading = button.querySelector('.btn-loading');
+            const icon = button.querySelector('svg');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            button.disabled = true;
+            
+            // Simulate loading additional content
+            setTimeout(() => {
+                // In real implementation, this would fetch additional content
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                button.setAttribute('aria-expanded', 'true');
+                icon.style.transform = 'rotate(180deg)';
+                contentLoaded = true;
+            }, 800);
+        }
+        </script>
+    {{ end }}
+</div>

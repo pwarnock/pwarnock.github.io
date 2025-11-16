@@ -46,13 +46,13 @@ Before any deployment:
 
 ```bash
 # 1. Build and test locally
-npm run build
+bun run build
 
 # 2. If CSS issues, process manually
 npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss
 
 # 3. Test again
-npm run build
+bun run build
 
 # 4. Commit and push
 git add .
@@ -77,7 +77,7 @@ git push upstream main
 
 ### Build Validation
 
-- [ ] `npm run build` completes successfully
+- [ ] `bun run build` completes successfully
 - [ ] 209+ pages generated
 - [ ] No CSS processing errors
 - [ ] Site loads correctly in dev server
@@ -95,7 +95,7 @@ If Site Styling Breaks:
 1. **Immediate**: Check CSS file content
 2. **Process**:
    `npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --postcss`
-3. **Test**: `npm run build`
+3. **Test**: `bun run build`
 4. **Deploy**: Commit and push
 
 ## 📝 Lessons Learned
@@ -150,7 +150,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install --frozen-lockfile
 
       - name: Build with Hugo
         run: hugo --minify --gc
@@ -393,7 +393,8 @@ Before creating release:
 
 ### Version History
 
-- v0.11.0 - Major platform enhancements: GTM integration, Bun runtime, portfolio validation, action buttons
+- v0.11.0 - Major platform enhancements: GTM integration, Bun runtime, portfolio
+  validation, action buttons
 - v0.10.0 - Spacing Scale with version tracking in footer
 - v0.9.0 - Design System implementation
 - v0.8.0 - Upstream Integration with footer version display

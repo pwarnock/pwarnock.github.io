@@ -18,6 +18,11 @@
   outline: none;
   position: relative;
   overflow: hidden;
+
+  /* Ensure buttons respect theme colors */
+  color: oklch(var(--bc));
+  background-color: oklch(var(--b1));
+  border-color: oklch(var(--b3));
 }
 
 .btn-system:focus-visible {
@@ -105,4 +110,19 @@
 .btn-system--outline:hover:not(:disabled) {
   background-color: oklch(var(--p));
   color: oklch(var(--pc));
+}
+
+/* Theme-aware button enhancements */
+.btn-system:hover:not(:disabled) {
+  /* Use theme-aware hover states */
+  filter: brightness(1.1);
+}
+
+/* Theme-specific ghost button enhancements */
+[data-theme='dark'] .btn-system--ghost:hover:not(:disabled) {
+  background-color: oklch(var(--bc) / 0.2);
+}
+
+[data-theme='light'] .btn-system--ghost:hover:not(:disabled) {
+  background-color: oklch(var(--bc) / 0.05);
 }

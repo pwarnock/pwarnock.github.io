@@ -11,12 +11,11 @@
 
     {{ partial "security-headers.html" . }}
 
-    <!-- CSS -->
-    {{ $css := resources.Get "css/main.css" | css.PostCSS | minify }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-
     <!-- Data-driven CDN loading -->
     {{ partial "head/cdn.html" . }}
+
+    <!-- Performance-optimized CSS splitting -->
+    {{ partial "head/css-splitting.html" . }}
 </head>
 <body>
     <!-- Data-driven Google Tag Manager (noscript) -->

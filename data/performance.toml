@@ -1,37 +1,56 @@
-# External domains for DNS prefetching and performance optimization
+# Performance optimization configuration
+
+# CSS splitting temporarily disabled - using Hugo's native bundling
+# [critical_css]
+# # CSS needed for initial page render
+# paths = [
+#   "assets/css/design-system/tokens.css",
+#   "assets/css/framework/base.css",
+#   "assets/css/design-system/utilities.css"
+# ]
+
+# [deferred_css]
+# # CSS that can be loaded after initial render
+# paths = [
+#   "assets/css/components/buttons.css",
+#   "assets/css/components/badges.css", 
+#   "assets/css/components/cards.css",
+#   "assets/css/components/icons.css",
+#   "assets/css/components/focus.css",
+#   "assets/css/layout/hero.css",
+#   "assets/css/layout/responsive.css",
+#   "assets/css/layout/embeds.css",
+#   "assets/css/content/prose.css",
+#   "assets/css/content/code.css",
+#   "assets/css/content/tables.css"
+# ]
+
+[content_optimization]
+# Settings for large content files
+max_lines = 300
+pagination_threshold = 500
+lazy_load_threshold = 400
+
+[bundle_analysis]
+# Automated bundle size monitoring
+enabled = true
+max_css_size_kb = 150
+max_js_size_kb = 50
+warn_on_large_bundles = true
 
 [[domains]]
+# External domains for DNS prefetching
 url = "https://fonts.googleapis.com"
-type = "fonts"
-description = "Google Fonts CDN"
+type = "font"
 
 [[domains]]
-url = "https://github.com"
-type = "social"
-description = "GitHub platform"
-
-[[domains]]
-url = "https://linkedin.com"
-type = "social"
-description = "LinkedIn professional network"
-
-[[domains]]
-url = "https://x.com"
-type = "social"
-description = "X (Twitter) platform"
-
-[[domains]]
-url = "https://cdn.jsdelivr.net"
+url = "https://cdn.jsdelivr.net" 
 type = "cdn"
-description = "jsDelivr CDN for Alpine.js"
 
 [[domains]]
 url = "https://www.googletagmanager.com"
 type = "analytics"
-description = "Google Tag Manager"
 
-# Configuration for when to prefetch
 [prefetch]
-enabled = true
-types = ["fonts", "social", "cdn"]
-# Note: analytics domains are only prefetched in production
+# Types of domains to prefetch
+types = ["font", "cdn", "analytics"]

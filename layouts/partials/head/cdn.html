@@ -1,13 +1,10 @@
-{{/* Data-driven CDN loading */}}
-{{ $cdnConfig := site.Data.cdn }}
-{{ $shouldLoad := and $cdnConfig.loading.enabled (or (ne (getenv "HUGO_ENV") "production") (not $cdnConfig.loading.production_only)) }}
-
-{{ if $shouldLoad }}
-    {{ range $cdnConfig.cdns }}
-        {{ if eq .name "alpinejs" }}
-            <script{{ if .async }} async{{ end }}{{ if .defer }} defer{{ end }} src="{{ .url }}"
-                    {{ if .integrity }} integrity="{{ .integrity }}"{{ end }}
-                    crossorigin="anonymous"></script>
-        {{ end }}
-    {{ end }}
+{{/* Self-host Alpine.js for reliability and performance */}}
+{{/* Alpine.js is critical for navigation functionality - always load */}}
+{{ $alpinejs := resources.Get "js/alpinejs.min.js" }}
+{{ with $alpinejs }}
+    {{ $fingerprinted := . | fingerprint }}
+    <script defer 
+            src="{{ $fingerprinted.RelPermalink }}" 
+            {{ if $fingerprinted.Data.Integrity }} integrity="{{ $fingerprinted.Data.Integrity }}"{{ end }}
+            crossorigin="anonymous"></script>
 {{ end }}

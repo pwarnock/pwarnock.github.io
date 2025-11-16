@@ -66,14 +66,14 @@
                   - generic [ref=e75]: Latest Post
                   - generic [ref=e76]: Nov 15, 2025
                 - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e78] [cursor=pointer]':
-                  - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                  - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
                   - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e79]'
                 - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e80]':
                   - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e81] [cursor=pointer]':
-                    - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                    - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
                 - paragraph [ref=e82]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
               - link "Read More" [ref=e83] [cursor=pointer]:
-                - /url: https://peterwarnock.com/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
     - generic [ref=e86]:
       - generic [ref=e87]:
         - heading "Technical Skills & Expertise" [level=2] [ref=e88]
@@ -209,7 +209,7 @@
       - generic [ref=e237]:
         - paragraph [ref=e238]: Copyright © 2025
         - paragraph [ref=e239]: Peter Warnock
-        - paragraph [ref=e240]: v0.13.4 (faf6a8e)
+        - paragraph [ref=e240]: v0.14.1 (985abe2)
       - link "Back to top of page" [ref=e241] [cursor=pointer]:
         - /url: "#top"
         - generic [ref=e242]: ↑

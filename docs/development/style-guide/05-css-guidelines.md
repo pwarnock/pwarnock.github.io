@@ -117,26 +117,26 @@
 
 ```bash
 # Watch CSS changes during development
-npm run css:watch
+bun run css:watch
 
 # Build CSS with PostCSS + Tailwind
-npm run css:build
+bun run css:build
 
 # Full build with Hugo
-npm run build
+bun run build
 ```
 
 ### Production Workflow
 
 ```bash
 # Always rebuild CSS before production build
-npm run css:build
+bun run css:build
 
 # Verify build succeeds
-npm run build
+bun run build
 
 # Run linting before commit (lints SOURCE CSS only)
-npm run lint
+bun run lint
 ```
 
 **CRITICAL**: CSS must be processed by PostCSS before deployment. Static CSS
@@ -146,7 +146,7 @@ files must not contain `@import` or `@plugin` directives.
 
 ### Linting covers SOURCE CSS only (`assets/css/main.css`)
 
-- `npm run lint` checks the hand-written source CSS
+- `bun run lint` checks the hand-written source CSS
 - `.stylelintrc.json` ignores `static/css/main.css` (generated output)
 
 ### Why ignore generated CSS?
@@ -172,9 +172,9 @@ files must not contain `@import` or `@plugin` directives.
 ### Before Committing
 
 ```bash
-npm run lint      # Must pass
-npm run validate  # Must pass
-npm run build     # Must succeed
+bun run lint      # Must pass
+bun run validate  # Must pass
+bun run build     # Must succeed
 ```
 
 ### Linting Exemptions (only when absolutely necessary)

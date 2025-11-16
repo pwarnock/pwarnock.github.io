@@ -195,8 +195,8 @@ When multiple types of changes are detected:
 Use force flags when automatic detection is incorrect:
 
 ```bash
-npm run build:infra  # Force infrastructure build
-npm run build:content # Force content build
+bun run build:infra  # Force infrastructure build
+bun run build:content # Force content build
 ```
 
 ## Configuration

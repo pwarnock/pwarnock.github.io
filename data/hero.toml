@@ -23,5 +23,5 @@ description = "Crafting innovative solutions and fostering collaboration."
 
 [[roles]]
 title = "DEVSECOPS"
-color = "accent"
+color = "info"
 description = "Integrating security into every stage of the development lifecycle."

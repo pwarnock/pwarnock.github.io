@@ -5,6 +5,41 @@ a particular build, also know as a version.
 
 [TOC]
 
+# v0.15.1-ui-improvements - November 16, 2025
+
+## Overview
+
+User interface improvements including header navigation fixes, Alpine.js
+restoration, Hugo image processing configuration, and blog post display
+enhancements.
+
+## Key Features
+
+- Restored Alpine.js for interactive components
+- Configured Hugo image processing for performance
+- Enhanced blog post typography and layout
+
+## Enhancements
+
+- Improved header navigation mobile responsiveness
+- Better accessibility compliance for navigation
+- Optimized image loading and processing
+- Enhanced blog post readability
+- Better component interaction states
+
+## Bug Fixes
+
+- Header navigation mobile menu issues resolved
+- Alpine.js component conflicts fixed
+- Image processing configuration errors resolved
+- Blog post display inconsistencies corrected
+
+## Other Notes
+
+- Focus on user experience improvements
+- Performance optimizations for media content
+- Better mobile navigation experience
+
 # v0.10.0-spacing-scale - [In Progress]
 
 ## Overview

@@ -53,7 +53,37 @@
 
 /* Hero Grid Layout */
 .hero-grid {
-  @apply grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch;
+  @apply grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8;
+}
+
+/* Hero Grid Items - Individual column control */
+.hero-grid > div:first-child {
+  @apply flex justify-center items-center;
+}
+
+.hero-grid > div:nth-child(2) {
+  @apply items-start;
+}
+
+.hero-grid > div:nth-child(3) {
+  @apply items-start;
+}
+
+/* Hero Role Cards - Balanced Compact */
+.hero-card {
+  @apply max-h-42;
+}
+
+.hero-card .card-body {
+  @apply p-2.5 lg:p-3.5;
+}
+
+.hero-card .card-title {
+  @apply text-sm lg:text-base;
+}
+
+.hero-card p {
+  @apply text-xs lg:text-xs leading-tight;
 }
 
 /* Respect reduced motion preferences */

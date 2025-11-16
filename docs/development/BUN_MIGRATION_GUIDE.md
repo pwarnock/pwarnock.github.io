@@ -11,7 +11,7 @@ dependency management, and developer experience.
 
 - **Package Manager**: npm → Bun (primary runtime and package manager)
 - **Lock Files**: `package-lock.json` → `bun.lock`
-- **CI/CD Commands**: `npm ci` → `bun install --frozen-lockfile`
+- **CI/CD Commands**: `npm ci` replaced with `bun install --frozen-lockfile`
 - **Global Installs**: Removed for better reproducibility
 - **Security**: `npm audit` → `bun audit`
 
@@ -105,7 +105,7 @@ All existing `npm run` commands work unchanged with `bun run`:
     cache: 'npm'
 
 - name: Install dependencies
-  run: npm ci
+  run: bun install --frozen-lockfile
 ```
 
 **After:**
@@ -134,8 +134,8 @@ All existing `npm run` commands work unchanged with `bun run`:
 
 ### Build Performance
 
-- **npm run build**: ~2.5 seconds
-- **bun run build**: ~1.8 seconds
+- **npm run build**: ~2.5 seconds (legacy)
+- **bun run build**: ~1.8 seconds (current)
 
 ## Troubleshooting
 

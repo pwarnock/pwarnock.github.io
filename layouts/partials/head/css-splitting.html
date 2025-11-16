@@ -1,0 +1,13 @@
+{{/* Simple, reliable CSS loading */}}
+{{ $css := resources.Get "css/main.css" }}
+
+{{/* Process with PostCSS for TailwindCSS v4 */}}
+{{ if hugo.IsDevelopment }}
+  {{ with $css | postCSS }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{ end }}
+{{ else }}
+  {{ with $css | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+  {{ end }}
+{{ end }}

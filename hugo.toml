@@ -17,7 +17,7 @@ section = ["HTML", "RSS", "JSON"]
 [security]
   enableInlineShortcodes = false
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$']
     osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
   [security.funcs]
     getenv = ['^HUGO_']
@@ -135,6 +135,14 @@ buildFuture = true
   resampleFilter = "Lanczos"
   quality = 85
   anchor = "smart"
+  
+# Blog image processing configuration
+[imaging.resizing]
+  [imaging.resizing.blog]
+    width = 800
+    height = 450  # 16:9 aspect ratio
+    filter = "Lanczos"
+    quality = 85
 
 # Redirects
 [redirects]

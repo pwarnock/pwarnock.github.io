@@ -1,0 +1,69 @@
+{{/* Content pagination for long articles */}}
+{{ $content := . }}
+{{ $perfConfig := site.Data.performance }}
+
+{{ if gt (len .Content) $perfConfig.content_optimization.max_lines }}
+    {{/* Split content into pages */}}
+    {{ $words := split .Content " " }}
+    {{ $chunks := div (len $words) 3 }}
+    
+    {{ range $index, $chunk := seq $chunks }}
+        {{ $start := mul $index 3 }}
+        {{ $end := add (sub $chunks 1) $start }}
+        {{ if lt $start (len $words) }}
+            {{ $chunkWords := first $end (after $start $words) }}
+            <div class="content-chunk" data-chunk="{{ $index }}">
+                {{ range $chunkWords }}
+                    {{ . }} {{ if not (eq . $chunkWords | last) }}{{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+    {{ end }}
+    
+    {{/* Navigation for chunks */}}
+    <nav class="chunk-navigation" role="navigation" aria-label="Content sections">
+        <div class="flex gap-2 justify-center mb-6">
+            {{ range seq (add $chunks 1) }}
+                <button 
+                    class="chunk-nav-btn btn-system btn-system--sm" 
+                    onclick="showChunk({{ . }})"
+                    data-chunk="{{ . }}"
+                    aria-current="{{ if eq . 0 }}page{{ else }}false{{ end }}">
+                    Section {{ add . 1 }}
+                </button>
+            {{ end }}
+        </div>
+    </nav>
+    
+    <script>
+    function showChunk(chunkIndex) {
+        // Hide all chunks
+        document.querySelectorAll('.content-chunk').forEach(chunk => {
+            chunk.style.display = 'none';
+        });
+        
+        // Show selected chunk
+        const selectedChunk = document.querySelector(`[data-chunk="${chunkIndex}"]`);
+        if (selectedChunk) {
+            selectedChunk.style.display = 'block';
+        }
+        
+        // Update navigation state
+        document.querySelectorAll('.chunk-nav-btn').forEach(btn => {
+            btn.setAttribute('aria-current', 'false');
+        });
+        document.querySelector(`[data-chunk="${chunkIndex}"]`).setAttribute('aria-current', 'true');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Show first chunk by default
+    document.addEventListener('DOMContentLoaded', function() {
+        showChunk(0);
+    });
+    </script>
+{{ else }}
+    {{/* Original content for shorter articles */}}
+    {{ .Content }}
+{{ end }}

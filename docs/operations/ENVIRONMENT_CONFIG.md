@@ -37,7 +37,7 @@ synced to `hugo.toml` before each build.
 Automatic (runs before build):
 
 ```bash
-npm run build  # automatically bumps version first
+bun run build  # automatically bumps version first
 ```
 
 Manual:
@@ -57,7 +57,7 @@ Example output:
 
 1. Complete work in a version branch (e.g., `v0.10.0-spacing-scale`)
 2. Create `version.md` in `.cody/project/build/v{version}/`
-3. Run `npm run build` - automatically syncs version to `hugo.toml`
+3. Run `bun run build` - automatically syncs version to `hugo.toml`
 4. Version displays in footer with git commit
 
 No manual version management needed!
@@ -87,7 +87,8 @@ Search engines prefer absolute URLs in:
 Hugo uses **config merging** to combine main and environment-specific configs:
 
 1. **Main config** (`hugo.toml`) - Contains all production settings, all params
-2. **Environment override** (`config/development/hugo.toml`) - Only overrides dev-specific settings
+2. **Environment override** (`config/development/hugo.toml`) - Only overrides
+   dev-specific settings
 
 **Main config (hugo.toml):**
 
@@ -113,14 +114,15 @@ baseURL = "http://localhost:1313"
   env = "development"
 ```
 
-**Note:** All other params (github, linkedin, newsletter, etc.) are inherited from the main config during development.
+**Note:** All other params (github, linkedin, newsletter, etc.) are inherited
+from the main config during development.
 
 ### Usage
 
 #### Development (Local)
 
 ```bash
-npm run dev
+bun run dev
 # Runs: hugo server --config config/development/hugo.toml,hugo.toml
 # Merges: development baseURL + main params = http://localhost:1313 with all params
 ```
@@ -128,7 +130,7 @@ npm run dev
 #### Production Build (Default)
 
 ```bash
-npm run build
+bun run build
 # Runs: hugo --config hugo.toml (main config only)
 # Uses: https://peterwarnock.com/ with all production settings
 ```
@@ -145,7 +147,7 @@ hugo --gc --minify --config hugo.toml
 
 ### CI/CD Deployment
 
-**Default behavior:** CI/CD should run `npm run build` which uses the production
+**Default behavior:** CI/CD should run `bun run build` which uses the production
 baseURL from `hugo.toml`.
 
 If you need different baseURLs for different environments, modify your build
@@ -155,7 +157,7 @@ command:
 
 ```yaml
 - name: Build
-  run: npm run build
+  run: bun run build
   # Uses: https://peterwarnock.com/
 ```
 
@@ -163,7 +165,7 @@ command:
 
 ```yaml
 - name: Build
-  run: npm run build -- -b https://staging.peterwarnock.com/
+  run: bun run build -- -b https://staging.peterwarnock.com/
 ```
 
 **Vercel/Netlify:** These platforms typically don't need custom baseURL flags
@@ -196,27 +198,41 @@ Analytics tracking is environment-aware and only fires in production builds.
 
 ### How It Works
 
-**Template (layouts/_default/baseof.html):**
+**Template (layouts/\_default/baseof.html):**
 
 ```html
 <!-- Google Tag Manager -->
 {{ if eq (getenv "HUGO_ENV") "production" }}
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','{{ getenv "HUGO_GTM_CONTAINER_ID" }}');</script>
+<script>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(
+    window,
+    document,
+    'script',
+    'dataLayer',
+    '{{ getenv "HUGO_GTM_CONTAINER_ID" }}'
+  );
+</script>
 {{ end }}
 ```
 
 The template checks `HUGO_ENV`:
+
 - `production` → GTM script loads and fires
 - `development` → GTM script is NOT included
 
 ### Development (No Tracking)
 
 ```bash
-npm run dev
+bun run dev
 # HUGO_ENV defaults to "development"
 # GTM script is skipped via {{ if }} condition
 # No analytics data sent to Google
@@ -226,7 +242,7 @@ npm run dev
 
 ```bash
 # Local test build with production environment
-HUGO_ENV=production npm run build
+HUGO_ENV=production bun run build
 # GTM script is included
 # Analytics tracking is active
 
@@ -238,13 +254,13 @@ HUGO_ENV=production npm run build
 To verify GTM is not firing in dev:
 
 ```bash
-npm run dev
+bun run dev
 # Open: http://localhost:1313
 # Check DevTools Network tab for "googletagmanager.com" requests
 # Should NOT see any requests (GTM script not loaded)
 
 # Compare with production build:
-HUGO_ENV=production npm run build
+HUGO_ENV=production bun run build
 # After build, check public/index.html for GTM script
 grep -r "googletagmanager.com" public/ | head -5
 # Should show GTM script in HTML

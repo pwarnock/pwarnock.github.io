@@ -38,6 +38,7 @@
     "portfolio-validate": "bun run ./scripts/validate-portfolio-frontmatter.js",
     "test-ga": "bun run ./scripts/test-ga-tracking.js",
     "test-security": "bun run ./scripts/test-security.js",
+    "verify:cdn": "./scripts/verify-cdn-integrity.sh",
     "build:preview": "hugo --gc --enableGitInfo",
     "test:e2e": "bunx playwright test",
     "test:bdd": "cd test && ./run-tests.sh",
@@ -68,7 +69,8 @@
     "sync:env": "./scripts/sync-environments.sh",
     "env:staging": "git checkout staging",
     "env:production": "git checkout production",
-    "env:main": "git checkout main"
+    "env:main": "git checkout main",
+    "analyze:bundles": "bun run ./scripts/analyze-bundles.js"
   },
   "keywords": [],
   "author": "Pete Warnock",

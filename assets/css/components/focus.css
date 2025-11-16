@@ -79,3 +79,48 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* Enhanced focus management for better screen reader support */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: oklch(var(--p));
+  color: oklch(var(--pc));
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  z-index: var(--z-tooltip);
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Enhanced keyboard navigation */
+.focus-trap {
+  outline: 2px solid oklch(var(--p));
+  outline-offset: 2px;
+}
+
+/* High contrast focus indicators */
+@media (prefers-contrast: more) {
+  .focus-ring:focus-visible,
+  .btn-system:focus-visible,
+  .card-system:focus-within {
+    outline: 3px solid oklch(var(--p));
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion focus transitions */
+@media (prefers-reduced-motion: reduce) {
+  .focus-ring,
+  .btn-system,
+  .card-system {
+    transition:
+      outline-color 0s,
+      outline-offset 0s;
+  }
+}

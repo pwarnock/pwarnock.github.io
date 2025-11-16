@@ -585,7 +585,7 @@ git checkout -b release/$VERSION
 
 # Run tests
 npm test
-npm run build
+bun run build
 
 # Merge to main
 git checkout main
