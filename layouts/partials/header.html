@@ -1,13 +1,8 @@
 {{ partial "components/navigation.html" . }}
 
 <script>
-  const availableThemes = [
-    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate',
-    'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden',
-    'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black',
-    'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade',
-    'night', 'coffee', 'winter'
-  ];
+  // Note: Themes are now managed via data/themes.yaml
+  // This allows for data-driven theme management with accessibility metadata
 
   function setTheme(theme) {
     const html = document.documentElement;
@@ -45,7 +40,10 @@
   }
 
   function getRandomTheme() {
-    return availableThemes[Math.floor(Math.random() * availableThemes.length)];
+    // Note: This function is deprecated - themes are now data-driven
+    // Kept for backward compatibility during transition
+    const fallbackThemes = ['light', 'dark', 'cupcake', 'emerald', 'corporate'];
+    return fallbackThemes[Math.floor(Math.random() * fallbackThemes.length)];
   }
 
   function getSystemDarkModePreference() {

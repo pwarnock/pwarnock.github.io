@@ -191,6 +191,46 @@ Blog layout optimization and media embed support: Implement responsive blog desi
 | F72 | Validation Scripts     | Create blog post validation and hardcoded URL checking scripts | Medium   | 🟢 Completed |
 | F73 | Documentation Updates  | Update STYLE_GUIDE.md with blog post creation guidelines | Medium   | 🟢 Completed |
 
+## v0.13.4 - 🟢 Completed
+Performance optimizations and theme restoration: Optimize Hugo configuration and restore all DaisyUI themes.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F81 | Hugo Performance Optimization | Optimize Hugo configuration for better build performance | Medium | 🟢 Completed |
+| F82 | DaisyUI Theme Restoration | Restore all DaisyUI themes with 'themes: all' configuration | High | 🟢 Completed |
+
+## v0.13.3 - 🟢 Completed
+CSS architecture fixes and DaisyUI v5 compatibility: Resolve critical CSS import errors and update integration.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F77 | CSS Import Error Fix     | Fix CSS import error causing TUI freeze during development | High | 🟢 Completed |
+| F78 | Tailwind v4 Integration | Update Tailwind CSS integration from v3 to v4 plugin system | High | 🟢 Completed |
+| F79 | DaisyUI v5 Compatibility | Fix DaisyUI v5 compatibility with proper @plugin directive | High | 🟢 Completed |
+| F80 | Modular CSS Architecture | Modularize CSS into organized directory structure | Medium | 🟢 Completed |
+
+## v0.13.2 - 🟢 Completed
+Style guide refactoring and card system standardization: Improve documentation and UI consistency.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F75 | Style Guide Refactoring | Split style guide into organized sections | Medium | 🟢 Completed |
+| F76 | DaisyUI Card Standardization | Standardize on DaisyUI card system across site | High | 🟢 Completed |
+
+## v0.13.1 - 🟢 Completed
+Feature infrastructure and testing enhancements: Add feature flags, testing harness, and content improvements.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F67 | Feature Flag Infrastructure | Create feature flag infrastructure for .skills integration | Medium | 🟢 Completed |
+| F68 | Playwright Testing Harness | Add Playwright E2E testing harness | High | 🟢 Completed |
+| F69 | Letta AI Skills Integration | Add Letta AI skills submodule | Medium | 🟢 Completed |
+| F70 | Beads Blog Post         | Create Beads blog post with code block styling system | High | 🟢 Completed |
+| F71 | Version Management Workflow | Implement version management with suffix support | Medium | 🟢 Completed |
+| F72 | Hero Card Semantic Colors | Restore semantic colors to hero card headings | High | 🟢 Completed |
+| F73 | Font Color Contrast Fix | Fix font color contrast issues across all 28 DaisyUI themes | High | 🟢 Completed |
+| F74 | Navigation Font Weight   | Fix consistent font-weight across navigation and content links | Medium | 🟢 Completed |
+
 ## v0.13.0-radar - 🟢 Completed
 Radar data structure preparation: Add radar metadata to tools content and generate JSON data structure for future ThoughtWorks BYOR integration.
 

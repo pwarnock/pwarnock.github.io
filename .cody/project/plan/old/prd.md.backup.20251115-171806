@@ -23,10 +23,7 @@ Rebuilding peterwarnock.com, a personal portfolio and blog site, with a stable,
 maintainable frontend using Hugo, Tailwind CSS v4, and Daisy UI to resolve style
 conflicts, improve component architecture, and enable easier maintenance and
 modifications. The project has evolved through multiple versions (v0.1.0 through
-v0.13.4) with the latest version implementing radar metadata structure for tools
-content, about page enhancements, and performance optimizations. The site is now
-stable with comprehensive design system, automated release processes, and
-enhanced content management. Production is currently running v0.13.4 (faf6a8e).
+v0.9.3) and is currently implementing v0.10.0 spacing scale improvements.
 
 ## Goals
 
@@ -39,11 +36,8 @@ enhanced content management. Production is currently running v0.13.4 (faf6a8e).
   foundation
 - Enable quick iteration and changes that are immediately visible
 - Implement systematic spacing scale using CSS variables to replace hardcoded
-  utilities (COMPLETED in v0.10.0)
-- Establish maintainable design patterns and refactoring guidelines (COMPLETED)
-- Add radar metadata structure to tools content for future ThoughtWorks BYOR
-  integration
-- Enhance about page content and SEO optimization
+  utilities
+- Establish maintainable design patterns and refactoring guidelines
 
 ## Target Users
 
@@ -67,12 +61,10 @@ visit the site to:
 - Clear component architecture compatible with Tailwind themes
 - SEO-optimized structure maintaining existing URLs
 - GitHub Pages hosting compatibility
-- CSS variable-based spacing system for maintainable design (COMPLETED)
+- CSS variable-based spacing system for maintainable design
 - Automated development server management with PM2
 - Comprehensive linting and validation pipeline
 - Security headers and accessibility compliance
-- Radar metadata structure for tools content
-- Enhanced about page with improved SEO and messaging
 
 ## Success Criteria
 
@@ -85,13 +77,9 @@ visit the site to:
   preserved and functional
 - Site loads and performs well on GitHub Pages
 - Spacing scale implementation reduces hardcoded utilities by 250+ instances
-  (COMPLETED)
-- Zero visual regressions during refactoring phases (ACHIEVED)
-- Automated testing and validation pipeline passes (IMPLEMENTED)
+- Zero visual regressions during refactoring phases
+- Automated testing and validation pipeline passes
 - Security vulnerabilities are promptly addressed (e.g., PM2 updates)
-  (COMPLETED)
-- Radar metadata structure enables future ThoughtWorks BYOR integration
-- About page content is optimized for SEO and recruiting
 
 ## Out of Scope
 

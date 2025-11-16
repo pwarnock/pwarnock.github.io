@@ -21,17 +21,17 @@
 
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1" role="menubar" aria-label="Desktop navigation menu">
-      <li role="none">{{ partial "components/button.html" (dict "href" ("/" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Home" "role" "menuitem" "ariaCurrent" (cond (eq .Permalink .Site.BaseURL) "page" "")) }}</li>
-      <li role="none">{{ partial "components/button.html" (dict "href" ("/blog" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Blog" "role" "menuitem" "ariaCurrent" (cond (eq .Section "blog") "page" "")) }}</li>
-      <li role="none">{{ partial "components/button.html" (dict "href" ("/portfolio" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Portfolio" "role" "menuitem" "ariaCurrent" (cond (eq .Section "portfolio") "page" "")) }}</li>
-      <li role="none">{{ partial "components/button.html" (dict "href" ("/tools" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "Tools" "role" "menuitem" "ariaCurrent" (cond (eq .Section "tools") "page" "")) }}</li>
-      <li role="none">{{ partial "components/button.html" (dict "href" ("/about" | relLangURL) "variant" "ghost" "size" "md" "class" "focus-ring" "text" "About" "role" "menuitem" "ariaCurrent" (cond (eq .Section "about") "page" "")) }}</li>
+      <li role="none"><a href="{{ "/" | relLangURL }}" class="btn-system btn-system--ghost btn-system--md focus-ring" role="menuitem" {{ if eq .Permalink .Site.BaseURL }}aria-current="page"{{ end }}>Home</a></li>
+      <li role="none"><a href="{{ "/blog" | relLangURL }}" class="btn-system btn-system--ghost btn-system--md focus-ring" role="menuitem" {{ if eq .Section "blog" }}aria-current="page"{{ end }}>Blog</a></li>
+      <li role="none"><a href="{{ "/portfolio" | relLangURL }}" class="btn-system btn-system--ghost btn-system--md focus-ring" role="menuitem" {{ if eq .Section "portfolio" }}aria-current="page"{{ end }}>Portfolio</a></li>
+      <li role="none"><a href="{{ "/tools" | relLangURL }}" class="btn-system btn-system--ghost btn-system--md focus-ring" role="menuitem" {{ if eq .Section "tools" }}aria-current="page"{{ end }}>Tools</a></li>
+      <li role="none"><a href="{{ "/about" | relLangURL }}" class="btn-system btn-system--ghost btn-system--md focus-ring" role="menuitem" {{ if eq .Section "about" }}aria-current="page"{{ end }}>About</a></li>
     </ul>
   </div>
 
   <div class="navbar-end">
     <div class="flex items-center gap-2">
-      {{ partial "components/theme-selector.html" . }}
+      {{ partial "components/theme-selector-data.html" . }}
       <div class="hidden md:flex">
         {{ partial "components/social-links.html" . }}
       </div>

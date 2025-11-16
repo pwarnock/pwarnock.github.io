@@ -1,0 +1,214 @@
+# Theme Configuration Data
+# Centralized theme management with accessibility metadata
+
+themes:
+  # Core Themes (WCAG AA Compliant)
+  - id: 'light'
+    name: 'Light'
+    emoji: '☀️'
+    description: 'Clean light theme'
+    accessible: true
+    contrast: 'high'
+
+  - id: 'dark'
+    name: 'Dark'
+    emoji: '🌙'
+    description: 'Dark theme for low-light environments'
+    accessible: true
+    contrast: 'high'
+
+  # Fun Themes (WCAG AA Compliant)
+  - id: 'cupcake'
+    name: 'Cupcake'
+    emoji: '🧁'
+    description: 'Sweet pink theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'bumblebee'
+    name: 'Bumblebee'
+    emoji: '🐝'
+    description: 'Yellow and black theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'emerald'
+    name: 'Emerald'
+    emoji: '💚'
+    description: 'Green nature theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'corporate'
+    name: 'Corporate'
+    emoji: '💼'
+    description: 'Professional business theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'retro'
+    name: 'Retro'
+    emoji: '📼'
+    description: 'Vintage retro theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'valentine'
+    name: 'Valentine'
+    emoji: '💝'
+    description: 'Pink romantic theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'garden'
+    name: 'Garden'
+    emoji: '🌻'
+    description: 'Green garden theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'forest'
+    name: 'Forest'
+    emoji: '🌲'
+    description: 'Dark forest theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'aqua'
+    name: 'Aqua'
+    emoji: '🌊'
+    description: 'Blue water theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'lofi'
+    name: 'Lofi'
+    emoji: '🎧'
+    description: 'Minimal lo-fi theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'pastel'
+    name: 'Pastel'
+    emoji: '🎨'
+    description: 'Soft pastel colors'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'fantasy'
+    name: 'Fantasy'
+    emoji: '🦄'
+    description: 'Magical fantasy theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'wireframe'
+    name: 'Wireframe'
+    emoji: '📐'
+    description: 'Minimal wireframe theme'
+    accessible: true
+    contrast: 'excellent'
+
+  - id: 'luxury'
+    name: 'Luxury'
+    emoji: '💎'
+    description: 'Elegant gold theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'autumn'
+    name: 'Autumn'
+    emoji: '🍂'
+    description: 'Warm autumn colors'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'business'
+    name: 'Business'
+    emoji: '📊'
+    description: 'Professional business theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'lemonade'
+    name: 'Lemonade'
+    emoji: '🍋'
+    description: 'Fresh yellow theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'night'
+    name: 'Night'
+    emoji: '🌌'
+    description: 'Dark blue theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'coffee'
+    name: 'Coffee'
+    emoji: '☕'
+    description: 'Warm brown theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'winter'
+    name: 'Winter'
+    emoji: '❄️'
+    description: 'Cool blue-white theme'
+    accessible: true
+    contrast: 'good'
+
+  # Special Occasion Themes (Temporarily Accessible)
+  - id: 'halloween'
+    name: 'Halloween'
+    emoji: '🎃'
+    description: 'Spooky Halloween theme'
+    accessible: true
+    contrast: 'medium'
+    seasonal: true
+
+  # Inaccessible Themes (Removed from Selection)
+  # These themes fail WCAG AA contrast requirements
+  # Note: These are documented for reference but not used in theme selection
+  # inaccessible_themes:
+  #   - id: "synthwave"
+  #     reason: "Neon colors have poor contrast ratios"
+  #     contrast_issues: ["low-text-contrast", "insufficient-color-difference"]
+  #   - id: "cyberpunk"
+  #     reason: "Dark background with bright neon text fails contrast"
+  #     contrast_issues: ["extreme-low-contrast", "color-blindness-unfriendly"]
+  #   - id: "dracula"
+  #     reason: "Dark theme with insufficient text contrast"
+  #     contrast_issues: ["low-contrast-ratio", "poor-readability"]
+  #   - id: "black"
+  #     reason: "Pure black lacks sufficient contrast for most text"
+  #     contrast_issues: ["zero-contrast-for-colored-text", "accessibility-failure"]
+  #   - id: "cmyk"
+  #     reason: "Color model theme has poor contrast combinations"
+  #     contrast_issues: ["insufficient-contrast", "color-conflicts"]
+  #   - id: "acid"
+  #     reason: "Extreme saturated colors fail WCAG requirements"
+  #     contrast_issues: ["extreme-poor-contrast", "eye-strain"]
+
+# Theme Selection Rules
+selection:
+  random:
+    # Only select from themes marked as accessible: true
+    filter: 'accessible == true'
+    exclude_seasonal: false # Don't randomly select seasonal themes
+
+  seasonal:
+    halloween:
+      # Allow Halloween theme during October
+      start_month: 10
+      end_month: 10
+      themes: ['halloween']
+
+  system_preference:
+    dark:
+      # Use dark theme when system prefers dark mode
+      fallback_themes: ['dark', 'night']
+
+    light:
+      # Use light theme when system prefers light mode
+      fallback_themes: ['light', 'cupcake', 'emerald']

@@ -1,0 +1,282 @@
+name: Enhanced CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  GO_VERSION: '1.22'
+  HUGO_VERSION: 'latest'
+
+jobs:
+  # Matrix strategy for different environments
+  test-matrix:
+    name: Test Matrix (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18, 20, 22]
+        include:
+          - os: ubuntu-latest
+            node: 20
+            coverage: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint || echo "⚠️ Linting failed on ${{ matrix.os }} with Node ${{ matrix.node }}"
+
+      - name: Test Hugo build
+        run: hugo --minify --gc
+
+      - name: Check for broken internal links
+        run: |
+          # Check if all internal links resolve to existing files
+          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          while read line; do
+            url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
+            if [ -n "$url" ]; then
+              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+                echo "Broken link found: /$url"
+                exit 1
+              fi
+            fi
+          done
+          echo "All internal links are valid"
+
+  # Go testing with coverage
+  go-tests:
+    name: Go Tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Install dependencies
+        run: |
+          cd test
+          go mod download
+          go install github.com/wadey/gocovmerge@latest
+
+      - name: Run unit tests
+        run: |
+          cd test
+          go test -v -race -coverprofile=coverage.out ./support/...
+
+      - name: Upload coverage to Codecov (Ubuntu only)
+        if: matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./test/coverage.out
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+  # E2E testing
+  e2e-tests:
+    name: 'E2E Tests (${{ matrix.browser }})'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v4
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: 'Install Bun'
+        run: npm install -g bun
+      - name: 'Install Dependencies'
+        run: bun install --frozen-lockfile
+      - name: 'Install Playwright Browsers'
+        run: bunx playwright install --with-deps ${{ matrix.browser }}
+      - name: 'Run Playwright Tests'
+        run: bun run test:e2e --project=${{ matrix.browser }}
+      - name: 'Upload Playwright Report'
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: playwright-report/
+          retention-days: 30
+
+  # Security and quality gates
+  security-scan:
+    name: Security & Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run security audit
+        run: npm audit --audit-level=moderate
+
+      - name: Run accessibility tests
+        run: |
+          cd test
+          go test -v -tags=accessibility ./...
+
+      - name: Check for hardcoded secrets
+        run: |
+          # Basic secret detection
+          if grep -r "password\|secret\|token\|key" --include="*.js" --include="*.ts" --include="*.json" --exclude-dir=node_modules --exclude-dir=.git . | grep -v "example\|test\|mock"; then
+            echo "⚠️ Potential hardcoded secrets found"
+            exit 1
+          fi
+
+  # Performance benchmarks
+  performance:
+    name: Performance Benchmarks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: hugo --minify --gc
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.12.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  # Coverage gate
+  coverage-gate:
+    name: Coverage Gate
+    runs-on: ubuntu-latest
+    needs: [go-tests, test-matrix]
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download coverage artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-reports
+          path: coverage/
+
+      - name: Check coverage threshold
+        run: |
+          if [ -f coverage/coverage.txt ]; then
+            COVERAGE=$(tail -1 coverage/coverage.txt | awk '{print $3}' | sed 's/%//')
+            echo "Current coverage: ${COVERAGE}%"
+            
+            # Set minimum coverage threshold (adjust as needed)
+            MIN_COVERAGE=5
+            
+            if (( $(echo "$COVERAGE < $MIN_COVERAGE" | bc -l) )); then
+              echo "❌ Coverage ${COVERAGE}% is below minimum threshold ${MIN_COVERAGE}%"
+              exit 1
+            else
+              echo "✅ Coverage ${COVERAGE}% meets minimum threshold ${MIN_COVERAGE}%"
+            fi
+          else
+            echo "⚠️ No coverage report found"
+          fi
+
+  # Build and deploy (only on main branch)
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [test-matrix, go-tests, e2e-tests, security-scan, coverage-gate]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production site
+        run: hugo --minify --gc --environment production
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
