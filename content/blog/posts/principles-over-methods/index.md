@@ -9,7 +9,7 @@ summary:
   "Exploring why principles matter more than methods in innovation and AI,
   featuring Harrington Emerson's timeless wisdom about grasping fundamentals for
   successful method selection."
-image: 'principles-over-methods-quote-harrington-emerson.webp'
+image: '/images/blog/principles-over-methods-quote-harrington-emerson.webp'
 ---
 
 > "As to methods, there may be a million and then some, but principles are few.

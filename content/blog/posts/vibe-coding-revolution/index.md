@@ -12,7 +12,7 @@ summary:
   'Comprehensive analysis of the 2025 vibe coding revolution, comparing
   developer-centric IDEs against product-focused app builders in the evolving AI
   coding landscape.'
-image: 'vibe-coding-revolution.webp'
+image: '/images/blog/vibe-coding-revolution.webp'
 ---
 
 The coding landscape has transformed dramatically in past year. What started as

@@ -39,6 +39,38 @@ enhancements.
 - Focus on user experience improvements
 - Performance optimizations for media content
 - Better mobile navigation experience
+- Automated accessibility testing infrastructure implemented
+
+# v0.15.0-deployment-workflows - [In Progress]
+
+## Overview
+
+Complete infrastructure foundation with comprehensive deployment workflows,
+environment management, and operational excellence features.
+
+## Key Features
+
+- Manual promotion workflow for safe infrastructure deployments
+- Change validation and environment-specific testing
+- Environment-specific settings and permissions
+- Monitoring and alerting for deployment health
+
+## Enhancements
+
+- Automated validation of environment configurations
+- Rollback procedures and disaster recovery
+- Performance monitoring and optimization
+- One-click deployments for different environments
+
+## Bug Fixes
+
+- None (infrastructure-focused version)
+
+## Other Notes
+
+- Focus on operational excellence and developer experience
+- Foundation for future operational improvements
+- Comprehensive documentation and training
 
 # v0.10.0-spacing-scale - [In Progress]
 

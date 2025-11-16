@@ -9,7 +9,7 @@ summary:
   'Introduction to Lorem Ipsum, the standard dummy text used in printing and
   typesetting since the 1500s, with its fascinating history and modern
   applications.'
-image: 'my-first-post.webp'
+image: '/images/blog/my-first-post.webp'
 ---
 
 ## What is Lorem Ipsum?
