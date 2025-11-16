@@ -20,3 +20,8 @@ description = "Connecting business and technology with a customer-first mindset.
 title = "TECH LEADER"
 color = "accent"
 description = "Crafting innovative solutions and fostering collaboration."
+
+[[roles]]
+title = "DEVSECOPS"
+color = "accent"
+description = "Integrating security into every stage of the development lifecycle."
