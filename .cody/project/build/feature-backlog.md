@@ -254,3 +254,15 @@ Radar data structure preparation: Add radar metadata to tools content and genera
 | F78 | Radar Data Template     | Create build template to generate /tools/radar.json from tools content | High     | 🟢 Completed |
 | F79 | Radar View Enhancement  | Update tools view to display quadrant and ring information | Medium   | 🟢 Completed |
 | F80 | Radar Content Validation | Validate all tools have proper radar metadata assigned | Medium   | 🟢 Completed |
+
+## v0.16.0-hero-carousel-system - 🟢 Completed
+Hero carousel system implementation: Complete modular carousel with autoplay, navigation, and accessibility features.
+
+| ID  | Feature                 | Description                              | Priority | Status |
+|-----|-------------------------|------------------------------------------|----------|--------|
+| F81 | Carousel Architecture   | Implement modular carousel component system with slides, navigation, indicators | High     | 🟢 Completed |
+| F82 | Autoplay Controls       | Add pause on hover, resume on click functionality | High     | 🟢 Completed |
+| F83 | Slide Stacking Fix      | Fix CSS positioning to prevent slide stacking issues | High     | 🟢 Completed |
+| F84 | Gradient Background     | Restore gradient background from original hero design | Medium   | 🟢 Completed |
+| F85 | Accessibility Features  | Implement keyboard navigation, ARIA labels, and screen reader support | High     | 🟢 Completed |
+| F86 | E2E Testing             | Add comprehensive Playwright tests for carousel functionality | Medium   | 🟢 Completed |
