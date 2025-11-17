@@ -298,6 +298,42 @@ All content types (blog posts, portfolio items, tools, static pages) must
 - Duplicate H1s create accessibility issues for screen readers
 - Maintains SEO optimization while ensuring a11y compliance
 
+### ⚠️ **CRITICAL: No HTML H1 Tags in Content**
+
+**NEVER include HTML `<h1>` tags in markdown content files:**
+
+```markdown
+---
+title: 'Page Title' # ✅ This becomes the page H1
+---
+
+## ✅ Correct: H2 for main sections
+
+## Main Content Section
+
+### ✅ Correct: H3 for subsections
+
+#### Subsection details
+
+#### ❌ FORBIDDEN: HTML H1 in content
+
+<h1>This creates a second H1 on the page</h1>
+```
+
+**Problems with HTML H1s in content:**
+
+- **Multiple H1s per page** (accessibility violation)
+- **Screen reader confusion** (which heading is the main topic?)
+- **SEO dilution** (what is this page really about?)
+- **Document outline corruption** (broken heading hierarchy)
+
+**Correct Approach:**
+
+- Use `##` for main content sections (becomes H2)
+- Use `###` for subsections (becomes H3)
+- Use `####` for details (becomes H4)
+- **Never** write `<h1>` tags in markdown content
+
 ### Template H1 Display
 
 - **Blog Posts**: `hero-blog.html` displays `{{ .context.Title }}` as H1

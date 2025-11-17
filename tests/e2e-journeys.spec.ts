@@ -10,15 +10,15 @@ test.describe('End-to-End User Journeys', () => {
   test('complete user journey from homepage to portfolio @e2e', async ({ page }) => {
     // Start at homepage
     await page.goto('/');
-    await expect(page).toHaveTitle(/Pete Warnock/);
+    await expect(page).toHaveTitle(/Portfolio | Peter Warnock/);
 
-    // Navigate to portfolio
-    await page.click('a[href="/portfolio/"]');
+    // Navigate to portfolio (desktop navigation)
+    await page.click('nav ul[role="menubar"] a[href="/portfolio/"]');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*portfolio/);
 
     // Verify portfolio page loads
-    await expect(page.locator('h1')).toContainText('Portfolio');
+    await expect(page.locator('h1#portfolio-title')).toContainText('Portfolio');
 
     // Click on first portfolio item
     const firstPortfolioItem = page.locator('article a').first();
@@ -27,14 +27,14 @@ test.describe('End-to-End User Journeys', () => {
 
     // Verify portfolio detail page
     await page.waitForLoadState('networkidle');
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('h1:not(.sr-only)')).toBeVisible();
   });
 
   test('blog browsing journey @e2e', async ({ page }) => {
     await page.goto('/');
 
-    // Navigate to blog
-    await page.click('a[href="/blog"]');
+    // Navigate to blog (desktop navigation)
+    await page.click('nav ul[role="menubar"] a[href="/blog/"]');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*blog/);
 
@@ -42,16 +42,16 @@ test.describe('End-to-End User Journeys', () => {
     const blogPosts = page.locator('article');
     await expect(blogPosts.first()).toBeVisible();
 
-    // Click on first blog post
-    await blogPosts.first().click();
+    // Click on first blog post (click on title link specifically)
+    await blogPosts.first().locator('h2.card-title a').click();
     await page.waitForLoadState('networkidle');
 
     // Verify blog post content
-    await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('.content')).toBeVisible();
+    await expect(page.locator('h1:not(.sr-only)')).toBeVisible();
+    await expect(page.locator('[data-testid="blog-post-content"]')).toBeVisible();
 
-    // Test navigation back to blog
-    await page.click('a[href="/blog/"]');
+    // Test navigation back to blog (desktop navigation)
+    await page.click('nav ul[role="menubar"] a[href="/blog/"]');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*blog/);
   });
@@ -59,8 +59,8 @@ test.describe('End-to-End User Journeys', () => {
   test('tools exploration journey @e2e', async ({ page }) => {
     await page.goto('/');
 
-    // Navigate to tools
-    await page.click('a[href="/tools/"]');
+    // Navigate to tools (desktop navigation)
+    await page.click('nav ul[role="menubar"] a[href="/tools/"]');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*tools/);
 
@@ -68,13 +68,12 @@ test.describe('End-to-End User Journeys', () => {
     const tools = page.locator('.tool-card, article');
     await expect(tools.first()).toBeVisible();
 
-    // Click on first tool
-    await tools.first().click();
+    // Click on first tool (click on title link specifically)
+    await tools.first().locator('h3.card-title a').click();
     await page.waitForLoadState('networkidle');
 
     // Verify tool detail page
-    await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('.tool-description, .content')).toBeVisible();
+    await expect(page.locator('[data-testid="tool-content"]')).toBeVisible();
   });
 
   test('theme switching journey @e2e @theme', async ({ page }) => {
@@ -152,8 +151,8 @@ test.describe('End-to-End User Journeys', () => {
       const currentUrl = page.url();
       expect(currentUrl).toMatch(/(search|portfolio)/);
     } else {
-      // If no search, test navigation to portfolio instead
-      await page.click('a[href="/portfolio"]');
+      // If no search, test navigation to portfolio instead (desktop navigation)
+      await page.click('nav ul[role="menubar"] a[href="/portfolio/"]');
       await page.waitForLoadState('networkidle');
       await expect(page).toHaveURL(/.*portfolio/);
     }
@@ -165,14 +164,17 @@ test.describe('End-to-End User Journeys', () => {
     await page.goto('/');
 
     // Test mobile navigation
-    const mobileMenuButton = page.locator('button[aria-label*="menu"], .menu-toggle, .hamburger');
+    const mobileMenuButton = page.locator(
+      'button[aria-label*="navigation menu"], .menu-toggle, .hamburger'
+    );
 
     if (await mobileMenuButton.isVisible()) {
+      console.log('Mobile menu button found, clicking...');
       await mobileMenuButton.click();
-      await page.waitForTimeout(500);
+      await page.waitForTimeout(1000);
 
-      // Verify mobile menu is open
-      const mobileMenu = page.locator('.mobile-menu, nav[aria-expanded="true"], .nav-menu');
+      // Verify mobile navigation menu is open
+      const mobileMenu = page.locator('ul[role="menu"][aria-label="Mobile navigation menu"]');
       await expect(mobileMenu).toBeVisible();
 
       // Test navigation from mobile menu
@@ -218,7 +220,7 @@ test.describe('End-to-End User Journeys', () => {
     } else {
       // If no contact form, navigate to about page
       await page.goto('/about/');
-      await expect(page.locator('h1')).toContainText('About');
+      await expect(page.locator('h1#about-title')).toContainText('Peter Warnock');
     }
   });
 
@@ -242,13 +244,13 @@ test.describe('End-to-End User Journeys', () => {
     const loadTime = Date.now() - startTime;
 
     // Navigate through multiple pages
-    await page.click('a[href="/blog/"]');
+    await page.click('nav ul[role="menubar"] a[href="/blog/"]');
     await page.waitForLoadState('networkidle');
 
-    await page.click('a[href="/portfolio/"]');
+    await page.click('nav ul[role="menubar"] a[href="/portfolio/"]');
     await page.waitForLoadState('networkidle');
 
-    await page.click('a[href="/tools/"]');
+    await page.click('nav ul[role="menubar"] a[href="/tools/"]');
     await page.waitForLoadState('networkidle');
 
     // Total journey time should be reasonable

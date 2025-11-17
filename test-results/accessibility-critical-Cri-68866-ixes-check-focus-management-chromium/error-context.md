@@ -1,8 +1,8 @@
 # Page snapshot
 
 ```yaml
-- generic [ref=e1]:
-  - link "Skip to main content" [active] [ref=e2] [cursor=pointer]:
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
     - /url: "#main-content"
   - navigation "Main navigation" [ref=e3]:
     - generic [ref=e4]:

@@ -61,7 +61,7 @@ instead gives you the building blocks to create completely custom designs.
 <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">Responsive width</div>
 
 <!-- Responsive text -->
-<h1 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Responsive heading</h1>
+<h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Responsive heading</h2>
 
 <!-- Responsive spacing -->
 <div class="p-4 md:p-6 lg:p-8">Responsive padding</div>
@@ -486,7 +486,7 @@ npx tailwindcss init -p
   </head>
   <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Hello, Tailwind!</h1>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Hello, Tailwind!</h2>
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >

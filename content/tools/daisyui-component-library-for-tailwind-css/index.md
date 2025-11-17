@@ -406,7 +406,7 @@ module.exports = {
 </div>
 
 <!-- Responsive text -->
-<h1 class="text-2xl md:text-4xl lg:text-6xl">Responsive Heading</h1>
+<h2 class="text-2xl md:text-4xl lg:text-6xl">Responsive Heading</h2>
 ```
 
 ### **Mobile-First Components**
@@ -438,7 +438,7 @@ module.exports = {
   <div class="hero-content flex-col lg:flex-row">
     <img src="hero-image.jpg" class="max-w-sm rounded-lg shadow-2xl" />
     <div>
-      <h1 class="text-5xl font-bold">Hero Title</h1>
+      <h2 class="text-5xl font-bold">Hero Title</h2>
       <p class="py-6">Hero description text.</p>
       <button class="btn btn-primary">Get Started</button>
     </div>
