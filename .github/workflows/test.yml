@@ -3,6 +3,10 @@ name: Test Hugo build
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - '*.md'
 
 jobs:
   test:

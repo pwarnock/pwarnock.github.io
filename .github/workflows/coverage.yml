@@ -3,8 +3,16 @@ name: Test Coverage
 on:
   push:
     branches: [main, develop]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - '*.md'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - '*.md'
 
 jobs:
   coverage:
