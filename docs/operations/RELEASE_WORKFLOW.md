@@ -367,15 +367,57 @@ After pushing the production tag:
 
 ## CI/CD Integration
 
-Documentation changes in this file automatically trigger the lightweight "documentation-build" workflow:
+The project uses **path-based build control** via `path-based-builds.yml`, which intelligently routes changes based on what was modified.
 
-- **Trigger**: Changes to `docs/**` paths only
-- **Workflow**: path-based-builds.yml (documentation-build job)
-- **Tests**: Markdown validation, Hugo build test
-- **Deployment**: None (docs-only changes don't deploy)
-- **Skipped workflows**: cicd.yml, coverage.yml, test.yml
+### Path-Based Deployment Logic
 
-Code or workflow changes trigger the full cicd.yml pipeline with comprehensive testing and coverage analysis.
+Different types of changes trigger different build and deployment strategies:
+
+| Change Type | Examples | Build | Test | Deploy |
+|---|---|---|---|---|
+| **Content** | `content/`, `static/`, `assets/`, `data/` | ✅ | ✅ | ✅ Production |
+| **Build Config** | `hugo.toml`, `layouts/`, `config/`, deps | ✅ | ✅ | ✅ Production |
+| **Test-Only** | `test/`, `tests/`, `scripts/`, `.github/` | ✅ | ✅ | ❌ Verification only |
+| **Documentation** | `docs/`, `*.md` | ❌ | ❌ | ❌ Validation only |
+
+### Build Behaviors
+
+**Content or Build Config changes:**
+- Fast or comprehensive build depending on scope
+- Code quality & security scanning
+- Full test suite validation
+- Automatic deployment to production on main branch
+- Version auto-bumped on commit
+
+**Test-only changes:**
+- Full build and test validation runs
+- Security scanning and linting included
+- No automatic deployment (safe for infrastructure/test changes)
+- Useful for verifying CI/CD workflows before release
+
+**Documentation-only changes:**
+- Lightweight markdown validation
+- No Hugo build required
+- No deployment
+- Minimal CI resource usage
+
+**Combined changes (e.g., content + build config):**
+- Both build processes run simultaneously
+- Both must pass before deployment
+- Single deployment to production
+
+### Workflow Files
+
+- **Primary**: `.github/workflows/path-based-builds.yml` - All CI/CD logic (consolidated)
+- **Related**: `.github/workflows/coverage.yml` - Code coverage tracking (skips docs-only)
+- **Related**: `.github/workflows/test.yml` - Hugo build validation (skips docs-only)
+
+### Why Path-Based Logic?
+
+- **Efficiency**: Docs-only changes skip expensive builds
+- **Safety**: Test changes build/test but don't deploy
+- **Simplicity**: Single source of truth for CI/CD decisions
+- **Parallelism**: Content and build config changes deploy simultaneously when both occur
 
 ## See Also
 
