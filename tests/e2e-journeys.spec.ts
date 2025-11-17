@@ -34,7 +34,7 @@ test.describe('End-to-End User Journeys', () => {
     await page.goto('/');
 
     // Navigate to blog
-    await page.click('a[href="/blog/"]');
+    await page.click('a[href="/blog"]');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*blog/);
 
@@ -153,7 +153,7 @@ test.describe('End-to-End User Journeys', () => {
       expect(currentUrl).toMatch(/(search|portfolio)/);
     } else {
       // If no search, test navigation to portfolio instead
-      await page.click('a[href="/portfolio/"]');
+      await page.click('a[href="/portfolio"]');
       await page.waitForLoadState('networkidle');
       await expect(page).toHaveURL(/.*portfolio/);
     }

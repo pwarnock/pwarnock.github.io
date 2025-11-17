@@ -19,9 +19,7 @@ heading classes with `text-center`.
 ### Before (Not Working)
 
 ```html
-<h3
-  class="card-title text-base lg:text-lg font-semibold text-base-content mb-1 !text-center"
->
+<h3 class="card-title text-base lg:text-lg font-semibold text-base-content mb-1 !text-center">
   {{ .title }}
 </h3>
 ```
@@ -29,11 +27,7 @@ heading classes with `text-center`.
 ### After (Working)
 
 ```html
-<h3
-  class="text-base lg:text-lg font-semibold text-base-content mb-1 text-center"
->
-  {{ .title }}
-</h3>
+<h3 class="text-base lg:text-lg font-semibold text-base-content mb-1 text-center">{{ .title }}</h3>
 ```
 
 ## Files Changed
