@@ -22,11 +22,13 @@ function heroCarousel(totalSlides) {
     nextSlide() {
       this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
       this.updateSlideDisplay();
+      this.resumeAutoPlay(); // Resume autoplay on chevron click
     },
-    
+
     previousSlide() {
       this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
       this.updateSlideDisplay();
+      this.resumeAutoPlay(); // Resume autoplay on chevron click
     },
     
     goToSlide(index) {
