@@ -135,7 +135,7 @@ buildFuture = true
   resampleFilter = "Lanczos"
   quality = 85
   anchor = "smart"
-  
+
 # Blog image processing configuration
 [imaging.resizing]
   [imaging.resizing.blog]
