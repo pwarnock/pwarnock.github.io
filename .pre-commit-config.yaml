@@ -10,7 +10,7 @@ repos:
       - id: check-toml
       - id: check-json
         exclude: layouts/
-      - id: end-of-file-fixer
+       - id: end-of-file-fixer
        - id: trailing-whitespace
 
 
