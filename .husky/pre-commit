@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Pre-Commit Hook: Auto-Version & Quality Gates
+# 
+# This hook:
+# 1. Auto-increments version based on semantic versioning signals
+# 2. Runs linting and validation
+# 3. Prevents commit if quality gates fail
+
+set -e
+
+echo ""
+echo "🔍 Running pre-commit checks..."
+echo ""
+
+# ============================================================================
+# STEP 1: Auto-version the commit
+# ============================================================================
+
+echo "📦 Checking version..."
+node scripts/auto-version.js
+
+# Stage the version update if hugo.toml changed
+if git diff hugo.toml --quiet; then
+  :  # No changes
+else
+  echo "📝 Staging version update..."
+  git add hugo.toml
+fi
+
+# ============================================================================
+# STEP 2: Run linting (source CSS only, not generated)
+# ============================================================================
+
+echo ""
+echo "🎨 Linting CSS..."
+if ! bun run lint 2>/dev/null; then
+  echo "❌ CSS linting failed"
+  exit 1
+fi
+
+echo "✅ Linting passed"
+
+# ============================================================================
+# STEP 3: Validation
+# ============================================================================
+
+echo ""
+echo "✔️  Validating files..."
+if ! bun run validate 2>/dev/null; then
+  echo "❌ Validation failed"
+  exit 1
+fi
+
+echo "✅ Validation passed"
+
+# ============================================================================
+# STEP 4: Test build (quick smoke test)
+# ============================================================================
+
+echo ""
+echo "🔨 Testing build..."
+if ! hugo --quiet 2>/dev/null; then
+  echo "❌ Build failed"
+  exit 1
+fi
+
+echo "✅ Build test passed"
+
+# ============================================================================
+# SUMMARY
+# ============================================================================
+
+echo ""
+echo "✅ All pre-commit checks passed!"
+echo ""
