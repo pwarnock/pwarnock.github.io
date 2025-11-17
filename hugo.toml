@@ -161,4 +161,4 @@ buildFuture = true
 [pagination]
   pagerSize = 6
 
-version = "0.16.0-hero-carousel-system"
+version = "0.16.1"
