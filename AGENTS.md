@@ -487,12 +487,13 @@ may provide outdated information.**
    - Footer displays version + git hash (e.g., v0.17.1 (8bb3896))
 
 2. **Three-Stage Release Process**
+
    ```bash
    # Stage 1: Pre-Release (RC for testing)
    ./scripts/release.sh pre    # Creates v0.17.1-rc.1
    FORCE_PUSH=yes git push upstream v0.17.1-rc.1
    bun run deploy:staging && bun run test:e2e
-   
+
    # Stage 2: Production Release (after RC passes)
    ./scripts/release.sh post   # Creates v0.17.1
    FORCE_PUSH=yes git push upstream main v0.17.1
@@ -505,7 +506,8 @@ may provide outdated information.**
    - Pre-push hook tests build and shows what deploys
    - Use `FORCE_PUSH=yes` only for release pushes (guarded by confirmation)
 
-**Why**: Pre-commit hook ensures code quality, auto-versioning keeps version sync, three-stage releases catch issues before production.
+**Why**: Pre-commit hook ensures code quality, auto-versioning keeps version
+sync, three-stage releases catch issues before production.
 
 See `/docs/operations/RELEASE_WORKFLOW.md` for detailed procedures.
 

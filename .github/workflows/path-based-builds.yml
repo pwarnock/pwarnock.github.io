@@ -10,6 +10,8 @@ env:
   NODE_VERSION: '20'
   GO_VERSION: '1.24'
   HUGO_VERSION: 'latest'
+  HUGO_ENV: 'production'
+  HUGO_GTM_CONTAINER_ID: 'GTM-N9CR6KJ5'
 
 jobs:
   # Detect change types and determine build strategy
@@ -63,22 +65,21 @@ jobs:
           echo "docs-changed=${{ steps.filter.outputs.docs }}" >> $GITHUB_OUTPUT
           echo "ci-cd-changed=${{ steps.filter.outputs.ci-cd }}" >> $GITHUB_OUTPUT
 
-          # Determine build type
-          if [ "${{ steps.filter.outputs.infrastructure }}" = "true" ]; then
-            echo "build-type=infrastructure" >> $GITHUB_OUTPUT
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
-          elif [ "${{ steps.filter.outputs.content }}" = "true" ]; then
-            echo "build-type=content" >> $GITHUB_OUTPUT
+          # Determine which builds to run
+          CONTENT="${{ steps.filter.outputs.content }}"
+          INFRA="${{ steps.filter.outputs.infrastructure }}"
+          DOCS="${{ steps.filter.outputs.docs }}"
+
+          # Determine if we should deploy (content or infrastructure changes)
+          if [ "$CONTENT" = "true" ] || [ "$INFRA" = "true" ]; then
             echo "should-deploy=true" >> $GITHUB_OUTPUT
-          elif [ "${{ steps.filter.outputs.docs }}" = "true" ]; then
-            echo "build-type=documentation" >> $GITHUB_OUTPUT
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
           else
-            echo "build-type=unknown" >> $GITHUB_OUTPUT
             echo "should-deploy=false" >> $GITHUB_OUTPUT
           fi
 
-          echo "Build type: ${{ steps.changes.outputs.build-type }}"
+          echo "Content changed: $CONTENT"
+          echo "Infrastructure changed: $INFRA"
+          echo "Docs changed: $DOCS"
           echo "Should deploy: ${{ steps.changes.outputs.should-deploy }}"
 
   # Content-only build (fast, minimal testing)
@@ -86,10 +87,13 @@ jobs:
     name: Content Build
     runs-on: ubuntu-latest
     needs: detect-changes
-    if: needs.detect-changes.outputs.build-type == 'content'
+    if: needs.detect-changes.outputs.content-changed == 'true'
+    continue-on-error: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -105,13 +109,37 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Code Quality & Security Scan
+        uses: github/super-linter/slim@v5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_JSON: true
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+
       - name: Build CSS with PostCSS
         run: bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
+
+      - name: Build
+        run: bun run build:production
+
+      - name: Test build
+        run: |
+          if [ ! -d "public" ]; then
+            echo "Build failed: public directory not found"
+            exit 1
+          fi
+          echo "Build successful"
+
+      - name: Test Google Analytics tracking
+        run: bun run test:ga
 
       - name: Quick content validation
         run: |
           echo "🚀 Running content-only build..."
-          hugo --gc --minify --destination /tmp/content-build
           echo "✅ Content build successful"
 
           # Quick content checks
@@ -124,11 +152,11 @@ jobs:
           bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
 
           # Check for broken internal links
-          find /tmp/content-build -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
           while read line; do
             url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
             if [ -n "$url" ]; then
-              if [ ! -f "/tmp/content-build/$url" ] && [ ! -f "/tmp/content-build/$url/index.html" ]; then
+              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
                 echo "❌ Broken link found: /$url"
                 exit 1
               fi
@@ -136,15 +164,24 @@ jobs:
           done
           echo "✅ All internal links valid"
 
+      - name: Upload pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
+
   # Infrastructure build (comprehensive testing)
   infrastructure-build:
     name: Infrastructure Build
     runs-on: ubuntu-latest
     needs: detect-changes
-    if: needs.detect-changes.outputs.build-type == 'infrastructure'
+    if: needs.detect-changes.outputs.infrastructure-changed == 'true'
+    continue-on-error: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
@@ -167,25 +204,44 @@ jobs:
           bun install --frozen-lockfile
           cd test && go mod download && go install github.com/wadey/gocovmerge@latest
 
+      - name: Code Quality & Security Scan
+        uses: github/super-linter/slim@v5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_JSON: true
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+
       - name: Build CSS with PostCSS
         run: bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
+
+      - name: Build
+        run: bun run build:production
+
+      - name: Test build
+        run: |
+          if [ ! -d "public" ]; then
+            echo "Build failed: public directory not found"
+            exit 1
+          fi
+          echo "Build successful"
+
+      - name: Test Google Analytics tracking
+        run: bun run test:ga
 
       - name: Comprehensive infrastructure tests
         run: |
           echo "🔧 Running infrastructure build..."
 
-          # Full build test
-          hugo --gc --minify
-
           # Run all test suites
           echo "🧪 Running unit tests..."
           cd test && go test -v -race ./support/...
 
-          echo "🎨 Running linting..."
-          cd .. && bun run lint || echo "⚠️ Linting issues found"
-
           echo "📱 Running E2E tests..."
-          bunx playwright test --project=chromium tests/e2e-journeys.spec.ts || echo "⚠️ E2E test failures"
+          cd .. && bunx playwright test --project=chromium tests/e2e-journeys.spec.ts || echo "⚠️ E2E test failures"
 
       - name: Security and performance checks
         run: |
@@ -195,12 +251,18 @@ jobs:
           echo "⚡ Performance check..."
           bun run perf:analyze
 
+      - name: Upload pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
+
   # Documentation build (validation only - no Hugo build needed)
   documentation-build:
     name: Documentation Build
     runs-on: ubuntu-latest
     needs: detect-changes
-    if: needs.detect-changes.outputs.build-type == 'documentation'
+    if: needs.detect-changes.outputs.docs-changed == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -232,47 +294,28 @@ jobs:
 
           echo "✅ Documentation validation successful"
 
-  # Deployment (content changes only)
-  deploy-content:
-    name: Deploy Content
-    runs-on: ubuntu-latest
-    needs: [detect-changes, content-build]
+  # Deployment to GitHub Pages (runs after successful builds on main)
+  deploy:
+    name: Deploy to Pages
     if: |
-      needs.detect-changes.outputs.should-deploy == 'true' &&
+      always() &&
       github.ref == 'refs/heads/main' &&
-      github.event_name == 'push'
-    environment: production
+      github.event_name == 'push' &&
+      needs.detect-changes.outputs.should-deploy == 'true' &&
+      (needs.content-build.result == 'success' || needs.content-build.result == 'skipped') &&
+      (needs.infrastructure-build.result == 'success' || needs.infrastructure-build.result == 'skipped')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: [detect-changes, content-build, infrastructure-build]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Build CSS with PostCSS
-        run: bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
-
-      - name: Build production site
-        run: |
-          echo "🚀 Building production site for content deployment..."
-          hugo --gc --minify --enableGitInfo --environment production
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   # Summary job
   build-summary:
@@ -285,23 +328,34 @@ jobs:
         run: |
           echo "## 🚀 Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Build Type:** ${{ needs.detect-changes.outputs.build-type }}" >> $GITHUB_STEP_SUMMARY
           echo "**Content Changed:** ${{ needs.detect-changes.outputs.content-changed }}" >> $GITHUB_STEP_SUMMARY
           echo "**Infrastructure Changed:** ${{ needs.detect-changes.outputs.infrastructure-changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Docs Changed:** ${{ needs.detect-changes.outputs.docs-changed }}" >> $GITHUB_STEP_SUMMARY
           echo "**Should Deploy:** ${{ needs.detect-changes.outputs.should-deploy }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          if [ "${{ needs.detect-changes.outputs.build-type }}" = "content" ]; then
+          CONTENT="${{ needs.detect-changes.outputs.content-changed }}"
+          INFRA="${{ needs.detect-changes.outputs.infrastructure-changed }}"
+          DOCS="${{ needs.detect-changes.outputs.docs-changed }}"
+
+          if [ "$CONTENT" = "true" ] && [ "$INFRA" = "true" ]; then
+            echo "🔄 **Content + Infrastructure build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Full testing suite (content + infrastructure)" >> $GITHUB_STEP_SUMMARY
+            echo "- Will deploy after all tests pass" >> $GITHUB_STEP_SUMMARY
+          elif [ "$CONTENT" = "true" ]; then
             echo "📝 **Content-only build triggered**" >> $GITHUB_STEP_SUMMARY
             echo "- Fast build with minimal testing" >> $GITHUB_STEP_SUMMARY
             echo "- Content validation and link checking" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ needs.detect-changes.outputs.build-type }}" = "infrastructure" ]; then
-            echo "🔧 **Infrastructure build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Will deploy to production" >> $GITHUB_STEP_SUMMARY
+          elif [ "$INFRA" = "true" ]; then
+            echo "🔧 **Infrastructure-only build triggered**" >> $GITHUB_STEP_SUMMARY
             echo "- Comprehensive testing suite" >> $GITHUB_STEP_SUMMARY
             echo "- Security and performance validation" >> $GITHUB_STEP_SUMMARY
-            echo "- No automatic deployment for safety" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ needs.detect-changes.outputs.build-type }}" = "documentation" ]; then
-            echo "📚 **Documentation build triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Will deploy after tests pass" >> $GITHUB_STEP_SUMMARY
+          elif [ "$DOCS" = "true" ]; then
+            echo "📚 **Documentation-only build triggered**" >> $GITHUB_STEP_SUMMARY
             echo "- Documentation validation only" >> $GITHUB_STEP_SUMMARY
-            echo "- No deployment required" >> $GITHUB_STEP_SUMMARY
+            echo "- No deployment" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **No significant changes detected**" >> $GITHUB_STEP_SUMMARY
           fi
