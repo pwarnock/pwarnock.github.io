@@ -2,272 +2,272 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - link "Skip to main content" [ref=e2] [cursor=pointer]:
-    - /url: "#main-content"
-  - navigation "Main navigation" [ref=e3]:
-    - generic [ref=e4]:
-      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
-        - img [ref=e7]:
-          - img [ref=e8]
-      - button "Go to homepage" [ref=e10] [cursor=pointer]:
-        - img "Peter Warnock logo" [ref=e11]
-        - text: Peter Warnock
-    - menubar "Desktop navigation menu" [ref=e13]:
-      - menuitem "Home" [ref=e14] [cursor=pointer]
-      - menuitem "Blog" [ref=e15] [cursor=pointer]
-      - menuitem "Portfolio" [ref=e16] [cursor=pointer]
-      - menuitem "Tools" [ref=e17] [cursor=pointer]
-      - menuitem "About" [ref=e18] [cursor=pointer]
-    - generic [ref=e20]:
-      - generic [ref=e22]:
-        - text: Switch theme - Choose from 20+ accessible themes
-        - button "Theme selector" [ref=e23] [cursor=pointer]:
-          - img [ref=e24]:
-            - img [ref=e25]
-      - group "Social media links" [ref=e28]:
-        - button "GitHub" [ref=e29] [cursor=pointer]:
-          - img [ref=e30]:
-            - img [ref=e31]
-        - button "LinkedIn" [ref=e33] [cursor=pointer]:
-          - img [ref=e34]:
-            - img [ref=e35]
-        - button "Twitter" [ref=e37] [cursor=pointer]:
-          - img [ref=e38]:
-            - img [ref=e39]
-        - button "Discord" [ref=e41] [cursor=pointer]:
-          - img [ref=e42]:
-            - img [ref=e43]
-  - navigation "Breadcrumb" [ref=e46]:
-    - list [ref=e47]:
-      - listitem [ref=e48]:
-        - link "Home" [ref=e49] [cursor=pointer]:
-          - /url: /
-      - listitem [ref=e50]:
-        - link "tools" [ref=e51] [cursor=pointer]:
-          - /url: /tools/
-  - region "Tools" [ref=e52]:
-    - generic [ref=e53]:
-      - heading "Tools" [level=1] [ref=e54]
-      - generic [ref=e56]:
-        - heading "Tools" [level=1] [ref=e57]
-        - paragraph [ref=e58]: In-depth analysis and hands-on evaluations of cutting-edge development tools, AI coding assistants, and platforms that are reshaping how I build software
-  - main [ref=e59]:
-    - main [ref=e60]:
-      - generic [ref=e61]:
-        - heading "AI Development Tools" [level=2] [ref=e62]
-        - generic [ref=e63]:
-          - article [ref=e64]:
-            - generic [ref=e65]:
-              - generic [ref=e66]:
-                - heading "Tailwind CSS - Utility-First CSS Framework" [level=3] [ref=e68]:
-                  - link "Tailwind CSS - Utility-First CSS Framework" [ref=e69] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
-                - generic [ref=e70]:
-                  - generic [ref=e71]: css
-                  - generic [ref=e72]: framework
-                  - generic [ref=e73]: utility-first
-                  - generic [ref=e74]: frontend
-                  - generic [ref=e75]: responsive-design
-                  - generic [ref=e76]: design-system
-              - paragraph [ref=e77]: Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.
-              - generic [ref=e78]:
-                - time [ref=e80]:
-                  - img [ref=e81]
-                  - text: November 2025
-                - link "View Details" [ref=e84] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
-                  - text: View Details
-                  - img [ref=e85]
-          - article [ref=e87]:
-            - generic [ref=e88]:
-              - generic [ref=e89]:
-                - heading "DaisyUI - Component Library for Tailwind CSS" [level=3] [ref=e91]:
-                  - link "DaisyUI - Component Library for Tailwind CSS" [ref=e92] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/daisyui-component-library-for-tailwind-css/
-                - generic [ref=e93]:
-                  - generic [ref=e94]: css
-                  - generic [ref=e95]: ui-components
-                  - generic [ref=e96]: tailwind-css
-                  - generic [ref=e97]: frontend
-                  - generic [ref=e98]: design-system
-                  - generic [ref=e99]: accessibility
-              - paragraph [ref=e100]: DaisyUI is a component library that adds beautiful, accessible UI components to Tailwind CSS, enabling rapid development of modern web interfaces with semantic class names.
-              - generic [ref=e101]:
-                - time [ref=e103]:
-                  - img [ref=e104]
-                  - text: November 2025
-                - link "View Details" [ref=e107] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/daisyui-component-library-for-tailwind-css/
-                  - text: View Details
-                  - img [ref=e108]
-          - article [ref=e110]:
-            - generic [ref=e111]:
-              - generic [ref=e112]:
-                - heading "GitHub Actions - CI/CD for Modern Development" [level=3] [ref=e114]:
-                  - link "GitHub Actions - CI/CD for Modern Development" [ref=e115] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/github-actions-ci-cd-for-modern-development/
-                - generic [ref=e116]:
-                  - generic [ref=e117]: ci-cd
-                  - generic [ref=e118]: automation
-                  - generic [ref=e119]: devops
-                  - generic [ref=e120]: github
-                  - generic [ref=e121]: testing
-                  - generic [ref=e122]: deployment
-              - paragraph [ref=e123]: GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.
-              - generic [ref=e124]:
-                - time [ref=e126]:
-                  - img [ref=e127]
-                  - text: November 2025
-                - link "View Details" [ref=e130] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/github-actions-ci-cd-for-modern-development/
-                  - text: View Details
-                  - img [ref=e131]
-          - article [ref=e133]:
-            - generic [ref=e134]:
-              - generic [ref=e135]:
-                - heading "Godog - BDD Testing Framework for Go" [level=3] [ref=e137]:
-                  - link "Godog - BDD Testing Framework for Go" [ref=e138] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/godog-bdd-testing-framework-for-go/
-                - generic [ref=e139]:
-                  - generic [ref=e140]: testing
-                  - generic [ref=e141]: bdd
-                  - generic [ref=e142]: go
-                  - generic [ref=e143]: gherkin
-                  - generic [ref=e144]: behavior-driven-development
-                  - generic [ref=e145]: automation
-              - paragraph [ref=e146]: Godog is a Behavior-Driven Development (BDD) testing framework for Go that enables writing human-readable tests using Gherkin syntax, bridging the gap between technical and business stakeholders.
-              - generic [ref=e147]:
-                - time [ref=e149]:
-                  - img [ref=e150]
-                  - text: November 2025
-                - link "View Details" [ref=e153] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/godog-bdd-testing-framework-for-go/
-                  - text: View Details
-                  - img [ref=e154]
-          - article [ref=e156]:
-            - generic [ref=e157]:
-              - generic [ref=e158]:
-                - heading "TypeScript - JavaScript with Type Safety" [level=3] [ref=e160]:
-                  - link "TypeScript - JavaScript with Type Safety" [ref=e161] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/typescript-javascript-with-type-safety/
-                - generic [ref=e162]:
-                  - generic [ref=e163]: programming-language
-                  - generic [ref=e164]: javascript
-                  - generic [ref=e165]: type-safety
-                  - generic [ref=e166]: development-tools
-                  - generic [ref=e167]: web-development
-              - paragraph [ref=e168]: TypeScript is a strongly typed programming language that builds on JavaScript, adding static type definitions to enable better development tooling and enhanced code reliability.
-              - generic [ref=e169]:
-                - time [ref=e171]:
-                  - img [ref=e172]
-                  - text: November 2025
-                - link "View Details" [ref=e175] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/typescript-javascript-with-type-safety/
-                  - text: View Details
-                  - img [ref=e176]
-          - article [ref=e178]:
-            - generic [ref=e179]:
-              - generic [ref=e180]:
-                - heading "Playwright - Modern End-to-End Testing Framework" [level=3] [ref=e182]:
-                  - link "Playwright - Modern End-to-End Testing Framework" [ref=e183] [cursor=pointer]:
-                    - /url: http://localhost:1313/tools/playwright-modern-end-to-end-testing-framework/
-                - generic [ref=e184]:
-                  - generic [ref=e185]: testing
-                  - generic [ref=e186]: e2e-testing
-                  - generic [ref=e187]: automation
-                  - generic [ref=e188]: cross-browser
-                  - generic [ref=e189]: javascript
-                  - generic [ref=e190]: typescript
-              - paragraph [ref=e191]: Playwright is a modern end-to-end testing framework for web applications that provides reliable cross-browser testing, mobile emulation, and powerful debugging capabilities.
-              - generic [ref=e192]:
-                - time [ref=e194]:
-                  - img [ref=e195]
-                  - text: November 2025
-                - link "View Details" [ref=e198] [cursor=pointer]:
-                  - /url: http://localhost:1313/tools/playwright-modern-end-to-end-testing-framework/
-                  - text: View Details
-                  - img [ref=e199]
-      - link "View as Interactive Radar ↗" [ref=e202] [cursor=pointer]:
-        - /url: https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json
-      - generic [ref=e204]:
-        - link "Page 1" [ref=e205] [cursor=pointer]:
-          - /url: /tools/
-          - text: "1"
-        - link "Page 2" [ref=e206] [cursor=pointer]:
-          - /url: /tools/page/2/
-          - text: "2"
-        - link "Page 3" [ref=e207] [cursor=pointer]:
-          - /url: /tools/page/3/
-          - text: "3"
-        - link "Page 4" [ref=e208] [cursor=pointer]:
-          - /url: /tools/page/4/
-          - text: "4"
-        - link "Page 5" [ref=e209] [cursor=pointer]:
-          - /url: /tools/page/5/
-          - text: "5"
-        - link "Page 6" [ref=e210] [cursor=pointer]:
-          - /url: /tools/page/6/
-          - text: "6"
-        - link "Next page" [ref=e211] [cursor=pointer]:
-          - /url: /tools/page/2/
-          - text: »
-  - contentinfo [ref=e212]:
-    - generic [ref=e214]:
-      - generic [ref=e215]:
-        - navigation "Main footer navigation" [ref=e216]:
-          - list [ref=e217]:
-            - listitem [ref=e218]:
-              - link "Home" [ref=e219] [cursor=pointer]:
-                - /url: /
-            - listitem [ref=e220]:
-              - link "Blog" [ref=e221] [cursor=pointer]:
-                - /url: /blog
-            - listitem [ref=e222]:
-              - link "Portfolio" [ref=e223] [cursor=pointer]:
-                - /url: /portfolio
-            - listitem [ref=e224]:
-              - link "About" [ref=e225] [cursor=pointer]:
-                - /url: /about
-        - region [ref=e226]:
-          - group "Social media links" [ref=e227]:
-            - button "GitHub" [ref=e228] [cursor=pointer]:
-              - img [ref=e229]:
-                - img [ref=e230]
-            - button "LinkedIn" [ref=e232] [cursor=pointer]:
-              - img [ref=e233]:
-                - img [ref=e234]
-            - button "Twitter" [ref=e236] [cursor=pointer]:
-              - img [ref=e237]:
-                - img [ref=e238]
-            - button "Discord" [ref=e240] [cursor=pointer]:
-              - img [ref=e241]:
-                - img [ref=e242]
-      - region [ref=e245]:
-        - group "Subscribe to my newsletter" [ref=e248]:
-          - generic [ref=e250]: Subscribe to my newsletter
-          - generic [ref=e251]:
-            - generic [ref=e252]: Email address
-            - textbox "Email address" [ref=e253]:
-              - /placeholder: your@email.com
-            - textbox [ref=e255]
-            - button "Subscribe" [ref=e256] [cursor=pointer]
-          - generic [ref=e257]: Get updates on web development and technology trends. Unsubscribe anytime.
-      - generic [ref=e258]:
-        - navigation "Legal information" [ref=e259]:
-          - link "Privacy" [ref=e260] [cursor=pointer]:
-            - /url: /privacy
-          - link "Accessibility" [ref=e261] [cursor=pointer]:
-            - /url: /accessibility
-          - link "Security" [ref=e262] [cursor=pointer]:
-            - /url: /security.txt
-        - paragraph [ref=e263]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
-    - generic [ref=e265]:
-      - generic [ref=e266]:
-        - paragraph [ref=e267]: Copyright © 2025
-        - paragraph [ref=e268]: Peter Warnock
-        - paragraph [ref=e269]: v0.14.1 (e77d3ab)
-      - link "Back to top of page" [ref=e270] [cursor=pointer]:
-        - /url: "#top"
-        - generic [ref=e271]: ↑
-        - generic [ref=e272]: Back to top
+    - link "Skip to main content" [ref=e2] [cursor=pointer]:
+        - /url: '#main-content'
+    - navigation "Main navigation" [ref=e3]:
+        - generic [ref=e4]:
+            - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+                - img [ref=e7]:
+                    - img [ref=e8]
+            - button "Go to homepage" [ref=e10] [cursor=pointer]:
+                - img "Peter Warnock logo" [ref=e11]
+                - text: Peter Warnock
+        - menubar "Desktop navigation menu" [ref=e13]:
+            - menuitem "Home" [ref=e14] [cursor=pointer]
+            - menuitem "Blog" [ref=e15] [cursor=pointer]
+            - menuitem "Portfolio" [ref=e16] [cursor=pointer]
+            - menuitem "Tools" [ref=e17] [cursor=pointer]
+            - menuitem "About" [ref=e18] [cursor=pointer]
+        - generic [ref=e20]:
+            - generic [ref=e22]:
+                - text: Switch theme - Choose from 20+ accessible themes
+                - button "Theme selector" [ref=e23] [cursor=pointer]:
+                    - img [ref=e24]:
+                        - img [ref=e25]
+            - group "Social media links" [ref=e28]:
+                - button "GitHub" [ref=e29] [cursor=pointer]:
+                    - img [ref=e30]:
+                        - img [ref=e31]
+                - button "LinkedIn" [ref=e33] [cursor=pointer]:
+                    - img [ref=e34]:
+                        - img [ref=e35]
+                - button "Twitter" [ref=e37] [cursor=pointer]:
+                    - img [ref=e38]:
+                        - img [ref=e39]
+                - button "Discord" [ref=e41] [cursor=pointer]:
+                    - img [ref=e42]:
+                        - img [ref=e43]
+    - navigation "Breadcrumb" [ref=e46]:
+        - list [ref=e47]:
+            - listitem [ref=e48]:
+                - link "Home" [ref=e49] [cursor=pointer]:
+                    - /url: /
+            - listitem [ref=e50]:
+                - link "tools" [ref=e51] [cursor=pointer]:
+                    - /url: /tools/
+    - region "Tools" [ref=e52]:
+        - generic [ref=e53]:
+            - heading "Tools" [level=1] [ref=e54]
+            - generic [ref=e56]:
+                - heading "Tools" [level=1] [ref=e57]
+                - paragraph [ref=e58]: In-depth analysis and hands-on evaluations of cutting-edge development tools, AI coding assistants, and platforms that are reshaping how I build software
+    - main [ref=e59]:
+        - main [ref=e60]:
+            - generic [ref=e61]:
+                - heading "AI Development Tools" [level=2] [ref=e62]
+                - generic [ref=e63]:
+                    - article [ref=e64]:
+                        - generic [ref=e65]:
+                            - generic [ref=e66]:
+                                - heading "Tailwind CSS - Utility-First CSS Framework" [level=3] [ref=e68]:
+                                    - link "Tailwind CSS - Utility-First CSS Framework" [ref=e69] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
+                                - generic [ref=e70]:
+                                    - generic [ref=e71]: css
+                                    - generic [ref=e72]: framework
+                                    - generic [ref=e73]: utility-first
+                                    - generic [ref=e74]: frontend
+                                    - generic [ref=e75]: responsive-design
+                                    - generic [ref=e76]: design-system
+                            - paragraph [ref=e77]: Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.
+                            - generic [ref=e78]:
+                                - time [ref=e80]:
+                                    - img [ref=e81]
+                                    - text: November 2025
+                                - link "View Details" [ref=e84] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
+                                    - text: View Details
+                                    - img [ref=e85]
+                    - article [ref=e87]:
+                        - generic [ref=e88]:
+                            - generic [ref=e89]:
+                                - heading "DaisyUI - Component Library for Tailwind CSS" [level=3] [ref=e91]:
+                                    - link "DaisyUI - Component Library for Tailwind CSS" [ref=e92] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/daisyui-component-library-for-tailwind-css/
+                                - generic [ref=e93]:
+                                    - generic [ref=e94]: css
+                                    - generic [ref=e95]: ui-components
+                                    - generic [ref=e96]: tailwind-css
+                                    - generic [ref=e97]: frontend
+                                    - generic [ref=e98]: design-system
+                                    - generic [ref=e99]: accessibility
+                            - paragraph [ref=e100]: DaisyUI is a component library that adds beautiful, accessible UI components to Tailwind CSS, enabling rapid development of modern web interfaces with semantic class names.
+                            - generic [ref=e101]:
+                                - time [ref=e103]:
+                                    - img [ref=e104]
+                                    - text: November 2025
+                                - link "View Details" [ref=e107] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/daisyui-component-library-for-tailwind-css/
+                                    - text: View Details
+                                    - img [ref=e108]
+                    - article [ref=e110]:
+                        - generic [ref=e111]:
+                            - generic [ref=e112]:
+                                - heading "GitHub Actions - CI/CD for Modern Development" [level=3] [ref=e114]:
+                                    - link "GitHub Actions - CI/CD for Modern Development" [ref=e115] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/github-actions-ci-cd-for-modern-development/
+                                - generic [ref=e116]:
+                                    - generic [ref=e117]: ci-cd
+                                    - generic [ref=e118]: automation
+                                    - generic [ref=e119]: devops
+                                    - generic [ref=e120]: github
+                                    - generic [ref=e121]: testing
+                                    - generic [ref=e122]: deployment
+                            - paragraph [ref=e123]: GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.
+                            - generic [ref=e124]:
+                                - time [ref=e126]:
+                                    - img [ref=e127]
+                                    - text: November 2025
+                                - link "View Details" [ref=e130] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/github-actions-ci-cd-for-modern-development/
+                                    - text: View Details
+                                    - img [ref=e131]
+                    - article [ref=e133]:
+                        - generic [ref=e134]:
+                            - generic [ref=e135]:
+                                - heading "Godog - BDD Testing Framework for Go" [level=3] [ref=e137]:
+                                    - link "Godog - BDD Testing Framework for Go" [ref=e138] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/godog-bdd-testing-framework-for-go/
+                                - generic [ref=e139]:
+                                    - generic [ref=e140]: testing
+                                    - generic [ref=e141]: bdd
+                                    - generic [ref=e142]: go
+                                    - generic [ref=e143]: gherkin
+                                    - generic [ref=e144]: behavior-driven-development
+                                    - generic [ref=e145]: automation
+                            - paragraph [ref=e146]: Godog is a Behavior-Driven Development (BDD) testing framework for Go that enables writing human-readable tests using Gherkin syntax, bridging the gap between technical and business stakeholders.
+                            - generic [ref=e147]:
+                                - time [ref=e149]:
+                                    - img [ref=e150]
+                                    - text: November 2025
+                                - link "View Details" [ref=e153] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/godog-bdd-testing-framework-for-go/
+                                    - text: View Details
+                                    - img [ref=e154]
+                    - article [ref=e156]:
+                        - generic [ref=e157]:
+                            - generic [ref=e158]:
+                                - heading "TypeScript - JavaScript with Type Safety" [level=3] [ref=e160]:
+                                    - link "TypeScript - JavaScript with Type Safety" [ref=e161] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/typescript-javascript-with-type-safety/
+                                - generic [ref=e162]:
+                                    - generic [ref=e163]: programming-language
+                                    - generic [ref=e164]: javascript
+                                    - generic [ref=e165]: type-safety
+                                    - generic [ref=e166]: development-tools
+                                    - generic [ref=e167]: web-development
+                            - paragraph [ref=e168]: TypeScript is a strongly typed programming language that builds on JavaScript, adding static type definitions to enable better development tooling and enhanced code reliability.
+                            - generic [ref=e169]:
+                                - time [ref=e171]:
+                                    - img [ref=e172]
+                                    - text: November 2025
+                                - link "View Details" [ref=e175] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/typescript-javascript-with-type-safety/
+                                    - text: View Details
+                                    - img [ref=e176]
+                    - article [ref=e178]:
+                        - generic [ref=e179]:
+                            - generic [ref=e180]:
+                                - heading "Playwright - Modern End-to-End Testing Framework" [level=3] [ref=e182]:
+                                    - link "Playwright - Modern End-to-End Testing Framework" [ref=e183] [cursor=pointer]:
+                                        - /url: http://localhost:1313/tools/playwright-modern-end-to-end-testing-framework/
+                                - generic [ref=e184]:
+                                    - generic [ref=e185]: testing
+                                    - generic [ref=e186]: e2e-testing
+                                    - generic [ref=e187]: automation
+                                    - generic [ref=e188]: cross-browser
+                                    - generic [ref=e189]: javascript
+                                    - generic [ref=e190]: typescript
+                            - paragraph [ref=e191]: Playwright is a modern end-to-end testing framework for web applications that provides reliable cross-browser testing, mobile emulation, and powerful debugging capabilities.
+                            - generic [ref=e192]:
+                                - time [ref=e194]:
+                                    - img [ref=e195]
+                                    - text: November 2025
+                                - link "View Details" [ref=e198] [cursor=pointer]:
+                                    - /url: http://localhost:1313/tools/playwright-modern-end-to-end-testing-framework/
+                                    - text: View Details
+                                    - img [ref=e199]
+            - link "View as Interactive Radar ↗" [ref=e202] [cursor=pointer]:
+                - /url: https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json
+            - generic [ref=e204]:
+                - link "Page 1" [ref=e205] [cursor=pointer]:
+                    - /url: /tools/
+                    - text: '1'
+                - link "Page 2" [ref=e206] [cursor=pointer]:
+                    - /url: /tools/page/2/
+                    - text: '2'
+                - link "Page 3" [ref=e207] [cursor=pointer]:
+                    - /url: /tools/page/3/
+                    - text: '3'
+                - link "Page 4" [ref=e208] [cursor=pointer]:
+                    - /url: /tools/page/4/
+                    - text: '4'
+                - link "Page 5" [ref=e209] [cursor=pointer]:
+                    - /url: /tools/page/5/
+                    - text: '5'
+                - link "Page 6" [ref=e210] [cursor=pointer]:
+                    - /url: /tools/page/6/
+                    - text: '6'
+                - link "Next page" [ref=e211] [cursor=pointer]:
+                    - /url: /tools/page/2/
+                    - text: »
+    - contentinfo [ref=e212]:
+        - generic [ref=e214]:
+            - generic [ref=e215]:
+                - navigation "Main footer navigation" [ref=e216]:
+                    - list [ref=e217]:
+                        - listitem [ref=e218]:
+                            - link "Home" [ref=e219] [cursor=pointer]:
+                                - /url: /
+                        - listitem [ref=e220]:
+                            - link "Blog" [ref=e221] [cursor=pointer]:
+                                - /url: /blog
+                        - listitem [ref=e222]:
+                            - link "Portfolio" [ref=e223] [cursor=pointer]:
+                                - /url: /portfolio
+                        - listitem [ref=e224]:
+                            - link "About" [ref=e225] [cursor=pointer]:
+                                - /url: /about
+                - region [ref=e226]:
+                    - group "Social media links" [ref=e227]:
+                        - button "GitHub" [ref=e228] [cursor=pointer]:
+                            - img [ref=e229]:
+                                - img [ref=e230]
+                        - button "LinkedIn" [ref=e232] [cursor=pointer]:
+                            - img [ref=e233]:
+                                - img [ref=e234]
+                        - button "Twitter" [ref=e236] [cursor=pointer]:
+                            - img [ref=e237]:
+                                - img [ref=e238]
+                        - button "Discord" [ref=e240] [cursor=pointer]:
+                            - img [ref=e241]:
+                                - img [ref=e242]
+            - region [ref=e245]:
+                - group "Subscribe to my newsletter" [ref=e248]:
+                    - generic [ref=e250]: Subscribe to my newsletter
+                    - generic [ref=e251]:
+                        - generic [ref=e252]: Email address
+                        - textbox "Email address" [ref=e253]:
+                            - /placeholder: your@email.com
+                        - textbox [ref=e255]
+                        - button "Subscribe" [ref=e256] [cursor=pointer]
+                    - generic [ref=e257]: Get updates on web development and technology trends. Unsubscribe anytime.
+            - generic [ref=e258]:
+                - navigation "Legal information" [ref=e259]:
+                    - link "Privacy" [ref=e260] [cursor=pointer]:
+                        - /url: /privacy
+                    - link "Accessibility" [ref=e261] [cursor=pointer]:
+                        - /url: /accessibility
+                    - link "Security" [ref=e262] [cursor=pointer]:
+                        - /url: /security.txt
+                - paragraph [ref=e263]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+        - generic [ref=e265]:
+            - generic [ref=e266]:
+                - paragraph [ref=e267]: Copyright © 2025
+                - paragraph [ref=e268]: Peter Warnock
+                - paragraph [ref=e269]: v0.14.1 (e77d3ab)
+            - link "Back to top of page" [ref=e270] [cursor=pointer]:
+                - /url: '#top'
+                - generic [ref=e271]: ↑
+                - generic [ref=e272]: Back to top
 ```

@@ -2,260 +2,260 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - link "Skip to main content" [ref=e2] [cursor=pointer]:
-    - /url: "#main-content"
-  - navigation "Main navigation" [ref=e3]:
-    - generic [ref=e4]:
-      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
-        - img [ref=e7]:
-          - img [ref=e8]
-      - button "Go to homepage" [ref=e10] [cursor=pointer]:
-        - img "Peter Warnock logo" [ref=e11]
-        - text: Peter Warnock
-    - menubar "Desktop navigation menu" [ref=e13]:
-      - menuitem "Home" [ref=e14] [cursor=pointer]
-      - menuitem "Blog" [ref=e15] [cursor=pointer]
-      - menuitem "Portfolio" [ref=e16] [cursor=pointer]
-      - menuitem "Tools" [ref=e17] [cursor=pointer]
-      - menuitem "About" [ref=e18] [cursor=pointer]
-    - generic [ref=e20]:
-      - generic [ref=e22]:
-        - text: Switch theme - Choose from 20+ accessible themes
-        - button "Theme selector" [ref=e23] [cursor=pointer]:
-          - img [ref=e24]:
-            - img [ref=e25]
-      - group "Social media links" [ref=e28]:
-        - button "GitHub" [ref=e29] [cursor=pointer]:
-          - img [ref=e30]:
-            - img [ref=e31]
-        - button "LinkedIn" [ref=e33] [cursor=pointer]:
-          - img [ref=e34]:
-            - img [ref=e35]
-        - button "Twitter" [ref=e37] [cursor=pointer]:
-          - img [ref=e38]:
-            - img [ref=e39]
-        - button "Discord" [ref=e41] [cursor=pointer]:
-          - img [ref=e42]:
-            - img [ref=e43]
-  - navigation "Breadcrumb" [ref=e46]:
-    - list [ref=e47]:
-      - listitem [ref=e48]:
-        - link "Home" [ref=e49] [cursor=pointer]:
-          - /url: /
-      - listitem [ref=e50]:
-        - link "portfolio" [ref=e51] [cursor=pointer]:
-          - /url: /portfolio/
-  - region "Portfolio" [ref=e52]:
-    - generic [ref=e53]:
-      - heading "Portfolio" [level=1] [ref=e54]
-      - generic [ref=e56]:
-        - heading "Portfolio" [level=1] [ref=e57]
-        - paragraph [ref=e58]: Full-stack development portfolio featuring SaaS prototypes, AI-powered applications, and rapid deployment solutions built with modern architectures and cutting-edge tools.
-  - main [ref=e59]:
-    - main [ref=e60]:
-      - generic [ref=e61]:
-        - heading "Featured Projects" [level=2] [ref=e62]
-        - generic [ref=e63]:
-          - article [ref=e64]:
-            - generic [ref=e65]:
-              - generic [ref=e66]:
-                - generic [ref=e67]:
-                  - heading "Astro Starlight Demo" [level=3] [ref=e68]:
-                    - link "Astro Starlight Demo" [ref=e69] [cursor=pointer]:
-                      - /url: http://localhost:1313/portfolio/astro-starlight-demo/
-                  - generic [ref=e70]: Website Demo
-                - generic [ref=e71]:
-                  - generic [ref=e72]: Astro
-                  - generic [ref=e73]: Starlight
-                  - generic [ref=e74]: Bun
-              - paragraph [ref=e75]: A demo project showcasing the ease of getting started with Astro Starlight, a powerful framework for building stellar documentation websites.
-              - generic [ref=e76]:
-                - generic [ref=e77]:
-                  - time [ref=e78]:
-                    - img [ref=e79]
-                    - text: November 2025
-                  - generic [ref=e81]:
-                    - img [ref=e82]
-                    - text: Personal Project
-                - generic [ref=e84]:
-                  - link "Live Demo" [ref=e85] [cursor=pointer]:
-                    - /url: https://peterwarnock.com/astro-starlight-demo/
-                    - text: Live Demo
-                    - img [ref=e86]
-                  - link "GitHub" [ref=e88] [cursor=pointer]:
-                    - /url: https://github.com/pwarnock/astro-starlight-demo
-                    - text: GitHub
-                    - img [ref=e89]
-                  - link "View Details" [ref=e91] [cursor=pointer]:
-                    - /url: http://localhost:1313/portfolio/astro-starlight-demo/
-                    - text: View Details
-                    - img [ref=e92]
-          - article [ref=e94]:
-            - generic [ref=e95]:
-              - generic [ref=e96]:
-                - generic [ref=e97]:
-                  - heading "Alpha Ad Ops" [level=3] [ref=e98]:
-                    - link "Alpha Ad Ops" [ref=e99] [cursor=pointer]:
-                      - /url: http://localhost:1313/portfolio/alpha-ad-ops/
-                  - generic [ref=e100]: SaaS Prototype
-                - generic [ref=e101]:
-                  - generic [ref=e102]: Laravel
-                  - generic [ref=e103]: Filament
-                  - generic [ref=e104]: SaasyKit-compatible
-                  - generic [ref=e105]: Laravel Cloud
-                  - generic [ref=e106]: Multi-tenant Architecture
-              - paragraph [ref=e107]: A rapid prototype advertising operations platform built with Laravel and Filament, demonstrating full-stack development capabilities and modern SaaS architecture patterns.
-              - generic [ref=e108]:
-                - generic [ref=e109]:
-                  - time [ref=e110]:
-                    - img [ref=e111]
-                    - text: October 2025
-                  - generic [ref=e113]:
-                    - img [ref=e114]
-                    - text: Proof of Concept
-                - generic [ref=e116]:
-                  - link "Live Demo" [ref=e117] [cursor=pointer]:
-                    - /url: https://alpha-ad-operations-dev-s9qwhp.laravel.cloud/
-                    - text: Live Demo
-                    - img [ref=e118]
-                  - link "GitHub" [ref=e120] [cursor=pointer]:
-                    - /url: https://github.com/pwarnock/alpha-ad-operations
-                    - text: GitHub
-                    - img [ref=e121]
-                  - link "View Details" [ref=e123] [cursor=pointer]:
-                    - /url: http://localhost:1313/portfolio/alpha-ad-ops/
-                    - text: View Details
-                    - img [ref=e124]
-          - article [ref=e126]:
-            - generic [ref=e127]:
-              - generic [ref=e128]:
-                - generic [ref=e129]:
-                  - heading "YouSong" [level=3] [ref=e130]:
-                    - link "YouSong" [ref=e131] [cursor=pointer]:
-                      - /url: http://localhost:1313/portfolio/yousong/
-                  - generic [ref=e132]: Hackathon Project
-                - generic [ref=e133]:
-                  - generic [ref=e134]: Next.js
-                  - generic [ref=e135]: Supabase
-                  - generic [ref=e136]: Vercel
-                  - generic [ref=e137]: ElevenLabs Music API
-                  - generic [ref=e138]: OpenAI
-                  - generic [ref=e139]: SendGrid
-                  - generic [ref=e140]: Tailwind CSS
-              - paragraph [ref=e141]: AI-powered childrens scripture music generator built during hackathon, featuring full-stack development with modern AI tools and rapid deployment.
-              - generic [ref=e142]:
-                - generic [ref=e143]:
-                  - time [ref=e144]:
-                    - img [ref=e145]
-                    - text: October 2025
-                  - generic [ref=e147]:
-                    - img [ref=e148]
-                    - text: Hackathon Project - FaithTech OC/SoCal Chapter
-                - generic [ref=e150]:
-                  - link "Live Demo" [ref=e151] [cursor=pointer]:
-                    - /url: https://frontend-one-tau-55.vercel.app/
-                    - text: Live Demo
-                    - img [ref=e152]
-                  - link "GitHub" [ref=e154] [cursor=pointer]:
-                    - /url: https://github.com/pwarnock/sunday-school-music-creator
-                    - text: GitHub
-                    - img [ref=e155]
-                  - link "View Details" [ref=e157] [cursor=pointer]:
-                    - /url: http://localhost:1313/portfolio/yousong/
-                    - text: View Details
-                    - img [ref=e158]
-          - article [ref=e160]:
-            - generic [ref=e161]:
-              - generic [ref=e162]:
-                - generic [ref=e163]:
-                  - heading "Vocabulary Game" [level=3] [ref=e164]:
-                    - link "Vocabulary Game" [ref=e165] [cursor=pointer]:
-                      - /url: http://localhost:1313/portfolio/vocabulary-game/
-                  - generic [ref=e166]: Educational Game
-                - generic [ref=e167]:
-                  - generic [ref=e168]: React
-                  - generic [ref=e169]: JavaScript
-                  - generic [ref=e170]: HTML5
-                  - generic [ref=e171]: CSS3
-              - paragraph [ref=e172]: An educational game designed to help young children (5 years old) practice typing, spelling, and reading skills through interactive vocabulary exercises.
-              - generic [ref=e173]:
-                - generic [ref=e174]:
-                  - time [ref=e175]:
-                    - img [ref=e176]
-                    - text: November 2024
-                  - generic [ref=e178]:
-                    - img [ref=e179]
-                    - text: Personal Project - Child Education
-                - generic [ref=e181]:
-                  - link "Live Demo" [ref=e182] [cursor=pointer]:
-                    - /url: https://peterwarnock.com/vocabulary-game/
-                    - text: Live Demo
-                    - img [ref=e183]
-                  - link "GitHub" [ref=e185] [cursor=pointer]:
-                    - /url: https://github.com/pwarnock/vocabulary-game
-                    - text: GitHub
-                    - img [ref=e186]
-                  - link "View Details" [ref=e188] [cursor=pointer]:
-                    - /url: http://localhost:1313/portfolio/vocabulary-game/
-                    - text: View Details
-                    - img [ref=e189]
-  - contentinfo [ref=e191]:
-    - generic [ref=e193]:
-      - generic [ref=e194]:
-        - navigation "Main footer navigation" [ref=e195]:
-          - list [ref=e196]:
-            - listitem [ref=e197]:
-              - link "Home" [ref=e198] [cursor=pointer]:
-                - /url: /
-            - listitem [ref=e199]:
-              - link "Blog" [ref=e200] [cursor=pointer]:
-                - /url: /blog
-            - listitem [ref=e201]:
-              - link "Portfolio" [ref=e202] [cursor=pointer]:
-                - /url: /portfolio
-            - listitem [ref=e203]:
-              - link "About" [ref=e204] [cursor=pointer]:
-                - /url: /about
-        - region [ref=e205]:
-          - group "Social media links" [ref=e206]:
-            - button "GitHub" [ref=e207] [cursor=pointer]:
-              - img [ref=e208]:
-                - img [ref=e209]
-            - button "LinkedIn" [ref=e211] [cursor=pointer]:
-              - img [ref=e212]:
-                - img [ref=e213]
-            - button "Twitter" [ref=e215] [cursor=pointer]:
-              - img [ref=e216]:
-                - img [ref=e217]
-            - button "Discord" [ref=e219] [cursor=pointer]:
-              - img [ref=e220]:
-                - img [ref=e221]
-      - region [ref=e224]:
-        - group "Subscribe to my newsletter" [ref=e227]:
-          - generic [ref=e229]: Subscribe to my newsletter
-          - generic [ref=e230]:
-            - generic [ref=e231]: Email address
-            - textbox "Email address" [ref=e232]:
-              - /placeholder: your@email.com
-            - textbox [ref=e234]
-            - button "Subscribe" [ref=e235] [cursor=pointer]
-          - generic [ref=e236]: Get updates on web development and technology trends. Unsubscribe anytime.
-      - generic [ref=e237]:
-        - navigation "Legal information" [ref=e238]:
-          - link "Privacy" [ref=e239] [cursor=pointer]:
-            - /url: /privacy
-          - link "Accessibility" [ref=e240] [cursor=pointer]:
-            - /url: /accessibility
-          - link "Security" [ref=e241] [cursor=pointer]:
-            - /url: /security.txt
-        - paragraph [ref=e242]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
-    - generic [ref=e244]:
-      - generic [ref=e245]:
-        - paragraph [ref=e246]: Copyright © 2025
-        - paragraph [ref=e247]: Peter Warnock
-        - paragraph [ref=e248]: v0.14.1 (e77d3ab)
-      - link "Back to top of page" [ref=e249] [cursor=pointer]:
-        - /url: "#top"
-        - generic [ref=e250]: ↑
-        - generic [ref=e251]: Back to top
+    - link "Skip to main content" [ref=e2] [cursor=pointer]:
+        - /url: '#main-content'
+    - navigation "Main navigation" [ref=e3]:
+        - generic [ref=e4]:
+            - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+                - img [ref=e7]:
+                    - img [ref=e8]
+            - button "Go to homepage" [ref=e10] [cursor=pointer]:
+                - img "Peter Warnock logo" [ref=e11]
+                - text: Peter Warnock
+        - menubar "Desktop navigation menu" [ref=e13]:
+            - menuitem "Home" [ref=e14] [cursor=pointer]
+            - menuitem "Blog" [ref=e15] [cursor=pointer]
+            - menuitem "Portfolio" [ref=e16] [cursor=pointer]
+            - menuitem "Tools" [ref=e17] [cursor=pointer]
+            - menuitem "About" [ref=e18] [cursor=pointer]
+        - generic [ref=e20]:
+            - generic [ref=e22]:
+                - text: Switch theme - Choose from 20+ accessible themes
+                - button "Theme selector" [ref=e23] [cursor=pointer]:
+                    - img [ref=e24]:
+                        - img [ref=e25]
+            - group "Social media links" [ref=e28]:
+                - button "GitHub" [ref=e29] [cursor=pointer]:
+                    - img [ref=e30]:
+                        - img [ref=e31]
+                - button "LinkedIn" [ref=e33] [cursor=pointer]:
+                    - img [ref=e34]:
+                        - img [ref=e35]
+                - button "Twitter" [ref=e37] [cursor=pointer]:
+                    - img [ref=e38]:
+                        - img [ref=e39]
+                - button "Discord" [ref=e41] [cursor=pointer]:
+                    - img [ref=e42]:
+                        - img [ref=e43]
+    - navigation "Breadcrumb" [ref=e46]:
+        - list [ref=e47]:
+            - listitem [ref=e48]:
+                - link "Home" [ref=e49] [cursor=pointer]:
+                    - /url: /
+            - listitem [ref=e50]:
+                - link "portfolio" [ref=e51] [cursor=pointer]:
+                    - /url: /portfolio/
+    - region "Portfolio" [ref=e52]:
+        - generic [ref=e53]:
+            - heading "Portfolio" [level=1] [ref=e54]
+            - generic [ref=e56]:
+                - heading "Portfolio" [level=1] [ref=e57]
+                - paragraph [ref=e58]: Full-stack development portfolio featuring SaaS prototypes, AI-powered applications, and rapid deployment solutions built with modern architectures and cutting-edge tools.
+    - main [ref=e59]:
+        - main [ref=e60]:
+            - generic [ref=e61]:
+                - heading "Featured Projects" [level=2] [ref=e62]
+                - generic [ref=e63]:
+                    - article [ref=e64]:
+                        - generic [ref=e65]:
+                            - generic [ref=e66]:
+                                - generic [ref=e67]:
+                                    - heading "Astro Starlight Demo" [level=3] [ref=e68]:
+                                        - link "Astro Starlight Demo" [ref=e69] [cursor=pointer]:
+                                            - /url: http://localhost:1313/portfolio/astro-starlight-demo/
+                                    - generic [ref=e70]: Website Demo
+                                - generic [ref=e71]:
+                                    - generic [ref=e72]: Astro
+                                    - generic [ref=e73]: Starlight
+                                    - generic [ref=e74]: Bun
+                            - paragraph [ref=e75]: A demo project showcasing the ease of getting started with Astro Starlight, a powerful framework for building stellar documentation websites.
+                            - generic [ref=e76]:
+                                - generic [ref=e77]:
+                                    - time [ref=e78]:
+                                        - img [ref=e79]
+                                        - text: November 2025
+                                    - generic [ref=e81]:
+                                        - img [ref=e82]
+                                        - text: Personal Project
+                                - generic [ref=e84]:
+                                    - link "Live Demo" [ref=e85] [cursor=pointer]:
+                                        - /url: https://peterwarnock.com/astro-starlight-demo/
+                                        - text: Live Demo
+                                        - img [ref=e86]
+                                    - link "GitHub" [ref=e88] [cursor=pointer]:
+                                        - /url: https://github.com/pwarnock/astro-starlight-demo
+                                        - text: GitHub
+                                        - img [ref=e89]
+                                    - link "View Details" [ref=e91] [cursor=pointer]:
+                                        - /url: http://localhost:1313/portfolio/astro-starlight-demo/
+                                        - text: View Details
+                                        - img [ref=e92]
+                    - article [ref=e94]:
+                        - generic [ref=e95]:
+                            - generic [ref=e96]:
+                                - generic [ref=e97]:
+                                    - heading "Alpha Ad Ops" [level=3] [ref=e98]:
+                                        - link "Alpha Ad Ops" [ref=e99] [cursor=pointer]:
+                                            - /url: http://localhost:1313/portfolio/alpha-ad-ops/
+                                    - generic [ref=e100]: SaaS Prototype
+                                - generic [ref=e101]:
+                                    - generic [ref=e102]: Laravel
+                                    - generic [ref=e103]: Filament
+                                    - generic [ref=e104]: SaasyKit-compatible
+                                    - generic [ref=e105]: Laravel Cloud
+                                    - generic [ref=e106]: Multi-tenant Architecture
+                            - paragraph [ref=e107]: A rapid prototype advertising operations platform built with Laravel and Filament, demonstrating full-stack development capabilities and modern SaaS architecture patterns.
+                            - generic [ref=e108]:
+                                - generic [ref=e109]:
+                                    - time [ref=e110]:
+                                        - img [ref=e111]
+                                        - text: October 2025
+                                    - generic [ref=e113]:
+                                        - img [ref=e114]
+                                        - text: Proof of Concept
+                                - generic [ref=e116]:
+                                    - link "Live Demo" [ref=e117] [cursor=pointer]:
+                                        - /url: https://alpha-ad-operations-dev-s9qwhp.laravel.cloud/
+                                        - text: Live Demo
+                                        - img [ref=e118]
+                                    - link "GitHub" [ref=e120] [cursor=pointer]:
+                                        - /url: https://github.com/pwarnock/alpha-ad-operations
+                                        - text: GitHub
+                                        - img [ref=e121]
+                                    - link "View Details" [ref=e123] [cursor=pointer]:
+                                        - /url: http://localhost:1313/portfolio/alpha-ad-ops/
+                                        - text: View Details
+                                        - img [ref=e124]
+                    - article [ref=e126]:
+                        - generic [ref=e127]:
+                            - generic [ref=e128]:
+                                - generic [ref=e129]:
+                                    - heading "YouSong" [level=3] [ref=e130]:
+                                        - link "YouSong" [ref=e131] [cursor=pointer]:
+                                            - /url: http://localhost:1313/portfolio/yousong/
+                                    - generic [ref=e132]: Hackathon Project
+                                - generic [ref=e133]:
+                                    - generic [ref=e134]: Next.js
+                                    - generic [ref=e135]: Supabase
+                                    - generic [ref=e136]: Vercel
+                                    - generic [ref=e137]: ElevenLabs Music API
+                                    - generic [ref=e138]: OpenAI
+                                    - generic [ref=e139]: SendGrid
+                                    - generic [ref=e140]: Tailwind CSS
+                            - paragraph [ref=e141]: AI-powered childrens scripture music generator built during hackathon, featuring full-stack development with modern AI tools and rapid deployment.
+                            - generic [ref=e142]:
+                                - generic [ref=e143]:
+                                    - time [ref=e144]:
+                                        - img [ref=e145]
+                                        - text: October 2025
+                                    - generic [ref=e147]:
+                                        - img [ref=e148]
+                                        - text: Hackathon Project - FaithTech OC/SoCal Chapter
+                                - generic [ref=e150]:
+                                    - link "Live Demo" [ref=e151] [cursor=pointer]:
+                                        - /url: https://frontend-one-tau-55.vercel.app/
+                                        - text: Live Demo
+                                        - img [ref=e152]
+                                    - link "GitHub" [ref=e154] [cursor=pointer]:
+                                        - /url: https://github.com/pwarnock/sunday-school-music-creator
+                                        - text: GitHub
+                                        - img [ref=e155]
+                                    - link "View Details" [ref=e157] [cursor=pointer]:
+                                        - /url: http://localhost:1313/portfolio/yousong/
+                                        - text: View Details
+                                        - img [ref=e158]
+                    - article [ref=e160]:
+                        - generic [ref=e161]:
+                            - generic [ref=e162]:
+                                - generic [ref=e163]:
+                                    - heading "Vocabulary Game" [level=3] [ref=e164]:
+                                        - link "Vocabulary Game" [ref=e165] [cursor=pointer]:
+                                            - /url: http://localhost:1313/portfolio/vocabulary-game/
+                                    - generic [ref=e166]: Educational Game
+                                - generic [ref=e167]:
+                                    - generic [ref=e168]: React
+                                    - generic [ref=e169]: JavaScript
+                                    - generic [ref=e170]: HTML5
+                                    - generic [ref=e171]: CSS3
+                            - paragraph [ref=e172]: An educational game designed to help young children (5 years old) practice typing, spelling, and reading skills through interactive vocabulary exercises.
+                            - generic [ref=e173]:
+                                - generic [ref=e174]:
+                                    - time [ref=e175]:
+                                        - img [ref=e176]
+                                        - text: November 2024
+                                    - generic [ref=e178]:
+                                        - img [ref=e179]
+                                        - text: Personal Project - Child Education
+                                - generic [ref=e181]:
+                                    - link "Live Demo" [ref=e182] [cursor=pointer]:
+                                        - /url: https://peterwarnock.com/vocabulary-game/
+                                        - text: Live Demo
+                                        - img [ref=e183]
+                                    - link "GitHub" [ref=e185] [cursor=pointer]:
+                                        - /url: https://github.com/pwarnock/vocabulary-game
+                                        - text: GitHub
+                                        - img [ref=e186]
+                                    - link "View Details" [ref=e188] [cursor=pointer]:
+                                        - /url: http://localhost:1313/portfolio/vocabulary-game/
+                                        - text: View Details
+                                        - img [ref=e189]
+    - contentinfo [ref=e191]:
+        - generic [ref=e193]:
+            - generic [ref=e194]:
+                - navigation "Main footer navigation" [ref=e195]:
+                    - list [ref=e196]:
+                        - listitem [ref=e197]:
+                            - link "Home" [ref=e198] [cursor=pointer]:
+                                - /url: /
+                        - listitem [ref=e199]:
+                            - link "Blog" [ref=e200] [cursor=pointer]:
+                                - /url: /blog
+                        - listitem [ref=e201]:
+                            - link "Portfolio" [ref=e202] [cursor=pointer]:
+                                - /url: /portfolio
+                        - listitem [ref=e203]:
+                            - link "About" [ref=e204] [cursor=pointer]:
+                                - /url: /about
+                - region [ref=e205]:
+                    - group "Social media links" [ref=e206]:
+                        - button "GitHub" [ref=e207] [cursor=pointer]:
+                            - img [ref=e208]:
+                                - img [ref=e209]
+                        - button "LinkedIn" [ref=e211] [cursor=pointer]:
+                            - img [ref=e212]:
+                                - img [ref=e213]
+                        - button "Twitter" [ref=e215] [cursor=pointer]:
+                            - img [ref=e216]:
+                                - img [ref=e217]
+                        - button "Discord" [ref=e219] [cursor=pointer]:
+                            - img [ref=e220]:
+                                - img [ref=e221]
+            - region [ref=e224]:
+                - group "Subscribe to my newsletter" [ref=e227]:
+                    - generic [ref=e229]: Subscribe to my newsletter
+                    - generic [ref=e230]:
+                        - generic [ref=e231]: Email address
+                        - textbox "Email address" [ref=e232]:
+                            - /placeholder: your@email.com
+                        - textbox [ref=e234]
+                        - button "Subscribe" [ref=e235] [cursor=pointer]
+                    - generic [ref=e236]: Get updates on web development and technology trends. Unsubscribe anytime.
+            - generic [ref=e237]:
+                - navigation "Legal information" [ref=e238]:
+                    - link "Privacy" [ref=e239] [cursor=pointer]:
+                        - /url: /privacy
+                    - link "Accessibility" [ref=e240] [cursor=pointer]:
+                        - /url: /accessibility
+                    - link "Security" [ref=e241] [cursor=pointer]:
+                        - /url: /security.txt
+                - paragraph [ref=e242]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+        - generic [ref=e244]:
+            - generic [ref=e245]:
+                - paragraph [ref=e246]: Copyright © 2025
+                - paragraph [ref=e247]: Peter Warnock
+                - paragraph [ref=e248]: v0.14.1 (e77d3ab)
+            - link "Back to top of page" [ref=e249] [cursor=pointer]:
+                - /url: '#top'
+                - generic [ref=e250]: ↑
+                - generic [ref=e251]: Back to top
 ```

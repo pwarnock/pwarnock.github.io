@@ -90,7 +90,9 @@
 }
 
 /* Enhanced Typography */
-.slide-content .card-title {
+.slide-content .card .card-title,
+.slide-content .card-body .card-title,
+.slide-content .text-center .card-title {
   font-weight: 700;
   letter-spacing: -0.025em;
   text-align: center !important;
