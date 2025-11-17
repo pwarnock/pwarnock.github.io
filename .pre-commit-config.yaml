@@ -10,10 +10,8 @@ repos:
       - id: check-toml
       - id: check-json
         exclude: layouts/
-       - id: end-of-file-fixer
-       - id: trailing-whitespace
-
-
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
 
   # Secret scanning with Gitleaks
   - repo: https://github.com/gitleaks/gitleaks
