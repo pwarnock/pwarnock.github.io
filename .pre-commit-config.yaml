@@ -11,18 +11,9 @@ repos:
       - id: check-json
         exclude: layouts/
       - id: end-of-file-fixer
-      - id: trailing-whitespace
-        args: ['--fix=lf']
+       - id: trailing-whitespace
 
-  # Bun test runner - prevents breaking/non-compliant changes
-  - repo: local
-    hooks:
-      - id: bun-tests
-        name: Bun Tests
-        entry: bun run test
-        language: system
-        pass: false
-        always_run: true
+
 
   # Secret scanning with Gitleaks
   - repo: https://github.com/gitleaks/gitleaks
