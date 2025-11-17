@@ -39,46 +39,51 @@ jobs:
               - 'static/**'
               - 'assets/**'
               - 'data/**'
-            infrastructure:
-              - '.github/**'
-              - 'scripts/**'
-              - 'test/**'
-              - 'tests/**'
-              - 'package*.json'
-              - 'go.mod'
-              - 'go.sum'
+            # Build-affecting changes (hugo config, layouts, etc)
+            build-config:
               - 'hugo.toml'
               - 'config/**'
               - 'layouts/**'
               - 'archetypes/**'
+              - 'package*.json'
+              - 'go.mod'
+              - 'go.sum'
+            # Test-only changes (no deployment needed)
+            test-only:
+              - 'test/**'
+              - 'tests/**'
+              - 'scripts/**'
+              - '.github/workflows/**'
             docs:
               - 'docs/**'
               - '*.md'
-            ci-cd:
-              - '.github/workflows/**'
 
       - name: Determine build strategy
         id: changes
         run: |
           echo "content-changed=${{ steps.filter.outputs.content }}" >> $GITHUB_OUTPUT
-          echo "infrastructure-changed=${{ steps.filter.outputs.infrastructure }}" >> $GITHUB_OUTPUT
+          echo "build-config-changed=${{ steps.filter.outputs.build-config }}" >> $GITHUB_OUTPUT
+          echo "test-only-changed=${{ steps.filter.outputs.test-only }}" >> $GITHUB_OUTPUT
           echo "docs-changed=${{ steps.filter.outputs.docs }}" >> $GITHUB_OUTPUT
-          echo "ci-cd-changed=${{ steps.filter.outputs.ci-cd }}" >> $GITHUB_OUTPUT
 
           # Determine which builds to run
           CONTENT="${{ steps.filter.outputs.content }}"
-          INFRA="${{ steps.filter.outputs.infrastructure }}"
+          BUILD_CONFIG="${{ steps.filter.outputs.build-config }}"
+          TEST_ONLY="${{ steps.filter.outputs.test-only }}"
           DOCS="${{ steps.filter.outputs.docs }}"
 
-          # Determine if we should deploy (content or infrastructure changes)
-          if [ "$CONTENT" = "true" ] || [ "$INFRA" = "true" ]; then
+          # Determine if we should deploy
+          # Deploy if: content changes OR build-config changes (but NOT if only test changes)
+          if [ "$CONTENT" = "true" ] || [ "$BUILD_CONFIG" = "true" ]; then
             echo "should-deploy=true" >> $GITHUB_OUTPUT
           else
             echo "should-deploy=false" >> $GITHUB_OUTPUT
           fi
 
+          # We still run builds for test-only (CI validation) but don't deploy
           echo "Content changed: $CONTENT"
-          echo "Infrastructure changed: $INFRA"
+          echo "Build config changed: $BUILD_CONFIG"
+          echo "Test only changed: $TEST_ONLY"
           echo "Docs changed: $DOCS"
           echo "Should deploy: ${{ steps.changes.outputs.should-deploy }}"
 
@@ -87,7 +92,9 @@ jobs:
     name: Content Build
     runs-on: ubuntu-latest
     needs: detect-changes
-    if: needs.detect-changes.outputs.content-changed == 'true'
+    if: |
+      needs.detect-changes.outputs.content-changed == 'true' ||
+      needs.detect-changes.outputs.build-config-changed == 'true'
     continue-on-error: false
     steps:
       - name: Checkout
@@ -170,12 +177,12 @@ jobs:
         with:
           path: ./public
 
-  # Infrastructure build (comprehensive testing)
-  infrastructure-build:
-    name: Infrastructure Build
+  # Test-only build (runs for test/script changes, builds but doesn't deploy)
+  test-build:
+    name: Test Build
     runs-on: ubuntu-latest
     needs: detect-changes
-    if: needs.detect-changes.outputs.infrastructure-changed == 'true'
+    if: needs.detect-changes.outputs.test-only-changed == 'true'
     continue-on-error: false
     steps:
       - name: Checkout
@@ -303,12 +310,12 @@ jobs:
       github.event_name == 'push' &&
       needs.detect-changes.outputs.should-deploy == 'true' &&
       (needs.content-build.result == 'success' || needs.content-build.result == 'skipped') &&
-      (needs.infrastructure-build.result == 'success' || needs.infrastructure-build.result == 'skipped')
+      (needs.test-build.result == 'success' || needs.test-build.result == 'skipped')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: [detect-changes, content-build, infrastructure-build]
+    needs: [detect-changes, content-build, test-build]
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -329,33 +336,40 @@ jobs:
           echo "## 🚀 Build Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Content Changed:** ${{ needs.detect-changes.outputs.content-changed }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Infrastructure Changed:** ${{ needs.detect-changes.outputs.infrastructure-changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Build Config Changed:** ${{ needs.detect-changes.outputs.build-config-changed }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Test-Only Changed:** ${{ needs.detect-changes.outputs.test-only-changed }}" >> $GITHUB_STEP_SUMMARY
           echo "**Docs Changed:** ${{ needs.detect-changes.outputs.docs-changed }}" >> $GITHUB_STEP_SUMMARY
           echo "**Should Deploy:** ${{ needs.detect-changes.outputs.should-deploy }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           CONTENT="${{ needs.detect-changes.outputs.content-changed }}"
-          INFRA="${{ needs.detect-changes.outputs.infrastructure-changed }}"
+          BUILD_CONFIG="${{ needs.detect-changes.outputs.build-config-changed }}"
+          TEST_ONLY="${{ needs.detect-changes.outputs.test-only-changed }}"
           DOCS="${{ needs.detect-changes.outputs.docs-changed }}"
 
-          if [ "$CONTENT" = "true" ] && [ "$INFRA" = "true" ]; then
-            echo "🔄 **Content + Infrastructure build triggered**" >> $GITHUB_STEP_SUMMARY
-            echo "- Full testing suite (content + infrastructure)" >> $GITHUB_STEP_SUMMARY
-            echo "- Will deploy after all tests pass" >> $GITHUB_STEP_SUMMARY
+          if [ "$CONTENT" = "true" ] && [ "$BUILD_CONFIG" = "true" ]; then
+            echo "🔄 **Content + Build Config changes triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Full build with comprehensive testing" >> $GITHUB_STEP_SUMMARY
+            echo "- Will deploy to production" >> $GITHUB_STEP_SUMMARY
           elif [ "$CONTENT" = "true" ]; then
             echo "📝 **Content-only build triggered**" >> $GITHUB_STEP_SUMMARY
             echo "- Fast build with minimal testing" >> $GITHUB_STEP_SUMMARY
             echo "- Content validation and link checking" >> $GITHUB_STEP_SUMMARY
             echo "- Will deploy to production" >> $GITHUB_STEP_SUMMARY
-          elif [ "$INFRA" = "true" ]; then
-            echo "🔧 **Infrastructure-only build triggered**" >> $GITHUB_STEP_SUMMARY
-            echo "- Comprehensive testing suite" >> $GITHUB_STEP_SUMMARY
-            echo "- Security and performance validation" >> $GITHUB_STEP_SUMMARY
-            echo "- Will deploy after tests pass" >> $GITHUB_STEP_SUMMARY
+          elif [ "$BUILD_CONFIG" = "true" ]; then
+            echo "⚙️ **Build Config changes triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Hugo config, layouts, or dependencies changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Full build with comprehensive testing" >> $GITHUB_STEP_SUMMARY
+            echo "- Will deploy to production" >> $GITHUB_STEP_SUMMARY
+          elif [ "$TEST_ONLY" = "true" ]; then
+            echo "🧪 **Test-only changes triggered**" >> $GITHUB_STEP_SUMMARY
+            echo "- Tests, scripts, or workflows changed" >> $GITHUB_STEP_SUMMARY
+            echo "- Full build and test validation runs" >> $GITHUB_STEP_SUMMARY
+            echo "- No deployment (test verification only)" >> $GITHUB_STEP_SUMMARY
           elif [ "$DOCS" = "true" ]; then
             echo "📚 **Documentation-only build triggered**" >> $GITHUB_STEP_SUMMARY
             echo "- Documentation validation only" >> $GITHUB_STEP_SUMMARY
-            echo "- No deployment" >> $GITHUB_STEP_SUMMARY
+            echo "- No build or deployment" >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ **No significant changes detected**" >> $GITHUB_STEP_SUMMARY
           fi
