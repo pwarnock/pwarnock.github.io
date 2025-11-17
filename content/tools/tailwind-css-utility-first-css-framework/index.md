@@ -1,23 +1,13 @@
 ---
 title: 'Tailwind CSS - Utility-First CSS Framework'
 date: 2025-11-15T21:30:00-08:00
-description:
-  'Tailwind CSS is a utility-first CSS framework that provides low-level utility
+description: 'Tailwind CSS is a utility-first CSS framework that provides low-level utility
   classes to build custom designs without leaving your HTML, enabling rapid UI
   development.'
-summary:
-  'Tailwind CSS is a utility-first CSS framework that provides low-level utility
+summary: 'Tailwind CSS is a utility-first CSS framework that provides low-level utility
   classes to build custom designs without leaving your HTML, enabling rapid UI
   development.'
-tags:
-  [
-    'css',
-    'framework',
-    'utility-first',
-    'frontend',
-    'responsive-design',
-    'design-system',
-  ]
+tags: ['css', 'framework', 'utility-first', 'frontend', 'responsive-design', 'design-system']
 image: 'tailwind-css-framework.png'
 draft: false
 ---
@@ -78,11 +68,7 @@ instead gives you the building blocks to create completely custom designs.
 </div>
 
 <!-- Colors -->
-<button
-  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
->
-  Button
-</button>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button>
 
 <!-- Spacing -->
 <div class="m-4 p-8 space-y-4">
@@ -96,22 +82,16 @@ instead gives you the building blocks to create completely custom designs.
 
 ```html
 <!-- Hover states -->
-<button class="bg-blue-500 hover:bg-blue-700 transition-colors">
-  Hover me
-</button>
+<button class="bg-blue-500 hover:bg-blue-700 transition-colors">Hover me</button>
 
 <!-- Focus states -->
-<input
-  class="border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
-/>
+<input class="border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none" />
 
 <!-- Responsive variants -->
 <div class="hidden md:block lg:inline">Show on medium and up</div>
 
 <!-- Dark mode -->
-<div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-  Theme-aware content
-</div>
+<div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">Theme-aware content</div>
 ```
 
 ## 🛠️ **Configuration & Customization**
@@ -313,9 +293,7 @@ spacing: {
 <button class="bg-[#1da1f2] text-white">Twitter blue button</button>
 
 <!-- Arbitrary grid columns -->
-<div class="grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
-  Responsive grid
-</div>
+<div class="grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">Responsive grid</div>
 ```
 
 ### **Directives**
@@ -413,9 +391,7 @@ theme: {
 
 ```html
 <!-- Good: Compose utilities -->
-<button
-  class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
->
+<button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
   Button
 </button>
 
@@ -487,9 +463,7 @@ npx tailwindcss init -p
   <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
       <h2 class="text-4xl font-bold text-gray-900 mb-4">Hello, Tailwind!</h2>
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         Click me
       </button>
     </div>
@@ -549,8 +523,8 @@ NODE_ENV=production npx tailwindcss -i ./src/input.css -o ./dist/output.css --mi
 
 ---
 
-**Website**: [tailwindcss.com](https://tailwindcss.com)  
-**GitHub**: [tailwindlabs/tailwindcss](https://github.com/tailwindlabs/tailwindcss)  
+**Website**: [tailwindcss.com](https://tailwindcss.com)
+**GitHub**: [tailwindlabs/tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 **Documentation**:
-[tailwindcss.com/docs](https://tailwindcss.com/docs)  
+[tailwindcss.com/docs](https://tailwindcss.com/docs)
 **Playground**: [play.tailwindcss.com](https://play.tailwindcss.com)

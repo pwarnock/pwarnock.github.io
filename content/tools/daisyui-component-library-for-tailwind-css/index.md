@@ -1,23 +1,13 @@
 ---
 title: 'DaisyUI - Component Library for Tailwind CSS'
 date: 2025-11-15T21:25:00-08:00
-description:
-  'DaisyUI is a component library that adds beautiful, accessible UI components
+description: 'DaisyUI is a component library that adds beautiful, accessible UI components
   to Tailwind CSS, enabling rapid development of modern web interfaces with
   semantic class names.'
-summary:
-  'DaisyUI is a component library that adds beautiful, accessible UI components
+summary: 'DaisyUI is a component library that adds beautiful, accessible UI components
   to Tailwind CSS, enabling rapid development of modern web interfaces with
   semantic class names.'
-tags:
-  [
-    'css',
-    'ui-components',
-    'tailwind-css',
-    'frontend',
-    'design-system',
-    'accessibility',
-  ]
+tags: ['css', 'ui-components', 'tailwind-css', 'frontend', 'design-system', 'accessibility']
 image: 'daisyui-component-library.png'
 draft: false
 ---
@@ -249,11 +239,7 @@ utility-first approach of Tailwind CSS.
 </div>
 
 <!-- Progress -->
-<progress
-  class="progress progress-primary w-56"
-  value="70"
-  max="100"
-></progress>
+<progress class="progress progress-primary w-56" value="70" max="100"></progress>
 ```
 
 ## 🎨 **Theming System**
@@ -341,10 +327,7 @@ module.exports = {
       <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z" />
     </svg>
   </label>
-  <ul
-    tabindex="0"
-    class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-  >
+  <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
     <li><a data-set-theme="light">Light</a></li>
     <li><a data-set-theme="dark">Dark</a></li>
     <li><a data-set-theme="cupcake">Cupcake</a></li>
@@ -450,9 +433,7 @@ module.exports = {
 
 ```html
 <!-- Override with Tailwind utilities -->
-<button class="btn btn-primary bg-red-500 hover:bg-red-600">
-  Custom Button
-</button>
+<button class="btn btn-primary bg-red-500 hover:bg-red-600">Custom Button</button>
 
 <!-- Use data attributes for JavaScript -->
 <button class="btn" data-action="save">Save Changes</button>
@@ -610,7 +591,7 @@ module.exports = {
 
 ---
 
-**Website**: [daisyui.com](https://daisyui.com)  
-**GitHub**: [saadeghi/daisyui](https://github.com/saadeghi/daisyui)  
-**Documentation**: [daisyui.com/docs](https://daisyui.com/docs)  
+**Website**: [daisyui.com](https://daisyui.com)
+**GitHub**: [saadeghi/daisyui](https://github.com/saadeghi/daisyui)
+**Documentation**: [daisyui.com/docs](https://daisyui.com/docs)
 **Themes**: [daisyui.com/themes](https://daisyui.com/themes)

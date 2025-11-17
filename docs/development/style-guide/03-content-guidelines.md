@@ -163,8 +163,7 @@ title: 'Your Blog Post Title'
 date: 2025-01-01T00:00:00Z
 draft: false
 description: 'SEO-friendly description for search engines'
-summary:
-  'Engaging 150-200 character summary that appears on homepage and blog listing
+summary: 'Engaging 150-200 character summary that appears on homepage and blog listing
   pages'
 tags: ['technology', 'web-development']
 categories: ['Development']
@@ -216,8 +215,7 @@ title: 'Your Blog Post Title'
 date: 2025-01-01T00:00:00Z
 draft: false
 description: 'SEO description for search engines'
-summary:
-  'Engaging 150-200 character summary that appears on homepage and blog listing
+summary: 'Engaging 150-200 character summary that appears on homepage and blog listing
   pages'
 image: '/images/blog/your-featured-image.jpg' # Required for homepage
 tags: ['technology', 'web-development']
