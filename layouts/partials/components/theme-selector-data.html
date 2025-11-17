@@ -3,9 +3,11 @@
 {{ $accessibleThemes := where $themes "accessible" true }}
 
 <div class="dropdown dropdown-end" x-data="{ themeOpen: false }" @click.outside="themeOpen = false" :class="{ 'dropdown-open': themeOpen }">
-  <button tabindex="0" @click="themeOpen = !themeOpen" class="btn-system btn-system--ghost btn-system--md btn-circle" aria-label="Theme selector">
-    {{ partial "components/icon.html" (dict "name" "theme" "size" "md") }}
-  </button>
+  <div class="tooltip tooltip-left tooltip-info" data-tip="Switch theme - Choose from 20+ accessible themes">
+    <button tabindex="0" @click="themeOpen = !themeOpen" class="btn-system btn-system--ghost btn-system--md btn-circle" aria-label="Theme selector">
+      {{ partial "components/icon.html" (dict "name" "theme" "size" "md") }}
+    </button>
+  </div>
   <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto" role="menu" aria-label="Theme selection menu">
     <li class="menu-title"><span>Choose Theme</span></li>
     {{ range $accessibleThemes }}
