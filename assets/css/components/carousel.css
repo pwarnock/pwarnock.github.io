@@ -7,6 +7,7 @@
   @apply relative w-full max-w-6xl mx-auto;
 
   overflow: hidden;
+  background: linear-gradient(to right, oklch(var(--p) / 0.1), oklch(var(--s) / 0.1));
 }
 
 /* Slides Container */
