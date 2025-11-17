@@ -1,0 +1,251 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e3]:
+    - generic [ref=e4]:
+      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]:
+          - img [ref=e8]
+      - button "Go to homepage" [ref=e10] [cursor=pointer]:
+        - img "Peter Warnock logo" [ref=e11]
+        - text: Peter Warnock
+    - generic [ref=e13]:
+      - generic [ref=e15]:
+        - text: Switch theme - Choose from 20+ accessible themes
+        - button "Theme selector" [ref=e16] [cursor=pointer]:
+          - img [ref=e17]:
+            - img [ref=e18]
+      - button "Social links menu" [ref=e21] [cursor=pointer]:
+        - img [ref=e22]:
+          - img [ref=e23]
+  - main [ref=e25]:
+    - region [ref=e27]:
+      - generic [ref=e28]:
+        - heading [level=1] [ref=e29]
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e34]:
+              - img "Peter Warnock professional headshot" [ref=e38]
+              - heading "Peter Warnock" [level=1] [ref=e39]
+              - paragraph [ref=e40]: Full-Stack Developer & Technical Leader
+              - generic [ref=e41]:
+                - generic [ref=e43]:
+                  - heading "AI-FIRST FULLSTACK" [level=3] [ref=e44]
+                  - paragraph [ref=e45]: Bridging secure, scalable applications with team-driven innovation.
+                - generic [ref=e47]:
+                  - heading "CLOUD ARCHITECT" [level=3] [ref=e48]
+                  - paragraph [ref=e49]: Connecting business and technology with a customer-first mindset.
+                - generic [ref=e51]:
+                  - heading "TECH LEADER" [level=3] [ref=e52]
+                  - paragraph [ref=e53]: Crafting innovative solutions and fostering collaboration.
+                - generic [ref=e55]:
+                  - heading "DEVSECOPS" [level=3] [ref=e56]
+                  - paragraph [ref=e57]: Integrating security into every stage of the development lifecycle.
+              - link "View My Work" [ref=e59] [cursor=pointer]:
+                - /url: /portfolio
+            - generic [ref=e62]:
+              - paragraph [ref=e63]: This website is an open-source example of modern web development practices. Built with Hugo, DaisyUI, and Tailwind CSS v4, it demonstrates enterprise-grade development workflows, comprehensive testing, and accessibility-first design. All code is available on GitHub for learning and reference.
+              - generic [ref=e64]:
+                - generic [ref=e66]:
+                  - heading "Modern Stack" [level=3] [ref=e67]
+                  - list [ref=e68]:
+                    - listitem [ref=e69]: Hugo static site
+                    - listitem [ref=e70]: DaisyUI components
+                    - listitem [ref=e71]: Alpine.js interactivity
+                    - listitem [ref=e72]: Tailwind CSS v4
+                    - listitem [ref=e73]: Bun package manager
+                - generic [ref=e75]:
+                  - heading "Development Practices" [level=3] [ref=e76]
+                  - list [ref=e77]:
+                    - listitem [ref=e78]: Enterprise testing
+                    - listitem [ref=e79]: CI/CD pipelines
+                    - listitem [ref=e80]: Accessibility compliance
+                    - listitem [ref=e81]: Performance monitoring
+                - generic [ref=e83]:
+                  - heading "Open Source" [level=3] [ref=e84]
+                  - list [ref=e85]:
+                    - listitem [ref=e86]: MIT licensed
+                    - listitem [ref=e87]: GitHub repository
+                    - listitem [ref=e88]: Implementation guides
+                    - listitem [ref=e89]: Learning resource
+              - link "Explore the Code" [ref=e91] [cursor=pointer]:
+                - /url: https://github.com/pwarnock/pwarnock.github.io
+                - text: Explore the Code
+                - img [ref=e92]
+          - generic:
+            - button "Previous slide" [ref=e94] [cursor=pointer]:
+              - img [ref=e95]
+            - button "Next slide" [ref=e97] [cursor=pointer]:
+              - img [ref=e98]
+          - generic [ref=e100]:
+            - 'button "Go to slide 1: Professional Profile" [ref=e101] [cursor=pointer]':
+              - generic [ref=e102]: Professional Profile
+            - 'button "Go to slide 2: Open Source Showcase" [ref=e103] [cursor=pointer]':
+              - generic [ref=e104]: Open Source Showcase
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - heading "Technical Skills & Expertise" [level=2] [ref=e109]
+        - paragraph [ref=e110]: Comprehensive skillset across modern development and operations
+      - generic [ref=e111]:
+        - generic [ref=e113]:
+          - heading "Programming Languages" [level=3] [ref=e114]
+          - paragraph [ref=e115]: Experienced in programming languages such as Python, JavaScript/TypeScript, Java, and C#. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.
+          - generic [ref=e116]:
+            - generic [ref=e117]: Python
+            - generic [ref=e118]: JavaScript
+            - generic [ref=e119]: TypeScript
+        - generic [ref=e121]:
+          - heading "Web Development" [level=3] [ref=e122]
+          - paragraph [ref=e123]: Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Next.js, and Hugo. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.
+          - generic [ref=e124]:
+            - generic [ref=e125]: React
+            - generic [ref=e126]: Next.js
+            - generic [ref=e127]: Hugo
+        - generic [ref=e129]:
+          - heading "Backend Development" [level=3] [ref=e130]
+          - paragraph [ref=e131]: Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.
+          - generic [ref=e132]:
+            - generic [ref=e133]: Node.js
+            - generic [ref=e134]: Express
+            - generic [ref=e135]: Django
+        - generic [ref=e137]:
+          - heading "Cloud Technologies" [level=3] [ref=e138]
+          - paragraph [ref=e139]: Experienced in leveraging cloud platforms such as AWS, GCP, and Azure. Proficient in designing and deploying scalable, secure, and cost-effective cloud solutions. Well-versed in cloud-native services, containerization (Docker, Kubernetes), and serverless architectures.
+          - generic [ref=e140]:
+            - generic [ref=e141]: AWS
+            - generic [ref=e142]: GCP
+            - generic [ref=e143]: Azure
+            - generic [ref=e144]: Docker
+        - generic [ref=e146]:
+          - heading "CI/CD Pipelines" [level=3] [ref=e147]
+          - paragraph [ref=e148]: Experienced in setting up CI/CD pipelines using Bitbucket Pipelines, GitHub Actions, and other modern CI/CD platforms. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and Bitbucket.
+          - generic [ref=e149]:
+            - generic [ref=e150]: Bitbucket Pipelines
+            - generic [ref=e151]: GitHub Actions
+        - generic [ref=e153]:
+          - heading "Agile Methodologies" [level=3] [ref=e154]
+          - paragraph [ref=e155]: Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.
+          - generic [ref=e156]:
+            - generic [ref=e157]: Scrum
+            - generic [ref=e158]: Kanban
+            - generic [ref=e159]: Jira
+    - generic [ref=e163]:
+      - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e165]':
+        - generic [ref=e166]:
+          - link "Latest Articles" [ref=e167] [cursor=pointer]:
+            - /url: /blog/
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]: Latest Post
+              - generic [ref=e171]: Nov 15, 2025
+            - generic:
+              - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing"':
+                - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing"'
+            - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e172]':
+              - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e173] [cursor=pointer]':
+                - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+            - paragraph [ref=e174]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
+          - link "View All Articles" [ref=e175] [cursor=pointer]:
+            - /url: /blog/
+      - generic [ref=e176]:
+        - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e178]':
+          - generic [ref=e179]:
+            - link "Featured Projects" [ref=e180] [cursor=pointer]:
+              - /url: /portfolio/
+            - generic [ref=e181]:
+              - generic [ref=e182]:
+                - generic [ref=e183]: Featured
+                - generic [ref=e184]: Nov 4, 2025
+              - heading "Astro Starlight Demo" [level=3] [ref=e185]:
+                - link "Astro Starlight Demo" [ref=e186] [cursor=pointer]:
+                  - /url: http://localhost:1313/portfolio/astro-starlight-demo/
+              - paragraph [ref=e187]: A demo project showcasing the ease of getting started with Astro Starlight, a powerful framework for building stellar documentation websites.
+              - generic [ref=e188]:
+                - generic [ref=e189]: Astro
+                - generic [ref=e190]: Starlight
+            - link "View All Projects" [ref=e191] [cursor=pointer]:
+              - /url: /portfolio/
+        - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e193]':
+          - generic [ref=e194]:
+            - link "Tech Radar" [ref=e195] [cursor=pointer]:
+              - /url: /tools/
+            - generic [ref=e196]:
+              - generic [ref=e197]:
+                - generic [ref=e198]: Featured
+                - generic [ref=e199]: Nov 15, 2025
+              - heading "Tailwind CSS - Utility-First CSS Framework" [level=3] [ref=e200]:
+                - link "Tailwind CSS - Utility-First CSS Framework" [ref=e201] [cursor=pointer]:
+                  - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
+              - paragraph [ref=e202]: Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.
+              - generic [ref=e203]:
+                - generic [ref=e204]: css
+                - generic [ref=e205]: framework
+            - generic [ref=e206]:
+              - link "Browse Tech Radar" [ref=e207] [cursor=pointer]:
+                - /url: /tools/
+              - link "View as Interactive Radar ↗" [ref=e208] [cursor=pointer]:
+                - /url: https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json
+  - contentinfo [ref=e209]:
+    - generic [ref=e211]:
+      - generic [ref=e212]:
+        - navigation "Main footer navigation" [ref=e213]:
+          - list [ref=e214]:
+            - listitem [ref=e215]:
+              - link "Home" [ref=e216] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e217]:
+              - link "Blog" [ref=e218] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e219]:
+              - link "Portfolio" [ref=e220] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e221]:
+              - link "About" [ref=e222] [cursor=pointer]:
+                - /url: /about
+        - region [ref=e223]:
+          - group "Social media links" [ref=e224]:
+            - button "GitHub" [ref=e225] [cursor=pointer]:
+              - img [ref=e226]:
+                - img [ref=e227]
+            - button "LinkedIn" [ref=e229] [cursor=pointer]:
+              - img [ref=e230]:
+                - img [ref=e231]
+            - button "Twitter" [ref=e233] [cursor=pointer]:
+              - img [ref=e234]:
+                - img [ref=e235]
+            - button "Discord" [ref=e237] [cursor=pointer]:
+              - img [ref=e238]:
+                - img [ref=e239]
+      - region [ref=e242]:
+        - group "Subscribe to my newsletter" [ref=e245]:
+          - generic [ref=e247]: Subscribe to my newsletter
+          - generic [ref=e248]:
+            - generic [ref=e249]: Email address
+            - textbox "Email address" [ref=e250]:
+              - /placeholder: your@email.com
+            - textbox [ref=e252]
+            - button "Subscribe" [ref=e253] [cursor=pointer]
+          - generic [ref=e254]: Get updates on web development and technology trends. Unsubscribe anytime.
+      - generic [ref=e255]:
+        - navigation "Legal information" [ref=e256]:
+          - link "Privacy" [ref=e257] [cursor=pointer]:
+            - /url: /privacy
+          - link "Accessibility" [ref=e258] [cursor=pointer]:
+            - /url: /accessibility
+          - link "Security" [ref=e259] [cursor=pointer]:
+            - /url: /security.txt
+        - paragraph [ref=e260]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+    - generic [ref=e262]:
+      - generic [ref=e263]:
+        - paragraph [ref=e264]: Copyright © 2025
+        - paragraph [ref=e265]: Peter Warnock
+        - paragraph [ref=e266]: v0.14.1 (e77d3ab)
+      - link "Back to top of page" [ref=e267] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e268]: ↑
+        - generic [ref=e269]: Back to top
+```

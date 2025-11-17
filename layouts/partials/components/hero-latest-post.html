@@ -4,6 +4,7 @@
 {{ if $latestPost }}
 <div class="card bg-base-100/90 backdrop-blur-sm shadow-lg border-2 border-accent/20 flex flex-col h-full" role="article" aria-labelledby="latest-post-title">
   <div class="card-body p-4 lg:p-6 flex flex-col justify-between h-full">
+    <a href="/blog/" class="text-xs font-semibold text-accent uppercase tracking-wide mb-3 hover:opacity-70 transition-opacity inline-block">Latest Articles</a>
     <div>
       <div class="flex items-center gap-2 mb-3">
         <span class="badge badge-accent">Latest Post</span>
@@ -17,14 +18,14 @@
         <a href="{{ $latestPost.Permalink }}" class="block hover:opacity-90 transition-opacity">
           {{/* Try to get as page resource first, then fall back to static */}}
           {{ with $latestPost.Resources.GetMatch (strings.TrimPrefix "/" $image) }}
-            {{ with .Fit "400x200" }}
-              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+            {{ with .Fit "600x300" }}
+              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
             {{ else }}
-              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+              <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
             {{ end }}
           {{ else }}
             {{/* For static images, use direct path */}}
-            <img src="{{ $image | relURL }}" alt="{{ $latestPost.Title }}" class="w-full h-32 object-cover rounded-lg shadow-sm" loading="lazy" />
+            <img src="{{ $image | relURL }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
           {{ end }}
         </a>
       </div>
@@ -39,8 +40,8 @@
         {{ $latestPost.Params.summary | default $latestPost.Params.description }}
       </p>
     </div>
-    <a href="{{ $latestPost.Permalink }}" class="btn btn-accent btn-outline btn-sm mt-auto">
-      Read More
+    <a href="/blog/" class="btn btn-accent btn-md w-full mt-4">
+      View All Articles
     </a>
   </div>
 </div>

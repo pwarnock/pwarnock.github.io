@@ -6,41 +6,91 @@
 {{ $icon := .icon | default "book" }}
 {{ $buttonText := .buttonText | default "View All" }}
 {{ $url := .url }}
+{{ $blogPosts := where site.RegularPages "Section" "blog" }}
+{{ $latestPost := index $blogPosts 0 }}
 
-<!-- Content Card -->
-<div class="card bg-base-100 shadow-xl border border-base-300">
-  <div class="card-body">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl lg:text-3xl font-semibold text-{{ $color }} mb-3">{{ $title }}</h2>
-      <p class="text-base-content/70">{{ $description }}</p>
-    </div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- Latest Blog Post Card - Featured -->
+  {{ if $latestPost }}
+  <div class="lg:col-span-2 card bg-base-100/90 backdrop-blur-sm shadow-lg border-2 border-accent/20 flex flex-col h-full" role="article" aria-labelledby="latest-post-title">
+    <div class="card-body p-4 lg:p-6 flex flex-col justify-between h-full">
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge badge-accent">Latest Post</span>
+          <span class="text-xs text-base-content/60">{{ $latestPost.Date.Format "Jan 2, 2006" }}</span>
+        </div>
 
-    <div class="text-center py-8">
-      {{ if eq $icon "book" }}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-16 w-16 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-        </svg>
-      {{ else if eq $icon "folder" }}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-16 w-16 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      {{ else if eq $icon "cog" }}
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-16 w-16 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      {{ end }}
+        <!-- Blog Image - Use frontmatter image parameter -->
+        {{ $image := $latestPost.Params.thumbnail | default $latestPost.Params.image }}
+        {{ if $image }}
+        <div class="mb-3">
+          <a href="{{ $latestPost.Permalink }}" class="block hover:opacity-90 transition-opacity">
+            {{/* Try to get as page resource first, then fall back to static */}}
+            {{ with $latestPost.Resources.GetMatch (strings.TrimPrefix "/" $image) }}
+              {{ with .Fit "600x300" }}
+                <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
+              {{ else }}
+                <img src="{{ .RelPermalink }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
+              {{ end }}
+            {{ else }}
+              {{/* For static images, use direct path */}}
+              <img src="{{ $image | relURL }}" alt="{{ $latestPost.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
+            {{ end }}
+          </a>
+        </div>
+        {{ end }}
 
-      <p class="text-sm text-base-content/60 mb-6">{{ .subtext }}</p>
-    </div>
-
-    <div class="card-actions justify-end">
-      <a href="{{ $url }}" class="btn btn-{{ $color }}">
-        {{ $buttonText }}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
+        <h3 id="latest-post-title" class="card-title text-lg lg:text-2xl mb-3">
+          <a href="{{ $latestPost.Permalink }}" class="hover:text-accent transition-colors">
+            {{ $latestPost.Title }}
+          </a>
+        </h3>
+        <p class="text-sm lg:text-base text-base-content/80 mb-4 leading-relaxed">
+          {{ $latestPost.Params.summary | default $latestPost.Params.description }}
+        </p>
+      </div>
+      <a href="{{ $latestPost.Permalink }}" class="btn btn-accent btn-outline btn-sm w-fit mt-auto">
+        Read More
       </a>
     </div>
   </div>
+
+  <!-- Section Info Card -->
+  <div class="card bg-base-100 shadow-xl border border-base-300 flex flex-col h-full">
+    <div class="card-body flex flex-col justify-between h-full">
+      <div class="text-center">
+        <h2 class="text-2xl font-semibold text-{{ $color }} mb-3">{{ $title }}</h2>
+        <p class="text-base-content/70 mb-6">{{ $description }}</p>
+
+        <div class="py-8">
+          {{ if eq $icon "book" }}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-12 w-12 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          {{ else if eq $icon "folder" }}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-12 w-12 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          {{ else if eq $icon "cog" }}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-12 w-12 mx-auto mb-4 text-{{ $color }}/50" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          {{ end }}
+
+          <p class="text-sm text-base-content/60 mb-6">{{ .subtext }}</p>
+        </div>
+      </div>
+
+      <div class="card-actions justify-center">
+        <a href="{{ $url }}" class="btn btn-{{ $color }}">
+          {{ $buttonText }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  {{ end }}
 </div>

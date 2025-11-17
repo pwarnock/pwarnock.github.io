@@ -1,32 +1,34 @@
 <!-- Posts Section -->
 <div class="py-16 bg-base-200/30">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "posts") 0).title | default "Latest Blog Posts" }}</h2>
-      <p class="text-lg text-base-content/70">Thoughts on technology, leadership, and development</p>
-    </div>
+    <!-- Featured Latest Post Card -->
+    {{ partial "components/latest-post-card.html" (dict
+      "id" "posts"
+      "title" "Explore More Articles"
+      "description" "Dive deeper into technology, leadership, and development insights"
+      "color" "primary"
+      "icon" "book"
+      "buttonText" "View All Posts"
+      "url" "/blog"
+      "subtext" "Browse our full collection"
+    ) }}
 
-    <div class="grid gap-8">
-      {{ range first 3 (where site.RegularPages "Section" "blog/posts") }}
-      {{ partial "components/card.html" (dict
-        "title" .Title
-        "content" (or .Params.summary .Summary)
-        "url" .Permalink
-        "tags" .Params.tags
-        "date" (.Date.Format "January 2, 2006")
-        "readingTime" .Params.readingTime
-        "size" "medium"
-      ) }}
-      {{ end }}
-    </div>
-
-    <div class="text-center mt-12">
-      <a href="/blog" class="btn btn-primary btn-lg">
-        View All Posts
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+    <!-- Additional Latest Posts -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-semibold text-primary mb-8 text-center">Recent Articles</h3>
+      <div class="grid gap-8 grid-cols-1 lg:grid-cols-2">
+        {{ range first 2 (where (where site.RegularPages "Section" "blog") "Permalink" "!=" (index (where site.RegularPages "Section" "blog") 0).Permalink) }}
+        {{ partial "components/card.html" (dict
+          "title" .Title
+          "content" (or .Params.summary .Summary)
+          "url" .Permalink
+          "tags" .Params.tags
+          "date" (.Date.Format "January 2, 2006")
+          "readingTime" .Params.readingTime
+          "size" "medium"
+        ) }}
+        {{ end }}
+      </div>
     </div>
   </div>
 </div>

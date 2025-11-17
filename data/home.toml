@@ -32,5 +32,5 @@
   id      = "tools"
   enabled = false
   weight  = 4
-  title = "AI Development Tools"
-  description = "AI-powered development tools and platforms I've reviewed and written about"
+  title = "Tech Radar"
+  description = "In-depth analysis of cutting-edge tools and technologies"
