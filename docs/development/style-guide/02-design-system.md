@@ -168,3 +168,105 @@ Production site demonstrates correct implementation using semantic DaisyUI
 classes that provide proper theme adaptation and color distinction. CSS
 variables should only be used for custom components where semantic classes don't
 exist.
+
+## Hero Carousel System
+
+### Component Architecture
+
+The hero carousel is a modular, data-driven component system that displays
+multiple hero variants in a rotating carousel format.
+
+#### Core Components
+
+- **`hero-carousel.html`** - Main carousel container with Alpine.js state
+  management
+- **`carousel/slides.html`** - Dynamic slide rendering based on `hero.toml` data
+- **`carousel/navigation.html`** - Previous/next navigation controls
+- **`carousel/indicators.html`** - Slide position indicators
+- **`carousel/script.html`** - Alpine.js carousel logic and interactions
+
+#### Data Configuration
+
+Carousel slides are configured in `data/hero.toml`:
+
+```toml
+[[slides]]
+id = "classic"
+partial = "hero-classic"
+title = "Professional Profile"
+description = "Meet the AI-first fullstack developer and cloud architect"
+active = true
+order = 1
+```
+
+**Required fields:**
+
+- `id` - Unique slide identifier
+- `partial` - Template partial to render
+- `title` - Display title for indicators and accessibility
+- `description` - Slide description for accessibility
+- `active` - Whether slide is included in carousel
+- `order` - Display order (lower numbers first)
+
+#### Slide Variants
+
+Available hero slide templates:
+
+1. **`hero-classic`** - Professional profile with role cards
+2. **`hero-intro`** - Open source showcase with feature grid
+3. **`hero-showcase`** - Featured projects display (inactive)
+4. **`hero-philosophy`** - Development philosophy (inactive)
+
+#### Styling Guidelines
+
+##### Glass Morphism Design
+
+Carousel slides use glass morphism effects for visual depth:
+
+```css
+.hero-slide {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+```
+
+##### Responsive Spacing
+
+- **Desktop**: `min-height: 320px` for slide content
+- **Mobile**: `min-height: 280px` for slide content
+- **Hero container**: `85vh` height (reduced from `100vh`)
+
+##### Animation Standards
+
+- **Slide transitions**: CSS transforms with `translateX()`
+- **Hover effects**: `translateY(-4px)` and `scale(1.02)`
+- **Duration**: 300ms for all transitions
+- **Easing**: `ease-in-out` for smooth animations
+
+#### Accessibility Requirements
+
+- **ARIA labels**: All navigation controls properly labeled
+- **Keyboard navigation**: Full tab and arrow key support
+- **Screen readers**: Slide titles and descriptions announced
+- **Reduced motion**: Respects `prefers-reduced-motion`
+
+#### Testing Standards
+
+E2E tests verify:
+
+- Slide content matches `hero.toml` data
+- Navigation functionality works
+- Accessibility features are present
+- Responsive behavior across viewports
+
+#### Performance Considerations
+
+- **Alpine.js**: Lightweight reactive state management
+- **CSS transforms**: Hardware-accelerated animations
+- **Lazy loading**: Only active slide content fully rendered
+- **Bundle impact**: Minimal JavaScript footprint

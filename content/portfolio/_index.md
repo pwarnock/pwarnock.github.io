@@ -9,5 +9,5 @@ featured_subtitle:
   integration across diverse technology stacks.'
 cta_text:
   "Interested in collaboration or have a project in mind? Let's connect and
-  discuss how we can build something remarkable together."
+  discuss how I can help build something remarkable for you."
 ---

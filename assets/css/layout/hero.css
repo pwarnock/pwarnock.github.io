@@ -28,19 +28,35 @@
 /* Hero Backgrounds */
 .hero--gradient-primary {
   background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+
+  /* Reduced height for more compact layout */
+  min-height: 85vh;
+
+  /* Add subtle gradient animation */
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 /* Theme-aware text colors for gradient backgrounds */
 .hero--gradient-primary .hero-content {
-  color: var(--fallback-bc, oklch(from var(--bc) l c h));
+  @apply text-primary-content;
 }
 
 .hero--gradient-primary .breadcrumbs {
-  color: var(--fallback-bc, oklch(from var(--bc) l c h / 0.9));
+  @apply text-primary-content/90;
 }
 
-.hero--gradient-primary .text-base-100 {
-  color: var(--fallback-b1, oklch(from var(--b1) l c h));
+/* Apply primary-content only to direct slide content, not inside cards */
+.hero--gradient-primary .slide-content > div > h1,
+.hero--gradient-primary .slide-content > div > h2,
+.hero--gradient-primary .slide-content > div > h3,
+.hero--gradient-primary .slide-content > div > p {
+  @apply text-primary-content;
+}
+
+/* Cards should use base colors since they have bg-base-100 */
+.hero--gradient-primary .card {
+  color: inherit;
 }
 
 .hero--gradient-subtle {
@@ -86,6 +102,18 @@
   @apply text-xs lg:text-xs leading-tight;
 }
 
+/* Gradient Animation */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .hero-card {
@@ -94,5 +122,9 @@
 
   .hero-card:hover {
     transform: none;
+  }
+
+  .hero--gradient-primary {
+    animation: none;
   }
 }

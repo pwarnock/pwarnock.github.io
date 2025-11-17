@@ -32,8 +32,8 @@ description = "Integrating security into every stage of the development lifecycl
 [[slides]]
 id = "classic"
 partial = "hero-classic"
-title = "Classic Portfolio"
-description = "Original production hero with professional role cards"
+title = "Professional Profile"
+description = "Meet the AI-first fullstack developer and cloud architect"
 active = true
 order = 1
 
@@ -41,7 +41,7 @@ order = 1
 id = "intro"
 partial = "hero-intro"
 title = "Open Source Showcase"
-description = "Open-source focused hero section"
+description = "Explore this modern web development showcase built with Hugo"
 active = true
 order = 2
 
@@ -49,14 +49,14 @@ order = 2
 id = "showcase"
 partial = "hero-showcase"
 title = "Featured Projects"
-description = "Showcase of latest work and technical implementations"
+description = "Discover innovative AI tools and development frameworks"
 active = false
 order = 3
 
 [[slides]]
 id = "philosophy"
 partial = "hero-philosophy"
-title = "About & Philosophy"
-description = "Development philosophy and professional experience"
+title = "Development Philosophy"
+description = "Learn about my approach to building exceptional software"
 active = false
 order = 4

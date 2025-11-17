@@ -130,6 +130,8 @@
   --button-height-md: 2.5rem;
   --button-height-lg: 3rem;
 
+  /* Color shortcuts for gradients - will be overridden by DaisyUI theme colors */
+
   --card-padding-sm: 1rem;
   --card-padding-md: 1.5rem;
   --card-padding-lg: 2rem;

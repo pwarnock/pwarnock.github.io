@@ -35,7 +35,35 @@ When `customHTML: true`:
 - Use DaisyUI components and Tailwind classes directly
 - Ideal for landing pages, custom layouts, and interactive components
 
-## Content Organization
+## Voice and Tone
+
+**CRITICAL: Use First-Person Voice (I/me)**
+
+All content must use first-person perspective. This is a personal portfolio and
+blog.
+
+### ✅ Correct (First Person)
+
+- "I developed this application to solve..."
+- "My approach to this problem was..."
+- "I learned that..."
+- "In my experience..."
+
+### ❌ Incorrect (Third Person/We)
+
+- "We developed this application..."
+- "The team's approach was..."
+- "Our experience shows..."
+- "Developers learned that..."
+
+### Why First Person?
+
+- **Personal Portfolio**: This represents my individual work and experience
+- **Authentic Voice**: Readers connect with personal stories and insights
+- **Clear Attribution**: Avoids ambiguity about who did the work
+- **Professional Standard**: Personal portfolios use first-person voice
+
+### Content Organization
 
 - **Blog Posts**: `/content/blog/posts/[slug]/index.md` (Page Bundle -
   **Recommended**)

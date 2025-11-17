@@ -1,4 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 test.describe('End-to-End User Journeys', () => {
   test('complete user journey from homepage to portfolio @e2e', async ({ page }) => {
@@ -259,9 +265,45 @@ test.describe('End-to-End User Journeys', () => {
     // Wait for carousel to load
     await page.waitForSelector('.hero-carousel', { timeout: 10000 });
 
+    // Read hero.toml data to make test truly data-driven
+    const heroDataPath = join(__dirname, '../data/hero.toml');
+    const heroDataText = readFileSync(heroDataPath, 'utf-8');
+
+    // Parse TOML data (simple parsing for active slides)
+    const activeSlides: any[] = [];
+    const lines = heroDataText.split('\n');
+    let currentSlide: any = {};
+    let inSlideSection = false;
+
+    for (const line of lines) {
+      if (line.startsWith('[[slides]]')) {
+        if (Object.keys(currentSlide).length > 0) {
+          activeSlides.push(currentSlide);
+        }
+        currentSlide = {};
+        inSlideSection = true;
+      } else if (inSlideSection && line.includes('title = ')) {
+        currentSlide.title = line.split('title = ')[1].replace(/"/g, '').trim();
+      } else if (inSlideSection && line.includes('description = ')) {
+        currentSlide.description = line.split('description = ')[1].replace(/"/g, '').trim();
+      } else if (inSlideSection && line.includes('active = true')) {
+        currentSlide.active = true;
+      } else if (inSlideSection && line.includes('active = false')) {
+        currentSlide.active = false;
+      }
+    }
+
+    // Add the last slide
+    if (Object.keys(currentSlide).length > 0) {
+      activeSlides.push(currentSlide);
+    }
+
+    // Filter for active slides only
+    const expectedSlides = activeSlides.filter(slide => slide.active === true);
+
     // Check that carousel slides exist
     const slides = page.locator('.carousel-slide');
-    await expect(slides).toHaveCount(2); // We have 2 active hero variants
+    await expect(slides).toHaveCount(expectedSlides.length);
 
     // Check that navigation buttons exist
     const nextButton = page.locator('.carousel-nav-next');
@@ -271,7 +313,14 @@ test.describe('End-to-End User Journeys', () => {
 
     // Check that indicators exist
     const indicators = page.locator('.carousel-indicator');
-    await expect(indicators).toHaveCount(2);
+    await expect(indicators).toHaveCount(expectedSlides.length);
+
+    // Test that slide count matches data (data-driven verification)
+    console.log(`Expected ${expectedSlides.length} active slides from hero.toml data`);
+    console.log(
+      'Active slides:',
+      expectedSlides.map(s => s.title)
+    );
 
     // Test basic functionality - just click next and verify no errors
     await nextButton.click();
@@ -281,6 +330,9 @@ test.describe('End-to-End User Journeys', () => {
     const secondIndicator = indicators.nth(1);
     await secondIndicator.click();
     await page.waitForTimeout(1000); // Wait for transition
+
+    // Verify carousel is still functional after navigation
+    console.log('Carousel navigation completed successfully');
 
     // Basic smoke test - ensure carousel is still functional
     await expect(page.locator('.hero-carousel')).toBeVisible();
