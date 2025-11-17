@@ -2,6 +2,62 @@
 
 Three-stage release process: Pre-Release → Test → Production Release
 
+## Process Diagram
+
+```mermaid
+graph TB
+    subgraph "Development"
+        Commits["Make Commits<br/>(auto-version bumps)"]
+        Check["./scripts/release.sh check"]
+    end
+    
+    subgraph "Stage 1: Pre-Release"
+        PreRelease["./scripts/release.sh pre<br/>Creates v0.17.1-rc.1"]
+        PushRC["FORCE_PUSH=yes<br/>git push upstream v0.17.1-rc.1"]
+        DeployStaging["bun run deploy:staging"]
+    end
+    
+    subgraph "Stage 2: Testing"
+        TestE2E["bun run test:e2e"]
+        TestAccess["bun run test:accessibility"]
+        TestPass{Tests Pass?}
+    end
+    
+    subgraph "Stage 3: Post-Release"
+        PostRelease["./scripts/release.sh post<br/>Creates v0.17.1"]
+        PushFinal["FORCE_PUSH=yes<br/>git push upstream main v0.17.1"]
+        DeployProd["bun run deploy:production"]
+        GitHubRelease["Create GitHub Release"]
+    end
+    
+    subgraph "Live"
+        Live["Live at peterwarnock.com<br/>v0.17.1 8bb3896"]
+    end
+    
+    Commits --> Check
+    Check --> PreRelease
+    PreRelease --> PushRC
+    PushRC --> DeployStaging
+    DeployStaging --> TestE2E
+    TestE2E --> TestAccess
+    TestAccess --> TestPass
+    TestPass -->|❌ Fail| FixBug["Fix Bug & Commit<br/>Pre-Release Repeats"]
+    FixBug --> Check
+    TestPass -->|✅ Pass| PostRelease
+    PostRelease --> PushFinal
+    PushFinal --> DeployProd
+    DeployProd --> GitHubRelease
+    GitHubRelease --> Live
+    
+    style Commits fill:#e1f5ff
+    style PreRelease fill:#fff3e0
+    style TestE2E fill:#fff3e0
+    style TestPass fill:#fff3e0
+    style PostRelease fill:#e8f5e9
+    style DeployProd fill:#e8f5e9
+    style Live fill:#c8e6c9
+```
+
 ## Quick Reference
 
 ```bash
@@ -13,6 +69,42 @@ Three-stage release process: Pre-Release → Test → Production Release
 
 # Stage 2: Push to production (after testing passes)
 ./scripts/release.sh post       # Creates v0.17.1
+```
+
+## Auto-Versioning Diagram
+
+```mermaid
+graph LR
+    subgraph "Pre-Commit Hook"
+        Analyze["Analyze Changes<br/>(git diff, commits, beads)"]
+        Detect{Feature<br/>Commit?}
+        Patch["Bump Patch<br/>0.17.0 → 0.17.1"]
+        Minor["Bump Minor<br/>0.17.0 → 0.18.0"]
+        Update["Update hugo.toml<br/>+ versionHash"]
+    end
+    
+    subgraph "Post-Commit"
+        BuildTest["Build Smoke Test"]
+        Pass{Passed?}
+        Commit["✅ Commit Succeeds"]
+        Fail["❌ Commit Failed"]
+    end
+    
+    Analyze --> Detect
+    Detect -->|Yes<br/>feat: or feature detected| Minor
+    Detect -->|No<br/>fix: refactor: docs:| Patch
+    Minor --> Update
+    Patch --> Update
+    Update --> BuildTest
+    BuildTest --> Pass
+    Pass -->|Yes| Commit
+    Pass -->|No| Fail
+    
+    style Analyze fill:#e3f2fd
+    style Patch fill:#f3e5f5
+    style Minor fill:#e8f5e9
+    style Commit fill:#c8e6c9
+    style Fail fill:#ffcdd2
 ```
 
 ## Release Stages
@@ -33,11 +125,13 @@ When ready to test a version before production:
 ```
 
 **What this does:**
+
 - Creates annotated git tag `v0.17.1-rc.1`
 - Records RC metadata (version, branch, commit, date)
 - Allows multiple RCs: rc.1, rc.2, rc.3, etc.
 
 **Next steps:**
+
 ```bash
 # Push RC tag to upstream
 FORCE_PUSH=yes git push upstream v0.17.1-rc.1
@@ -66,12 +160,14 @@ After RC testing passes and you're ready to go live:
 ```
 
 **What this does:**
+
 - Creates annotated git tag `v0.17.1` (without RC suffix)
 - Records production metadata
 - Marks version as officially released
 - Prevents accidental RC re-creation
 
 **Next steps:**
+
 ```bash
 # Push production tag to upstream
 FORCE_PUSH=yes git push upstream v0.17.1
@@ -83,6 +179,36 @@ bun run deploy:production
 # - Copy release notes
 # - Attach any artifacts
 # - Mark as latest release
+```
+
+## Tag Lifecycle Diagram
+
+```mermaid
+timeline
+    title Version 0.17.1 Tag Lifecycle
+    
+    section Development
+        Commits (auto-bump): 0.17.0 → 0.17.1 : Version bumped on each commit
+    
+    section Pre-Release
+        RC 1 Created: v0.17.1-rc.1 : For staging testing
+        RC 1 Tagged: v0.17.1-rc.1 : Git annotated tag
+        RC 1 Pushed: v0.17.1-rc.1 : Pushed to upstream
+        Deploy Staging: v0.17.1-rc.1 : Deployed to staging env
+        Test Phase: v0.17.1-rc.1 : E2E & accessibility tests
+    
+    section Issue Found
+        Bug Fixed: Commit & auto-bump: Auto-version re-runs
+        RC 2 Created: v0.17.1-rc.2 : New RC with fix
+        RC 2 Pushed: v0.17.1-rc.2 : Pushed to upstream
+        Re-test: v0.17.1-rc.2 : Tests pass ✅
+    
+    section Post-Release
+        Final Tag: v0.17.1 : Production release tag
+        Final Push: v0.17.1 : Pushed to upstream
+        Deploy Prod: v0.17.1 : Deployed to production
+        GitHub Release: v0.17.1 : Release notes published
+        Live: v0.17.1 (8bb3896) : Live at peterwarnock.com
 ```
 
 ## Why Three Stages?
@@ -102,6 +228,7 @@ v0.17.1-rc.1 (staging)   v0.17.1 (live)
 ```
 
 **Benefits:**
+
 - Test exact code before production push
 - Multiple RC iterations if needed
 - Clear marker of what's live vs testing
@@ -178,6 +305,7 @@ commits → auto-bump version → pre-release RC → test → post-release final
 ```
 
 **Example flow:**
+
 1. Make 3 commits (patches) → version auto-bumps from v0.17.0 to v0.17.3
 2. Create RC: `./scripts/release.sh pre` → v0.17.3-rc.1
 3. Test in staging
