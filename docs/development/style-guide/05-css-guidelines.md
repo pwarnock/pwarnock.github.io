@@ -105,6 +105,26 @@
 - Use Tailwind CSS utility classes in templates
 - Custom CSS in `assets/css/main.css` only for design tokens and components
 
+### Grid & Spacing Consistency Pattern
+
+For multi-column layouts with stacked content:
+
+- Use `gap-4` for consistent horizontal spacing between grid columns
+- Use `space-y-4` for consistent vertical spacing within stacked child elements
+- This ensures visual balance: horizontal gap matches vertical spacing
+- Example: 3-column grid with 2-column featured item + 1-column stacked right panel:
+  ```html
+  <div class="grid gap-4 lg:grid-cols-3">
+    <div class="lg:col-span-2"><!-- featured item --></div>
+    <div class="space-y-4">
+      <div><!-- card 1 --></div>
+      <div><!-- card 2 --></div>
+    </div>
+  </div>
+  ```
+- On mobile: single column, `gap-4` still applies vertically for consistency
+- Rationale: DaisyUI cards have internal padding; `gap-4` + `space-y-4` creates rhythm without excessive margin stacking
+
 ## Color Usage
 
 - Semantic color names (primary, secondary, accent)

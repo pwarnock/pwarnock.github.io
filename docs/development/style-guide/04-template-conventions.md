@@ -20,6 +20,27 @@
 - Loop through collections with `range`
 - Pass context explicitly to partials
 
+### Data-Driven Reusable Components
+
+For components that render different content types (blog, portfolio, tools, etc.):
+
+1. **Design for flexibility**: Accept a `section` parameter to control behavior
+2. **Use conditional logic**: Branch on the section type to handle different data structures
+3. **Configure via parameters**: Pass colors, headings, CTA text, and URLs as dict parameters
+4. **Example pattern**:
+   ```go-template
+   {{ $section := .section }}
+   {{ $color := .color | default "accent" }}
+   
+   {{ if eq $section "blog" }}
+     <!-- Blog-specific rendering -->
+   {{ else if eq $section "portfolio" }}
+     <!-- Portfolio-specific rendering -->
+   {{ end }}
+   ```
+5. **Benefits**: Eliminates duplication, maintains consistent styling, simplifies maintenance
+6. **Reference**: See `hero-featured-item.html` for complete implementation handling blog/portfolio/tools sections with different metadata and layouts
+
 ## Code Block Rendering
 
 ### Custom Code Block Handler (render-codeblock.html)
