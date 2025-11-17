@@ -477,16 +477,37 @@ may provide outdated information.**
 
 ## Git & Deployment Workflow
 
-**CRITICAL: Wait for explicit 'push' confirmation**
+### Commit & Version Management
 
-1. After committing changes, show the commit summary and file list
-2. Wait for you to respond with "push"
-3. **Only push if you say "push"** - do not use `FORCE_PUSH=yes` or any bypass
-4. If you don't say "push", do not push and ask again or wait for clarification
-5. Never bypass the pre-push guardrail
+1. **Auto-Versioning on Pre-Commit**
+   - Version automatically bumps on every commit (patch by default)
+   - Minor bumps detected from: feature commits, new components, beads issues
+   - Pre-commit hook runs: linting → validation → build smoke test
+   - Hugo.toml updated automatically with new version
+   - Footer displays version + git hash (e.g., v0.17.1 (8bb3896))
 
-**Why**: The guardrail exists to catch mistakes before they reach production.
-Bypassing it defeats the entire purpose and removes your safety check.
+2. **Three-Stage Release Process**
+   ```bash
+   # Stage 1: Pre-Release (RC for testing)
+   ./scripts/release.sh pre    # Creates v0.17.1-rc.1
+   FORCE_PUSH=yes git push upstream v0.17.1-rc.1
+   bun run deploy:staging && bun run test:e2e
+   
+   # Stage 2: Production Release (after RC passes)
+   ./scripts/release.sh post   # Creates v0.17.1
+   FORCE_PUSH=yes git push upstream main v0.17.1
+   bun run deploy:production
+   ```
+
+3. **Push Confirmation**
+   - Show commit summary and file diffs
+   - Wait for explicit "yes" confirmation
+   - Pre-push hook tests build and shows what deploys
+   - Use `FORCE_PUSH=yes` only for release pushes (guarded by confirmation)
+
+**Why**: Pre-commit hook ensures code quality, auto-versioning keeps version sync, three-stage releases catch issues before production.
+
+See `/docs/operations/RELEASE_WORKFLOW.md` for detailed procedures.
 
 ## Testing
 
