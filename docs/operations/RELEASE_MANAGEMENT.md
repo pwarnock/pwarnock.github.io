@@ -10,6 +10,115 @@ The release management process follows semantic versioning with automated CI/CD
 pipelines through GitHub Actions. Each release is tagged, documented, and
 deployed to GitHub Pages with comprehensive testing and validation.
 
+## CI/CD Workflow Architecture
+
+```mermaid
+graph TB
+    %% Trigger Events
+    Push[Push to main] --> CI[CI/CD Pipeline]
+    PR[Pull Request] --> Test[Test Workflow]
+    Push --> Coverage[Coverage Workflow]
+    Push --> PathBuild[Path-Based Builds]
+
+    %% CI/CD Pipeline
+    subgraph "CI/CD Pipeline"
+        CI_Build[Build & Lint]
+        CI_Quality[Code Quality Scan]
+        CI_TestBuild[Test Build]
+        CI_GA[GA Tracking Test]
+        CI_Artifact[Upload Pages Artifact]
+
+        CI_Build --> CI_Quality
+        CI_Quality --> CI_TestBuild
+        CI_TestBuild --> CI_GA
+        CI_GA --> CI_Artifact
+    end
+
+    %% Test Workflow
+    subgraph "Test Workflow"
+        Test_Build[Hugo Build Test]
+        Test_Links[Link Validation]
+        Test_E2E[E2E Playwright Tests]
+        Test_Report[Upload Test Report]
+
+        Test_Build --> Test_Links
+        Test_Links --> Test_E2E
+        Test_E2E --> Test_Report
+    end
+
+    %% Coverage Workflow
+    subgraph "Coverage Workflow"
+        Cov_Setup[Go Setup & Cache]
+        Cov_Deps[Install Dependencies]
+        Cov_Run[Run Tests with Coverage]
+        Cov_Codecov[Upload to Codecov]
+        Cov_Artifact[Upload Coverage Artifacts]
+
+        Cov_Setup --> Cov_Deps
+        Cov_Deps --> Cov_Run
+        Cov_Run --> Cov_Codecov
+        Cov_Codecov --> Cov_Artifact
+    end
+
+    %% Path-Based Builds
+    subgraph "Path-Based Builds"
+        Path_Detect[Detect Changes]
+        Path_Content[Content Build]
+        Path_Infra[Infrastructure Build]
+        Path_Docs[Documentation Build]
+        Path_Summary[Build Summary]
+
+        Path_Detect --> Path_Content
+        Path_Detect --> Path_Infra
+        Path_Detect --> Path_Docs
+        Path_Content --> Path_Summary
+        Path_Infra --> Path_Summary
+        Path_Docs --> Path_Summary
+    end
+
+    %% Workflow Completion Triggers
+    Test --> WorkflowComplete[All Workflows Complete]
+    Coverage --> WorkflowComplete
+    PathBuild --> WorkflowComplete
+    CI --> WorkflowComplete
+
+    %% Deployment
+    WorkflowComplete --> Deploy[Deploy to GitHub Pages]
+    Deploy --> Live[Site Live]
+
+    %% Guardrails
+    Guardrail[Pre-Push Guardrail] --> Deploy
+    Guardrail -.->|Manual Confirmation| Deploy
+
+    %% Styling
+    classDef trigger fill:#e1f5fe
+    classDef pipeline fill:#f3e5f5
+    classDef test fill:#e8f5e8
+    classDef coverage fill:#fff3e0
+    classDef deploy fill:#ffebee
+    classDef guard fill:#fce4ec
+
+    class Push,PR trigger
+    class CI_Build,CI_Quality,CI_TestBuild,CI_GA,CI_Artifact pipeline
+    class Test_Build,Test_Links,Test_E2E,Test_Report test
+    class Cov_Setup,Cov_Deps,Cov_Run,Cov_Codecov,Cov_Artifact coverage
+    class Deploy,Live deploy
+    class Guardrail guard
+```
+
+### Workflow Dependencies
+
+The deployment process ensures **all validation workflows complete
+successfully** before deploying to production:
+
+1. **CI/CD Pipeline** - Core build, linting, and quality checks
+2. **Test Workflow** - Hugo build validation, link checking, E2E tests
+3. **Coverage Workflow** - Go test coverage analysis and reporting
+4. **Path-Based Builds** - Smart build strategy based on change types
+
+Only when **all four workflows pass** does the deployment trigger, ensuring
+comprehensive validation before production release.
+
 ## Bun-Specific CI/CD Considerations
 
 ### Dependency Management
@@ -111,6 +220,54 @@ Examples:
 - [ ] Content Security Policy validated
 - [ ] Security headers configured
 - [ ] No sensitive data exposed
+
+### Release Process Flow
+
+```mermaid
+graph LR
+    %% Development Phase
+    Dev[Development] --> PR[Create Pull Request]
+    PR --> Review[Code Review]
+    Review --> Merge[Merge to main]
+
+    %% Release Preparation
+    Merge --> Prep[Release Preparation]
+    Prep --> Branch[Create Release Branch]
+    Branch --> Update[Update Version Numbers]
+    Update --> Validate[Pre-Commit Validation]
+
+    %% Validation Loop
+    Validate --> |Pass| Commit[Commit Changes]
+    Validate --> |Fail| Fix[Fix Issues]
+    Fix --> Validate
+
+    %% Git Operations
+    Commit --> Push[Push to main]
+    Push --> Tag[Create Git Tag]
+
+    %% CI/CD Pipeline
+    Tag --> CI[Trigger All Workflows]
+    CI --> |All Pass| Deploy[Deploy to Production]
+    CI --> |Any Fail| Rollback[Rollback/Debug]
+
+    %% Post-Release
+    Deploy --> Post[Post-Release Validation]
+    Post --> Notes[Update Release Notes]
+    Notes --> Clean[Cleanup Branches]
+
+    %% Styling
+    classDef dev fill:#e3f2fd
+    classDef release fill:#f1f8e9
+    classDef validate fill:#fff8e1
+    classDef deploy fill:#ffebee
+    classDef post fill:#f3e5f5
+
+    class Dev,PR,Review,Merge dev
+    class Prep,Branch,Update,Commit,Push,Tag release
+    class Validate,Fix,CI validate
+    class Deploy,Rollback deploy
+    class Post,Notes,Clean post
+```
 
 ### Release Steps
 

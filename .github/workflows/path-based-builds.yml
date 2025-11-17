@@ -8,7 +8,7 @@ on:
 
 env:
   NODE_VERSION: '20'
-  GO_VERSION: '1.22'
+  GO_VERSION: '1.24'
   HUGO_VERSION: 'latest'
 
 jobs:
