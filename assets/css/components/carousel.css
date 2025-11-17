@@ -93,6 +93,7 @@
 .slide-content .card-title {
   font-weight: 700;
   letter-spacing: -0.025em;
+  text-align: center !important;
 }
 
 .slide-content .card-body p {

@@ -1,0 +1,271 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e3]:
+    - generic [ref=e4]:
+      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]:
+          - img [ref=e8]
+      - button "Go to homepage" [ref=e10] [cursor=pointer]:
+        - img "Peter Warnock logo" [ref=e11]
+        - text: Peter Warnock
+    - menubar "Desktop navigation menu" [ref=e13]:
+      - menuitem "Home" [ref=e14] [cursor=pointer]
+      - menuitem "Blog" [ref=e15] [cursor=pointer]
+      - menuitem "Portfolio" [ref=e16] [cursor=pointer]
+      - menuitem "Tools" [ref=e17] [cursor=pointer]
+      - menuitem "About" [ref=e18] [cursor=pointer]
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - text: Switch theme - Choose from 20+ accessible themes
+        - button "Theme selector" [ref=e23] [cursor=pointer]:
+          - img [ref=e24]:
+            - img [ref=e25]
+      - group "Social media links" [ref=e28]:
+        - button "GitHub" [ref=e29] [cursor=pointer]:
+          - img [ref=e30]:
+            - img [ref=e31]
+        - button "LinkedIn" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]:
+            - img [ref=e35]
+        - button "Twitter" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]:
+            - img [ref=e39]
+        - button "Discord" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]:
+            - img [ref=e43]
+  - navigation "Breadcrumb" [ref=e46]:
+    - list [ref=e47]:
+      - listitem [ref=e48]:
+        - link "Home" [ref=e49] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e50]:
+        - link "blog" [ref=e51] [cursor=pointer]:
+          - /url: /blog/
+  - region "Blog" [ref=e52]:
+    - generic [ref=e53]:
+      - heading "Blog" [level=1] [ref=e54]
+      - generic [ref=e56]:
+        - heading "Blog" [level=1] [ref=e57]
+        - paragraph [ref=e58]: Thoughts on modern web development, AI-powered tools, cloud architecture, and technology leadership from my experience building scalable solutions
+  - main [ref=e59]:
+    - main [ref=e60]:
+      - generic [ref=e61]:
+        - heading "Recent Posts" [level=2] [ref=e62]
+        - generic [ref=e63]:
+          - article [ref=e64]:
+            - figure [ref=e65]:
+              - link "infrastructure-overhaul-2025-11-15.png" [ref=e66] [cursor=pointer]:
+                - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                - img "infrastructure-overhaul-2025-11-15.png" [ref=e67]
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=2] [ref=e70]':
+                  - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e71] [cursor=pointer]':
+                    - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                - generic [ref=e72]:
+                  - generic [ref=e73]: infrastructure
+                  - generic [ref=e74]: testing
+                  - generic [ref=e75]: performance
+                  - generic [ref=e76]: development-workflow
+              - paragraph [ref=e78]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
+              - generic [ref=e79]:
+                - time [ref=e81]:
+                  - img [ref=e82]
+                  - text: November 15, 2025
+                - link "Read More" [ref=e84] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
+                  - text: Read More
+                  - img [ref=e85]
+          - article [ref=e87]:
+            - figure [ref=e88]:
+              - link "featured-image.png" [ref=e89] [cursor=pointer]:
+                - /url: http://localhost:1313/blog/posts/beads-distributed-task-management/
+                - img "featured-image.png" [ref=e90]
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - 'heading "Beads: Distributed Task Management for AI Agents" [level=2] [ref=e93]':
+                  - 'link "Beads: Distributed Task Management for AI Agents" [ref=e94] [cursor=pointer]':
+                    - /url: http://localhost:1313/blog/posts/beads-distributed-task-management/
+                - generic [ref=e95]:
+                  - generic [ref=e96]: AI-Coding
+                  - generic [ref=e97]: Development-Tools
+                  - generic [ref=e98]: Task-Management
+                  - generic [ref=e99]: Agents
+                  - generic [ref=e100]: Project-Planning
+              - paragraph [ref=e102]: Beads offers distributed task management for AI agents with dependency-aware DAGs, git-backed persistence, and agent-friendly workflows that integrate seamlessly with development workflows.
+              - generic [ref=e103]:
+                - time [ref=e105]:
+                  - img [ref=e106]
+                  - text: November 12, 2025
+                - link "Read More" [ref=e108] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/beads-distributed-task-management/
+                  - text: Read More
+                  - img [ref=e109]
+          - article [ref=e111]:
+            - figure [ref=e112]:
+              - link "amp-coding-agent-features.png" [ref=e113] [cursor=pointer]:
+                - /url: http://localhost:1313/blog/posts/amp-coding-agent-features/
+                - img "amp-coding-agent-features.png" [ref=e114]
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - 'heading "Amp Coding Agent: Features That Make It Stand Out" [level=2] [ref=e117]':
+                  - 'link "Amp Coding Agent: Features That Make It Stand Out" [ref=e118] [cursor=pointer]':
+                    - /url: http://localhost:1313/blog/posts/amp-coding-agent-features/
+                - generic [ref=e119]:
+                  - generic [ref=e120]: AI-Coding
+                  - generic [ref=e121]: Development-Tools
+                  - generic [ref=e122]: Amp
+                  - generic [ref=e123]: Coding-Agents
+              - paragraph [ref=e125]: Amp coding agent stands out with unique features like Handoff for seamless context transitions, message queueing for reliable operation, scoped instructions for enhanced safety, and extensible toolboxes for customization.
+              - generic [ref=e126]:
+                - time [ref=e128]:
+                  - img [ref=e129]
+                  - text: November 10, 2025
+                - link "Read More" [ref=e131] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/amp-coding-agent-features/
+                  - text: Read More
+                  - img [ref=e132]
+          - article [ref=e134]:
+            - figure [ref=e135]:
+              - link "Thoughtworks Technology Radar Volume 33" [ref=e136] [cursor=pointer]:
+                - /url: http://localhost:1313/blog/posts/thoughtworks-tech-radar-33/
+                - img "Thoughtworks Technology Radar Volume 33" [ref=e137]
+            - generic [ref=e138]:
+              - heading "Thoughtworks Technology Radar Volume 33" [level=2] [ref=e140]:
+                - link "Thoughtworks Technology Radar Volume 33" [ref=e141] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/thoughtworks-tech-radar-33/
+              - paragraph [ref=e143]: Thoughtworks Technology Radar Volume 33 highlights key trends including AI infrastructure orchestration, rise of MCP-powered agents, and evolving AI coding workflows that are reshaping software development practices.
+              - generic [ref=e144]:
+                - time [ref=e146]:
+                  - img [ref=e147]
+                  - text: November 5, 2025
+                - link "Read More" [ref=e149] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/thoughtworks-tech-radar-33/
+                  - text: Read More
+                  - img [ref=e150]
+          - article [ref=e152]:
+            - figure [ref=e153]:
+              - 'link "Inspired by Gemini CLI: My Journey with Astro Starlight" [ref=e154] [cursor=pointer]':
+                - /url: http://localhost:1313/blog/posts/inspired-by-geminicli/
+                - 'img "Inspired by Gemini CLI: My Journey with Astro Starlight" [ref=e155]'
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - 'heading "Inspired by Gemini CLI: My Journey with Astro Starlight" [level=2] [ref=e158]':
+                  - 'link "Inspired by Gemini CLI: My Journey with Astro Starlight" [ref=e159] [cursor=pointer]':
+                    - /url: http://localhost:1313/blog/posts/inspired-by-geminicli/
+                - generic [ref=e160]:
+                  - generic [ref=e161]: Astro
+                  - generic [ref=e162]: Starlight
+                  - generic [ref=e163]: Web Development
+                  - generic [ref=e164]: Hugo
+                  - generic [ref=e165]: Gemini
+              - paragraph [ref=e167]: A journey of discovery sparked by the Gemini CLI website, leading to exploration of Astro Starlight and expanding my web development toolkit.
+              - generic [ref=e168]:
+                - time [ref=e170]:
+                  - img [ref=e171]
+                  - text: November 4, 2025
+                - link "Read More" [ref=e173] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/inspired-by-geminicli/
+                  - text: Read More
+                  - img [ref=e174]
+          - article [ref=e176]:
+            - figure [ref=e177]:
+              - 'link "Stay Grounded: A Calvin and Hobbes Reflection" [ref=e178] [cursor=pointer]':
+                - /url: http://localhost:1313/blog/posts/stay-grounded-calvin-hobbes-reflection/
+                - 'img "Stay Grounded: A Calvin and Hobbes Reflection" [ref=e179]'
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - 'heading "Stay Grounded: A Calvin and Hobbes Reflection" [level=2] [ref=e182]':
+                  - 'link "Stay Grounded: A Calvin and Hobbes Reflection" [ref=e183] [cursor=pointer]':
+                    - /url: http://localhost:1313/blog/posts/stay-grounded-calvin-hobbes-reflection/
+                - generic [ref=e184]:
+                  - generic [ref=e185]: calvin-hobbes
+                  - generic [ref=e186]: philosophy
+                  - generic [ref=e187]: digital-life
+                  - generic [ref=e188]: meaning
+              - paragraph [ref=e190]: A reflection on how Calvin and Hobbes teaches us to make things easier without making them emptier, keeping the texture that makes life meaningful.
+              - generic [ref=e191]:
+                - time [ref=e193]:
+                  - img [ref=e194]
+                  - text: October 31, 2025
+                - link "Read More" [ref=e196] [cursor=pointer]:
+                  - /url: http://localhost:1313/blog/posts/stay-grounded-calvin-hobbes-reflection/
+                  - text: Read More
+                  - img [ref=e197]
+      - generic [ref=e200]:
+        - link "Page 1" [ref=e201] [cursor=pointer]:
+          - /url: /blog/
+          - text: "1"
+        - link "Page 2" [ref=e202] [cursor=pointer]:
+          - /url: /blog/page/2/
+          - text: "2"
+        - link "Page 3" [ref=e203] [cursor=pointer]:
+          - /url: /blog/page/3/
+          - text: "3"
+        - link "Next page" [ref=e204] [cursor=pointer]:
+          - /url: /blog/page/2/
+          - text: »
+  - contentinfo [ref=e205]:
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - navigation "Main footer navigation" [ref=e209]:
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "Home" [ref=e212] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e213]:
+              - link "Blog" [ref=e214] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e215]:
+              - link "Portfolio" [ref=e216] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e217]:
+              - link "About" [ref=e218] [cursor=pointer]:
+                - /url: /about
+        - region [ref=e219]:
+          - group "Social media links" [ref=e220]:
+            - button "GitHub" [ref=e221] [cursor=pointer]:
+              - img [ref=e222]:
+                - img [ref=e223]
+            - button "LinkedIn" [ref=e225] [cursor=pointer]:
+              - img [ref=e226]:
+                - img [ref=e227]
+            - button "Twitter" [ref=e229] [cursor=pointer]:
+              - img [ref=e230]:
+                - img [ref=e231]
+            - button "Discord" [ref=e233] [cursor=pointer]:
+              - img [ref=e234]:
+                - img [ref=e235]
+      - region [ref=e238]:
+        - group "Subscribe to my newsletter" [ref=e241]:
+          - generic [ref=e243]: Subscribe to my newsletter
+          - generic [ref=e244]:
+            - generic [ref=e245]: Email address
+            - textbox "Email address" [ref=e246]:
+              - /placeholder: your@email.com
+            - textbox [ref=e248]
+            - button "Subscribe" [ref=e249] [cursor=pointer]
+          - generic [ref=e250]: Get updates on web development and technology trends. Unsubscribe anytime.
+      - generic [ref=e251]:
+        - navigation "Legal information" [ref=e252]:
+          - link "Privacy" [ref=e253] [cursor=pointer]:
+            - /url: /privacy
+          - link "Accessibility" [ref=e254] [cursor=pointer]:
+            - /url: /accessibility
+          - link "Security" [ref=e255] [cursor=pointer]:
+            - /url: /security.txt
+        - paragraph [ref=e256]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - paragraph [ref=e260]: Copyright © 2025
+        - paragraph [ref=e261]: Peter Warnock
+        - paragraph [ref=e262]: v0.14.1 (e77d3ab)
+      - link "Back to top of page" [ref=e263] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e264]: ↑
+        - generic [ref=e265]: Back to top
+```
