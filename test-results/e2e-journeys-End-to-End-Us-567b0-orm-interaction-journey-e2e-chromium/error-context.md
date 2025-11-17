@@ -1,0 +1,213 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e3]:
+    - generic [ref=e4]:
+      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]:
+          - img [ref=e8]
+      - button "Go to homepage" [ref=e10] [cursor=pointer]:
+        - img "Peter Warnock logo" [ref=e11]
+        - text: Peter Warnock
+    - menubar "Desktop navigation menu" [ref=e13]:
+      - menuitem "Home" [ref=e14] [cursor=pointer]
+      - menuitem "Blog" [ref=e15] [cursor=pointer]
+      - menuitem "Portfolio" [ref=e16] [cursor=pointer]
+      - menuitem "Tools" [ref=e17] [cursor=pointer]
+      - menuitem "About" [ref=e18] [cursor=pointer]
+    - generic [ref=e20]:
+      - button "Theme selector" [ref=e22] [cursor=pointer]:
+        - img [ref=e23]:
+          - img [ref=e24]
+      - group "Social media links" [ref=e27]:
+        - button "GitHub" [ref=e28] [cursor=pointer]:
+          - img [ref=e29]:
+            - img [ref=e30]
+        - button "LinkedIn" [ref=e32] [cursor=pointer]:
+          - img [ref=e33]:
+            - img [ref=e34]
+        - button "Twitter" [ref=e36] [cursor=pointer]:
+          - img [ref=e37]:
+            - img [ref=e38]
+        - button "Discord" [ref=e40] [cursor=pointer]:
+          - img [ref=e41]:
+            - img [ref=e42]
+  - main [ref=e44]:
+    - list [ref=e47]:
+      - listitem [ref=e48]:
+        - link "Home" [ref=e49] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e50]: About
+    - region "Peter Warnock" [ref=e51]:
+      - generic [ref=e52]:
+        - heading "Peter Warnock" [level=1] [ref=e53]
+        - group "Peter Warnock" [ref=e54]:
+          - img "Peter Warnock professional headshot" [ref=e56]:
+            - img "Peter Warnock professional headshot" [ref=e58]
+          - generic [ref=e59]:
+            - heading "Peter Warnock" [level=1] [ref=e60]
+            - paragraph [ref=e61]: I build systems, pipelines, and cultures that let engineering teams move fast with confidence. Starting as a self-taught developer with a business background, I've learned that speed without safeguards is reckless, but safeguards without initiative is gridlock. I create the conditions for both—psychological safety, automated testing, clear ownership—so teams can ship, learn from failure, and improve continuously.
+    - generic [ref=e63]:
+      - separator [ref=e64]
+      - heading "Core Expertise" [level=2] [ref=e65]
+      - generic [ref=e66]:
+        - generic [ref=e68]:
+          - img [ref=e70]
+          - heading "Fullstack Development" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Building modern web applications with cutting-edge technologies and best practices
+        - generic [ref=e75]:
+          - img [ref=e77]
+          - heading "DevOps Leadership" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Implementing CI/CD pipelines and infrastructure as code for reliable deployments
+        - generic [ref=e82]:
+          - img [ref=e84]
+          - heading "Cloud Engineering" [level=3] [ref=e86]
+          - paragraph [ref=e87]: Designing and deploying scalable, resilient cloud solutions across major platforms
+        - generic [ref=e89]:
+          - img [ref=e91]
+          - heading "Team Leadership" [level=3] [ref=e93]
+          - paragraph [ref=e94]: Mentoring developers and fostering engineering excellence in collaborative environments
+      - separator [ref=e95]
+      - heading "Technology Stack" [level=2] [ref=e96]
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - heading "Frontend Development" [level=3] [ref=e100]: Frontend Development
+            - generic [ref=e102]:
+              - generic [ref=e103]: React
+              - generic [ref=e104]: Vue.js
+              - generic [ref=e105]: TypeScript
+              - generic [ref=e106]: Tailwind CSS
+              - generic [ref=e107]: Next.js
+              - generic [ref=e108]: Nuxt.js
+          - generic [ref=e109]:
+            - heading "Backend Development" [level=3] [ref=e110]: Backend Development
+            - generic [ref=e112]:
+              - generic [ref=e113]: Node.js
+              - generic [ref=e114]: Python
+              - generic [ref=e115]: Go
+              - generic [ref=e116]: PostgreSQL
+              - generic [ref=e117]: MongoDB
+              - generic [ref=e118]: Redis
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - heading "Cloud & Infrastructure" [level=3] [ref=e121]: Cloud & Infrastructure
+            - generic [ref=e123]:
+              - generic [ref=e124]: AWS
+              - generic [ref=e125]: Google Cloud
+              - generic [ref=e126]: Azure
+              - generic [ref=e127]: Docker
+              - generic [ref=e128]: Kubernetes
+              - generic [ref=e129]: Terraform
+          - generic [ref=e130]:
+            - heading "DevOps & Tools" [level=3] [ref=e131]: DevOps & Tools
+            - generic [ref=e133]:
+              - generic [ref=e134]: GitHub Actions
+              - generic [ref=e135]: GitLab CI
+              - generic [ref=e136]: ArgoCD
+              - generic [ref=e137]: Prometheus
+              - generic [ref=e138]: Grafana
+              - generic [ref=e139]: Hugo
+      - separator [ref=e140]
+      - heading "What Drives Me" [level=2] [ref=e141]
+      - region "Core beliefs" [ref=e142]:
+        - article "Pragmatism over perfectionism" [ref=e143]:
+          - generic [ref=e144]:
+            - heading "Pragmatism over perfectionism" [level=3] [ref=e145]
+            - paragraph [ref=e146]: Ship working software, iterate based on real feedback
+        - article "Fundamentals over hype" [ref=e147]:
+          - generic [ref=e148]:
+            - heading "Fundamentals over hype" [level=3] [ref=e149]
+            - paragraph [ref=e150]: New tools are exciting, but solid engineering principles endure
+        - article "Building systems, not just code" [ref=e151]:
+          - generic [ref=e152]:
+            - heading "Building systems, not just code" [level=3] [ref=e153]
+            - paragraph [ref=e154]: The best engineers create environments where others succeed
+        - article "Continuous learning" [ref=e155]:
+          - generic [ref=e156]:
+            - heading "Continuous learning" [level=3] [ref=e157]
+            - paragraph [ref=e158]: Technology changes constantly; staying curious is essential
+      - separator [ref=e159]
+      - heading "My Journey" [level=2] [ref=e160]
+      - heading "Self-Taught Developer (Early Career)" [level=3] [ref=e161]
+      - paragraph [ref=e162]:
+        - text: I learned to code by building things—websites, applications, and tools. My Business Administration degree in Marketing gave me the business perspective to balance my passion for web development and open-source tools. As Seth Godin wrote in
+        - emphasis [ref=e163]: Poke the Box
+        - text: ": “All it takes is initiative. Even just a bit.” I grounded this phase in XP and agile principles, creating environments for rapid iteration and experimentation—where automated testing and safeguards enabled teams to move fast with confidence and keep learning."
+      - heading "Open Source & Knowledge Translation (Growth Phase)" [level=3] [ref=e164]
+      - paragraph [ref=e165]: As I grew, I became obsessed with how organizations consume technology. Instead of contributing to projects, I focused on translating powerful open-source tools for teams who needed them—establishing patterns, writing documentation, mentoring engineers. This shift from “do the work myself” to “help others do the work” multiplied my impact.
+      - heading "Architecture & Infrastructure (Leadership Phase)" [level=3] [ref=e166]
+      - paragraph [ref=e167]: "My role evolved into system-wide concerns: designing platforms for scale, building reliable deployment processes, establishing SRE practices that improved uptime and reduced incident response time. I led initiatives like:"
+      - list [ref=e168]:
+        - listitem [ref=e169]: Modernizing legacy monoliths into microservices
+        - listitem [ref=e170]: Migrating on-premise infrastructure to cloud
+        - listitem [ref=e171]: Implementing CI/CD pipelines that reduced deployment time from weeks to hours
+        - listitem [ref=e172]: Building engineering cultures where learning and improvement are expected
+      - heading "AI & Modern Development (Now)" [level=3] [ref=e173]
+      - paragraph [ref=e174]: Today I’m at the intersection of traditional engineering and AI. I’m working with AI-powered development tools—exploring how LLMs can augment (not replace) skilled engineers, building AI features into production applications, helping teams adopt these tools without losing sight of reliability and maintainability.
+      - paragraph [ref=e175]: "I’m excited about AI’s potential, but I’m more interested in fundamentals: Can we still reason about systems? Can we write maintainable code? Are we building something that lasts?"
+      - separator [ref=e176]
+      - paragraph [ref=e178]: Let's build something amazing together!
+  - contentinfo [ref=e179]:
+    - generic [ref=e181]:
+      - generic [ref=e182]:
+        - navigation "Main footer navigation" [ref=e183]:
+          - list [ref=e184]:
+            - listitem [ref=e185]:
+              - link "Home" [ref=e186] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e187]:
+              - link "Blog" [ref=e188] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e189]:
+              - link "Portfolio" [ref=e190] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e191]:
+              - link "About" [ref=e192] [cursor=pointer]:
+                - /url: /about
+        - region [ref=e193]:
+          - group "Social media links" [ref=e194]:
+            - button "GitHub" [ref=e195] [cursor=pointer]:
+              - img [ref=e196]:
+                - img [ref=e197]
+            - button "LinkedIn" [ref=e199] [cursor=pointer]:
+              - img [ref=e200]:
+                - img [ref=e201]
+            - button "Twitter" [ref=e203] [cursor=pointer]:
+              - img [ref=e204]:
+                - img [ref=e205]
+            - button "Discord" [ref=e207] [cursor=pointer]:
+              - img [ref=e208]:
+                - img [ref=e209]
+      - region [ref=e212]:
+        - group "Subscribe to my newsletter" [ref=e215]:
+          - generic [ref=e217]: Subscribe to my newsletter
+          - generic [ref=e218]:
+            - generic [ref=e219]: Email address
+            - textbox "Email address" [ref=e220]:
+              - /placeholder: your@email.com
+            - textbox [ref=e222]
+            - button "Subscribe" [ref=e223] [cursor=pointer]
+          - generic [ref=e224]: Get updates on web development and technology trends. Unsubscribe anytime.
+      - generic [ref=e225]:
+        - navigation "Legal information" [ref=e226]:
+          - link "Privacy" [ref=e227] [cursor=pointer]:
+            - /url: /privacy
+          - link "Accessibility" [ref=e228] [cursor=pointer]:
+            - /url: /accessibility
+          - link "Security" [ref=e229] [cursor=pointer]:
+            - /url: /security.txt
+        - paragraph [ref=e230]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - paragraph [ref=e234]: Copyright © 2025
+        - paragraph [ref=e235]: Peter Warnock
+        - paragraph [ref=e236]: v0.14.1 (c3d3625)
+      - link "Back to top of page" [ref=e237] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e238]: ↑
+        - generic [ref=e239]: Back to top
+```

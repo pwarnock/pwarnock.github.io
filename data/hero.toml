@@ -1,11 +1,13 @@
 # Hero component configuration
 
+# Profile information for classic hero
 [profile]
 image = "/img/profile.jpg"
 alt = "Peter Warnock professional headshot"
 width = 192
 height = 192
 
+# Role cards for classic hero
 [[roles]]
 title = "AI-FIRST FULLSTACK"
 color = "primary"
@@ -25,3 +27,36 @@ description = "Crafting innovative solutions and fostering collaboration."
 title = "DEVSECOPS"
 color = "info"
 description = "Integrating security into every stage of the development lifecycle."
+
+# Carousel slides configuration
+[[slides]]
+id = "classic"
+partial = "hero-classic"
+title = "Classic Portfolio"
+description = "Original production hero with professional role cards"
+active = true
+order = 1
+
+[[slides]]
+id = "intro"
+partial = "hero-intro"
+title = "Open Source Showcase"
+description = "Open-source focused hero section"
+active = true
+order = 2
+
+[[slides]]
+id = "showcase"
+partial = "hero-showcase"
+title = "Featured Projects"
+description = "Showcase of latest work and technical implementations"
+active = false
+order = 3
+
+[[slides]]
+id = "philosophy"
+partial = "hero-philosophy"
+title = "About & Philosophy"
+description = "Development philosophy and professional experience"
+active = false
+order = 4

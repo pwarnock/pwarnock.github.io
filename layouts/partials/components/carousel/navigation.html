@@ -1,0 +1,18 @@
+<!-- Carousel Navigation -->
+<div class="carousel-navigation">
+  <!-- Previous Button -->
+  <button 
+    @click="previousSlide()"
+    class="carousel-nav-btn carousel-nav-prev"
+    aria-label="Previous slide">
+    {{ partial "components/icons/chevron-left" . }}
+  </button>
+  
+  <!-- Next Button -->
+  <button 
+    @click="nextSlide()"
+    class="carousel-nav-btn carousel-nav-next"
+    aria-label="Next slide">
+    {{ partial "components/icons/chevron-right" . }}
+  </button>
+</div>

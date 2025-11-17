@@ -1,0 +1,42 @@
+ <!-- Classic Hero - Production Design -->
+<div class="text-center mb-8">
+  <!-- Profile Section -->
+  <div class="flex justify-center mb-6">
+    <div class="avatar">
+      <div class="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-4">
+        <img src="{{ .profile.image }}" alt="{{ .profile.alt }}" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- Name and Title -->
+  <h1 class="text-4xl lg:text-5xl font-bold text-base-content mb-2">
+    Peter Warnock
+  </h1>
+  <p class="text-xl text-base-content/80 mb-8">
+    Full-Stack Developer & Technical Leader
+  </p>
+  
+  <!-- Role Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-8">
+    {{ range .roles }}
+    <div class="card bg-base-100/50 backdrop-blur-sm border border-{{ .color }}/20 hover:border-{{ .color }}/40 transition-all duration-300">
+      <div class="card-body p-4 text-center">
+        <h3 class="card-title text-lg font-semibold text-{{ .color }} mb-2">
+          {{ .title }}
+        </h3>
+        <p class="text-base-content/70 text-sm">
+          {{ .description }}
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  
+  <!-- Call to Action -->
+  <div class="text-center">
+    <a href="/portfolio" class="btn btn-primary btn-lg">
+      View My Work
+    </a>
+  </div>
+</div>

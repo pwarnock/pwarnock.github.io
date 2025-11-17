@@ -1,0 +1,228 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e3]:
+    - generic [ref=e4]:
+      - button "Toggle mobile navigation menu" [ref=e6] [cursor=pointer]:
+        - img [ref=e7]:
+          - img [ref=e8]
+      - button "Go to homepage" [ref=e10] [cursor=pointer]:
+        - img "Peter Warnock logo" [ref=e11]
+        - text: Peter Warnock
+    - generic [ref=e13]:
+      - button "Theme selector" [ref=e15] [cursor=pointer]:
+        - img [ref=e16]:
+          - img [ref=e17]
+      - button "Social links menu" [ref=e20] [cursor=pointer]:
+        - img [ref=e21]:
+          - img [ref=e22]
+  - main [ref=e24]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e30]:
+          - img "Peter Warnock professional headshot" [ref=e34]
+          - heading "Peter Warnock" [level=1] [ref=e35]
+          - paragraph [ref=e36]: Full-Stack Developer & Technical Leader
+          - generic [ref=e37]:
+            - generic [ref=e39]:
+              - heading "AI-FIRST FULLSTACK" [level=3] [ref=e40]
+              - paragraph [ref=e41]: Bridging secure, scalable applications with team-driven innovation.
+            - generic [ref=e43]:
+              - heading "CLOUD ARCHITECT" [level=3] [ref=e44]
+              - paragraph [ref=e45]: Connecting business and technology with a customer-first mindset.
+            - generic [ref=e47]:
+              - heading "TECH LEADER" [level=3] [ref=e48]
+              - paragraph [ref=e49]: Crafting innovative solutions and fostering collaboration.
+            - generic [ref=e51]:
+              - heading "DEVSECOPS" [level=3] [ref=e52]
+              - paragraph [ref=e53]: Integrating security into every stage of the development lifecycle.
+          - link "View My Work" [ref=e55] [cursor=pointer]:
+            - /url: /portfolio
+        - generic [ref=e58]:
+          - generic [ref=e59]: 🎯
+          - heading "Open Source Portfolio" [level=2] [ref=e60]
+          - paragraph [ref=e61]: This website is an open-source example of modern web development practices. Built with Hugo, DaisyUI, and Tailwind CSS v4, it demonstrates enterprise-grade development workflows, comprehensive testing, and accessibility-first design. All code is available on GitHub for learning and reference.
+          - generic [ref=e62]:
+            - generic [ref=e64]:
+              - generic [ref=e65]: ⚡
+              - heading "Modern Stack" [level=3] [ref=e66]
+              - list [ref=e67]:
+                - listitem [ref=e68]: Hugo static site
+                - listitem [ref=e69]: DaisyUI components
+                - listitem [ref=e70]: Alpine.js interactivity
+                - listitem [ref=e71]: Tailwind CSS v4
+                - listitem [ref=e72]: Bun package manager
+            - generic [ref=e74]:
+              - generic [ref=e75]: 🏗️
+              - heading "Development Practices" [level=3] [ref=e76]
+              - list [ref=e77]:
+                - listitem [ref=e78]: Enterprise testing
+                - listitem [ref=e79]: CI/CD pipelines
+                - listitem [ref=e80]: Accessibility compliance
+                - listitem [ref=e81]: Performance monitoring
+            - generic [ref=e83]:
+              - generic [ref=e84]: 🌟
+              - heading "Open Source" [level=3] [ref=e85]
+              - list [ref=e86]:
+                - listitem [ref=e87]: MIT licensed
+                - listitem [ref=e88]: GitHub repository
+                - listitem [ref=e89]: Implementation guides
+                - listitem [ref=e90]: Learning resource
+          - link "Explore the Code" [ref=e92] [cursor=pointer]:
+            - /url: https://github.com/pwarnock/pwarnock.github.io
+            - text: Explore the Code
+            - img [ref=e93]
+      - generic:
+        - button "Previous slide" [ref=e95] [cursor=pointer]:
+          - img [ref=e96]
+        - button "Next slide" [ref=e98] [cursor=pointer]:
+          - img [ref=e99]
+      - generic [ref=e101]:
+        - 'button "Go to slide 1: Classic Portfolio" [ref=e102] [cursor=pointer]':
+          - generic [ref=e103]: Classic Portfolio
+        - 'button "Go to slide 2: Open Source Showcase" [ref=e104] [cursor=pointer]':
+          - generic [ref=e105]: Open Source Showcase
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - heading "Technical Skills & Expertise" [level=2] [ref=e110]
+        - paragraph [ref=e111]: Comprehensive skillset across modern development and operations
+      - generic [ref=e112]:
+        - generic [ref=e114]:
+          - heading "Programming Languages" [level=3] [ref=e115]
+          - paragraph [ref=e116]: Experienced in programming languages such as Python, JavaScript/TypeScript, Java, and C#. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.
+          - generic [ref=e117]:
+            - generic [ref=e118]: Python
+            - generic [ref=e119]: JavaScript
+            - generic [ref=e120]: TypeScript
+        - generic [ref=e122]:
+          - heading "Web Development" [level=3] [ref=e123]
+          - paragraph [ref=e124]: Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Next.js, and Hugo. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.
+          - generic [ref=e125]:
+            - generic [ref=e126]: React
+            - generic [ref=e127]: Next.js
+            - generic [ref=e128]: Hugo
+        - generic [ref=e130]:
+          - heading "Backend Development" [level=3] [ref=e131]
+          - paragraph [ref=e132]: Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.
+          - generic [ref=e133]:
+            - generic [ref=e134]: Node.js
+            - generic [ref=e135]: Express
+            - generic [ref=e136]: Django
+        - generic [ref=e138]:
+          - heading "Cloud Technologies" [level=3] [ref=e139]
+          - paragraph [ref=e140]: Experienced in leveraging cloud platforms such as AWS, GCP, and Azure. Proficient in designing and deploying scalable, secure, and cost-effective cloud solutions. Well-versed in cloud-native services, containerization (Docker, Kubernetes), and serverless architectures.
+          - generic [ref=e141]:
+            - generic [ref=e142]: AWS
+            - generic [ref=e143]: GCP
+            - generic [ref=e144]: Azure
+            - generic [ref=e145]: Docker
+        - generic [ref=e147]:
+          - heading "CI/CD Pipelines" [level=3] [ref=e148]
+          - paragraph [ref=e149]: Experienced in setting up CI/CD pipelines using Bitbucket Pipelines, GitHub Actions, and other modern CI/CD platforms. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and Bitbucket.
+          - generic [ref=e150]:
+            - generic [ref=e151]: Bitbucket Pipelines
+            - generic [ref=e152]: GitHub Actions
+        - generic [ref=e154]:
+          - heading "Agile Methodologies" [level=3] [ref=e155]
+          - paragraph [ref=e156]: Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.
+          - generic [ref=e157]:
+            - generic [ref=e158]: Scrum
+            - generic [ref=e159]: Kanban
+            - generic [ref=e160]: Jira
+    - generic [ref=e164]:
+      - generic [ref=e166]:
+        - generic [ref=e167]:
+          - heading "Latest Blog Posts" [level=2] [ref=e168]
+          - paragraph [ref=e169]: Thoughts on technology, leadership, and development
+        - generic [ref=e170]:
+          - img [ref=e171]
+          - paragraph [ref=e173]: Explore insights on modern web development, AI tools, and technology leadership
+        - link "View All Posts" [ref=e175] [cursor=pointer]:
+          - /url: /blog
+          - text: View All Posts
+          - img [ref=e176]
+      - generic [ref=e179]:
+        - generic [ref=e180]:
+          - heading "Featured Projects" [level=2] [ref=e181]
+          - paragraph [ref=e182]: Sample projects showcasing web development skills and technical implementations
+        - generic [ref=e183]:
+          - img [ref=e184]
+          - paragraph [ref=e186]: Explore web development projects showcasing modern technologies and best practices
+        - link "View All Projects" [ref=e188] [cursor=pointer]:
+          - /url: /portfolio
+          - text: View All Projects
+          - img [ref=e189]
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - heading "AI Development Tools" [level=2] [ref=e194]
+          - paragraph [ref=e195]: AI-powered development tools and platforms I've reviewed and written about
+        - generic [ref=e196]:
+          - img [ref=e197]
+          - paragraph [ref=e200]: Explore comprehensive reviews and analysis of modern AI development tools
+        - link "Explore Tools" [ref=e202] [cursor=pointer]:
+          - /url: /tools
+          - text: Explore Tools
+          - img [ref=e203]
+  - contentinfo [ref=e205]:
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - navigation "Main footer navigation" [ref=e209]:
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "Home" [ref=e212] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e213]:
+              - link "Blog" [ref=e214] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e215]:
+              - link "Portfolio" [ref=e216] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e217]:
+              - link "About" [ref=e218] [cursor=pointer]:
+                - /url: /about
+        - region [ref=e219]:
+          - group "Social media links" [ref=e220]:
+            - button "GitHub" [ref=e221] [cursor=pointer]:
+              - img [ref=e222]:
+                - img [ref=e223]
+            - button "LinkedIn" [ref=e225] [cursor=pointer]:
+              - img [ref=e226]:
+                - img [ref=e227]
+            - button "Twitter" [ref=e229] [cursor=pointer]:
+              - img [ref=e230]:
+                - img [ref=e231]
+            - button "Discord" [ref=e233] [cursor=pointer]:
+              - img [ref=e234]:
+                - img [ref=e235]
+      - region [ref=e238]:
+        - group "Subscribe to my newsletter" [ref=e241]:
+          - generic [ref=e243]: Subscribe to my newsletter
+          - generic [ref=e244]:
+            - generic [ref=e245]: Email address
+            - textbox "Email address" [ref=e246]:
+              - /placeholder: your@email.com
+            - textbox [ref=e248]
+            - button "Subscribe" [ref=e249] [cursor=pointer]
+          - generic [ref=e250]: Get updates on web development and technology trends. Unsubscribe anytime.
+      - generic [ref=e251]:
+        - navigation "Legal information" [ref=e252]:
+          - link "Privacy" [ref=e253] [cursor=pointer]:
+            - /url: /privacy
+          - link "Accessibility" [ref=e254] [cursor=pointer]:
+            - /url: /accessibility
+          - link "Security" [ref=e255] [cursor=pointer]:
+            - /url: /security.txt
+        - paragraph [ref=e256]: Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - paragraph [ref=e260]: Copyright © 2025
+        - paragraph [ref=e261]: Peter Warnock
+        - paragraph [ref=e262]: v0.14.1 (c3d3625)
+      - link "Back to top of page" [ref=e263] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e264]: ↑
+        - generic [ref=e265]: Back to top
+```

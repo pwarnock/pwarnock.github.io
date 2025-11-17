@@ -1,0 +1,136 @@
+<!-- Carousel JavaScript -->
+<script>
+function heroCarousel(totalSlides) {
+  return {
+    currentSlide: 0,
+    totalSlides: totalSlides,
+    autoPlayInterval: null,
+    isPaused: false,
+    
+    init() {
+      // Initialize first slide
+      this.updateSlideDisplay();
+      
+      // Start auto-rotation
+      this.startAutoPlay();
+      
+      // Event listeners
+      this.setupEventListeners();
+    },
+    
+    // Navigation methods
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      this.updateSlideDisplay();
+    },
+    
+    previousSlide() {
+      this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.updateSlideDisplay();
+    },
+    
+    goToSlide(index) {
+      this.currentSlide = index;
+      this.updateSlideDisplay();
+      this.stopAutoPlay(); // Stop auto-play when user manually navigates
+    },
+    
+    // Display update method
+    updateSlideDisplay() {
+      // Update indicators only (slides are positioned via transform on container)
+      const indicators = this.$el.querySelectorAll('.carousel-indicator');
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === this.currentSlide);
+        indicator.setAttribute('aria-current', index === this.currentSlide ? 'true' : 'false');
+      });
+    },
+    
+    // Auto-play control
+    startAutoPlay() {
+      if (this.isPaused) return;
+      
+      this.stopAutoPlay();
+      this.autoPlayInterval = setInterval(() => {
+        this.nextSlide();
+      }, 5000); // 5 second interval
+    },
+    
+    stopAutoPlay() {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = null;
+      }
+    },
+    
+    pauseAutoPlay() {
+      this.isPaused = true;
+      this.stopAutoPlay();
+    },
+    
+    resumeAutoPlay() {
+      this.isPaused = false;
+      this.startAutoPlay();
+    },
+    
+    // Event listeners setup
+    setupEventListeners() {
+      // Pause on hover
+      this.$el.addEventListener('mouseenter', () => this.pauseAutoPlay());
+      this.$el.addEventListener('mouseleave', () => this.resumeAutoPlay());
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          this.previousSlide();
+        }
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          this.nextSlide();
+        }
+        if (e.key === 'Home') {
+          e.preventDefault();
+          this.goToSlide(0);
+        }
+        if (e.key === 'End') {
+          e.preventDefault();
+          this.goToSlide(this.totalSlides - 1);
+        }
+      });
+      
+      // Touch/swipe support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      this.$el.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      this.$el.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        this.handleSwipe(touchStartX, touchEndX);
+      });
+    },
+    
+    // Touch/swipe handling
+    handleSwipe(startX, endX) {
+      const swipeThreshold = 50;
+      const diff = startX - endX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          this.nextSlide(); // Swipe left, go to next
+        } else {
+          this.previousSlide(); // Swipe right, go to previous
+        }
+      }
+    },
+    
+    // Cleanup
+    destroy() {
+      this.stopAutoPlay();
+      document.removeEventListener('keydown', this.handleKeydown);
+    }
+  }
+}
+</script>

@@ -17,6 +17,7 @@
 @import './assets/css/components/cards.css';
 @import './assets/css/components/icons.css';
 @import './assets/css/components/focus.css';
+@import './assets/css/components/carousel.css';
 
 /* Layout System */
 @import './assets/css/layout/hero.css';

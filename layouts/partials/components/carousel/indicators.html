@@ -1,0 +1,18 @@
+<!-- Carousel Indicators -->
+<div class="carousel-indicators">
+  {{ $activeSlides := where site.Data.hero.slides "active" true }}
+  {{ $sortedSlides := sort $activeSlides "order" }}
+  
+  {{ range $index, $slide := $sortedSlides }}
+  <button 
+    @click="goToSlide({{ $index }})"
+    class="carousel-indicator {{ if eq $index 0 }}active{{ end }}"
+    :class="currentSlide === {{ $index }} ? 'active' : ''"
+    :aria-label="'Go to slide {{ $index | add 1 }}: {{ .title }}'"
+    :aria-current="currentSlide === {{ $index }} ? 'true' : 'false'"
+    data-slide-target="{{ $index }}">
+    
+    <span class="sr-only">{{ .title }}</span>
+  </button>
+  {{ end }}
+</div>

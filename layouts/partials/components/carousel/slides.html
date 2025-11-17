@@ -1,0 +1,19 @@
+<!-- Carousel Slides -->
+<div class="carousel-slides" :style="`transform: translateX(-${currentSlide * 100}%)`">
+  {{ $activeSlides := where site.Data.hero.slides "active" true }}
+  {{ $sortedSlides := sort $activeSlides "order" }}
+
+  {{ range $index, $slide := $sortedSlides }}
+  <div
+    class="carousel-slide"
+    id="slide-{{ .id }}"
+    data-slide-index="{{ $index }}">
+
+    <!-- Slide Content Wrapper -->
+    <div class="slide-content">
+      {{ $mergedData := merge . (dict "profile" site.Data.hero.profile "roles" site.Data.hero.roles) }}
+      {{ partial (printf "components/%s" .partial) $mergedData }}
+    </div>
+  </div>
+  {{ end }}
+</div>

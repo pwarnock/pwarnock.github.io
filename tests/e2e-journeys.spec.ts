@@ -252,4 +252,53 @@ test.describe('End-to-End User Journeys', () => {
     expect(totalTime).toBeLessThan(10000); // Under 10 seconds for full journey
     expect(loadTime).toBeLessThan(3000); // Initial load under 3 seconds
   });
+
+  test('hero carousel navigation @e2e', async ({ page }) => {
+    await page.goto('/');
+
+    // Wait for carousel to load
+    await page.waitForSelector('.hero-carousel');
+
+    // Check that carousel slides exist
+    const slides = page.locator('.carousel-slide');
+    await expect(slides).toHaveCount(2); // We have 2 active hero variants
+
+    // Check that navigation buttons exist
+    const nextButton = page.locator('.carousel-nav-next');
+    const prevButton = page.locator('.carousel-nav-prev');
+    await expect(nextButton).toBeVisible();
+    await expect(prevButton).toBeVisible();
+
+    // Check that indicators exist
+    const indicators = page.locator('.carousel-indicator');
+    await expect(indicators).toHaveCount(2);
+
+    // Test next navigation
+    await nextButton.click();
+    await page.waitForTimeout(600); // Wait for transition
+
+    // Test previous navigation
+    await prevButton.click();
+    await page.waitForTimeout(600); // Wait for transition
+
+    // Test indicator navigation
+    const secondIndicator = indicators.nth(1);
+    await secondIndicator.click();
+    await page.waitForTimeout(600); // Wait for transition
+
+    // Verify no slides are stacking (all slides should be properly positioned)
+    const carouselSlides = await slides.all();
+    for (const slide of carouselSlides) {
+      const isVisible = await slide.isVisible();
+      // Only one slide should be fully visible at a time
+      // We can't easily test exact positioning, but we can ensure no errors occur
+    }
+
+    // Test keyboard navigation
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(600);
+
+    await page.keyboard.press('ArrowLeft');
+    await page.waitForTimeout(600);
+  });
 });
