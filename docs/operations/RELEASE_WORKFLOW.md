@@ -369,12 +369,13 @@ After pushing the production tag:
 
 Documentation changes in this file automatically trigger the lightweight "documentation-build" workflow:
 
-- **Trigger**: Changes to `docs/**` paths
+- **Trigger**: Changes to `docs/**` paths only
 - **Workflow**: path-based-builds.yml (documentation-build job)
 - **Tests**: Markdown validation, Hugo build test
 - **Deployment**: None (docs-only changes don't deploy)
+- **Skipped workflows**: cicd.yml, coverage.yml, test.yml
 
-Code changes trigger the full cicd.yml pipeline with comprehensive testing.
+Code or workflow changes trigger the full cicd.yml pipeline with comprehensive testing and coverage analysis.
 
 ## See Also
 
