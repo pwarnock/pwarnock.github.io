@@ -5,3 +5,4 @@ description: "Peter Warnock's personal website showcasing expertise in cloud eng
   DevOps leadership, and fullstack development with 15+ years of experience."
 ---
 # Deploy trigger Tue Nov 18 15:16:08 PST 2025
+# Deploy trigger Tue Nov 18 15:28:28 PST 2025
