@@ -78,8 +78,8 @@ jobs:
           DOCS="${{ steps.filter.outputs.docs }}"
 
           # Determine if we should deploy
-          # Deploy if: content changes OR build-config changes (but NOT if only test changes)
-          if [ "$CONTENT" = "true" ] || [ "$BUILD_CONFIG" = "true" ]; then
+          # Deploy if: content changes OR build-config changes OR workflow changes (to deploy fixes)
+          if [ "$CONTENT" = "true" ] || [ "$BUILD_CONFIG" = "true" ] || [ "$TEST_ONLY" = "true" ]; then
             echo "should-deploy=true" >> $GITHUB_OUTPUT
           else
             echo "should-deploy=false" >> $GITHUB_OUTPUT
