@@ -123,6 +123,33 @@ func (as *AccessibilityScanner) GetSeriousIssues() []AccessibilityIssue {
 	return serious
 }
 
+// issueExists checks if an issue with the same content already exists
+func issueExists(title string, selector string, url string) (bool, error) {
+	cmd := exec.Command("bd", "list", "--json")
+	output, err := cmd.Output()
+	if err != nil {
+		return false, fmt.Errorf("failed to list bd issues: %w", err)
+	}
+
+	var issues []map[string]interface{}
+	if err := json.Unmarshal(output, &issues); err != nil {
+		return false, fmt.Errorf("failed to parse bd issues: %w", err)
+	}
+
+	// Check if we have an open issue with the same title
+	for _, issue := range issues {
+		if issueTitle, ok := issue["title"].(string); ok {
+			if issueTitle == title {
+				if status, ok := issue["status"].(string); ok && status != "closed" {
+					return true, nil
+				}
+			}
+		}
+	}
+
+	return false, nil
+}
+
 // CreateBdIssue creates a bd issue for accessibility problems
 func (as *AccessibilityScanner) CreateBdIssue(issue AccessibilityIssue) error {
 	// Skip bd creation in CI environment
@@ -133,6 +160,16 @@ func (as *AccessibilityScanner) CreateBdIssue(issue AccessibilityIssue) error {
 
 	// Create issue title
 	title := fmt.Sprintf("Accessibility Issue: %s", issue.Title)
+
+	// Check if issue already exists
+	exists, err := issueExists(title, issue.Selector, issue.URL)
+	if err != nil {
+		fmt.Printf("Warning: failed to check for existing issue: %v\n", err)
+	}
+	if exists {
+		fmt.Printf("Issue already exists, skipping: %s\n", title)
+		return nil
+	}
 
 	// Create issue description
 	description := fmt.Sprintf("## Accessibility Issue Found\n\nURL: %s\nImpact: %s\nSelector: %s\n\nDescription: %s\n\nTags: %s\n\nThis issue was automatically created by the Go BDD accessibility scanner.",
