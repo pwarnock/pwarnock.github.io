@@ -4,27 +4,27 @@
    ========================================================================== */
 
 /* Framework Imports */
-@import './framework/imports.css';
-@import './framework/base.css';
+@import './assets/css/framework/imports.css';
+@import './assets/css/framework/base.css';
 
 /* Design System */
-@import './design-system/tokens.css';
-@import './design-system/utilities.css';
+@import './assets/css/design-system/tokens.css';
+@import './assets/css/design-system/utilities.css';
 
 /* Component System */
-@import './components/buttons.css';
-@import './components/badges.css';
-@import './components/cards.css';
-@import './components/icons.css';
-@import './components/focus.css';
-@import './components/carousel.css';
+@import './assets/css/components/buttons.css';
+@import './assets/css/components/badges.css';
+@import './assets/css/components/cards.css';
+@import './assets/css/components/icons.css';
+@import './assets/css/components/focus.css';
+@import './assets/css/components/carousel.css';
 
 /* Layout System */
-@import './layout/hero.css';
-@import './layout/responsive.css';
-@import './layout/embeds.css';
+@import './assets/css/layout/hero.css';
+@import './assets/css/layout/responsive.css';
+@import './assets/css/layout/embeds.css';
 
 /* Content System */
-@import './content/prose.css';
-@import './content/code.css';
-@import './content/tables.css';
+@import './assets/css/content/prose.css';
+@import './assets/css/content/code.css';
+@import './assets/css/content/tables.css';
