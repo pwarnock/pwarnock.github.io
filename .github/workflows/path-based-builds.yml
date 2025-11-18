@@ -271,9 +271,9 @@ jobs:
         with:
           path: ./public
 
-  # Documentation build (validation only - no Hugo build needed)
-  documentation-build:
-    name: Documentation Build
+  # Documentation validation (no build needed)
+  documentation-validation:
+    name: Documentation Validation
     runs-on: ubuntu-latest
     needs: detect-changes
     if: needs.detect-changes.outputs.docs-changed == 'true'
@@ -321,7 +321,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: [detect-changes, content-build, test-build, documentation-build]
+    needs: [detect-changes, content-build, test-build, documentation-validation]
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
