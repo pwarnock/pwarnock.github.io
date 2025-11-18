@@ -373,16 +373,17 @@ The project uses **path-based build control** via `path-based-builds.yml`, which
 
 Different types of changes trigger different build and deployment strategies:
 
-| Change Type | Examples | Build | Test | Deploy |
-|---|---|---|---|---|
-| **Content** | `content/`, `static/`, `assets/`, `data/` | ✅ | ✅ | ✅ Production |
-| **Build Config** | `hugo.toml`, `layouts/`, `config/`, deps | ✅ | ✅ | ✅ Production |
-| **Test-Only** | `test/`, `tests/`, `scripts/`, `.github/` | ✅ | ✅ | ❌ Verification only |
-| **Documentation** | `docs/`, `*.md` | ❌ | ❌ | ❌ Validation only |
+| Change Type       | Examples                                  | Build | Test | Deploy               |
+| ----------------- | ----------------------------------------- | ----- | ---- | -------------------- |
+| **Content**       | `content/`, `static/`, `assets/`, `data/` | ✅    | ✅   | ✅ Production        |
+| **Build Config**  | `hugo.toml`, `layouts/`, `config/`, deps  | ✅    | ✅   | ✅ Production        |
+| **Test-Only**     | `test/`, `tests/`, `scripts/`, `.github/` | ✅    | ✅   | ❌ Verification only |
+| **Documentation** | `docs/`, `*.md`                           | ❌    | ❌   | ❌ Validation only   |
 
 ### Build Behaviors
 
 **Content or Build Config changes:**
+
 - Fast or comprehensive build depending on scope
 - Code quality & security scanning
 - Full test suite validation
@@ -390,18 +391,21 @@ Different types of changes trigger different build and deployment strategies:
 - Version auto-bumped on commit
 
 **Test-only changes:**
+
 - Full build and test validation runs
 - Security scanning and linting included
 - No automatic deployment (safe for infrastructure/test changes)
 - Useful for verifying CI/CD workflows before release
 
 **Documentation-only changes:**
+
 - Lightweight markdown validation
 - No Hugo build required
 - No deployment
 - Minimal CI resource usage
 
 **Combined changes (e.g., content + build config):**
+
 - Both build processes run simultaneously
 - Both must pass before deployment
 - Single deployment to production

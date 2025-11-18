@@ -243,9 +243,9 @@ jobs:
         run: |
           echo "🔧 Running infrastructure build..."
 
-          # Run all test suites
-          echo "🧪 Running unit tests..."
-          cd test && go test -v -race ./support/...
+          # Run all test suites with coverage
+          echo "🧪 Running unit tests with coverage..."
+          cd test && go test -v -race -coverprofile=coverage.out ./support/...
 
           echo "📱 Running E2E tests..."
           cd .. && bunx playwright test --project=chromium tests/e2e-journeys.spec.ts || echo "⚠️ E2E test failures"
@@ -257,6 +257,14 @@ jobs:
 
           echo "⚡ Performance check..."
           bun run perf:analyze
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./test/coverage.out
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
 
       - name: Upload pages artifact
         if: github.ref == 'refs/heads/main'

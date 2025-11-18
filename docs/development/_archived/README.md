@@ -6,8 +6,8 @@ Kept for reference and historical context, but **not authoritative** - check the
 
 ## Contents
 
-- **PM2_*.md** - Process manager guides (obsolete - project uses Bun)
-- **DAISYUI_*.md** - Framework assessment and migration docs (consolidated)
+- **PM2\_\*.md** - Process manager guides (obsolete - project uses Bun)
+- **DAISYUI\_\*.md** - Framework assessment and migration docs (consolidated)
 - **CARD_TITLE_CENTERING_FIX.md** - One-off CSS fix
 - **TEST_BEHAVIOR_ANALYSIS.md** - Test analysis from earlier phase
 - **DEVELOPMENT_SESSION_SUMMARY.md** - Session notes

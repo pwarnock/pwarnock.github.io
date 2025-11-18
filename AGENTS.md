@@ -24,7 +24,8 @@ for updates at any time.
 
 ## Documentation Rules
 
-**IMPORTANT**: Read `/docs/README.md` before creating or modifying documentation.
+**IMPORTANT**: Read `/docs/README.md` before creating or modifying
+documentation.
 
 ### Before Creating a New Doc
 

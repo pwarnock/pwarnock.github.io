@@ -15,12 +15,12 @@ Complete guide for deploying changes to production, managing releases, and troub
 
 The project uses **path-based build control** that intelligently routes changes:
 
-| Change Type | Build | Test | Deploy |
-|---|---|---|---|
-| **Content** (`content/`, `static/`, `assets/`) | ✅ | ✅ | ✅ Production |
-| **Build Config** (`hugo.toml`, `layouts/`, `config/`) | ✅ | ✅ | ✅ Production |
-| **Test-Only** (`test/`, `tests/`, `scripts/`, `.github/`) | ✅ | ✅ | ❌ Verification only |
-| **Documentation** (`docs/`, `*.md`) | ❌ | ❌ | ❌ Validation only |
+| Change Type                                               | Build | Test | Deploy               |
+| --------------------------------------------------------- | ----- | ---- | -------------------- |
+| **Content** (`content/`, `static/`, `assets/`)            | ✅    | ✅   | ✅ Production        |
+| **Build Config** (`hugo.toml`, `layouts/`, `config/`)     | ✅    | ✅   | ✅ Production        |
+| **Test-Only** (`test/`, `tests/`, `scripts/`, `.github/`) | ✅    | ✅   | ❌ Verification only |
+| **Documentation** (`docs/`, `*.md`)                       | ❌    | ❌   | ❌ Validation only   |
 
 See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for full CI/CD integration details.
 
@@ -109,6 +109,7 @@ See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for detailed release process.
 **Problem**: After moving CSS files from `assets/` to `static/`, styling breaks because CSS contains unprocessed Tailwind directives.
 
 **Example**:
+
 ```css
 @import 'tailwindcss';
 @plugin "daisyui" {
@@ -119,19 +120,22 @@ See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for detailed release process.
 These directives aren't processed by Hugo when in `static/`, resulting in no actual styles being loaded.
 
 **Solution**:
+
 ```bash
 # ALWAYS process CSS with Tailwind CLI before deployment
 bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
 ```
 
 **Prevention Checklist**:
+
 - ✅ Check if CSS contains `@import` or `@plugin` directives
 - ✅ If yes, process with Tailwind CLI **before** moving to static
 - ✅ Verify generated CSS contains actual utility classes (not directives)
 - ✅ Test locally in browser dev tools to confirm styles load
 - ✅ Don't commit unprocessed CSS to static directory
 
-**Why**: 
+**Why**:
+
 - Hugo processes files in `assets/` with PostCSS
 - `static/` files are served as-is (no processing)
 - Unprocessed directives break the entire stylesheet
@@ -141,11 +145,13 @@ bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
 **Problem**: Build succeeds but styles don't load in browser.
 
 **Causes**:
+
 1. CSS not processed before Hugo build
 2. Tailwind CLI version mismatch
 3. Missing dependencies
 
 **Solution**:
+
 ```bash
 # Ensure CSS is built BEFORE Hugo
 bun install --frozen-lockfile
@@ -160,11 +166,13 @@ hugo --gc --minify
 **Problem**: GitHub Actions deployment step appears stuck.
 
 **Causes**:
+
 - Previous deployment still running (concurrency issue)
 - Large artifact upload
 - Network issues
 
 **Solution**:
+
 1. Check GitHub Actions workflow status
 2. If stuck > 10 minutes, cancel and re-run
 3. Verify no other deployments are in progress
@@ -221,6 +229,7 @@ bun run test:e2e
 ### Pre-Push Guardrail
 
 Before pushing to main, a script confirms:
+
 - Build test passed locally
 - All changes reviewed
 - Ready for production
@@ -236,6 +245,7 @@ FORCE_PUSH=yes git push origin main
 ### GitHub Pages Environment Protection
 
 Main branch deployments require:
+
 - All CI checks pass (linting, tests, coverage)
 - No manual approval needed (auto-deploy on successful checks)
 
@@ -244,6 +254,7 @@ Main branch deployments require:
 ### "Build failed: public directory not found"
 
 The Hugo build didn't generate output. Check:
+
 1. CSS preprocessing ran: `ls static/css/main.css`
 2. Hugo config is valid: `hugo config`
 3. Content files exist: `ls content/`
@@ -251,6 +262,7 @@ The Hugo build didn't generate output. Check:
 ### "Deployment to GitHub Pages failed"
 
 Check:
+
 1. Artifact was uploaded: GitHub Actions logs should show "Upload pages artifact"
 2. Repository settings: Settings → Pages → Source set to "GitHub Actions"
 3. Permissions: Token has `pages: write` permission
@@ -258,6 +270,7 @@ Check:
 ### "Version shows as old in footer"
 
 The `versionHash` parameter might not be updating. Check:
+
 1. `hugo.toml` has latest version and hash
 2. Pre-commit hook ran: `grep versionHash hugo.toml`
 3. Clear browser cache (Ctrl+Shift+Del)

@@ -6,16 +6,16 @@
 
 **Problem**: I need to... → **See**:
 
-| Problem | Document | Keywords |
-|---------|----------|----------|
-| Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md) | release, rc, tag, version, deploy |
-| Deploy to production | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP) | deploy, ci/cd, github actions |
-| Configure environments | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md) | env, staging, production, config |
-| Set up version bumping | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md) | version, semver, auto-bump, pre-commit |
-| Work with styles/CSS | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md) (WIP) | css, tailwind, daisyui, styling |
-| Build accessible components | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md) | wcag, a11y, accessibility, aria |
-| Write/run tests | [TESTING.md](./development/TESTING.md) | test, bdd, e2e, unit, playwright |
-| Migrate to Bun | [BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md) | bun, npm, package manager |
+| Problem                        | Document                                                           | Keywords                               |
+| ------------------------------ | ------------------------------------------------------------------ | -------------------------------------- |
+| Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)            | release, rc, tag, version, deploy      |
+| Deploy to production           | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP)                  | deploy, ci/cd, github actions          |
+| Configure environments         | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)        | env, staging, production, config       |
+| Set up version bumping         | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md) | version, semver, auto-bump, pre-commit |
+| Work with styles/CSS           | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md) (WIP)               | css, tailwind, daisyui, styling        |
+| Build accessible components    | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md)                 | wcag, a11y, accessibility, aria        |
+| Write/run tests                | [TESTING.md](./development/TESTING.md)                             | test, bdd, e2e, unit, playwright       |
+| Migrate to Bun                 | [BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)     | bun, npm, package manager              |
 
 ## By Topic
 
@@ -47,7 +47,7 @@
 
 - **[development/STYLE_GUIDE.md](./development/STYLE_GUIDE.md)** ⚠️ **WIP** - Will consolidate 8 style files
   - Topics: Architecture, design system, CSS, templates, content, workflow, performance, accessibility
-  - Pending: Merge style-guide/* files into single guide
+  - Pending: Merge style-guide/\* files into single guide
   - Status: Under consolidation
 
 - **[development/ACCESSIBILITY.md](./development/ACCESSIBILITY.md)** - WCAG compliance & accessibility standards
@@ -69,7 +69,7 @@
 **Design & implementation decisions** for major frameworks/components.
 
 - **[development/COMPONENTS.md](./development/COMPONENTS.md)** ⚠️ **PLANNED** - Will consolidate DaisyUI decisions
-  - Current: Scattered across DAISYUI_*.md files
+  - Current: Scattered across DAISYUI\_\*.md files
   - Pending: Merge assessment + migration + best practices
   - Status: Needs consolidation
 
@@ -91,14 +91,17 @@ Historical release notes by version.
 ## Consolidation Status
 
 ### ✅ Complete
+
 - Path-based CI/CD logic documented
 
 ### 🏗️ In Progress (WIP)
+
 - **DEPLOYMENT.md** - Merging: RELEASE_MANAGEMENT + DEPLOYMENT_NOTES + RELEASE_PROCESS
 - **STYLE_GUIDE.md** - Consolidating 8 style files into 1 authoritative source
 - **COMPONENTS.md** - Consolidating DaisyUI docs (assessment, migration, best practices)
 
 ### 📦 To Archive
+
 - `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
 - `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
 - `development/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Merged into COMPONENTS.md
@@ -113,23 +116,27 @@ Historical release notes by version.
 - `development/PATH_BASED_BUILDS.md` - Content moved to RELEASE_WORKFLOW
 
 ### 🆕 To Create
+
 - **COMPONENTS.md** - Consolidate DaisyUI & component decisions
 - **DEPLOYMENT.md** - Consolidate release & deployment procedures
 
 ## Rules for AI Agents
 
 ### Before Creating Documentation
+
 1. **Check this index** - Is there already a doc for this topic?
 2. **Search `/docs`** - Use grep/find to look for related content
 3. **Propose consolidation** - If similar docs exist, suggest merging
 4. **Link to parent** - New discoveries → add to existing doc with date
 
 ### Adding New Knowledge
+
 - **Bug fix or workaround?** → Add to relevant doc with date stamp
 - **New topic/process?** → Propose in `.tmp/` first, link to parent issue
 - **Never duplicate** solutions across multiple docs
 
 ### Questions?
+
 - Check the quick search table above
 - Look for similar keywords across all docs
 - If truly new topic: create issue, propose structure in `.tmp/`, wait for approval
@@ -160,10 +167,10 @@ docs/
 
 ## Legend
 
-| Status | Meaning |
-|--------|---------|
-| ✅ maintained | Actively used, up to date |
-| 🏗️ WIP | Under consolidation or redesign |
-| 🆕 planned | Will be created soon |
-| 📦 archived | Historical reference only |
-| ⚠️ WIP | Will change soon |
+| Status        | Meaning                         |
+| ------------- | ------------------------------- |
+| ✅ maintained | Actively used, up to date       |
+| 🏗️ WIP        | Under consolidation or redesign |
+| 🆕 planned    | Will be created soon            |
+| 📦 archived   | Historical reference only       |
+| ⚠️ WIP        | Will change soon                |
