@@ -46,10 +46,10 @@
   - Feature commits: minor bump, default: patch
   - Last updated: 2025-11-17
 
-- **[development/STYLE_GUIDE.md](./development/STYLE_GUIDE.md)** ⚠️ **WIP** - Will consolidate 8 style files
-  - Topics: Architecture, design system, CSS, templates, content, workflow, performance, accessibility
-  - Pending: Merge style-guide/\* files into single guide
-  - Status: Under consolidation
+- **[development/STYLE_GUIDE.md](./development/STYLE_GUIDE.md)** ✅ **Consolidated** - Complete guide to architecture, design, CSS, templates, content, development, performance, and accessibility
+  - Merged from: 8 style-guide files + CSS_VARIABLES_DESIGN_SYSTEM.md
+  - Covers: Project architecture, design system, CSS guidelines, template conventions, content guidelines (critical: first-person voice, no H1 in markdown), development workflow, performance, accessibility
+  - Status: Complete, replaces style-guide/* files
 
 - **[development/ACCESSIBILITY.md](./development/ACCESSIBILITY.md)** - WCAG compliance & accessibility standards
   - When: Building accessible features
@@ -94,16 +94,27 @@ Historical release notes by version.
 ### ✅ Complete
 
 - Path-based CI/CD logic documented
+- DEPLOYMENT.md - Consolidated release management procedures
+- STYLE_GUIDE.md - Consolidated development style guide
 
 ### 🏗️ In Progress (WIP)
 
-- **STYLE_GUIDE.md** - Consolidating 8 style files into 1 authoritative source
 - **COMPONENTS.md** - Consolidating DaisyUI docs (assessment, migration, best practices)
 
 ### 📦 To Archive
 
 - `operations/RELEASE_MANAGEMENT.md` - Consolidated into DEPLOYMENT.md
 - `operations/DEPLOYMENT_NOTES.md` - Consolidated into DEPLOYMENT.md
+- `development/style-guide/` (directory) - 8 files consolidated into STYLE_GUIDE.md
+  - 01-project-architecture.md
+  - 02-design-system.md
+  - 03-content-guidelines.md
+  - 04-template-conventions.md
+  - 05-css-guidelines.md
+  - 06-development-workflow.md
+  - 07-performance-guidelines.md
+  - 08-accessibility-standards.md
+- `development/CSS_VARIABLES_DESIGN_SYSTEM.md` - Consolidated into STYLE_GUIDE.md
 - `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
 - `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
 - `development/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Merged into COMPONENTS.md
@@ -113,14 +124,12 @@ Historical release notes by version.
 - `development/TEST_BEHAVIOR_ANALYSIS.md` - Analysis artifact (archived)
 - `development/DEVELOPMENT_SESSION_SUMMARY.md` - Session notes (archived)
 - `development/HEADER_NAVIGATION_SYSTEM.md` - Implementation detail (archived)
-- `development/CSS_VARIABLES_DESIGN_SYSTEM.md` - Merged into STYLE_GUIDE
 - `development/ALPINEJS_SELFHOSTING_DECISION.md` - Historical decision (archived)
 - `development/PATH_BASED_BUILDS.md` - Content moved to RELEASE_WORKFLOW
 
 ### 🆕 To Create
 
 - **COMPONENTS.md** - Consolidate DaisyUI & component decisions
-- **DEPLOYMENT.md** - Consolidate release & deployment procedures
 
 ## Rules for AI Agents
 
