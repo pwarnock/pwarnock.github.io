@@ -101,35 +101,20 @@ Historical release notes by version.
 
 (None currently)
 
-### 📦 To Archive
+### 📦 Archived
 
-- `operations/RELEASE_MANAGEMENT.md` - Consolidated into DEPLOYMENT.md
-- `operations/DEPLOYMENT_NOTES.md` - Consolidated into DEPLOYMENT.md
-- `development/style-guide/` (directory) - 8 files consolidated into STYLE_GUIDE.md
-  - 01-project-architecture.md
-  - 02-design-system.md
-  - 03-content-guidelines.md
-  - 04-template-conventions.md
-  - 05-css-guidelines.md
-  - 06-development-workflow.md
-  - 07-performance-guidelines.md
-  - 08-accessibility-standards.md
-- `development/CSS_VARIABLES_DESIGN_SYSTEM.md` - Consolidated into STYLE_GUIDE.md
-- `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
-- `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
-- `development/_archived/components/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Consolidated into COMPONENTS.md
-- `development/_archived/components/DAISYUI_MIGRATION_PLAN.md` - Consolidated into COMPONENTS.md
-- `development/_archived/components/DAISYUI_BEST_PRACTICES.md` - Consolidated into COMPONENTS.md
-- `development/CARD_TITLE_CENTERING_FIX.md` - One-off fix (archived)
-- `development/TEST_BEHAVIOR_ANALYSIS.md` - Analysis artifact (archived)
-- `development/DEVELOPMENT_SESSION_SUMMARY.md` - Session notes (archived)
-- `development/HEADER_NAVIGATION_SYSTEM.md` - Implementation detail (archived)
-- `development/ALPINEJS_SELFHOSTING_DECISION.md` - Historical decision (archived)
-- `development/PATH_BASED_BUILDS.md` - Content moved to RELEASE_WORKFLOW
+All obsolete and consolidated documents are moved to `docs/development/_archived/` and `docs/operations/_archived/`:
 
-### 🆕 To Create
+**Consolidated into active docs:**
+- DEPLOYMENT.md - Merged from RELEASE_MANAGEMENT.md + DEPLOYMENT_NOTES.md
+- STYLE_GUIDE.md - Merged from 8 style-guide files + CSS_VARIABLES_DESIGN_SYSTEM.md
+- COMPONENTS.md - Merged from 3 DaisyUI docs
 
-- **COMPONENTS.md** - Consolidate DaisyUI & component decisions
+**Obsolete/Historical:**
+- PM2_WORKFLOW_GUIDE.md, PM2_DEVELOPMENT_WORKFLOW.md (migrated to Bun)
+- ALPINEJS_SELFHOSTING_DECISION.md (historical decision)
+- CARD_TITLE_CENTERING_FIX.md, TEST_BEHAVIOR_ANALYSIS.md, DEVELOPMENT_SESSION_SUMMARY.md, HEADER_NAVIGATION_SYSTEM.md (one-off analysis)
+- PATH_BASED_BUILDS.md (content moved to RELEASE_WORKFLOW.md)
 
 ## Rules for AI Agents
 
@@ -159,7 +144,7 @@ docs/
 ├── README.md                          (this file - master index)
 ├── operations/                        (release, deployment, infrastructure)
 │   ├── RELEASE_WORKFLOW.md            ✅ maintained
-│   ├── DEPLOYMENT.md                  🏗️ WIP (consolidating 3 docs)
+│   ├── DEPLOYMENT.md                  ✅ consolidated
 │   └── ENVIRONMENT_CONFIG.md          ✅ maintained
 ├── development/                       (how to work on the project)
 │   ├── STYLE_GUIDE.md                 ✅ consolidated
