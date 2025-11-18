@@ -127,10 +127,6 @@ jobs:
           VALIDATE_YAML: true
           VALIDATE_MARKDOWN: true
 
-      - name: Build CSS with PostCSS
-        run: bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --minify
-        working-directory: ./
-
       - name: Build
         run: bun run build:production
 
@@ -222,10 +218,6 @@ jobs:
           VALIDATE_JSON: true
           VALIDATE_YAML: true
           VALIDATE_MARKDOWN: true
-
-      - name: Build CSS with PostCSS
-        run: bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --minify
-        working-directory: ./
 
       - name: Build
         run: bun run build:production
