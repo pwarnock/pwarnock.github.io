@@ -94,13 +94,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-          # We still run builds for test-only (CI validation) but don't deploy
-          echo "Content changed: $CONTENT"
-          echo "Build config changed: $BUILD_CONFIG"
-          echo "Test only changed: $TEST_ONLY"
-          echo "Docs changed: $DOCS"
-          echo "Should deploy: ${{ steps.changes.outputs.should-deploy }}"
-
   # Content-only build (fast, minimal testing)
   content-build:
     name: Content Build
