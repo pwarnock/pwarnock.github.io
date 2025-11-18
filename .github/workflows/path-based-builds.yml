@@ -318,7 +318,6 @@ jobs:
   deploy:
     name: Deploy to Pages
     if: |
-      always() &&
       github.ref == 'refs/heads/main' &&
       github.event_name == 'push' &&
       needs.detect-changes.outputs.should-deploy == 'true' &&
