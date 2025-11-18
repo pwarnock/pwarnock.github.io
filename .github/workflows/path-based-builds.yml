@@ -128,7 +128,7 @@ jobs:
           VALIDATE_MARKDOWN: true
 
       - name: Build CSS with PostCSS
-        run: bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
+        run: bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --minify
 
       - name: Build
         run: bun run build:production
@@ -223,7 +223,7 @@ jobs:
           VALIDATE_MARKDOWN: true
 
       - name: Build CSS with PostCSS
-        run: bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
+        run: bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --minify
 
       - name: Build
         run: bun run build:production
