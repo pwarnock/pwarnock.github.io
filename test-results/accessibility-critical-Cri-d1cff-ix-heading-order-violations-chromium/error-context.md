@@ -258,7 +258,7 @@
       - generic [ref=e286]:
         - paragraph [ref=e287]: Copyright © 2025
         - paragraph [ref=e288]: Peter Warnock
-        - paragraph [ref=e289]: v0.17.1 (e17dc55)
+        - paragraph [ref=e289]: v0.17.2 (e465ed8)
       - link "Back to top of page" [ref=e290] [cursor=pointer]:
         - /url: "#top"
         - generic [ref=e291]: ↑

@@ -2,7 +2,7 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+  - link "Skip to main content" [ref=e2]:
     - /url: "#main-content"
   - navigation "Main navigation" [ref=e3]:
     - generic [ref=e4]:
@@ -151,7 +151,7 @@
     - generic [ref=e183]:
       - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e185]':
         - generic [ref=e186]:
-          - link "Latest Articles" [ref=e187] [cursor=pointer]:
+          - link "Latest Articles" [ref=e187]:
             - /url: /blog/
           - generic [ref=e188]:
             - generic [ref=e189]:
@@ -162,7 +162,7 @@
                 - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
                 - 'img "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing"'
             - 'heading "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [level=3] [ref=e192]':
-              - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e193] [cursor=pointer]':
+              - 'link "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e193]':
                 - /url: http://localhost:1313/blog/posts/major-infrastructure-overhaul-bun-migration-path-based-builds/
             - paragraph [ref=e194]: Complete infrastructure transformation with Bun package manager, intelligent path-based builds, comprehensive testing suite, and enhanced deployment workflows. Experience 20x faster dependency installation, 90% reduction in build times, and 100% WCAG AA compliance.
           - link "View All Articles" [ref=e195] [cursor=pointer]:
@@ -170,14 +170,14 @@
       - generic [ref=e196]:
         - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e198]':
           - generic [ref=e199]:
-            - link "Featured Projects" [ref=e200] [cursor=pointer]:
+            - link "Featured Projects" [ref=e200]:
               - /url: /portfolio/
             - generic [ref=e201]:
               - generic [ref=e202]:
                 - generic [ref=e203]: Featured
                 - generic [ref=e204]: Nov 4, 2025
               - heading "Astro Starlight Demo" [level=3] [ref=e205]:
-                - link "Astro Starlight Demo" [ref=e206] [cursor=pointer]:
+                - link "Astro Starlight Demo" [ref=e206]:
                   - /url: http://localhost:1313/portfolio/astro-starlight-demo/
               - paragraph [ref=e207]: A demo project showcasing the ease of getting started with Astro Starlight, a powerful framework for building stellar documentation websites.
               - generic [ref=e208]:
@@ -187,14 +187,14 @@
               - /url: /portfolio/
         - 'article "Major Infrastructure Overhaul: Bun Migration, Path-Based Builds, and Comprehensive Testing" [ref=e213]':
           - generic [ref=e214]:
-            - link "Tech Radar" [ref=e215] [cursor=pointer]:
+            - link "Tech Radar" [ref=e215]:
               - /url: /tools/
             - generic [ref=e216]:
               - generic [ref=e217]:
                 - generic [ref=e218]: Featured
                 - generic [ref=e219]: Nov 15, 2025
               - heading "Tailwind CSS - Utility-First CSS Framework" [level=3] [ref=e220]:
-                - link "Tailwind CSS - Utility-First CSS Framework" [ref=e221] [cursor=pointer]:
+                - link "Tailwind CSS - Utility-First CSS Framework" [ref=e221]:
                   - /url: http://localhost:1313/tools/tailwind-css-utility-first-css-framework/
               - paragraph [ref=e222]: Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.
               - generic [ref=e223]:
@@ -203,7 +203,7 @@
             - generic [ref=e226]:
               - link "Browse Tech Radar" [ref=e227] [cursor=pointer]:
                 - /url: /tools/
-              - link "View as Interactive Radar ↗" [ref=e228] [cursor=pointer]:
+              - link "View as Interactive Radar ↗" [ref=e228]:
                 - /url: https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json
   - contentinfo [ref=e229]:
     - generic [ref=e231]:
@@ -259,7 +259,7 @@
       - generic [ref=e283]:
         - paragraph [ref=e284]: Copyright © 2025
         - paragraph [ref=e285]: Peter Warnock
-        - paragraph [ref=e286]: v0.17.1 (e17dc55)
+        - paragraph [ref=e286]: v0.17.2 (e465ed8)
       - link "Back to top of page" [ref=e287] [cursor=pointer]:
         - /url: "#top"
         - generic [ref=e288]: ↑
