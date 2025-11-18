@@ -1,9 +1,7 @@
-name: Path-Based Build Control
+name: Build and Deploy
 
 on:
   push:
-    branches: [main, develop]
-  pull_request:
     branches: [main]
 
 env:
@@ -20,70 +18,81 @@ permissions:
   actions: read
 
 jobs:
-  detect-changes:
-    name: Detect Changes
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-    outputs:
-      content-changed: ${{ steps.changes.outputs.content-changed }}
-      infrastructure-changed: ${{ steps.changes.outputs.infrastructure-changed }}
-      build-type: ${{ steps.changes.outputs.build-type }}
-      should-deploy: ${{ steps.changes.outputs.should-deploy }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          submodules: recursive
 
-      - name: Detect file changes
-        uses: dorny/paths-filter@v2
-        id: filter
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
         with:
-          filters: |
-            content:
-              - 'content/**'
-              - 'static/**'
-              - 'assets/**'
-              - 'data/**'
-            # Build-affecting changes (hugo config, layouts, etc)
-            build-config:
-              - 'hugo.toml'
-              - 'config/**'
-              - 'layouts/**'
-              - 'archetypes/**'
-              - 'package*.json'
-              - 'go.mod'
-              - 'go.sum'
-            # Test-only changes (no deployment needed)
-            test-only:
-              - 'test/**'
-              - 'tests/**'
-              - 'scripts/**'
-              - '.github/workflows/**'
-            docs:
-              - 'docs/**'
-              - '*.md'
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
 
-      - name: Determine build strategy
-        id: changes
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Code Quality & Security Scan
+        uses: github/super-linter/slim@v5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_JSON: true
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+
+      - name: Build
+        run: bun run build:production
+
+      - name: Test build
         run: |
-          echo "content-changed=${{ steps.filter.outputs.content }}" >> $GITHUB_OUTPUT
-          echo "build-config-changed=${{ steps.filter.outputs.build-config }}" >> $GITHUB_OUTPUT
-          echo "test-only-changed=${{ steps.filter.outputs.test-only }}" >> $GITHUB_OUTPUT
-          echo "docs-changed=${{ steps.filter.outputs.docs }}" >> $GITHUB_OUTPUT
-
-          # Determine which builds to run
-          CONTENT="${{ steps.filter.outputs.content }}"
-          BUILD_CONFIG="${{ steps.filter.outputs.build-config }}"
-          TEST_ONLY="${{ steps.filter.outputs.test-only }}"
-          DOCS="${{ steps.filter.outputs.docs }}"
-
-          # Determine if we should deploy
-          # Deploy if: content changes OR build-config changes OR workflow changes (to deploy fixes)
-          if [ "$CONTENT" = "true" ] || [ "$BUILD_CONFIG" = "true" ] || [ "$TEST_ONLY" = "true" ]; then
-            echo "should-deploy=true" >> $GITHUB_OUTPUT
-          else
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
+          if [ ! -d "public" ]; then
+            echo "Build failed: public directory not found"
+            exit 1
           fi
+          echo "Build successful"
+
+      - name: Test Google Analytics tracking
+        run: bun run test:ga
+
+      - name: Content validation
+        run: |
+          echo "🧪 Running content validation..."
+          bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
+
+          # Check for broken internal links
+          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          while read line; do
+            url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
+            if [ -n "$url" ]; then
+              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+                echo "❌ Broken link found: /$url"
+                exit 1
+              fi
+            fi
+          done
+          echo "✅ All internal links valid"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
           # We still run builds for test-only (CI validation) but don't deploy
           echo "Content changed: $CONTENT"
