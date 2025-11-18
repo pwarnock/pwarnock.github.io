@@ -49,7 +49,7 @@
 - **[development/STYLE_GUIDE.md](./development/STYLE_GUIDE.md)** ✅ **Consolidated** - Complete guide to architecture, design, CSS, templates, content, development, performance, and accessibility
   - Merged from: 8 style-guide files + CSS_VARIABLES_DESIGN_SYSTEM.md
   - Covers: Project architecture, design system, CSS guidelines, template conventions, content guidelines (critical: first-person voice, no H1 in markdown), development workflow, performance, accessibility
-  - Status: Complete, replaces style-guide/* files
+  - Status: Complete, replaces style-guide/\* files
 
 - **[development/ACCESSIBILITY.md](./development/ACCESSIBILITY.md)** - WCAG compliance & accessibility standards
   - When: Building accessible features
@@ -69,10 +69,10 @@
 
 **Design & implementation decisions** for major frameworks/components.
 
-- **[development/COMPONENTS.md](./development/COMPONENTS.md)** ⚠️ **PLANNED** - Will consolidate DaisyUI decisions
-  - Current: Scattered across DAISYUI\_\*.md files
-  - Pending: Merge assessment + migration + best practices
-  - Status: Needs consolidation
+- **[development/COMPONENTS.md](./development/COMPONENTS.md)** ✅ **Consolidated** - DaisyUI framework implementation and best practices
+  - Merged from: DAISYUI_FRAMEWORK_ASSESSMENT.md + DAISYUI_MIGRATION_PLAN.md + DAISYUI_BEST_PRACTICES.md
+  - Covers: Current assessment, implementation status, migration strategy, core principles, component guidelines, testing standards
+  - Status: Complete, replaces all 3 DaisyUI docs
 
 ### 📚 Reference Guides
 
@@ -99,7 +99,7 @@ Historical release notes by version.
 
 ### 🏗️ In Progress (WIP)
 
-- **COMPONENTS.md** - Consolidating DaisyUI docs (assessment, migration, best practices)
+(None currently)
 
 ### 📦 To Archive
 
@@ -117,9 +117,9 @@ Historical release notes by version.
 - `development/CSS_VARIABLES_DESIGN_SYSTEM.md` - Consolidated into STYLE_GUIDE.md
 - `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
 - `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
-- `development/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Merged into COMPONENTS.md
-- `development/DAISYUI_MIGRATION_PLAN.md` - Merged into COMPONENTS.md
-- `development/DAISYUI_BEST_PRACTICES.md` - Merged into COMPONENTS.md
+- `development/_archived/components/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Consolidated into COMPONENTS.md
+- `development/_archived/components/DAISYUI_MIGRATION_PLAN.md` - Consolidated into COMPONENTS.md
+- `development/_archived/components/DAISYUI_BEST_PRACTICES.md` - Consolidated into COMPONENTS.md
 - `development/CARD_TITLE_CENTERING_FIX.md` - One-off fix (archived)
 - `development/TEST_BEHAVIOR_ANALYSIS.md` - Analysis artifact (archived)
 - `development/DEVELOPMENT_SESSION_SUMMARY.md` - Session notes (archived)
@@ -162,14 +162,13 @@ docs/
 │   ├── DEPLOYMENT.md                  🏗️ WIP (consolidating 3 docs)
 │   └── ENVIRONMENT_CONFIG.md          ✅ maintained
 ├── development/                       (how to work on the project)
-│   ├── STYLE_GUIDE.md                 🏗️ WIP (consolidating 8 files)
+│   ├── STYLE_GUIDE.md                 ✅ consolidated
 │   ├── VERSIONING_GUIDELINES.md       ✅ maintained
 │   ├── ACCESSIBILITY.md               ✅ maintained
 │   ├── TESTING.md                     ✅ maintained
-│   ├── COMPONENTS.md                  🆕 planned
+│   ├── COMPONENTS.md                  ✅ consolidated
 │   ├── BUN_MIGRATION_GUIDE.md         ✅ reference
 │   ├── DEVELOPMENT_QUICK_REFERENCE.md ✅ maintained
-│   ├── style-guide/                   (being consolidated into STYLE_GUIDE.md)
 │   └── _archived/                     (old docs, session notes, assessments)
 ├── releases/                          (version-specific notes)
 └── development/
