@@ -24,9 +24,9 @@ echo "📦 Installing Go dependencies..."
 go mod tidy
 go mod download
 
-# Install Playwright browsers
-echo "🌐 Installing Playwright browsers..."
-go run github.com/playwright-community/playwright-go install
+# Note: Playwright browsers are installed on first test run
+# No need to pre-install them for Go BDD tests
+echo "✅ Go dependencies ready"
 
 # Check if Hugo is available
 if ! command -v hugo &> /dev/null; then

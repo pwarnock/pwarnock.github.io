@@ -3,6 +3,7 @@
 Complete guide for deploying changes to production, managing releases, versioning, and troubleshooting deployment issues.
 
 **See also:**
+
 - [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release process (RC → test → production) with script automation
 - [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow integration
 - [ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md) - Environment variables and configuration
@@ -19,12 +20,12 @@ Complete guide for deploying changes to production, managing releases, versionin
 
 The project uses **path-based build control** that intelligently routes changes based on what was modified:
 
-| Change Type | Examples | Build | Test | Deploy |
-|---|---|---|---|---|
-| **Content** | `content/`, `static/`, `assets/` | ✅ | ✅ | ✅ Production |
-| **Build Config** | `hugo.toml`, `layouts/`, `config/` | ✅ | ✅ | ✅ Production |
-| **Test-Only** | `test/`, `tests/`, `scripts/`, `.github/` | ✅ | ✅ | ❌ Verification only |
-| **Documentation** | `docs/`, `*.md` | ❌ | ❌ | ❌ Validation only |
+| Change Type       | Examples                                  | Build | Test | Deploy               |
+| ----------------- | ----------------------------------------- | ----- | ---- | -------------------- |
+| **Content**       | `content/`, `static/`, `assets/`          | ✅    | ✅   | ✅ Production        |
+| **Build Config**  | `hugo.toml`, `layouts/`, `config/`        | ✅    | ✅   | ✅ Production        |
+| **Test-Only**     | `test/`, `tests/`, `scripts/`, `.github/` | ✅    | ✅   | ❌ Verification only |
+| **Documentation** | `docs/`, `*.md`                           | ❌    | ❌   | ❌ Validation only   |
 
 **See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md#ci-cd-integration) for detailed CI/CD integration with workflow files.**
 
@@ -77,6 +78,7 @@ bun run dev
 ```
 
 **Why this matters:**
+
 - Hugo processes files in `assets/` with PostCSS
 - Files in `static/` are served as-is (no processing)
 - Unprocessed `@import` or `@plugin` directives break the entire stylesheet
@@ -115,6 +117,7 @@ FORCE_PUSH=yes git push origin main
 ```
 
 **GitHub Pages Environment Protection:**
+
 - Main branch deployments require all CI checks to pass
 - No manual approval needed (auto-deploy on successful checks)
 
@@ -174,6 +177,7 @@ Production (releases): v[major.minor.patch]
 ```
 
 Examples:
+
 - `v0.10.0-spacing-scale` (feature branch - development only)
 - `v0.10.0` (production release - no feature name)
 
@@ -247,6 +251,7 @@ git push upstream main --force
 ```
 
 **Benefits of GitHub Releases:**
+
 - ✅ **Immutable Snapshot**: Exact point-in-time code state
 - ✅ **Documentation**: Release notes capture what changed
 - ✅ **Rollback Safety**: Quick recovery from deployment issues
@@ -351,12 +356,14 @@ Post-release monitoring should verify:
 ### Alerting Thresholds
 
 **Critical Alerts** (page-down severity):
+
 - Site downtime > 5 minutes
 - 404 error rate > 5%
 - Performance degradation > 50%
 - Security vulnerabilities detected
 
 **Warning Alerts** (investigate within 1 hour):
+
 - Performance metrics degradation (10-50%)
 - Broken links detected
 - Accessibility score drop > 10 points
@@ -368,6 +375,7 @@ Post-release monitoring should verify:
 **Problem**: After moving CSS files from `assets/` to `static/`, styling breaks because CSS contains unprocessed Tailwind directives.
 
 **Example of broken CSS**:
+
 ```css
 @import 'tailwindcss';
 @plugin "daisyui" {
@@ -378,6 +386,7 @@ Post-release monitoring should verify:
 These directives aren't processed by Hugo when in `static/`, resulting in no actual styles being loaded. The file loads, but contains no rules—total style failure.
 
 **Why This Happens**:
+
 - Hugo processes files in `assets/` directory with PostCSS (converts directives to CSS)
 - Files in `static/` are served as-is with no processing
 - Unprocessed directives are invalid CSS and break the stylesheet
@@ -413,6 +422,7 @@ grep -c "class=" static/css/main.css
 **Problem**: Build succeeds but styles don't load in browser.
 
 **Root Causes**:
+
 1. CSS not processed before Hugo build
 2. Tailwind CLI version mismatch
 3. Missing dependencies (node_modules)
@@ -435,6 +445,7 @@ hugo --gc --minify
 **Problem**: GitHub Actions deployment step appears stuck.
 
 **Root Causes**:
+
 - Previous deployment still running (concurrency issue)
 - Large artifact upload stalling
 - Network issues or resource constraints
@@ -484,6 +495,7 @@ git push origin hotfix/critical-issue
 **Problem**: Deployment fails with error messages like "The process '/usr/bin/git' failed with exit code 128"
 
 **Root Causes**:
+
 1. Repository Settings: GitHub Pages not configured to accept deployments from GitHub Actions
 2. Token Permissions: GITHUB_TOKEN lacks necessary permissions
 3. Branch Protection: Main branch has restrictions preventing deployment
@@ -516,6 +528,7 @@ permissions:
 **Verification**:
 
 After fixing, check:
+
 - [ ] Pages source is set to "GitHub Actions"
 - [ ] No branch protection conflicts
 - [ ] Workflow has correct permissions
@@ -538,6 +551,7 @@ After fixing, check:
 **Correct Configuration Requirements**:
 
 1. **Proper Permissions**:
+
    ```yaml
    permissions:
      contents: read
@@ -546,15 +560,17 @@ After fixing, check:
    ```
 
 2. **Separate Build and Deploy Jobs**:
+
    ```yaml
    jobs:
-     build:  # Builds and tests
+     build: # Builds and tests
        ...
-     deploy:  # Only runs after successful build
+     deploy: # Only runs after successful build
        ...
    ```
 
 3. **Concurrency Control**:
+
    ```yaml
    concurrency:
      group: 'pages'
@@ -722,11 +738,13 @@ Check:
 ### Communication Channels
 
 #### Internal Team
+
 - GitHub release notes
 - Team chat notifications
 - Email summary for major releases
 
 #### Public (if applicable)
+
 - Blog post for major releases
 - Twitter announcements
 - LinkedIn updates

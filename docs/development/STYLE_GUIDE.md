@@ -285,11 +285,7 @@ Carousel slides use glass morphism effects for visual depth:
 
 ```css
 .hero-slide {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -895,7 +891,7 @@ The homepage template follows Hugo conventions:
 
 1. **First Priority**: `image` frontmatter parameter
 2. **Second Priority**: `thumbnail` parameter
-3. **Fallback**: Page resources (feature*, cover*, thumbnail*)
+3. **Fallback**: Page resources (feature*, cover*, thumbnail\*)
 4. **Final Fallback**: First image in page bundle
 
 #### Validation

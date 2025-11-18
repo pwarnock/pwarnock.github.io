@@ -61,9 +61,7 @@ dracula, etc.):
 }
 
 .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(
-    var(--b2)
-  ); /* Base-200 - subtle theme-aware background */
+  background-color: oklch(var(--b2)); /* Base-200 - subtle theme-aware background */
   color: oklch(var(--bc));
 }
 
@@ -225,11 +223,7 @@ Carousel slides use glass morphism effects for visual depth:
 
 ```css
 .hero-slide {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }

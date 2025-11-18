@@ -106,11 +106,13 @@ Historical release notes by version.
 All obsolete and consolidated documents are moved to `docs/development/_archived/` and `docs/operations/_archived/`:
 
 **Consolidated into active docs:**
+
 - DEPLOYMENT.md - Merged from RELEASE_MANAGEMENT.md + DEPLOYMENT_NOTES.md
 - STYLE_GUIDE.md - Merged from 8 style-guide files + CSS_VARIABLES_DESIGN_SYSTEM.md
 - COMPONENTS.md - Merged from 3 DaisyUI docs
 
 **Obsolete/Historical:**
+
 - PM2_WORKFLOW_GUIDE.md, PM2_DEVELOPMENT_WORKFLOW.md (migrated to Bun)
 - ALPINEJS_SELFHOSTING_DECISION.md (historical decision)
 - CARD_TITLE_CENTERING_FIX.md, TEST_BEHAVIOR_ANALYSIS.md, DEVELOPMENT_SESSION_SUMMARY.md, HEADER_NAVIGATION_SYSTEM.md (one-off analysis)
