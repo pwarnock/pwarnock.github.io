@@ -314,9 +314,7 @@ jobs:
     if: |
       github.ref == 'refs/heads/main' &&
       github.event_name == 'push' &&
-      needs.detect-changes.outputs.should-deploy == 'true' &&
-      (needs.content-build.result == 'success' || needs.content-build.result == 'skipped' || needs.content-build.result == 'failure') &&
-      (needs.test-build.result == 'success' || needs.test-build.result == 'skipped' || needs.test-build.result == 'failure')
+      needs.detect-changes.outputs.should-deploy == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
