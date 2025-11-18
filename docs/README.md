@@ -28,9 +28,10 @@
   - Covers: Auto-versioning, tag lifecycle, troubleshooting
   - Last updated: 2025-11-17
 
-- **[operations/DEPLOYMENT.md](./operations/DEPLOYMENT.md)** ⚠️ **WIP** - Will consolidate RELEASE_MANAGEMENT + DEPLOYMENT_NOTES + RELEASE_PROCESS
-  - Pending: Merge 3 docs into single deployment guide
-  - Status: Under consolidation
+- **[operations/DEPLOYMENT.md](./operations/DEPLOYMENT.md)** ✅ **Consolidated** - Deployment procedures, versioning, and release management
+  - Merged from: RELEASE_MANAGEMENT.md + DEPLOYMENT_NOTES.md
+  - Covers: Checklists, CI/CD architecture, three-stage release, version management, post-release validation, critical issues, troubleshooting
+  - Status: Complete, replaces RELEASE_MANAGEMENT.md and DEPLOYMENT_NOTES.md
 
 - **[operations/ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)** - Environment setup (staging, production)
   - When: Configuring environments, managing secrets
@@ -96,12 +97,13 @@ Historical release notes by version.
 
 ### 🏗️ In Progress (WIP)
 
-- **DEPLOYMENT.md** - Merging: RELEASE_MANAGEMENT + DEPLOYMENT_NOTES + RELEASE_PROCESS
 - **STYLE_GUIDE.md** - Consolidating 8 style files into 1 authoritative source
 - **COMPONENTS.md** - Consolidating DaisyUI docs (assessment, migration, best practices)
 
 ### 📦 To Archive
 
+- `operations/RELEASE_MANAGEMENT.md` - Consolidated into DEPLOYMENT.md
+- `operations/DEPLOYMENT_NOTES.md` - Consolidated into DEPLOYMENT.md
 - `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
 - `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
 - `development/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Merged into COMPONENTS.md
