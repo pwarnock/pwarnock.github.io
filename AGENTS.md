@@ -22,6 +22,29 @@ initialization. If updates are available, you'll be notified to run
 **Manual Update Check**: Run `./.cody/config/scripts/upgrade-check.sh` to check
 for updates at any time.
 
+## Documentation Rules
+
+**IMPORTANT**: Read `/docs/README.md` before creating or modifying documentation.
+
+### Before Creating a New Doc
+
+1. **Check the index** in `/docs/README.md` - does this topic already exist?
+2. **Search `/docs`** - use grep to look for related content:
+   ```bash
+   grep -r "your topic" docs/
+   ```
+3. **If it exists**: add to the existing doc with a date stamp
+4. **If truly new**: create it in `.tmp/` first and link to a parent issue
+5. **Never duplicate** solutions across multiple docs
+
+### Documentation Governance
+
+- **Master index**: `/docs/README.md` - search this first
+- **Canonical sources**: Each topic has ONE authoritative doc
+- **Updates go to canonical source**, not new files
+- **Old docs marked**: Archived, consolidated, or WIP status
+- **Agents follow rules**: Check index before proposing new docs
+
 ## Issue Tracking with bd (beads)
 
 **IMPORTANT**: This project uses **bd (beads)** for ALL issue tracking. Do NOT

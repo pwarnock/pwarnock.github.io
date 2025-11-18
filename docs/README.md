@@ -1,97 +1,169 @@
 # Documentation Index
 
-## 📚 Development Documentation
+**Master index for all project documentation.** Use this to find authoritative sources before creating new docs.
 
-### Getting Started
+## Quick Search
 
-- **[Development Quick Reference](../DEVELOPMENT_QUICK_REFERENCE.md)** -
-  Essential commands and workflows
-- **[Bun Migration Guide](development/BUN_MIGRATION_GUIDE.md)** - Complete
-  migration from npm to Bun
+**Problem**: I need to... → **See**:
 
-### Style Guide & Architecture
+| Problem | Document | Keywords |
+|---------|----------|----------|
+| Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md) | release, rc, tag, version, deploy |
+| Deploy to production | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP) | deploy, ci/cd, github actions |
+| Configure environments | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md) | env, staging, production, config |
+| Set up version bumping | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md) | version, semver, auto-bump, pre-commit |
+| Work with styles/CSS | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md) (WIP) | css, tailwind, daisyui, styling |
+| Build accessible components | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md) | wcag, a11y, accessibility, aria |
+| Write/run tests | [TESTING.md](./development/TESTING.md) | test, bdd, e2e, unit, playwright |
+| Migrate to Bun | [BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md) | bun, npm, package manager |
 
-- **[Project Architecture](development/style-guide/01-project-architecture.md)** -
-  Directory structure, template hierarchy
-- **[Design System](development/style-guide/02-design-system.md)** - Color
-  hierarchy, typography, components
-- **[Content Guidelines](development/style-guide/03-content-guidelines.md)** -
-  Front matter, page bundles, content structure
-- **[Template Conventions](development/style-guide/04-template-conventions.md)** -
-  Naming conventions, partials, template logic
-- **[CSS Guidelines](development/style-guide/05-css-guidelines.md)** -
-  Organization strategy, BEM naming, responsive design
-- **[Development Workflow](development/style-guide/06-development-workflow.md)** -
-  Adding content, modifying templates, Bun usage
-- **[Performance Guidelines](development/style-guide/07-performance-guidelines.md)** -
-  Image optimization, template efficiency
-- **[Accessibility Standards](development/style-guide/08-accessibility-standards.md)** -
-  Semantic HTML, WCAG compliance
+## By Topic
 
-### Testing
+### 🚀 Release & Deployment
 
-- **[Testing Documentation](development/TESTING.md)** - TypeScript preference,
-  test configuration
-- **[Go BDD Migration Plan](../test/GO_BDD_MIGRATION_PLAN.md)** - BDD testing
-  with Go and Godog
+**Authoritative docs** for release process and production deployment.
 
-## 🔧 Operations Documentation
+- **[operations/RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)** - Three-stage release (RC → test → production)
+  - When: Use for release decisions, RC testing, tag creation
+  - Covers: Auto-versioning, tag lifecycle, troubleshooting
+  - Last updated: 2025-11-17
 
-### Release & Deployment
+- **[operations/DEPLOYMENT.md](./operations/DEPLOYMENT.md)** ⚠️ **WIP** - Will consolidate RELEASE_MANAGEMENT + DEPLOYMENT_NOTES + RELEASE_PROCESS
+  - Pending: Merge 3 docs into single deployment guide
+  - Status: Under consolidation
 
-- **[Release Management](operations/RELEASE_MANAGEMENT.md)** - Semantic
-  versioning, release process
-- **[Deployment Notes](operations/DEPLOYMENT_NOTES.md)** - Deployment
-  configuration, troubleshooting
-- **[Environment Configuration](operations/ENVIRONMENT_CONFIG.md)** -
-  Environment setup and configuration
+- **[operations/ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)** - Environment setup (staging, production)
+  - When: Configuring environments, managing secrets
+  - Status: Maintained
 
-### Release Process
+### 🔧 Development Workflow
 
-- **[Cody Framework Release Process](../RELEASE_PROCESS.md)** - Professional
-  release workflow
+**How to work on the project** - building, testing, styling, versioning.
 
-## 📋 Release Notes
+- **[development/VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md)** - Semantic versioning & auto-bumping
+  - Pre-commit hook analyzes commits → bumps version
+  - Feature commits: minor bump, default: patch
+  - Last updated: 2025-11-17
 
-### Historical Releases
+- **[development/STYLE_GUIDE.md](./development/STYLE_GUIDE.md)** ⚠️ **WIP** - Will consolidate 8 style files
+  - Topics: Architecture, design system, CSS, templates, content, workflow, performance, accessibility
+  - Pending: Merge style-guide/* files into single guide
+  - Status: Under consolidation
 
-- **[v0.14.0](releases/RELEASE_NOTES_v0.14.0.md)** - Latest release
-- **[v0.13.4](releases/RELEASE_NOTES_v0.13.4.md)** - Security updates
-- **[v0.13.0](releases/RELEASE_NOTES_v0.13.0.md)** - Major feature release
-- **[v0.11.0](releases/RELEASE_NOTES_v0.11.0.md)** - Performance improvements
-- **[v0.10.1](releases/RELEASE_NOTES_v0.10.1.md)** - Bug fixes
-- **[v0.10.0](releases/RELEASE_NOTES_v0.10.0.md)** - Design system overhaul
-- **[v0.9.0](releases/RELEASE_NOTES_v0.9.0.md)** - Initial release
+- **[development/ACCESSIBILITY.md](./development/ACCESSIBILITY.md)** - WCAG compliance & accessibility standards
+  - When: Building accessible features
+  - Covers: WCAG 2.1 AA requirements, testing, components
+  - Status: Maintained
 
-## 🤖 Agent Documentation
+- **[development/TESTING.md](./development/TESTING.md)** - Testing infrastructure & strategies
+  - Unit tests (Go), BDD (Godog), E2E (Playwright)
+  - Watch mode, CI integration
+  - Status: Maintained
 
-### AI Agent Guidelines
+- **[development/BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)** - Switch from npm/pnpm to Bun
+  - Package management, scripts, performance
+  - Status: Maintained (reference for past migration)
 
-- **[AGENTS.md](../AGENTS.md)** - Cody Framework development guide for AI agents
+### 📦 Component & Framework Decisions
 
-## 🚀 Quick Navigation
+**Design & implementation decisions** for major frameworks/components.
 
-### For New Developers
+- **[development/COMPONENTS.md](./development/COMPONENTS.md)** ⚠️ **PLANNED** - Will consolidate DaisyUI decisions
+  - Current: Scattered across DAISYUI_*.md files
+  - Pending: Merge assessment + migration + best practices
+  - Status: Needs consolidation
 
-1. Read [Development Quick Reference](../DEVELOPMENT_QUICK_REFERENCE.md)
-2. Set up Bun using [Bun Migration Guide](development/BUN_MIGRATION_GUIDE.md)
-3. Follow
-   [Development Workflow](development/style-guide/06-development-workflow.md)
+### 📚 Reference Guides
 
-### For Release Managers
+**Quick reference and tool guides.**
 
-1. Review [Release Management](operations/RELEASE_MANAGEMENT.md)
-2. Follow [Cody Framework Release Process](../RELEASE_PROCESS.md)
-3. Check latest [Release Notes](releases/)
+- **[DEVELOPMENT_QUICK_REFERENCE.md](./DEVELOPMENT_QUICK_REFERENCE.md)** - Commands and quick tips
+  - Status: Maintained
 
-### For Contributors
+### 📋 Release Notes
 
-1. Understand
-   [Project Architecture](development/style-guide/01-project-architecture.md)
-2. Follow [Content Guidelines](development/style-guide/03-content-guidelines.md)
-3. Review [Testing Documentation](development/TESTING.md)
+Historical release notes by version.
 
----
+- **[releases/](./releases/)** - Version-specific release notes
+  - Format: `v0.x.x.md`
+  - Status: Archive
 
-_This documentation is maintained alongside the codebase and updated with each
-release. For the most current information, always check the main branch._
+## Consolidation Status
+
+### ✅ Complete
+- Path-based CI/CD logic documented
+
+### 🏗️ In Progress (WIP)
+- **DEPLOYMENT.md** - Merging: RELEASE_MANAGEMENT + DEPLOYMENT_NOTES + RELEASE_PROCESS
+- **STYLE_GUIDE.md** - Consolidating 8 style files into 1 authoritative source
+- **COMPONENTS.md** - Consolidating DaisyUI docs (assessment, migration, best practices)
+
+### 📦 To Archive
+- `development/PM2_WORKFLOW_GUIDE.md` - Obsolete (PM2 → Bun)
+- `development/PM2_DEVELOPMENT_WORKFLOW.md` - Obsolete (PM2 → Bun)
+- `development/DAISYUI_FRAMEWORK_ASSESSMENT.md` - Merged into COMPONENTS.md
+- `development/DAISYUI_MIGRATION_PLAN.md` - Merged into COMPONENTS.md
+- `development/DAISYUI_BEST_PRACTICES.md` - Merged into COMPONENTS.md
+- `development/CARD_TITLE_CENTERING_FIX.md` - One-off fix (archived)
+- `development/TEST_BEHAVIOR_ANALYSIS.md` - Analysis artifact (archived)
+- `development/DEVELOPMENT_SESSION_SUMMARY.md` - Session notes (archived)
+- `development/HEADER_NAVIGATION_SYSTEM.md` - Implementation detail (archived)
+- `development/CSS_VARIABLES_DESIGN_SYSTEM.md` - Merged into STYLE_GUIDE
+- `development/ALPINEJS_SELFHOSTING_DECISION.md` - Historical decision (archived)
+- `development/PATH_BASED_BUILDS.md` - Content moved to RELEASE_WORKFLOW
+
+### 🆕 To Create
+- **COMPONENTS.md** - Consolidate DaisyUI & component decisions
+- **DEPLOYMENT.md** - Consolidate release & deployment procedures
+
+## Rules for AI Agents
+
+### Before Creating Documentation
+1. **Check this index** - Is there already a doc for this topic?
+2. **Search `/docs`** - Use grep/find to look for related content
+3. **Propose consolidation** - If similar docs exist, suggest merging
+4. **Link to parent** - New discoveries → add to existing doc with date
+
+### Adding New Knowledge
+- **Bug fix or workaround?** → Add to relevant doc with date stamp
+- **New topic/process?** → Propose in `.tmp/` first, link to parent issue
+- **Never duplicate** solutions across multiple docs
+
+### Questions?
+- Check the quick search table above
+- Look for similar keywords across all docs
+- If truly new topic: create issue, propose structure in `.tmp/`, wait for approval
+
+## File Organization
+
+```
+docs/
+├── README.md                          (this file - master index)
+├── operations/                        (release, deployment, infrastructure)
+│   ├── RELEASE_WORKFLOW.md            ✅ maintained
+│   ├── DEPLOYMENT.md                  🏗️ WIP (consolidating 3 docs)
+│   └── ENVIRONMENT_CONFIG.md          ✅ maintained
+├── development/                       (how to work on the project)
+│   ├── STYLE_GUIDE.md                 🏗️ WIP (consolidating 8 files)
+│   ├── VERSIONING_GUIDELINES.md       ✅ maintained
+│   ├── ACCESSIBILITY.md               ✅ maintained
+│   ├── TESTING.md                     ✅ maintained
+│   ├── COMPONENTS.md                  🆕 planned
+│   ├── BUN_MIGRATION_GUIDE.md         ✅ reference
+│   ├── DEVELOPMENT_QUICK_REFERENCE.md ✅ maintained
+│   ├── style-guide/                   (being consolidated into STYLE_GUIDE.md)
+│   └── _archived/                     (old docs, session notes, assessments)
+├── releases/                          (version-specific notes)
+└── development/
+    └── DEVELOPMENT_QUICK_REFERENCE.md
+```
+
+## Legend
+
+| Status | Meaning |
+|--------|---------|
+| ✅ maintained | Actively used, up to date |
+| 🏗️ WIP | Under consolidation or redesign |
+| 🆕 planned | Will be created soon |
+| 📦 archived | Historical reference only |
+| ⚠️ WIP | Will change soon |
