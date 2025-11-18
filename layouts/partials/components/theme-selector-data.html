@@ -4,7 +4,7 @@
 
 <div class="dropdown dropdown-end" x-data="{ themeOpen: false }" @click.outside="themeOpen = false" :class="{ 'dropdown-open': themeOpen }">
   <div class="tooltip tooltip-left tooltip-info" data-tip="Switch theme - Choose from 20+ accessible themes">
-    <button tabindex="0" @click="themeOpen = !themeOpen" class="btn-system btn-system--ghost btn-system--md btn-circle" aria-label="Theme selector">
+    <button tabindex="0" @click="themeOpen = !themeOpen" class="btn-system btn-system--ghost btn-system--md btn-circle" aria-label="Theme selector" data-testid="theme-selector">
       {{ partial "components/icon.html" (dict "name" "theme" "size" "md") }}
     </button>
   </div>

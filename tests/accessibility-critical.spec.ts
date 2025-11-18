@@ -32,7 +32,7 @@ test.describe('Critical Accessibility Fixes', () => {
     }
 
     // For now, just document the violations - expect them to exist
-    expect(violations.length).toBeGreaterThan(0);
+    expect(violations.length).toBe(0);
   });
 
   test('check color contrast issues', async ({ page }) => {

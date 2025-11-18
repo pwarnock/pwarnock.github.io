@@ -9,8 +9,8 @@
 set -e
 
 # Get current version from hugo.toml
-if grep -q '^version = ' hugo.toml; then
-  CURRENT_VERSION=$(grep '^version = ' hugo.toml | sed 's/version = "\(.*\)"/\1/')
+if grep -q '^[[:space:]]*version = ' hugo.toml; then
+  CURRENT_VERSION=$(grep '^[[:space:]]*version = ' hugo.toml | head -1 | sed 's/.*version = "\(.*\)".*/\1/')
 else
   echo "❌ Error: No version found in hugo.toml"
   exit 1
