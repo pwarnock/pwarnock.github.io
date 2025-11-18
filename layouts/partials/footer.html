@@ -53,8 +53,12 @@
          <p class="text-xs opacity-70">Copyright © {{ now.Year }}</p>
          <p class="text-xs opacity-70">{{ .Site.Title }}</p>
           <p class="text-xs opacity-70">
-          v{{ .Site.Params.version }}{{ with .Site.Params.versionHash }} ({{ . }}){{ end }}
-          </p>
+          {{ if .Site.Data.version }}
+            v{{ .Site.Data.version.current }} ({{ .Site.Data.version.hash }})
+          {{ else }}
+            v{{ .Site.Params.version }}{{ with .Site.Params.versionHash }} ({{ . }}){{ end }}
+          {{ end }}
+         </p>
        </div>
        <a href="#top" class="link link-hover text-xs opacity-70 inline-flex items-center gap-1 ml-auto" aria-label="Back to top of page">
          <span>↑</span>
