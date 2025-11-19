@@ -6,7 +6,7 @@ description:
   'A deep dive into building isolated, interactive, and smart web components,
   verified with Playwright visual regression tests.'
 summary:
-  'We implemented three distinct Web Component demos to explore Shadow DOM
+  'I implemented three distinct Web Component demos to explore Shadow DOM
   isolation, 3D rendering without WebGL, and smart iframe management. This post
   details the implementation and the visual regression testing strategy used to
   verify them.'
@@ -14,12 +14,12 @@ image: 'exploring-web-components.png'
 tags: ['Web Components', 'Lit', 'Playwright', 'Testing', 'CSS']
 ---
 
-Today we expanded the site's component library with three distinct demos, each
+Today I expanded the site's component library with three distinct demos, each
 targeting a specific capability of modern Web Components: strict style
 isolation, lightweight 3D rendering, and intelligent iframe management.
 
-To ensure these components remain stable and visually consistent, we also
-integrated them into our **Playwright** visual regression testing suite.
+To ensure these components remain stable and visually consistent, I also
+integrated them into my **Playwright** visual regression testing suite.
 
 ## 1. Shadow DOM Isolation
 
@@ -27,7 +27,7 @@ One of the strongest selling points of Web Components is the **Shadow DOM**—a
 mechanism that encapsulates a component's HTML and CSS, protecting it from the
 global styles of the host page.
 
-We built a [Isolation Demo](/components/isolation-demo/) to prove this concept.
+I built a [Isolation Demo](/components/isolation-demo/) to prove this concept.
 The demo simulates a "Remote Component" (loaded via script) placed inside a Host
 Page.
 
@@ -62,7 +62,7 @@ a standard HTML element `<lit-3d-piano>`.
 
 Embedding external content (like my
 [Tech Radar](https://peterwarnock.com/build-your-own-radar/)) often comes with
-trade-offs in performance, security, and UX. To solve this, we built a
+trade-offs in performance, security, and UX. To solve this, I built a
 `<smart-iframe>` wrapper.
 
 Check out the [Smart Iframe Demo](/components/iframe-demo/).
@@ -86,7 +86,7 @@ Building these components is only half the battle. Ensuring they render
 correctly across different browsers and responsive breakpoints is where
 **Playwright** comes in.
 
-We updated our `tests/visual-regression.spec.ts` suite to visit each new demo
+I updated the `tests/visual-regression.spec.ts` suite to visit each new demo
 page and capture a snapshot.
 
 ```typescript
@@ -97,6 +97,6 @@ test('isolation demo page visual regression @visual', async ({ page }) => {
 });
 ```
 
-This ensures that if we accidentally break the CSS isolation or the 3D
-transforms in a future update, our CI pipeline will catch the visual difference
+This ensures that if I accidentally break the CSS isolation or the 3D transforms
+in a future update, the CI pipeline will catch the visual difference
 immediately.
