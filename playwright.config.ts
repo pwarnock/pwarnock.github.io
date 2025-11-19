@@ -1,5 +1,8 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import { setupLogfire } from './tests/logfire.setup';
+
+setupLogfire();
 
 /**
  * @see https://playwright.dev/docs/test-configuration

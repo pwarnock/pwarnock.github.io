@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { injectAxe, getViolations } from 'axe-playwright';
+import { logger } from './logfire.setup';
 
 test.describe('Critical Accessibility Fixes', () => {
   test.beforeEach(async ({ page }) => {
@@ -7,32 +8,44 @@ test.describe('Critical Accessibility Fixes', () => {
   });
 
   test('fix heading order violations', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle', { timeout: 30000 });
+    await logger.span('Accessibility: Heading Order', {
+      attributes: { page: '/' },
+      callback: async () => {
+        await page.goto('/');
+        await page.waitForLoadState('networkidle', { timeout: 30000 });
 
-    await injectAxe(page);
+        await injectAxe(page);
 
-    // Check for heading order violations specifically
-    const violations = await getViolations(page, {
-      rules: {
-        'heading-order': { enabled: true },
+        // Check for heading order violations specifically
+        const violations = await getViolations(page, {
+          rules: {
+            'heading-order': { enabled: true },
+          },
+        });
+
+        // Log the specific heading order issues for fixing
+        if (violations.length > 0) {
+          logger.warning(`Heading Order Violations: ${violations.length}`, {
+            violation_count: violations.length,
+          });
+          violations.forEach(violation => {
+            logger.info(`Violation: ${violation.description}`, {
+              id: violation.id,
+              impact: violation.impact,
+            });
+            violation.nodes.forEach(node => {
+              logger.debug(`Node details`, {
+                target: node.target.join(', '),
+                html: node.html,
+              });
+            });
+          });
+        }
+
+        // For now, just document the violations - expect them to exist
+        expect(violations.length).toBe(0);
       },
     });
-
-    // Log the specific heading order issues for fixing
-    if (violations.length > 0) {
-      console.log('Heading Order Violations:');
-      violations.forEach(violation => {
-        console.log(`- ${violation.description}`);
-        violation.nodes.forEach(node => {
-          console.log(`  Target: ${node.target.join(', ')}`);
-          console.log(`  HTML: ${node.html}`);
-        });
-      });
-    }
-
-    // For now, just document the violations - expect them to exist
-    expect(violations.length).toBe(0);
   });
 
   test('check color contrast issues', async ({ page }) => {
