@@ -29,8 +29,8 @@
 .hero--gradient-primary {
   background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
 
-  /* Reduced height for more compact layout */
-  min-height: 85vh;
+  /* Compact height for better layout */
+  min-height: 40vh;
 
   /* Add subtle gradient animation */
   background-size: 200% 200%;
