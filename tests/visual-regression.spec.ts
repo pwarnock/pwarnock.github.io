@@ -66,6 +66,23 @@ test.describe('Visual Regression Tests', () => {
     await expect(page).toHaveScreenshot('isolation-demo-page.png');
   });
 
+  test('piano demo page visual regression @visual', async ({ page }) => {
+    await page.goto('/components/piano-demo/');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
+
+    await expect(page).toHaveScreenshot('piano-demo-page.png');
+  });
+
+  test('iframe demo page visual regression @visual', async ({ page }) => {
+    await page.goto('/components/iframe-demo/');
+    // Wait for the smart-iframe to be loaded (it has a loader)
+    await page.waitForSelector('smart-iframe', { state: 'visible' });
+    // Wait extra time for iframe content or loader to stabilize
+    await page.waitForTimeout(2000);
+
+    await expect(page).toHaveScreenshot('iframe-demo-page.png');
+  });
+
   test('mobile responsive visual regression @visual @mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 }); // iPhone dimensions
     await page.goto('/');
