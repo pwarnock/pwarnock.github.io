@@ -10,7 +10,7 @@ summary:
   isolation, 3D rendering without WebGL, and smart iframe management. This post
   details the implementation and the visual regression testing strategy used to
   verify them.'
-image: '/images/blog/thoughtworks-tech-radar-33.jpg'
+image: 'exploring-web-components.png'
 tags: ['Web Components', 'Lit', 'Playwright', 'Testing', 'CSS']
 ---
 
