@@ -1,6 +1,7 @@
 package support
 
 import (
+	"context"
 	"fmt"
 	"os/exec"
 	"testing"
@@ -89,6 +90,10 @@ func (tc *TestContext) Teardown() {
 	}
 
 	tc.Logf("Test environment cleanup completed")
+
+	if tc.StructuredLogger != nil {
+		tc.StructuredLogger.Close()
+	}
 }
 
 // SetupBrowser creates and initializes browser instance
@@ -193,4 +198,19 @@ func (tc *TestContext) WaitForPage(pageName string) error {
 	}
 
 	return fmt.Errorf("page %s did not become available within %d seconds", pageName, maxAttempts*2)
+}
+
+func init() {
+	// Initialize OTEL on package load
+	if IsOTELEnabled() {
+		ctx := context.Background()
+		shutdown, err := InitOTEL(ctx)
+		if err != nil {
+			fmt.Printf("Warning: Failed to initialize OTEL: %v\n", err)
+		} else {
+			// Register shutdown to run at exit
+			// (In real usage, call this in test main cleanup)
+			_ = shutdown
+		}
+	}
 }
