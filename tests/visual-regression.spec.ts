@@ -52,6 +52,20 @@ test.describe('Visual Regression Tests', () => {
     await expect(page).toHaveScreenshot('about-page.png');
   });
 
+  test('components page visual regression @visual', async ({ page }) => {
+    await page.goto('/components/');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
+
+    await expect(page).toHaveScreenshot('components-page.png');
+  });
+
+  test('isolation demo page visual regression @visual', async ({ page }) => {
+    await page.goto('/components/isolation-demo/');
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
+
+    await expect(page).toHaveScreenshot('isolation-demo-page.png');
+  });
+
   test('mobile responsive visual regression @visual @mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 }); // iPhone dimensions
     await page.goto('/');
