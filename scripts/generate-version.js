@@ -36,13 +36,9 @@ if (fs.existsSync(versionFile)) {
   }
 }
 
-// Determine version to use - prioritize existing version.toml if it has correct version
+// Determine version to use - always use package.json version on main branch for consistency
 const version =
-  branch === 'main' || branch === 'master'
-    ? existingVersion
-      ? existingVersion
-      : packageVersion
-    : `${branch}-${shortHash}`;
+  branch === 'main' || branch === 'master' ? packageVersion : `${branch}-${shortHash}`;
 
 // Remove 'v' prefix if present (template adds it)
 const cleanVersion = version.startsWith('v') ? version.substring(1) : version;
