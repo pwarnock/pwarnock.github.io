@@ -65,29 +65,29 @@ jobs:
           fi
           echo "Build successful"
 
-    - name: Content validation
-      run: |
-        echo "🧪 Running content validation..."
-        bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
+      - name: Content validation
+        run: |
+          echo "🧪 Running content validation..."
+          bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
 
-        # Check for broken internal links
-        find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
-        while read line; do
-          url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
-          if [ -n "$url" ]; then
-            if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
-              echo "❌ Broken link found: /$url"
-              exit 1
+          # Check for broken internal links
+          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          while read line; do
+            url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
+            if [ -n "$url" ]; then
+              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+                echo "❌ Broken link found: /$url"
+                exit 1
+              fi
             fi
-          fi
-        done
-        echo "✅ All internal links valid"
+          done
+          echo "✅ All internal links valid"
 
-    - name: Upload pages artifact
-      if: github.ref == 'refs/heads/main'
-      uses: actions/upload-pages-artifact@v4
-      with:
-        path: ./public
+      - name: Upload pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
 
   # Deploy Job (only runs on main branch after successful build)
   deploy:
