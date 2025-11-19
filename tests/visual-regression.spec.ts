@@ -63,14 +63,18 @@ test.describe('Visual Regression Tests', () => {
     await page.goto('/components/isolation-demo/');
     await page.waitForLoadState('networkidle', { timeout: 30000 });
 
-    await expect(page).toHaveScreenshot('isolation-demo-page.png');
+    // Target the main content area to crop out header/footer
+    const content = page.locator('main');
+    await expect(content).toHaveScreenshot('isolation-demo-page.png');
   });
 
   test('piano demo page visual regression @visual', async ({ page }) => {
     await page.goto('/components/piano-demo/');
     await page.waitForLoadState('networkidle', { timeout: 30000 });
 
-    await expect(page).toHaveScreenshot('piano-demo-page.png');
+    // Target the main content area
+    const content = page.locator('main');
+    await expect(content).toHaveScreenshot('piano-demo-page.png');
   });
 
   test('iframe demo page visual regression @visual', async ({ page }) => {
@@ -80,7 +84,9 @@ test.describe('Visual Regression Tests', () => {
     // Wait extra time for iframe content or loader to stabilize
     await page.waitForTimeout(2000);
 
-    await expect(page).toHaveScreenshot('iframe-demo-page.png');
+    // Target the main content area
+    const content = page.locator('main');
+    await expect(content).toHaveScreenshot('iframe-demo-page.png');
   });
 
   test('mobile responsive visual regression @visual @mobile', async ({ page }) => {
