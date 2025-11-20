@@ -8,8 +8,10 @@ export function setupLogfire() {
   // and the package seems to be the JS API client.
   logfire.configureLogfireApi({
     token: token || '',
-    serviceName: 'playwright-e2e', // Hoping this is the key
+    serviceName: 'playwright-e2e',
     environment: process.env.LOGFIRE_ENVIRONMENT || 'test',
+    // Add CI correlation tag
+    tags: process.env.GITHUB_RUN_ID ? [`run:${process.env.GITHUB_RUN_ID}`] : ['run:local'],
   } as any);
 
   if (!token) {

@@ -32,12 +32,22 @@ func InitOTEL(ctx context.Context) (func(context.Context) error, error) {
 	}
 
 	// Create resource with service info
+	attrs := []attribute.KeyValue{
+		semconv.ServiceNameKey.String("go-test-suite"),
+		semconv.ServiceVersionKey.String("1.0.0"),
+		attribute.String("environment", getEnvironment()),
+	}
+
+	// Add CI run ID if present for correlation with TS tests
+	if runID := os.Getenv("GITHUB_RUN_ID"); runID != "" {
+		attrs = append(attrs, attribute.String("ci.run_id", runID))
+		attrs = append(attrs, semconv.ServiceInstanceIDKey.String(fmt.Sprintf("run:%s", runID)))
+	} else {
+		attrs = append(attrs, semconv.ServiceInstanceIDKey.String("run:local"))
+	}
+
 	res, err := resource.New(ctx,
-		resource.WithAttributes(
-			semconv.ServiceNameKey.String("go-test-suite"),
-			semconv.ServiceVersionKey.String("1.0.0"),
-			attribute.String("environment", getEnvironment()),
-		),
+		resource.WithAttributes(attrs...),
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
