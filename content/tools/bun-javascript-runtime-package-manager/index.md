@@ -18,6 +18,7 @@ tags:
     'typescript',
     'node-js',
   ]
+image: '/images/tools/bun-javascript-runtime-package-manager.png'
 draft: false
 ---
 

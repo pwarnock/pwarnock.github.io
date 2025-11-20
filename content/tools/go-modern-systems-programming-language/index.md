@@ -18,6 +18,7 @@ tags:
     'performance',
     'concurrency',
   ]
+image: '/images/tools/go-modern-systems-programming-language.png'
 draft: false
 ---
 

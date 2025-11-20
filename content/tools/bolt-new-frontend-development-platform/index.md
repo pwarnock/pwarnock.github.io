@@ -21,6 +21,7 @@ aliases: ['/tools/bolt-new/']
 radar:
   quadrant: 'Platforms'
   ring: 'Trial'
+image: '/images/tools/bolt-new-frontend-development-platform.png'
 ---
 
 Bolt.new represents a paradigm shift in frontend development, offering an
@@ -130,3 +131,6 @@ developers can easily extend and customize.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [bolt.new](https://bolt.new)

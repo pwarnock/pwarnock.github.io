@@ -18,6 +18,7 @@ tags:
     'javascript',
     'typescript',
   ]
+image: '/images/tools/playwright-modern-end-to-end-testing-framework.png'
 draft: false
 ---
 

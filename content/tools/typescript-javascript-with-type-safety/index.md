@@ -17,6 +17,7 @@ tags:
     'development-tools',
     'web-development',
   ]
+image: '/images/tools/typescript-javascript-with-type-safety.png'
 draft: false
 ---
 
@@ -254,3 +255,6 @@ TypeScript continues to evolve with new features:
 TypeScript represents the future of JavaScript development, providing the type
 safety and tooling that modern applications demand while maintaining full
 compatibility with the existing JavaScript ecosystem.
+
+
+**Website**: [www.typescriptlang.org](https://www.typescriptlang.org)

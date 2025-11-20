@@ -14,6 +14,7 @@ aliases: ['/tools/opencode/', '/tools/flexible-ai-platform/']
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
+image: '/images/tools/opencode-flexible-ai-coding-platform.png'
 ---
 
 OpenCode emerges as a revolutionary force in the AI coding landscape,
@@ -143,3 +144,6 @@ contracting.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [opencode.com](https://opencode.com)

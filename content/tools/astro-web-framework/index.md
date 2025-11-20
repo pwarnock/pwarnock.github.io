@@ -9,7 +9,7 @@ external_url: 'https://astro.build/'
 website: 'astro.build'
 tool_category: 'Web Frameworks'
 slug: 'astro-web-framework'
-image: '/images/tools/astro.png'
+image: '/images/tools/astro-web-framework.png'
 radar:
   quadrant: 'Languages & Frameworks'
   ring: 'Adopt'
@@ -59,3 +59,6 @@ excellent performance scores.
 
 - [Astro Starlight](/tools/astro-starlight/): The documentation website builder
   that makes creating stellar docs effortless.
+
+
+**Website**: [astro.build](https://astro.build)

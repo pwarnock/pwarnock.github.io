@@ -8,7 +8,7 @@ external_url: 'https://gohugo.io/'
 website: 'gohugo.io'
 tool_category: 'Static Site Generators'
 slug: 'hugo-static-site-generator'
-image: '/images/tools/hugo.svg'
+image: '/images/tools/hugo-static-site-generator.png'
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
@@ -50,3 +50,6 @@ milliseconds.
 - [Official Website →](https://gohugo.io/)
 - [Documentation →](https://gohugo.io/documentation/)
 - [GitHub Repository →](https://github.com/gohugoio/hugo)
+
+
+**Website**: [gohugo.io](https://gohugo.io)

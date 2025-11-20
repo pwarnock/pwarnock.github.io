@@ -139,3 +139,6 @@ more valuable the longer it's used.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [codeium.com](https://codeium.com/windsurf)

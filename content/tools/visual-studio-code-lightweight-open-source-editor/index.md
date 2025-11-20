@@ -14,6 +14,7 @@ aliases: ['/tools/vscode/', '/tools/visual-studio-code/']
 radar:
   quadrant: 'Tools'
   ring: 'Adopt'
+image: '/images/tools/visual-studio-code-lightweight-open-source-editor.png'
 ---
 
 Visual Studio Code has fundamentally transformed the development landscape since
@@ -141,3 +142,6 @@ environments and for developers who work across multiple platforms.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [code.visualstudio.com](https://code.visualstudio.com)

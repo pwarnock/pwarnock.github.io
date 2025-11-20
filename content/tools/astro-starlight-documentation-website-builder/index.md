@@ -8,7 +8,7 @@ external_url: 'https://starlight.astro.build/'
 website: 'starlight.astro.build'
 tool_category: 'Static Site Generators'
 slug: 'astro-starlight'
-image: '/images/tools/astro-starlight.webp'
+image: '/images/tools/astro-starlight-documentation-website-builder.png'
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
@@ -55,3 +55,6 @@ high-performance documentation website with a great authoring experience.
 - [Astro Starlight Demo](/portfolio/astro-starlight-demo/): A demo project
   showcasing the ease of getting started with Astro Starlight for building
   modern websites.
+
+
+**Website**: [starlight.astro.build](https://starlight.astro.build)

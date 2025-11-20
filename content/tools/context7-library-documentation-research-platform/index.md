@@ -131,3 +131,5 @@ For teams using AI coding assistants, Context7 provides the librarian functional
 ---
 
 **Related Tools**: See how Context7 integrates with [OpenCode](/tools/opencode-flexible-ai-coding-platform/) as a specialized documentation research subagent.
+
+**Website**: [context7.ai](https://context7.ai)
