@@ -10,6 +10,7 @@ summary:
   directly in GitHub repositories, enabling continuous integration, testing, and
   deployment.'
 tags: ['ci-cd', 'automation', 'devops', 'github', 'testing', 'deployment']
+image: '/images/tools/github-actions-ci-cd-for-modern-development.png'
 draft: false
 ---
 

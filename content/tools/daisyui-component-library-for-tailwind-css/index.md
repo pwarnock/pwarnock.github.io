@@ -8,6 +8,7 @@ summary: 'DaisyUI is a component library that adds beautiful, accessible UI comp
   to Tailwind CSS, enabling rapid development of modern web interfaces with
   semantic class names.'
 tags: ['css', 'ui-components', 'tailwind-css', 'frontend', 'design-system', 'accessibility']
+image: '/images/tools/daisyui-component-library-for-tailwind-css.png'
 draft: false
 ---
 

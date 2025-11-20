@@ -8,6 +8,7 @@ summary: 'Tailwind CSS is a utility-first CSS framework that provides low-level 
   classes to build custom designs without leaving your HTML, enabling rapid UI
   development.'
 tags: ['css', 'framework', 'utility-first', 'frontend', 'responsive-design', 'design-system']
+image: '/images/tools/tailwind-css-utility-first-css-framework.png'
 draft: false
 ---
 
