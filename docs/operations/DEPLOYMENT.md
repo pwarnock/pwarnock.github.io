@@ -1,24 +1,32 @@
 # Deployment & Release Management
 
-Complete guide for deploying changes to production, managing releases, versioning, and troubleshooting deployment issues.
+Complete guide for deploying changes to production, managing releases,
+versioning, and troubleshooting deployment issues.
 
 **See also:**
 
-- [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release process (RC → test → production) with script automation
-- [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow integration
-- [ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md) - Environment variables and configuration
+- [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release process (RC
+  → test → production) with script automation
+- [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow
+  integration
+- [ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md) - Environment variables and
+  configuration
 
 ## Quick Links
 
-- **Making a release?** → [Three-Stage Release Process](#three-stage-release-process)
+- **Making a release?** →
+  [Three-Stage Release Process](#three-stage-release-process)
 - **Deploying to production?** → [Deployment Checklist](#deployment-checklist)
-- **Fixing deployment issues?** → [Critical Issues & Fixes](#critical-issues--fixes)
+- **Fixing deployment issues?** →
+  [Critical Issues & Fixes](#critical-issues--fixes)
 - **Need version info?** → [Version Management](#version-management--releases)
-- **Monitoring after deploy?** → [Post-Release Validation](#post-release-validation)
+- **Monitoring after deploy?** →
+  [Post-Release Validation](#post-release-validation)
 
 ## CI/CD Architecture Overview
 
-The project uses **path-based build control** that intelligently routes changes based on what was modified:
+The project uses **path-based build control** that intelligently routes changes
+based on what was modified:
 
 | Change Type       | Examples                                  | Build | Test | Deploy               |
 | ----------------- | ----------------------------------------- | ----- | ---- | -------------------- |
@@ -27,7 +35,8 @@ The project uses **path-based build control** that intelligently routes changes 
 | **Test-Only**     | `test/`, `tests/`, `scripts/`, `.github/` | ✅    | ✅   | ❌ Verification only |
 | **Documentation** | `docs/`, `*.md`                           | ❌    | ❌   | ❌ Validation only   |
 
-**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md#ci-cd-integration) for detailed CI/CD integration with workflow files.**
+**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md#ci-cd-integration) for
+detailed CI/CD integration with workflow files.**
 
 ## Deployment Checklist
 
@@ -123,9 +132,11 @@ FORCE_PUSH=yes git push origin main
 
 ## Three-Stage Release Process
 
-The release process has three stages: Pre-Release (RC) → Testing → Production Release.
+The release process has three stages: Pre-Release (RC) → Testing → Production
+Release.
 
-**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for detailed step-by-step process with diagrams and scripts.**
+**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for detailed step-by-step
+process with diagrams and scripts.**
 
 Quick reference:
 
@@ -163,8 +174,10 @@ FORCE_PUSH=yes git push upstream v0.17.1
 
 We follow `MAJOR.MINOR.PATCH` semantic versioning:
 
-- **MAJOR** (e.g., 1.0.0): Breaking changes, major redesigns, technology stack changes
-- **MINOR** (e.g., 0.17.0): New features, significant content additions, UI improvements
+- **MAJOR** (e.g., 1.0.0): Breaking changes, major redesigns, technology stack
+  changes
+- **MINOR** (e.g., 0.17.0): New features, significant content additions, UI
+  improvements
 - **PATCH** (e.g., 0.17.1): Bug fixes, content updates, minor improvements
 
 ### Version Naming Convention
@@ -181,42 +194,43 @@ Examples:
 - `v0.10.0-spacing-scale` (feature branch - development only)
 - `v0.10.0` (production release - no feature name)
 
-**Critical**: Feature branch names should NOT leak to production version strings.
+**Critical**: Feature branch names should NOT leak to production version
+strings.
 
-### Auto-Versioning
+### Version Bumping
 
-Versions are automatically bumped on each commit via pre-commit hook:
+Versions are manually bumped before release:
 
 - **Patch bumps** (default): For `fix:`, `refactor:`, `docs:` commits
-- **Minor bumps**: For `feature:` or `feat:` commits, new components, or beads feature issues
-- **Manual bumps**: Use `:cody build` or specify `--patch` when needed
+- **Minor bumps**: For `feature:` or `feat:` commits, new components, or beads
+  feature issues
+- **Manual bumps**: Use `bun pm version patch/minor`
 
-Hugo.toml is automatically updated with the new version and versionHash on each commit.
+`data/version.toml` is automatically updated with the version and versionHash
+during build.
 
-**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md#auto-versioning-diagram) for detailed auto-versioning flow.**
+**See [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) for detailed release flow.**
 
 ### Version Synchronization
 
 Version numbers must be synchronized across three locations:
 
 1. **package.json**: `"version": "x.y.z"`
-2. **hugo.toml**: `version = "x.y.z"` + `versionHash = "commit-hash"`
+2. **data/version.toml**: `current = "x.y.z"` + `hash = "commit-hash"`
 3. **Footer display**: Shows version (e.g., "v0.17.1 8bb3896")
 
-Auto-versioning pre-commit hook handles this automatically. To manually synchronize:
+The build process handles synchronization automatically
+(`scripts/generate-version.js`). To manually update the version:
 
 ```bash
 # Update package.json
-npm version 0.17.1 --no-git-tag-v
-
-# Update hugo.toml
-grep "version = " hugo.toml  # Check current
+bun pm version patch
+# or
+npm version 0.17.1 --no-git-tag-version
 
 # Commit
-git add package.json hugo.toml
+git add package.json
 git commit -m "version: bump to 0.17.1"
-
-# Pre-commit hook will auto-update versionHash
 ```
 
 ### Version Update Process
@@ -372,7 +386,8 @@ Post-release monitoring should verify:
 
 ### 🚨 CSS Processing Issue
 
-**Problem**: After moving CSS files from `assets/` to `static/`, styling breaks because CSS contains unprocessed Tailwind directives.
+**Problem**: After moving CSS files from `assets/` to `static/`, styling breaks
+because CSS contains unprocessed Tailwind directives.
 
 **Example of broken CSS**:
 
@@ -383,11 +398,14 @@ Post-release monitoring should verify:
 }
 ```
 
-These directives aren't processed by Hugo when in `static/`, resulting in no actual styles being loaded. The file loads, but contains no rules—total style failure.
+These directives aren't processed by Hugo when in `static/`, resulting in no
+actual styles being loaded. The file loads, but contains no rules—total style
+failure.
 
 **Why This Happens**:
 
-- Hugo processes files in `assets/` directory with PostCSS (converts directives to CSS)
+- Hugo processes files in `assets/` directory with PostCSS (converts directives
+  to CSS)
 - Files in `static/` are served as-is with no processing
 - Unprocessed directives are invalid CSS and break the stylesheet
 - Browser loads empty stylesheet, all Tailwind classes fail to apply
@@ -436,7 +454,8 @@ bun x tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify
 hugo --gc --minify
 ```
 
-**Note**: Pre-commit hook and CI/CD handle this automatically. If it happens locally, ensure you're using `bun run build:production` (not `hugo` directly).
+**Note**: Pre-commit hook and CI/CD handle this automatically. If it happens
+locally, ensure you're using `bun run build:production` (not `hugo` directly).
 
 ---
 
@@ -492,11 +511,13 @@ git push origin hotfix/critical-issue
 
 ### ⚠️ GitHub Pages Deployment Failure
 
-**Problem**: Deployment fails with error messages like "The process '/usr/bin/git' failed with exit code 128"
+**Problem**: Deployment fails with error messages like "The process
+'/usr/bin/git' failed with exit code 128"
 
 **Root Causes**:
 
-1. Repository Settings: GitHub Pages not configured to accept deployments from GitHub Actions
+1. Repository Settings: GitHub Pages not configured to accept deployments from
+   GitHub Actions
 2. Token Permissions: GITHUB_TOKEN lacks necessary permissions
 3. Branch Protection: Main branch has restrictions preventing deployment
 4. Workflow Configuration: Missing required permissions or environment setup
@@ -539,7 +560,8 @@ After fixing, check:
 
 ### 🔍 CI/CD Pipeline Configuration Critical
 
-**Problem**: Multiple workflow files with different strategies cause confusion and failures.
+**Problem**: Multiple workflow files with different strategies cause confusion
+and failures.
 
 **Why This Matters**:
 
@@ -629,7 +651,8 @@ The Hugo build didn't generate output. Check:
 
 Check:
 
-1. Artifact was uploaded: GitHub Actions logs should show "Upload pages artifact"
+1. Artifact was uploaded: GitHub Actions logs should show "Upload pages
+   artifact"
 2. Repository settings: Settings → Pages → Source set to "GitHub Actions"
 3. Permissions: Token has `pages: write` permission
 4. Environment: Deploy job uses `github-pages` environment
@@ -684,7 +707,8 @@ Check:
 - **bugfix/issue-description**: Bug fixes
 - **hotfix/critical-fix**: Emergency production fixes
 
-**Important**: All changes to main must come through Pull Requests. No direct commits to main.
+**Important**: All changes to main must come through Pull Requests. No direct
+commits to main.
 
 ---
 
@@ -771,7 +795,10 @@ Check:
 
 ## See Also
 
-- [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release mechanics with scripts and diagrams
-- [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow integration
-- [ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md) - Environment variables and configuration
-- [AGENTS.md](../../AGENTS.md) - Auto-versioning and deployment workflow guidelines
+- [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release mechanics
+  with scripts and diagrams
+- [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow
+  integration
+- [ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md) - Environment variables and
+  configuration
+- [AGENTS.md](../../AGENTS.md) - Agent guidelines
