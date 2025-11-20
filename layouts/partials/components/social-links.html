@@ -18,7 +18,15 @@
 </a>
 {{ end }}
 
-{{ if .Site.Params.discord }}
+
+{{ $discordEnabled := false }}
+{{ if .Site.Data.feature_flags }}
+  {{ if .Site.Data.feature_flags.flags.discord_social_link.enabled }}
+    {{ $discordEnabled = true }}
+  {{ end }}
+{{ end }}
+
+{{ if and .Site.Params.discord $discordEnabled }}
 <a href="{{ .Site.Params.discord }}" class="btn-system btn-system--ghost btn-system--md btn-circle" role="button" aria-label="Discord" rel="noopener noreferrer" target="_blank">
   {{ partial "components/icon.html" (dict "name" "discord" "size" "sm" "ariaLabel" "Discord") }}
 </a>
