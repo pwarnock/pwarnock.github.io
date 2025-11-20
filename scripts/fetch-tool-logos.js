@@ -4,6 +4,7 @@ import path from 'path';
 const TOOLS_DIR = 'content/tools';
 const IMAGES_DIR = 'static/images/tools';
 const CLEARBIT_API = 'https://logo.clearbit.com/';
+const BRANDFETCH_API = 'https://api.brandfetch.io/v2/brands/';
 
 // Helper to get domain from URL
 function getDomain(url) {
@@ -15,7 +16,45 @@ function getDomain(url) {
   }
 }
 
+async function fetchBrandfetchLogo(domain, outputPath, apiKey) {
+  try {
+    const response = await fetch(`${BRANDFETCH_API}${domain}`, {
+      headers: { Authorization: `Bearer ${apiKey}` },
+    });
+
+    if (!response.ok) throw new Error(`Brandfetch error: ${response.statusText}`);
+
+    const data = await response.json();
+    // Prefer icon, then logo. Prefer SVG, then PNG.
+    const logos = data.logos || [];
+    const icon = logos.find(l => l.type === 'icon') || logos[0];
+
+    if (!icon) throw new Error('No logo found in Brandfetch response');
+
+    // Try to find SVG, else highest res PNG
+    const format = icon.formats.find(f => f.format === 'svg') || icon.formats[0];
+    const logoUrl = format.src;
+
+    console.log(`   ✨ Found Brandfetch logo for ${domain}`);
+
+    const imgResponse = await fetch(logoUrl);
+    const buffer = Buffer.from(await imgResponse.arrayBuffer());
+    fs.writeFileSync(outputPath, buffer);
+    return true;
+  } catch (error) {
+    console.log(`   ⚠️  Brandfetch failed for ${domain}: ${error.message}. Falling back...`);
+    return false;
+  }
+}
+
 async function fetchLogo(domain, outputPath) {
+  // Try Brandfetch if key is available
+  if (process.env.BRANDFETCH_API_KEY) {
+    const success = await fetchBrandfetchLogo(domain, outputPath, process.env.BRANDFETCH_API_KEY);
+    if (success) return true;
+  }
+
+  // Fallback to Clearbit
   const url = `${CLEARBIT_API}${domain}?size=512`; // Request high-res
   try {
     const response = await fetch(url);
