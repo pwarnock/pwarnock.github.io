@@ -18,7 +18,6 @@ tags:
     'performance',
     'concurrency',
   ]
-image: 'go-programming-language.png'
 draft: false
 ---
 
@@ -27,7 +26,6 @@ Google that emphasizes simplicity, reliability, and efficiency. Designed for
 building scalable backend services, CLI tools, and high-performance
 applications, Go has become a cornerstone of modern software infrastructure.
 
-{{< figure src="go-programming-language.png" alt="Go Programming Language" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Philosophy**
 

@@ -8,7 +8,6 @@ summary: 'DaisyUI is a component library that adds beautiful, accessible UI comp
   to Tailwind CSS, enabling rapid development of modern web interfaces with
   semantic class names.'
 tags: ['css', 'ui-components', 'tailwind-css', 'frontend', 'design-system', 'accessibility']
-image: 'daisyui-component-library.png'
 draft: false
 ---
 
@@ -17,7 +16,6 @@ to Tailwind CSS. It provides semantic class names for common UI patterns,
 enabling rapid development of modern web interfaces while maintaining the
 utility-first approach of Tailwind CSS.
 
-{{< figure src="daisyui-component-library.png" alt="DaisyUI Component Library" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Philosophy**
 
@@ -56,7 +54,7 @@ utility-first approach of Tailwind CSS.
 
 <!-- Card -->
 <div class="card w-96 bg-base-100 shadow-xl">
-  <figure><img src="image.jpg" alt="Card" /></figure>
+  <figure><div class="h-32 bg-base-200"></div></figure>
   <div class="card-body">
     <h2 class="card-title">Card Title</h2>
     <p>Card content goes here.</p>
@@ -419,7 +417,7 @@ module.exports = {
 <!-- Combine components semantically -->
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row">
-    <img src="hero-image.jpg" class="max-w-sm rounded-lg shadow-2xl" />
+    <div class="max-w-sm rounded-lg shadow-2xl bg-base-200 h-64 w-64"></div>
     <div>
       <h2 class="text-5xl font-bold">Hero Title</h2>
       <p class="py-6">Hero description text.</p>
@@ -490,7 +488,7 @@ module.exports = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DaisyUI App</title>
-    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="#" rel="stylesheet" />
   </head>
   <body>
     <div class="navbar bg-base-100">

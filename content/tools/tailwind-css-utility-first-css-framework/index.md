@@ -8,7 +8,6 @@ summary: 'Tailwind CSS is a utility-first CSS framework that provides low-level 
   classes to build custom designs without leaving your HTML, enabling rapid UI
   development.'
 tags: ['css', 'framework', 'utility-first', 'frontend', 'responsive-design', 'design-system']
-image: 'tailwind-css-framework.png'
 draft: false
 ---
 
@@ -17,7 +16,6 @@ classes to build custom designs without ever leaving your HTML. Unlike
 traditional CSS frameworks, Tailwind doesn't provide pre-built components, but
 instead gives you the building blocks to create completely custom designs.
 
-{{< figure src="tailwind-css-framework.png" alt="Tailwind CSS Framework" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Philosophy**
 
@@ -458,7 +456,7 @@ npx tailwindcss init -p
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tailwind App</title>
-    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="#" rel="stylesheet" />
   </head>
   <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">

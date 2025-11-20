@@ -1,20 +1,13 @@
 DirectoryPath: public
 CheckExternal: false
 CheckInternal: true
-CheckImages: false
-CheckScripts: true
-CheckCSS: true
-CheckFavicon: false
-CheckMeta: true
-IgnoreInternalEmptyHash: true
-IgnoreDirectoryMissingTrailingSlash: true
-IgnoreDirs:
-  - admin
-  - tools
-  - test-screenshots
+CheckImages: true
 IgnoreURLs:
   - livereload.js
   - www.googletagmanager.com
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreInternalEmptyHash: true
+
 IgnoreAnchors:
   - top
 IgnoreISOScript: true

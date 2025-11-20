@@ -17,7 +17,6 @@ tags:
     'development-tools',
     'web-development',
   ]
-image: 'typescript-programming-language.png'
 draft: false
 ---
 
@@ -26,7 +25,6 @@ definitions, enabling better development tooling, enhanced code reliability, and
 improved developer productivity. Developed and maintained by Microsoft,
 TypeScript has become the standard for large-scale JavaScript applications.
 
-{{< figure src="typescript-programming-language.png" alt="TypeScript Programming Language" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Benefits**
 
