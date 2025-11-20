@@ -2,7 +2,8 @@ import logfire from 'logfire';
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { resourceFromAttributes } from '@opentelemetry/resources';
-import { trace } from '@opentelemetry/api';
+import { trace, diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 
 // Wrapper interface to support both Logfire and vanilla OTEL
 interface Logger {
@@ -36,6 +37,9 @@ export function setupLogfire() {
     '🔌 No LOGFIRE_TOKEN found. Initializing OpenTelemetry -> Jaeger (localhost:4317)...'
   );
 
+  // Enable debug logging for OTEL to diagnose connection issues
+  // diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+
   const traceExporter = new OTLPTraceExporter({
     url: process.env.OTEL_EXPORTER_OTLP_ENDPOINT || 'http://localhost:4317',
   });
@@ -46,7 +50,7 @@ export function setupLogfire() {
       'service.instance.id': runId ? `run:${runId}` : 'run:local',
       environment: process.env.LOGFIRE_ENVIRONMENT || 'test',
     }),
-    traceExporter,
+    spanProcessor: new SimpleSpanProcessor(traceExporter),
   });
 
   try {
