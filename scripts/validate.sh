@@ -8,6 +8,7 @@ echo "================================"
 
 # 1. Build the site
 echo "📦 Building site..."
+rm -rf public
 if ! bun run build; then
     echo "❌ Build failed"
     exit 1
@@ -47,7 +48,19 @@ echo "✅ CDN integrity verified"
 
 # 6. HTML validation
 echo "🔗 Running HTML validation..."
-if ! htmlproofer ./public --allow-hash-href --check-external-hash --disable-external --ignore-urls https://peterwarnock.github.io/ --checks "Links,Images,Scripts,HTML,OpenGraph"; then
+
+# Ensure htmltest is available
+if ! command -v htmltest &> /dev/null; then
+    if [ -f "$(go env GOPATH)/bin/htmltest" ]; then
+        export PATH=$PATH:$(go env GOPATH)/bin
+    else
+        echo "⚠️ htmltest not found. Installing..."
+        go install github.com/wjdp/htmltest@latest
+        export PATH=$PATH:$(go env GOPATH)/bin
+    fi
+fi
+
+if ! htmltest; then
     echo "❌ HTML validation failed"
     exit 1
 fi

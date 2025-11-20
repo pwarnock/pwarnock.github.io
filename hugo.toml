@@ -79,8 +79,8 @@ buildFuture = true
   minify = true
 
   # Version tracking (synced with git tags, used in footer and release notes)
-  version = "0.19.0"
-  versionHash = "36ca307"  # Auto-populated by pre-commit hook with git short hash
+  version = "0.19.1"
+  versionHash = "aeb04f3"  # Auto-populated by pre-commit hook with git short hash
 
   [markup]
   [markup.goldmark]
