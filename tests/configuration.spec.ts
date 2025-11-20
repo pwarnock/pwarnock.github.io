@@ -38,7 +38,7 @@ test.describe('Configuration Tests', () => {
     expect(pkg.dependencies).toHaveProperty('tailwindcss');
     expect(pkg.dependencies).toHaveProperty('@tailwindcss/postcss');
     expect(pkg.dependencies).toHaveProperty('@tailwindcss/typography');
-    expect(pkg.dependencies).toHaveProperty('daisyui');
+    expect(pkg.devDependencies).toHaveProperty('daisyui');
 
     // Check build scripts
     expect(pkg.scripts).toHaveProperty('build:production');
