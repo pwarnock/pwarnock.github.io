@@ -11,9 +11,9 @@
 <meta property="og:locale" content="{{ .Site.LanguageCode }}">
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="{{ .Permalink }}">
-{{ if .Site.Params.twitter }}<meta property="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ .Permalink }}">
+{{ if .Site.Params.twitter }}<meta name="twitter:site" content="{{ .Site.Params.twitter }}">{{ end }}
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ .Permalink }}">
