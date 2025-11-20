@@ -125,5 +125,4 @@ _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
 
-
-**Website**: [amp.ai](https://amp.ai)
+**Website**: [ampcode.com](https://ampcode.com)
