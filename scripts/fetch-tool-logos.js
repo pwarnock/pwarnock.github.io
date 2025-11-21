@@ -138,8 +138,21 @@ async function main() {
         fs.writeFileSync(file, newContent);
         console.log(`📝 Updated frontmatter for ${slug}`);
       } else {
-        // Add image key after tags
-        const newContent = content.replace(/(tags: \[.*?\])/s, `$1\nimage: '${frontmatterPath}'`);
+        // Add new image key. Try to insert before 'draft:', otherwise before second '---'
+        let newContent;
+        if (content.match(/^draft:/m)) {
+          newContent = content.replace(/^(draft:)/m, `image: '${frontmatterPath}'\n$1`);
+        } else {
+          // Insert before the closing frontmatter delimiter
+          const parts = content.split('---');
+          if (parts.length >= 3) {
+            parts[1] = parts[1] + `image: '${frontmatterPath}'\n`;
+            newContent = parts.join('---');
+          } else {
+            console.log(`⚠️  Could not find place to insert frontmatter for ${slug}`);
+            continue;
+          }
+        }
         fs.writeFileSync(file, newContent);
         console.log(`📝 Added frontmatter for ${slug}`);
       }
