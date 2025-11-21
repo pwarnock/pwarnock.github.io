@@ -49,18 +49,23 @@ jobs:
             fi
           done
           echo "All internal links are valid"
-  e2e-tests:
-    name: 'E2E Tests'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v4
-      - name: 'Setup Bun'
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - name: 'Install Dependencies'
-        run: bun install --frozen-lockfile
+   e2e-tests:
+     name: 'E2E Tests'
+     runs-on: ubuntu-latest
+     steps:
+       - name: 'Checkout Code'
+         uses: actions/checkout@v4
+       - name: 'Setup Hugo'
+         uses: peaceiris/actions-hugo@v3
+         with:
+           hugo-version: 'latest'
+           extended: true
+       - name: 'Setup Bun'
+         uses: oven-sh/setup-bun@v1
+         with:
+           bun-version: latest
+       - name: 'Install Dependencies'
+         run: bun install --frozen-lockfile
       - name: 'Install Playwright Browsers'
         run: bunx playwright install --with-deps
       - name: 'Run Playwright Tests'
