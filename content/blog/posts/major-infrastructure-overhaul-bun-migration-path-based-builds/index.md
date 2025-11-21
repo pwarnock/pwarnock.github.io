@@ -8,10 +8,9 @@ description:
   path-based builds, comprehensive testing suite, and enhanced deployment
   workflows for optimal development experience.'
 summary:
-  'Complete infrastructure transformation with Bun package manager, intelligent
-  path-based builds, comprehensive testing suite, and enhanced deployment
-  workflows. Experience 20x faster dependency installation, 90% reduction in
-  build times, and 100% WCAG AA compliance.'
+  'Infrastructure overhaul with Bun migration, intelligent path-based builds,
+  comprehensive testing, and enhanced deployment workflows for optimal
+  development experience.'
 tags: ['infrastructure', 'testing', 'performance', 'development-workflow']
 image: 'infrastructure-overhaul-2025-11-15.png'
 draft: false

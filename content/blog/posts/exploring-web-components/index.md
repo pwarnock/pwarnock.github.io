@@ -6,10 +6,8 @@ description:
   'A deep dive into building isolated, interactive, and smart web components,
   verified with Playwright visual regression tests.'
 summary:
-  'I implemented three distinct Web Component demos to explore Shadow DOM
-  isolation, 3D rendering without WebGL, and smart iframe management. This post
-  details the implementation and the visual regression testing strategy used to
-  verify them.'
+  'Three Web Component demos exploring Shadow DOM isolation, CSS 3D rendering,
+  and smart iframe management with Playwright visual regression testing.'
 image: 'exploring-web-components.png'
 tags: ['Web Components', 'Lit', 'Playwright', 'Testing', 'CSS']
 ---

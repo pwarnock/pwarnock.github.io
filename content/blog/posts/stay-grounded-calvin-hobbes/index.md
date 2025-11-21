@@ -1,10 +1,12 @@
 ---
 title: 'Stay Grounded: A Calvin and Hobbes Reflection'
 date: 2025-10-31T12:00:00-07:00
-description: 'How Calvin and Hobbes reminds us that we should make things easier without
+description:
+  'How Calvin and Hobbes reminds us that we should make things easier without
   making them emptier, keeping the texture that makes life meaningful.'
-summary: 'A reflection on how Calvin and Hobbes teaches us to make things easier
-  without making them emptier, keeping the texture that makes life meaningful.'
+summary:
+  'How Calvin and Hobbes teaches us to make things easier without making them
+  emptier, keeping the texture that makes life meaningful.'
 image: '/images/calvin-hobbes-2025-10-31.jpg'
 thumbnail: '/images/calvin-hobbes-2025-10-31.jpg'
 tags: ['calvin-hobbes', 'philosophy', 'digital-life', 'meaning']

@@ -9,9 +9,8 @@ description:
   transitions, message queueing, scoped instructions, and toolboxes for
   extensibility.'
 summary:
-  'Amp coding agent stands out with unique features like Handoff for seamless
-  context transitions, message queueing for reliable operation, scoped
-  instructions for enhanced safety, and extensible toolboxes for customization.'
+  'Amp coding agent features Handoff for context transitions, message queueing,
+  scoped instructions, and extensible toolboxes for enhanced developer workflow.'
 image: 'amp-coding-agent-features.png'
 ---
 

@@ -6,9 +6,8 @@ description:
   "Exploring the importance of principles over methods in an era of rapid
   innovation and AI, inspired by Harrington Emerson's timeless quote."
 summary:
-  "Exploring why principles matter more than methods in innovation and AI,
-  featuring Harrington Emerson's timeless wisdom about grasping fundamentals for
-  successful method selection."
+  "Why principles matter more than methods in innovation and AI, featuring
+  Harrington Emerson's wisdom on grasping fundamentals for success."
 image: '/images/blog/principles-over-methods-quote-harrington-emerson.webp'
 ---
 
