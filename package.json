@@ -41,6 +41,7 @@
     "verify:cdn": "./scripts/verify-cdn-integrity.sh",
     "build:preview": "hugo --gc --enableGitInfo",
     "test:e2e": "bunx playwright test",
+    "test:visual": "bunx playwright test --grep @visual",
     "test:bdd": "cd test && ./run-tests.sh",
     "test:bdd:ci": "cd test && ./run-tests.sh ci",
     "serve:preview": "bun run build:preview && bunx http-server public -p 3000 -s",
