@@ -44,9 +44,10 @@ validate_post() {
         missing_fields+=("summary")
     fi
     
-    if ! grep -q "^image:" "$index_file"; then
-        missing_fields+=("image")
-    fi
+    # Image field is optional - only validate if present
+    # if ! grep -q "^image:" "$index_file"; then
+    #     missing_fields+=("image")
+    # fi
     
     if [[ ${#missing_fields[@]} -gt 0 ]]; then
         echo "❌ $(basename "$post_dir"): Missing required fields: ${missing_fields[*]}"

@@ -10,7 +10,6 @@ summary:
   'ChatGPT Atlas revolutionizes web browsing with AI-powered features including
   agent mode, browser memories, and personalized assistance integrated directly
   into the browsing experience.'
-image: '/images/blog/chatgpt-atlas-launch.png'
 
 tags:
   [
