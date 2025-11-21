@@ -60,10 +60,10 @@ jobs:
          with:
            hugo-version: 'latest'
            extended: true
-       - name: 'Setup Bun'
-         uses: oven-sh/setup-bun@v1
-         with:
-           bun-version: latest
+        - name: 'Setup Bun'
+          uses: oven-sh/setup-bun@v1
+          with:
+            bun-version: latest
         - name: 'Install Dependencies'
           run: bun install --frozen-lockfile
         - name: 'Install Playwright Browsers'
