@@ -55,6 +55,15 @@ const RECOMMENDED_TECHNOLOGIES = [
   'Jekyll',
   'Next.js',
   'Nuxt.js',
+  'Supabase',
+  'Vercel',
+  'OpenAI',
+  'SendGrid',
+  'Laravel',
+  'Filament',
+  'Astro',
+  'Starlight',
+  'Bun',
 ];
 
 const RECOMMENDED_CATEGORIES = [

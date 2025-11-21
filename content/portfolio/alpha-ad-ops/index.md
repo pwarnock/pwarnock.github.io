@@ -7,18 +7,11 @@ description:
   Filament, demonstrating full-stack development capabilities and modern SaaS
   architecture patterns.'
 client: 'Proof of Concept'
-technologies:
-  [
-    'Laravel',
-    'Filament',
-    'SaasyKit-compatible',
-    'Laravel Cloud',
-    'Multi-tenant Architecture',
-  ]
+technologies: ['Laravel', 'Filament']
 live_url: 'https://alpha-ad-operations-dev-s9qwhp.laravel.cloud/'
 github_url: 'https://github.com/pwarnock/alpha-ad-operations'
 completion_date: '2025-10'
-category: 'SaaS Prototype'
+category: 'SaaS'
 ---
 
 Alpha Ad Ops is a proof-of-concept advertising operations platform developed as

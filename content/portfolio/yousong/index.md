@@ -7,19 +7,11 @@ description:
   featuring full-stack development with modern AI tools and rapid deployment.'
 client: 'Hackathon Project - FaithTech OC/SoCal Chapter'
 technologies:
-  [
-    'Next.js',
-    'Supabase',
-    'Vercel',
-    'ElevenLabs Music API',
-    'OpenAI',
-    'SendGrid',
-    'Tailwind CSS',
-  ]
+  ['Next.js', 'Supabase', 'Vercel', 'OpenAI', 'SendGrid', 'Tailwind CSS']
 live_url: 'https://frontend-one-tau-55.vercel.app/'
 github_url: 'https://github.com/pwarnock/sunday-school-music-creator'
 completion_date: '2025-10'
-category: 'Hackathon Project'
+category: 'Web App'
 ---
 
 YouSong is an AI-powered application that generates children's scripture-based

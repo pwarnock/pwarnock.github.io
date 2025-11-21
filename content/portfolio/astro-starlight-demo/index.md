@@ -10,7 +10,7 @@ technologies: ['Astro', 'Starlight', 'Bun']
 live_url: 'https://peterwarnock.com/astro-starlight-demo/'
 github_url: 'https://github.com/pwarnock/astro-starlight-demo'
 completion_date: '2025-11'
-category: 'Website Demo'
+category: 'Prototype'
 ---
 
 ![Astro Starlight Demo Screenshot](https://peterwarnock.com/astro-starlight-demo/_astro/houston.CZZyCf7p_Z1g0CND.webp)
