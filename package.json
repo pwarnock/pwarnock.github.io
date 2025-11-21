@@ -5,7 +5,7 @@
   "type": "module",
   "main": "postcss.config.cjs",
   "scripts": {
-    "build": "bun run generate-version && HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json",
+    "build": "bun run generate-version && HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json && bun run build:cleanup",
     "clean": "rm -rf public",
     "dev": "HUGO_ENV=development bun x pm2 start ecosystem.config.cjs",
     "dev:stop": "bun x pm2 stop hugo-dev",
@@ -17,7 +17,8 @@
     "dev:legacy": "HUGO_ENV=development hugo server -D --bind 0.0.0.0 --baseURL http://localhost:1313 --navigateToChanged --disableFastRender --config config/development/hugo.toml",
     "dev:agent": "./scripts/pm2-agent-integration.sh",
     "dev:cleanup": "pm2 flush",
-    "build:production": "HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json",
+    "build:production": "HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json && bun run build:cleanup",
+    "build:cleanup": "find public -name '*.html' -exec sed -i '' '/<system-reminder>/,/<\\/system-reminder>/d' {} \\;",
     "css:build": "echo 'CSS is handled by Hugo build process'",
     "css:watch": "bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --watch",
     "analyze": "hugo --gc --minify --buildStats --enableGitInfo && bun x bundle-analyzer public/",
