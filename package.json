@@ -76,7 +76,10 @@
     "env:staging": "git checkout staging",
     "env:production": "git checkout production",
     "env:main": "git checkout main",
-    "analyze:bundles": "bun run ./scripts/analyze-bundles.js"
+    "analyze:bundles": "bun run ./scripts/analyze-bundles.js",
+    "qa:auto": "bun run ./src/qaCli.ts auto",
+    "qa:content": "bun run ./src/qaCli.ts content",
+    "qa:full": "bun run ./src/qaCli.ts full"
   },
   "keywords": [],
   "author": "Pete Warnock",
@@ -100,6 +103,7 @@
     "husky": "^9.1.7",
     "js-yaml": "4.1.1",
     "markdownlint-cli": "^0.45.0",
+    "minimatch": "^10.1.1",
     "pm2": "^6.0.13",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
