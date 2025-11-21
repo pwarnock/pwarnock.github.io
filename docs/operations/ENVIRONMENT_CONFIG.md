@@ -290,3 +290,65 @@ The following must be set for production builds:
 HUGO_ENV=production
 HUGO_GTM_CONTAINER_ID=GTM-N9CR6KJ5
 ```
+
+---
+
+## Feature Flags
+
+Feature flags allow toggling specific features or components on/off without
+modifying code or redeploying. This is useful for phased rollouts, A/B testing,
+or disabling features temporarily.
+
+### Configuration
+
+Feature flags are defined in `data/feature-flags.toml`.
+
+**Structure:**
+
+```toml
+[flags]
+  [flags.feature_name]
+    enabled = true|false
+    description = "Description of what this flag controls"
+    rollout_percentage = 100 # Optional: for future gradual rollout implementation
+```
+
+### Example: Social Links
+
+To conditionally enable/disable the Discord social link globally:
+
+**data/feature-flags.toml:**
+
+```toml
+[flags.discord_social_link]
+enabled = false
+description = "Enable Discord social link"
+rollout_percentage = 0
+```
+
+### Usage in Templates
+
+Access feature flags via `.Site.Data.feature_flags`:
+
+```go-template
+{{ $discordEnabled := false }}
+{{ if .Site.Data.feature_flags }}
+  {{ if .Site.Data.feature_flags.flags.discord_social_link.enabled }}
+    {{ $discordEnabled = true }}
+  {{ end }}
+{{ end }}
+
+{{ if and .Site.Params.discord $discordEnabled }}
+  <!-- Render Discord Link -->
+{{ end }}
+```
+
+### Best Practices
+
+1. **Default to Safe State**: Ensure your logic handles missing flags gracefully
+   (usually defaulting to `false` or `true` depending on the feature's
+   maturity).
+2. **Clean Up**: Remove flags and conditional logic once a feature is fully
+   rolled out and stable.
+3. **Descriptive Names**: Use clear, snake_case names for flags (e.g.,
+   `new_navigation_bar`, `dark_mode_v2`).

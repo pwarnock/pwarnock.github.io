@@ -22,6 +22,7 @@ radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
 aliases: ['/tools/vercel/', '/tools/vercel-platform/']
+image: '/images/tools/vercel-web-development-deployment-platform.png'
 ---
 
 Vercel has revolutionized web development and deployment since its founding,
@@ -144,3 +145,6 @@ suggestions that help developers build faster, more efficient web applications.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [vercel.com](https://vercel.com)

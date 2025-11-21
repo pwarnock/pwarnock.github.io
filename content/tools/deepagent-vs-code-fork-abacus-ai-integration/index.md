@@ -15,6 +15,7 @@ aliases: ['/tools/deepagent/']
 radar:
   quadrant: 'Tools'
   ring: 'Hold'
+image: '/images/tools/deepagent-vs-code-fork-abacus-ai-integration.png'
 ---
 
 DeepAgent represents one of the most ambitious projects in the AI coding space—a
@@ -155,3 +156,6 @@ as afterthoughts.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [abacus.ai](https://abacus.ai)

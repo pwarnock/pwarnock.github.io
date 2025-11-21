@@ -23,6 +23,7 @@ radar:
   ring: 'Trial'
 slug: 'gemini-cli-google-terminal-ai-agent'
 aliases: ['/tools/gemini-cli/']
+image: '/images/tools/gemini-cli-google-terminal-ai-agent.png'
 ---
 
 Gemini CLI represents Google's ambitious entry into the AI-powered terminal
@@ -173,3 +174,6 @@ environments with strict security requirements.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [deepmind.google](https://deepmind.google/technologies/gemini)

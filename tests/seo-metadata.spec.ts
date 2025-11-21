@@ -92,8 +92,8 @@ test.describe('SEO & Metadata Validation', () => {
         expect(body).toContain('<url>');
 
         // Check if core pages are present (using baseURL if relative, or regex)
-        // Sitemaps usually contain full URLs
-        expect(body).toContain(baseURL || 'localhost');
+        // Sitemaps usually contain full URLs. Hugo generates absolute URLs based on config.
+        // We check for paths, as the domain might differ between dev/prod builds.
         expect(body).toContain('/blog/');
         expect(body).toContain('/about/');
 

@@ -14,6 +14,7 @@ aliases: ['/tools/nextjs/']
 radar:
   quadrant: 'Languages & Frameworks'
   ring: 'Adopt'
+image: '/images/tools/nextjs-react-framework-production-applications.png'
 ---
 
 Next.js has established itself as the de facto standard for building production
@@ -148,3 +149,6 @@ multi-tenant applications, and global deployments with ease.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [nextjs.org](https://nextjs.org)

@@ -14,6 +14,7 @@ aliases: ['/tools/codex-cli/', '/tools/openai-codex/']
 radar:
   quadrant: 'Tools'
   ring: 'Assess'
+image: '/images/tools/openai-codex-command-line-coding-assistant.png'
 ---
 
 OpenAI Codex represents a groundbreaking advancement in AI-powered development,
@@ -134,3 +135,6 @@ refactoring, and optimization tasks.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [openai.com](https://openai.com/blog/openai-codex)

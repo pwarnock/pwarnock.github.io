@@ -4,6 +4,7 @@ description:
   "OpenAI's groundbreaking AI-powered web browser that fundamentally reimagines
   how we interact with the internet through integrated AI assistance"
 date: 2025-10-21T10:00:00-07:00
+image: '/images/tools/chatgpt-atlas-ai-powered-browser.png'
 draft: false
 categories: ['AI', 'Technology', 'Tools']
 tags:
@@ -162,3 +163,6 @@ technical skill levels.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [openai.com](https://openai.com/chatgpt)

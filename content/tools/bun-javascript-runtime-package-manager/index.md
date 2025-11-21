@@ -18,7 +18,7 @@ tags:
     'typescript',
     'node-js',
   ]
-image: 'bun-package-manager.png'
+image: '/images/tools/bun-javascript-runtime-package-manager.png'
 draft: false
 ---
 
@@ -27,7 +27,6 @@ revolutionary performance improvements over traditional Node.js and npm
 workflows. Built from the ground up for speed and developer experience, Bun
 transforms how JavaScript applications are developed and deployed.
 
-{{< figure src="bun-package-manager.png" alt="Bun JavaScript Runtime" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🚀 **Performance Revolution**
 

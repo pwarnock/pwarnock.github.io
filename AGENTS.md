@@ -503,12 +503,11 @@ may provide outdated information.**
 
 ### Commit & Version Management
 
-1. **Auto-Versioning on Pre-Commit**
-   - Version automatically bumps on every commit (patch by default)
-   - Minor bumps detected from: feature commits, new components, beads issues
-   - Pre-commit hook runs: linting → validation → build smoke test
-   - Hugo.toml updated automatically with new version
-   - Footer displays version + git hash (e.g., v0.17.1 (8bb3896))
+1. **Manual Version Bumping**
+   - Version must be manually updated in `package.json` before release (SemVer)
+   - Build process automatically syncs version to `data/version.toml` for the
+     footer
+   - Use `bun pm version patch/minor` to update
 
 2. **Three-Stage Release Process**
 
@@ -530,8 +529,8 @@ may provide outdated information.**
    - Pre-push hook tests build and shows what deploys
    - Use `FORCE_PUSH=yes` only for release pushes (guarded by confirmation)
 
-**Why**: Pre-commit hook ensures code quality, auto-versioning keeps version
-sync, three-stage releases catch issues before production.
+**Why**: Pre-commit hook ensures code quality, manual versioning ensures
+control, three-stage releases catch issues before production.
 
 See `/docs/operations/RELEASE_WORKFLOW.md` for detailed procedures.
 

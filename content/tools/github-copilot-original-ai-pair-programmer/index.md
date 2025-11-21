@@ -23,6 +23,7 @@ radar:
   ring: 'Hold'
 slug: 'github-copilot-original-ai-pair-programmer'
 aliases: ['/tools/copilot-original/']
+image: '/images/tools/github-copilot-original-ai-pair-programmer.png'
 ---
 
 GitHub Copilot Original represents the pioneering AI pair programmer that
@@ -170,3 +171,6 @@ suggestions, making it an invaluable learning resource.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [github.com](https://github.com/features/copilot)

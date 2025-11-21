@@ -1,0 +1,13 @@
+DirectoryPath: public
+CheckExternal: false
+CheckInternal: true
+CheckImages: true
+IgnoreURLs:
+  - livereload.js
+  - www.googletagmanager.com
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreInternalEmptyHash: true
+
+IgnoreAnchors:
+  - top
+IgnoreISOScript: true

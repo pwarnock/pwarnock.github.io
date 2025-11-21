@@ -4,6 +4,7 @@ description:
   'Multi-model AI assistant with GPT-5, voice coding, and advanced collaboration
   features for modern development teams'
 date: 2025-10-17T00:00:00+00:00
+image: '/images/tools/github-copilot-2025-update-multi-model-ai-assistant.png'
 draft: false
 categories: ['developer-centric']
 tags:
@@ -175,3 +176,6 @@ sensitive code content.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [github.com](https://github.com/features/copilot)

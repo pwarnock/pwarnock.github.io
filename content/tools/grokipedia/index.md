@@ -21,6 +21,7 @@ aliases: ['/tools/grokipedia/']
 radar:
   quadrant: 'Platforms'
   ring: 'Assess'
+image: '/images/tools/grokipedia.png'
 ---
 
 Grokipedia represents a revolutionary leap forward in knowledge
@@ -137,3 +138,6 @@ complex topics.
 _This tool overview is part of our comprehensive guide to
 [AI knowledge management tools](/blog/posts/vibe-coding-revolution/). Last
 updated: October 28, 2025._
+
+
+**Website**: [grokipedia.com](https://grokipedia.com)

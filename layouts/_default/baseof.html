@@ -17,8 +17,9 @@
     <!-- Performance-optimized CSS splitting -->
     {{ partial "head/css-splitting.html" . }}
 </head>
-<body>
+<body id="top">
     <!-- Data-driven Google Tag Manager (noscript) -->
+
     {{ $analyticsConfig := site.Data.cdn.analytics }}
     {{ if and (eq (getenv "HUGO_ENV") "production") $analyticsConfig.container_id }}
     <noscript><iframe src="{{ $analyticsConfig.base_url }}/ns.html?id={{ $analyticsConfig.container_id }}"

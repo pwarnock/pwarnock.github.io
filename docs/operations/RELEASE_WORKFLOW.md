@@ -7,7 +7,8 @@ Three-stage release process: Pre-Release → Test → Production Release
 ```mermaid
 graph TB
     subgraph "Development"
-        Commits["Make Commits<br/>(auto-version bumps)"]
+        Commits["Make Commits"]
+        ManualBump["Manual Version Bump<br/>(npm version patch/minor)"]
         Check["./scripts/release.sh check"]
     end
 
@@ -71,41 +72,24 @@ graph TB
 ./scripts/release.sh post       # Creates v0.17.1
 ```
 
-## Auto-Versioning Diagram
+## Versioning Process
 
-```mermaid
-graph LR
-    subgraph "Pre-Commit Hook"
-        Analyze["Analyze Changes<br/>(git diff, commits, beads)"]
-        Detect{Feature<br/>Commit?}
-        Patch["Bump Patch<br/>0.17.0 → 0.17.1"]
-        Minor["Bump Minor<br/>0.17.0 → 0.18.0"]
-        Update["Update hugo.toml<br/>+ versionHash"]
-    end
+We follow **Semantic Versioning** (SemVer). Version bumping is a deliberate,
+manual action taken before release, rather than an automated side-effect of
+every commit.
 
-    subgraph "Post-Commit"
-        BuildTest["Build Smoke Test"]
-        Pass{Passed?}
-        Commit["✅ Commit Succeeds"]
-        Fail["❌ Commit Failed"]
-    end
+**Workflow:**
 
-    Analyze --> Detect
-    Detect -->|Yes<br/>feat: or feature detected| Minor
-    Detect -->|No<br/>fix: refactor: docs:| Patch
-    Minor --> Update
-    Patch --> Update
-    Update --> BuildTest
-    BuildTest --> Pass
-    Pass -->|Yes| Commit
-    Pass -->|No| Fail
-
-    style Analyze fill:#e3f2fd
-    style Patch fill:#f3e5f5
-    style Minor fill:#e8f5e9
-    style Commit fill:#c8e6c9
-    style Fail fill:#ffcdd2
-```
+1.  **Develop:** Write code, commit changes.
+2.  **Bump:** When ready to release (RC or Production), update the version in
+    `package.json`:
+    ```bash
+    bun pm version patch  # 0.17.0 -> 0.17.1
+    # or
+    bun pm version minor  # 0.17.0 -> 0.18.0
+    ```
+3.  **Build:** The build process automatically syncs the version from
+    `package.json` to the site footer.
 
 ## Release Stages
 
@@ -188,7 +172,8 @@ timeline
     title Version 0.17.1 Tag Lifecycle
 
     section Development
-        Commits (auto-bump): 0.17.0 → 0.17.1 : Version bumped on each commit
+        Commits: 0.17.0 : Development commits
+        Version Bump: 0.17.1 : Manual version bump in package.json
 
     section Pre-Release
         RC 1 Created: v0.17.1-rc.1 : For staging testing
@@ -296,20 +281,21 @@ At any time, check where you are in the release cycle:
 #   v0.16.0      (previous release)
 ```
 
-## Integration with Auto-Versioning
+## Integration with CI/CD
 
-The auto-version pre-commit hook bumps versions:
+The release process is integrated with our CI/CD pipeline:
 
 ```
-commits → auto-bump version → pre-release RC → test → post-release final
+commits → manual bump → pre-release RC → test → post-release final
 ```
 
 **Example flow:**
 
-1. Make 3 commits (patches) → version auto-bumps from v0.17.0 to v0.17.3
-2. Create RC: `./scripts/release.sh pre` → v0.17.3-rc.1
-3. Test in staging
-4. Release: `./scripts/release.sh post` → v0.17.3
+1. Make 3 commits (patches).
+2. Bump version: `bun pm version patch` → v0.17.3
+3. Create RC: `./scripts/release.sh pre` → v0.17.3-rc.1
+4. Test in staging
+5. Release: `./scripts/release.sh post` → v0.17.3
 
 ## Tag Naming Convention
 
@@ -367,7 +353,8 @@ After pushing the production tag:
 
 ## CI/CD Integration
 
-The project uses **path-based build control** via `path-based-builds.yml`, which intelligently routes changes based on what was modified.
+The project uses **path-based build control** via `path-based-builds.yml`, which
+intelligently routes changes based on what was modified.
 
 ### Path-Based Deployment Logic
 
@@ -412,19 +399,24 @@ Different types of changes trigger different build and deployment strategies:
 
 ### Workflow Files
 
-- **Primary**: `.github/workflows/path-based-builds.yml` - All CI/CD logic (consolidated)
-- **Related**: `.github/workflows/coverage.yml` - Code coverage tracking (skips docs-only)
-- **Related**: `.github/workflows/test.yml` - Hugo build validation (skips docs-only)
+- **Primary**: `.github/workflows/path-based-builds.yml` - All CI/CD logic
+  (consolidated)
+- **Related**: `.github/workflows/coverage.yml` - Code coverage tracking (skips
+  docs-only)
+- **Related**: `.github/workflows/test.yml` - Hugo build validation (skips
+  docs-only)
 
 ### Why Path-Based Logic?
 
 - **Efficiency**: Docs-only changes skip expensive builds
 - **Safety**: Test changes build/test but don't deploy
 - **Simplicity**: Single source of truth for CI/CD decisions
-- **Parallelism**: Content and build config changes deploy simultaneously when both occur
+- **Parallelism**: Content and build config changes deploy simultaneously when
+  both occur
 
 ## See Also
 
 - [RELEASE_MANAGEMENT.md](./RELEASE_MANAGEMENT.md) - Deployment procedures
 - [AGENTS.md](../../AGENTS.md) - Version bumping automation
-- [Beads issue tracking](../../README.md#issue-tracking) - Track release blockers
+- [Beads issue tracking](../../README.md#issue-tracking) - Track release
+  blockers

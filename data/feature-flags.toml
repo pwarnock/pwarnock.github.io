@@ -23,3 +23,8 @@ rollout_percentage = 10
 enabled = true
 description = "Enable performance monitoring"
 rollout_percentage = 100
+
+[flags.discord_social_link]
+enabled = false
+description = "Enable Discord social link"
+rollout_percentage = 0

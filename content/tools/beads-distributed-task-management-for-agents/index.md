@@ -22,6 +22,7 @@ aliases: ['/tools/beads/']
 radar:
   quadrant: 'Tools'
   ring: 'Assess'
+image: '/images/tools/beads-distributed-task-management-for-agents.png'
 ---
 
 Beads is a lightweight, distributed task management system built specifically for
@@ -294,3 +295,6 @@ genuine innovation.
 
 _This tool overview is part of our comprehensive guide to
 [AI development tools](/tools/). Last updated: November 12, 2025._
+
+
+**Website**: [github.com](https://github.com/pwarnock/beads)

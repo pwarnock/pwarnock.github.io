@@ -144,3 +144,5 @@ For developers who want to solve specific coding problems quickly and learn best
 ---
 
 **Related Tools**: See how GitHits compares to other [AI development tools](/tools/) and [coding agents](/tools/claude-code-conversational-ai-coding-assistant/).
+
+**Website**: [githits.ai](https://githits.ai)

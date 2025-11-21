@@ -18,7 +18,6 @@ tags:
     'behavior-driven-development',
     'automation',
   ]
-image: 'godog-bdd-framework.png'
 draft: false
 ---
 
@@ -28,7 +27,6 @@ human-readable tests using Gherkin syntax, fostering collaboration between
 technical teams and business stakeholders while providing robust testing
 capabilities.
 
-{{< figure src="godog-bdd-framework.png" alt="Godog BDD Framework" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Concepts**
 

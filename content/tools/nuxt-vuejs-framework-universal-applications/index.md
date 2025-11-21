@@ -15,6 +15,7 @@ aliases: ['/tools/nuxt/']
 radar:
   quadrant: 'Languages & Frameworks'
   ring: 'Adopt'
+image: '/images/tools/nuxt-vuejs-framework-universal-applications.png'
 ---
 
 Nuxt has emerged as the premier framework for building universal Vue.js
@@ -150,3 +151,6 @@ sacrificing flexibility.
 _This tool overview is part of our comprehensive guide to
 [vibe coding tools](/blog/posts/vibe-coding-revolution/). Last updated: October
 26, 2025._
+
+
+**Website**: [nuxt.com](https://nuxt.com)

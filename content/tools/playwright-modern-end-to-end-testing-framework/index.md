@@ -18,7 +18,7 @@ tags:
     'javascript',
     'typescript',
   ]
-image: 'playwright-testing-framework.png'
+image: '/images/tools/playwright-modern-end-to-end-testing-framework.png'
 draft: false
 ---
 
@@ -27,7 +27,6 @@ enables reliable and fast cross-browser web automation. Designed for modern web
 applications, Playwright provides powerful APIs for testing complex user
 interactions, mobile emulation, and comprehensive debugging capabilities.
 
-{{< figure src="playwright-testing-framework.png" alt="Playwright Testing Framework" class="w-full max-w-2xl mx-auto rounded-lg shadow-md" >}}
 
 ## 🎯 **Core Capabilities**
 
