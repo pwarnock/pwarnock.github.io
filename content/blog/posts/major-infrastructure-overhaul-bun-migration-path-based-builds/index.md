@@ -9,8 +9,7 @@ description:
   workflows for optimal development experience.'
 summary:
   'Infrastructure overhaul with Bun migration, intelligent path-based builds,
-  comprehensive testing, and enhanced deployment workflows for optimal
-  development experience.'
+  comprehensive testing, and enhanced deployment workflows.'
 tags: ['infrastructure', 'testing', 'performance', 'development-workflow']
 image: 'infrastructure-overhaul-2025-11-15.png'
 draft: false

@@ -61,7 +61,7 @@ validate_post() {
     fi
     
     # Check summary length (handle multi-line summaries)
-    local summary=$(sed -n '/^summary:/,/^$/p' "$index_file" | sed '1d;$d' | tr -d '\n"' | tr -s ' ')
+    local summary=$(awk '/^summary:/{flag=1; next} flag && /^[^[:space:]]/{flag=0} flag{print}' "$index_file" | tr -d '\n"' | tr -s ' ')
     local summary_length=${#summary}
     
     if [[ $summary_length -lt 100 ]]; then

@@ -68,14 +68,40 @@ echo "✅ HTML validation passed"
 
 # 6. SEO validation
 echo "📈 Running SEO validation..."
-missing=$(find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | wc -l)
+# Find HTML files that are not pagination pages and not Hugo alias redirects
+html_files=$(find public -name "*.html" | grep -v "/page/")
+missing=0
+missing_files=()
+
+for file in $html_files; do
+    # Skip Hugo alias/redirect pages (they have meta http-equiv="refresh")
+    if grep -q 'meta http-equiv=refresh' "$file"; then
+        continue
+    fi
+
+    # Skip technical/utility pages that don't need descriptions
+    if echo "$file" | grep -q -E '\.(xml|json)$'; then
+        continue
+    fi
+
+    # Check if the file has a meta description
+    if ! grep -q '<meta name=description' "$file"; then
+        missing=$((missing + 1))
+        if [ ${#missing_files[@]} -lt 5 ]; then
+            missing_files+=("$file")
+        fi
+    fi
+done
+
 if [ "$missing" -gt 0 ]; then
     echo "⚠️  WARNING: $missing pages missing meta descriptions"
-    find public -name "*.html" | grep -v "/page/" | xargs grep -L '<meta name="description"' | head -5
+    printf '%s\n' "${missing_files[@]}"
     echo "⚠️  Consider adding meta descriptions for better SEO"
 else
     echo "✅ SEO check passed"
 fi
+
+
 
 # 7. Security check
 echo "🔒 Running security check..."

@@ -8,8 +8,8 @@ description:
   fact correction, challenging traditional Wikipedia's gatekeeper model with
   open, collaborative knowledge management."
 summary:
-  "Grokipedia 0.1 is an AI-powered knowledge platform with real-time fact
-  correction, offering an open alternative to Wikipedia's gatekeeper model."
+  'Grokipedia 0.1 is an AI-powered knowledge platform with real-time fact
+  correction, offering an open alternative to Wikipedia.'
 image: '/images/blog/grokipedia-0-1-launch.png'
 tags: ['AI', 'Knowledge Management', 'Developer Tools', 'Launch', 'Grok']
 author: 'Peter Warnock'

@@ -7,7 +7,7 @@ description:
   verified with Playwright visual regression tests.'
 summary:
   'Three Web Component demos exploring Shadow DOM isolation, CSS 3D rendering,
-  and smart iframe management with Playwright visual regression testing.'
+  and smart iframe management with Playwright testing.'
 image: 'exploring-web-components.png'
 tags: ['Web Components', 'Lit', 'Playwright', 'Testing', 'CSS']
 ---
