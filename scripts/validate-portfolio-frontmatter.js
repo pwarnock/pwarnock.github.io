@@ -9,8 +9,53 @@
 
 import fs from 'fs';
 import path from 'path';
-import { glob } from 'glob';
 import yaml from 'js-yaml';
+
+/**
+ * Recursively walk portfolio directory and collect all index.md files.
+ * This replaces glob-based discovery to avoid dependency/API fragility.
+ */
+function collectPortfolioIndexMd(rootDir) {
+  const results = [];
+
+  (function walk(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const ent of entries) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) {
+        walk(full);
+      } else if (ent.isFile() && path.basename(full) === 'index.md') {
+        results.push(full);
+      }
+    }
+  })(rootDir);
+
+  return results;
+}
+
+/**
+ * Recursively walk portfolio directory and collect all index.md files.
+ * This replaces glob-based discovery to avoid dependency/API fragility.
+ */
+function collectPortfolioIndexMd(rootDir) {
+  const results = [];
+
+  (function walk(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+    for (const ent of entries) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) {
+        walk(full);
+      } else if (ent.isFile() && path.basename(full) === 'index.md') {
+        results.push(full);
+      }
+    }
+  })(rootDir);
+
+  return results;
+}
 
 const REQUIRED_FIELDS = [
   'title',
@@ -207,7 +252,7 @@ async function validatePortfolio() {
   );
   const pattern = path.join(portfolioDir, '**', 'index.md');
 
-  const files = await glob(pattern, { nodir: true });
+  const files = collectPortfolioIndexMd(portfolioDir);
 
   if (files.length === 0) {
     console.log('❌ No portfolio files found');
