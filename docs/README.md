@@ -6,12 +6,13 @@
 
 **Problem**: I need to... → **See**:
 
-| Problem                        | Document                                                           | Keywords                               |
-| ------------------------------ | ------------------------------------------------------------------ | -------------------------------------- |
-| Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)            | release, rc, tag, version, deploy      |
-| Deploy to production           | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP)                  | deploy, ci/cd, github actions          |
-| Configure environments         | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)        | env, staging, production, config       |
-| Set up version bumping         | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md) | version, semver, auto-bump, pre-commit |
+| Problem                        | Document                                                                           | Keywords                               |
+| ------------------------------ | ----------------------------------------------------------------------------------- | -------------------------------------- |
+| Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                            | release, rc, tag, version, deploy      |
+| Deploy infrastructure changes  | [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) | infra, config, build, staging, production |
+| Deploy to production           | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP)                                  | deploy, ci/cd, github actions          |
+| Configure environments         | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                        | env, staging, production, config       |
+| Set up version bumping         | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md)                 | version, semver, auto-bump, pre-commit |
 | Work with styles/CSS           | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md) (WIP)               | css, tailwind, daisyui, styling        |
 | Build accessible components    | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md)                 | wcag, a11y, accessibility, aria        |
 | Write/run tests                | [TESTING.md](./development/TESTING.md)                             | test, bdd, e2e, unit, playwright       |
@@ -27,6 +28,12 @@
   - When: Use for release decisions, RC testing, tag creation
   - Covers: Auto-versioning, tag lifecycle, troubleshooting
   - Last updated: 2025-11-17
+
+- **[operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md)** - Manual promotion of infrastructure changes
+  - When: Deploying build config, layout, CSS, or other infrastructure changes
+  - Covers: main → staging → production promotion, validation checklist, monitoring, troubleshooting
+  - Status: New, replaces manual promotion documentation gaps
+  - Last updated: 2025-11-24
 
 - **[operations/DEPLOYMENT.md](./operations/DEPLOYMENT.md)** ✅ **Consolidated** - Deployment procedures, versioning, and release management
   - Merged from: RELEASE_MANAGEMENT.md + DEPLOYMENT_NOTES.md
@@ -146,6 +153,7 @@ docs/
 ├── README.md                          (this file - master index)
 ├── operations/                        (release, deployment, infrastructure)
 │   ├── RELEASE_WORKFLOW.md            ✅ maintained
+│   ├── INFRASTRUCTURE_PROMOTION_WORKFLOW.md ✅ new
 │   ├── DEPLOYMENT.md                  ✅ consolidated
 │   └── ENVIRONMENT_CONFIG.md          ✅ maintained
 ├── development/                       (how to work on the project)
