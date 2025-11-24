@@ -1,0 +1,27 @@
+# Staging environment configuration
+# Pre-production testing environment
+
+baseURL = "https://staging.pwarnock.github.io"
+
+[params]
+  # Staging environment indicator
+  env = "staging"
+  
+  # Disable analytics in staging (or use separate test account)
+  googleAnalytics = ""
+  
+  # Staging-specific settings
+  showBeta = true
+  betaMessage = "This is a staging environment for testing"
+
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 80  # Slightly lower quality to match staging limits
+  anchor = "smart"
+  
+  [imaging.resizing]
+    [imaging.resizing.blog]
+      width = 800
+      height = 450
+      filter = "Lanczos"
+      quality = 80
