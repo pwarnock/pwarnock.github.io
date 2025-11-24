@@ -21,7 +21,7 @@
     "build:cleanup": "find public -name '*.html' -exec sed -i '' '/<system-reminder>/,/<\\/system-reminder>/d' {} \\;",
     "css:build": "echo 'CSS is handled by Hugo build process'",
     "css:watch": "bun x @tailwindcss/cli -i ./assets/css/main.css -o ./static/css/main.css --postcss --watch",
-    "analyze": "hugo --gc --minify --buildStats --enableGitInfo && bun x bundle-analyzer public/",
+    "analyze": "hugo --gc --minify --enableGitInfo && bun run analyze:bundles",
     "lint": "bun run lint:yaml && bun run lint:toml && bun run lint:css",
     "lint:check": "bun x stylelint \"assets/css/**/*.css\" \"static/css/**/*.css\"",
     "format": "bun x prettier --write .",
@@ -100,8 +100,8 @@
     "@playwright/test": "^1.56.1",
     "@tailwindcss/cli": "^4.1.17",
     "@taplo/cli": "^0.7.0",
-    "@vitest/coverage-v8": "^4.0.10",
-    "@vitest/ui": "^4.0.10",
+    "@vitest/coverage-v8": "^4.0.13",
+    "@vitest/ui": "^4.0.13",
     "axe-playwright": "^2.2.2",
     "daisyui": "^5.5.5",
     "eslint": "^9.39.1",
@@ -116,10 +116,10 @@
     "pm2": "^6.0.13",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
-    "stylelint": "^16.25.0",
+    "stylelint": "^16.26.0",
     "stylelint-config-standard": "^39.0.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.10",
+    "vitest": "^4.0.13",
     "yaml-lint": "^1.7.0"
   },
   "dependencies": {
@@ -142,6 +142,12 @@
     "ws": "^8.17.1",
     "tar-fs": "^2.1.4",
     "tmp": "^0.2.3",
-    "cookie": "^0.7.0"
-  }
+    "cookie": "^0.7.0",
+    "js-yaml": "4.1.1"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "esbuild",
+    "protobufjs"
+  ]
 }
