@@ -1,0 +1,101 @@
+# Beads Configuration
+# Issue tracking and project management using beads (bd)
+# See AGENTS.md for workflow documentation
+
+[beads]
+# Database configuration (uses local .beads/issues.jsonl by default)
+dir = ".beads"
+format = "jsonl"
+
+# Auto-sync settings
+auto_sync = true
+sync_debounce_ms = 5000
+
+[project]
+name = "pwarnock.github.io"
+description = "Personal portfolio and blog website"
+version = "0.19.4"
+
+[workflow]
+# Default issue type when creating new issues
+default_type = "task"
+
+# Default priority (0-4: critical, high, medium, low, backlog)
+default_priority = 2
+
+# Status workflow
+statuses = ["todo", "in_progress", "blocked", "review", "completed"]
+default_status = "todo"
+
+# Issue types
+types = ["bug", "feature", "task", "epic", "chore", "doc"]
+
+[labels]
+# Common labels for categorization
+categories = ["infrastructure", "testing", "documentation", "content", "design", "performance"]
+effort_sizes = ["xs", "sm", "md", "lg", "xl"]
+impact_levels = ["critical", "high", "medium", "low"]
+
+[templates]
+# Standard issue templates
+enabled = true
+dir = ".beads/templates"
+
+[[templates.types]]
+name = "bug"
+template = """
+## Description
+[Brief description of the issue]
+
+## Steps to Reproduce
+1. 
+2. 
+
+## Expected Behavior
+[What should happen]
+
+## Actual Behavior
+[What actually happens]
+
+## Environment
+- OS: 
+- Browser: 
+- Version: 
+"""
+
+[[templates.types]]
+name = "feature"
+template = """
+## Description
+[Feature overview]
+
+## Motivation
+[Why is this needed?]
+
+## Implementation
+[How should this work?]
+
+## Acceptance Criteria
+- [ ] 
+- [ ] 
+
+## Testing
+[How to test this feature]
+"""
+
+[[templates.types]]
+name = "task"
+template = """
+## Description
+[What needs to be done]
+
+## Subtasks
+- [ ] 
+- [ ] 
+
+## Acceptance Criteria
+- [ ] Done
+
+## Notes
+[Additional context]
+"""

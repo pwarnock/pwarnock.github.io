@@ -176,10 +176,10 @@ When working on this project:
 
 Key docs to bookmark:
 
-- `/docs/RELEASE_PROCESS.md` - How to run the professional release workflow
-- `docs/operations/RELEASE_MANAGEMENT.md` - Detailed release steps and
-  post-release checklist
-- `docs/operations/DEPLOYMENT_NOTES.md` - Troubleshooting and deployment
+- `docs/operations/RELEASE_WORKFLOW.md` - How to run the professional release workflow
+- `docs/operations/DEPLOYMENT.md` - Detailed deployment steps, version management,
+  and post-release checklist
+- `docs/operations/ROLLBACK_PROCEDURES.md` - Emergency incident response and rollback
   recovery
 - `docs/development/STYLE_GUIDE.md` - CSS, template, and architecture
   conventions

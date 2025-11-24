@@ -10,6 +10,8 @@
 | ------------------------------ | ----------------------------------------------------------------------------------- | -------------------------------------- |
 | Get started with local development | [tutorials/GETTING_STARTED.md](./tutorials/GETTING_STARTED.md)                | setup, install, dev server, prerequisites |
 | Add or edit a blog post        | [tutorials/ADDING_BLOG_POST.md](./tutorials/ADDING_BLOG_POST.md)                  | blog, content, frontmatter, markdown   |
+| Understand the build system    | [development/BUILD_SYSTEM.md](./development/BUILD_SYSTEM.md)                      | build, compilation, css, optimization  |
+| Find & use build/deploy scripts | [development/SCRIPTS_ORGANIZATION.md](./development/SCRIPTS_ORGANIZATION.md)      | scripts, automation, reference         |
 | Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                            | release, rc, tag, version, deploy      |
 | Use Git upstream remote         | [UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)                | upstream, git, push, fetch, remotes    |
 | Deploy infrastructure changes  | [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) | infra, config, build, staging, production |
@@ -110,15 +112,29 @@
    - Status: Maintained
 
 - **[development/TESTING_ARCHITECTURE.md](./development/TESTING_ARCHITECTURE.md)** ✅ **New** - Complete testing architecture and strategy
-   - When: Writing tests, understanding test infrastructure, adding new test types
-   - Covers: Unit (Vitest, Go), Integration (Bash), E2E (Playwright), Visual regression, BDD (Godog), Performance (Lighthouse)
-   - Includes: Running tests, writing tests, coverage requirements, CI/CD integration, troubleshooting
-   - Status: New, comprehensive testing guide
-   - Last updated: 2025-11-24
+    - When: Writing tests, understanding test infrastructure, adding new test types
+    - Covers: Unit (Vitest, Go), Integration (Bash), E2E (Playwright), Visual regression, BDD (Godog), Performance (Lighthouse)
+    - Includes: Running tests, writing tests, coverage requirements, CI/CD integration, troubleshooting
+    - Status: New, comprehensive testing guide
+    - Last updated: 2025-11-24
+
+- **[development/BUILD_SYSTEM.md](./development/BUILD_SYSTEM.md)** ✅ **New** - Build system and path-based compilation
+    - When: Understanding build process, optimizing build times, configuring environments
+    - Covers: Path-based detection, build environments (dev/staging/prod), CSS pipeline, asset optimization
+    - Includes: Build commands, optimization tips, troubleshooting, CI/CD integration
+    - Status: New, complete build system guide
+    - Last updated: 2025-11-24
+
+- **[development/SCRIPTS_ORGANIZATION.md](./development/SCRIPTS_ORGANIZATION.md)** ✅ **New** - Scripts reference and organization
+    - When: Finding deployment/build/test scripts, understanding automation
+    - Covers: 30+ scripts organized by function (build, deploy, test, validation, setup)
+    - Includes: Script patterns, best practices, how to add new scripts, troubleshooting
+    - Status: New, complete scripts reference
+    - Last updated: 2025-11-24
 
 - **[development/BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)** - Switch from npm/pnpm to Bun
-  - Package management, scripts, performance
-  - Status: Maintained (reference for past migration)
+   - Package management, scripts, performance
+   - Status: Maintained (reference for past migration)
 
 ### 📦 Component & Framework Decisions
 
@@ -216,6 +232,8 @@ docs/
 │   ├── VERSIONING_GUIDELINES.md       ✅ maintained
 │   ├── ACCESSIBILITY.md               ✅ maintained
 │   ├── TESTING_ARCHITECTURE.md        ✅ new (unit, E2E, BDD, visual, perf)
+│   ├── BUILD_SYSTEM.md                ✅ new (path-based builds, environments)
+│   ├── SCRIPTS_ORGANIZATION.md        ✅ new (30+ scripts reference)
 │   ├── COMPONENTS.md                  ✅ consolidated
 │   ├── BUN_MIGRATION_GUIDE.md         ✅ reference
 │   ├── DEVELOPMENT_QUICK_REFERENCE.md ✅ maintained
