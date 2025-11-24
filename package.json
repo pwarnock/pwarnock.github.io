@@ -32,8 +32,6 @@
     "validate": "./scripts/validate.sh",
     "validate:portfolio": "bun run portfolio-validate",
     "test:ga": "bun run test-ga",
-    "letta:config:init": "./scripts/letta-config-init.sh",
-    "letta:config:update": "./scripts/letta-config-update.sh",
     "postinstall": "bun x husky",
     "generate-version": "bun run ./scripts/generate-version.js",
     "portfolio-validate": "bun run ./scripts/validate-portfolio-frontmatter.js",
@@ -86,7 +84,11 @@
     "analyze:bundles": "bun run ./scripts/analyze-bundles.js",
     "qa:auto": "bun run ./src/qaCli.ts auto",
     "qa:content": "bun run ./src/qaCli.ts content",
-    "qa:full": "bun run ./src/qaCli.ts full"
+    "qa:full": "bun run ./src/qaCli.ts full",
+    "sync:backlog-to-beads": "bun run ./scripts/sync/backlog-to-beads.js",
+    "sync:beads-to-cody": "bun run ./scripts/sync/beads-to-cody.js",
+    "sync:release-notes": "bun run ./scripts/sync/release-notes-generator.js",
+    "status:dashboard": "bun run ./scripts/status-dashboard.js"
   },
   "keywords": [],
   "author": "Pete Warnock",
