@@ -121,6 +121,27 @@ bd close bd-42 --reason "Completed" --json
    - `bd create "Found bug" -p 1 --deps discovered-from:<parent-id>`
 5. **Complete**: `bd close <id> --reason "Done"`
 
+### Phase 1: Linking to Cody Features (Manual)
+
+When working on a Cody feature:
+
+1. **Find feature in backlog**: `.cody/project/build/feature-backlog.md`
+2. **Create Beads issue** for each task:
+   ```bash
+   bd create "Implementation task (vX.Y.Z)" -t task -p 2 --json
+   ```
+3. **Update backlog** with issue reference:
+   ```markdown
+   ## Feature: Name
+   - Implementation: See bd-NNN for details
+   ```
+4. **Link dependent issues**:
+   ```bash
+   bd create "Subtask" -t task --deps blocks:bd-NNN --json
+   ```
+
+See [docs/integration/CODY_BEADS_WORKFLOW.md](/docs/integration/CODY_BEADS_WORKFLOW.md) for complete workflow.
+
 ### Auto-Sync
 
 bd automatically syncs with git:
@@ -183,6 +204,8 @@ Key docs to bookmark:
   recovery
 - `docs/development/STYLE_GUIDE.md` - CSS, template, and architecture
   conventions
+- `docs/integration/CODY_BEADS_WORKFLOW.md` - Feature planning → Beads issues → releases
+  (Phase 1 manual linking implementation)
 
 ## Project Documentation
 

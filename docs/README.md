@@ -145,6 +145,17 @@
   - Covers: Current assessment, implementation status, migration strategy, core principles, component guidelines, testing standards
   - Status: Complete, replaces all 3 DaisyUI docs
 
+### 🔗 Integration & Workflow
+
+**How systems work together** for unified development workflow.
+
+- **[integration/CODY_BEADS_WORKFLOW.md](./integration/CODY_BEADS_WORKFLOW.md)** ✅ **Phase 1 Implementation** - Cody Framework and Beads integration
+  - When: Understanding feature planning ↔ task execution ↔ releases
+  - Covers: Three-layer architecture, naming conventions, manual synchronization, dependency tracking, weekly workflow
+  - Includes: Command reference, common scenarios, troubleshooting
+  - Status: New, Phase 1 (manual linking) operational
+  - Last updated: 2025-11-24
+
 ### 📚 Reference Guides
 
 **Quick reference and tool guides.**
