@@ -11,8 +11,9 @@
 | Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                            | release, rc, tag, version, deploy      |
 | Use Git upstream remote         | [UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)                | upstream, git, push, fetch, remotes    |
 | Deploy infrastructure changes  | [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) | infra, config, build, staging, production |
+| Configure environments & access| [ENVIRONMENT_SETTINGS.md](./operations/ENVIRONMENT_SETTINGS.md)                   | env, permissions, branch protection, secrets |
 | Deploy to production           | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP)                                  | deploy, ci/cd, github actions          |
-| Configure environments         | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                        | env, staging, production, config       |
+| Configure environment variables| [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                        | env, staging, production, config       |
 | Set up version bumping         | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md)                 | version, semver, auto-bump, pre-commit |
 | Work with styles/CSS           | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md) (WIP)               | css, tailwind, daisyui, styling        |
 | Build accessible components    | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md)                 | wcag, a11y, accessibility, aria        |
@@ -40,6 +41,12 @@
   - When: Deploying build config, layout, CSS, or other infrastructure changes
   - Covers: main → staging → production promotion, validation checklist, monitoring, troubleshooting
   - Status: New, replaces manual promotion documentation gaps
+  - Last updated: 2025-11-24
+
+- **[operations/ENVIRONMENT_SETTINGS.md](./operations/ENVIRONMENT_SETTINGS.md)** - Environment-specific configuration and access control
+  - When: Setting up environments, configuring secrets, managing permissions
+  - Covers: Hugo config per environment, git branch protection, deployment authorization, analytics config, security headers, emergency procedures
+  - Status: New, documents environment access control matrix
   - Last updated: 2025-11-24
 
 - **[operations/DEPLOYMENT.md](./operations/DEPLOYMENT.md)** ✅ **Consolidated** - Deployment procedures, versioning, and release management
@@ -162,6 +169,7 @@ docs/
 │   ├── RELEASE_WORKFLOW.md            ✅ maintained
 │   ├── UPSTREAM_REMOTES_GUIDE.md      ✅ new
 │   ├── INFRASTRUCTURE_PROMOTION_WORKFLOW.md ✅ new
+│   ├── ENVIRONMENT_SETTINGS.md        ✅ new
 │   ├── DEPLOYMENT.md                  ✅ consolidated
 │   └── ENVIRONMENT_CONFIG.md          ✅ maintained
 ├── development/                       (how to work on the project)
