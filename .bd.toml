@@ -1,6 +1,7 @@
 # Beads Configuration
 # Issue tracking and project management using beads (bd)
 # See AGENTS.md for workflow documentation
+# Beads 0.24.3 best practices implemented
 
 [beads]
 # Database configuration (uses local .beads/issues.jsonl by default)
@@ -10,6 +11,10 @@ format = "jsonl"
 # Auto-sync settings
 auto_sync = true
 sync_debounce_ms = 5000
+
+# Git worktree daemon fix (prevents daemon mode in worktrees)
+daemon_mode = false
+no_daemon_env = true
 
 [project]
 name = "pwarnock.github.io"
@@ -29,6 +34,21 @@ default_status = "todo"
 
 # Issue types
 types = ["bug", "feature", "task", "epic", "chore", "doc"]
+
+# Beads 0.24 best practices configuration
+[cleanup]
+# Automatic cleanup settings (per Steve Yegge's recommendations)
+auto_cleanup_days = 2
+max_issues_before_cleanup = 200
+critical_issues_before_cleanup = 500
+prompt_for_cleanup = true
+
+[health]
+# Health check settings
+enable_doctor = true
+auto_fix_minor_issues = true
+check_database_size = true
+check_dependencies = true
 
 [labels]
 # Common labels for categorization
