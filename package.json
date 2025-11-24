@@ -66,6 +66,8 @@
     "test:unit:ui": "vitest --ui",
     "test:coverage": "./scripts/run-all-unit-tests.sh --coverage",
     "test:coverage:ts": "vitest --coverage --run",
+    "test:deployment": "./test/deployment_validation.test.sh",
+    "test:deployment:integration": "./test/deployment_workflow.integration.sh",
     "test:e2e:watch": "./scripts/dev-test-runner.sh --watch e2e",
     "test:visual:watch": "./scripts/dev-test-runner.sh --watch visual",
     "test:perf:watch": "./scripts/dev-test-runner.sh --watch performance",

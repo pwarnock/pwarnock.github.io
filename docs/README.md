@@ -78,9 +78,16 @@
   - Status: Maintained
 
 - **[development/TESTING.md](./development/TESTING.md)** - Testing infrastructure & strategies
-  - Unit tests (Go), BDD (Godog), E2E (Playwright)
-  - Watch mode, CI integration
-  - Status: Maintained
+   - Unit tests (Go), BDD (Godog), E2E (Playwright)
+   - Watch mode, CI integration
+   - Status: Maintained
+
+- **[development/DEPLOYMENT_TESTING.md](./development/DEPLOYMENT_TESTING.md)** ✅ **New** - Deployment validation and verification
+   - Unit tests for deployment scripts (27 tests)
+   - Integration tests for workflow (14 tests)
+   - Pre/post-deployment validation
+   - Manual verification checklists
+   - Status: New, comprehensive deployment testing
 
 - **[development/BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)** - Switch from npm/pnpm to Bun
   - Package management, scripts, performance
