@@ -9,6 +9,7 @@
 | Problem                        | Document                                                                           | Keywords                               |
 | ------------------------------ | ----------------------------------------------------------------------------------- | -------------------------------------- |
 | Understand the release process | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                            | release, rc, tag, version, deploy      |
+| Use Git upstream remote         | [UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)                | upstream, git, push, fetch, remotes    |
 | Deploy infrastructure changes  | [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) | infra, config, build, staging, production |
 | Deploy to production           | [DEPLOYMENT.md](./operations/DEPLOYMENT.md) (WIP)                                  | deploy, ci/cd, github actions          |
 | Configure environments         | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                        | env, staging, production, config       |
@@ -28,6 +29,12 @@
   - When: Use for release decisions, RC testing, tag creation
   - Covers: Auto-versioning, tag lifecycle, troubleshooting
   - Last updated: 2025-11-17
+
+- **[operations/UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)** - Git upstream remote and collaborative workflow
+  - When: Setting up remotes, pushing code to upstream, understanding deployment flow
+  - Covers: Remote configuration, main branch workflow, release tag workflow, pre-push guardrails, troubleshooting
+  - Status: New, documents upstream remote usage
+  - Last updated: 2025-11-24
 
 - **[operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md)** - Manual promotion of infrastructure changes
   - When: Deploying build config, layout, CSS, or other infrastructure changes
@@ -153,6 +160,7 @@ docs/
 ├── README.md                          (this file - master index)
 ├── operations/                        (release, deployment, infrastructure)
 │   ├── RELEASE_WORKFLOW.md            ✅ maintained
+│   ├── UPSTREAM_REMOTES_GUIDE.md      ✅ new
 │   ├── INFRASTRUCTURE_PROMOTION_WORKFLOW.md ✅ new
 │   ├── DEPLOYMENT.md                  ✅ consolidated
 │   └── ENVIRONMENT_CONFIG.md          ✅ maintained
