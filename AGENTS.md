@@ -1,4 +1,14 @@
-# AGENTS.md - Cody Framework Development Guide
+# Development & Agent Workflow Guide
+
+This is the **single source of truth** for AI agent and developer workflow on this project.
+
+## 🚀 Quick Navigation
+
+**First Time Setup?** → [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
+**Adding Content?** → [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)  
+**Full Documentation** → [docs/README.md](/docs/README.md) (Master index)
+
+---
 
 ## Agent Initialization
 
