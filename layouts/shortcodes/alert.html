@@ -1,0 +1,18 @@
+{{ $type := .Get 0 | default "info" }}
+{{ $class := "" }}
+
+{{ if eq $type "info" }}
+  {{ $class = "alert-info" }}
+{{ else if eq $type "warning" }}
+  {{ $class = "alert-warning" }}
+{{ else if eq $type "error" }}
+  {{ $class = "alert-error" }}
+{{ else if eq $type "success" }}
+  {{ $class = "alert-success" }}
+{{ end }}
+
+<div class="alert {{ $class }}">
+  <div>
+    {{ .Inner }}
+  </div>
+</div>

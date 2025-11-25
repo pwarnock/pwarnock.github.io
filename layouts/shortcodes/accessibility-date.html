@@ -1,0 +1,2 @@
+{{ $now := now }}
+**Last Updated**: {{ $now.Format "January 2, 2006" }} **Next Review**: {{ ($now.AddDate 0 6 0).Format "January 2, 2006" }}

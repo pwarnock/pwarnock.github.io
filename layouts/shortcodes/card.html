@@ -1,0 +1,15 @@
+{{ $class := .Get 0 | default "shadow" }}
+{{ $title := .Get 1 | default "" }}
+
+<div class="card {{ $class }}">
+  {{ if $title }}
+    <div class="card-body">
+      <h2 class="card-title">{{ $title }}</h2>
+      {{ .Inner }}
+    </div>
+  {{ else }}
+    <div class="card-body">
+      {{ .Inner }}
+    </div>
+  {{ end }}
+</div>
