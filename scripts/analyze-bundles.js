@@ -5,7 +5,8 @@
  * Analyzes CSS and JS bundle sizes for performance monitoring
  */
 
-import { readFileSync, statSync } from 'fs';
+import { readFileSync, statSync, readdirSync } from 'fs';
+import { join } from 'path';
 
 const PERF_CONFIG = './data/performance.toml';
 
@@ -73,7 +74,16 @@ function analyzeCSS() {
 
 // Analyze JS bundles
 function analyzeJS() {
-  const jsPaths = ['public/js/main.js', 'public/js/bundle.js'];
+  const jsDir = 'public/js';
+  let jsPaths = [];
+  try {
+    jsPaths = readdirSync(jsDir)
+      .filter(file => file.endsWith('.js'))
+      .map(file => join(jsDir, file));
+  } catch (error) {
+    console.error(`❌ Could not read JS directory ${jsDir}: ${error.message}`);
+    return;
+  }
 
   console.log(`📊 JavaScript Bundle Analysis:`);
 

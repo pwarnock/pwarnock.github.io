@@ -107,6 +107,25 @@ kubeconfig
 *.out
 *.error
 
+# Framework-specific configurations (not part of core project)
+.cody.backup.*/
+.agents/
+.claude/
+.letta/
+.letta.example/
+.letta.schema.json
+.opencode.jsonc
+
+# Ephemeral files (regenerated on each run)
+test-results/
+tmp/
+debug-*.png
+cody-*.log
+.cache/
+
+# Session state files (framework-generated)
+.claude/session-state.json
+
 # Hugo binary (OS-specific)
 hugo
 hugo.exe

@@ -42,6 +42,41 @@ else
 fi
 echo ""
 
+# Check Beads health and implement best practices
+echo "🔮 Checking Beads health and applying best practices..."
+export BEADS_NO_DAEMON=1  # Fix git worktree daemon warnings
+
+# Check Beads database size
+if command -v bd >/dev/null 2>&1; then
+    ISSUE_COUNT=$(bd --no-daemon list --json 2>/dev/null | jq '. | length' 2>/dev/null || echo "0")
+    if [ "$ISSUE_COUNT" -gt 200 ]; then
+        echo "⚠️  Beads database has $ISSUE_COUNT issues (recommend <200)"
+        echo "🧹 Running automatic cleanup (older than 2 days)..."
+        if bd --no-daemon cleanup --days 2 >/dev/null 2>&1; then
+            echo "✅ Database cleanup completed"
+        else
+            echo "⚠️  Cleanup failed - run 'bd cleanup --days 2' manually"
+        fi
+    elif [ "$ISSUE_COUNT" -gt 500 ]; then
+        echo "🚨 CRITICAL: Beads database has $ISSUE_COUNT issues"
+        echo "   Strongly recommend 'bd cleanup --days 1' to restore performance"
+    else
+        echo "✅ Beads database size is healthy ($ISSUE_COUNT issues)"
+    fi
+    
+    # Run Beads doctor
+    echo "🩺 Running Beads health check..."
+    if bd --no-daemon doctor >/dev/null 2>&1; then
+        echo "✅ Beads system is healthy"
+    else
+        echo "⚠️  Beads health issues detected"
+        echo "   Run 'bd doctor --fix' for automatic repairs"
+    fi
+else
+    echo "⚠️  Beads (bd) not found - install with 'go install github.com/steve-yege/beads@latest'"
+fi
+echo ""
+
 # Display AGENTS.md key information
 echo "📖 Agent Guidelines (from AGENTS.md)"
 echo "==================================="
@@ -58,10 +93,10 @@ if [ -f "AGENTS.md" ]; then
     echo ""
 
     echo "## Quick Commands"
-    echo "- Check ready work: \`bd ready --json\`"
-    echo "- Create issue: \`bd create \"title\" -t task -p 2 --json\`"
-    echo "- Claim task: \`bd update bd-123 --status in_progress --json\`"
-    echo "- Complete task: \`bd close bd-123 --reason \"Done\" --json\`"
+    echo "- Check ready work: \`bd --no-daemon ready --json\`"
+    echo "- Create issue: \`bd --no-daemon create \"title\" -t task -p 2 --json\`"
+    echo "- Claim task: \`bd --no-daemon update bd-123 --status in_progress --json\`"
+    echo "- Complete task: \`bd --no-daemon close bd-123 --reason \"Done\" --json\`"
     echo ""
 
     echo "## Available :cody Commands"
@@ -101,4 +136,18 @@ fi
 echo ""
 
 echo ""
-echo "🚀 Ready to work! Use 'bd ready --json' to see available tasks."
+echo "🚀 Ready to work! Environment configured for git worktree:"
+echo "   - export BEADS_NO_DAEMON=1 (fixes daemon warnings)"
+echo "   - Beads database optimized (<200 issues)"
+echo "   - Health checks passed"
+echo ""
+echo "📝 Session Continuity (Beads 0.24 best practices):"
+echo "   - Start new session: ./scripts/session-notes.sh"
+echo "   - Recover previous: ./scripts/session-recovery.sh"
+echo ""
+echo "📋 Quick Commands (all use --no-daemon in worktrees):"
+echo "- Check ready work: \`bd --no-daemon ready --json\`"
+echo "- Create issue: \`bd --no-daemon create \"title\" -t task -p 2 --json\`"
+echo "- Claim task: \`bd --no-daemon update bd-123 --status in_progress --json\`"
+echo "- Complete task: \`bd --no-daemon close bd-123 --reason \"Done\" --json\`"
+echo "- Cleanup database: \`bd --no-daemon cleanup --days 2\`"

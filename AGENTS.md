@@ -1,4 +1,14 @@
-# AGENTS.md - Cody Framework Development Guide
+# Development & Agent Workflow Guide
+
+This is the **single source of truth** for AI agent and developer workflow on this project.
+
+## 🚀 Quick Navigation
+
+**First Time Setup?** → [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
+**Adding Content?** → [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)  
+**Full Documentation** → [docs/README.md](/docs/README.md) (Master index)
+
+---
 
 ## Agent Initialization
 
@@ -111,6 +121,27 @@ bd close bd-42 --reason "Completed" --json
    - `bd create "Found bug" -p 1 --deps discovered-from:<parent-id>`
 5. **Complete**: `bd close <id> --reason "Done"`
 
+### Phase 1: Linking to Cody Features (Manual)
+
+When working on a Cody feature:
+
+1. **Find feature in backlog**: `.cody/project/build/feature-backlog.md`
+2. **Create Beads issue** for each task:
+   ```bash
+   bd create "Implementation task (vX.Y.Z)" -t task -p 2 --json
+   ```
+3. **Update backlog** with issue reference:
+   ```markdown
+   ## Feature: Name
+   - Implementation: See bd-NNN for details
+   ```
+4. **Link dependent issues**:
+   ```bash
+   bd create "Subtask" -t task --deps blocks:bd-NNN --json
+   ```
+
+See [docs/integration/CODY_BEADS_WORKFLOW.md](/docs/integration/CODY_BEADS_WORKFLOW.md) for complete workflow.
+
 ### Auto-Sync
 
 bd automatically syncs with git:
@@ -166,13 +197,15 @@ When working on this project:
 
 Key docs to bookmark:
 
-- `/docs/RELEASE_PROCESS.md` - How to run the professional release workflow
-- `docs/operations/RELEASE_MANAGEMENT.md` - Detailed release steps and
-  post-release checklist
-- `docs/operations/DEPLOYMENT_NOTES.md` - Troubleshooting and deployment
+- `docs/operations/RELEASE_WORKFLOW.md` - How to run the professional release workflow
+- `docs/operations/DEPLOYMENT.md` - Detailed deployment steps, version management,
+  and post-release checklist
+- `docs/operations/ROLLBACK_PROCEDURES.md` - Emergency incident response and rollback
   recovery
 - `docs/development/STYLE_GUIDE.md` - CSS, template, and architecture
   conventions
+- `docs/integration/CODY_BEADS_WORKFLOW.md` - Feature planning → Beads issues → releases
+  (Phase 1 manual linking implementation)
 
 ## Project Documentation
 
