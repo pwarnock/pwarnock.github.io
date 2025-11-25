@@ -16,9 +16,9 @@ This document lists features and enhancements derived from the plan. It is a liv
 | F24 | Google Analytics Integration | Add GA4 tracking with production-only loading | Medium | 🟢 Completed |
 | F25 | Enhanced Analytics Tracking | Add custom events for tools, portfolio, and blog interactions | Medium | 🟢 Completed |
 | F26 | Privacy Compliance | Add cookie consent banner for GDPR compliance | Medium | 🟡 In Progress (feature-flagged) |
-| F93 | Analytics Feature Development Checklist | Create mandatory analytics step in feature development workflow | High | 🔴 Not Started (pw-v01) |
-| F94 | Analytics Validation Pre-Commit Hook | Add pre-commit hook to validate data-event attributes on interactive components | High | 🔴 Not Started (pw-an0) |
-| F95 | Analytics Implementation Guide | Document analytics patterns and implementation guide for new features | Medium | 🔴 Not Started (pw-aog) |
+| F93 | Analytics Feature Development Checklist | Create mandatory analytics step in feature development workflow | High | 🔴 Not Started (pw-aln) |
+| F94 | Analytics Validation Pre-Commit Hook | Add pre-commit hook to validate data-event attributes on interactive components | High | 🔴 Not Started (pw-0zb) |
+| F95 | Analytics Implementation Guide | Document analytics patterns and implementation guide for new features | Medium | 🔴 Not Started (pw-xn4) |
 | F27 | Enhanced Navigation ARIA | Add comprehensive ARIA roles and landmarks to navigation components | Medium | 🔴 Not Started |
 | F28 | Breadcrumb Navigation | Implement breadcrumb navigation for section pages | Medium | 🔴 Not Started |
 | F29 | Image Alt Text Audit | Review and enhance image alt text descriptions for better screen reader support | Low | 🔴 Not Started |
@@ -211,10 +211,10 @@ Deployment workflows and environment management: Complete infrastructure foundat
 
 | ID  | Feature                 | Description                              | Priority | Status |
 |-----|-------------------------|------------------------------------------|----------|--------|
-| F89 | Manual Promotion Workflow| Safe infrastructure deployment pipeline | High | 🔴 Not Started |
-| F90 | Change Validation       | Environment-specific testing and validation | High | 🔴 Not Started |
-| F91 | Environment Configuration| Settings and permissions for all environments | High | 🔴 Not Started |
-| F92 | Documentation Updates   | Complete deployment and operational docs | Medium | 🔴 Not Started |
+| F89 | Manual Promotion Workflow| Safe infrastructure deployment pipeline | High | 🔴 Not Started (pw-bua) |
+| F90 | Change Validation       | Environment-specific testing and validation | High | 🔴 Not Started (pw-wty) |
+| F91 | Environment Configuration| Settings and permissions for all environments | High | 🔴 Not Started (pw-vys) |
+| F92 | Documentation Updates   | Complete deployment and operational docs | Medium | 🔴 Not Started (pw-rlm) |
 
 ## v0.13.3 - 🟢 Completed
 CSS architecture fixes and DaisyUI v5 compatibility: Resolve critical CSS import errors and update integration.
