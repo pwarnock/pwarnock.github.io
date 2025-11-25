@@ -5,7 +5,7 @@
   "type": "module",
   "main": "postcss.config.cjs",
   "scripts": {
-    "build": "bun run generate-version && HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json && bun run build:cleanup",
+    "build": "HUGO_ENV=production hugo --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json && bun run build:cleanup",
     "clean": "rm -rf public",
     "dev": "HUGO_ENV=development bun x pm2 start ecosystem.config.cjs",
     "dev:stop": "bun x pm2 stop hugo-dev",
@@ -33,7 +33,6 @@
     "validate:portfolio": "bun run portfolio-validate",
     "test:ga": "bun run test-ga",
     "postinstall": "bun x husky",
-    "generate-version": "bun run ./scripts/generate-version.js",
     "portfolio-validate": "bun run ./scripts/validate-portfolio-frontmatter.js",
     "test-ga": "bun run ./scripts/test-ga-tracking.js",
     "test-security": "bun run ./scripts/test-security.js",
