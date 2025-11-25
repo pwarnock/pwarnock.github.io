@@ -45,6 +45,13 @@
 </script>
 {{ end }}
 
+<!-- HowTo Schema -->
+{{ if .Params.howto }}
+<script type="application/ld+json">
+{{ partial "head/howto-schema.html" . }}
+</script>
+{{ end }}
+
 <!-- Data-driven Favicons -->
 {{ $seoConfig := site.Data.seo }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default $seoConfig.defaults.paths.favicon_32 }}">

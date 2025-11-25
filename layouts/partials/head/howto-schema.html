@@ -1,0 +1,31 @@
+{{/* HowTo structured data for tutorial content */}}
+{{ if .Params.howto }}
+  {{ $steps := slice }}
+  {{ range $index, $step := .Params.howto.steps }}
+    {{ $howToStep := dict 
+      "@type" "HowToStep" 
+      "name" $step.name 
+      "text" $step.description 
+      "image" (or $step.image "/images/tutorial-step-placeholder.jpg")
+      "url" (or $step.url "")
+    }}
+    {{ $steps = $steps | append $howToStep }}
+  {{ end }}
+
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "{{ .Params.howto.title | default .Title }}",
+    "description": "{{ .Params.howto.description | default .Description }}",
+    "image": "{{ .Params.howto.image | default .Params.featured_image | default "/images/default-tutorial-image.jpg" | absURL }}",
+    "totalTime": "{{ .Params.howto.total_time | default "PT30M" }}",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "{{ .Params.howto.estimated_cost | default "0" }}"
+    },
+    "supply": {{ if .Params.howto.supplies }}{{ .Params.howto.supplies | jsonify }}{{ else }}[]{{ end }},
+    "tool": {{ if .Params.howto.tools }}{{ .Params.howto.tools | jsonify }}{{ else }}[]{{ end }},
+    "step": {{ $steps | jsonify }}
+  }
+{{ end }}
