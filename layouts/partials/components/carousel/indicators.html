@@ -10,7 +10,9 @@
     :class="currentSlide === {{ $index }} ? 'active' : ''"
     :aria-label="'Go to slide {{ $index | add 1 }}: {{ .title }}'"
     :aria-current="currentSlide === {{ $index }} ? 'true' : 'false'"
-    data-slide-target="{{ $index }}">
+    data-slide-target="{{ $index }}"
+    data-event="carousel_indicator"
+    data-event-label="Go to slide {{ $index | add 1 }}">
     
     <span class="sr-only">{{ .title }}</span>
   </button>

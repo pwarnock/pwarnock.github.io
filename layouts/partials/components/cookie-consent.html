@@ -27,19 +27,25 @@
         <button 
           id="cookie-consent-reject"
           class="btn btn-outline btn-sm text-neutral-100 border-neutral-600 hover:bg-neutral-800"
-          onclick="window.CookieConsent?.reject()">
+          onclick="window.CookieConsent?.reject()"
+          data-event="cookie_consent_reject"
+          data-event-label="Essential Only">
           Essential Only
         </button>
         <button 
           id="cookie-consent-preferences"
           class="btn btn-outline btn-sm text-neutral-100 border-neutral-600 hover:bg-neutral-800"
-          onclick="window.CookieConsent?.showPreferences()">
+          onclick="window.CookieConsent?.showPreferences()"
+          data-event="cookie_consent_preferences"
+          data-event-label="Preferences">
           Preferences
         </button>
         <button 
           id="cookie-consent-accept"
           class="btn btn-primary btn-sm"
-          onclick="window.CookieConsent?.accept()">
+          onclick="window.CookieConsent?.accept()"
+          data-event="cookie_consent_accept"
+          data-event-label="Accept All">
           Accept All
         </button>
       </div>

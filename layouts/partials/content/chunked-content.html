@@ -28,7 +28,9 @@
                     class="chunk-nav-btn btn-system btn-system--sm" 
                     onclick="showChunk({{ . }})"
                     data-chunk="{{ . }}"
-                    aria-current="{{ if eq . 0 }}page{{ else }}false{{ end }}">
+                    aria-current="{{ if eq . 0 }}page{{ else }}false{{ end }}"
+                    data-event="content_section"
+                    data-event-label="Section {{ add . 1 }}">
                     Section {{ add . 1 }}
                 </button>
             {{ end }}
