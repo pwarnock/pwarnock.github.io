@@ -17,7 +17,7 @@
     <!-- Performance-optimized CSS splitting -->
     {{ partial "head/css-splitting.html" . }}
 </head>
-<body id="top">
+<body id="top" data-section="{{ if .IsHome }}home{{ else if eq .Type "blog" }}blog{{ else if eq .Type "portfolio" }}portfolio{{ else if eq .Type "tools" }}tools{{ else if eq .Type "page" }}page{{ end }}">
     <!-- Data-driven Google Tag Manager (noscript) -->
 
     {{ $analyticsConfig := site.Data.cdn.analytics }}
@@ -123,5 +123,10 @@
     </main>
 
     {{ partial "footer.html" . }}
+
+    <!-- Analytics Tracking Module -->
+    {{ if eq (getenv "HUGO_ENV") "production" }}
+    <script src="{{ "/js/analytics.js" | relURL }}" defer></script>
+    {{ end }}
 </body>
 </html>

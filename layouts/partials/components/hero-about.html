@@ -22,12 +22,12 @@
     </p>
     {{ end }}
     <!-- Call to Action (data-driven) -->
-    {{ if .context.Params.ctaLink }}
-    <div class="pt-4">
-      <a href="{{ .context.Params.ctaLink }}" class="btn btn-primary btn-lg" aria-label="{{ .context.Params.ctaText | default "Get in touch with Peter Warnock" }}">
-        {{ .context.Params.ctaText | default "Get In Touch" }}
-      </a>
-    </div>
-    {{ end }}
+     {{ if .context.Params.ctaLink }}
+     <div class="pt-4">
+       <a href="{{ .context.Params.ctaLink }}" class="btn btn-primary btn-lg" aria-label="{{ .context.Params.ctaText | default "Get in touch with Peter Warnock" }}" onclick="if (window.Analytics) { window.Analytics.trackCTAClick('{{ .context.Params.ctaText | default "Get In Touch" }}', 'hero'); }">
+         {{ .context.Params.ctaText | default "Get In Touch" }}
+       </a>
+     </div>
+     {{ end }}
   </div>
 </div>

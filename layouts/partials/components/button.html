@@ -9,6 +9,8 @@
 {{ $ariaLabel := .ariaLabel }}
 {{ $type := .type | default "button" }}
 {{ $onclick := .onclick }}
+{{ $trackingEvent := .trackingEvent | default "" }}
+{{ $trackingLabel := .trackingLabel | default $text }}
 
 {{/* Build CSS classes */}}
 {{ $classes := slice "btn-system" }}
@@ -31,7 +33,7 @@
 {{/* Render button or link */}}
 {{ if $href }}
 {{ $isExternal := strings.HasPrefix $href "http" }}
-  <a href="{{ $href }}" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }} role="button" {{ if $isExternal }}rel="noopener noreferrer" target="_blank"{{ end }}>
+  <a href="{{ $href }}" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }} role="button" {{ if $isExternal }}rel="noopener noreferrer" target="_blank"{{ end }} {{ if $trackingEvent }}data-event="{{ $trackingEvent }}" data-event-label="{{ $trackingLabel }}" onclick="(function(e) { if (window.Analytics) { window.Analytics.trackEvent('{{ $trackingEvent }}', { label: '{{ $trackingLabel }}' }); } })(event)"{{ end }}>
     {{ if $icon }}
       <span class="icon-system icon-system--{{ $size }}">
         {{ if eq (printf "%T" $icon) "string" }}
@@ -45,7 +47,7 @@
     {{ if .slot }}{{ .slot }}{{ end }}
   </a>
 {{ else }}
-  <button type="{{ $type }}" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
+  <button type="{{ $type }}" {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }} {{ if $trackingEvent }}data-event="{{ $trackingEvent }}" data-event-label="{{ $trackingLabel }}" onclick="(function(e) { if (window.Analytics) { window.Analytics.trackEvent('{{ $trackingEvent }}', { label: '{{ $trackingLabel }}' }); } })(event)"{{ end }}>
     {{ if $icon }}
       <span class="icon-system icon-system--{{ $size }}">
         {{ if eq (printf "%T" $icon) "string" }}

@@ -1,0 +1,163 @@
+name: Orphan RC Auditor
+# Scheduled job to detect and report stale release candidate versions
+# RC tags without corresponding final releases are flagged for cleanup
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit-orphan-rcs:
+    name: Audit Orphan RC Releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Audit RC tags
+        id: audit
+        run: |
+          echo "🔍 Scanning for orphan RC versions..."
+          echo ""
+
+          # Get all RC tags
+          RC_TAGS=$(git tag -l 'v*-rc.*' --sort=-version:refname)
+
+          if [[ -z "$RC_TAGS" ]]; then
+            echo "No RC tags found"
+            echo "audit_needed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "RC Tags found:"
+          echo "$RC_TAGS"
+          echo ""
+
+          # Parse RC versions and check for promotion
+          ORPHAN_RCS=()
+          STALE_RCS=()
+
+          while IFS= read -r tag; do
+            # Extract version (e.g., v0.20.2-rc.1 -> 0.20.2)
+            VERSION=$(echo "$tag" | sed 's/v\([0-9]*\.[0-9]*\.[0-9]*\)-.*/\1/')
+            FINAL_TAG="v$VERSION"
+
+            echo "Checking RC: $tag"
+            echo "  Final version expected: $FINAL_TAG"
+
+            # Check if final version exists
+            if git tag -l | grep -q "^$FINAL_TAG$"; then
+              echo "  ✓ Final version exists"
+            else
+              echo "  ✗ No final version found - ORPHAN"
+              ORPHAN_RCS+=("$tag")
+
+              # Check age (more than 30 days old)
+              TAG_DATE=$(git log -1 --format=%ci "$tag" | cut -d' ' -f1)
+              TAG_EPOCH=$(date -d "$TAG_DATE" +%s 2>/dev/null || echo 0)
+              NOW_EPOCH=$(date +%s)
+              AGE_DAYS=$(( (NOW_EPOCH - TAG_EPOCH) / 86400 ))
+
+              if [[ $AGE_DAYS -gt 30 ]]; then
+                echo "  ⚠️  Stale (${AGE_DAYS} days old)"
+                STALE_RCS+=("$tag (${AGE_DAYS} days old)")
+              fi
+            fi
+            echo ""
+          done <<< "$RC_TAGS"
+
+          # Output results
+          if [[ ${#ORPHAN_RCS[@]} -gt 0 ]]; then
+            echo "audit_needed=true" >> $GITHUB_OUTPUT
+            echo "orphan_count=${#ORPHAN_RCS[@]}" >> $GITHUB_OUTPUT
+            echo "stale_count=${#STALE_RCS[@]}" >> $GITHUB_OUTPUT
+
+            # Store list for issue creation
+            printf '%s\n' "${ORPHAN_RCS[@]}" > /tmp/orphan_rcs.txt
+            if [[ ${#STALE_RCS[@]} -gt 0 ]]; then
+              printf '%s\n' "${STALE_RCS[@]}" > /tmp/stale_rcs.txt
+            fi
+          else
+            echo "audit_needed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create audit report
+        if: steps.audit.outputs.audit_needed == 'true'
+        run: |
+          echo "📋 Orphan RC Audit Report"
+          echo "=========================="
+          echo ""
+          echo "Orphan RC versions found: ${{ steps.audit.outputs.orphan_count }}"
+          echo "Stale RCs (>30 days): ${{ steps.audit.outputs.stale_count }}"
+          echo ""
+          echo "Orphan RC tags:"
+          cat /tmp/orphan_rcs.txt || echo "None"
+          echo ""
+
+          if [[ -f /tmp/stale_rcs.txt ]]; then
+            echo "Stale RC tags (>30 days old, no promotion):"
+            cat /tmp/stale_rcs.txt
+            echo ""
+          fi
+
+      - name: Report audit results
+        if: steps.audit.outputs.audit_needed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: >
+            const fs = require('fs');
+            const orphanRCs = fs.readFileSync('/tmp/orphan_rcs.txt', 'utf8').trim().split('\n');
+            let staleRCs = [];
+            if (fs.existsSync('/tmp/stale_rcs.txt')) {
+              staleRCs = fs.readFileSync('/tmp/stale_rcs.txt', 'utf8').trim().split('\n');
+            }
+            const title = `Orphan RC Audit: ${orphanRCs.length} RC versions without promotion`;
+            const orphanList = orphanRCs.join('\n');
+            const staleList = staleRCs.length > 0 ? staleRCs.join('\n') : '';
+            const staleSection = staleRCs.length > 0 ? `Stale RCs (>30 days old, no promotion):\n${staleList}\n\n` : '';
+            const body = `# Orphan RC Audit Report\n\nFound: ${orphanRCs.length} RC version(s) without corresponding final releases\n\n## Orphan RC Versions\n\`\`\`\n${orphanList}\n\`\`\`\n\n${staleSection}## What This Means\nRC versions should either be promoted to final or retired.\n\n## Recommended Actions\n- Review the RC(s) above\n- Promote to final: ./scripts/release.sh final\n- Or retire the RC tag if no longer needed\n\n---\nGenerated by orphan-rc-auditor.yml`;
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'rc-audit',
+              state: 'open'
+            });
+            if (issues.data.length > 0) {
+              const issue = issues.data[0];
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                title: title,
+                body: body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['rc-audit', 'maintenance']
+              });
+            }
+
+      - name: Log completion
+        run: |
+          echo "✅ RC audit completed"
+          echo "  Audit needed: ${{ steps.audit.outputs.audit_needed }}"
+          echo "  Orphan RCs: ${{ steps.audit.outputs.orphan_count || '0' }}"
+          echo "  Stale RCs: ${{ steps.audit.outputs.stale_count || '0' }}"
