@@ -10,7 +10,9 @@
             <button 
                 class="lazy-load-btn btn-system btn-system--primary"
                 onclick="loadMoreContent(this)"
-                aria-expanded="false">
+                aria-expanded="false"
+                data-event="content_expand"
+                data-event-label="Read More">
                 <span class="btn-text">Read More</span>
                 <span class="btn-loading" style="display: none;">Loading...</span>
                 {{ partial "components/icon.html" (dict "name" "chevron-down" "size" "sm") }}

@@ -111,14 +111,14 @@
 
       <!-- Navigation buttons -->
       <div class="flex" style="gap: var(--space-3)">
-      <button class="btn btn-outline btn-md hover:btn-primary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.history.back()" aria-label="Go back to previous page">
+      <button class="btn btn-outline btn-md hover:btn-primary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.history.back()" aria-label="Go back to previous page" data-event="navigation_back" data-event-label="Footer Back">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
       Back
       </button>
 
-      <button class="btn btn-primary btn-md hover:btn-secondary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page">
+      <button class="btn btn-primary btn-md hover:btn-secondary transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Scroll to top of page" data-event="scroll_to_top" data-event-label="Back to Top">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>

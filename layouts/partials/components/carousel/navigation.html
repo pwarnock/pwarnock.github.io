@@ -4,7 +4,9 @@
   <button 
     @click="previousSlide()"
     class="carousel-nav-btn carousel-nav-prev"
-    aria-label="Previous slide">
+    aria-label="Previous slide"
+    data-event="carousel_prev"
+    data-event-label="Previous Slide">
     {{ partial "components/icons/chevron-left" . }}
   </button>
   
@@ -12,7 +14,9 @@
   <button 
     @click="nextSlide()"
     class="carousel-nav-btn carousel-nav-next"
-    aria-label="Next slide">
+    aria-label="Next slide"
+    data-event="carousel_next"
+    data-event-label="Next Slide">
     {{ partial "components/icons/chevron-right" . }}
   </button>
 </div>
