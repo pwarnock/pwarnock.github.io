@@ -620,38 +620,42 @@ may provide outdated information.**
 
 ## Git & Deployment Workflow
 
-### Commit & Version Management
+### Self-Enforcing Release Process
 
-1. **Manual Version Bumping**
-   - Version must be manually updated in `package.json` before release (SemVer)
-   - Build process automatically syncs version to `data/version.toml` for the
-     footer
-   - Use `bun pm version patch/minor` to update
+**MANDATORY WORKFLOW**: All releases go through `scripts/release.sh` and the release controller. Direct version edits are blocked by CI.
 
-2. **Three-Stage Release Process**
-
+1. **Create Release Request**
    ```bash
-   # Stage 1: Pre-Release (RC for testing)
-   ./scripts/release.sh pre    # Creates v0.17.1-rc.1
-   FORCE_PUSH=yes git push upstream v0.17.1-rc.1
-   bun run deploy:staging && bun run test:e2e
-
-   # Stage 2: Production Release (after RC passes)
-   ./scripts/release.sh post   # Creates v0.17.1
-   FORCE_PUSH=yes git push upstream main v0.17.1
-   bun run deploy:production
+   ./scripts/release.sh [rc|final|hotfix]
    ```
+   - Script validates clean working tree
+   - Prompts for release description and Beads issue ID
+   - Creates `.release/request.json`
+   - Commits and pushes to main
 
-3. **Push Confirmation**
-   - Show commit summary and file diffs
-   - Wait for explicit "yes" confirmation
-   - Pre-push hook tests build and shows what deploys
-   - Use `FORCE_PUSH=yes` only for release pushes (guarded by confirmation)
+2. **Release Controller (Automated)**
+   - Triggered automatically when `.release/request.json` is pushed
+   - Computes next version from current `package.json.version`
+   - Updates package.json with new version
+   - Builds Hugo site with new version in data/version.json
+   - Deploys to GitHub Pages
+   - Creates annotated git tag
+   - Updates Beads issue status
 
-**Why**: Pre-commit hook ensures code quality, manual versioning ensures
-control, three-stage releases catch issues before production.
+3. **Release Types**
+   - `rc`: Release candidate (v0.20.2-rc.1, v0.20.2-rc.2, ...)
+   - `final`: Production release (bump patch version)
+   - `hotfix`: Emergency patch from production
 
-See `/docs/operations/RELEASE_WORKFLOW.md` for detailed procedures.
+4. **Guardrails (Enforced by CI)**
+   - `version-consistency.yml` blocks any PR that manually edits `package.json.version`
+   - Direct git tags are not permitted - only release controller can create them
+   - `.release/request.json` status fields are CI-only (cannot be manually edited)
+   - Version is canonical source - flows: package.json → data/version.json → Hugo footer
+
+**Why**: Single source of truth for version, fully auditable release history, impossible to bypass.
+
+See `/docs/architecture/SELF_ENFORCING_RELEASE_PROCESS.md` for complete architecture.
 
 ## Testing
 
