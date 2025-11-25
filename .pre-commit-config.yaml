@@ -57,3 +57,26 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-toml
+
+  # Analytics validation for interactive elements
+  - repo: local
+    hooks:
+      - id: analytics-validation
+        name: Analytics Validation
+        entry: .github/scripts/validate-analytics.sh
+        language: script
+        files: \.(html|htm)$
+        exclude: |
+          (?x)(
+            node_modules/|
+            public/|
+            resources/|
+            coverage/|
+            test/|
+            tests/|
+            docs/|
+            \.cody/|
+            \.backup\.|
+            _archived/
+          )
+        pass_filenames: false
