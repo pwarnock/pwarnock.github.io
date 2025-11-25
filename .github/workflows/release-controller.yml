@@ -74,57 +74,6 @@ jobs:
           fi
           echo "✓ Concurrency check passed"
 
-  build-site:
-    name: Build Hugo Site
-    needs: validate-request
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: latest
-          extended: true
-
-      - name: Install dependencies
-        run: bun install
-
-      - name: Build site
-        run: |
-          echo "🔨 Building Hugo site..."
-          bun run build
-          echo "✓ Build complete"
-
-      - name: Validate HTML
-        run: |
-          echo "🔍 Validating generated HTML..."
-          if command -v htmltest &> /dev/null; then
-            htmltest --conf .htmltest.yml || {
-              echo "⚠️  Some HTML validation issues (continuing)"
-            }
-          fi
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-build
-          path: public/
-          retention-days: 1
-
   compute-version:
     name: Compute Next Version
     needs: validate-request
@@ -183,43 +132,9 @@ jobs:
           echo "version_tag=v$NEXT_VERSION" >> $GITHUB_OUTPUT
           echo "✓ Next version: $NEXT_VERSION"
 
-  deploy-site:
-    name: Deploy Site
-    needs: [validate-request, build-site, compute-version]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: site-build
-          path: public/
-
-      - name: Validate deployment artifacts
-        run: |
-          echo "Deployment artifacts:"
-          du -sh public/
-          find public -name "index.html" | wc -l | xargs echo "  HTML files:"
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: ${{ vars.SITE_CNAME }}
-          force_orphan: false
-
-      - name: Notify deployment
-        run: |
-          echo "Deployment complete"
-          echo "  Version: ${{ needs.compute-version.outputs.next_version }}"
-          echo "  URL: ${{ vars.SITE_URL }}"
-
   update-version:
-    name: Update Version & Create Tag
-    needs: [validate-request, deploy-site, compute-version]
+    name: Update Version (package.json canonical)
+    needs: [validate-request, compute-version]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -251,6 +166,116 @@ jobs:
           git commit -m "chore: bump version to $NEXT_VERSION ($RELEASE_TYPE)"
           echo "✓ Version commit created"
 
+      - name: Push version commit
+        run: |
+          git push origin main
+          echo "✓ Version commit pushed"
+
+  build-site:
+    name: Build Hugo Site (with new version)
+    needs: update-version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Generate version metadata
+        run: |
+          echo "📝 Generating version metadata from package.json..."
+          bun run generate-version
+
+      - name: Build site
+        run: |
+          echo "🔨 Building Hugo site..."
+          bun run build
+          echo "✓ Build complete"
+
+      - name: Validate HTML
+        run: |
+          echo "🔍 Validating generated HTML..."
+          if command -v htmltest &> /dev/null; then
+            htmltest --conf .htmltest.yml || {
+              echo "⚠️  Some HTML validation issues (continuing)"
+            }
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: public/
+          retention-days: 1
+
+  deploy-site:
+    name: Deploy Site
+    needs: build-site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: public/
+
+      - name: Validate deployment artifacts
+        run: |
+          echo "Deployment artifacts:"
+          du -sh public/
+          find public -name "index.html" | wc -l | xargs echo "  HTML files:"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: ${{ vars.SITE_CNAME }}
+          force_orphan: false
+
+      - name: Notify deployment
+        run: |
+          echo "✓ Deployment to GitHub Pages complete"
+          echo "  URL: ${{ vars.SITE_URL }}"
+
+  create-tag:
+    name: Create Git Tag
+    needs: [deploy-site, compute-version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git bot identity
+        run: |
+          git config user.name "${{ vars.BOT_NAME }}"
+          git config user.email "${{ vars.BOT_EMAIL }}"
+
       - name: Create Git tag
         env:
           VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
@@ -260,17 +285,16 @@ jobs:
           git tag -a "$VERSION_TAG" -m "Release $VERSION_TAG - $RELEASE_TYPE - $DESCRIPTION"
           echo "✓ Tag created: $VERSION_TAG"
 
-      - name: Push commits and tags
+      - name: Push tags
         env:
           VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
         run: |
-          git push origin main
           git push origin "$VERSION_TAG"
-          echo "✓ Pushed to remote"
+          echo "✓ Tag pushed: $VERSION_TAG"
 
   update-request-status:
     name: Update Release Request Status
-    needs: [validate-request, update-version, compute-version]
+    needs: [validate-request, create-tag, compute-version]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -279,30 +303,35 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update request status
-        env:
-          STATUS: ${{ job.status }}
-          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+      - name: Determine overall status
+        id: status
         run: |
-          STATUS_TEXT="succeeded"
-          if [[ "$STATUS" != "success" ]]; then
-            STATUS_TEXT="failed"
+          # Check if create-tag job succeeded
+          if [[ "${{ needs.create-tag.result }}" == "success" ]]; then
+            echo "status=succeeded" >> $GITHUB_OUTPUT
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
           fi
 
-          jq ".status = \"$STATUS_TEXT\" | .completedAt = \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" | .deployedVersion = \"$NEXT_VERSION\"" .release/request.json > .release/request.json.tmp
+      - name: Update request status
+        env:
+          STATUS: ${{ steps.status.outputs.status }}
+          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+        run: |
+          jq ".status = \"$STATUS\" | .completedAt = \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" | .deployedVersion = \"$NEXT_VERSION\"" .release/request.json > .release/request.json.tmp
           mv .release/request.json.tmp .release/request.json
 
           git config user.name "${{ vars.BOT_NAME }}"
           git config user.email "${{ vars.BOT_EMAIL }}"
           git add .release/request.json
-          git commit -m "chore: update release request status to $STATUS_TEXT" || true
+          git commit -m "chore: update release request status to $STATUS" || true
           git push origin main || true
 
-          echo "Release request status: $STATUS_TEXT"
+          echo "✓ Release request status: $STATUS"
 
   create-github-release:
     name: Create GitHub Release
-    needs: [validate-request, update-version, compute-version]
+    needs: [validate-request, create-tag, compute-version]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -323,7 +352,7 @@ jobs:
             --notes "$RELEASE_NOTES" \
             --target main \
             || echo "Release already exists"
-          echo "GitHub release created"
+          echo "✓ GitHub release created"
 
   notify:
     name: Notify Release Complete
