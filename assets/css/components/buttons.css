@@ -106,7 +106,7 @@
   opacity: 1;
 }
 
-/* More specific navigation hover overrides */
+/* Theme-specific navigation hover overrides - highest specificity */
 [data-theme='dark'] .navbar .btn-system--ghost:hover:not(:disabled),
 [data-theme='light'] .navbar .btn-system--ghost:hover:not(:disabled) {
   background-color: var(--color-primary);
@@ -129,6 +129,13 @@
 .btn-system:hover:not(:disabled) {
   /* Use theme-aware hover states */
   filter: brightness(1.1);
+}
+
+/* Navigation-specific hover fixes */
+.navbar .btn-system--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  opacity: 1;
 }
 
 /* Theme-specific ghost button enhancements */
