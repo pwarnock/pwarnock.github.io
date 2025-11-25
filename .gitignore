@@ -156,3 +156,4 @@ coverage/
 *.tar.gz
 .cache/
 data/version.toml
+data/version.json
