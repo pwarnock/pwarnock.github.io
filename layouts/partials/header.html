@@ -7,6 +7,11 @@
   // Fixed: No complex data loading, no CDN dependencies
   
   // Themes are now loaded from data/themes.yaml for better maintainability
+  const themes = [
+    {{ range site.Data.themes.themes }}
+      "{{ .id }}",
+    {{ end }}
+  ];
   
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);

@@ -41,6 +41,12 @@
     max-width: 70ch; /* Optimal reading length */
   }
 
+  .prose strong,
+  .prose b {
+    color: var(--color-base-content) !important;
+    font-weight: var(--font-weight-bold) !important;
+  }
+
   /* Enhanced link styling for better visibility - a11y compliant */
   .prose a {
     color: var(--color-primary);
@@ -82,9 +88,15 @@
   }
 
   .prose li {
+    color: var(--color-base-content) !important;
     margin-bottom: var(--space-3);
     line-height: 1.7; /* Improved readability */
     font-size: 1.05rem; /* Slightly larger */
+  }
+
+  /* Ensure list markers are also visible */
+  .prose li::marker {
+    color: var(--color-base-content) !important;
   }
 
   /* Blockquote styling */

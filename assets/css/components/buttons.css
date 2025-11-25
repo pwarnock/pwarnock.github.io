@@ -99,46 +99,7 @@
   color: var(--color-base-content);
 }
 
-/* Navigation-specific hover fixes */
-.navbar .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-primary-content);
-  opacity: 1;
-}
-
-/* Theme-specific navigation hover overrides - highest specificity */
-[data-theme='dark'] .navbar .btn-system--ghost:hover:not(:disabled),
-[data-theme='light'] .navbar .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-primary-content);
-  opacity: 1;
-}
-
-.btn-system--outline {
-  background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.btn-system--outline:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-primary-content);
-}
-
-/* Theme-aware button enhancements */
-.btn-system:hover:not(:disabled) {
-  /* Use theme-aware hover states */
-  filter: brightness(1.1);
-}
-
-/* Navigation-specific hover fixes */
-.navbar .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-primary);
-  color: var(--color-primary-content);
-  opacity: 1;
-}
-
-/* Theme-specific ghost button enhancements */
+/* Theme-specific ghost button enhancements - General */
 [data-theme='dark'] .btn-system--ghost:hover:not(:disabled) {
   background-color: var(--color-base-content);
   opacity: 0.2;
@@ -147,4 +108,19 @@
 [data-theme='light'] .btn-system--ghost:hover:not(:disabled) {
   background-color: var(--color-base-content);
   opacity: 0.05;
+}
+
+/* Navigation-specific hover fixes - Higher specificity */
+.navbar .btn-system--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  opacity: 1;
+}
+
+/* Theme-specific navigation hover overrides - Highest specificity */
+[data-theme='dark'] .navbar .btn-system--ghost:hover:not(:disabled),
+[data-theme='light'] .navbar .btn-system--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  opacity: 1;
 }

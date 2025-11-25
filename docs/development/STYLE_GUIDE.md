@@ -152,6 +152,30 @@ dracula, etc.):
 }
 ```
 
+#### Prose Typography Exceptions
+
+In `assets/css/content/prose.css`, specific elements use `!important` to
+override Tailwind Typography defaults and ensure accessibility and theme
+compatibility:
+
+```css
+/* Force theme colors for strong/bold text */
+.prose strong,
+.prose b {
+  color: var(--color-base-content) !important;
+  font-weight: var(--font-weight-bold) !important;
+}
+
+/* Force theme colors for list items */
+.prose li {
+  color: var(--color-base-content) !important;
+}
+
+.prose li::marker {
+  color: var(--color-base-content) !important;
+}
+```
+
 #### Available DaisyUI Theme Variables
 
 - `--bc`: Base content (text color)
