@@ -99,6 +99,21 @@
   color: var(--color-base-content);
 }
 
+/* Navigation-specific hover fixes */
+.navbar .btn-system--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  opacity: 1;
+}
+
+/* More specific navigation hover overrides */
+[data-theme='dark'] .navbar .btn-system--ghost:hover:not(:disabled),
+[data-theme='light'] .navbar .btn-system--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  opacity: 1;
+}
+
 .btn-system--outline {
   background-color: transparent;
   color: var(--color-primary);
