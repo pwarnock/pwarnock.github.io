@@ -1,0 +1,21 @@
+{{/* FAQ structured data for pages with FAQ content */}}
+{{ if .Params.faq }}
+  {{ $faqItems := slice }}
+  {{ range $index, $faq := .Params.faq }}
+    {{ $faqItem := dict 
+      "@type" "Question" 
+      "name" $faq.question 
+      "acceptedAnswer" (dict 
+        "@type" "Answer" 
+        "text" $faq.answer
+      )
+    }}
+    {{ $faqItems = $faqItems | append $faqItem }}
+  {{ end }}
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": {{ $faqItems | jsonify }}
+  }
+{{ end }}

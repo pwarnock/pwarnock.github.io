@@ -38,6 +38,13 @@
 </script>
 {{ end }}
 
+<!-- FAQ Schema -->
+{{ if .Params.faq }}
+<script type="application/ld+json">
+{{ partial "head/faq-schema.html" . }}
+</script>
+{{ end }}
+
 <!-- Data-driven Favicons -->
 {{ $seoConfig := site.Data.seo }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default $seoConfig.defaults.paths.favicon_32 }}">
