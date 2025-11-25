@@ -1,0 +1,73 @@
+{{/* Event structured data for speaking engagements */}}
+{{ if .Params.event }}
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "{{ .Params.event.name | default .Title }}",
+    "description": "{{ .Params.event.description | default .Description }}",
+    "startDate": "{{ .Params.event.start_date | default .Date | dateFormat "2006-01-02T15:04:05Z07:00" }}",
+    "endDate": "{{ .Params.event.end_date | default .Params.event.start_date | default .Date | dateFormat "2006-01-02T15:04:05Z07:00" }}",
+    "eventStatus": "{{ .Params.event.status | default "https://schema.org/EventScheduled" }}",
+    "eventAttendanceMode": "{{ .Params.event.attendance_mode | default "https://schema.org/OfflineEventAttendanceMode" }}",
+    "location": {{ if .Params.event.location }}
+      {
+        "@type": {{ if .Params.event.location.virtual }}"VirtualLocation"{{ else }}"Place"{{ end }},
+        {{ if .Params.event.location.virtual }}
+        "url": "{{ .Params.event.location.url }}"
+        {{ else }}
+        "name": "{{ .Params.event.location.name }}",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "{{ .Params.event.location.address.street }}",
+          "addressLocality": "{{ .Params.event.location.address.city }}",
+          "addressRegion": "{{ .Params.event.location.address.state }}",
+          "postalCode": "{{ .Params.event.location.address.postal_code }}",
+          "addressCountry": "{{ .Params.event.location.address.country }}"
+        }
+        {{ end }}
+      }
+    {{ else }}
+      {
+        "@type": "VirtualLocation",
+        "url": "{{ .Params.event.url | default .Permalink }}"
+      }
+    {{ end }},
+    "organizer": {
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "url": "{{ .Site.BaseURL }}about/",
+      "sameAs": [
+        "https://github.com/pwarnock",
+        "https://www.linkedin.com/in/peterwarnock",
+        "https://x.com/pwarnock"
+      ]
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Peter Warnock"
+    },
+    "offers": {{ if .Params.event.registration }}
+      {
+        "@type": "Offer",
+        "url": "{{ .Params.event.registration.url }}",
+        "price": "{{ .Params.event.registration.price | default "0" }}",
+        "priceCurrency": "{{ .Params.event.registration.currency | default "USD" }}",
+        "availability": "{{ .Params.event.registration.availability | default "https://schema.org/InStock" }}",
+        "validFrom": "{{ .Params.event.registration.valid_from | default .Date | dateFormat "2006-01-02T15:04:05Z07:00" }}"
+      }
+    {{ else }}
+      {
+        "@type": "Offer",
+        "url": "{{ .Params.event.url | default .Permalink }}",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    {{ end }},
+    "image": "{{ .Params.event.image | default .Params.featured_image | default "/images/default-event-image.jpg" | absURL }}",
+    "url": "{{ .Params.event.url | default .Permalink }}",
+    "keywords": {{ if .Params.event.keywords }}{{ .Params.event.keywords | jsonify }}{{ else }}["technology", "cloud", "devops", "leadership"]{{ end }},
+    "inLanguage": "{{ .Params.event.language | default "en-US" }}",
+    "isAccessibleForFree": {{ .Params.event.free | default true }}
+  }
+{{ end }}
