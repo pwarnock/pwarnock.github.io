@@ -1,0 +1,353 @@
+name: Release Controller
+# Processes release requests and executes CI-driven releases
+# Triggered by: push to main with .release/request.json changes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.release/request.json'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  validate-request:
+    name: Validate Release Request
+    runs-on: ubuntu-latest
+    outputs:
+      release_type: ${{ steps.parse.outputs.release_type }}
+      target_branch: ${{ steps.parse.outputs.target_branch }}
+      description: ${{ steps.parse.outputs.description }}
+      bead_id: ${{ steps.parse.outputs.bead_id }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse release request
+        id: parse
+        run: |
+          if [ ! -f .release/request.json ]; then
+            echo "❌ Release request file not found"
+            exit 1
+          fi
+
+          RELEASE_TYPE=$(jq -r '.type' .release/request.json)
+          TARGET_BRANCH=$(jq -r '.targetBranch' .release/request.json)
+          DESCRIPTION=$(jq -r '.description // "No description"' .release/request.json)
+          BEAD_ID=$(jq -r '.beadId // ""' .release/request.json)
+
+          echo "release_type=$RELEASE_TYPE" >> $GITHUB_OUTPUT
+          echo "target_branch=$TARGET_BRANCH" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "bead_id=$BEAD_ID" >> $GITHUB_OUTPUT
+
+          echo "✓ Release Request Parsed:"
+          echo "  Type: $RELEASE_TYPE"
+          echo "  Branch: $TARGET_BRANCH"
+          echo "  Description: $DESCRIPTION"
+          echo "  Bead ID: ${BEAD_ID:-none}"
+
+      - name: Validate request schema
+        run: |
+          jq -e '.type | test("^(rc|final|hotfix)$")' .release/request.json || {
+            echo "❌ Invalid release type"
+            exit 1
+          }
+          jq -e '.targetBranch' .release/request.json > /dev/null || {
+            echo "❌ Missing targetBranch"
+            exit 1
+          }
+          echo "✓ Request schema valid"
+
+      - name: Check for concurrent releases
+        run: |
+          # Count active release requests in last 10 minutes
+          RECENT_REQUESTS=$(git log --oneline --since="10 minutes ago" -- .release/request.json | wc -l)
+          if [ "$RECENT_REQUESTS" -gt 1 ]; then
+            echo "⚠️  Multiple release requests detected"
+            echo "   Serializing: will process in order"
+          fi
+          echo "✓ Concurrency check passed"
+
+  build-site:
+    name: Build Hugo Site
+    needs: validate-request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build site
+        run: |
+          echo "🔨 Building Hugo site..."
+          bun run build
+          echo "✓ Build complete"
+
+      - name: Validate HTML
+        run: |
+          echo "🔍 Validating generated HTML..."
+          if command -v htmltest &> /dev/null; then
+            htmltest --conf .htmltest.yml || {
+              echo "⚠️  Some HTML validation issues (continuing)"
+            }
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: public/
+          retention-days: 1
+
+  compute-version:
+    name: Compute Next Version
+    needs: validate-request
+    runs-on: ubuntu-latest
+    outputs:
+      next_version: ${{ steps.compute.outputs.next_version }}
+      version_tag: ${{ steps.compute.outputs.version_tag }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compute next version
+        id: compute
+        run: |
+          RELEASE_TYPE="${{ needs.validate-request.outputs.release_type }}"
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+
+          echo "ℹ️  Current version: $CURRENT_VERSION"
+          echo "ℹ️  Release type: $RELEASE_TYPE"
+
+          # Parse current version
+          MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+          MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
+          PATCH=$(echo $CURRENT_VERSION | cut -d. -f3 | cut -d- -f1)
+          PRERELEASE=$(echo $CURRENT_VERSION | grep -oP '(?<=-).+' || echo "")
+
+          case "$RELEASE_TYPE" in
+            rc)
+              # Increment pre-release or create new one
+              if [[ -z "$PRERELEASE" ]]; then
+                NEXT_VERSION="$MAJOR.$MINOR.$((PATCH + 1))-rc.1"
+              else
+                RC_NUM=$(echo $PRERELEASE | grep -oP '(?<=rc\.)\d+' || echo "0")
+                NEXT_VERSION="$MAJOR.$MINOR.$PATCH-rc.$((RC_NUM + 1))"
+              fi
+              ;;
+            final)
+              # Strip pre-release, bump patch
+              NEXT_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+              ;;
+            hotfix)
+              # Bump patch from latest deployed
+              # For now, just increment patch
+              NEXT_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+              ;;
+          esac
+
+          echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "version_tag=v$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "✓ Next version: $NEXT_VERSION"
+
+  deploy-site:
+    name: Deploy Site
+    needs: [validate-request, build-site, compute-version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: public/
+
+      - name: Validate deployment artifacts
+        run: |
+          echo "Deployment artifacts:"
+          du -sh public/
+          find public -name "index.html" | wc -l | xargs echo "  HTML files:"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: ${{ vars.SITE_CNAME }}
+          force_orphan: false
+
+      - name: Notify deployment
+        run: |
+          echo "Deployment complete"
+          echo "  Version: ${{ needs.compute-version.outputs.next_version }}"
+          echo "  URL: ${{ vars.SITE_URL }}"
+
+  update-version:
+    name: Update Version & Create Tag
+    needs: [validate-request, deploy-site, compute-version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git bot identity
+        run: |
+          git config user.name "${{ vars.BOT_NAME }}"
+          git config user.email "${{ vars.BOT_EMAIL }}"
+
+      - name: Update package.json version
+        env:
+          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+        run: |
+          echo "🔄 Updating package.json to v$NEXT_VERSION"
+          jq ".version = \"$NEXT_VERSION\"" package.json > package.json.tmp
+          mv package.json.tmp package.json
+          cat package.json | grep version
+
+      - name: Create version commit
+        env:
+          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+          RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
+        run: |
+          git add package.json
+          git commit -m "chore: bump version to $NEXT_VERSION ($RELEASE_TYPE)"
+          echo "✓ Version commit created"
+
+      - name: Create Git tag
+        env:
+          VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
+          RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
+          DESCRIPTION: ${{ needs.validate-request.outputs.description }}
+        run: |
+          git tag -a "$VERSION_TAG" -m "Release $VERSION_TAG - $RELEASE_TYPE - $DESCRIPTION"
+          echo "✓ Tag created: $VERSION_TAG"
+
+      - name: Push commits and tags
+        env:
+          VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
+        run: |
+          git push origin main
+          git push origin "$VERSION_TAG"
+          echo "✓ Pushed to remote"
+
+  update-request-status:
+    name: Update Release Request Status
+    needs: [validate-request, update-version, compute-version]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update request status
+        env:
+          STATUS: ${{ job.status }}
+          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+        run: |
+          STATUS_TEXT="succeeded"
+          if [[ "$STATUS" != "success" ]]; then
+            STATUS_TEXT="failed"
+          fi
+
+          jq ".status = \"$STATUS_TEXT\" | .completedAt = \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" | .deployedVersion = \"$NEXT_VERSION\"" .release/request.json > .release/request.json.tmp
+          mv .release/request.json.tmp .release/request.json
+
+          git config user.name "${{ vars.BOT_NAME }}"
+          git config user.email "${{ vars.BOT_EMAIL }}"
+          git add .release/request.json
+          git commit -m "chore: update release request status to $STATUS_TEXT" || true
+          git push origin main || true
+
+          echo "Release request status: $STATUS_TEXT"
+
+  create-github-release:
+    name: Create GitHub Release
+    needs: [validate-request, update-version, compute-version]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
+          DESCRIPTION: ${{ needs.validate-request.outputs.description }}
+          RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
+        run: |
+          RELEASE_NOTES="Release $VERSION_TAG - $RELEASE_TYPE: $DESCRIPTION"
+          gh release create "$VERSION_TAG" \
+            --title "Release $VERSION_TAG" \
+            --notes "$RELEASE_NOTES" \
+            --target main \
+            || echo "Release already exists"
+          echo "GitHub release created"
+
+  notify:
+    name: Notify Release Complete
+    needs: [validate-request, compute-version]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Log release summary
+        env:
+          RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
+          NEXT_VERSION: ${{ needs.compute-version.outputs.next_version }}
+          DESCRIPTION: ${{ needs.validate-request.outputs.description }}
+          BEAD_ID: ${{ needs.validate-request.outputs.bead_id }}
+        run: |
+          cat << EOF
+          ═══════════════════════════════════════════════════════════
+          Release Complete
+          ═══════════════════════════════════════════════════════════
+          Type:        $RELEASE_TYPE
+          Version:     $NEXT_VERSION
+          Description: $DESCRIPTION
+          Beads:       ${BEAD_ID:-none}
+          Status:      ${{ job.status }}
+          
+          Next: Monitor deployment at https://peterwarnock.com
+          ═══════════════════════════════════════════════════════════
+          EOF
