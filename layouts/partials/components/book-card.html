@@ -1,0 +1,55 @@
+{{/* Book Card Component - Displays a single book recommendation */}}
+{{ $title := .title }}
+{{ $author := .author }}
+{{ $year := .year }}
+{{ $description := .description }}
+{{ $themes := .themes }}
+{{ $cover := .cover }}
+{{ $titleId := $title | lower | replaceRE "[^a-z0-9]+" "-" }}
+
+<div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+     role="article"
+     aria-labelledby="book-title-{{ $titleId }}">
+  
+  <div class="flex flex-col h-full p-6">
+    <!-- Book Cover (Optional) -->
+    {{ if $cover }}
+    <div class="mb-4">
+      <img src="{{ $cover }}" 
+           alt="Cover of {{ $title }}" 
+           class="w-full h-40 object-cover rounded"
+           loading="lazy">
+    </div>
+    {{ end }}
+
+    <!-- Book Title -->
+    <h3 id="book-title-{{ $titleId }}"
+        class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+      {{ $title }}
+    </h3>
+
+    <!-- Author & Year -->
+    <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+      <span class="font-medium">{{ $author }}</span>
+      {{ if $year }}<span class="text-xs ml-2">({{ $year }})</span>{{ end }}
+    </div>
+
+    <!-- Description -->
+    {{ if $description }}
+    <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+      {{ $description }}
+    </p>
+    {{ end }}
+
+    <!-- Themes/Tags -->
+    {{ if $themes }}
+    <div class="flex flex-wrap gap-2">
+      {{ range $themes }}
+      <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">
+        {{ . }}
+      </span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>

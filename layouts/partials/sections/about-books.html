@@ -1,0 +1,162 @@
+{{/* Books That Shaped Me Section - Feature Flagged (disabled by default) */}}
+{{ $flags := site.Data.featureFlags }}
+{{ if and (ne $flags nil) (ne $flags.flags nil) (ne $flags.flags.books_section nil) (eq $flags.flags.books_section.enabled true) }}
+
+<!-- Books That Shaped Me Section -->
+<section class="py-12">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-neutral-900 dark:text-neutral-50">
+      Books That Shaped Me
+    </h2>
+    
+    <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-8 leading-relaxed">
+      These books have fundamentally influenced how I think about engineering, leadership, and building organizations:
+    </p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Book 1: Thinking, Fast and Slow -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-thinking-fast-slow">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-thinking-fast-slow" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            Thinking, Fast and Slow
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Daniel Kahneman</span>
+            <span class="text-xs ml-2">(2011)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            Understanding cognitive biases and heuristics transformed how I approach system design and team decision-making. It explains why we make predictable mistakes and how to account for human fallibility in processes.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Psychology</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Decision-Making</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Systems Thinking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 2: The Phoenix Project -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-phoenix-project">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-phoenix-project" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            The Phoenix Project
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Gene Kim, Kevin Behr, George Spafford</span>
+            <span class="text-xs ml-2">(2013)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            A narrative about DevOps principles and continuous improvement. It showed me how traditional IT operations mindset fails at scale and why treating software delivery as a system—not a project—changes everything.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">DevOps</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Systems</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 3: Accelerate -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-accelerate">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-accelerate" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            Accelerate
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Nicole Forsgren, Jez Humble, Gene Kim</span>
+            <span class="text-xs ml-2">(2018)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            Data-driven insights into what actually makes high-performing engineering teams. This book replaced intuition with metrics, showing that culture, practices, and architecture are measurable—and that measurement drives improvement.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Metrics</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Culture</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Performance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 4: Poke the Box -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-poke-box">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-poke-box" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            Poke the Box
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Seth Godin</span>
+            <span class="text-xs ml-2">(2011)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            A manifesto on initiative and shipping. "All it takes is initiative. Even just a bit." This book grounded my philosophy that action beats perfectionism, and that starting is the only way to learn.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Leadership</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Shipping</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Initiative</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 5: Team of Rivals -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-team-rivals">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-team-rivals" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            Team of Rivals
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Doris Kearns Goodwin</span>
+            <span class="text-xs ml-2">(2005)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            Lincoln's cabinet of competing egos and perspectives taught me that diverse viewpoints—even contentious ones—make organizations stronger. It changed how I hire, build teams, and navigate organizational complexity.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Leadership</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Teams</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">History</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 6: The Mythical Man-Month -->
+      <div class="book-card bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+           role="article"
+           aria-labelledby="book-title-mythical-man-month">
+        <div class="flex flex-col h-full p-6">
+          <h3 id="book-title-mythical-man-month" class="text-lg font-semibold text-neutral-900 dark:text-neutral-50 mb-2">
+            The Mythical Man-Month
+          </h3>
+          <div class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+            <span class="font-medium">Fred Brooks</span>
+            <span class="text-xs ml-2">(1975)</span>
+          </div>
+          <p class="text-sm text-neutral-700 dark:text-neutral-300 mb-4 leading-relaxed flex-grow">
+            Timeless wisdom about software projects, team dynamics, and why "adding manpower to a late software project makes it later." Still the most important book on software engineering.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Software Engineering</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Teams</span>
+            <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full dark:bg-primary-content/20">Estimation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{ else }}
+  {{/* Feature flag is disabled - section not rendered */}}
+{{ end }}

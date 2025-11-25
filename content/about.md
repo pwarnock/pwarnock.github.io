@@ -51,3 +51,7 @@ teams adopt these tools without losing sight of reliability and maintainability.
 I'm excited about AI's potential, but I'm more interested in fundamentals: Can I
 still reason about systems? Can I write maintainable code? Am I building
 something that lasts?
+
+## Books That Shaped Me
+
+These books have fundamentally influenced how I think about engineering, leadership, and building organizations:

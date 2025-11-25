@@ -49,6 +49,17 @@ else
 fi
 
 echo ""
+echo -e "${YELLOW}Running analytics validation:${NC}"
+if .github/scripts/validate-analytics.sh; then
+    echo -e "${GREEN}✅ Analytics validation passed${NC}"
+else
+    echo -e "${RED}❌ Analytics validation failed${NC}"
+    echo -e "${RED}Please add data-event attributes to interactive elements${NC}"
+    echo -e "${YELLOW}Or use: git push --no-verify (not recommended)${NC}"
+    exit 1
+fi
+
+echo ""
 echo -e "${RED}⚠️  PUSH GUARDRAIL: This will deploy changes to production!${NC}"
 echo ""
 echo -e "${YELLOW}Please confirm you want to proceed:${NC}"
