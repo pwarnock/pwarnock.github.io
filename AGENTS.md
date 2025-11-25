@@ -32,6 +32,76 @@ initialization. If updates are available, you'll be notified to run
 **Manual Update Check**: Run `./.cody/config/scripts/upgrade-check.sh` to check
 for updates at any time.
 
+## Subagent Architecture
+
+This project uses **specialized subagents** to prevent context bloat and prevent freezing. Each agent has focused responsibility and isolated context.
+
+### Available Subagents
+
+Located in `.claude/agents/*.md`:
+
+| Agent | Purpose | Tools |
+|-------|---------|-------|
+| **cody-executor** | Execute :cody commands | Bash, Read, Glob |
+| **beads-manager** | Issue tracking (bd commands) | Bash, Read, Glob |
+| **context-librarian** | Compress context, manage state | Read, Grep, Write |
+
+### How It Works
+
+When you ask Amp to build a feature:
+
+1. **cody-executor** → Run `:cody version build`
+2. **context-librarian** → Compress output (5000 → 500 tokens)
+3. **beads-manager** → Create issues from backlog
+4. **Session state** → Save checkpoint at `.claude/session-state.json`
+
+Result: 5-10 seconds, no freezing, 70% token savings.
+
+### Custom Commands
+
+Use `.agents/commands/` for explicit workflows:
+
+- `/cody-build v1.2.0-feature` - Create version + backlog + issues
+- `/ready-work` - Show unblocked issues
+- `/cody-help` - Show Cody PBT commands
+- `/claim-issue bd-40` - Start work on issue
+- `/close-issue bd-40` - Mark issue complete
+
+### Four Context Engineering Strategies
+
+1. **Isolate Context** - Each agent has separate conversation thread
+2. **Compress Context** - Summarize at handoffs (5000 → 500 tokens)
+3. **Cache Context** - Reuse system prompts via prompt caching
+4. **Select Context** - Only pass needed information to each agent
+
+### Session Recovery
+
+`.claude/session-state.json` tracks:
+- Current task and progress
+- Agent checkpoints (resumable IDs)
+- Completed work
+- Next steps
+
+If interrupted, check session state and resume exactly where you left off.
+
+### Project-Specific Context
+
+This project uses **Cody PBT** (project-local, not global):
+- Framework: `.cody/` directory
+- Commands: `:cody` prefix
+- Versions: `.cody/project/build/versions/v[major.minor.patch]-[name]`
+- Issues: `bd` CLI (beads database)
+
+Agents should:
+1. Always use `--json` flag for CLI commands
+2. Check session state for resumable checkpoints
+3. Update session state after major operations
+4. Compress context before handing off
+
+### Full Architecture
+
+See `AMP_AGENT_STRATEGY.md` for complete implementation details.
+
 ## Documentation Rules
 
 **IMPORTANT**: Read `/docs/README.md` before creating or modifying
@@ -177,9 +247,25 @@ Then use `mcp__beads__*` functions instead of CLI commands.
 - ✅ Always use `--json` flag for programmatic use
 - ✅ Link discovered work with `discovered-from` dependencies
 - ✅ Check `bd ready` before asking "what should I work on?"
+- ✅ File Beads for ANY work >2 minutes (comprehensive coverage)
+- ✅ Run `bd doctor` weekly to maintain database health
+- ✅ Keep database <500 total issues (clean up regularly)
+- ✅ Archive closed issues monthly to preserve history
 - ❌ Do NOT create markdown TODO lists
 - ❌ Do NOT use external issue trackers
 - ❌ Do NOT duplicate tracking systems
+
+### Best Practices (Steve Yegge)
+
+See [docs/operations/BEADS_HYGIENE_PLAN.md](/docs/operations/BEADS_HYGIENE_PLAN.md) for comprehensive hygiene procedures.
+
+**Key Practices**:
+1. **Plan outside Beads first** - Use Cody for planning, then import as epics
+2. **File liberally** - Create Beads issue for anything >2 min of work
+3. **Keep small** - Run cleanup every few weeks (target <500 issues)
+4. **Review regularly** - `bd doctor` weekly, `bd cleanup` monthly
+5. **Document completions** - Close with reason/summary for traceability
+6. **Archive history** - All issues preserved in git JSONL (recoverable)
 
 For more details, see README.md and QUICKSTART.md.
 
