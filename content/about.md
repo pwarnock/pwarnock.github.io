@@ -10,26 +10,6 @@ description:
   leader—creating conditions for initiative and learning at scale.'
 ---
 
----
-
-## Core Expertise
-
-{{< expertise-cards >}}
-
----
-
-## Technology Stack
-
-{{< technology-stack >}}
-
----
-
-## What Drives Me
-
-{{< belief-cards >}}
-
----
-
 ## My Journey
 
 ### Self-Taught Developer (Early Career)
@@ -71,7 +51,3 @@ teams adopt these tools without losing sight of reliability and maintainability.
 I'm excited about AI's potential, but I'm more interested in fundamentals: Can I
 still reason about systems? Can I write maintainable code? Am I building
 something that lasts?
-
----
-
-{{< call-to-action >}}

@@ -23,8 +23,36 @@
 
 <!-- About Page Content -->
 <div class="container mx-auto px-4 py-12">
-  <div class="prose prose-lg max-w-none lg:prose-xl">
-    {{ .Content }}
+  <!-- Core Expertise Section -->
+  {{ partial "sections/about-expertise" . }}
+  
+  <!-- Technology Stack Section -->
+  {{ partial "sections/about-tech-stack" . }}
+  
+  <!-- What Drives Me Section -->
+  {{ partial "sections/about-beliefs" . }}
+  
+  <!-- Journey Section (narrative content without prose wrapper) -->
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      {{ $content := .Content }}
+      {{ $content = replaceRE `(?s)---\n\n## Core Expertise\n\n{{< expertise-cards >}}\n\n---\n\n## Technology Stack\n\n{{< technology-stack >}}\n\n---\n\n## What Drives Me\n\n{{< belief-cards >}}\n\n---\n\n## My Journey` "" $content }}
+      {{ $content = replaceRE `(?s){{< call-to-action >}}` "" $content }}
+      <div class="prose prose-lg max-w-none lg:prose-xl text-center">
+        {{ $content | safeHTML }}
+      </div>
+    </div>
   </div>
+  
+  <!-- Call to Action -->
+  {{ partial "components/hero" (dict
+     "context" .
+     "size" "medium"
+     "background" "gradient-secondary"
+     "title" "Let's Build Something Together"
+     "subtitle" "Whether you need technical leadership, architecture guidance, or team mentoring, I'm here to help you move fast with confidence."
+     "cta_text" "Get In Touch"
+     "cta_url" "/about/#contact"
+  ) }}
 </div>
 {{ end }}

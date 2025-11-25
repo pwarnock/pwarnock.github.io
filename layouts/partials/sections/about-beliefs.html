@@ -1,0 +1,63 @@
+<section class="mb-responsive-lg">
+  <h2 class="text-2xl lg:text-3xl font-medium text-base-content mb-responsive-md">What Drives Me</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-responsive-md" role="region" aria-label="Core beliefs">
+    {{ range site.Data.beliefs.belief }}
+    {{ $idSafeTitle := lower (replace .title " " "-") }}
+    <div class="belief-card card bg-base-100 card-md card-border shadow-xl hover:shadow-2xl transition-shadow duration-300" role="article" aria-labelledby="belief-{{ $idSafeTitle }}">
+      <div class="card-body p-6 flex flex-col h-full">
+        <!-- Title -->
+        <h3 id="belief-{{ $idSafeTitle }}" class="card-title text-lg mb-2 text-{{ .color }}">
+          {{ .title }}
+        </h3>
+
+        <!-- Description -->
+        <p class="text-sm text-base-content/80 leading-relaxed flex-grow">
+          {{ .description }}
+        </p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<style>
+@supports (opacity: 0) {
+  .belief-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+</style>
+
+<script>
+(function() {
+  if (!window.IntersectionObserver) return;
+  
+  const cards = document.querySelectorAll('.belief-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.style.setProperty('--animation-delay', `${index * 100}ms`);
+        entry.target.style.animation = `fadeInUp 0.6s ease-out ${index * 100}ms forwards`;
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => {
+    card.style.opacity = '0';
+    observer.observe(card);
+  });
+})();
+</script>
