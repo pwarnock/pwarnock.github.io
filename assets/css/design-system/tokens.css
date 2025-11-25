@@ -54,7 +54,23 @@
   --color-error: #ef4444;
   --color-info: #3b82f6;
 
+  /* DaisyUI semantic shorthands (document-only mapping to DaisyUI theme vars) */
+
+  /* Components should prefer var(--color-primary), var(--color-base-content), etc. */
+
   /* Typography Scale */
+
+  /* Semantic mapping:
+     xs:  Small metadata, legal text, badge-sm
+     sm:  Secondary text, badge-md, card metadata
+     base: Body copy baseline, button-md
+     lg:   Card body, large copy, button-lg
+     xl:   Card titles, subsection headings
+     2xl:  H3 / sub-hero headings
+     3xl:  H2 / section headings
+     4xl:  H1 (non-hero page titles)
+     5xl:  Hero H1 / primary page titles
+  */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;

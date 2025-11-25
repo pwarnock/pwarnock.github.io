@@ -85,7 +85,7 @@
   @apply items-start;
 }
 
-/* Hero Role Cards - Balanced Compact */
+/* Hero Role Cards - Typography aligned to tokens */
 .hero-card {
   @apply max-h-42;
 }
@@ -94,12 +94,13 @@
   @apply p-2.5 lg:p-3.5;
 }
 
+/* Map to token semantics: card title ≈ --font-size-xl, body ≈ --font-size-sm */
 .hero-card .card-title {
-  @apply text-sm lg:text-base;
+  @apply text-base lg:text-lg font-semibold;
 }
 
 .hero-card p {
-  @apply text-xs lg:text-xs leading-tight;
+  @apply text-sm lg:text-sm leading-snug;
 }
 
 /* Gradient Animation */

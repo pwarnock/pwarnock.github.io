@@ -10,6 +10,8 @@
     margin-bottom: var(--space-6);
     line-height: 1.2; /* Tighter for impact */
     font-weight: 300; /* Light weight for modern look */
+
+    /* Target: ~5xl (Hero) / ~4xl (Page) */
     font-size: clamp(2rem, 5vw + 1rem, 3.5rem); /* Fluid large heading */
     letter-spacing: -0.02em; /* Tight letter spacing */
     max-width: 70ch; /* Readable line length */
@@ -20,6 +22,8 @@
     margin-bottom: var(--space-5);
     line-height: 1.3;
     font-weight: 400; /* Medium weight */
+
+    /* Target: ~3xl */
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); /* Fluid larger heading */
     letter-spacing: -0.01em;
     max-width: 75ch;
@@ -30,6 +34,8 @@
     margin-bottom: var(--space-4);
     line-height: 1.4;
     font-weight: 500; /* Medium-semibold */
+
+    /* Target: ~2xl */
     font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem); /* Fluid medium heading */
     max-width: 80ch;
   }
@@ -37,6 +43,8 @@
   .prose p {
     margin-bottom: var(--space-6); /* Generous spacing */
     line-height: 1.7; /* Improved readability */
+
+    /* Target: ~base to lg */
     font-size: clamp(1rem, 1.5vw + 0.75rem, 1.125rem); /* Fluid body text */
     max-width: 70ch; /* Optimal reading length */
   }

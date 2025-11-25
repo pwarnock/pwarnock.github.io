@@ -80,10 +80,10 @@
 <div {{ range $key, $value := $attributes }}{{ $key }}="{{ $value }}" {{ end }}>
   <div class="card-system__content">
     {{- if $title }}
-    <div class="card-system__header">
-      <h3 class="card-system__title">
+    <div class="card-system-header">
+      <h3 class="card-system-title">
         {{- if $url }}
-        <a href="{{ $url }}" class="card-system__title-link">
+        <a href="{{ $url }}" class="card-system-title-link">
           {{ $title }}
         </a>
         {{- else }}
@@ -97,13 +97,13 @@
     {{- end }}
 
     {{- if $content }}
-    <div class="card-system__body">
-      <p class="card-system__text">{{ $content }}</p>
+    <div class="card-system-body">
+      <p class="card-system-text">{{ $content }}</p>
     </div>
     {{- end }}
 
     {{- if $tags }}
-    <div class="card-system__tags">
+    <div class="card-system-tags">
       {{- range $tags }}
         {{ partial "components/badge.html" (dict "text" . "variant" "secondary" "size" "sm") }}
       {{- end }}
@@ -111,11 +111,11 @@
     {{- end }}
 
     {{- if or $metadataItems $actionButtons }}
-    <div class="card-system__footer">
+    <div class="card-system-footer">
       {{- if $metadataItems }}
-      <div class="card-system__metadata">
+      <div class="card-system-metadata">
         {{- range $metadataItems }}
-        <div class="card-system__metadata-item">
+        <div class="card-system-metadata-item">
           {{ partial "components/icon.html" (dict "name" .icon "size" "sm") }}
           <span>{{ .text }}</span>
         </div>
@@ -124,7 +124,7 @@
       {{- end }}
 
       {{- if $actionButtons }}
-      <div class="card-system__actions">
+      <div class="card-system-actions">
         {{- range $actionButtons }}
           {{ partial "components/button.html" (dict
             "href" .href
@@ -132,7 +132,7 @@
             "variant" .variant
             "size" "sm"
             "icon" .icon
-            "class" "card-system__button"
+            "class" "card-system-button"
           ) }}
         {{- end }}
       </div>

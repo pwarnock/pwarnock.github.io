@@ -94,20 +94,19 @@
 }
 
 .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-base-content);
-  opacity: 0.1;
+  background-color: var(--color-base-200);
   color: var(--color-base-content);
 }
 
 /* Theme-specific ghost button enhancements - General */
 [data-theme='dark'] .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-base-content);
-  opacity: 0.2;
+  background-color: var(--color-base-200);
+  opacity: 1;
 }
 
 [data-theme='light'] .btn-system--ghost:hover:not(:disabled) {
-  background-color: var(--color-base-content);
-  opacity: 0.05;
+  background-color: var(--color-base-200);
+  opacity: 1;
 }
 
 /* Navigation-specific hover fixes - Higher specificity */

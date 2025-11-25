@@ -88,13 +88,42 @@ layouts/
 
 ### Typography Scale
 
-- **H1**: Page titles, main headings
-- **H2**: Section headings, card titles
-- **H3**: Subsection headings, card subtitles
-- **Body**: Main content text
-- **Small**: Metadata, dates, captions
+- **H1 (Hero)**: `text-5xl` desktop, primary page title in hero
+- **H1 (Non-hero)**: `text-3xl lg:text-4xl` (bold), main page title
+- **H2**: `text-3xl` (bold), section headings
+- **H3**: `text-2xl` (semibold), subsection headings
+- **Card Title**: `text-xl lg:text-2xl` (semibold)
+- **Body**: `text-base` (1rem) or `text-lg` (1.125rem)
+- **Small**: `text-sm` (0.875rem), metadata, secondary text
+- **Tiny**: `text-xs` (0.75rem), tags, legal text
 
-### Component Patterns
+### Color System Implementation
+
+#### Semantic Variables (DaisyUI + Tokens)
+
+We use a semantic color system that adapts to themes automatically. Avoid hardcoded hex values.
+
+- **Surfaces**:
+  - `bg-base-100`: Default card/page background
+  - `bg-base-200`: Secondary background, hover states (replaces opacity hacks)
+  - `bg-base-300`: Borders, dividers
+- **Text**:
+  - `text-base-content`: Primary text
+  - `text-base-content/80`: Secondary text (prefer opacity over gray hex)
+  - `text-base-content/60`: Muted/Metadata
+- **Brand**:
+  - `text-primary`: Links, accents, primary headings
+  - `text-secondary`: Subheadings, badges
+
+#### Hover States
+
+Use `base-200` for subtle interactive states to ensure visibility across all themes:
+
+```css
+.element:hover {
+  background-color: var(--color-base-200); /* Auto-swaps in light/dark/cyber */
+}
+```
 
 #### Content Cards
 
