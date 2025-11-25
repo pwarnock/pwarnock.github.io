@@ -171,3 +171,5 @@ buildFuture = true
 [pagination]
   pagerSize = 6
 
+
+version = "0.20.0"
