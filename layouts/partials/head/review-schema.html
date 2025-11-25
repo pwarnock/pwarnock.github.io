@@ -1,0 +1,53 @@
+{{/* Review/Rating structured data for tools and portfolio items */}}
+{{ if or .Params.review .Params.rating }}
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "{{ .Title }}",
+    "description": "{{ .Description | default .Summary }}",
+    "image": "{{ .Params.featured_image | default "/images/default-project-image.jpg" | absURL }}",
+    "url": "{{ .Permalink }}",
+    {{ if .Params.review }}
+    "review": {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ .Params.review.author | default "Peter Warnock" }}"
+      },
+      "datePublished": "{{ .Params.review.date | default .Date | dateFormat "2006-01-02T15:04:05Z07:00" }}",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ .Params.review.rating | default .Params.rating | default "5" }}",
+        "bestRating": "{{ .Params.review.best_rating | default "5" }}",
+        "worstRating": "{{ .Params.review.worst_rating | default "1" }}"
+      },
+      "reviewBody": "{{ .Params.review.content | default .Description | default .Summary }}"
+    },
+    {{ end }}
+    {{ if .Params.rating }}
+    "aggregateRating": {{ if .Params.rating.aggregate }}
+      {
+        "@type": "AggregateRating",
+        "ratingValue": "{{ .Params.rating.aggregate.value }}",
+        "reviewCount": "{{ .Params.rating.aggregate.count }}",
+        "bestRating": "{{ .Params.rating.aggregate.best | default "5" }}",
+        "worstRating": "{{ .Params.rating.aggregate.worst | default "1" }}"
+      }
+    {{ else }}
+      {
+        "@type": "Rating",
+        "ratingValue": "{{ .Params.rating.value | default "5" }}",
+        "bestRating": "{{ .Params.rating.best | default "5" }}",
+        "worstRating": "{{ .Params.rating.worst | default "1" }}"
+      }
+    {{ end }},
+    {{ end }}
+    {{ if .Params.review }}
+    "publisher": {
+      "@type": "Organization",
+      "name": "Peter Warnock Consulting",
+      "url": "{{ .Site.BaseURL }}"
+    }
+    {{ end }}
+  }
+{{ end }}
