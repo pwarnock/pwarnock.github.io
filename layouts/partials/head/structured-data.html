@@ -37,6 +37,69 @@
       }
     }
   {{ end }}
+{{ else if eq .Type "blog" }}
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title }}",
+    "description": "{{ .Description | default .Summary }}",
+    "image": "{{ .Params.featured_image | default "/images/default-blog-image.jpg" | absURL }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    "author": {
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "url": "{{ .Site.BaseURL }}about/",
+      "sameAs": [
+        "https://github.com/pwarnock",
+        "https://www.linkedin.com/in/peterwarnock",
+        "https://x.com/pwarnock"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    },
+    "url": "{{ .Permalink }}",
+    "wordCount": {{ .WordCount }},
+    "keywords": {{ if .Params.tags }}{{ delimit .Params.tags ", " | jsonify }}{{ else }}[]{{ end }},
+    "inLanguage": "{{ .Site.LanguageCode }}"
+  }
+{{ else if or (eq .Type "portfolio") (eq .Type "tools") }}
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "{{ .Title }}",
+    "description": "{{ .Description | default .Summary }}",
+    "image": "{{ .Params.featured_image | default "/images/default-project-image.jpg" | absURL }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    "author": {
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "url": "{{ .Site.BaseURL }}about/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Peter Warnock",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    },
+    "url": "{{ .Permalink }}",
+    "programmingLanguage": {{ if .Params.technologies }}{{ .Params.technologies | jsonify }}{{ else }}["JavaScript", "HTML", "CSS"]{{ end }},
+    "about": {{ if .Params.category }}{{ .Params.category | jsonify }}{{ else }}"Web Development"{{ end }},
+    "educationalLevel": "Intermediate to Advanced",
+    "learningResourceType": "Tutorial",
+    "teaches": {{ if .Params.skills }}{{ .Params.skills | jsonify }}{{ else }}["Web Development", "Frontend", "Backend"]{{ end }}
+  }
 {{ else }}
   {
     "@context": "https://schema.org",
