@@ -18,7 +18,46 @@
         "Fullstack Development",
         "AI Tools",
         "Technology Leadership"
-      ]
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Peter Warnock Consulting",
+        "url": "{{ .Site.BaseURL }}",
+        "description": "Cloud Engineering & DevOps Leadership Consulting",
+        "areaServed": "Worldwide",
+        "knowsLanguage": ["English"],
+        "serviceType": "Consulting",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Cloud Architecture",
+                "description": "Design and implement scalable cloud solutions"
+              }
+            },
+            {
+              "@type": "Offer", 
+              "itemOffered": {
+                "@type": "Service",
+                "name": "DevOps Transformation",
+                "description": "Modernize development workflows and CI/CD pipelines"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service", 
+                "name": "Technical Leadership",
+                "description": "Lead engineering teams and technology strategy"
+              }
+            }
+          ]
+        }
+      }
     }
   {{ else }}
     {
@@ -32,8 +71,20 @@
         "name": "Peter Warnock"
       },
       "publisher": {
-        "@type": "Person",
-        "name": "Peter Warnock"
+        "@type": "Organization",
+        "name": "Peter Warnock Consulting",
+        "url": "{{ .Site.BaseURL }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ .Site.BaseURL }}images/logo.png",
+          "width": 512,
+          "height": 512
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": ["English"]
+        }
       }
     }
   {{ end }}
