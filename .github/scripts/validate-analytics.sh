@@ -123,8 +123,9 @@ should_exclude() {
         return 0
     fi
     
-    # Exclude buttons with onclick handlers to JavaScript functions (not external)
-    if [[ "$line" =~ onclick=\"[a-zA-Z_][a-zA-Z0-9_]*\( ]] && \
+    # Exclude only buttons with onclick that call internal component functions
+    # Pattern: onclick="componentName()" but NOT onclick="alert(...)" or onclick="if (..."
+    if [[ "$line" =~ onclick=\"[a-zA-Z_][a-zA-Z0-9_]*\(\)\" ]] && \
        ! [[ "$line" =~ onclick=\"window.open ]]; then
         return 0
     fi
@@ -166,8 +167,8 @@ validate_file() {
         return 0
     fi
     
-    # Skip test files
-    if [[ "$file" =~ /test|/tests|\.test\.|\.spec\. ]]; then
+    # Skip test files (in test/ or tests/ directory, or .test. or .spec. in name)
+    if [[ "$file" =~ ^test/ ]] || [[ "$file" =~ ^tests/ ]] || [[ "$file" =~ /test/ ]] || [[ "$file" =~ /tests/ ]] || [[ "$file" =~ \.test\. ]] || [[ "$file" =~ \.spec\. ]]; then
         return 0
     fi
     
@@ -273,7 +274,7 @@ main() {
             [[ ! -f "$file" ]] && continue
             
             validate_file "$file" || exit_code=1
-        done <<< "$modified_files"
+        done < <(printf '%s\n' $modified_files)
     fi
     
     # Report results
