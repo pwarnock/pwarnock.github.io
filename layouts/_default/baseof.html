@@ -124,6 +124,9 @@
 
     {{ partial "footer.html" . }}
 
+    <!-- Cookie Consent Banner (Feature Flagged) -->
+    {{ partial "components/cookie-consent.html" . }}
+
     <!-- Analytics Tracking Module -->
     {{ if eq (getenv "HUGO_ENV") "production" }}
     <script src="{{ "/js/analytics.js" | relURL }}" defer></script>

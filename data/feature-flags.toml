@@ -28,3 +28,8 @@ rollout_percentage = 100
 enabled = false
 description = "Enable Discord social link"
 rollout_percentage = 0
+
+[flags.cookie_consent_banner]
+enabled = false
+description = "GDPR cookie consent banner"
+rollout_percentage = 0

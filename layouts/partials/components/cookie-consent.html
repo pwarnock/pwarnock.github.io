@@ -1,0 +1,175 @@
+{{/* Cookie Consent Banner - Feature Flagged (disabled by default) */}}
+{{ $flags := site.Data.featureFlags }}
+{{ if and (ne $flags nil) (ne $flags.flags nil) (ne $flags.flags.cookie_consent_banner nil) (eq $flags.flags.cookie_consent_banner.enabled true) }}
+
+<div id="cookie-consent-banner" 
+     class="fixed bottom-0 left-0 right-0 bg-neutral-900 text-neutral-100 shadow-2xl z-40"
+     role="region"
+     aria-label="Cookie consent banner"
+     aria-live="polite">
+  
+  <div class="container mx-auto max-w-6xl px-4 py-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      
+      <!-- Message -->
+      <div class="flex-1">
+        <h2 class="text-lg font-semibold mb-2">Cookie Consent</h2>
+        <p class="text-sm text-neutral-300 leading-relaxed">
+          We use cookies and tracking technologies to understand your usage patterns and improve your experience. Essential cookies are required for site functionality. You can customize your preferences or accept all.
+        </p>
+        <a href="/privacy/" class="text-xs text-blue-400 hover:text-blue-300 underline mt-2 inline-block">
+          Learn more about our privacy practices
+        </a>
+      </div>
+      
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto flex-shrink-0">
+        <button 
+          id="cookie-consent-reject"
+          class="btn btn-outline btn-sm text-neutral-100 border-neutral-600 hover:bg-neutral-800"
+          onclick="window.CookieConsent?.reject()">
+          Essential Only
+        </button>
+        <button 
+          id="cookie-consent-preferences"
+          class="btn btn-outline btn-sm text-neutral-100 border-neutral-600 hover:bg-neutral-800"
+          onclick="window.CookieConsent?.showPreferences()">
+          Preferences
+        </button>
+        <button 
+          id="cookie-consent-accept"
+          class="btn btn-primary btn-sm"
+          onclick="window.CookieConsent?.accept()">
+          Accept All
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Consent Management Script -->
+<script defer>
+(function() {
+  'use strict';
+
+  const CookieConsent = {
+    // Check if user has already made a choice
+    hasConsent: function() {
+      return localStorage.getItem('cookie-consent') !== null;
+    },
+
+    // Get stored consent preferences
+    getConsent: function() {
+      const stored = localStorage.getItem('cookie-consent');
+      return stored ? JSON.parse(stored) : null;
+    },
+
+    // Initialize - show banner if no prior consent
+    init: function() {
+      if (!this.hasConsent()) {
+        this.show();
+      } else {
+        this.hide();
+        this.applyConsent(this.getConsent());
+      }
+    },
+
+    // Show the banner
+    show: function() {
+      const banner = document.getElementById('cookie-consent-banner');
+      if (banner) {
+        banner.style.display = 'block';
+      }
+    },
+
+    // Hide the banner
+    hide: function() {
+      const banner = document.getElementById('cookie-consent-banner');
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    },
+
+    // Accept all cookies
+    accept: function() {
+      const consent = {
+        essential: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString()
+      };
+      this.storeConsent(consent);
+      this.applyConsent(consent);
+      this.hide();
+      this.trackConsentEvent('accept_all');
+    },
+
+    // Reject non-essential cookies
+    reject: function() {
+      const consent = {
+        essential: true,
+        analytics: false,
+        marketing: false,
+        timestamp: new Date().toISOString()
+      };
+      this.storeConsent(consent);
+      this.applyConsent(consent);
+      this.hide();
+      this.trackConsentEvent('reject_non_essential');
+    },
+
+    // Show preferences modal (placeholder)
+    showPreferences: function() {
+      console.log('[CookieConsent] Preferences dialog would open here');
+      this.trackConsentEvent('open_preferences');
+    },
+
+    // Store consent choice in localStorage
+    storeConsent: function(consent) {
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+    },
+
+    // Apply consent settings (enable/disable tracking)
+    applyConsent: function(consent) {
+      // Analytics consent
+      if (consent.analytics && typeof window.Analytics !== 'undefined') {
+        console.log('[CookieConsent] Analytics enabled');
+      } else {
+        console.log('[CookieConsent] Analytics disabled');
+      }
+
+      // GTM consent mode
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('consent', 'update', {
+          'analytics_storage': consent.analytics ? 'granted' : 'denied',
+          'ad_storage': consent.marketing ? 'granted' : 'denied'
+        });
+      }
+    },
+
+    // Track consent decision
+    trackConsentEvent: function(action) {
+      if (typeof window.Analytics !== 'undefined') {
+        window.Analytics.trackEvent('cookie_consent', {
+          action: action,
+          timestamp: new Date().toISOString()
+        });
+      }
+    }
+  };
+
+  // Expose to global scope
+  window.CookieConsent = CookieConsent;
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => CookieConsent.init());
+  } else {
+    CookieConsent.init();
+  }
+})();
+</script>
+
+{{ else }}
+  {{/* Feature flag is disabled - banner not rendered */}}
+{{ end }}
