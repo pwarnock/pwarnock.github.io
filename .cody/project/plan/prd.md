@@ -23,13 +23,13 @@ Rebuilding peterwarnock.com, a personal portfolio and blog site, with a stable,
 maintainable frontend using Hugo, Tailwind CSS v4, and Daisy UI to resolve style
 conflicts, improve component architecture, and enable easier maintenance and
 modifications. The project has evolved through multiple versions (v0.1.0 through
-v0.15.1) with comprehensive infrastructure overhaul including enterprise
+v0.20.0) with comprehensive infrastructure overhaul including enterprise
 testing, intelligent build systems, safe deployment workflows, and UI
 improvements. The site is now production-ready with comprehensive tooling,
 enhanced content management, automated validation pipelines, and improved user
-experience. The latest version v0.15.1 includes header navigation fixes,
-Alpine.js restoration, Hugo image processing configuration, and blog post
-display enhancements.
+experience. The latest version v0.20.0 includes dynamic version management,
+unified typography scale, color system improvements, and accessibility
+enhancements.
 
 ## Goals
 
@@ -60,6 +60,12 @@ display enhancements.
 - Configure Hugo image processing for optimized performance (COMPLETED)
 - Improve blog post display with better typography and layout (COMPLETED in
   v0.15.1)
+- Implement dynamic version management with git-based version display (COMPLETED
+  in v0.20.0)
+- Unify typography scale and color system across all themes (COMPLETED in
+  v0.20.0)
+- Enhance accessibility with improved contrast and semantic markup (COMPLETED in
+  v0.20.0)
 
 ## Target Users
 
@@ -98,7 +104,17 @@ visit the site to:
 - Alpine.js restoration for interactive UI components (COMPLETED in v0.15.1)
 - Hugo image processing configuration for performance optimization (COMPLETED in
   v0.15.1)
+- Dynamic version management with git-based version display (COMPLETED in
+  v0.20.0)
+- Unified typography scale and color system across themes (COMPLETED in v0.20.0)
+- Enhanced accessibility with improved contrast and semantic markup (COMPLETED
+  in v0.20.0)
 - Blog post display improvements with enhanced typography (COMPLETED in v0.15.1)
+- Dynamic version management with git-based version display (COMPLETED in
+  v0.20.0)
+- Unified typography scale and color system (COMPLETED in v0.20.0)
+- Enhanced accessibility with improved contrast and semantic markup (COMPLETED
+  in v0.20.0)
 
 ## Success Criteria
 

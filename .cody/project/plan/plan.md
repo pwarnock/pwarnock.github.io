@@ -21,15 +21,15 @@ This document defines how the product will be built and when.
 This plan outlines the implementation of rebuilding peterwarnock.com, a personal
 portfolio and blog site, with a stable, maintainable frontend using Hugo,
 Tailwind CSS v4, and Daisy UI. The project has progressed through versions
-v0.1.0 through v0.15.1, completing the spacing scale implementation, design
+v0.1.0 through v0.20.0, completing the spacing scale implementation, design
 system establishment, automated release processes, radar metadata structure,
-performance optimizations, major infrastructure overhaul, and UI improvements.
-The site is now production-ready with enterprise-grade testing infrastructure,
-intelligent build systems, safe deployment workflows, and enhanced user
-experience while preserving all existing functionality (blog, portfolio,
-newsletter, social links). The latest version v0.15.1 includes header navigation
-fixes, Alpine.js restoration, Hugo image processing configuration, and blog post
-display enhancements.
+performance optimizations, major infrastructure overhaul, hero carousel system,
+and UI improvements. The site is now production-ready with enterprise-grade
+testing infrastructure, intelligent build systems, safe deployment workflows,
+and enhanced user experience while preserving all existing functionality (blog,
+portfolio, newsletter, social links). The latest version v0.20.0 includes
+dynamic version management, unified typography scale, color system improvements,
+and accessibility enhancements.
 
 ## Architecture
 
@@ -81,6 +81,12 @@ comprehensive validation pipeline.
 - Restore Alpine.js functionality for interactive components (COMPLETED)
 - Configure Hugo image processing for performance optimization (COMPLETED)
 - Improve blog post display with enhanced typography and layout (COMPLETED)
+- Implement dynamic version management with git-based version display (COMPLETED
+  in v0.20.0)
+- Unify typography scale and color system across all themes (COMPLETED in
+  v0.20.0)
+- Enhance accessibility with improved contrast and semantic markup (COMPLETED in
+  v0.20.0)
 
 ## Tools & Services
 
@@ -143,6 +149,12 @@ comprehensive validation pipeline.
   v0.15.1)
 - Milestone 15: Hugo image processing configuration (COMPLETED in v0.15.1)
 - Milestone 16: Blog post display improvements (COMPLETED in v0.15.1)
+- Milestone 17: Hero carousel system implementation (COMPLETED in v0.16.0)
+- Milestone 18: Dynamic version management with git integration (COMPLETED in
+  v0.20.0)
+- Milestone 19: Unified typography scale and color system (COMPLETED in v0.20.0)
+- Milestone 20: Accessibility enhancements with improved contrast (COMPLETED in
+  v0.20.0)
 
 ## Environment Setup
 
