@@ -354,6 +354,51 @@ jobs:
             || echo "Release already exists"
           echo "✓ GitHub release created"
 
+  update-beads-status:
+    name: Update Beads Issue Status
+    needs: [validate-request, compute-version, create-tag]
+    runs-on: ubuntu-latest
+    if: needs.validate-request.outputs.bead_id != ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update Beads issue with release metadata
+        env:
+          BEAD_ID: ${{ needs.validate-request.outputs.bead_id }}
+          RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
+          VERSION: ${{ needs.compute-version.outputs.next_version }}
+          VERSION_TAG: ${{ needs.compute-version.outputs.version_tag }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+        run: |
+          # Store release metadata for Beads integration
+          cat > /tmp/release-metadata.txt << EOF
+          Release Type: $RELEASE_TYPE
+          Version: $VERSION
+          Git Tag: $VERSION_TAG
+          GitHub Actions Run: https://github.com/pwarnock/pwarnock.github.io/actions/runs/$WORKFLOW_RUN_ID
+          Deployed At: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          EOF
+
+          echo "📊 Release metadata:"
+          cat /tmp/release-metadata.txt
+
+          # Note: Direct bd CLI calls require local installation
+          # This is a placeholder for future integration when bd is available in CI
+          # For now, the release request JSON serves as the audit trail
+          echo ""
+          echo "ℹ️  Beads update would happen here:"
+          echo "   bd update $BEAD_ID --status released --notes '$(cat /tmp/release-metadata.txt)'"
+          echo ""
+          echo "✓ Release metadata prepared for Beads integration"
+
   notify:
     name: Notify Release Complete
     needs: [validate-request, compute-version]
