@@ -262,7 +262,7 @@ jobs:
 
   create-tag:
     name: Create Git Tag
-    needs: [deploy-site, compute-version]
+    needs: [validate-request, deploy-site, compute-version]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
