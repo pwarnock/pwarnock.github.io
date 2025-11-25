@@ -86,6 +86,7 @@
     "env:main": "git checkout main",
     "analyze:bundles": "bun run ./scripts/analyze-bundles.js",
     "bundle:protection": "bun run ./scripts/bundle-size-protection.js",
+    "load:test": "bun run ./scripts/load-testing-with-flag.js",
     "qa:auto": "bun run ./src/qaCli.ts auto",
     "qa:content": "bun run ./src/qaCli.ts content",
     "qa:full": "bun run ./src/qaCli.ts full",

@@ -30,11 +30,21 @@ description = "Enable Discord social link"
 rollout_percentage = 0
 
 [flags.cookie_consent_banner]
-enabled = false
+enabled = true
 description = "GDPR cookie consent banner"
-rollout_percentage = 0
+rollout_percentage = 100
 
 [flags.books_section]
 enabled = false
 description = "Books that shaped me section on About page"
+rollout_percentage = 0
+
+[flags.recruiter_cta]
+enabled = true
+description = "Recruiter CTA section on homepage for hiring opportunities"
+rollout_percentage = 100
+
+[flags.load_testing]
+enabled = false
+description = "Enable k6 load testing scenarios and CI integration"
 rollout_percentage = 0
