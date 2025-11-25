@@ -1,0 +1,66 @@
+<!-- Recruiter CTA Section -->
+<section 
+  class="bg-base-100 py-12 md:py-16 lg:py-20"
+  data-section="recruiter-cta"
+  aria-labelledby="recruiter-cta-heading">
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Content Card -->
+    <div class="max-w-2xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg p-8 md:p-12 border border-base-200">
+      
+      <!-- Heading -->
+      <h2 
+        id="recruiter-cta-heading"
+        class="text-3xl md:text-4xl font-bold text-primary mb-4">
+        Interested in Working Together?
+      </h2>
+      
+      <!-- Description -->
+      <p class="text-base-content/80 text-lg mb-8 leading-relaxed">
+        I'm actively open to opportunities in Cloud Engineering, DevOps Leadership, and Senior Backend roles. 
+        If you're looking for someone with 15+ years of experience in building scalable systems and leading high-performing teams, 
+        I'd love to hear from you.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <!-- Email CTA -->
+        {{ partial "components/button.html" (dict
+          "text" "Get In Touch"
+          "href" "mailto:hello@peterwarnock.com?subject=Opportunity%20at%20Your%20Company"
+          "class" "btn-primary"
+          "trackingEvent" "recruiter_cta_click"
+          "trackingLabel" "Get In Touch - Email"
+        ) }}
+        
+        <!-- LinkedIn CTA -->
+        {{ partial "components/button.html" (dict
+          "text" "View My LinkedIn"
+          "href" "https://linkedin.com/in/peterwarnock"
+          "class" "btn-outline"
+          "target" "_blank"
+          "trackingEvent" "recruiter_cta_click"
+          "trackingLabel" "View LinkedIn Profile"
+        ) }}
+      </div>
+      
+      <!-- Subtext -->
+      <p class="text-sm text-base-content/60 mt-8">
+        <strong>Preferred locations:</strong> San Francisco Bay Area (remote-friendly)
+        <br/>
+        <strong>Interested in:</strong> Cloud Engineering, DevOps Leadership, System Architecture, Backend Engineering
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Auto-track section view on load -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof window.Analytics !== 'undefined') {
+    window.Analytics.trackEvent('recruiter_cta_view', {
+      section: 'recruiter-cta'
+    });
+  }
+});
+</script>

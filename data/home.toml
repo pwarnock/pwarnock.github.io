@@ -9,6 +9,11 @@
   weight  = 2
 
 [[section]]
+  id      = "recruiter-cta"
+  enabled = true
+  weight  = 2.5
+
+[[section]]
   id      = "content-grid"
   enabled = true
   weight  = 3

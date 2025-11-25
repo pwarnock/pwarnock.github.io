@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-11-25T23:03:58.507Z",
+  "bundles": [
+    {
+      "path": "public/css/main.css",
+      "sizeKB": 304
+    },
+    {
+      "path": "public/js/remote-component.js",
+      "sizeKB": 2
+    },
+    {
+      "path": "public/js/analytics.js",
+      "sizeKB": 3
+    },
+    {
+      "path": "public/js/lit-3d-piano.js",
+      "sizeKB": 5
+    },
+    {
+      "path": "public/js/alpinejs.min.358d9afbb1ab5befa2f48061a30776e5bcd7707f410a606ba985f98bc3b1c034.js",
+      "sizeKB": 44
+    },
+    {
+      "path": "public/js/smart-iframe.js",
+      "sizeKB": 6
+    },
+    {
+      "path": "public/js/simple-greeting.js",
+      "sizeKB": 1
+    }
+  ]
+}
