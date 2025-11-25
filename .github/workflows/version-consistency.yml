@@ -1,0 +1,129 @@
+name: Version Consistency Gate
+# Enforces that package.json.version and release requests can only be modified
+# through the release controller, not through manual PRs
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+      - '.release/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check-version-consistency:
+    name: Enforce Version Control Policy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get PR author
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          AUTHOR=$(gh pr view ${{ github.event.pull_request.number }} --json author --jq '.author.login')
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+          echo "ℹ️  PR author: $AUTHOR"
+
+      - name: Check package.json version changes
+        id: version-check
+        run: |
+          # Get the base and head versions
+          BASE_VERSION=$(git show origin/main:package.json | jq -r '.version')
+          HEAD_VERSION=$(jq -r '.version' package.json)
+
+          echo "Base version:  $BASE_VERSION"
+          echo "Head version:  $HEAD_VERSION"
+
+          if [[ "$BASE_VERSION" != "$HEAD_VERSION" ]]; then
+            echo "version_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "version_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Verify version authority
+        if: steps.version-check.outputs.version_changed == 'true'
+        run: |
+          AUTHOR="${{ steps.pr.outputs.author }}"
+          BOT_NAME="${{ vars.BOT_NAME }}"
+
+          echo "Checking version change authority..."
+          echo "  Author:     $AUTHOR"
+          echo "  Bot:        $BOT_NAME"
+
+          # Check if author is the release bot
+          if [[ "$AUTHOR" != "$BOT_NAME" && "$AUTHOR" != "github-actions[bot]" ]]; then
+            echo "❌ Version changes must be made by the release controller"
+            echo ""
+            echo "ERROR: package.json.version was modified by $AUTHOR"
+            echo "Version bumps can only be performed by the release controller ($(vars.BOT_NAME))."
+            echo ""
+            echo "To release:"
+            echo "  1. Run: ./scripts/release.sh [rc|final|hotfix]"
+            echo "  2. This will create a .release/request.json"
+            echo "  3. The release controller will handle version bumps automatically"
+            exit 1
+          fi
+
+          echo "✓ Version change authorized (bot)"
+
+      - name: Check release request integrity
+        id: release-check
+        run: |
+          # Check if .release/request.json was modified
+          if git diff --name-only origin/main HEAD | grep -q "\.release/request\.json"; then
+            echo "release_request_modified=true" >> $GITHUB_OUTPUT
+          else
+            echo "release_request_modified=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate release request changes
+        if: steps.release-check.outputs.release_request_modified == 'true'
+        run: |
+          AUTHOR="${{ steps.pr.outputs.author }}"
+
+          echo "Checking .release/request.json integrity..."
+
+          # Get the diff of .release/request.json
+          DIFF=$(git diff origin/main HEAD -- .release/request.json || echo "")
+
+          # Check if status or completedAt were manually modified (should only be by CI)
+          if echo "$DIFF" | grep -E '^\+.*"status":|^\+.*"completedAt":'; then
+            if [[ "$AUTHOR" != "${{ vars.BOT_NAME }}" && "$AUTHOR" != "github-actions[bot]" ]]; then
+              echo "❌ .release/request.json status fields are managed by CI only"
+              echo ""
+              echo "ERROR: Manual modifications to release request status detected"
+              echo "The following fields are controlled by the release controller:"
+              echo "  - status (pending, succeeded, failed)"
+              echo "  - completedAt (timestamp)"
+              echo "  - deployedVersion (version deployed)"
+              echo ""
+              echo "These can only be modified by the release controller."
+              exit 1
+            fi
+          fi
+
+          echo "✓ Release request fields are valid"
+
+      - name: Report status
+        if: success()
+        run: |
+          echo "✅ Version consistency check passed"
+          echo ""
+          echo "Summary:"
+          echo "  Version changed:     ${{ steps.version-check.outputs.version_changed }}"
+          echo "  Release request mod: ${{ steps.release-check.outputs.release_request_modified }}"
+          echo "  All checks passed"
