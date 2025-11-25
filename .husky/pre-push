@@ -39,12 +39,12 @@ echo ""
 git diff --stat origin/main..HEAD 2>/dev/null || git diff --stat HEAD~5..HEAD 2>/dev/null || echo "Unable to show file changes"
 
 echo ""
-echo -e "${YELLOW}Build status check:${NC}"
-if hugo --quiet 2>/dev/null; then
-    echo -e "${GREEN}✅ Build test passed${NC}"
+echo -e "${YELLOW}Running path-based tests:${NC}"
+if bun run build:path; then
+    echo -e "${GREEN}✅ All tests passed${NC}"
 else
-    echo -e "${RED}❌ Build test failed${NC}"
-    echo -e "${RED}Please fix build issues before pushing${NC}"
+    echo -e "${RED}❌ Tests failed${NC}"
+    echo -e "${RED}Please fix test failures before pushing${NC}"
     exit 1
 fi
 
