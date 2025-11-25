@@ -15,13 +15,13 @@
       {{ $showPagination := true }}
 
       <section>
-        <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">Recent Posts</h2>
-        <div class="grid gap-responsive-md">
-          {{ range $items }}
-            {{ partial (printf "components/%s.html" $cardType) . }}
-          {{ end }}
-        </div>
-      </section>
+         <h2 class="text-2xl lg:text-3xl font-medium text-secondary mb-responsive-md">Recent Posts</h2>
+         <div class="grid grid-cols-1 lg:grid-cols-2 gap-responsive-md">
+           {{ range $items }}
+             {{ partial (printf "components/%s.html" $cardType) . }}
+           {{ end }}
+         </div>
+       </section>
 
       <!-- Pagination -->
       {{ if $showPagination }}
@@ -68,7 +68,7 @@
         {{ if ne .Type "blog" }}
         <h2 class="text-3xl font-bold text-secondary mb-responsive-md">{{ $sectionTitle }}</h2>
         {{ end }}
-        <div class="grid gap-responsive-md">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-responsive-md">
           {{ range $items }}
             {{ partial (printf "components/%s.html" $cardType) . }}
           {{ end }}
@@ -86,7 +86,7 @@
 
       {{ else }}
         <!-- Regular grid layout -->
-        <div class="grid gap-responsive-md">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-responsive-md">
           {{ range $items }}
             {{ partial (printf "components/%s.html" $cardType) . }}
           {{ end }}

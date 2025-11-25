@@ -25,6 +25,8 @@ NC='\033[0m' # No Color
 RELEASE_TYPE=""
 DESCRIPTION=""
 BEAD_ID=""
+DRY_RUN=false
+INTERACTIVE=false
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 CURRENT_SHA=$(git rev-parse HEAD)
 REQUESTED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -70,10 +72,11 @@ ${YELLOW}Types:${NC}
   hotfix  - Emergency patch from current production
 
 ${YELLOW}Options:${NC}
-  --description TEXT    Release summary (required for final/hotfix)
-  --bead ID            Link to beads issue (optional)
-  --dry-run            Show what would happen (don't commit/push)
-  --help               Show this message
+   --description TEXT    Release summary (required for final/hotfix)
+   --bead ID             Link to beads issue (optional)
+   --dry-run             Show what would happen (don't commit/push)
+   -i, --interactive     Prompt for all options interactively
+   --help                Show this message
 
 ${YELLOW}Examples:${NC}
   # Create RC for testing
@@ -275,6 +278,14 @@ main() {
   # Parse optional arguments
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      --dry-run)
+        DRY_RUN=true
+        shift
+        ;;
+      --interactive|-i)
+        INTERACTIVE=true
+        shift
+        ;;
       --description)
         DESCRIPTION="$2"
         shift 2
