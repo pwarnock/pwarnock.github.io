@@ -20,13 +20,13 @@
   overflow: hidden;
 
   /* Ensure buttons respect theme colors */
-  color: oklch(var(--bc));
-  background-color: oklch(var(--b1));
-  border-color: oklch(var(--b3));
+  color: var(--color-base-content);
+  background-color: var(--color-base-100);
+  border-color: var(--color-base-300);
 }
 
 .btn-system:focus-visible {
-  outline: 2px solid oklch(var(--p));
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: var(--radius-lg);
 }
@@ -57,59 +57,57 @@
 
 /* Button Variants */
 .btn-system--primary {
-  background-color: oklch(var(--p));
-  color: oklch(var(--pc));
-  border-color: oklch(var(--p));
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  border-color: var(--color-primary);
 }
 
 .btn-system--primary:hover:not(:disabled) {
-  background-color: oklch(var(--p) / 0.8);
-  border-color: oklch(var(--p) / 0.8);
+  filter: brightness(1.1);
 }
 
 .btn-system--secondary {
-  background-color: oklch(var(--s));
-  color: oklch(var(--sc));
-  border-color: oklch(var(--s));
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-content);
+  border-color: var(--color-secondary);
 }
 
 .btn-system--secondary:hover:not(:disabled) {
-  background-color: oklch(var(--s) / 0.8);
-  border-color: oklch(var(--s) / 0.8);
+  filter: brightness(1.1);
 }
 
 .btn-system--accent {
-  background-color: oklch(var(--a));
-  color: oklch(var(--ac));
-  border-color: oklch(var(--a));
+  background-color: var(--color-accent);
+  color: var(--color-accent-content);
+  border-color: var(--color-accent);
 }
 
 .btn-system--accent:hover:not(:disabled) {
-  background-color: oklch(var(--a) / 0.8);
-  border-color: oklch(var(--a) / 0.8);
+  filter: brightness(1.1);
 }
 
 .btn-system--ghost {
   background-color: transparent;
-  color: oklch(var(--bc));
+  color: var(--color-base-content);
   border-color: transparent;
   font-weight: var(--font-weight-medium);
 }
 
 .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(var(--bc) / 0.1);
-  color: oklch(var(--bc));
+  background-color: var(--color-base-content);
+  opacity: 0.1;
+  color: var(--color-base-content);
 }
 
 .btn-system--outline {
   background-color: transparent;
-  color: oklch(var(--p));
-  border-color: oklch(var(--p));
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .btn-system--outline:hover:not(:disabled) {
-  background-color: oklch(var(--p));
-  color: oklch(var(--pc));
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
 }
 
 /* Theme-aware button enhancements */
@@ -120,9 +118,11 @@
 
 /* Theme-specific ghost button enhancements */
 [data-theme='dark'] .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(var(--bc) / 0.2);
+  background-color: var(--color-base-content);
+  opacity: 0.2;
 }
 
 [data-theme='light'] .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(var(--bc) / 0.05);
+  background-color: var(--color-base-content);
+  opacity: 0.05;
 }

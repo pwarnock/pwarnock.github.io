@@ -9,7 +9,7 @@
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid oklch(var(--p));
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: var(--radius-md);
 }
@@ -48,7 +48,7 @@
   }
 
   .card-system {
-    border: 2px solid oklch(var(--bc));
+    border: 2px solid var(--color-base-content);
   }
 
   .badge-system {
@@ -85,8 +85,8 @@
   position: absolute;
   top: -40px;
   left: 6px;
-  background: oklch(var(--p));
-  color: oklch(var(--pc));
+  background: var(--color-primary);
+  color: var(--color-primary-content);
   padding: 8px;
   text-decoration: none;
   border-radius: var(--radius-md);
@@ -100,7 +100,7 @@
 
 /* Enhanced keyboard navigation */
 .focus-trap {
-  outline: 2px solid oklch(var(--p));
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -109,7 +109,7 @@
   .focus-ring:focus-visible,
   .btn-system:focus-visible,
   .card-system:focus-within {
-    outline: 3px solid oklch(var(--p));
+    outline: 3px solid var(--color-primary);
     outline-offset: 3px;
   }
 }

@@ -8,3 +8,45 @@
   themes: all;
 }
 @plugin "@tailwindcss/typography";
+
+/* Ensure DaisyUI theme colors are available for typography with higher specificity */
+@layer base {
+  .prose.prose {
+    /* Force DaisyUI theme color inheritance */
+    color: var(--color-base-content) !important;
+  }
+
+  .prose.prose h1,
+  .prose.prose h2,
+  .prose.prose h3,
+  .prose.prose h4,
+  .prose.prose h5,
+  .prose.prose h6 {
+    /* Ensure headings use theme colors */
+    color: var(--color-base-content) !important;
+  }
+
+  .prose.prose a {
+    /* Ensure links use primary theme color */
+    color: var(--color-primary) !important;
+  }
+
+  .prose.prose code {
+    /* Ensure code uses theme colors */
+    color: var(--color-base-content) !important;
+    background-color: var(--color-base-200) !important;
+  }
+
+  .prose.prose pre {
+    /* Ensure code blocks use theme colors */
+    color: var(--color-base-content) !important;
+    background-color: var(--color-base-200) !important;
+  }
+
+  .prose.prose blockquote {
+    /* Ensure blockquotes use theme colors */
+    color: var(--color-base-content) !important;
+    background-color: var(--color-base-200) !important;
+    border-left-color: var(--color-primary) !important;
+  }
+}

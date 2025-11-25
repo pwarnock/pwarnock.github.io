@@ -23,7 +23,13 @@
         "ignoreProperties": ["--*"]
       }
     ],
-    "no-invalid-position-at-import-rule": null
+    "no-invalid-position-at-import-rule": null,
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["oklch", "var", "color-mix", "clamp", "min", "max"]
+      }
+    ]
   },
   "ignoreFiles": ["static/css/main.css"]
 }

@@ -1,6 +1,7 @@
 # Style Guide
 
-Complete guide to architecture, design system, CSS, templates, content, development workflow, performance, and accessibility standards.
+Complete guide to architecture, design system, CSS, templates, content,
+development workflow, performance, and accessibility standards.
 
 ## Quick Links
 
@@ -8,7 +9,8 @@ Complete guide to architecture, design system, CSS, templates, content, developm
 - **Writing styles?** → [CSS Guidelines](#css-guidelines)
 - **Building templates?** → [Template Conventions](#template-conventions)
 - **Need design decisions?** → [Design System](#design-system)
-- **Accessibility questions?** → [Accessibility Standards](#accessibility-standards)
+- **Accessibility questions?** →
+  [Accessibility Standards](#accessibility-standards)
 
 ## Table of Contents
 
@@ -125,25 +127,28 @@ All single items use:
 
 #### DaisyUI Theme Variables (v0.10.2+)
 
-For theme-aware components that work across all DaisyUI themes (light, dark, dracula, etc.):
+For theme-aware components that work across all DaisyUI themes (light, dark,
+dracula, etc.):
 
 ```css
 /* Use DaisyUI theme variables instead of hardcoded colors */
 .btn-system--ghost {
   background-color: transparent;
-  color: oklch(var(--bc)); /* Base content - adapts to theme */
+  color: var(--color-base-content); /* Base content - adapts to theme */
   border-color: transparent;
 }
 
 .btn-system--ghost:hover:not(:disabled) {
-  background-color: oklch(var(--b2)); /* Base-200 - subtle theme-aware background */
-  color: oklch(var(--bc));
+  background-color: var(
+    --color-base-200
+  ); /* Base-200 - subtle theme-aware background */
+  color: var(--color-base-content);
 }
 
 /* Primary color that adapts to theme */
 .btn-system--outline {
-  color: oklch(var(--p)); /* Primary color */
-  border-color: oklch(var(--p));
+  color: var(--color-primary); /* Primary color */
+  border-color: var(--color-primary);
 }
 ```
 
@@ -156,7 +161,8 @@ For theme-aware components that work across all DaisyUI themes (light, dark, dra
 - `--s`: Secondary color
 - `--a`: Accent color
 
-**Why theme-aware?** Ensures proper contrast ratios across all themes, WCAG compliance, and consistent user experience.
+**Why theme-aware?** Ensures proper contrast ratios across all themes, WCAG
+compliance, and consistent user experience.
 
 ### Color & Alpha Standards
 
@@ -172,7 +178,8 @@ opacity: 0.1; /* YES - decimal */
 opacity: 10%; /* NO - use decimals in this project */
 ```
 
-**Why decimals?** Matches design token scale (0.05, 0.1, 0.2, etc.) and is more precise.
+**Why decimals?** Matches design token scale (0.05, 0.1, 0.2, etc.) and is more
+precise.
 
 #### Color Variables (define in `:root`)
 
@@ -223,23 +230,38 @@ Use DaisyUI semantic color classes for hero role cards:
 
 DO NOT use CSS variables for hero cards:
 
-- ❌ `style="color: oklch(var(--p))"`
-- ❌ `style="color: oklch(var(--s))"`
-- ❌ `style="color: oklch(var(--a))"`
+- ❌ `style="color: oklch(var(--p))"` (Incorrect DaisyUI v5 syntax)
+- ❌ `style="color: oklch(var(--s))"` (Incorrect DaisyUI v5 syntax)
+- ❌ `style="color: oklch(var(--a))"` (Incorrect DaisyUI v5 syntax)
+
+#### CORRECT DAISYUI V5.5 SYNTAX
+
+Use proper DaisyUI v5.5 variable names:
+
+- ✅ `style="color: var(--color-primary)"`
+- ✅ `style="color: var(--color-secondary)"`
+- ✅ `style="color: var(--color-accent)"`
+- ✅ `style="color: var(--color-base-content)"`
+- ✅ `style="background-color: var(--color-base-200)"`
 
 #### RATIONALE
 
-Production site demonstrates correct implementation using semantic DaisyUI classes that provide proper theme adaptation and color distinction. CSS variables should only be used for custom components where semantic classes don't exist.
+Production site demonstrates correct implementation using semantic DaisyUI
+classes that provide proper theme adaptation and color distinction. CSS
+variables should only be used for custom components where semantic classes don't
+exist.
 
 ### Hero Carousel System
 
 #### Component Architecture
 
-The hero carousel is a modular, data-driven component system that displays multiple hero variants in a rotating carousel format.
+The hero carousel is a modular, data-driven component system that displays
+multiple hero variants in a rotating carousel format.
 
 ##### Core Components
 
-- **`hero-carousel.html`** - Main carousel container with Alpine.js state management
+- **`hero-carousel.html`** - Main carousel container with Alpine.js state
+  management
 - **`carousel/slides.html`** - Dynamic slide rendering based on `hero.toml` data
 - **`carousel/navigation.html`** - Previous/next navigation controls
 - **`carousel/indicators.html`** - Slide position indicators
@@ -285,7 +307,11 @@ Carousel slides use glass morphism effects for visual depth:
 
 ```css
 .hero-slide {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -335,7 +361,8 @@ E2E tests verify:
 
 **CRITICAL PRINCIPLE**: Separation of Concerns
 
-- **`assets/css/main.css`**: Design system ONLY (colors, spacing tokens, custom components)
+- **`assets/css/main.css`**: Design system ONLY (colors, spacing tokens, custom
+  components)
   - Used for global styles, design tokens, component definitions
   - Processed by PostCSS → Tailwind → minified
 - **Templates**: Tailwind utility classes for layout and styling
@@ -403,7 +430,8 @@ E2E tests verify:
 
 #### Key Rules
 
-- Component names are descriptive: `.card-unified`, `.btn-system`, `.badge-system`
+- Component names are descriptive: `.card-unified`, `.btn-system`,
+  `.badge-system`
 - Elements describe parts of a component: `__header`, `__body`, `__footer`
 - Modifiers describe state or variation: `--primary`, `--disabled`, `--active`
 - Always use kebab-case for readability
@@ -441,7 +469,8 @@ For multi-column layouts with stacked content:
 - Use `gap-4` for consistent horizontal spacing between grid columns
 - Use `space-y-4` for consistent vertical spacing within stacked child elements
 - This ensures visual balance: horizontal gap matches vertical spacing
-- Example: 3-column grid with 2-column featured item + 1-column stacked right panel:
+- Example: 3-column grid with 2-column featured item + 1-column stacked right
+  panel:
   ```html
   <div class="grid gap-4 lg:grid-cols-3">
     <div class="lg:col-span-2"><!-- featured item --></div>
@@ -452,7 +481,8 @@ For multi-column layouts with stacked content:
   </div>
   ```
 - On mobile: single column, `gap-4` still applies vertically for consistency
-- Rationale: DaisyUI cards have internal padding; `gap-4` + `space-y-4` creates rhythm without excessive margin stacking
+- Rationale: DaisyUI cards have internal padding; `gap-4` + `space-y-4` creates
+  rhythm without excessive margin stacking
 
 ### Color Usage
 
@@ -488,7 +518,8 @@ bun run build
 bun run lint
 ```
 
-**CRITICAL**: CSS must be processed by PostCSS before deployment. Static CSS files must not contain `@import` or `@plugin` directives.
+**CRITICAL**: CSS must be processed by PostCSS before deployment. Static CSS
+files must not contain `@import` or `@plugin` directives.
 
 ### Linting Strategy: Source vs Generated
 
@@ -500,7 +531,8 @@ bun run lint
 #### Why ignore generated CSS?
 
 - `static/css/main.css` is generated by PostCSS + Tailwind from source
-- Tailwind-generated utilities intentionally use patterns that violate standard linting:
+- Tailwind-generated utilities intentionally use patterns that violate standard
+  linting:
   - Responsive variants with colons: `.max-lg:drawer-open`
   - Modern CSS features: `hue-degree-notation`, custom CSS syntax
   - Vendor prefixes and browser-specific features
@@ -536,9 +568,11 @@ bun run build     # Must succeed
 
 #### Exemption Rules
 
-- Only exempt if: (1) browser bug requires it, (2) design requirement, (3) temp workaround with issue created
+- Only exempt if: (1) browser bug requires it, (2) design requirement, (3) temp
+  workaround with issue created
 - Always include comment explaining why
-- Use narrowest possible scope (`disable-line` preferred over disabling entire block)
+- Use narrowest possible scope (`disable-line` preferred over disabling entire
+  block)
 - Create GitHub issue for temporary exemptions
 
 ### Design System Architecture
@@ -592,11 +626,14 @@ bun run build     # Must succeed
 
 #### Data-Driven Reusable Components
 
-For components that render different content types (blog, portfolio, tools, etc.):
+For components that render different content types (blog, portfolio, tools,
+etc.):
 
 1. **Design for flexibility**: Accept a `section` parameter to control behavior
-2. **Use conditional logic**: Branch on the section type to handle different data structures
-3. **Configure via parameters**: Pass colors, headings, CTA text, and URLs as dict parameters
+2. **Use conditional logic**: Branch on the section type to handle different
+   data structures
+3. **Configure via parameters**: Pass colors, headings, CTA text, and URLs as
+   dict parameters
 4. **Example pattern**:
 
    ```go-template
@@ -610,14 +647,17 @@ For components that render different content types (blog, portfolio, tools, etc.
    {{ end }}
    ```
 
-5. **Benefits**: Eliminates duplication, maintains consistent styling, simplifies maintenance
-6. **Reference**: See `hero-featured-item.html` for complete implementation handling blog/portfolio/tools sections with different metadata and layouts
+5. **Benefits**: Eliminates duplication, maintains consistent styling,
+   simplifies maintenance
+6. **Reference**: See `hero-featured-item.html` for complete implementation
+   handling blog/portfolio/tools sections with different metadata and layouts
 
 ### Code Block Rendering
 
 #### Custom Code Block Handler (render-codeblock.html)
 
-Code blocks are rendered through Hugo's custom markup override system with daisyUI styling:
+Code blocks are rendered through Hugo's custom markup override system with
+daisyUI styling:
 
 ```markdown
 # In your content, use standard fenced code blocks with language indicator
@@ -670,7 +710,9 @@ customHTML: false # Set to true for pages with custom HTML layouts
 
 #### Custom HTML Pages
 
-For pages that require custom HTML layouts (like the About page), set `customHTML: true` in front matter. This removes the prose wrapper and allows full HTML control:
+For pages that require custom HTML layouts (like the About page), set
+`customHTML: true` in front matter. This removes the prose wrapper and allows
+full HTML control:
 
 ```yaml
 ---
@@ -690,7 +732,8 @@ When `customHTML: true`:
 
 **CRITICAL: Use First-Person Voice (I/me)**
 
-All content must use first-person perspective. This is a personal portfolio and blog.
+All content must use first-person perspective. This is a personal portfolio and
+blog.
 
 #### ✅ Correct (First Person)
 
@@ -715,14 +758,17 @@ All content must use first-person perspective. This is a personal portfolio and 
 
 ### Content Organization
 
-- **Blog Posts**: `/content/blog/posts/[slug]/index.md` (Page Bundle - **Recommended**)
-- **Portfolio Items**: `/content/portfolio/[project-name]/index.md` (Page Bundle)
+- **Blog Posts**: `/content/blog/posts/[slug]/index.md` (Page Bundle -
+  **Recommended**)
+- **Portfolio Items**: `/content/portfolio/[project-name]/index.md` (Page
+  Bundle)
 - **Tool Pages**: `/content/tools/[tool-name]/index.md` (Page Bundle)
 - **Static Pages**: `/content/[page-name].md` (Single File)
 
 ### Page Bundles (Recommended for Blog Posts)
 
-Page bundles (directories with `index.md`) are the recommended approach for blog posts because they:
+Page bundles (directories with `index.md`) are the recommended approach for blog
+posts because they:
 
 - **Keep related assets together** (images, downloads, etc.)
 - **Simplify image paths** (just filename, no full path needed)
@@ -757,11 +803,13 @@ tags: ['tag1', 'tag2']
 
 **RECOMMENDED: Use Page Bundles for all blog posts**
 
-Page bundles (directories with `index.md`) are the recommended approach for better organization and asset management.
+Page bundles (directories with `index.md`) are the recommended approach for
+better organization and asset management.
 
 **CRITICAL: Summary field is REQUIRED for all blog posts**
 
-The `summary` field in frontmatter is mandatory for proper display on homepage and section pages. Without it, posts will appear incomplete or broken.
+The `summary` field in frontmatter is mandatory for proper display on homepage
+and section pages. Without it, posts will appear incomplete or broken.
 
 #### Required Blog Post Frontmatter (Page Bundle)
 
@@ -808,7 +856,8 @@ title: 'Your Blog Post Title'
 date: 2025-01-01T00:00:00Z
 draft: false
 description: 'SEO-friendly description for search engines'
-summary: 'Engaging 150-200 character summary that appears on homepage and blog listing
+summary:
+  'Engaging 150-200 character summary that appears on homepage and blog listing
   pages'
 tags: ['technology', 'web-development']
 categories: ['Development']
@@ -832,7 +881,8 @@ Continue with H2 and H3 headings as needed.
 #### Image Storage & Access
 
 - **Location**: Place images in `static/images/blog/` for global access
-- **Page Resources**: For page-specific images, create page bundles with `index.md` and image files
+- **Page Resources**: For page-specific images, create page bundles with
+  `index.md` and image files
 - **Frontmatter**: Always specify `image` parameter for homepage display
 
 #### Image Frontmatter (Required for Homepage)
@@ -859,7 +909,8 @@ title: 'Your Blog Post Title'
 date: 2025-01-01T00:00:00Z
 draft: false
 description: 'SEO description for search engines'
-summary: 'Engaging 150-200 character summary that appears on homepage and blog listing
+summary:
+  'Engaging 150-200 character summary that appears on homepage and blog listing
   pages'
 image: '/images/blog/your-featured-image.jpg' # Required for homepage
 tags: ['technology', 'web-development']
@@ -911,15 +962,18 @@ Blog posts are validated automatically:
 
 #### Validation Checks
 
-- ✅ **Required frontmatter fields**: title, date, draft, description, summary, image
-- ✅ **Image path existence**: Verifies frontmatter image exists in static directory
+- ✅ **Required frontmatter fields**: title, date, draft, description, summary,
+  image
+- ✅ **Image path existence**: Verifies frontmatter image exists in static
+  directory
 - ✅ **Summary length**: Recommends 150-200 characters for optimal display
 - ✅ **Heading structure**: Ensures no H1 in content (prevents duplicates)
 - ✅ **Content images**: Validates image paths in content
 
 #### Common Validation Errors
 
-- ❌ `Missing required fields: image` → Add `image: '/images/blog/your-image.jpg'` to frontmatter
+- ❌ `Missing required fields: image` → Add
+  `image: '/images/blog/your-image.jpg'` to frontmatter
 - ❌ `Frontmatter image not found` → Verify image exists in static directory
 - ⚠️ `Summary too short/long` → Adjust summary to 150-200 characters
 - ❌ `Contains H1 heading` → Remove `# Title` from content, use H2+ instead
@@ -928,7 +982,8 @@ Blog posts are validated automatically:
 
 **CRITICAL: No H1 Titles in Markdown Content**
 
-All content types (blog posts, portfolio items, tools, static pages) must **NOT** include H1 titles (`# Title`) in their markdown content.
+All content types (blog posts, portfolio items, tools, static pages) must
+**NOT** include H1 titles (`# Title`) in their markdown content.
 
 #### Why?
 
@@ -1015,7 +1070,8 @@ title: 'Page Title'
 
 ### Portfolio Frontmatter Structure
 
-Portfolio items require specific frontmatter fields for consistent display in the card grid and detail pages:
+Portfolio items require specific frontmatter fields for consistent display in
+the card grid and detail pages:
 
 ```yaml
 ---
@@ -1034,7 +1090,8 @@ category: 'Web App' # Required: Project category for badges
 
 #### Required Fields
 
-- `title`, `date`, `draft`, `description`, `client`, `technologies`, `completion_date`, `category`
+- `title`, `date`, `draft`, `description`, `client`, `technologies`,
+  `completion_date`, `category`
 
 #### Optional Fields
 
@@ -1045,7 +1102,8 @@ category: 'Web App' # Required: Project category for badges
 
 - Use `live_url` (not `demo_url`) to match template expectations
 - Technologies array should use consistent naming (e.g., 'React', 'Node.js')
-- Categories should be consistent across projects (e.g., 'Web App', 'Educational Game')
+- Categories should be consistent across projects (e.g., 'Web App', 'Educational
+  Game')
 
 ---
 
@@ -1112,18 +1170,28 @@ bun audit --audit-level=moderate  # Security scanning
 
 #### Theme Management
 
-- **Browser Dark Mode Prevention**: `color-scheme` meta tag set to "light" to prevent Brave iOS night mode from interfering with Alpine.js fonts and components
-- **Explicit Text Colors**: Alpine.js components use `text-base-content` classes to override browser dark mode defaults
-- **Theme Persistence**: User-selected themes are saved to localStorage and persist across sessions
-- **System Preference Handling**: Respects browser preferences for initial theme selection while preventing dark mode interference
+- **Browser Dark Mode Prevention**: `color-scheme` meta tag set to "light" to
+  prevent Brave iOS night mode from interfering with Alpine.js fonts and
+  components
+- **Explicit Text Colors**: Alpine.js components use `text-base-content` classes
+  to override browser dark mode defaults
+- **Theme Persistence**: User-selected themes are saved to localStorage and
+  persist across sessions
+- **System Preference Handling**: Respects browser preferences for initial theme
+  selection while preventing dark mode interference
 
 #### Site Configuration
 
-- **Logo Parameter**: Site logo is configurable via `params.logo` in `hugo.toml` (defaults to `/img/logo.png`)
-- **Favicon Parameters**: Favicon paths are configurable via `params.favicon_*` parameters in `hugo.toml`
-- **Profile Image**: Hero profile image is data-driven via `data/hero.toml` with fallback to `/img/profile.jpg`
-- **Hero Content**: All hero titles, descriptions, and colors are data-driven via `data/hero.toml`
-- **Data-Driven Assets**: All site assets and content should use Hugo parameters or data files for easy customization and maintenance
+- **Logo Parameter**: Site logo is configurable via `params.logo` in `hugo.toml`
+  (defaults to `/img/logo.png`)
+- **Favicon Parameters**: Favicon paths are configurable via `params.favicon_*`
+  parameters in `hugo.toml`
+- **Profile Image**: Hero profile image is data-driven via `data/hero.toml` with
+  fallback to `/img/profile.jpg`
+- **Hero Content**: All hero titles, descriptions, and colors are data-driven
+  via `data/hero.toml`
+- **Data-Driven Assets**: All site assets and content should use Hugo parameters
+  or data files for easy customization and maintenance
 
 #### Testing
 
@@ -1195,7 +1263,9 @@ bun audit --audit-level=moderate  # Security scanning
 
 ## See Also
 
-- [ACCESSIBILITY.md](./ACCESSIBILITY.md) - Detailed accessibility standards and WCAG compliance
+- [ACCESSIBILITY.md](./ACCESSIBILITY.md) - Detailed accessibility standards and
+  WCAG compliance
 - [TESTING.md](./TESTING.md) - Testing infrastructure and strategies
 - [BUN_MIGRATION_GUIDE.md](./BUN_MIGRATION_GUIDE.md) - Bun package manager usage
-- [VERSIONING_GUIDELINES.md](./VERSIONING_GUIDELINES.md) - Semantic versioning and auto-bumping
+- [VERSIONING_GUIDELINES.md](./VERSIONING_GUIDELINES.md) - Semantic versioning
+  and auto-bumping
