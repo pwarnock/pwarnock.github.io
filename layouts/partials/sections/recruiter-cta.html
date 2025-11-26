@@ -12,43 +12,41 @@
       <h2 
         id="recruiter-cta-heading"
         class="text-3xl md:text-4xl font-bold text-primary mb-4">
-        Interested in Working Together?
+        {{ .Site.Data.recruiter.cta.heading | default "Interested in Working Together?" }}
       </h2>
       
       <!-- Description -->
       <p class="text-base-content/80 text-lg mb-8 leading-relaxed">
-        I'm actively open to opportunities in Cloud Engineering, DevOps Leadership, and Senior Backend roles. 
-        If you're looking for someone with 15+ years of experience in building scalable systems and leading high-performing teams, 
-        I'd love to hear from you.
+        {{ .Site.Data.recruiter.cta.description | default "I'm actively open to opportunities where I can help build scalable systems and lead high-performing teams. If you're looking for someone who combines technical depth with leadership experience, I'd love to connect." }}
       </p>
       
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4">
-        <!-- Email CTA -->
+<!-- Email CTA -->
         {{ partial "components/button.html" (dict
-          "text" "Get In Touch"
-          "href" "mailto:hello@peterwarnock.com?subject=Opportunity%20at%20Your%20Company"
+          "text" (.Site.Data.recruiter.cta.email_text | default "Get In Touch")
+          "href" (printf "mailto:%s?subject=%s" (.Site.Data.recruiter.cta.email | default "hello@peterwarnock.com") "?subject=%s" (.Site.Data.recruiter.cta.email_subject | default "Opportunity at Your Company" | urlquery))
           "class" "btn-primary"
           "trackingEvent" "recruiter_cta_click"
-          "trackingLabel" "Get In Touch - Email"
+          "trackingLabel" (printf "%s - Email" (.Site.Data.recruiter.cta.email_text | default "Get In Touch"))
         ) }}
         
         <!-- LinkedIn CTA -->
         {{ partial "components/button.html" (dict
-          "text" "View My LinkedIn"
-          "href" "https://linkedin.com/in/peterwarnock"
+          "text" (.Site.Data.recruiter.cta.linkedin_text | default "View My LinkedIn")
+          "href" .Site.Data.recruiter.cta.linkedin_url
           "class" "btn-outline"
           "target" "_blank"
           "trackingEvent" "recruiter_cta_click"
-          "trackingLabel" "View LinkedIn Profile"
+          "trackingLabel" (printf "%s - LinkedIn" (.Site.Data.recruiter.cta.linkedin_text | default "View My LinkedIn"))
         ) }}
       </div>
       
       <!-- Subtext -->
       <p class="text-sm text-base-content/60 mt-8">
-        <strong>Preferred locations:</strong> San Francisco Bay Area (remote-friendly)
+        <strong>Preferred locations:</strong> {{ .Site.Data.recruiter.cta.locations | default "Greater Irvine Area & SoCal (remote-friendly)" }}
         <br/>
-        <strong>Interested in:</strong> Cloud Engineering, DevOps Leadership, System Architecture, Backend Engineering
+        <strong>Interested in:</strong> {{ .Site.Data.recruiter.cta.interests | default "Cloud Engineering, DevOps Leadership, System Architecture, Backend Engineering" }}
       </p>
     </div>
   </div>

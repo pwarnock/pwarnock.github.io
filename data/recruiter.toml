@@ -1,0 +1,19 @@
+# Recruiter CTA Configuration
+
+[cta]
+heading = "Interested in Working Together?"
+description = "I'm actively open to opportunities where I can help build scalable systems and lead high-performing teams. If you're looking for someone who combines technical depth with leadership experience, I'd love to connect."
+
+email_text = "Get In Touch"
+email_subject = "Opportunity at Your Company"
+
+linkedin_text = "View My LinkedIn"
+linkedin_url = "https://linkedin.com/in/peterwarnock"
+
+[locations]
+primary = "Greater Irvine Area & SoCal (remote-friendly)"
+secondary = "San Francisco Bay Area (open to relocation)"
+
+[interests]
+primary = "Cloud Engineering, DevOps Leadership, System Architecture, Backend Engineering"
+secondary = "Technical Leadership, Team Building, Scalable Systems, High-Performance Teams"
