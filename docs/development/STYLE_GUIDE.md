@@ -101,7 +101,8 @@ layouts/
 
 #### Semantic Variables (DaisyUI + Tokens)
 
-We use a semantic color system that adapts to themes automatically. Avoid hardcoded hex values.
+We use a semantic color system that adapts to themes automatically. Avoid
+hardcoded hex values.
 
 - **Surfaces**:
   - `bg-base-100`: Default card/page background
@@ -117,7 +118,8 @@ We use a semantic color system that adapts to themes automatically. Avoid hardco
 
 #### Hover States
 
-Use `base-200` for subtle interactive states to ensure visibility across all themes:
+Use `base-200` for subtle interactive states to ensure visibility across all
+themes:
 
 ```css
 .element:hover {
@@ -202,6 +204,33 @@ compatibility:
 
 .prose li::marker {
   color: var(--color-base-content) !important;
+}
+```
+
+#### Prose Layout & Centering
+
+To ensure consistent centering and readability for long-form content (blog posts, etc.), we use a specific layout strategy in `assets/css/content/prose.css`:
+
+1.  **Container Centering**: The `.prose` container itself is centered with `margin-left: auto`, `margin-right: auto`, and constrained to `max-width: 65ch` (approx. 65 characters) for optimal reading comfort.
+2.  **Child Element Centering**: Direct children of `.prose` (like `p`, `h1`-`h6`, `ul`, `ol`, `blockquote`) *also* have these properties explicitly set. This ensures that even if the container context changes or if a child element behaves unexpectedly (like breaking out of a container), the text content remains strictly centered and readable.
+
+```css
+/* Container */
+.prose {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Children (explicit centering) */
+.prose p,
+.prose h1,
+.prose h2,
+.prose ul,
+/* ... etc */ {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 ```
 
