@@ -27,13 +27,9 @@
         <div class="mb-3">
           <a href="{{ $item.Permalink }}" class="block hover:opacity-90 transition-opacity">
             {{ with $item.Resources.GetMatch (strings.TrimPrefix "/" $image) }}
-              {{ with .Fit "600x300" }}
-                <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
-              {{ else }}
-                <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
-              {{ end }}
+              <img src="{{ .RelPermalink }}" alt="{{ $item.Title }}" class="max-w-full h-auto rounded-lg shadow-sm" loading="lazy" />
             {{ else }}
-              <img src="{{ $image | relURL }}" alt="{{ $item.Title }}" class="w-full h-auto object-cover rounded-lg shadow-sm" loading="lazy" />
+              <img src="{{ $image | relURL }}" alt="{{ $item.Title }}" class="max-w-full h-auto rounded-lg shadow-sm" loading="lazy" />
             {{ end }}
           </a>
         </div>

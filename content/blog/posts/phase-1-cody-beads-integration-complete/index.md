@@ -13,6 +13,7 @@ summary:
   materials ready for deployment.'
 tags:
   ['cody-framework', 'beads', 'project-management', 'documentation', 'roadmap']
+thumbnail: cody-beads-integration-phase-1-complete.png
 ---
 
 ## Phase 1 Complete: Cody-Beads Integration & Strategic Roadmap
