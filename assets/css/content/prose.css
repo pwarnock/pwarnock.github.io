@@ -14,7 +14,7 @@
     /* Target: ~5xl (Hero) / ~4xl (Page) */
     font-size: clamp(2rem, 5vw + 1rem, 3.5rem); /* Fluid large heading */
     letter-spacing: -0.02em; /* Tight letter spacing */
-    max-width: 70ch; /* Readable line length */
+    max-width: 65ch; /* Readable line length */
   }
 
   .prose h2 {
@@ -26,7 +26,7 @@
     /* Target: ~3xl */
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); /* Fluid larger heading */
     letter-spacing: -0.01em;
-    max-width: 75ch;
+    max-width: 65ch;
   }
 
   .prose h3 {
@@ -37,7 +37,7 @@
 
     /* Target: ~2xl */
     font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem); /* Fluid medium heading */
-    max-width: 80ch;
+    max-width: 65ch;
   }
 
   .prose p {
@@ -46,7 +46,7 @@
 
     /* Target: ~base to lg */
     font-size: clamp(1rem, 1.5vw + 0.75rem, 1.125rem); /* Fluid body text */
-    max-width: 70ch; /* Optimal reading length */
+    max-width: 65ch; /* Optimal reading length */
   }
 
   .prose strong,
@@ -145,21 +145,7 @@
   }
 }
 
-/* Full-width blog post content fix */
-/* stylelint-disable-next-line selector-class-pattern */
-#main-content > article > div.prose.prose-lg.lg\:prose-xl.max-w-none {
-  width: 100%;
-  max-width: none;
-}
 
-/* Override container constraints for blog posts */
-/* stylelint-disable-next-line selector-class-pattern */
-#main-content.container > article.max-w-none > div.prose.prose-lg.lg\:prose-xl.max-w-none {
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-}
 
 /* Mobile-specific enhancements */
 @media (max-width: 768px) {
