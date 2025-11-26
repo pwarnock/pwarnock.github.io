@@ -7,28 +7,29 @@ sources before creating new docs.
 
 **Problem**: I need to... → **See**:
 
-| Problem                            | Document                                                                                           | Keywords                                                |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| Get started with local development | [tutorials/GETTING_STARTED.md](./tutorials/GETTING_STARTED.md)                                     | setup, install, dev server, prerequisites               |
-| Add or edit a blog post            | [tutorials/ADDING_BLOG_POST.md](./tutorials/ADDING_BLOG_POST.md)                                   | blog, content, frontmatter, markdown                    |
-| Understand the build system        | [development/BUILD_SYSTEM.md](./development/BUILD_SYSTEM.md)                                       | build, compilation, css, optimization                   |
-| Find & use build/deploy scripts    | [development/SCRIPTS_ORGANIZATION.md](./development/SCRIPTS_ORGANIZATION.md)                       | scripts, automation, reference                          |
-| Understand the release process     | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                                            | release, rc, tag, version, deploy                       |
-| Design advanced release systems    | [development/FRONTIER_MODEL_REASONING_PROMPT.md](./development/FRONTIER_MODEL_REASONING_PROMPT.md) | frontier, reasoning, systems-thinking, agent-workflow   |
-| Use Git upstream remote            | [UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)                                | upstream, git, push, fetch, remotes                     |
-| Deploy infrastructure changes      | [MANUAL_PROMOTION_WORKFLOW.md](./operations/MANUAL_PROMOTION_WORKFLOW.md)                          | infra, config, build, staging, production               |
-| Configure environments & access    | [ENVIRONMENT_CONFIGURATION.md](./operations/ENVIRONMENT_CONFIGURATION.md)                          | env, permissions, branch protection, secrets            |
-| Validate changes before deploy     | [CHANGE_VALIDATION.md](./operations/CHANGE_VALIDATION.md)                                          | validation, testing, environment-specific, pre-push     |
-| Implement analytics for features   | [ANALYTICS_IMPLEMENTATION_GUIDE.md](./development/ANALYTICS_IMPLEMENTATION_GUIDE.md)               | analytics, tracking, events, data-layer, implementation |
-| Rollback a deployment              | [operations/ROLLBACK_PROCEDURES.md](./operations/ROLLBACK_PROCEDURES.md)                           | rollback, incident, emergency, revert                   |
-| Deploy to production               | [DEPLOYMENT.md](./operations/DEPLOYMENT.md)                                                        | deploy, ci/cd, github actions                           |
-| Configure environment variables    | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                                        | env, staging, production, config                        |
-| Set up version bumping             | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md)                                 | version, semver, auto-bump, pre-commit                  |
-| Work with styles/CSS               | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md)                                                     | css, tailwind, daisyui, styling                         |
-| Build accessible components        | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md)                                                 | wcag, a11y, accessibility, aria                         |
-| Write/run tests                    | [development/TESTING_ARCHITECTURE.md](./development/TESTING_ARCHITECTURE.md)                       | test, bdd, e2e, unit, playwright, vitest                |
-| Test deployments                   | [operations/DEPLOYMENT_TESTING.md](./operations/DEPLOYMENT_TESTING.md)                             | validate, deployment test, integration                  |
-| Migrate to Bun                     | [BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)                                     | bun, npm, package manager                               |
+| Problem                            | Document                                                                                           | Keywords                                                            |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Get started with local development | [tutorials/GETTING_STARTED.md](./tutorials/GETTING_STARTED.md)                                     | setup, install, dev server, prerequisites                           |
+| Add or edit a blog post            | [tutorials/ADDING_BLOG_POST.md](./tutorials/ADDING_BLOG_POST.md)                                   | blog, content, frontmatter, markdown                                |
+| Understand the build system        | [development/BUILD_SYSTEM.md](./development/BUILD_SYSTEM.md)                                       | build, compilation, css, optimization                               |
+| Find & use build/deploy scripts    | [development/SCRIPTS_ORGANIZATION.md](./development/SCRIPTS_ORGANIZATION.md)                       | scripts, automation, reference                                      |
+| Understand the release process     | [RELEASE_WORKFLOW.md](./operations/RELEASE_WORKFLOW.md)                                            | release, rc, tag, version, deploy                                   |
+| Design advanced release systems    | [development/FRONTIER_MODEL_REASONING_PROMPT.md](./development/FRONTIER_MODEL_REASONING_PROMPT.md) | frontier, reasoning, systems-thinking, agent-workflow               |
+| Use Git upstream remote            | [UPSTREAM_REMOTES_GUIDE.md](./operations/UPSTREAM_REMOTES_GUIDE.md)                                | upstream, git, push, fetch, remotes                                 |
+| Deploy infrastructure changes      | [MANUAL_PROMOTION_WORKFLOW.md](./operations/MANUAL_PROMOTION_WORKFLOW.md)                          | infra, config, build, staging, production                           |
+| Configure environments & access    | [ENVIRONMENT_CONFIGURATION.md](./operations/ENVIRONMENT_CONFIGURATION.md)                          | env, permissions, branch protection, secrets                        |
+| Validate changes before deploy     | [CHANGE_VALIDATION.md](./operations/CHANGE_VALIDATION.md)                                          | validation, testing, environment-specific, pre-push                 |
+| Implement analytics for features   | [ANALYTICS_IMPLEMENTATION_GUIDE.md](./development/ANALYTICS_IMPLEMENTATION_GUIDE.md)               | analytics, tracking, events, data-layer, implementation             |
+| Add structured data for SEO        | [STRUCTURED_DATA_GUIDE.md](./development/STRUCTURED_DATA_GUIDE.md)                                 | schema.org, structured data, seo, rich snippets, thought leadership |
+| Rollback a deployment              | [operations/ROLLBACK_PROCEDURES.md](./operations/ROLLBACK_PROCEDURES.md)                           | rollback, incident, emergency, revert                               |
+| Deploy to production               | [DEPLOYMENT.md](./operations/DEPLOYMENT.md)                                                        | deploy, ci/cd, github actions                                       |
+| Configure environment variables    | [ENVIRONMENT_CONFIG.md](./operations/ENVIRONMENT_CONFIG.md)                                        | env, staging, production, config                                    |
+| Set up version bumping             | [VERSIONING_GUIDELINES.md](./development/VERSIONING_GUIDELINES.md)                                 | version, semver, auto-bump, pre-commit                              |
+| Work with styles/CSS               | [STYLE_GUIDE.md](./development/STYLE_GUIDE.md)                                                     | css, tailwind, daisyui, styling                                     |
+| Build accessible components        | [ACCESSIBILITY.md](./development/ACCESSIBILITY.md)                                                 | wcag, a11y, accessibility, aria                                     |
+| Write/run tests                    | [development/TESTING_ARCHITECTURE.md](./development/TESTING_ARCHITECTURE.md)                       | test, bdd, e2e, unit, playwright, vitest                            |
+| Test deployments                   | [operations/DEPLOYMENT_TESTING.md](./operations/DEPLOYMENT_TESTING.md)                             | validate, deployment test, integration                              |
+| Migrate to Bun                     | [BUN_MIGRATION_GUIDE.md](./development/BUN_MIGRATION_GUIDE.md)                                     | bun, npm, package manager                                           |
 
 ## By Topic
 
@@ -134,6 +135,14 @@ creation.
   - Covers: Event patterns, component integration, testing templates, privacy
     compliance, performance optimization, debugging guide
   - Status: Complete, comprehensive analytics implementation reference
+  - Last updated: 2025-11-25
+
+- **[development/STRUCTURED_DATA_GUIDE.md](./development/STRUCTURED_DATA_GUIDE.md)** -
+  Structured data implementation for SEO and thought leadership signals
+  - When: Adding schema.org markup, implementing rich snippets
+  - Covers: Article, TechArticle, Organization, BreadcrumbList, FAQ, HowTo,
+    Event, Review/Rating schemas with usage examples and best practices
+  - Status: Complete, comprehensive structured data reference
   - Last updated: 2025-11-25
 
 ### 🔧 Development Workflow
