@@ -32,7 +32,7 @@ try {
 const data = {
   version,
   hash,
-  buildDate: new Date().toISOString()
+  buildDate: new Date().toISOString(),
 };
 
 fs.writeFileSync(versionFile, JSON.stringify(data, null, 2));

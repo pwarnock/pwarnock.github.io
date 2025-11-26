@@ -51,5 +51,4 @@ milliseconds.
 - [Documentation →](https://gohugo.io/documentation/)
 - [GitHub Repository →](https://github.com/gohugoio/hugo)
 
-
 **Website**: [gohugo.io](https://gohugo.io)

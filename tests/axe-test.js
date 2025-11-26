@@ -7,7 +7,7 @@ module.exports = base.extend({
     await use(page);
   },
   async axe({ page }, use) {
-    await use((options) => checkA11y(page, options));
+    await use(options => checkA11y(page, options));
   },
 });
 

@@ -25,7 +25,9 @@ class ReleaseNotesGenerator {
 
   getCurrentVersion() {
     try {
-      const packageJson = JSON.parse(fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8'));
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8')
+      );
       return packageJson.version;
     } catch (error) {
       console.warn('⚠️  Could not read version from package.json, using default');
@@ -35,7 +37,7 @@ class ReleaseNotesGenerator {
 
   parseBeadsIssues() {
     console.log('🔍 Parsing Beads issues...');
-    
+
     if (!fs.existsSync(this.beadsFile)) {
       console.log('ℹ️  No Beads issues file found');
       return [];
@@ -43,7 +45,7 @@ class ReleaseNotesGenerator {
 
     const content = fs.readFileSync(this.beadsFile, 'utf8');
     const lines = content.trim().split('\n');
-    
+
     const issues = [];
     for (const line of lines) {
       if (line.trim()) {
@@ -64,18 +66,18 @@ class ReleaseNotesGenerator {
 
   groupIssuesByVersion(issues) {
     const versionGroups = {};
-    
+
     for (const issue of issues) {
       const title = issue.title || 'Untitled issue';
       const description = issue.description || 'No description';
-      
+
       // Look for version patterns: (v0.20.0) or v0.20.0
       let version = 'unknown';
       const versionMatch = title.match(/((v\d+\.\d+\.\d+))|v(\d+\.\d+\.\d+)/);
       if (versionMatch) {
         version = versionMatch[1] || versionMatch[2];
       }
-      
+
       // Initialize version group if needed
       if (!versionGroups[version]) {
         versionGroups[version] = {
@@ -84,10 +86,10 @@ class ReleaseNotesGenerator {
           tasks: [],
           chores: [],
           docs: [],
-          other: []
+          other: [],
         };
       }
-      
+
       // Categorize by issue type
       const type = issue.issue_type || 'task';
       switch (type) {
@@ -110,73 +112,75 @@ class ReleaseNotesGenerator {
           versionGroups[version].other.push(issue);
       }
     }
-    
+
     return versionGroups;
   }
 
   formatIssueList(issues) {
-    return issues.map(issue => {
-      const title = issue.title || 'Untitled issue';
-      const description = issue.description || 'No description';
-      
-      // Extract main description point if available
-      let detail = '';
-      if (description.includes('## Description')) {
-        const descMatch = description.match(/## Descriptions*s*([^\n]+)/);
-        if (descMatch) {
-          detail = ` - ${descMatch[1]}`;
+    return issues
+      .map(issue => {
+        const title = issue.title || 'Untitled issue';
+        const description = issue.description || 'No description';
+
+        // Extract main description point if available
+        let detail = '';
+        if (description.includes('## Description')) {
+          const descMatch = description.match(/## Descriptions*s*([^\n]+)/);
+          if (descMatch) {
+            detail = ` - ${descMatch[1]}`;
+          }
         }
-      }
-      
-      return `- ${title}${detail}`;
-    }).join('\n');
+
+        return `- ${title}${detail}`;
+      })
+      .join('\n');
   }
 
   generateReleaseNotes(version, versionIssues) {
     const { features, bugs, tasks, chores, docs, other } = versionIssues;
-    
+
     const sections = [];
-    
+
     // New Features
     if (features.length > 0) {
       sections.push(`## New Features
 ${this.formatIssueList(features)}`);
     }
-    
+
     // Bug Fixes
     if (bugs.length > 0) {
       sections.push(`## Bug Fixes
 ${this.formatIssueList(bugs)}`);
     }
-    
+
     // Improvements (tasks)
     if (tasks.length > 0) {
       sections.push(`## Improvements
 ${this.formatIssueList(tasks)}`);
     }
-    
+
     // Maintenance (chores)
     if (chores.length > 0) {
       sections.push(`## Maintenance
 ${this.formatIssueList(chores)}`);
     }
-    
+
     // Documentation
     if (docs.length > 0) {
       sections.push(`## Documentation
 ${this.formatIssueList(docs)}`);
     }
-    
+
     // Other
     if (other.length > 0) {
       sections.push(`## Other Changes
 ${this.formatIssueList(other)}`);
     }
-    
+
     // Generate full release notes
     const date = new Date().toISOString().split('T')[0];
     const totalChanges = Object.values(versionIssues).flat().length;
-    
+
     const notes = `# Release Notes: v${version}
 
 *Published: ${date}*
@@ -219,65 +223,64 @@ Please review for accuracy and add additional context before publishing.*`;
     try {
       // Ensure releases directory exists
       fs.mkdirSync(this.releasesDir, { recursive: true });
-      
+
       const issues = this.parseBeadsIssues();
       const versionGroups = this.groupIssuesByVersion(issues);
-      
+
       console.log(`📦 Found versions with completed issues: ${Object.keys(versionGroups).length}`);
-      
+
       for (const [version, versionIssues] of Object.entries(versionGroups)) {
         const totalChanges = Object.values(versionIssues).flat().length;
-        
+
         if (totalChanges === 0) {
           console.log(`⏭️  Skipping v${version} (no completed issues)`);
           continue;
         }
-        
+
         console.log(`📝 Generating release notes for v${version} (${totalChanges} changes)...`);
-        
+
         const notes = this.generateReleaseNotes(version, versionIssues);
         const releaseFile = path.join(this.releasesDir, `v${version}.md`);
-        
+
         // Check if file already exists
         if (fs.existsSync(releaseFile)) {
           console.log(`⚠️  Release notes exist, backing up: v${version}.md.backup`);
           fs.writeFileSync(`${releaseFile}.backup`, fs.readFileSync(releaseFile));
         }
-        
+
         fs.writeFileSync(releaseFile, notes, 'utf8');
-        
+
         this.generated.push({
           version,
           file: releaseFile,
-          changes: totalChanges
+          changes: totalChanges,
         });
-        
+
         console.log(`✅ Generated: ${releaseFile}`);
       }
-      
+
       console.log('\n📊 Generation Summary');
       console.log('==========================');
       console.log(`✅ Release notes generated: ${this.generated.length}`);
       console.log(`❌ Errors: ${this.errors.length}`);
-      
+
       if (this.generated.length > 0) {
         console.log('\n📝 Generated Files:');
         this.generated.forEach(({ version, file, changes }) => {
           console.log(`   ✅ v${version}: ${changes} changes → ${file}`);
         });
-        
+
         console.log('\n📋 Next Steps:');
         console.log('1. Review generated release notes');
         console.log('2. Edit for tone and additional context');
         console.log('3. Create GitHub release with notes');
         console.log('4. Update version in package.json if needed');
       }
-      
+
       if (this.errors.length > 0) {
         console.log('\n❌ Errors:');
         this.errors.forEach(error => console.log(`   ❌ ${error}`));
       }
-      
     } catch (error) {
       console.error('💥 Generation failed:', error.message);
       process.exit(1);
@@ -288,7 +291,7 @@ Please review for accuracy and add additional context before publishing.*`;
 // CLI interface
 if (import.meta.url === `file://${process.argv[1]}`) {
   const generator = new ReleaseNotesGenerator();
-  
+
   const version = process.argv.find(arg => arg.startsWith('--version='));
   if (version) {
     generator.version = version.split('=')[1];

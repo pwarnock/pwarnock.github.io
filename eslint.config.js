@@ -36,9 +36,9 @@ export default [
       },
     },
     rules: {
-    'no-unused-vars': 'warn',
-    'no-console': 'off', // Allow console in scripts
-      'max-len': ['error', { 'code': 120, 'ignoreUrls': true, 'ignoreStrings': false }],
+      'no-unused-vars': 'warn',
+      'no-console': 'off', // Allow console in scripts
+      'max-len': ['error', { code: 120, ignoreUrls: true, ignoreStrings: false }],
     },
   },
   {

@@ -1,8 +1,11 @@
 # Infrastructure Manual Promotion Workflow
 
-This guide documents how to manually promote infrastructure changes (configuration, build system, deployment pipelines) from development through staging to production.
+This guide documents how to manually promote infrastructure changes
+(configuration, build system, deployment pipelines) from development through
+staging to production.
 
-**Key Principle**: Infrastructure changes are NOT automatically deployed. They require manual promotion through environment stages for safety and testing.
+**Key Principle**: Infrastructure changes are NOT automatically deployed. They
+require manual promotion through environment stages for safety and testing.
 
 ## Quick Reference
 
@@ -50,11 +53,11 @@ curl -I https://peterwarnock.com
 
 ## Environment Branches
 
-| Branch | Remote | Purpose | Auto-Deploy | Protection |
-|--------|--------|---------|-------------|------------|
-| **main** | upstream | Development integration | ✅ Yes (content/config only) | Require PR reviews, status checks |
-| **staging** | staging | Pre-production testing | ❌ Manual promotion | Restrict force pushes |
-| **production** | production | Live deployment | ❌ Manual promotion | Require linear history, restrict force pushes |
+| Branch         | Remote     | Purpose                 | Auto-Deploy                  | Protection                                    |
+| -------------- | ---------- | ----------------------- | ---------------------------- | --------------------------------------------- |
+| **main**       | upstream   | Development integration | ✅ Yes (content/config only) | Require PR reviews, status checks             |
+| **staging**    | staging    | Pre-production testing  | ❌ Manual promotion          | Restrict force pushes                         |
+| **production** | production | Live deployment         | ❌ Manual promotion          | Require linear history, restrict force pushes |
 
 ## Promotion Workflow: Main → Staging
 
@@ -159,6 +162,7 @@ bun run dev                       # Start local server
 ```
 
 **Staging URL** (after GitHub Pages deploys):
+
 - Available at: `staging` environment branch on GitHub Pages
 - Check version in footer to confirm staging is deployed
 - Verify analytics tracking enabled but set to staging
@@ -557,12 +561,15 @@ bun run deploy:production
 ## Related Documentation
 
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - General deployment and CI/CD overview
-- **[RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md)** - Three-stage release process for production versions
-- **[ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md)** - Environment variables and configuration
+- **[RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md)** - Three-stage release process
+  for production versions
+- **[ENVIRONMENT_CONFIG.md](./ENVIRONMENT_CONFIG.md)** - Environment variables
+  and configuration
 - **[AGENTS.md](../../AGENTS.md)** - AI agent development guidelines
 
 ## See Also
 
-- GitHub Pages Deployment Status: https://github.com/pwarnock/pwarnock.github.io/deployments
+- GitHub Pages Deployment Status:
+  https://github.com/pwarnock/pwarnock.github.io/deployments
 - GitHub Actions: https://github.com/pwarnock/pwarnock.github.io/actions
 - Production Site: https://peterwarnock.com

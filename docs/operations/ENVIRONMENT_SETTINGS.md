@@ -1,10 +1,12 @@
 # Environment-Specific Settings and Permissions
 
-This guide documents environment-specific configuration, permissions, and security settings for development, staging, and production environments.
+This guide documents environment-specific configuration, permissions, and
+security settings for development, staging, and production environments.
 
 ## Overview
 
 Each environment has distinct requirements for:
+
 - **Hugo configuration** - baseURL, analytics, feature flags
 - **Git permissions** - branch protection, force push restrictions
 - **Deployment permissions** - who can deploy to each environment
@@ -18,6 +20,7 @@ Each environment has distinct requirements for:
 **Purpose**: Local development and testing
 
 **Hugo Configuration** (`config/development/hugo.toml`):
+
 ```toml
 baseURL = "http://localhost:1313"
 
@@ -27,12 +30,14 @@ baseURL = "http://localhost:1313"
 ```
 
 **Key Settings**:
+
 - ✅ Analytics disabled
 - ✅ All features available for testing
 - ✅ Drafts and future content visible
 - ✅ Full debug output
 
 **Permissions**:
+
 - Any developer can deploy locally
 - No external access required
 - Local .env files not committed to git
@@ -42,6 +47,7 @@ baseURL = "http://localhost:1313"
 **Purpose**: Pre-production testing and validation
 
 **Hugo Configuration** (`config/staging/hugo.toml`):
+
 ```toml
 baseURL = "https://staging.pwarnock.github.io"
 
@@ -53,6 +59,7 @@ baseURL = "https://staging.pwarnock.github.io"
 ```
 
 **Key Settings**:
+
 - ✅ Analytics disabled or set to test account
 - ✅ Beta banner shown to testers
 - ✅ Database isolated from production
@@ -62,6 +69,7 @@ baseURL = "https://staging.pwarnock.github.io"
 - ❌ Production database not accessed
 
 **Permissions**:
+
 - Branch protection: Restrict force pushes
 - Require PR reviews before merging
 - Deploy only after status checks pass
@@ -69,6 +77,7 @@ baseURL = "https://staging.pwarnock.github.io"
 - GitHub Pages deployment triggered by push to staging branch
 
 **Staging Branch Rules** (`.github/BRANCH_PROTECTION.md`):
+
 ```
 - Enforce PR reviews: 1 approval required
 - Dismiss stale PR approvals: enabled
@@ -84,6 +93,7 @@ baseURL = "https://staging.pwarnock.github.io"
 **Purpose**: Live site for public access
 
 **Hugo Configuration** (`config/production/hugo.toml`):
+
 ```toml
 baseURL = "https://peterwarnock.com"
 
@@ -93,6 +103,7 @@ baseURL = "https://peterwarnock.com"
 ```
 
 **Key Settings**:
+
 - ✅ Analytics enabled with production tracking ID
 - ✅ All monitoring and alerting active
 - ✅ CDN configured and optimized
@@ -104,6 +115,7 @@ baseURL = "https://peterwarnock.com"
 - ❌ Test data not present
 
 **Permissions** (Strictest):
+
 - Branch protection: Require linear history
 - Branch protection: Restrict force pushes (admin only, with justification)
 - Require PR reviews from code owners
@@ -114,6 +126,7 @@ baseURL = "https://peterwarnock.com"
 - Automatic rollback capability
 
 **Production Branch Rules** (`.github/BRANCH_PROTECTION.md`):
+
 ```
 - Enforce PR reviews: 2+ approvals required
 - Dismiss stale PR approvals: enabled
@@ -129,7 +142,9 @@ baseURL = "https://peterwarnock.com"
 ## Secrets and Environment Variables
 
 ### Development Secrets
+
 Store locally in `.env` (not committed):
+
 ```bash
 # Local development (never commit)
 HUGO_ENV=development
@@ -137,7 +152,9 @@ LOCAL_DEV_PORT=1313
 ```
 
 ### Staging Secrets
+
 Configured in GitHub repository settings → Environments → staging:
+
 ```
 STAGING_GA_ID=           # Empty or test GA ID
 STAGING_API_ENDPOINT=    # If applicable
@@ -145,7 +162,9 @@ STAGING_DEPLOY_KEY=      # For automated staging deploys
 ```
 
 ### Production Secrets
+
 Configured in GitHub repository settings → Environments → production:
+
 ```
 PROD_GA_ID=G-SKDDM2GBXN  # Production Google Analytics
 PROD_API_ENDPOINT=       # If applicable
@@ -159,20 +178,21 @@ MONITORING_WEBHOOK=      # For deployment notifications
 
 Use GitHub Settings → Branches to configure:
 
-| Setting | Development | Staging | Production |
-|---------|-------------|---------|-----------|
-| **Require PR reviews** | No | Yes (1) | Yes (2) |
-| **Require status checks** | No | Yes | Yes |
-| **Require branches up to date** | No | Yes | Yes (strict) |
-| **Require linear history** | No | No | Yes |
-| **Allow force pushes** | Yes | No | Admin only |
-| **Allow deletions** | Yes | No | No |
-| **Auto-delete branches** | No | Yes | Yes |
-| **Require code owner review** | No | No | Yes |
+| Setting                         | Development | Staging | Production   |
+| ------------------------------- | ----------- | ------- | ------------ |
+| **Require PR reviews**          | No          | Yes (1) | Yes (2)      |
+| **Require status checks**       | No          | Yes     | Yes          |
+| **Require branches up to date** | No          | Yes     | Yes (strict) |
+| **Require linear history**      | No          | No      | Yes          |
+| **Allow force pushes**          | Yes         | No      | Admin only   |
+| **Allow deletions**             | Yes         | No      | No           |
+| **Auto-delete branches**        | No          | Yes     | Yes          |
+| **Require code owner review**   | No          | No      | Yes          |
 
 ### Enforcing Permissions
 
 All environment branches should have:
+
 ```bash
 # Main branch (development)
 - Require at least 1 review
@@ -197,14 +217,17 @@ All environment branches should have:
 ### Who Can Deploy Where
 
 **Development** (Local):
+
 - ✅ Any developer
 
 **Staging**:
+
 - ✅ Developers (via PR to staging branch)
 - ✅ CI/CD pipeline (automated on PR merge)
 - ✅ Code review required (minimum 1 approval)
 
 **Production**:
+
 - ✅ Designated release manager or team lead
 - ✅ CI/CD pipeline (automated on PR merge after checks)
 - ✅ Code review required (minimum 2 approvals)
@@ -248,14 +271,17 @@ PRODUCTION (Live)
 ## Analytics Configuration
 
 ### Development
+
 - ✅ Analytics disabled (no tracking)
 - Purpose: Avoid polluting analytics data
 
 ### Staging
+
 - ✅ Analytics disabled or test account
 - Purpose: QA can test tracking without affecting production metrics
 
 ### Production
+
 - ✅ Analytics enabled with production ID
 - Tracking ID: `G-SKDDM2GBXN`
 - Purpose: Monitor user behavior and performance
@@ -308,6 +334,7 @@ PROD_BUILD=true
 ## Deployment Checklist by Environment
 
 ### Before Deploying to Staging
+
 - [ ] All tests passing locally
 - [ ] Code review approved (≥1)
 - [ ] Branch is up to date with main
@@ -316,6 +343,7 @@ PROD_BUILD=true
 - [ ] Hugo configuration valid for staging
 
 ### Before Deploying to Production
+
 - [ ] Staging fully tested by QA team
 - [ ] All tests passing in staging
 - [ ] Code review approved (≥2)
@@ -329,13 +357,16 @@ PROD_BUILD=true
 ## Environment-Specific Features
 
 ### Beta Features
+
 Features available only in staging:
+
 - New experimental components
 - UI redesigns under testing
 - Performance optimizations
 - Database schema changes
 
 Enable with config flag:
+
 ```toml
 [params]
   showBeta = true       # Staging only
@@ -343,7 +374,9 @@ Enable with config flag:
 ```
 
 ### Debug Mode
+
 Debug output enabled only in development:
+
 - Detailed logging
 - Extended error messages
 - Performance metrics
@@ -351,32 +384,35 @@ Debug output enabled only in development:
 
 ## Access Control Matrix
 
-| Action | Dev | Staging | Production |
-|--------|-----|---------|-----------|
-| **Deploy** | Any dev | Dev (via PR) | Release manager (2 reviews) |
-| **Force push** | Yes | No | Admin only |
-| **Delete branch** | Yes | No | No |
-| **Merge without review** | Yes | No | No |
-| **Direct commit** | Yes | No | No |
-| **See analytics** | No | No | Yes (team) |
-| **Modify secrets** | No | Admins | Admins only |
-| **Emergency rollback** | N/A | Team lead | Team lead (with log) |
+| Action                   | Dev     | Staging      | Production                  |
+| ------------------------ | ------- | ------------ | --------------------------- |
+| **Deploy**               | Any dev | Dev (via PR) | Release manager (2 reviews) |
+| **Force push**           | Yes     | No           | Admin only                  |
+| **Delete branch**        | Yes     | No           | No                          |
+| **Merge without review** | Yes     | No           | No                          |
+| **Direct commit**        | Yes     | No           | No                          |
+| **See analytics**        | No      | No           | Yes (team)                  |
+| **Modify secrets**       | No      | Admins       | Admins only                 |
+| **Emergency rollback**   | N/A     | Team lead    | Team lead (with log)        |
 
 ## Implementation Scripts
 
 ### Validate Environment Configuration
+
 ```bash
 ./scripts/validate-deployment.sh pre staging
 ./scripts/validate-deployment.sh pre production
 ```
 
 ### Test Environment-Specific Settings
+
 ```bash
 ./scripts/test-environment.sh staging
 ./scripts/test-environment.sh production
 ```
 
 ### Deploy to Environment
+
 ```bash
 bun run deploy:staging        # Deploy to staging
 bun run deploy:production     # Deploy to production
@@ -385,11 +421,13 @@ bun run deploy:production     # Deploy to production
 ## Monitoring and Alerts
 
 ### Staging Alerts
+
 - ⚠️ Build failures
 - ⚠️ Failed tests
 - ℹ️ Deployment notifications (optional)
 
 ### Production Alerts
+
 - 🔴 Build failures (immediate)
 - 🔴 Failed tests (immediate)
 - 🔴 Site unavailable (immediate)
@@ -402,6 +440,7 @@ bun run deploy:production     # Deploy to production
 ### Rollback to Previous Version
 
 **Staging**:
+
 ```bash
 git checkout staging
 git reset --hard <previous-commit>
@@ -409,6 +448,7 @@ git push staging staging:staging --force
 ```
 
 **Production**:
+
 ```bash
 git checkout production
 git reset --hard <previous-commit>
@@ -417,7 +457,9 @@ git push production production:production --force
 ```
 
 ### Emergency Production Deployment
+
 Only when:
+
 - Production is down
 - Critical security vulnerability
 - Data loss risk
@@ -430,6 +472,7 @@ FORCE_PUSH=yes git push production production:production --no-verify
 
 ## See Also
 
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Manual promotion through environments
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Manual promotion through environments
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - General deployment procedures
 - [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Release process and versioning

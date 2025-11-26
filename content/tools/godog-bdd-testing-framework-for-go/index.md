@@ -27,7 +27,6 @@ human-readable tests using Gherkin syntax, fostering collaboration between
 technical teams and business stakeholders while providing robust testing
 capabilities.
 
-
 ## 🎯 **Core Concepts**
 
 ### **Behavior-Driven Development**

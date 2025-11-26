@@ -19,7 +19,6 @@ GitHub Actions is a powerful continuous integration and continuous deployment
 software workflows, including building, testing, and deploying applications, all
 within their GitHub repositories.
 
-
 ## 🎯 **Core Capabilities**
 
 ### **Workflow Automation**

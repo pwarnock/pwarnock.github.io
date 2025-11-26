@@ -1,8 +1,9 @@
 ---
 title: 'Beads'
 description:
-  "Beads is a distributed, Git-backed issue tracker with DAG-based dependencies
-  and priority systems designed for AI agents and multi-session project management"
+  'Beads is a distributed, Git-backed issue tracker with DAG-based dependencies
+  and priority systems designed for AI agents and multi-session project
+  management'
 date: 2025-11-12T10:00:00Z
 categories: ['project-management']
 tags:
@@ -25,12 +26,12 @@ radar:
 image: '/images/tools/beads-distributed-task-management-for-agents.png'
 ---
 
-Beads is a lightweight, distributed task management system built specifically for
-AI agents managing complex, multi-session projects. Created by Steve Yegge, it
-leverages Git as its distributed database and models work as a directed acyclic
-graph (DAG) with explicit dependencies and priority levels, enabling agents to
-identify "ready work" and maintain context across sessions without losing state
-or requiring a central server.
+Beads is a lightweight, distributed task management system built specifically
+for AI agents managing complex, multi-session projects. Created by Steve Yegge,
+it leverages Git as its distributed database and models work as a directed
+acyclic graph (DAG) with explicit dependencies and priority levels, enabling
+agents to identify "ready work" and maintain context across sessions without
+losing state or requiring a central server.
 
 ## Core Features
 
@@ -112,9 +113,11 @@ consistency headaches, just Git.
 ### Framework-Agnostic
 
 Beads works _alongside_ other planning systems rather than replacing them.
-Combine with Cody Framework, [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/), [Cursor](/tools/cursor-ai-first-code-editor/), or traditional planning documents.
-Use Beads for execution-level task management while keeping strategic planning
-elsewhere.
+Combine with Cody Framework,
+[Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/),
+[Cursor](/tools/cursor-ai-first-code-editor/), or traditional planning
+documents. Use Beads for execution-level task management while keeping strategic
+planning elsewhere.
 
 ### Semantic Compaction (Memory Decay)
 
@@ -273,15 +276,23 @@ genuine innovation.
 ## Related Tools & Resources
 
 **AI Coding Agents That Benefit from Beads Integration:**
-- [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/) — Free CLI agent with message queueing
-- [Claude Code](/tools/claude-code-conversational-ai-coding-assistant/) — Terminal-based AI assistant
-- [Windsurf](/tools/windsurf-agentic-ide-cognition-ai/) — Agentic IDE with autonomous capabilities
+
+- [Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/) — Free CLI agent with
+  message queueing
+- [Claude Code](/tools/claude-code-conversational-ai-coding-assistant/) —
+  Terminal-based AI assistant
+- [Windsurf](/tools/windsurf-agentic-ide-cognition-ai/) — Agentic IDE with
+  autonomous capabilities
 - [Cursor](/tools/cursor-ai-first-code-editor/) — AI-first code editor
-- [DeepAgent](/tools/deepagent-vs-code-fork-abacus-ai-integration/) — Autonomous agent with CLI
+- [DeepAgent](/tools/deepagent-vs-code-fork-abacus-ai-integration/) — Autonomous
+  agent with CLI
 
 **Planning & Context:**
-- [Vibe Coding Revolution](/blog/posts/vibe-coding-revolution/) — Overview of modern AI coding tools
-- [Amp Features Deep Dive](/blog/posts/amp-coding-agent-features/) — Features for agent coordination
+
+- [Vibe Coding Revolution](/blog/posts/vibe-coding-revolution/) — Overview of
+  modern AI coding tools
+- [Amp Features Deep Dive](/blog/posts/amp-coding-agent-features/) — Features
+  for agent coordination
 
 ## External Links
 
@@ -295,6 +306,5 @@ genuine innovation.
 
 _This tool overview is part of our comprehensive guide to
 [AI development tools](/tools/). Last updated: November 12, 2025._
-
 
 **Website**: [github.com](https://github.com/pwarnock/beads)

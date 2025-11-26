@@ -1,6 +1,7 @@
 # Amp Commands Reference
 
-Custom commands for this project. Use them to interact with Cody PBT and Beads issue tracking.
+Custom commands for this project. Use them to interact with Cody PBT and Beads
+issue tracking.
 
 ## Quick Start
 
@@ -18,38 +19,40 @@ Custom commands for this project. Use them to interact with Cody PBT and Beads i
 
 ### Discovery & Planning
 
-| Command | Purpose |
-|---------|---------|
-| `/cody-help` | Show available Cody PBT commands |
-| `/ready-work` | Show work that's ready to start |
+| Command       | Purpose                          |
+| ------------- | -------------------------------- |
+| `/cody-help`  | Show available Cody PBT commands |
+| `/ready-work` | Show work that's ready to start  |
 
 ### Building Features
 
-| Command | Purpose |
-|---------|---------|
+| Command                      | Purpose                         |
+| ---------------------------- | ------------------------------- |
 | `/cody-build v1.2.0-feature` | Create new version with backlog |
 | `/cody-build v1.2.0 "Title"` | Create version with description |
 
 ### Issue Tracking
 
-| Command | Purpose |
-|---------|---------|
-| `/claim-issue bd-40` | Start work on issue |
-| `/claim-issue bd-40 "Note"` | Start with context note |
-| `/close-issue bd-40` | Mark issue complete |
-| `/close-issue bd-40 "Reason"` | Complete with reason |
+| Command                       | Purpose                 |
+| ----------------------------- | ----------------------- |
+| `/claim-issue bd-40`          | Start work on issue     |
+| `/claim-issue bd-40 "Note"`   | Start with context note |
+| `/close-issue bd-40`          | Mark issue complete     |
+| `/close-issue bd-40 "Reason"` | Complete with reason    |
 
 ---
 
 ## Workflow: From Planning to Completion
 
 ### 1. Plan a Feature
+
 ```
 > /cody-help              (understand available commands)
 > Use cody-executor: :cody plan
 ```
 
 ### 2. Build the Version
+
 ```
 > /cody-build v1.2.0-login-page "Login page implementation"
 ```
@@ -57,6 +60,7 @@ Custom commands for this project. Use them to interact with Cody PBT and Beads i
 Result: Version created, issues generated, session state updated
 
 ### 3. Check Ready Work
+
 ```
 > /ready-work
 ```
@@ -64,6 +68,7 @@ Result: Version created, issues generated, session state updated
 Result: Shows unblocked issues ready to start
 
 ### 4. Claim an Issue
+
 ```
 > /claim-issue bd-40 "Starting login form implementation"
 ```
@@ -71,11 +76,13 @@ Result: Shows unblocked issues ready to start
 Result: Issue marked `in_progress`, session state updated
 
 ### 5. Do the Work
+
 ```
 > [Amp works on the issue]
 ```
 
 ### 6. Close When Done
+
 ```
 > /close-issue bd-40 "Login form complete and tested"
 ```
@@ -87,6 +94,7 @@ Result: Issue marked `completed`, ready work updated, next task highlighted
 ## Command Details
 
 ### /cody-help
+
 Show all Cody PBT framework commands.
 
 ```
@@ -102,6 +110,7 @@ Output: Command list with descriptions and next steps
 ---
 
 ### /ready-work
+
 Show issues ready to start (no blocking dependencies).
 
 ```
@@ -117,6 +126,7 @@ Output: Sorted by priority with recommendations
 ---
 
 ### /cody-build
+
 Create a new Cody PBT version with feature backlog.
 
 ```
@@ -126,6 +136,7 @@ Create a new Cody PBT version with feature backlog.
 ```
 
 Output:
+
 - Version created at `.cody/project/build/versions/vX.Y.Z-name/`
 - Feature backlog generated
 - Issues created in beads (linked to version)
@@ -136,6 +147,7 @@ Output:
 ---
 
 ### /claim-issue
+
 Start work on a specific issue.
 
 ```
@@ -144,6 +156,7 @@ Start work on a specific issue.
 ```
 
 Output:
+
 - Issue status set to `in_progress`
 - Session state updated with active issue
 - Context prepared
@@ -153,6 +166,7 @@ Output:
 ---
 
 ### /close-issue
+
 Mark an issue complete.
 
 ```
@@ -161,6 +175,7 @@ Mark an issue complete.
 ```
 
 Output:
+
 - Issue status set to `completed`
 - Completion reason recorded
 - Next ready work shown
@@ -175,43 +190,51 @@ Output:
 These commands work seamlessly with Amp:
 
 **Option 1: Explicit Commands**
+
 ```
 > /cody-build v1.2.0-feature
 ```
+
 Amp reads the markdown file and executes the workflow.
 
 **Option 2: Automatic Delegation**
+
 ```
 > Build v1.2.0-feature and create issues
 ```
-Amp reads AGENTS.md, understands the subagent pattern, and delegates automatically.
 
-**Option 3: Mix Both**
-Use explicit commands when you want precise control, ask Amp directly when you want intelligent delegation.
+Amp reads AGENTS.md, understands the subagent pattern, and delegates
+automatically.
+
+**Option 3: Mix Both** Use explicit commands when you want precise control, ask
+Amp directly when you want intelligent delegation.
 
 ---
 
 ## Session State Tracking
 
 After each command, `.claude/session-state.json` is updated with:
+
 - Current active task and issue
 - Progress (completed, in_progress, pending)
 - Agent checkpoints for resumption
 - Key decisions and artifacts
 
 **Check status**:
+
 ```bash
 cat .claude/session-state.json
 ```
 
-**Resume after interruption**:
-The session state preserves all context, so you can pick up exactly where you left off.
+**Resume after interruption**: The session state preserves all context, so you
+can pick up exactly where you left off.
 
 ---
 
 ## Examples
 
 ### Example 1: Simple Feature Build
+
 ```
 > /cody-help
 > /cody-build v1.2.0-auth "Authentication system"
@@ -222,6 +245,7 @@ The session state preserves all context, so you can pick up exactly where you le
 ```
 
 ### Example 2: Bug Hunt
+
 ```
 > /ready-work --priority 0
 > /claim-issue bd-5 "Critical bug in database"
@@ -231,6 +255,7 @@ The session state preserves all context, so you can pick up exactly where you le
 ```
 
 ### Example 3: Release Management
+
 ```
 > /cody-build v2.0.0-release "Release 2.0"
 > /ready-work
@@ -246,17 +271,17 @@ The session state preserves all context, so you can pick up exactly where you le
 
 ## Troubleshooting
 
-**Q: Command not found**
-A: Amp might need to refresh. Run another command to reload, or check that `.agents/commands/` directory exists.
+**Q: Command not found** A: Amp might need to refresh. Run another command to
+reload, or check that `.agents/commands/` directory exists.
 
-**Q: Want to see what commands are available**
-A: Run `/cody-help` or check `.agents/commands/` directory for markdown files.
+**Q: Want to see what commands are available** A: Run `/cody-help` or check
+`.agents/commands/` directory for markdown files.
 
-**Q: Session state not updated**
-A: It's auto-updated by context-librarian. Check `.claude/session-state.json` after each operation.
+**Q: Session state not updated** A: It's auto-updated by context-librarian.
+Check `.claude/session-state.json` after each operation.
 
-**Q: Want to reset and start fresh**
-A: All work is tracked in beads and session state. You can clear session state and `bd ready` will still show your work.
+**Q: Want to reset and start fresh** A: All work is tracked in beads and session
+state. You can clear session state and `bd ready` will still show your work.
 
 ---
 

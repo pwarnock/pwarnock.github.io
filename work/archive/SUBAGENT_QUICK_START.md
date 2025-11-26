@@ -1,12 +1,14 @@
 # Subagent Quick Start Guide
 
-**TL;DR**: Use specialized agents instead of one monolithic Amp. Prevents freezing, faster, cheaper.
+**TL;DR**: Use specialized agents instead of one monolithic Amp. Prevents
+freezing, faster, cheaper.
 
 ---
 
 ## Quick Patterns
 
 ### Pattern 1: Run a Cody Command
+
 ```
 User: "Create v1.2.0-feature version"
 
@@ -22,6 +24,7 @@ cody-executor returns:
 ```
 
 ### Pattern 2: Track Issues
+
 ```
 User: "Check what work is ready"
 
@@ -39,6 +42,7 @@ beads-manager returns:
 ```
 
 ### Pattern 3: Hand Off Between Agents
+
 ```
 cody-executor finishes :cody build
   ↓
@@ -50,6 +54,7 @@ test-coordinator receives minimal context + test requirements
 ```
 
 ### Pattern 4: Resume Agent
+
 ```
 # Agent was running: agentId=xyz789
 # It got interrupted
@@ -64,6 +69,7 @@ Agent picks up with full previous context, no reload needed
 ## Key Commands by Agent
 
 ### cody-executor
+
 ```bash
 :cody help                          # Show commands
 :cody plan                          # Plan phase
@@ -73,6 +79,7 @@ Agent picks up with full previous context, no reload needed
 ```
 
 ### beads-manager
+
 ```bash
 bd ready --json                     # Get unblocked work
 bd create "Title" -t bug -p 1 --json # Create issue
@@ -81,6 +88,7 @@ bd close bd-42 --reason "Done" --json # Complete work
 ```
 
 ### context-librarian
+
 ```
 # Used internally, not direct commands
 # Call when: handing off between agents, preventing bloat
@@ -88,6 +96,7 @@ bd close bd-42 --reason "Done" --json # Complete work
 ```
 
 ### code-executor
+
 ```bash
 bash commands                       # Run any terminal command
 # Examples:
@@ -97,6 +106,7 @@ docker run ...
 ```
 
 ### documentation
+
 ```
 # Used for docs updates
 # Examples:
@@ -156,7 +166,7 @@ Amp coordinates:
    → Notes: "5 tasks generated, ready for dev"
 
 3. beads-manager: Create issues from summary
-   → bd create "Implement login form" 
+   → bd create "Implement login form"
    → bd create "Add password reset"
    → bd create "Add OAuth integration"
    → Returns: Issues bd-40 through bd-42 created
@@ -182,6 +192,7 @@ Result: Feature shipped, no freezing, clear audit trail
 ## Token Usage: Before vs After
 
 ### Before (Monolithic Amp)
+
 ```
 Single agent holds:
 - All Cody PBT docs (2000 tokens)
@@ -195,6 +206,7 @@ Risk: Context bloat, freezing
 ```
 
 ### After (Specialized Subagents)
+
 ```
 cody-executor holds:
 - Cody PBT docs only (1000 tokens)
@@ -222,26 +234,22 @@ Keep at: `.claude/session-state.json`
 {
   "sessionId": "T-abc123...",
   "startTime": "2025-11-24T10:00:00Z",
-  
+
   "current": {
     "phase": "build",
     "activeTask": "Run tests",
     "activeIssue": "bd-40"
   },
-  
+
   "progress": {
     "completed": [
       "Create version v1.2.0-login-page",
       "Generate feature backlog"
     ],
-    "inProgress": [
-      "Run tests"
-    ],
-    "pending": [
-      "Deploy to staging"
-    ]
+    "inProgress": ["Run tests"],
+    "pending": ["Deploy to staging"]
   },
-  
+
   "agents": {
     "cody-executor": {
       "lastUsed": "2025-11-24T14:20:00Z",
@@ -260,20 +268,20 @@ Keep at: `.claude/session-state.json`
 
 ## Troubleshooting
 
-**Q: Agent is freezing**
-A: You're probably not delegating. Use subagents instead of holding all context.
+**Q: Agent is freezing** A: You're probably not delegating. Use subagents
+instead of holding all context.
 
-**Q: Don't know what work is ready**
-A: Run `beads-manager: bd ready --json` to see unblocked issues
+**Q: Don't know what work is ready** A: Run `beads-manager: bd ready --json` to
+see unblocked issues
 
-**Q: Agent lost context**
-A: Check session state file for `agents[agentName].resumeId` and resume with that ID
+**Q: Agent lost context** A: Check session state file for
+`agents[agentName].resumeId` and resume with that ID
 
-**Q: Commands not parsing**
-A: Always use `--json` flag on CLI commands (e.g., `:cody build --json`)
+**Q: Commands not parsing** A: Always use `--json` flag on CLI commands (e.g.,
+`:cody build --json`)
 
-**Q: Session keeps getting longer**
-A: Use context-librarian to compress before handing off to next agent
+**Q: Session keeps getting longer** A: Use context-librarian to compress before
+handing off to next agent
 
 ---
 
@@ -288,6 +296,7 @@ A: Use context-librarian to compress before handing off to next agent
 ---
 
 For detailed information, see:
+
 - `AMP_AGENT_STRATEGY.md` - Full architecture and reasoning
 - `.claude/agents/*.md` - Individual agent prompts
 - `AGENTS.md` - Updated with subagent info

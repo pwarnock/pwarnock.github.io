@@ -56,5 +56,4 @@ high-performance documentation website with a great authoring experience.
   showcasing the ease of getting started with Astro Starlight for building
   modern websites.
 
-
 **Website**: [starlight.astro.build](https://starlight.astro.build)

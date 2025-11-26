@@ -1,12 +1,16 @@
 # Scripts Organization & Reference
 
-Guide to the project's 30+ build, deployment, and utility scripts organized by function.
+Guide to the project's 30+ build, deployment, and utility scripts organized by
+function.
 
 ## Organization
 
-All scripts are in the `scripts/` directory and accessible via `bun run` commands defined in `package.json`.
+All scripts are in the `scripts/` directory and accessible via `bun run`
+commands defined in `package.json`.
 
-**Philosophy**: Scripts are organized by purpose, not by tool. Each script should:
+**Philosophy**: Scripts are organized by purpose, not by tool. Each script
+should:
+
 - Have a clear, single responsibility
 - Support `--help` flag for documentation
 - Use consistent error handling (`set -e`, proper exit codes)
@@ -18,7 +22,9 @@ All scripts are in the `scripts/` directory and accessible via `bun run` command
 ## Build Scripts
 
 ### `scripts/generate-version.js`
-**Purpose**: Sync version from `package.json` to `data/version.toml` for site footer  
+
+**Purpose**: Sync version from `package.json` to `data/version.toml` for site
+footer  
 **Called by**: Runs before every production build  
 **Command**: `bun run generate-version`
 
@@ -28,7 +34,9 @@ All scripts are in the `scripts/` directory and accessible via `bun run` command
 ```
 
 ### `scripts/path-based-build.sh`
-**Purpose**: Intelligent build system that detects change type and runs appropriate tests  
+
+**Purpose**: Intelligent build system that detects change type and runs
+appropriate tests  
 **Called by**: `bun run build:path`  
 **Triggers**: Content vs infrastructure vs documentation builds
 
@@ -47,10 +55,12 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Deployment Scripts
 
 ### `scripts/deploy-staging.sh`
+
 **Purpose**: Deploy to staging environment  
 **Called by**: `bun run deploy:staging`  
 **Target**: `staging` branch on GitHub  
 **Steps**:
+
 1. Verify git working directory clean
 2. Build site
 3. Run pre-deployment validation
@@ -59,10 +69,12 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 6. Run post-deployment tests
 
 ### `scripts/deploy-production.sh`
+
 **Purpose**: Deploy to production environment  
 **Called by**: `bun run deploy:production`  
 **Target**: `production` branch on GitHub  
 **Steps**:
+
 1. Verify on `main` branch
 2. Verify all tests passing
 3. Final verification checks
@@ -71,6 +83,7 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 6. Post-deployment health checks
 
 ### `scripts/sync-environments.sh`
+
 **Purpose**: Sync environment branches (staging → production)  
 **Called by**: `bun run sync:env`  
 **Use case**: After testing in staging, promotes to production
@@ -85,9 +98,11 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Validation & Testing Scripts
 
 ### `scripts/validate-deployment.sh`
+
 **Purpose**: Pre and post-deployment validation  
 **Called by**: `bun run validate:deployment`  
 **Checks**:
+
 - Hugo configuration valid
 - CSS processing complete
 - Build output structure correct
@@ -96,6 +111,7 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 - Documentation complete
 
 **Usage**:
+
 ```bash
 # Pre-deployment check
 ./scripts/validate-deployment.sh pre staging
@@ -105,18 +121,22 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ```
 
 ### `scripts/validate.sh`
+
 **Purpose**: Comprehensive project validation  
 **Called by**: `bun run validate`  
 **Runs**:
+
 1. Linting (YAML, TOML, CSS)
 2. Blog validation
 3. Security checks
 4. HTML validation
 
 ### `scripts/validate-portfolio-frontmatter.js`
+
 **Purpose**: Validate blog post frontmatter  
 **Called by**: `bun run validate:portfolio`  
 **Checks**:
+
 - All required fields present (title, date, summary, draft, tags)
 - Date format valid (YYYY-MM-DD)
 - No draft posts in main branch
@@ -127,25 +147,31 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Testing Scripts
 
 ### `scripts/run-all-unit-tests.sh`
+
 **Purpose**: Run all unit tests (TypeScript + Go)  
 **Called by**: `bun run test:unit`  
 **Supports**:
+
 - `--watch` - Watch mode
 - `--coverage` - Coverage report
 - `--ui` - Vitest UI dashboard
 
 ### `scripts/dev-test-runner.sh`
+
 **Purpose**: Watch mode for any test type  
 **Called by**: `bun run test:watch`, `bun run test:e2e:watch`, etc.  
 **Modes**:
+
 - `--watch e2e` - Watch E2E tests
 - `--watch visual` - Watch visual regression
 - `--watch performance` - Watch performance tests
 
 ### `test/deployment_validation.test.sh`
+
 **Purpose**: 27 comprehensive deployment validation tests  
 **Called by**: `bun run test:deployment`  
 **Coverage**:
+
 - Script existence and permissions
 - Hugo configuration validation
 - CSS processing
@@ -154,9 +180,11 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 - Environment configs
 
 ### `test/deployment_workflow.integration.sh`
+
 **Purpose**: 14 deployment workflow integration tests  
 **Called by**: `bun run test:deployment:integration`  
 **Coverage**:
+
 - Environment branch setup
 - Git remote configuration
 - Environment-specific builds
@@ -168,24 +196,29 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Development Utilities
 
 ### `scripts/dev-cycle-start.sh`
+
 **Purpose**: Initialize development session  
 **Called by**: `bun run dev:start`  
 **Sets up**:
+
 - Dev environment variables
 - PM2 processes
 - Displays available commands
 - Shows active tasks from beads
 
 ### `scripts/performance-monitor.sh`
+
 **Purpose**: Monitor build performance metrics  
 **Called by**: `bun run perf:monitor`  
 **Tracks**:
+
 - Build time
 - Bundle size
 - Asset compression
 - Core Web Vitals
 
 ### `scripts/pm2-agent-integration.sh`
+
 **Purpose**: Start PM2 with agent integration  
 **Called by**: `bun run dev:agent`  
 **For**: AI agent development coordination
@@ -195,20 +228,24 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Setup & Configuration Scripts
 
 ### `scripts/setup-branch-protection.sh`
+
 **Purpose**: Configure GitHub branch protection rules  
 **Called by**: `bun run setup:branch-protection`  
 **Sets**:
+
 - Require status checks (tests must pass)
 - Require code review
 - Require branches up to date
 - Require commit signing (optional)
 
 ### `scripts/letta-config-init.sh`
+
 **Purpose**: Initialize Letta AI configuration  
 **Called by**: `bun run letta:config:init`  
 **Creates**: `.letta/` configuration for agent setup
 
 ### `scripts/letta-config-update.sh`
+
 **Purpose**: Update Letta configuration  
 **Called by**: `bun run letta:config:update`  
 **Refreshes**: Agent definitions and settings
@@ -218,21 +255,26 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Maintenance Scripts
 
 ### `scripts/agent-init.sh`
+
 **Purpose**: Initialize agent session  
 **Checks**:
+
 - Cody Framework updates available
 - `.cody` directory health
 - Display key guidelines
 - Show available tasks from beads
 
 ### `scripts/check-cody-health.sh`
+
 **Purpose**: Verify `.cody` directory integrity  
 **Checks**:
+
 - Required directories exist
 - Critical files present
 - No corruption detected
 
 ### `scripts/backup-cody.sh`
+
 **Purpose**: Backup `.cody` directory  
 **Creates**: Timestamped backup with verification  
 **Use**: Before any emergency access to `.cody/`
@@ -242,40 +284,49 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## Specialized Scripts
 
 ### `scripts/version-sync.sh`
+
 **Purpose**: Sync version across all files  
 **Called by**: `bun run version:sync`  
 **Updates**:
+
 - `data/version.toml` (site footer)
 - Build metadata
 - Release notes
 
 ### `scripts/version-dev.sh`
+
 **Purpose**: Set development version  
 **Called by**: `bun run version:dev`  
 **Sets**: Version to `X.Y.Z-dev` for development builds
 
 ### `scripts/release-prep.sh`
+
 **Purpose**: Prepare release  
 **Called by**: `bun run release:prep`  
 **Steps**:
+
 1. Validate version bumped
 2. Verify tests passing
 3. Create release notes
 4. Prepare git tags
 
 ### `scripts/verify-cdn-integrity.sh`
+
 **Purpose**: Verify CDN asset integrity  
 **Called by**: `bun run verify:cdn`  
 **Checks**:
+
 - CSS/JS files accessible
 - No missing assets
 - Correct checksums
 - Performance acceptable
 
 ### `scripts/test-environment.sh`
+
 **Purpose**: Verify environment setup  
 **Called by**: `bun run test:environment`  
 **Validates**:
+
 - All required tools installed
 - Versions correct
 - Permissions set properly
@@ -286,33 +337,41 @@ See [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) for details.
 ## JavaScript/TypeScript Utilities
 
 ### `src/qaCli.ts`
+
 **Purpose**: QA automation CLI  
 **Called by**: `bun run qa:auto|content|full`  
 **Modes**:
+
 - `qa:auto` - Automated quality checks
 - `qa:content` - Content-specific validation
 - `qa:full` - Comprehensive audit
 
 ### `scripts/analyze-bundles.js`
+
 **Purpose**: Analyze bundle composition  
 **Called by**: `bun run analyze:bundles`  
 **Output**:
+
 - Size breakdown
 - Compression ratios
 - Optimization opportunities
 
 ### `scripts/test-ga-tracking.js`
+
 **Purpose**: Verify Google Analytics tracking  
 **Called by**: `bun run test:ga`  
 **Checks**:
+
 - GA tags present
 - Events configured
 - Tracking codes valid
 
 ### `scripts/test-security.js`
+
 **Purpose**: Run security validation  
 **Called by**: `bun run test-security`  
 **Checks**:
+
 - No hardcoded secrets
 - Dependencies audited
 - HTTPS enabled
@@ -378,6 +437,7 @@ success "Process complete"
 ### Error Handling
 
 All scripts should:
+
 ```bash
 set -e                    # Exit on any error
 trap 'error "Failed"' ERR # Clean up on error
@@ -513,7 +573,10 @@ bun run my-script; echo $?  # 0=success, 1=error
 
 ## See Also
 
-- [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) - Build process and optimization
-- [TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) - Test scripts and coverage
-- [RELEASE_WORKFLOW.md](/docs/operations/RELEASE_WORKFLOW.md) - Release scripts and process
+- [BUILD_SYSTEM.md](/docs/development/BUILD_SYSTEM.md) - Build process and
+  optimization
+- [TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) - Test
+  scripts and coverage
+- [RELEASE_WORKFLOW.md](/docs/operations/RELEASE_WORKFLOW.md) - Release scripts
+  and process
 - [package.json](/package.json) - All `bun run` commands mapped to scripts

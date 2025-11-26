@@ -1,12 +1,16 @@
 # Rollback Procedures
 
-Guide for safely rolling back deployments in case of issues, including staging and production rollback procedures, communications, and verification steps.
+Guide for safely rolling back deployments in case of issues, including staging
+and production rollback procedures, communications, and verification steps.
 
 ## Overview
 
-Rollback is the process of reverting a deployment to a previous known-good state. This guide covers procedures for both staging and production environments.
+Rollback is the process of reverting a deployment to a previous known-good
+state. This guide covers procedures for both staging and production
+environments.
 
 **Key Principles**:
+
 - **Automation first**: Use scripts and git tools, not manual file editing
 - **Documentation**: Always log the reason for rollback
 - **Verification**: Test the rollback before declaring success
@@ -20,6 +24,7 @@ Rollback is the process of reverting a deployment to a previous known-good state
 ### Immediate Rollback (Do Not Wait for Review)
 
 Rollback immediately without waiting for investigation if:
+
 - 🔴 **Production is down** (errors on all pages)
 - 🔴 **Critical functionality broken** (site unusable)
 - 🔴 **Security issue discovered** (vulnerability in live code)
@@ -28,6 +33,7 @@ Rollback immediately without waiting for investigation if:
 ### Expedited Rollback (Within 15 minutes)
 
 Rollback quickly if:
+
 - 🟡 **Major feature broken** (significantly impacts users)
 - 🟡 **Performance degradation** (site very slow)
 - 🟡 **Layout/design broken** (pages look wrong)
@@ -36,6 +42,7 @@ Rollback quickly if:
 ### Consider Hotfix (Don't Rollback Immediately)
 
 Don't rollback; instead create a hotfix if:
+
 - 🟢 **Minor bug** (small subset affected, easy to fix)
 - 🟢 **Content error** (typo or factual issue)
 - 🟢 **Style issue** (visual tweak needed)
@@ -47,8 +54,7 @@ Don't rollback; instead create a hotfix if:
 
 ### Procedure: Quick Rollback
 
-**When**: Staging builds fail or tests don't pass
-**Time**: 2-5 minutes
+**When**: Staging builds fail or tests don't pass **Time**: 2-5 minutes
 **Risk**: Low (only affects testing environment)
 
 ```bash
@@ -75,9 +81,8 @@ bun run validate:deployment post staging
 
 ### Procedure: Revert Commit
 
-**When**: You want to keep the commit history (recommended)
-**Time**: 5-10 minutes
-**Risk**: Low (staging only)
+**When**: You want to keep the commit history (recommended) **Time**: 5-10
+minutes **Risk**: Low (staging only)
 
 ```bash
 # 1. Check recent commits
@@ -98,7 +103,8 @@ bun run validate:deployment post staging
 ```
 
 **Advantage**: Creates a new commit that documents the rollback  
-**Disadvantage**: Adds a commit to history (but this is often good for documentation)
+**Disadvantage**: Adds a commit to history (but this is often good for
+documentation)
 
 ### Example: Staging Rollback
 
@@ -255,13 +261,14 @@ bun run validate:deployment post production https://peterwarnock.com
 ### Immediate Actions (Right After Rollback)
 
 1. **Verify service is healthy**
+
    ```bash
    # Check homepage loads
    curl -I https://peterwarnock.com
-   
+
    # Validate build artifacts
    bun run validate:deployment post production https://peterwarnock.com
-   
+
    # Spot check key pages
    # - Homepage: https://peterwarnock.com/
    # - Blog: https://peterwarnock.com/blog/
@@ -275,31 +282,33 @@ bun run validate:deployment post production https://peterwarnock.com
    - Review user feedback (if available)
 
 3. **Communicate with team**
+
    ```
    ✅ Production rollback complete
-   
+
    Rolled back to: [commit hash]
    Previous version: [what changed]
-   
+
    Status: All systems operational
    Performance: [normal/degraded/excellent]
    Next steps: [investigation/hotfix/monitoring]
    ```
 
 4. **Create investigation issue**
+
    ```
    Issue: Production Incident - [brief title]
-   
+
    Timeline:
    - HH:MM - Issue detected: [symptoms]
    - HH:MM - Rollback initiated to [hash]
    - HH:MM - Service restored
-   
+
    Root cause analysis:
    - Changed: [what changed]
    - Why it broke: [technical reason]
    - Why it wasn't caught: [testing gap]
-   
+
    Prevention:
    - Add test: [test to prevent recurrence]
    - Update procedure: [procedure improvement]
@@ -353,18 +362,19 @@ curl -s -I https://peterwarnock.com/blog/ | grep -q "^HTTP.*200" && echo "✅ Bl
 ```
 
 Or use the validation script:
+
 ```bash
 bun run validate:deployment post production https://peterwarnock.com
 ```
 
 ### What to Watch
 
-| Metric | Normal | Warning | Alert |
-|--------|--------|---------|-------|
-| **Page Load Time** | <3s | 3-5s | >5s |
-| **Error Rate** | <0.1% | 0.1-1% | >1% |
-| **Traffic** | Baseline | ±20% | Unusual drop |
-| **CPU/Memory** | <50% | 50-80% | >80% |
+| Metric             | Normal   | Warning | Alert        |
+| ------------------ | -------- | ------- | ------------ |
+| **Page Load Time** | <3s      | 3-5s    | >5s          |
+| **Error Rate**     | <0.1%    | 0.1-1%  | >1%          |
+| **Traffic**        | Baseline | ±20%    | Unusual drop |
+| **CPU/Memory**     | <50%     | 50-80%  | >80%         |
 
 ---
 
@@ -423,21 +433,25 @@ Thank you for your patience!
 Add these test types to catch issues before production:
 
 1. **Integration tests** - Deployment workflow validation
+
    ```bash
    bun run test:deployment
    ```
 
 2. **E2E tests** - Critical user journeys
+
    ```bash
    bunx playwright test
    ```
 
 3. **Visual regression** - Design changes
+
    ```bash
    bun run test:visual
    ```
 
 4. **Performance monitoring** - Speed degradation
+
    ```bash
    bun run perf:analyze
    ```
@@ -483,26 +497,30 @@ git push production production:production
 ### Build Safeguards
 
 1. **Pre-commit hooks** - Catch errors before push
+
    ```bash
    # Automatic linting, testing, validation
    git commit -m "..."
    ```
 
 2. **Branch protection** - Require reviews for main/staging/production
+
    ```bash
    # GitHub Settings → Branches → Branch protection rules
    ```
 
 3. **CI/CD checks** - Automated testing on every push
+
    ```yaml
    # .github/workflows/test.yml
    ```
 
 4. **Environment-specific validation**
+
    ```bash
    # Before staging deploy
    ./scripts/validate-deployment.sh pre staging
-   
+
    # Before production deploy
    ./scripts/validate-deployment.sh pre production
    ```
@@ -554,7 +572,10 @@ In case of critical production issues:
 
 ## See Also
 
-- [ENVIRONMENT_SETTINGS.md](/docs/operations/ENVIRONMENT_SETTINGS.md) - Permissions and branch protection
-- [DEPLOYMENT_TESTING.md](/docs/operations/DEPLOYMENT_TESTING.md) - Testing procedures
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](/docs/operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Normal deployment flow
+- [ENVIRONMENT_SETTINGS.md](/docs/operations/ENVIRONMENT_SETTINGS.md) -
+  Permissions and branch protection
+- [DEPLOYMENT_TESTING.md](/docs/operations/DEPLOYMENT_TESTING.md) - Testing
+  procedures
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](/docs/operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Normal deployment flow
 - [README.md](/docs/README.md) - Documentation index

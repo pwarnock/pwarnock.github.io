@@ -8,12 +8,15 @@
 
 ## Executive Summary
 
-GitHub Pages is a free, convenient static hosting platform but has **critical security limitations** due to its shared infrastructure model. This document outlines:
+GitHub Pages is a free, convenient static hosting platform but has **critical
+security limitations** due to its shared infrastructure model. This document
+outlines:
 
 1. **Current Security Posture**: What we can and cannot control
 2. **Limitations**: What GitHub Pages cannot provide
 3. **Mitigations**: What we've implemented to work within constraints
-4. **Migration Path**: How to move to platforms with proper security header support
+4. **Migration Path**: How to move to platforms with proper security header
+   support
 
 ---
 
@@ -22,6 +25,7 @@ GitHub Pages is a free, convenient static hosting platform but has **critical se
 ### What We Control
 
 ✅ **At Build Time**:
+
 - Hugo security settings (inline shortcodes disabled, safe functions)
 - Content Security Policy (CSP) via meta tags
 - Git information integrity (GPG signing of releases)
@@ -29,6 +33,7 @@ GitHub Pages is a free, convenient static hosting platform but has **critical se
 - Code scanning (GitHub CodeQL)
 
 ✅ **At Runtime**:
+
 - HTTPS enforcement (GitHub Pages automatically serves via HTTPS)
 - Semantic HTML (no untrusted content)
 - Analytics sandboxing (Google Tag Manager contained)
@@ -37,7 +42,9 @@ GitHub Pages is a free, convenient static hosting platform but has **critical se
 ### What We Cannot Control
 
 ❌ **HTTP Headers** (GitHub Pages Limitation):
-- `Content-Security-Policy` header (enforced version) - GitHub Pages ignores HTTP header CSP
+
+- `Content-Security-Policy` header (enforced version) - GitHub Pages ignores
+  HTTP header CSP
 - `X-Frame-Options` - Cannot set to DENY
 - `X-Content-Type-Options: nosniff` - Not enforced
 - `Strict-Transport-Security` (HSTS) - Not supported
@@ -46,6 +53,7 @@ GitHub Pages is a free, convenient static hosting platform but has **critical se
 - Custom header injection - Not supported
 
 ❌ **Infrastructure**:
+
 - WAF (Web Application Firewall)
 - DDoS protection beyond GitHub's baseline
 - Rate limiting
@@ -58,8 +66,9 @@ GitHub Pages is a free, convenient static hosting platform but has **critical se
 
 ### 1. Content Security Policy (CSP) Headers
 
-**The Problem**:
-GitHub Pages serves all content from the `github.io` domain with a shared HTTPS certificate. It does NOT allow custom HTTP headers, which means:
+**The Problem**: GitHub Pages serves all content from the `github.io` domain
+with a shared HTTPS certificate. It does NOT allow custom HTTP headers, which
+means:
 
 ```
 ❌ Cannot send: Content-Security-Policy: default-src 'self'
@@ -67,21 +76,25 @@ GitHub Pages serves all content from the `github.io` domain with a shared HTTPS 
 ❌ Cannot send: X-Content-Type-Options: nosniff
 ```
 
-**Our Mitigation**:
-We use CSP via `<meta>` tags in HTML, which provides **partial** protection:
+**Our Mitigation**: We use CSP via `<meta>` tags in HTML, which provides
+**partial** protection:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
   default-src 'self';
   script-src 'self' https://cdn.jsdelivr.net/ https://www.googletagmanager.com/;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https:;
   font-src 'self' data:;
   connect-src 'self' https://www.googletagmanager.com/;
-">
+"
+/>
 ```
 
 **Why Meta Tags Are Weaker**:
+
 - `<meta>` CSP is evaluated AFTER HTML parsing begins
 - Cannot protect against form-hijacking (GET requests)
 - Cannot protect against navigation to data: URLs
@@ -91,30 +104,35 @@ We use CSP via `<meta>` tags in HTML, which provides **partial** protection:
 
 ### 2. No HSTS (HTTP Strict-Transport-Security)
 
-**The Problem**:
-HSTS forces all future traffic to HTTPS and prevents downgrade attacks. GitHub Pages doesn't support it.
+**The Problem**: HSTS forces all future traffic to HTTPS and prevents downgrade
+attacks. GitHub Pages doesn't support it.
 
 **Risk**: Moderate
-- First visit to http://peterwarnock.com (if someone types without https) could be intercepted
+
+- First visit to http://peterwarnock.com (if someone types without https) could
+  be intercepted
 - Subsequent requests still protected by HTTPS by default on modern browsers
 
-**Our Mitigation**: 
+**Our Mitigation**:
+
 - Redirect http → https at DNS level (not applicable, GitHub handles this)
-- Browser preload list inclusion (peterwarnock.com is already in HSTS preload list)
+- Browser preload list inclusion (peterwarnock.com is already in HSTS preload
+  list)
 
 ---
 
 ### 3. No X-Frame-Options Header
 
-**The Problem**:
-Cannot prevent clickjacking attacks via frame embedding.
+**The Problem**: Cannot prevent clickjacking attacks via frame embedding.
 
 **Risk**: Low for portfolio sites
+
 - Attacker could embed site in a malicious page
 - User might be tricked into interacting with overlaid content
 - Analytics and form submissions could be intercepted
 
 **Our Mitigation**:
+
 - No sensitive forms on site (contact via email)
 - No financial transactions
 - Analytics data is non-sensitive
@@ -124,15 +142,17 @@ Cannot prevent clickjacking attacks via frame embedding.
 
 ### 4. No X-Content-Type-Options: nosniff
 
-**The Problem**:
-Browsers may sniff file types instead of respecting MIME types, enabling XSS attacks.
+**The Problem**: Browsers may sniff file types instead of respecting MIME types,
+enabling XSS attacks.
 
 **Risk**: Low
+
 - Only applies to old browsers (IE, Edge Legacy)
 - Modern browsers respect MIME types
 - Our assets are all static, not user-uploaded
 
 **Our Mitigation**:
+
 - Proper MIME types configured in Hugo
 - No user-uploaded content
 - No form submissions to server
@@ -141,15 +161,17 @@ Browsers may sniff file types instead of respecting MIME types, enabling XSS att
 
 ### 5. No Custom Middleware or WAF
 
-**The Problem**:
-Cannot implement custom security logic or Web Application Firewall rules.
+**The Problem**: Cannot implement custom security logic or Web Application
+Firewall rules.
 
 **Risk**: Low for static sites
+
 - No backend endpoints to attack
 - No databases or authentication
 - No rate limiting for DDoS
 
 **Our Mitigation**:
+
 - Cloudflare free plan provides DDoS protection (can add as reverse proxy)
 - No sensitive operations to protect
 - Monitoring via GitHub Actions logs
@@ -180,6 +202,7 @@ Cannot implement custom security logic or Web Application Firewall rules.
 **File**: `layouts/_default/baseof.html` (or similar)
 
 Protects against:
+
 - Inline script injection
 - Style injection
 - Unauthorized image loading
@@ -204,13 +227,15 @@ Protects against:
 
 ### Low Risk
 
-- **Clickjacking**: No X-Frame-Options header (mitigated by no sensitive operations)
+- **Clickjacking**: No X-Frame-Options header (mitigated by no sensitive
+  operations)
 - **Form hijacking**: CSP via meta tag (not perfect, but functional)
 - **MIME type sniffing**: Modern browsers unaffected
 
 ### Theoretical Risk
 
-- **Initial HTTPS downgrade**: Not in HSTS preload for all subdomains (unlikely but possible)
+- **Initial HTTPS downgrade**: Not in HSTS preload for all subdomains (unlikely
+  but possible)
 - **DNS hijacking**: Outside GitHub Pages' control
 - **Supply chain attacks**: Dependencies could be compromised (npm audit helps)
 
@@ -230,6 +255,7 @@ Protects against:
 #### 1. **Vercel** (Recommended for Next.js/Edge)
 
 **Advantages**:
+
 - ✅ Custom HTTP headers via `vercel.json`
 - ✅ Middleware support (request/response interception)
 - ✅ Automatic HSTS header
@@ -238,11 +264,13 @@ Protects against:
 - ✅ Analytics built-in
 
 **Disadvantages**:
+
 - Vendor lock-in to Vercel ecosystem
 - More complex configuration
 - Requires Next.js for full feature access
 
 **Security Headers**:
+
 ```json
 {
   "headers": [
@@ -274,6 +302,7 @@ Protects against:
 #### 2. **Netlify** (Best for Hugo)
 
 **Advantages**:
+
 - ✅ Custom HTTP headers via `_headers` file
 - ✅ Redirect rules and request rewriting
 - ✅ Edge Functions for middleware
@@ -282,10 +311,12 @@ Protects against:
 - ✅ Built-in form handling
 
 **Disadvantages**:
+
 - Free tier has limited edge function invocations
 - Less developer ecosystem than Vercel
 
 **Security Headers**:
+
 ```
 # _headers file at site root
 /*
@@ -300,6 +331,7 @@ Protects against:
 #### 3. **CloudFlare Pages** (Most Control)
 
 **Advantages**:
+
 - ✅ Custom HTTP headers and workers
 - ✅ WAF rules available
 - ✅ Rate limiting and DDoS protection
@@ -308,24 +340,26 @@ Protects against:
 - ✅ Free tier with good limits
 
 **Disadvantages**:
+
 - More complex configuration learning curve
 - Requires understanding of CloudFlare ecosystem
 
 **Security Headers** (via CloudFlare Workers):
+
 ```javascript
 // CloudFlare Worker
 export default {
   async fetch(request) {
     const response = await fetch(request);
-    
+
     const newResponse = new Response(response.body, response);
-    newResponse.headers.set("Content-Security-Policy", "default-src 'self'");
-    newResponse.headers.set("X-Frame-Options", "DENY");
-    newResponse.headers.set("X-Content-Type-Options", "nosniff");
-    newResponse.headers.set("Strict-Transport-Security", "max-age=31536000");
-    
+    newResponse.headers.set('Content-Security-Policy', "default-src 'self'");
+    newResponse.headers.set('X-Frame-Options', 'DENY');
+    newResponse.headers.set('X-Content-Type-Options', 'nosniff');
+    newResponse.headers.set('Strict-Transport-Security', 'max-age=31536000');
+
     return newResponse;
-  }
+  },
 };
 ```
 
@@ -368,19 +402,20 @@ export default {
 
 ## Platform Comparison Matrix
 
-| Feature | GitHub Pages | Netlify | Vercel | CloudFlare |
-|---------|---|---|---|---|
-| Custom HTTP Headers | ❌ | ✅ | ✅ | ✅ |
-| HSTS Support | ❌ | ✅ | ✅ | ✅ |
-| Middleware/Functions | ❌ | ✅ | ✅ | ✅ |
-| WAF | ❌ | ❌ | ❌ | ✅ |
-| Rate Limiting | ❌ | ❌ | ❌ | ✅ |
-| Free Tier | ✅ | ✅ | ✅ | ✅ |
-| Hugo Support | ✅ | ✅ | ⚠️ | ✅ |
-| Cost (High Volume) | Free | $19+/mo | $20+/mo | $0-200/mo |
-| Ease of Use | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| Feature              | GitHub Pages | Netlify  | Vercel   | CloudFlare |
+| -------------------- | ------------ | -------- | -------- | ---------- |
+| Custom HTTP Headers  | ❌           | ✅       | ✅       | ✅         |
+| HSTS Support         | ❌           | ✅       | ✅       | ✅         |
+| Middleware/Functions | ❌           | ✅       | ✅       | ✅         |
+| WAF                  | ❌           | ❌       | ❌       | ✅         |
+| Rate Limiting        | ❌           | ❌       | ❌       | ✅         |
+| Free Tier            | ✅           | ✅       | ✅       | ✅         |
+| Hugo Support         | ✅           | ✅       | ⚠️       | ✅         |
+| Cost (High Volume)   | Free         | $19+/mo  | $20+/mo  | $0-200/mo  |
+| Ease of Use          | ⭐⭐⭐⭐⭐   | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐     |
 
 **Recommendation for this project**: **Netlify**
+
 - Native Hugo support
 - Simple `_headers` configuration
 - Free tier sufficient for portfolio site
@@ -394,6 +429,7 @@ export default {
 While on GitHub Pages, follow these practices to maximize security:
 
 ### 1. Dependency Management
+
 ```bash
 # Regular audits
 npm audit
@@ -404,26 +440,30 @@ npm update
 ```
 
 ### 2. GitHub Actions Security
+
 ```yaml
 # Use pinned versions
-- uses: actions/checkout@v4      # ✅ Pinned
-- uses: actions/setup-node@v4    # ✅ Pinned
+- uses: actions/checkout@v4 # ✅ Pinned
+- uses: actions/setup-node@v4 # ✅ Pinned
 # NOT: uses: actions/checkout@main  # ❌ Avoid
 ```
 
 ### 3. Secret Management
+
 - No hardcoded secrets in repo
 - Use GitHub Secrets for API keys
 - Rotate tokens regularly
 - Audit token usage in Actions logs
 
 ### 4. Release Integrity
+
 - Sign commits with GPG
 - Create signed git tags for releases
 - Include commit SHA in release notes
 - Document version-to-commit mapping
 
 ### 5. Monitoring
+
 - Check GitHub Dependabot alerts weekly
 - Monitor build failures
 - Review Actions logs for suspicious activity
@@ -456,7 +496,8 @@ curl -I https://peterwarnock.com | grep -E "Content-Security|X-Frame|HSTS|Strict
 
 ## Related Documentation
 
-- **Release Process**: [RELEASE_PROCESS_UX_GUIDE.md](/docs/development/RELEASE_PROCESS_UX_GUIDE.md)
+- **Release Process**:
+  [RELEASE_PROCESS_UX_GUIDE.md](/docs/development/RELEASE_PROCESS_UX_GUIDE.md)
 - **Deployment**: [DEPLOYMENT.md](/docs/operations/DEPLOYMENT.md)
 - **Hugo Security**: [hugo.toml](/hugo.toml) (security section)
 - **GitHub Pages Docs**: https://docs.github.com/en/pages
@@ -468,11 +509,15 @@ curl -I https://peterwarnock.com | grep -E "Content-Security|X-Frame|HSTS|Strict
 **Current Status**: GitHub Pages (adequate for portfolio, but limited security)
 
 **Recommended Timeline**:
-- **Short term (1-3 months)**: Monitor GitHub Pages performance, start Netlify evaluation
+
+- **Short term (1-3 months)**: Monitor GitHub Pages performance, start Netlify
+  evaluation
 - **Medium term (3-6 months)**: Implement Netlify staging, complete testing
-- **Long term (6+ months)**: Migrate to Netlify if security becomes business requirement
+- **Long term (6+ months)**: Migrate to Netlify if security becomes business
+  requirement
 
 **Trigger for Migration**:
+
 - Customer data collection (Netlify Forms)
 - Monetization requirements (payment processing)
 - Increased security requirements
@@ -482,9 +527,13 @@ curl -I https://peterwarnock.com | grep -E "Content-Security|X-Frame|HSTS|Strict
 
 ## Conclusion
 
-GitHub Pages provides excellent value for free, static hosting with HTTPS and global CDN. The security limitations are acceptable for a portfolio site with no sensitive data or backend operations.
+GitHub Pages provides excellent value for free, static hosting with HTTPS and
+global CDN. The security limitations are acceptable for a portfolio site with no
+sensitive data or backend operations.
 
-For enhanced security posture, migration to **Netlify** is recommended as a straightforward upgrade path that maintains Hugo compatibility while adding proper HTTP header support.
+For enhanced security posture, migration to **Netlify** is recommended as a
+straightforward upgrade path that maintains Hugo compatibility while adding
+proper HTTP header support.
 
 ---
 

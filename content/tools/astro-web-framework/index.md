@@ -60,5 +60,4 @@ excellent performance scores.
 - [Astro Starlight](/tools/astro-starlight/): The documentation website builder
   that makes creating stellar docs effortless.
 
-
 **Website**: [astro.build](https://astro.build)

@@ -1,6 +1,7 @@
 # Upstream Remotes & Git Workflow Guide
 
-This guide explains the **upstream remote** and how to use it for collaborative development, releases, and deployments.
+This guide explains the **upstream remote** and how to use it for collaborative
+development, releases, and deployments.
 
 ## Quick Reference
 
@@ -22,7 +23,8 @@ FORCE_PUSH=yes git push upstream v0.17.1 # Push release tag to upstream
 
 ## Remote Configuration
 
-The repository uses **four Git remotes** for collaborative development and deployment:
+The repository uses **four Git remotes** for collaborative development and
+deployment:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -41,12 +43,12 @@ The repository uses **four Git remotes** for collaborative development and deplo
                                          └───────────┘
 ```
 
-| Remote | Purpose | Typical Use |
-|--------|---------|------------|
-| **origin** | Your fork (if applicable) or main repo | Local development, pushing feature branches |
-| **upstream** | Main repository canonical source | Pushing releases, main branch, tags |
-| **staging** | Pre-production testing environment | Deploying `bun run deploy:staging` |
-| **production** | Production deployment environment | Deploying `bun run deploy:production` |
+| Remote         | Purpose                                | Typical Use                                 |
+| -------------- | -------------------------------------- | ------------------------------------------- |
+| **origin**     | Your fork (if applicable) or main repo | Local development, pushing feature branches |
+| **upstream**   | Main repository canonical source       | Pushing releases, main branch, tags         |
+| **staging**    | Pre-production testing environment     | Deploying `bun run deploy:staging`          |
+| **production** | Production deployment environment      | Deploying `bun run deploy:production`       |
 
 ## Remote Setup
 
@@ -194,6 +196,7 @@ After push to upstream/main:
 4. **Site goes live** with new changes
 
 Monitor status at:
+
 - GitHub Actions: https://github.com/pwarnock/pwarnock.github.io/actions
 - Deployments: https://github.com/pwarnock/pwarnock.github.io/deployments
 
@@ -236,7 +239,8 @@ bun run deploy:production
 # Publish
 ```
 
-**Note**: `FORCE_PUSH=yes` is required because release tags may be updated between RC and final versions.
+**Note**: `FORCE_PUSH=yes` is required because release tags may be updated
+between RC and final versions.
 
 ### Tag Format
 
@@ -537,17 +541,20 @@ git commit -m "chore: update dependencies"
 ```
 
 Version will auto-bump based on commit type:
+
 - `feat:` → Minor bump (0.17.0 → 0.18.0)
 - `fix:`, `refactor:`, `perf:`, `docs:`, `test:` → Patch bump (0.17.0 → 0.17.1)
 
 ### Push Frequency
 
 **Better**:
+
 - Push after completing a logical unit of work
 - Push before taking breaks
 - Push at end of day (backup to remote)
 
 **Avoid**:
+
 - Large batches of commits before pushing
 - Pushing incomplete work (mark as WIP if needed)
 - Force pushing after pushing to upstream
@@ -595,8 +602,10 @@ git branch --set-upstream-to=upstream/main main
 
 ## Related Documentation
 
-- **[RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md)** - Three-stage release process with tags
-- **[INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md)** - Infrastructure change promotion (main → staging → production)
+- **[RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md)** - Three-stage release process
+  with tags
+- **[INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md)** -
+  Infrastructure change promotion (main → staging → production)
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - General deployment and CI/CD overview
 - **[Git Documentation](https://git-scm.com/doc)** - Official Git reference
 

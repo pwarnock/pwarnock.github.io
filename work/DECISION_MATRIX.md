@@ -6,18 +6,18 @@
 
 ## Quick Comparison
 
-| Aspect | Current | Logfire | OTEL+Jaeger |
-|--------|---------|---------|-------------|
-| **Setup Time** | N/A | 1 hour | 2-3 hours |
-| **Cost** | $0 | $0-29/mo | $0 |
-| **Learning Curve** | Low | Very low | Medium |
-| **Live Tracing** | ❌ | ✅ | ✅ |
-| **SQL Querying** | ❌ | ✅ | ❌ |
-| **Dashboard Quality** | Manual | Excellent | Good |
-| **Data Privacy** | Local only | Cloud | Local only |
-| **Vendor Lock-in** | None | Low (OTEL-compatible) | None |
-| **Team Friction** | Moderate (manual) | Low | Low |
-| **Scaling** | Limited | Unlimited | Depends on infra |
+| Aspect                | Current           | Logfire               | OTEL+Jaeger      |
+| --------------------- | ----------------- | --------------------- | ---------------- |
+| **Setup Time**        | N/A               | 1 hour                | 2-3 hours        |
+| **Cost**              | $0                | $0-29/mo              | $0               |
+| **Learning Curve**    | Low               | Very low              | Medium           |
+| **Live Tracing**      | ❌                | ✅                    | ✅               |
+| **SQL Querying**      | ❌                | ✅                    | ❌               |
+| **Dashboard Quality** | Manual            | Excellent             | Good             |
+| **Data Privacy**      | Local only        | Cloud                 | Local only       |
+| **Vendor Lock-in**    | None              | Low (OTEL-compatible) | None             |
+| **Team Friction**     | Moderate (manual) | Low                   | Low              |
+| **Scaling**           | Limited           | Unlimited             | Depends on infra |
 
 ---
 
@@ -26,6 +26,7 @@
 Each approach scored 0-5 on key criteria:
 
 ### Logfire
+
 ```
 Setup Ease:              ████████████████████ 5/5
 Developer Experience:    ████████████████████ 5/5
@@ -39,6 +40,7 @@ OVERALL:                 4.1/5 ⭐ RECOMMENDED
 ```
 
 ### OpenTelemetry + Jaeger
+
 ```
 Setup Ease:              ███████████          2/5 (more config)
 Developer Experience:    ████████████████████ 5/5 (once setup)
@@ -52,6 +54,7 @@ OVERALL:                 3.9/5 🔧 ALTERNATIVE
 ```
 
 ### LGTM Stack (Loki + Tempo + Prometheus + Grafana)
+
 ```
 Setup Ease:              ███████              2/5 (4-6 hours, 4 services)
 Developer Experience:    ███████████          2.5/5 (need LogQL skills)
@@ -68,6 +71,7 @@ OVERALL:                 3.3/5 🏢 ENTERPRISE
 ```
 
 ### Current Custom Logger
+
 ```
 Setup Ease:              ████████████████████ 5/5 (already done)
 Developer Experience:    ███████              2/5 (manual work)
@@ -85,6 +89,7 @@ OVERALL:                 2.4/5 ⛔ INSUFFICIENT
 ## Use Case Scenarios
 
 ### Scenario 1: "I want to debug failing tests ASAP"
+
 ```
 Goal: Real-time visibility into test execution
 
@@ -107,6 +112,7 @@ Goal: Real-time visibility into test execution
 ```
 
 ### Scenario 2: "I need to track performance trends"
+
 ```
 Goal: Monitor test speed over time, detect regressions
 
@@ -128,6 +134,7 @@ Goal: Monitor test speed over time, detect regressions
 ```
 
 ### Scenario 3: "I need to correlate Go and TypeScript logs"
+
 ```
 Goal: Trace request from test → Hugo server → browser
 
@@ -150,6 +157,7 @@ Goal: Trace request from test → Hugo server → browser
 ```
 
 ### Scenario 4: "We're air-gapped (no internet allowed)"
+
 ```
 Goal: Observability without external services
 
@@ -179,6 +187,7 @@ Goal: Observability without external services
 ```
 
 ### Scenario 5: "I want minimal operational overhead"
+
 ```
 Goal: Observability with <1 hour setup and maintenance
 
@@ -208,6 +217,7 @@ Goal: Observability with <1 hour setup and maintenance
 Use these to reach consensus:
 
 ### Q1: What's more important?
+
 ```
 A) Ease of use, fast setup (→ Logfire)
 B) Full control, no external dependencies (→ OTEL+Jaeger)
@@ -215,6 +225,7 @@ C) Minimal changes to current setup (→ Stay current)
 ```
 
 ### Q2: How critical is live tracing?
+
 ```
 A) Very important, we debug tests frequently (→ Logfire)
 B) Nice to have, post-test analysis is OK (→ OTEL+Jaeger)
@@ -222,6 +233,7 @@ C) Not important, logs are enough (→ Stay current)
 ```
 
 ### Q3: What's your data privacy stance?
+
 ```
 A) Cloud services OK, convenience matters (→ Logfire)
 B) Data must stay local/on-premises (→ OTEL+Jaeger)
@@ -229,6 +241,7 @@ C) Not concerned, public CI/CD OK (→ Either)
 ```
 
 ### Q4: How's your DevOps capability?
+
 ```
 A) Team prefers managed services (→ Logfire)
 B) Team comfortable with container ops (→ OTEL+Jaeger)
@@ -236,6 +249,7 @@ C) Team wants to avoid new infrastructure (→ Stay current)
 ```
 
 ### Q5: Budget constraints?
+
 ```
 A) Can budget $29/month (→ Logfire)
 B) Must be 100% free (→ OTEL+Jaeger)
@@ -247,6 +261,7 @@ C) Cost not a factor (→ Either)
 ## Risk Assessment
 
 ### Logfire Risks
+
 ```
 ❌ Vendor Risk
    - Logfire could change pricing, shut down
@@ -262,6 +277,7 @@ C) Cost not a factor (→ Either)
 ```
 
 ### OTEL+Jaeger Risks
+
 ```
 ⚠️  Infrastructure Risk
    - Another container to manage
@@ -277,6 +293,7 @@ C) Cost not a factor (→ Either)
 ```
 
 ### Current Approach Risks
+
 ```
 ❌ Scalability Risk
    - Works for small test suite, breaks at scale
@@ -296,11 +313,12 @@ C) Cost not a factor (→ Either)
 ## Migration Paths
 
 ### Path 1: Logfire Today, Options Later
+
 ```
 NOW:  Install Logfire SDK
       Start using dashboards, SQL queries
       Enjoy live tracing
-      
+
 LATER: If needed, export data from Logfire
        Migrate to OTEL+Jaeger
        No data loss (OTEL-compatible)
@@ -310,11 +328,12 @@ RISK: Low (can change mind later)
 ```
 
 ### Path 2: OTEL+Jaeger Today, Stay Free
+
 ```
 NOW:  Set up Docker Compose with Jaeger
       Install OTEL SDKs
       Get full local observability
-      
+
 LATER: Upgrade to Logfire if needed
        Or continue with Jaeger
        Or migrate to other backend
@@ -324,14 +343,15 @@ RISK: Low (100% standard, no lock-in)
 ```
 
 ### Path 3: Hybrid Approach
+
 ```
 LOCAL:       Use Jaeger for development
               Zero latency, full control
-              
-CI/CD:       Send to Logfire 
+
+CI/CD:       Send to Logfire
               Historical trending
               Team dashboard access
-              
+
 COST: ~$15-20/month (CI data only)
 RISK: Low (best of both worlds)
 ```
@@ -368,16 +388,16 @@ START HERE
 
 ### Quick Decision
 
-| You Value | Choose |
-|-----------|--------|
-| Speed (1 hour) | **Logfire** |
-| No cost | **OTEL+Jaeger** or **LGTM** |
-| Zero ops burden | **Logfire** |
-| Local data only | **OTEL+Jaeger** or **LGTM** |
+| You Value          | Choose                         |
+| ------------------ | ------------------------------ |
+| Speed (1 hour)     | **Logfire**                    |
+| No cost            | **OTEL+Jaeger** or **LGTM**    |
+| Zero ops burden    | **Logfire**                    |
+| Local data only    | **OTEL+Jaeger** or **LGTM**    |
 | Grafana unified UI | **LGTM** (if you know Grafana) |
-| SQL-like querying | **Logfire** |
-| Live debugging | **Logfire** |
-| Production-ready | **LGTM** (if ops available) |
+| SQL-like querying  | **Logfire**                    |
+| Live debugging     | **Logfire**                    |
+| Production-ready   | **LGTM** (if ops available)    |
 
 ---
 
@@ -395,12 +415,14 @@ START HERE
 6. **Not risky**: Built on standard OTEL, no vendor lock-in
 
 **Revisit to OTEL+Jaeger if:**
+
 - Budget becomes very constrained (want $0 cost)
 - Data privacy becomes hard requirement (no cloud)
 - Data must stay on-premises (air-gapped)
 - Logfire changes pricing unfavorably
 
 **Consider LGTM Stack only if:**
+
 - Your production already uses Grafana (leverage existing skills)
 - Team is fluent in LogQL and Grafana
 - You have DevOps resources (4 services to manage)
@@ -414,11 +436,13 @@ START HERE
 **Not recommended for test observability.**
 
 These are production-grade, enterprise-scale solutions designed for:
+
 - Massive log volumes (petabytes)
 - Compliance and archival
 - Organization-wide infrastructure
 
 **Why they're wrong for tests:**
+
 - ❌ Overengineered (ELK: 8+ GB minimum)
 - ❌ Logs only (no tracing)
 - ❌ Expensive (Splunk/Datadog: $$$$)
@@ -426,9 +450,11 @@ These are production-grade, enterprise-scale solutions designed for:
 - ❌ Overkill for ~10K spans/month
 
 **Better alternatives:**
+
 - **Local testing**: Logfire, OTEL+Jaeger, or LGTM
 - **Logs to prod ELK**: Use Logfire instead (better signal diversity)
-- **Enterprise Splunk**: Use Logfire instead (same enterprise features, better UI)
+- **Enterprise Splunk**: Use Logfire instead (same enterprise features, better
+  UI)
 
 ---
 
@@ -437,17 +463,20 @@ These are production-grade, enterprise-scale solutions designed for:
 ### Week of Nov 17-24:
 
 **Day 1 (Monday)**: Team decision call
+
 - Review this matrix
 - Answer the 5 consensus questions
 - Vote: Logfire vs OTEL+Jaeger vs Stay Current
 
 **Day 2-3 (Tue-Wed)**: Spike/POC
+
 - Create Logfire account (or Docker Jaeger)
 - Instrument one test file
 - Run test, see traces
 - Team review
 
 **Day 4-5 (Thu-Fri)**: Decision + kickoff
+
 - Finalize choice
 - Create implementation plan
 - Assign owners
@@ -458,6 +487,7 @@ These are production-grade, enterprise-scale solutions designed for:
 ## Questions?
 
 See detailed analysis in:
+
 - `LOGGING_OBSERVABILITY_RESEARCH.md` (full analysis)
 - `LOGFIRE_QUICK_START.md` (quick setup guide)
 - `GO_OTEL_INTEGRATION_GUIDE.md` (technical deep dive)

@@ -1,6 +1,7 @@
 # Deployment Testing and Verification
 
-This guide documents how to test and verify the deployment infrastructure, including validation scripts, workflow integration, and end-to-end testing.
+This guide documents how to test and verify the deployment infrastructure,
+including validation scripts, workflow integration, and end-to-end testing.
 
 ## Testing Strategy
 
@@ -22,6 +23,7 @@ bun run test:deployment
 ```
 
 This runs 27 individual tests covering:
+
 - Script existence and permissions
 - Hugo configuration validation
 - CSS validation
@@ -42,6 +44,7 @@ bun run test:deployment:integration
 ```
 
 This runs 14 comprehensive integration tests covering:
+
 - Environment branches (staging, production)
 - Git remotes configuration
 - Deployment scripts
@@ -61,48 +64,48 @@ This runs 14 comprehensive integration tests covering:
 
 ### Unit Test Suite (test/deployment_validation.test.sh)
 
-| Test | Purpose | Validates |
-|------|---------|-----------|
-| **Suite 1: Script Verification** | | |
-| Script exists | Verify validate-deployment.sh is present | File existence, executable bit |
-| Help output | Verify script displays help correctly | Documentation accuracy |
-| **Suite 2: Tools & Environment** | | |
-| Required tools | Check git, hugo, bun available | Tool installation |
-| Hugo config validation | Check production baseURL | Configuration correctness |
-| Staging config exists | Verify staging/hugo.toml | Environment-specific config |
-| **Suite 3: Validation Logic** | | |
-| CSS validation | Detect unprocessed directives | Build output quality |
-| Security validation | Check for hardcoded URLs | Security practices |
-| Build output | Verify public/ structure | Hugo build completeness |
-| **Suite 4: Deploy Scripts** | | |
-| deploy-staging.sh | Integration with validation | Script completeness |
-| deploy-production.sh | Confirmation prompt, validation | Safety mechanisms |
-| **Suite 5: Supporting Scripts** | | |
-| test-environment.sh | Help and execution | Script functionality |
-| setup-branch-protection.sh | GitHub CLI integration | Automation setup |
-| **Suite 6: Integration** | | |
-| package.json scripts | New deployment scripts present | Build system integration |
-| Documentation | ENVIRONMENT_SETTINGS.md quality | Documentation completeness |
-| docs/README.md | Cross-references | Navigation and indexing |
+| Test                             | Purpose                                  | Validates                      |
+| -------------------------------- | ---------------------------------------- | ------------------------------ |
+| **Suite 1: Script Verification** |                                          |                                |
+| Script exists                    | Verify validate-deployment.sh is present | File existence, executable bit |
+| Help output                      | Verify script displays help correctly    | Documentation accuracy         |
+| **Suite 2: Tools & Environment** |                                          |                                |
+| Required tools                   | Check git, hugo, bun available           | Tool installation              |
+| Hugo config validation           | Check production baseURL                 | Configuration correctness      |
+| Staging config exists            | Verify staging/hugo.toml                 | Environment-specific config    |
+| **Suite 3: Validation Logic**    |                                          |                                |
+| CSS validation                   | Detect unprocessed directives            | Build output quality           |
+| Security validation              | Check for hardcoded URLs                 | Security practices             |
+| Build output                     | Verify public/ structure                 | Hugo build completeness        |
+| **Suite 4: Deploy Scripts**      |                                          |                                |
+| deploy-staging.sh                | Integration with validation              | Script completeness            |
+| deploy-production.sh             | Confirmation prompt, validation          | Safety mechanisms              |
+| **Suite 5: Supporting Scripts**  |                                          |                                |
+| test-environment.sh              | Help and execution                       | Script functionality           |
+| setup-branch-protection.sh       | GitHub CLI integration                   | Automation setup               |
+| **Suite 6: Integration**         |                                          |                                |
+| package.json scripts             | New deployment scripts present           | Build system integration       |
+| Documentation                    | ENVIRONMENT_SETTINGS.md quality          | Documentation completeness     |
+| docs/README.md                   | Cross-references                         | Navigation and indexing        |
 
 ### Integration Test Suite (test/deployment_workflow.integration.sh)
 
-| Test | Purpose | Validates |
-|------|---------|-----------|
-| Environment branches | staging, production exist | Git workflow setup |
-| Git remotes | staging, production configured | Remote setup |
-| Deploy scripts | All 3 scripts executable | Deployment capability |
-| Validation scripts | Both scripts executable | Validation capability |
-| Environment configs | dev/staging/prod all valid | Configuration consistency |
-| Hugo builds | Configs exist for each env | Build configuration |
-| Path-based build | Script functional | Build routing |
-| Branch protection | Setup automation available | Access control |
-| Documentation | All docs present & complete | Knowledge management |
-| CI/CD integration | Workflows found | GitHub Actions setup |
-| Error handling | set -e, confirmations, returns | Safety mechanisms |
-| Rollback capability | Procedures documented | Recovery ability |
-| Security | Secrets and force push controls documented | Security practices |
-| Monitoring | Post-deploy checks present | Observability |
+| Test                 | Purpose                                    | Validates                 |
+| -------------------- | ------------------------------------------ | ------------------------- |
+| Environment branches | staging, production exist                  | Git workflow setup        |
+| Git remotes          | staging, production configured             | Remote setup              |
+| Deploy scripts       | All 3 scripts executable                   | Deployment capability     |
+| Validation scripts   | Both scripts executable                    | Validation capability     |
+| Environment configs  | dev/staging/prod all valid                 | Configuration consistency |
+| Hugo builds          | Configs exist for each env                 | Build configuration       |
+| Path-based build     | Script functional                          | Build routing             |
+| Branch protection    | Setup automation available                 | Access control            |
+| Documentation        | All docs present & complete                | Knowledge management      |
+| CI/CD integration    | Workflows found                            | GitHub Actions setup      |
+| Error handling       | set -e, confirmations, returns             | Safety mechanisms         |
+| Rollback capability  | Procedures documented                      | Recovery ability          |
+| Security             | Secrets and force push controls documented | Security practices        |
+| Monitoring           | Post-deploy checks present                 | Observability             |
 
 ## Pre-Deployment Validation
 
@@ -113,6 +116,7 @@ Before deploying to any environment, the deployment scripts automatically run:
 ```
 
 **Checks performed**:
+
 - Git state clean (no uncommitted changes)
 - Remote is up to date
 - Hugo configuration valid
@@ -121,6 +125,7 @@ Before deploying to any environment, the deployment scripts automatically run:
 - No exposed secrets
 
 **Example**:
+
 ```bash
 # Check before deploying to staging
 ./scripts/validate-deployment.sh pre staging
@@ -138,6 +143,7 @@ After deploying to an environment, the deployment scripts run:
 ```
 
 **Checks performed**:
+
 - Build output structure (public/index.html, public/css/main.css, etc.)
 - Image alt text
 - Language attributes
@@ -146,6 +152,7 @@ After deploying to an environment, the deployment scripts run:
 - Site accessibility (optional URL check)
 
 **Example**:
+
 ```bash
 # Check after deploying to staging
 ./scripts/validate-deployment.sh post staging
@@ -164,6 +171,7 @@ Test configuration for each environment:
 ```
 
 **Tests performed**:
+
 - Environment configuration validation
 - Environment-specific test suite execution
 - Environment variables verification
@@ -187,6 +195,7 @@ Test configuration for each environment:
 ### After Deploying to Production
 
 All staging checks PLUS:
+
 - [ ] Site loads at https://peterwarnock.com
 - [ ] Version footer shows production version
 - [ ] Analytics tracking enabled (check GA)
@@ -204,11 +213,13 @@ All staging checks PLUS:
 If validation tests fail:
 
 1. **Check script permissions**:
+
    ```bash
    chmod +x scripts/*.sh test/*.sh
    ```
 
 2. **Verify Hugo configuration**:
+
    ```bash
    hugo config
    cat config/production/hugo.toml
@@ -216,12 +227,14 @@ If validation tests fail:
    ```
 
 3. **Check CSS processing**:
+
    ```bash
    grep -E "@import|@plugin|@tailwind" static/css/main.css
    # Should return nothing
    ```
 
 4. **Verify remotes**:
+
    ```bash
    git remote -v
    # Should show upstream, staging, production
@@ -238,6 +251,7 @@ If validation tests fail:
 If integration tests fail:
 
 1. **Ensure branches exist**:
+
    ```bash
    git checkout staging
    git checkout production
@@ -245,11 +259,13 @@ If integration tests fail:
    ```
 
 2. **Verify remotes are set up**:
+
    ```bash
    ./scripts/setup-environments.sh
    ```
 
 3. **Check documentation consistency**:
+
    ```bash
    grep -l "staging\|production" docs/operations/*.md
    ```
@@ -273,6 +289,7 @@ The test suite runs automatically in CI/CD:
 ```
 
 These tests:
+
 - Run on every push to main
 - Run on pull requests
 - Must pass before deployment to staging
@@ -288,6 +305,7 @@ time bun run test:deployment:integration
 ```
 
 Expected times:
+
 - Unit tests: < 10 seconds
 - Integration tests: < 30 seconds
 
@@ -308,6 +326,7 @@ bun run test:coverage --report=html
 To add validation to deployment scripts:
 
 1. **Add function to validate-deployment.sh**:
+
    ```bash
    validate_new_feature() {
        log_info "Validating new feature..."
@@ -317,6 +336,7 @@ To add validation to deployment scripts:
    ```
 
 2. **Call function in appropriate check**:
+
    ```bash
    pre_deployment_check() {
        # ... existing checks ...
@@ -325,6 +345,7 @@ To add validation to deployment scripts:
    ```
 
 3. **Add test to test suite**:
+
    ```bash
    test_new_feature() {
        log_test "Testing new feature validation"
@@ -340,6 +361,8 @@ To add validation to deployment scripts:
 
 ## See Also
 
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Deployment workflow
-- [ENVIRONMENT_SETTINGS.md](./ENVIRONMENT_SETTINGS.md) - Environment configuration
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Deployment workflow
+- [ENVIRONMENT_SETTINGS.md](./ENVIRONMENT_SETTINGS.md) - Environment
+  configuration
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - General deployment procedures

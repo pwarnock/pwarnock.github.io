@@ -1,8 +1,10 @@
 # Archived Documentation
 
-Historical documents, assessments, and session notes that are no longer actively maintained.
+Historical documents, assessments, and session notes that are no longer actively
+maintained.
 
-Kept for reference and historical context, but **not authoritative** - check the main docs index for current guidance.
+Kept for reference and historical context, but **not authoritative** - check the
+main docs index for current guidance.
 
 ## Contents
 

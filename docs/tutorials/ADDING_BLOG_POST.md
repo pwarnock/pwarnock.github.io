@@ -1,6 +1,7 @@
 # Adding a Blog Post
 
-Step-by-step guide for creating and publishing blog posts, including content structure, frontmatter requirements, validation, and deployment.
+Step-by-step guide for creating and publishing blog posts, including content
+structure, frontmatter requirements, validation, and deployment.
 
 ## Quick Start
 
@@ -43,11 +44,11 @@ Every blog post must have YAML frontmatter at the top:
 
 ```markdown
 ---
-title: "Your Post Title"
+title: 'Your Post Title'
 date: 2025-01-15
-summary: "Brief summary that appears on blog listing page"
+summary: 'Brief summary that appears on blog listing page'
 draft: false
-tags: ["tag1", "tag2", "tag3"]
+tags: ['tag1', 'tag2', 'tag3']
 ---
 
 # Your Post Title
@@ -57,35 +58,39 @@ Post content starts here...
 
 ### Frontmatter Fields
 
-| Field | Required | Type | Purpose | Example |
-|-------|----------|------|---------|---------|
-| **title** | ✅ Yes | String | Post heading & browser tab title | `"Exploring Web Components"` |
-| **date** | ✅ Yes | Date | Publication date (YYYY-MM-DD) | `2025-01-15` |
-| **summary** | ✅ Yes | String | Preview text on blog listing | `"Deep dive into web components..."` |
-| **draft** | ✅ Yes | Boolean | `false` to publish, `true` to hide | `false` |
-| **tags** | ✅ Yes | Array | Category tags for filtering | `["web", "components", "tutorial"]` |
+| Field       | Required | Type    | Purpose                            | Example                              |
+| ----------- | -------- | ------- | ---------------------------------- | ------------------------------------ |
+| **title**   | ✅ Yes   | String  | Post heading & browser tab title   | `"Exploring Web Components"`         |
+| **date**    | ✅ Yes   | Date    | Publication date (YYYY-MM-DD)      | `2025-01-15`                         |
+| **summary** | ✅ Yes   | String  | Preview text on blog listing       | `"Deep dive into web components..."` |
+| **draft**   | ✅ Yes   | Boolean | `false` to publish, `true` to hide | `false`                              |
+| **tags**    | ✅ Yes   | Array   | Category tags for filtering        | `["web", "components", "tutorial"]`  |
 
 ### Frontmatter Examples
 
 **Minimal Valid Frontmatter**:
+
 ```markdown
 ---
-title: "My First Post"
+title: 'My First Post'
 date: 2025-01-15
-summary: "This is my first blog post"
+summary: 'This is my first blog post'
 draft: false
-tags: ["first"]
+tags: ['first']
 ---
 ```
 
 **Comprehensive Frontmatter**:
+
 ```markdown
 ---
-title: "Building a Design System with Web Components"
+title: 'Building a Design System with Web Components'
 date: 2025-01-15
-summary: "Learn how to create reusable, maintainable UI components using modern web standards"
+summary:
+  'Learn how to create reusable, maintainable UI components using modern web
+  standards'
 draft: false
-tags: ["web", "components", "design-system", "tutorial"]
+tags: ['web', 'components', 'design-system', 'tutorial']
 ---
 ```
 
@@ -95,19 +100,19 @@ tags: ["web", "components", "design-system", "tutorial"]
 
 ### Recommended Post Structure
 
-```markdown
+````markdown
 ---
-title: "Post Title"
+title: 'Post Title'
 date: 2025-01-15
-summary: "Brief summary"
+summary: 'Brief summary'
 draft: false
-tags: ["tag"]
+tags: ['tag']
 ---
 
 # Post Title
 
-Brief introduction paragraph that hooks the reader.
-Explain what the post is about and why it matters.
+Brief introduction paragraph that hooks the reader. Explain what the post is
+about and why it matters.
 
 ## Section 1: Setup
 
@@ -117,6 +122,7 @@ Provide context and explain key concepts.
 # Code examples help readers follow along
 code here
 ```
+````
 
 ### Subsection: Important Detail
 
@@ -129,7 +135,7 @@ Step-by-step walkthrough.
 ```typescript
 // Show working code
 const example = () => {
-  return "code";
+  return 'code';
 };
 ```
 
@@ -145,7 +151,8 @@ Wrap up the main points and suggest next steps.
 
 - [Link to related post](/blog/related-post/)
 - [External resource](https://example.com)
-```
+
+````
 
 ### Best Practices
 
@@ -177,17 +184,16 @@ Wrap up the main points and suggest next steps.
 ## H2 - Main sections
 ### H3 - Subsections
 #### H4 - Minor points (rarely needed)
-```
+````
 
 ### Text Formatting
+
 ```markdown
-**bold text**
-*italic text*
-~~strikethrough~~
-`inline code`
+**bold text** _italic text_ ~~strikethrough~~ `inline code`
 ```
 
 ### Lists
+
 ```markdown
 - Unordered item 1
 - Unordered item 2
@@ -201,23 +207,25 @@ Wrap up the main points and suggest next steps.
 ```
 
 ### Links
+
 ```markdown
-[Link text](https://example.com)
-[Relative link](/blog/other-post/)
-[Link with title](https://example.com "hover text")
+[Link text](https://example.com) [Relative link](/blog/other-post/)
+[Link with title](https://example.com 'hover text')
 ```
 
 ### Images
+
 ```markdown
 ![Alt text for image](https://example.com/image.png)
 ![Local image](/images/my-image.png)
 ```
 
 ### Code Blocks
+
 ````markdown
 ```javascript
 // Language specified for syntax highlighting
-const greeting = "Hello, world!";
+const greeting = 'Hello, world!';
 console.log(greeting);
 ```
 
@@ -235,14 +243,15 @@ func main() {
 ````
 
 ### Blockquotes
+
 ```markdown
-> This is a quote
-> It can span multiple lines
-> 
+> This is a quote It can span multiple lines
+>
 > And have multiple paragraphs
 ```
 
 ### Horizontal Rule
+
 ```markdown
 ---
 ```
@@ -333,13 +342,13 @@ git push origin main
 
 ### TypeScript Example
 
-```markdown
+````markdown
 ---
-title: "TypeScript Tips and Tricks"
+title: 'TypeScript Tips and Tricks'
 date: 2025-01-15
-summary: "Practical TypeScript patterns I use regularly"
+summary: 'Practical TypeScript patterns I use regularly'
 draft: false
-tags: ["typescript", "programming"]
+tags: ['typescript', 'programming']
 ---
 
 # TypeScript Tips and Tricks
@@ -351,18 +360,19 @@ Here are some useful TypeScript patterns.
 Discriminated unions help ensure type safety:
 
 ```typescript
-type Result<T> = 
+type Result<T> =
   | { status: 'success'; data: T }
   | { status: 'error'; error: Error };
 
 function handle<T>(result: Result<T>) {
   if (result.status === 'success') {
-    console.log(result.data);  // ✅ TypeScript knows it's T
+    console.log(result.data); // ✅ TypeScript knows it's T
   } else {
-    console.error(result.error);  // ✅ TypeScript knows it's Error
+    console.error(result.error); // ✅ TypeScript knows it's Error
   }
 }
 ```
+````
 
 This pattern is safer than optional fields.
 
@@ -374,12 +384,13 @@ interface Named {
 }
 
 function getName<T extends Named>(obj: T): string {
-  return obj.name;  // ✅ TypeScript knows T has 'name'
+  return obj.name; // ✅ TypeScript knows T has 'name'
 }
 ```
 
 Constraints ensure you only accept compatible types.
-```
+
+````
 
 ### Bash Script Example
 
@@ -409,9 +420,10 @@ npm install
 npm run build
 
 echo "✅ Build complete"
-```
+````
 
 Run with: `./build.sh`
+
 ```
 
 ---
@@ -438,12 +450,13 @@ Use tags to help readers find related content:
 Review these existing tags and use where appropriate:
 
 ```
-web, javascript, typescript, css, html, performance, tutorial,
-tips, tools, testing, accessibility, design-system, components,
-web-components, beginner, intermediate, advanced, guide, story,
-framework, design, architecture, optimization, productivity,
-career, learning, best-practices, case-study, review
-```
+
+web, javascript, typescript, css, html, performance, tutorial, tips, tools,
+testing, accessibility, design-system, components, web-components, beginner,
+intermediate, advanced, guide, story, framework, design, architecture,
+optimization, productivity, career, learning, best-practices, case-study, review
+
+````
 
 ---
 
@@ -468,7 +481,7 @@ git commit -m "docs: update blog post about my topic"
 git push origin main
 
 # Auto-deploys to production in ~2 minutes
-```
+````
 
 ### Hide a Post (Draft Mode)
 
@@ -476,7 +489,7 @@ To hide a published post temporarily:
 
 ```markdown
 ---
-draft: true  # This hides the post from listing
+draft: true # This hides the post from listing
 ---
 ```
 
@@ -500,6 +513,7 @@ git push origin main
 ### Development → Staging → Production
 
 1. **Local Development**
+
    ```bash
    # Create/edit post on feature branch
    git checkout -b feature/new-blog-post
@@ -508,10 +522,11 @@ git push origin main
    ```
 
 2. **Test & Commit**
+
    ```bash
    # Run validation
    bun run validate:portfolio
-   
+
    # Commit and push
    git add content/blog/my-post.md
    git commit -m "feat: add blog post about my topic"
@@ -519,6 +534,7 @@ git push origin main
    ```
 
 3. **Code Review**
+
    ```bash
    # Create pull request on GitHub
    # Request review from team
@@ -527,6 +543,7 @@ git push origin main
    ```
 
 4. **Merge to Main**
+
    ```bash
    # After approval, merge PR
    # GitHub automatically deploys to staging
@@ -573,12 +590,12 @@ bun run validate:portfolio
 
 ### Common Validation Errors
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| `Missing title field` | Frontmatter incomplete | Add `title: "Your Title"` |
-| `Invalid date format` | Date not YYYY-MM-DD | Change `date: "2025-1-15"` to `date: 2025-01-15` |
-| `Missing summary` | Summary field omitted | Add `summary: "..."` |
-| `Draft must be boolean` | Draft value invalid | Change to `draft: false` (not `"false"`) |
+| Error                   | Cause                  | Fix                                              |
+| ----------------------- | ---------------------- | ------------------------------------------------ |
+| `Missing title field`   | Frontmatter incomplete | Add `title: "Your Title"`                        |
+| `Invalid date format`   | Date not YYYY-MM-DD    | Change `date: "2025-1-15"` to `date: 2025-01-15` |
+| `Missing summary`       | Summary field omitted  | Add `summary: "..."`                             |
+| `Draft must be boolean` | Draft value invalid    | Change to `draft: false` (not `"false"`)         |
 
 ---
 
@@ -619,16 +636,18 @@ title: 'TypeScript 5.0: "What\'s New"'  # Or single quotes with escaping
 
 Make sure backticks are correct:
 
-```markdown
+````markdown
 # CORRECT - 3 backticks
+
 ```javascript
 code here
 ```
+````
 
 # WRONG - 2 backticks (won't work)
-`javascript
-code here
-`
+
+`javascript code here `
+
 ```
 
 ### Post Appears but URL is Wrong
@@ -636,11 +655,13 @@ code here
 Check filename matches desired URL:
 
 ```
-File: content/blog/my-post.md → URL: /blog/my-post/
-File: content/blog/cool-feature.md → URL: /blog/cool-feature/
 
-Spaces become hyphens:
-File: content/blog/my blog post.md → URL: /blog/my-blog-post/
+File: content/blog/my-post.md → URL: /blog/my-post/ File:
+content/blog/cool-feature.md → URL: /blog/cool-feature/
+
+Spaces become hyphens: File: content/blog/my blog post.md → URL:
+/blog/my-blog-post/
+
 ```
 
 ---
@@ -689,3 +710,4 @@ Before publishing your post:
 - [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - Writing style guidelines
 - [docs/operations/DEPLOYMENT_NOTES.md](/docs/operations/DEPLOYMENT_NOTES.md) - How blogs are deployed
 - [README.md](/docs/README.md) - Full documentation index
+```

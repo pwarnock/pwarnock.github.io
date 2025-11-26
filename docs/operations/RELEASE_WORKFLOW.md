@@ -416,8 +416,11 @@ Different types of changes trigger different build and deployment strategies:
 
 ## See Also
 
-- [UPSTREAM_REMOTES_GUIDE.md](./UPSTREAM_REMOTES_GUIDE.md) - Git upstream remote and collaborative workflow
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Manual infrastructure promotion (main → staging → production)
+- [UPSTREAM_REMOTES_GUIDE.md](./UPSTREAM_REMOTES_GUIDE.md) - Git upstream remote
+  and collaborative workflow
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Manual infrastructure promotion (main → staging → production)
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment procedures and CI/CD overview
 - [AGENTS.md](../../AGENTS.md) - Version bumping automation
-- [Beads issue tracking](../../README.md#issue-tracking) - Track release blockers
+- [Beads issue tracking](../../README.md#issue-tracking) - Track release
+  blockers

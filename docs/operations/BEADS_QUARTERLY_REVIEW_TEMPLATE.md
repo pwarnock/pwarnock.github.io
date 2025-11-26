@@ -9,17 +9,18 @@
 
 ## Executive Summary
 
-Quarterly review of beads issue tracking system health, patterns, and improvements.
+Quarterly review of beads issue tracking system health, patterns, and
+improvements.
 
 ### Key Metrics
 
-| Metric | Q3 2025 | Q4 2025 | Trend |
-|--------|---------|---------|-------|
-| Total Issues | - | 135 | - |
-| Closure Rate | - | 89% | ✅ Excellent |
-| Avg Cycle Time | - | ~10 days | ✅ Fast |
-| Database Size | - | 150KB | ✅ Healthy |
-| Archive Count | 0 | 1 | ✅ Started |
+| Metric         | Q3 2025 | Q4 2025  | Trend        |
+| -------------- | ------- | -------- | ------------ |
+| Total Issues   | -       | 135      | -            |
+| Closure Rate   | -       | 89%      | ✅ Excellent |
+| Avg Cycle Time | -       | ~10 days | ✅ Fast      |
+| Database Size  | -       | 150KB    | ✅ Healthy   |
+| Archive Count  | 0       | 1        | ✅ Started   |
 
 ---
 
@@ -83,6 +84,7 @@ Blocked:        0 issues (0%)
 **Goal**: 100% coverage of work >2 minutes
 
 **Action Items**:
+
 - [ ] Add "create beads issue" checklist item before `git push`
 - [ ] Review weekly for unfiled work
 - [ ] File retroactively if discovered
@@ -97,6 +99,7 @@ Blocked:        0 issues (0%)
 **Pattern**: `git commit -m "feat: description (pw-123)"`
 
 **Enforcement**:
+
 - [ ] Add pre-commit hook to check for beads ID in message
 - [ ] Update git commit template with example
 - [ ] Document in CONTRIBUTING.md
@@ -119,6 +122,7 @@ Blocked:        0 issues (0%)
 **Goal**: All closed issues have meaningful summaries
 
 **Standard**:
+
 ```
 bd close pw-123 --reason "Completed" --notes "
 Summary of what was done:
@@ -138,6 +142,7 @@ Ready for production/staging/code review"
 ### Current State
 
 ✅ **Healthy**:
+
 - 135 total issues (well under 500 limit)
 - 89% closure rate (excellent)
 - 0 corrupted issues
@@ -145,6 +150,7 @@ Ready for production/staging/code review"
 - Archive: 1 monthly snapshot
 
 ⚠️ **Warnings** (from last `bd doctor`):
+
 - CLI version 0.24.3 (latest 0.24.5 available)
 - Configuration mismatch (JSONL filename)
 - Claude integration not configured
@@ -152,6 +158,7 @@ Ready for production/staging/code review"
 ### Upgrade Path
 
 **Beads CLI**: Upgrade to 0.24.5
+
 ```bash
 brew upgrade bd
 # or
@@ -222,6 +229,7 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 ### Released
 
 **v0.20.1** (Nov 25, 2025)
+
 - Epic: pw-701 (Release process automation)
 - Closed: pw-16, pw-18, pw-aog, pw-49d, pw-2hd, pw-7ky
 - Commits: 4 new releases via GitHub Actions
@@ -230,6 +238,7 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 ### In Progress
 
 **v0.21.0** (Planning)
+
 - Epic: pw-g5f (Beads 0.24 best practices)
 - Epic: pw-zyu (Cody-Beads integration rollout)
 - Status: Planning → Implementation
@@ -241,9 +250,9 @@ curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/insta
 
 ### Monthly Snapshots Created
 
-| Date | File | Size | Issues | Status |
-|------|------|------|--------|--------|
-| 2025-11-25 | issues-2025-11-25.json | 74KB | 135 | ✅ Current |
+| Date       | File                   | Size | Issues | Status     |
+| ---------- | ---------------------- | ---- | ------ | ---------- |
+| 2025-11-25 | issues-2025-11-25.json | 74KB | 135    | ✅ Current |
 
 ### Retention Policy
 

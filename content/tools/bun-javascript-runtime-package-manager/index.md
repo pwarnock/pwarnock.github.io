@@ -27,7 +27,6 @@ revolutionary performance improvements over traditional Node.js and npm
 workflows. Built from the ground up for speed and developer experience, Bun
 transforms how JavaScript applications are developed and deployed.
 
-
 ## 🚀 **Performance Revolution**
 
 ### **Installation Speed**

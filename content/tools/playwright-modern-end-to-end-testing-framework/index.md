@@ -27,7 +27,6 @@ enables reliable and fast cross-browser web automation. Designed for modern web
 applications, Playwright provides powerful APIs for testing complex user
 interactions, mobile emulation, and comprehensive debugging capabilities.
 
-
 ## 🎯 **Core Capabilities**
 
 ### **Cross-Browser Testing**

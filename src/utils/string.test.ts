@@ -15,7 +15,7 @@ function truncate(str: string, length: number): string {
 
 /**
  * Example: String utility tests
- * 
+ *
  * This demonstrates the Vitest setup for TypeScript unit tests.
  * Replace these with actual component tests as Phase 1 progresses.
  */

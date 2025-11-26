@@ -9,6 +9,7 @@
 ## Current Limitation
 
 Your `StructuredLogger` currently:
+
 - ✅ Formats logs nicely with test name + timestamp
 - ✅ Captures performance metrics
 - ✅ Documents accessibility violations
@@ -36,7 +37,8 @@ Searchable database
 SQL or dashboard UI
 ```
 
-**Key concept**: Each test is a **span** with nested **events** for each log/metric
+**Key concept**: Each test is a **span** with nested **events** for each
+log/metric
 
 ---
 
@@ -45,6 +47,7 @@ SQL or dashboard UI
 ### 1. Add OTEL Dependencies
 
 **`go.mod` additions**:
+
 ```bash
 go get go.opentelemetry.io/otel@latest
 go get go.opentelemetry.io/otel/sdk/trace@latest
@@ -53,6 +56,7 @@ go get go.opentelemetry.io/otel/attribute@latest
 ```
 
 **Check versions** (should be stable):
+
 ```bash
 go list -m go.opentelemetry.io/otel
 # go.opentelemetry.io/otel v1.27.0
@@ -135,7 +139,7 @@ func InitOTEL(ctx context.Context) (func(context.Context) error, error) {
 // getEndpoint determines which backend to use
 func getEndpoint() string {
 	// Priority: env var > Logfire default > Jaeger local
-	
+
 	if endpoint := os.Getenv("OTEL_EXPORTER_OTLP_ENDPOINT"); endpoint != "" {
 		return endpoint
 	}
@@ -172,11 +176,11 @@ func IsOTELEnabled() bool {
 	if os.Getenv("LOGFIRE_TOKEN") != "" {
 		return true
 	}
-	
+
 	// Try to connect to Jaeger endpoint
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
-	
+
 	conn, err := grpc.DialContext(ctx, "localhost:4317",
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithBlock(),
@@ -238,7 +242,7 @@ func NewStructuredLogger(testName string) *StructuredLogger {
 // Logf logs a formatted message as an event
 func (sl *StructuredLogger) Logf(format string, args ...interface{}) {
 	msg := fmt.Sprintf(format, args...)
-	
+
 	// Add as OTEL event
 	sl.span.AddEvent("log", trace.WithAttributes(
 		attribute.String("message", msg),
@@ -246,9 +250,9 @@ func (sl *StructuredLogger) Logf(format string, args ...interface{}) {
 	))
 
 	// Also print to stdout for immediate visibility
-	fmt.Printf("[%s] [%s] %s\n", 
-		sl.testName, 
-		time.Now().Format("2006-01-02T15:04:05Z07:00"), 
+	fmt.Printf("[%s] [%s] %s\n",
+		sl.testName,
+		time.Now().Format("2006-01-02T15:04:05Z07:00"),
 		msg,
 	)
 }
@@ -377,17 +381,20 @@ func init() {
 ### Local Setup with Jaeger
 
 **Start Jaeger** (runs all-in-one):
+
 ```bash
 docker run -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one
 ```
 
 **Run a test**:
+
 ```bash
 cd test
 go test -v ./... -run TestSomething
 ```
 
 **View in Jaeger UI**:
+
 1. Open http://localhost:16686
 2. Select service: `go-test-suite`
 3. Find your test by name
@@ -396,17 +403,20 @@ go test -v ./... -run TestSomething
 ### With Logfire
 
 **Set token** (from Logfire account):
+
 ```bash
 export LOGFIRE_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGc...
 ```
 
 **Run test**:
+
 ```bash
 cd test
 go test -v ./... -run TestSomething
 ```
 
 **View in Logfire**:
+
 1. Go to https://logfire.pydantic.dev/
 2. Click your project
 3. Click "Live" tab
@@ -419,11 +429,12 @@ go test -v ./... -run TestSomething
 ### Logging Within a Test
 
 **Before**:
+
 ```go
 func TestPageLoad(t *testing.T) {
     logger := support.NewStructuredLogger("TestPageLoad")
     defer logger.Close()
-    
+
     logger.Logf("Starting page load test")
     // ... test code ...
     logger.LogPerformance(map[string]interface{}{
@@ -434,18 +445,19 @@ func TestPageLoad(t *testing.T) {
 ```
 
 **After** (same code works - no changes needed!):
+
 ```go
 func TestPageLoad(t *testing.T) {
     logger := support.NewStructuredLogger("TestPageLoad")
     defer logger.Close()
-    
+
     logger.Logf("Starting page load test")
     // ... test code ...
     logger.LogPerformance(map[string]interface{}{
         "load_time_ms": 1234,
         "resources": 42,
     })
-    
+
     // Now also appears as OTEL span with events!
 }
 ```
@@ -456,16 +468,16 @@ func TestPageLoad(t *testing.T) {
 func TestWithSubtasks(t *testing.T) {
     logger := support.NewStructuredLogger("TestWithSubtasks")
     defer logger.Close()
-    
+
     // Create sub-span for specific phase
     ctx, span := logger.CreateChildSpan("setup_phase")
     logger.Logf("Setting up test")
     span.End()
-    
+
     ctx, span = logger.CreateChildSpan("execution_phase")
     logger.Logf("Running test")
     span.End()
-    
+
     ctx, span = logger.CreateChildSpan("verification_phase")
     logger.Logf("Verifying results")
     span.End()
@@ -477,17 +489,21 @@ func TestWithSubtasks(t *testing.T) {
 ## Querying with Jaeger DSL
 
 **Find slow tests**:
+
 ```
 service.name="go-test-suite" AND duration>1000000000
 ```
+
 (duration in nanoseconds, so 1B = 1 second)
 
 **Find tests with errors**:
+
 ```
 service.name="go-test-suite" AND error=true
 ```
 
 **Find specific test**:
+
 ```
 service.name="go-test-suite" AND operationName="TestAccessibility"
 ```
@@ -499,12 +515,14 @@ service.name="go-test-suite" AND operationName="TestAccessibility"
 ### "No spans appearing in Jaeger"
 
 1. Check Jaeger is running:
+
    ```bash
    curl http://localhost:16686/api/services
    # Should return: {"data":["go-test-suite"]}
    ```
 
 2. Check OTEL initialized:
+
    ```bash
    go test -v 2>&1 | grep OTEL
    # Should see: [OTEL] Initializing OTEL...
@@ -519,6 +537,7 @@ service.name="go-test-suite" AND operationName="TestAccessibility"
 ### "OTEL not initializing"
 
 Add debug output:
+
 ```go
 import "log"
 
@@ -534,12 +553,14 @@ func init() {
 ### "gRPC connection refused"
 
 Make sure Jaeger is running:
+
 ```bash
 docker ps | grep jaeger
 # Should show running container
 ```
 
 Or use Logfire instead:
+
 ```bash
 export LOGFIRE_TOKEN=your-token
 # Now OTEL will use Logfire endpoint
@@ -593,25 +614,29 @@ Result: < 0.1% overall test slowdown
 Once Go OTEL is working, update TypeScript to use same trace IDs:
 
 ```typescript
-import * as logfire from "@pydantic/logfire-node";
+import * as logfire from '@pydantic/logfire-node';
 
 logfire.configure({
   token: process.env.LOGFIRE_TOKEN,
-  serviceName: "playwright-e2e",
+  serviceName: 'playwright-e2e',
 });
 
 // Get trace ID from Go backend (if accessible)
 const serverTraceId = await page.evaluate(() => {
-  return fetch("http://localhost:1313/api/debug/trace-id")
-    .then(r => r.text());
+  return fetch('http://localhost:1313/api/debug/trace-id').then(r => r.text());
 });
 
 // Use same trace ID in TS tests
-logfire.span("E2E Test", {
-  server_trace_id: serverTraceId,
-}, async (span) => {
-  // Now both Go and TS logs linked with same trace_id!
-});
+logfire.span(
+  'E2E Test',
+  {
+    server_trace_id: serverTraceId,
+  },
+  async span => {
+    // Now both Go and TS logs linked with same trace_id!
+  }
+);
 ```
 
-This enables **full end-to-end tracing** from test → Hugo server → browser interactions → assertions.
+This enables **full end-to-end tracing** from test → Hugo server → browser
+interactions → assertions.

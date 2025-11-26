@@ -124,7 +124,7 @@ test.describe('End-to-End User Journeys', () => {
     // Now, loop through all desktop navigation links and explicitly focus each one
     await expect(desktopNavigationLinks.first()).toBeVisible(); // Check first one
 
-    for (let i = 0; i < await desktopNavigationLinks.count(); i++) {
+    for (let i = 0; i < (await desktopNavigationLinks.count()); i++) {
       const currentLink = desktopNavigationLinks.nth(i);
       await currentLink.focus(); // Explicitly focus the current link
       await expect(currentLink).toBeFocused(); // Verify it is focused
@@ -138,7 +138,6 @@ test.describe('End-to-End User Journeys', () => {
     await portfolioLink.click();
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/.*portfolio/);
-
   });
 
   test('search functionality journey @e2e', async ({ page }) => {

@@ -184,7 +184,10 @@ Common themes to test against:
 
 ```html
 <!-- ❌ Don't create custom glass effects -->
-<div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur();">
+<div
+  class="card"
+  style="background: rgba(255,255,255,0.1); backdrop-filter: blur();"
+>
   <!-- ✅ Use DaisyUI's built-in styling -->
   <div class="card card-glass">
     <!-- If available -->
@@ -217,7 +220,9 @@ Always test components across multiple themes:
 
 ```html
 <!-- ✅ Correct - Theme-aware carousel cards -->
-<div class="card card-primary card-border hover:shadow-xl transition-all duration-300">
+<div
+  class="card card-primary card-border hover:shadow-xl transition-all duration-300"
+>
   <div class="card-body p-3 text-center">
     <h3 class="card-title font-semibold">Title</h3>
     <p class="text-sm opacity-90">Description</p>

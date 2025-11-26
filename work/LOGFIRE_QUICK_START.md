@@ -9,7 +9,7 @@
 ## Step 1: Create Logfire Account (5 min)
 
 1. Go to https://logfire.pydantic.dev/
-2. Click "Get Started" 
+2. Click "Get Started"
 3. Sign up with GitHub/Google
 4. Create a project called "test-suite"
 5. You'll get a **Write Token** - save this!
@@ -21,6 +21,7 @@ Example token format: `eyJ0eXAiOiJKV1QiLCJhbGc...`
 ## Step 2: Set Up Environment (2 min)
 
 **Create `.env.local`** (Git-ignored):
+
 ```bash
 LOGFIRE_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGc...
 LOGFIRE_SERVICE_NAME=test-suite
@@ -28,6 +29,7 @@ LOGFIRE_ENVIRONMENT=development
 ```
 
 **Or add to CI/CD** (GitHub Actions):
+
 1. Go to Settings → Secrets → New Repository Secret
 2. Name: `LOGFIRE_TOKEN`
 3. Value: Your token from Step 1
@@ -37,11 +39,13 @@ LOGFIRE_ENVIRONMENT=development
 ## Step 3: Install Logfire (3 min)
 
 ### TypeScript Tests
+
 ```bash
 npm install @pydantic/logfire-node
 ```
 
 ### Go Tests
+
 ```bash
 go get go.opentelemetry.io/otel
 go get go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
@@ -53,32 +57,34 @@ go get go.opentelemetry.io/otel/sdk/trace
 ## Step 4: Configure TypeScript Tests (5 min)
 
 **Create `tests/logfire.setup.ts`**:
+
 ```typescript
-import * as logfire from "@pydantic/logfire-node";
+import * as logfire from '@pydantic/logfire-node';
 
 export function setupLogfire() {
   logfire.configure({
     token: process.env.LOGFIRE_TOKEN,
-    serviceName: "test-suite",
-    environment: process.env.LOGFIRE_ENVIRONMENT || "test",
+    serviceName: 'test-suite',
+    environment: process.env.LOGFIRE_ENVIRONMENT || 'test',
     advancedOptions: {
       // Optional: use local Jaeger instead of Logfire
       // baseUrl: "http://localhost:4317",
     },
   });
-  
+
   return logfire;
 }
 ```
 
 **Update `playwright.config.js`**:
+
 ```javascript
-import { setupLogfire } from "./tests/logfire.setup";
+import { setupLogfire } from './tests/logfire.setup';
 
 setupLogfire();
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: './tests',
   // ... rest of config
 });
 ```
@@ -88,6 +94,7 @@ export default defineConfig({
 ## Step 5: Instrument Playwright Tests (10 min)
 
 **Before (current code)**:
+
 ```typescript
 test('fix heading order violations', async ({ page }) => {
   await page.goto('/');
@@ -102,37 +109,42 @@ test('fix heading order violations', async ({ page }) => {
 ```
 
 **After (with Logfire)**:
+
 ```typescript
-import * as logfire from "@pydantic/logfire-node";
+import * as logfire from '@pydantic/logfire-node';
 
 test('fix heading order violations', async ({ page }) => {
-  await logfire.span("Test: Heading Order Violations", {
-    page_url: "/",
-  }, async (span) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
-    
-    await injectAxe(page);
-    const violations = await getViolations(page, {
-      rules: { 'heading-order': { enabled: true } },
-    });
-    
-    // Replace console.log with logfire
-    logfire.info('Heading order check complete', {
-      violation_count: violations.length,
-    });
-    
-    // Log each violation as warning
-    violations.forEach((v, i) => {
-      logfire.warn(`Heading violation ${i + 1}`, {
-        description: v.description,
-        target: v.nodes[0]?.target.join(', '),
+  await logfire.span(
+    'Test: Heading Order Violations',
+    {
+      page_url: '/',
+    },
+    async span => {
+      await page.goto('/');
+      await page.waitForLoadState('networkidle');
+
+      await injectAxe(page);
+      const violations = await getViolations(page, {
+        rules: { 'heading-order': { enabled: true } },
       });
-    });
-    
-    expect(violations.length).toBeGreaterThan(0);
-    span.end();
-  });
+
+      // Replace console.log with logfire
+      logfire.info('Heading order check complete', {
+        violation_count: violations.length,
+      });
+
+      // Log each violation as warning
+      violations.forEach((v, i) => {
+        logfire.warn(`Heading violation ${i + 1}`, {
+          description: v.description,
+          target: v.nodes[0]?.target.join(', '),
+        });
+      });
+
+      expect(violations.length).toBeGreaterThan(0);
+      span.end();
+    }
+  );
 });
 ```
 
@@ -170,7 +182,7 @@ func NewStructuredLogger(testName string) *StructuredLogger {
 			attribute.String("timestamp", time.Now().Format(time.RFC3339)),
 		),
 	)
-	
+
 	return &StructuredLogger{
 		testName: testName,
 		span:     span,
@@ -225,16 +237,19 @@ func (sl *StructuredLogger) GetLogger() func(format string, args ...interface{})
 ## Step 7: Run Tests with Logfire (2 min)
 
 **TypeScript:**
+
 ```bash
 npm run test:e2e
 ```
 
 **Go:**
+
 ```bash
 cd test && go test -v ./...
 ```
 
 **Watch Logfire live view:**
+
 1. Go to https://logfire.pydantic.dev/
 2. Click your project
 3. Click "Live" tab
@@ -256,19 +271,25 @@ cd test && go test -v ./...
 ## Common Issues
 
 ### "No spans appearing in Logfire"
+
 **Solution**: Check token is correct
+
 ```bash
 echo $LOGFIRE_TOKEN | head -c 20  # Should not be empty
 ```
 
 ### "ENOTFOUND logfire.pydantic.dev"
+
 **Solution**: Network/DNS issue, check internet connection
+
 ```bash
 curl https://logfire.pydantic.dev/docs -I
 ```
 
 ### "Rate limited by Logfire"
+
 **Solution**: You've exceeded free tier limits
+
 - Upgrade account or
 - Switch to local Jaeger backend (see below)
 
@@ -279,6 +300,7 @@ curl https://logfire.pydantic.dev/docs -I
 **Why**: No SaaS account needed, all data stays local
 
 **Setup Jaeger** (1 command):
+
 ```bash
 docker run -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one
 ```
@@ -286,6 +308,7 @@ docker run -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one
 **Open Jaeger UI**: http://localhost:16686
 
 **Update `.env.local`**:
+
 ```bash
 # Use local Jaeger instead of Logfire
 OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
@@ -293,9 +316,10 @@ LOGFIRE_DISABLED=true
 ```
 
 **Update tests to use OTEL directly**:
+
 ```typescript
-import { basicSetup } from "@opentelemetry/sdk-node";
-import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
+import { basicSetup } from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
 basicSetup({
   instrumentations: [getNodeAutoInstrumentations()],
@@ -312,17 +336,19 @@ basicSetup({
 Once tests are running, you can query them with SQL:
 
 **Find all failed accessibility tests:**
+
 ```sql
-SELECT timestamp, attributes.test_name, events 
-FROM spans 
-WHERE attributes.test_name LIKE '%accessibility%' 
+SELECT timestamp, attributes.test_name, events
+FROM spans
+WHERE attributes.test_name LIKE '%accessibility%'
   AND events.error_count > 0
 ORDER BY timestamp DESC
 ```
 
 **Performance trend over time:**
+
 ```sql
-SELECT 
+SELECT
   DATE(timestamp) as date,
   AVG(CAST(attributes['perf.load_time'] AS FLOAT)) as avg_load_ms,
   MAX(CAST(attributes['perf.load_time'] AS FLOAT)) as max_load_ms

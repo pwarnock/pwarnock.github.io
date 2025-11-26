@@ -26,7 +26,9 @@ class BacklogToBeads {
 
   getCurrentVersion() {
     try {
-      const packageJson = JSON.parse(fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8'));
+      const packageJson = JSON.parse(
+        fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8')
+      );
       return packageJson.version;
     } catch (error) {
       console.warn('⚠️  Could not read version from package.json, using default');
@@ -36,18 +38,18 @@ class BacklogToBeads {
 
   parseBacklog() {
     console.log('📖 Parsing Cody feature backlog...');
-    
+
     if (!fs.existsSync(this.backlogFile)) {
       throw new Error(`Feature backlog not found: ${this.backlogFile}`);
     }
 
     const content = fs.readFileSync(this.backlogFile, 'utf8');
     const lines = content.split('\n');
-    
+
     const versions = {};
     let currentVersion = null;
     let currentFeatures = [];
-    
+
     for (const line of lines) {
       // Detect version headers
       const versionMatch = line.match(/^## v([0-9.]+).*? - (🟢|🟡|🔴)/);
@@ -61,7 +63,9 @@ class BacklogToBeads {
       }
 
       // Detect feature entries
-      const featureMatch = line.match(/^| (F\d+) | ([^|]+) | ([^|]+) | (High|Medium|Low) | (🔴|🟡|🟢)/);
+      const featureMatch = line.match(
+        /^| (F\d+) | ([^|]+) | ([^|]+) | (High|Medium|Low) | (🔴|🟡|🟢)/
+      );
       if (featureMatch && currentVersion) {
         const [, id, title, description, priority, status] = featureMatch;
         currentFeatures.push({
@@ -70,7 +74,7 @@ class BacklogToBeads {
           description: description.trim(),
           priority: this.mapPriority(priority),
           status: this.mapStatus(status),
-          version: currentVersion
+          version: currentVersion,
         });
       }
     }
@@ -86,27 +90,37 @@ class BacklogToBeads {
 
   mapPriority(priority) {
     switch (priority) {
-      case 'Critical': return '0';
-      case 'High': return '1';
-      case 'Medium': return '2';
-      case 'Low': return '3';
-      case 'Backlog': return '4';
-      default: return '2';
+      case 'Critical':
+        return '0';
+      case 'High':
+        return '1';
+      case 'Medium':
+        return '2';
+      case 'Low':
+        return '3';
+      case 'Backlog':
+        return '4';
+      default:
+        return '2';
     }
   }
 
   mapStatus(status) {
     switch (status) {
-      case '🟢 Completed': return 'completed';
-      case '🟡 In Progress': return 'in_progress';
-      case '🔴 Not Started': return 'todo';
-      default: return 'todo';
+      case '🟢 Completed':
+        return 'completed';
+      case '🟡 In Progress':
+        return 'in_progress';
+      case '🔴 Not Started':
+        return 'todo';
+      default:
+        return 'todo';
     }
   }
 
   getExistingIssues() {
     console.log('🔍 Checking existing Beads issues...');
-    
+
     if (!fs.existsSync(this.beadsFile)) {
       console.log('ℹ️  No existing issues file found');
       return new Set();
@@ -114,7 +128,7 @@ class BacklogToBeads {
 
     const content = fs.readFileSync(this.beadsFile, 'utf8');
     const lines = content.trim().split('\n');
-    
+
     const existingIssues = new Set();
     for (const line of lines) {
       if (line.trim()) {
@@ -133,7 +147,7 @@ class BacklogToBeads {
 
   createBeadsIssue(feature, dependencies = []) {
     const title = `(${feature.version}) ${feature.title}`;
-    
+
     // Check if already exists
     const existingIssues = this.getExistingIssues();
     if (existingIssues.has(title)) {
@@ -144,28 +158,27 @@ class BacklogToBeads {
     try {
       const env = { ...process.env, BEADS_NO_DAEMON: '1' };
       let command = `bd --no-daemon create "${title}" -t feature -p ${feature.priority} --json`;
-      
+
       if (dependencies.length > 0) {
         command += ` --deps ${dependencies.join(',')}`;
       }
 
-      const output = execSync(command, { 
-        cwd: this.projectRoot, 
+      const output = execSync(command, {
+        cwd: this.projectRoot,
         env,
-        encoding: 'utf8' 
+        encoding: 'utf8',
       });
 
       const issue = JSON.parse(output);
       console.log(`✅ Created issue: ${issue.id}: ${title}`);
-      
+
       return {
         beadsId: issue.id,
         featureId: feature.id,
         title,
         version: feature.version,
-        priority: feature.priority
+        priority: feature.priority,
       };
-
     } catch (error) {
       console.error(`❌ Failed to create issue: ${title}`);
       console.error(`   Error: ${error.message}`);
@@ -189,7 +202,7 @@ class BacklogToBeads {
 
         // Filter for incomplete features only
         const incompleteFeatures = features.filter(f => f.status !== 'completed');
-        
+
         if (incompleteFeatures.length === 0) {
           console.log(`✅ All features in v${version} are completed`);
           continue;
@@ -199,16 +212,15 @@ class BacklogToBeads {
 
         // Create issues with dependency tracking
         const dependencyMap = new Map();
-        
+
         for (const feature of incompleteFeatures) {
           const dependencies = [];
-          
+
           // Add dependencies based on feature relationships
           if (feature.title.toLowerCase().includes('testing')) {
             // Testing features depend on implementation features
-            const implFeature = incompleteFeatures.find(f => 
-              f.title.toLowerCase().includes('implement') && 
-              f.version === feature.version
+            const implFeature = incompleteFeatures.find(
+              f => f.title.toLowerCase().includes('implement') && f.version === feature.version
             );
             if (implFeature && dependencyMap.has(implFeature.id)) {
               dependencies.push(dependencyMap.get(implFeature.id));
@@ -227,7 +239,7 @@ class BacklogToBeads {
       console.log('===============');
       console.log(`✅ Issues created: ${this.createdIssues.length}`);
       console.log(`❌ Errors: ${this.errors.length}`);
-      
+
       if (this.createdIssues.length > 0) {
         console.log('\n🔗 Created Issues:');
         this.createdIssues.forEach(issue => {
@@ -246,7 +258,6 @@ class BacklogToBeads {
           console.log(`   ${feature.id}: ${error}`);
         });
       }
-
     } catch (error) {
       console.error('💥 Sync failed:', error.message);
       process.exit(1);
@@ -257,7 +268,7 @@ class BacklogToBeads {
 // CLI interface
 if (import.meta.url === `file://${process.argv[1]}`) {
   const sync = new BacklogToBeads();
-  
+
   const version = process.argv.find(arg => arg.startsWith('--version='));
   if (version) {
     sync.version = version.split('=')[1];

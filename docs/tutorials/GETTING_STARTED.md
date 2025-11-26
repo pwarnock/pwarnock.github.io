@@ -1,6 +1,7 @@
 # Getting Started - Local Development Setup
 
-Complete guide to setting up the project for local development, including prerequisites, environment setup, and running tests.
+Complete guide to setting up the project for local development, including
+prerequisites, environment setup, and running tests.
 
 ## Prerequisites
 
@@ -8,21 +9,21 @@ Before starting, ensure you have these tools installed:
 
 ### Required Tools
 
-| Tool | Version | Purpose | Install |
-|------|---------|---------|---------|
-| **Git** | ≥2.30 | Version control | `brew install git` |
-| **Bun** | Latest | JavaScript runtime & package manager | `curl -fsSL https://bun.sh/install \| bash` |
-| **Hugo** | ≥0.120 | Static site generator | `brew install hugo` |
-| **Go** | ≥1.21 | Test utilities language | `brew install go` |
-| **Node.js** | ≥18 (via Bun) | Included with Bun | (Bun provides Node.js) |
+| Tool        | Version       | Purpose                              | Install                                     |
+| ----------- | ------------- | ------------------------------------ | ------------------------------------------- |
+| **Git**     | ≥2.30         | Version control                      | `brew install git`                          |
+| **Bun**     | Latest        | JavaScript runtime & package manager | `curl -fsSL https://bun.sh/install \| bash` |
+| **Hugo**    | ≥0.120        | Static site generator                | `brew install hugo`                         |
+| **Go**      | ≥1.21         | Test utilities language              | `brew install go`                           |
+| **Node.js** | ≥18 (via Bun) | Included with Bun                    | (Bun provides Node.js)                      |
 
 ### Optional but Recommended
 
-| Tool | Purpose | Install |
-|------|---------|---------|
-| **GitHub CLI** | Branch protection setup | `brew install gh` |
-| **Docker** | Containerized environment | `brew install docker` |
-| **VS Code** | Code editor | `brew install --cask visual-studio-code` |
+| Tool           | Purpose                   | Install                                  |
+| -------------- | ------------------------- | ---------------------------------------- |
+| **GitHub CLI** | Branch protection setup   | `brew install gh`                        |
+| **Docker**     | Containerized environment | `brew install docker`                    |
+| **VS Code**    | Code editor               | `brew install --cask visual-studio-code` |
 
 ### Verify Installation
 
@@ -93,7 +94,7 @@ bun run build:preview
 
 # This generates the 'public/' directory with the built site
 # You should see output like:
-# Hugo 0.x.x ... 
+# Hugo 0.x.x ...
 # Built in 2.5 seconds
 ```
 
@@ -316,6 +317,7 @@ ANALYTICS_ENABLED=false     # Disable tracking locally
 ### Configuration Files
 
 Development-specific config is in `config/development/hugo.toml`:
+
 - `baseURL = "http://localhost:1313"`
 - Analytics disabled
 - All features enabled for testing
@@ -569,7 +571,9 @@ bun run test:perf:watch
 After setting up:
 
 1. **Read** [AGENTS.md](/AGENTS.md) - Development workflow
-2. **Read** [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - Code conventions
+2. **Read**
+   [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - Code
+   conventions
 3. **Add** your first blog post or content change
 4. **Run** `bun run test:unit` to verify setup
 5. **Review** [docs/operations/](/docs/operations/) for deployment info
@@ -579,7 +583,10 @@ After setting up:
 ## See Also
 
 - [AGENTS.md](/AGENTS.md) - Development workflow and guidelines
-- [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - Code style and conventions
-- [docs/development/TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) - Testing guide
-- [docs/operations/DEPLOYMENT_NOTES.md](/docs/operations/DEPLOYMENT_NOTES.md) - Deployment procedures
+- [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - Code
+  style and conventions
+- [docs/development/TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) -
+  Testing guide
+- [docs/operations/DEPLOYMENT_NOTES.md](/docs/operations/DEPLOYMENT_NOTES.md) -
+  Deployment procedures
 - [README.md](/docs/README.md) - Full documentation index

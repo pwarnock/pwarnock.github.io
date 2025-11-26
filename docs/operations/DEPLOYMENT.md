@@ -5,7 +5,9 @@ versioning, and troubleshooting deployment issues.
 
 **See also:**
 
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Manual promotion of infrastructure changes (build config, layouts, CSS) from main → staging → production
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](./INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Manual promotion of infrastructure changes (build config, layouts, CSS) from
+  main → staging → production
 - [RELEASE_WORKFLOW.md](./RELEASE_WORKFLOW.md) - Three-stage release process (RC
   → test → production) with script automation
 - [RELEASE_PROCESS.md](./RELEASE_PROCESS.md) - Cody Framework workflow

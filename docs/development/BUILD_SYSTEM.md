@@ -1,16 +1,19 @@
 # Build System & Path-Based Compilation
 
-Guide to the project's intelligent build system that automatically detects change types and applies optimal compilation strategies.
+Guide to the project's intelligent build system that automatically detects
+change types and applies optimal compilation strategies.
 
 ## Overview
 
-The build system uses path-based detection to optimize build time and testing requirements:
+The build system uses path-based detection to optimize build time and testing
+requirements:
 
 - **Content changes** → Fast Hugo rebuild (~30s) with validation
 - **Infrastructure changes** → Comprehensive testing (~5min) including E2E
 - **Documentation changes** → Validation only (~1min)
 
-This prevents unnecessary testing when just updating blog posts, while catching infrastructure issues early.
+This prevents unnecessary testing when just updating blog posts, while catching
+infrastructure issues early.
 
 ---
 
@@ -49,6 +52,7 @@ bun run analyze
 The `scripts/path-based-build.sh` script analyzes changed files:
 
 ### Content Changes (Blog Posts, Portfolio)
+
 **Triggered by**: Changes in `content/` directory
 
 ```bash
@@ -62,6 +66,7 @@ The `scripts/path-based-build.sh` script analyzes changed files:
 ```
 
 **Example**:
+
 ```bash
 git add content/blog/my-post.md
 git commit -m "feat: add blog post"
@@ -70,7 +75,9 @@ bun run build:path
 ```
 
 ### Infrastructure Changes (Layout, CSS, Config)
-**Triggered by**: Changes in `layouts/`, `assets/`, `config/`, or `.github/workflows/`
+
+**Triggered by**: Changes in `layouts/`, `assets/`, `config/`, or
+`.github/workflows/`
 
 ```bash
 # What runs:
@@ -86,6 +93,7 @@ bun run build:path
 ```
 
 **Example**:
+
 ```bash
 git add layouts/_default/single.html
 git commit -m "feat: update single post template"
@@ -94,6 +102,7 @@ bun run build:path
 ```
 
 ### Documentation Changes
+
 **Triggered by**: Changes in `docs/` directory only
 
 ```bash
@@ -106,6 +115,7 @@ bun run build:path
 ```
 
 **Example**:
+
 ```bash
 git add docs/tutorials/GETTING_STARTED.md
 git commit -m "docs: clarify setup instructions"
@@ -118,6 +128,7 @@ bun run build:path
 ## Build Environments
 
 ### Development (`config/development/hugo.toml`)
+
 - **Minification**: Disabled (fast reload)
 - **Fingerprinting**: Disabled (caching not needed)
 - **Build flags**: `-D` (include drafts)
@@ -125,6 +136,7 @@ bun run build:path
 - **Base URL**: `http://localhost:1313`
 
 ### Staging (`config/staging/hugo.toml`)
+
 - **Minification**: Enabled (realistic testing)
 - **Fingerprinting**: Enabled (cache validation)
 - **Build flags**: Production flags
@@ -132,6 +144,7 @@ bun run build:path
 - **Base URL**: Staging domain
 
 ### Production (`config/production/hugo.toml`)
+
 - **Minification**: Enabled (optimized)
 - **Fingerprinting**: Enabled (cache busting)
 - **Analytics**: Production tracking
@@ -401,7 +414,6 @@ GitHub Actions uses the same build system:
 # .github/workflows/build.yml
 - name: Detect changes and build
   run: bun run build:path
-
 # This triggers the appropriate build based on what changed
 # Content changes → fast build
 # Infrastructure → comprehensive testing
@@ -430,7 +442,11 @@ GitHub Actions uses the same build system:
 
 ## See Also
 
-- [TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) - Test types and coverage
-- [STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - CSS conventions and design system
-- [RELEASE_WORKFLOW.md](/docs/operations/RELEASE_WORKFLOW.md) - How builds connect to releases
-- [scripts/path-based-build.sh](/scripts/path-based-build.sh) - Implementation details
+- [TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) - Test
+  types and coverage
+- [STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md) - CSS conventions and
+  design system
+- [RELEASE_WORKFLOW.md](/docs/operations/RELEASE_WORKFLOW.md) - How builds
+  connect to releases
+- [scripts/path-based-build.sh](/scripts/path-based-build.sh) - Implementation
+  details

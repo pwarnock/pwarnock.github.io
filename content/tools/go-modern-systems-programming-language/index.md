@@ -27,7 +27,6 @@ Google that emphasizes simplicity, reliability, and efficiency. Designed for
 building scalable backend services, CLI tools, and high-performance
 applications, Go has become a cornerstone of modern software infrastructure.
 
-
 ## 🎯 **Core Philosophy**
 
 ### **Simplicity First**

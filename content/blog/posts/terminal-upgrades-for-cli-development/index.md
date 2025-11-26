@@ -2,8 +2,8 @@
 title: 'Terminal Upgrades for CLI Development'
 date: 2025-11-26T12:00:00Z
 draft: false
-description: 'The terminal tools I use alongside Claude and other CLI agents.'
-summary: 'The terminal tools I use alongside Claude and other CLI agents.'
+description: 'Eleanor Berger shares the terminal tools she uses alongside Claude and other CLI agents.'
+summary: 'Eleanor Berger shares the terminal tools she uses alongside Claude and other CLI agents.'
 tags: ['CLI', 'Developer Tools', 'Terminal', 'Productivity', 'AI']
 author: 'Eleanor Berger'
 image: cover.png

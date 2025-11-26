@@ -4,9 +4,13 @@
 
 ## Executive Summary
 
-Your Cody PBT/Beads integration froze due to **context bloat and ineffective agent delegation**. This plan restructures Amp to use **four context engineering strategies** + **Claude's native subagent system** to prevent freezing and maximize effectiveness.
+Your Cody PBT/Beads integration froze due to **context bloat and ineffective
+agent delegation**. This plan restructures Amp to use **four context engineering
+strategies** + **Claude's native subagent system** to prevent freezing and
+maximize effectiveness.
 
 **Key Insight**: Don't try to do everything in one agent. Instead:
+
 1. **Isolate context** (separate agent per domain)
 2. **Compress context** (summarize at handoff points)
 3. **Cache context** (reuse boilerplate via prompt caching)
@@ -16,10 +20,13 @@ Your Cody PBT/Beads integration froze due to **context bloat and ineffective age
 
 ## The Problem: Why It Froze
 
-1. **Context Bloat**: Amp tried to hold all Cody PBT commands, all beads commands, all project context, all tool definitions simultaneously
+1. **Context Bloat**: Amp tried to hold all Cody PBT commands, all beads
+   commands, all project context, all tool definitions simultaneously
 2. **Token Overhead**: Each operation was re-evaluating massive system prompts
-3. **No Delegation**: No mechanism to hand off specialized work to focused agents
-4. **Circular Dependencies**: OpenCode → Cody → Beads → back to OpenCode with full context each time
+3. **No Delegation**: No mechanism to hand off specialized work to focused
+   agents
+4. **Circular Dependencies**: OpenCode → Cody → Beads → back to OpenCode with
+   full context each time
 
 ---
 
@@ -38,6 +45,7 @@ Amp (Main Coordinator)
 ```
 
 Each subagent gets:
+
 - **Its own context window** (no pollution from other tasks)
 - **Minimal system prompt** (only relevant instructions)
 - **Specific tool access** (e.g., Cody agent gets bash for cody commands only)
@@ -52,99 +60,127 @@ Each subagent gets:
 Create specialized agents as `.claude/agents/` markdown files:
 
 #### 1. Cody Executor Agent
+
 **File**: `.claude/agents/cody-executor.md`
 
 ```yaml
 name: cody-executor
-description: Executes :cody framework commands (plan, build, version, etc). Use for any Cody PBT workflow.
+description:
+  Executes :cody framework commands (plan, build, version, etc). Use for any
+  Cody PBT workflow.
 tools: Bash, Read, Glob
 model: sonnet
 ```
 
-**Prompt**: Focused on `:cody` command execution, understands PBT structure, knows to use `--json` flag for parsing.
+**Prompt**: Focused on `:cody` command execution, understands PBT structure,
+knows to use `--json` flag for parsing.
 
 #### 2. Beads Manager Agent
+
 **File**: `.claude/agents/beads-manager.md`
 
 ```yaml
 name: beads-manager
-description: Manages bd issue tracking, queries, filtering, status updates. Use for all beads/bd operations.
+description:
+  Manages bd issue tracking, queries, filtering, status updates. Use for all
+  beads/bd operations.
 tools: Bash, Read, Glob
 model: sonnet
 ```
 
-**Prompt**: Understands bd CLI, JSONL format, ready-work detection, issue creation patterns, dependency linking.
+**Prompt**: Understands bd CLI, JSONL format, ready-work detection, issue
+creation patterns, dependency linking.
 
 #### 3. Context Librarian Agent
+
 **File**: `.claude/agents/context-librarian.md`
 
 ```yaml
 name: context-librarian
-description: Summarizes state, extracts key decisions, prepares handoff notes. Use to prevent context bloat.
+description:
+  Summarizes state, extracts key decisions, prepares handoff notes. Use to
+  prevent context bloat.
 tools: Read, Grep, Write
 model: sonnet
 ```
 
-**Prompt**: Extracts essential info, creates session recovery docs, identifies context for next agent.
+**Prompt**: Extracts essential info, creates session recovery docs, identifies
+context for next agent.
 
 #### 4. Code Executor Agent
+
 **File**: `.claude/agents/code-executor.md`
 
 ```yaml
 name: code-executor
-description: Executes bash commands, file operations, exploratory scripting. Use for terminal tasks.
+description:
+  Executes bash commands, file operations, exploratory scripting. Use for
+  terminal tasks.
 tools: Bash, Read, Write, Edit, Glob, Grep
 model: sonnet
 ```
 
-**Prompt**: Safety-first bash operator, asks before destructive ops, provides readable output.
+**Prompt**: Safety-first bash operator, asks before destructive ops, provides
+readable output.
 
 #### 5. Documentation Agent
+
 **File**: `.claude/agents/documentation.md`
 
 ```yaml
 name: documentation
-description: Maintains docs, updates README, creates guides. Use for content-only work.
+description:
+  Maintains docs, updates README, creates guides. Use for content-only work.
 tools: Read, Write, Edit, Grep
 model: sonnet
 ```
 
-**Prompt**: Follows style guide, updates doc index, consolidates related docs, maintains canonical sources.
+**Prompt**: Follows style guide, updates doc index, consolidates related docs,
+maintains canonical sources.
 
 ---
 
 ### Phase 2: Context Engineering Strategies
 
 #### Strategy 1: Isolate Context
+
 - **What**: Each agent has separate conversation thread
-- **How**: Use `resume` parameter to continue an agent session without reloading full context
+- **How**: Use `resume` parameter to continue an agent session without reloading
+  full context
 - **Example**:
+
   ```
   > Use cody-executor to run `:cody build`
   # Returns: agentId="abc123"
-  
+
   > Resume agent abc123, now add v1.2.0 version
   # Continues with same context, no reload
   ```
+
 - **Benefit**: Each agent only holds relevant context for its domain
 
 #### Strategy 2: Compress Context
+
 - **What**: Summarize interactions at handoff points
 - **How**: Use context-librarian before delegating to next agent
 - **Example**:
+
   ```
-  > Use context-librarian: "Summarize what we just did with :cody build, 
+  > Use context-librarian: "Summarize what we just did with :cody build,
     extract key decisions, prepare for test-coordinator agent"
   # Returns: 1-2 paragraph summary + key variables
-  
+
   > Use test-coordinator with this summary: [compressed context]
   ```
+
 - **Benefit**: Next agent receives 500 tokens instead of 5000
 
 #### Strategy 3: Cache Context
+
 - **What**: Reuse system prompts for repeated task types
 - **How**: Use Claude's prompt caching for boilerplate
 - **Implementation**:
+
   ```python
   # First request - caches the agent definition
   response = client.messages.create(
@@ -158,29 +194,33 @@ model: sonnet
     ],
     messages=[...]
   )
-  
+
   # Subsequent requests with same system prompt get cache hit
   # Saves 90% of input tokens on agent definition
   ```
+
 - **Benefit**: Agents boot fast, 10x cheaper repeated operations
 
 #### Strategy 4: Select Context
+
 - **What**: Pass only needed context to each agent
 - **How**: Extract relevant subset before handoff
 - **Example**:
+
   ```
   # Full state includes:
   # - 50 version history items
   # - 200 completed issues
   # - Project architecture docs
   # - Style guides
-  
+
   # But version-builder only needs:
   # - Latest version number
   # - Current feature backlog
   # - Version template
   # → Pass 3 items instead of 250
   ```
+
 - **Benefit**: Agent stays focused, fewer hallucinations
 
 ---
@@ -190,6 +230,7 @@ model: sonnet
 #### How Amp Uses Subagents
 
 **Pattern 1: Sequential Delegation**
+
 ```
 User: "Implement the plan we devised in @T-abc123"
 
@@ -204,6 +245,7 @@ Amp (main):
 ```
 
 **Pattern 2: Parallel Delegation (for independent tasks)**
+
 ```
 User: "Update docs, run tests, commit changes"
 
@@ -216,6 +258,7 @@ Then collects results and reports status.
 ```
 
 **Pattern 3: Handoff with Compression**
+
 ```
 cody-executor builds version
   ↓
@@ -295,16 +338,14 @@ bd list --status=completed --limit=20 --json > session-summary.json
     "cody-executor": "agentId=xyz789",
     "beads-manager": "ready for next query"
   },
-  "nextSteps": [
-    "Run tests",
-    "Deploy to staging"
-  ]
+  "nextSteps": ["Run tests", "Deploy to staging"]
 }
 ```
 
 #### Handoff Protocol
 
 When Amp hands off to subagent:
+
 1. **Prepare**: Context librarian extracts relevant subset
 2. **Invoke**: Pass compressed context + specific prompt
 3. **Monitor**: Track agentId for resumption
@@ -321,7 +362,7 @@ When Amp hands off to subagent:
 ```bash
 # 1. Create agent definitions
 mkdir -p .claude/agents/
-# Create: cody-executor.md, beads-manager.md, context-librarian.md, 
+# Create: cody-executor.md, beads-manager.md, context-librarian.md,
 #         code-executor.md, documentation.md
 
 # 2. Add to AGENTS.md
@@ -377,12 +418,14 @@ chmod +x ./scripts/test-subagent-delegation.sh
 ## Expected Outcomes
 
 ### Before (With Freezing)
+
 - Context explodes to 100k+ tokens
 - Each operation is slow (30-60s)
 - Amp gets confused about state
 - Cody + Beads commands conflict
 
 ### After (With Subagents)
+
 - Each agent stays under 20k tokens
 - Operations complete in 5-10s
 - Clear state via session file
@@ -397,13 +440,14 @@ chmod +x ./scripts/test-subagent-delegation.sh
 ```markdown
 ---
 name: agent-name
-description: "Clear, actionable description with USE PROACTIVELY if needed"
+description: 'Clear, actionable description with USE PROACTIVELY if needed'
 tools: Tool1, Tool2, Tool3
-model: sonnet  # or opus for complex reasoning
-permissionMode: default  # or acceptEdits, bypassPermissions
+model: sonnet # or opus for complex reasoning
+permissionMode: default # or acceptEdits, bypassPermissions
 ---
 
 # System prompt as markdown
+
 Your detailed role, approach, and constraints here.
 ```
 
@@ -445,13 +489,13 @@ response = client.messages.create(
 
 ## Quick Reference: When to Use Each Agent
 
-| Agent | Use When | Example |
-|-------|----------|---------|
-| **cody-executor** | Any `:cody` command needed | "Run :cody build" |
-| **beads-manager** | Issue tracking required | "Check ready work, create issue" |
-| **context-librarian** | Preventing bloat, handing off | "Summarize for next agent" |
-| **code-executor** | Terminal/bash operations | "Clone repo, run tests" |
-| **documentation** | Docs need updating | "Update /docs/README.md" |
+| Agent                 | Use When                      | Example                          |
+| --------------------- | ----------------------------- | -------------------------------- |
+| **cody-executor**     | Any `:cody` command needed    | "Run :cody build"                |
+| **beads-manager**     | Issue tracking required       | "Check ready work, create issue" |
+| **context-librarian** | Preventing bloat, handing off | "Summarize for next agent"       |
+| **code-executor**     | Terminal/bash operations      | "Clone repo, run tests"          |
+| **documentation**     | Docs need updating            | "Update /docs/README.md"         |
 
 ---
 
@@ -480,4 +524,3 @@ response = client.messages.create(
 - AI Agent Orchestration Patterns (Azure Architecture)
 - Context Engineering Guide (LangChain/Anthropic)
 - Your existing: AGENTS.md, bd best practices, Cody PBT structure
-

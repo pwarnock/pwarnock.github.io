@@ -1,12 +1,14 @@
 # Cody-Beads Integration Workflow
 
-**Phase 1: Manual Metadata Linking** - Establish conventions connecting feature planning to daily task execution.
+**Phase 1: Manual Metadata Linking** - Establish conventions connecting feature
+planning to daily task execution.
 
 ---
 
 ## Overview
 
-This document explains how **Cody Framework** (feature planning) and **Beads** (daily task management) work together to create a unified development workflow.
+This document explains how **Cody Framework** (feature planning) and **Beads**
+(daily task management) work together to create a unified development workflow.
 
 ### Three-Layer Architecture
 
@@ -28,41 +30,47 @@ Delivery Layer
 ### When Starting a Feature
 
 1. **Check Cody backlog** for the feature you're working on:
+
    ```bash
    # Navigate to .cody/project/build/feature-backlog.md
    # Find the feature and note its ID
    ```
 
 2. **Create Beads issues** for implementation tasks:
+
    ```bash
    # Create issue linked to feature
    bd create "Implement component X" \
      -t task \
      -p 2 \
      --json
-   
+
    # Note the ID (will be bd-NNN)
    ```
 
 3. **Update feature backlog** with issue links:
    ```markdown
    # In .cody/project/build/feature-backlog.md
+
    ## Feature: My Feature
+
    - Implementation: See bd-47 for details
    ```
 
 ### During Development
 
 1. **Claim work**:
+
    ```bash
    bd update bd-47 --status in_progress
    ```
 
 2. **Track progress**:
+
    ```bash
    # See what's ready (not blocked)
    bd ready --json
-   
+
    # Update status
    bd update bd-47 --status review
    ```
@@ -81,6 +89,7 @@ Delivery Layer
 Format: `pw-NNN` or auto-generated `bd-NNN`
 
 **Naming examples**:
+
 ```bash
 # Good: Clear, actionable
 bd create "Navigation component restructure" -p 1
@@ -109,6 +118,7 @@ bd create "Issue title" \
 **Format**: `version:X.Y.Z` (lowercase, semantic version)
 
 **Examples**:
+
 - `version:0.20.0` - Features for v0.20.0
 - `version:0.19.5` - Hotfix issues
 - `version:0.21.0` - Next version planning
@@ -119,9 +129,11 @@ In issue descriptions, reference the Cody feature:
 
 ```markdown
 ## Description
+
 Implement enhanced navigation system as specified in v0.20.0 feature backlog.
 
 ## Related
+
 - Feature: Enhanced Navigation System (v0.20.0)
 - Cody backlog: .cody/project/build/feature-backlog.md
 - Requirements: See FEATURE_REQ_NAVIGATION.md
@@ -138,34 +150,38 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
 **Steps**:
 
 1. **Read feature backlog**:
+
    ```bash
    # Open .cody/project/build/feature-backlog.md
    # Review features and subtasks for the version
    ```
 
 2. **Create Beads issues for each feature/subtask**:
+
    ```bash
    # Main feature
    bd create "Navigation component restructure (v0.20.0)" \
      -t feature \
      -p 1 \
      --json
-   
+
    # Record the issue ID: bd-47
-   
+
    # Subtask
    bd create "Add keyboard shortcuts (v0.20.0)" \
      -t task \
      -p 2 \
      --deps discovered-from:bd-47 \
      --json
-   
+
    # Record: bd-48
    ```
 
 3. **Update feature backlog** with issue references:
+
    ```markdown
    ## Feature: Enhanced Navigation System
+
    - [x] Discovery complete
    - [x] Requirements document
    - [ ] Implementation
@@ -188,6 +204,7 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
 **Steps**:
 
 1. **Query Beads for version**:
+
    ```bash
    # See all issues for v0.20.0
    # Count completed, in-progress, blocked
@@ -195,6 +212,7 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
    ```
 
 2. **Calculate progress**:
+
    ```bash
    # Manual calculation (example for v0.20.0)
    Total: 23 issues
@@ -202,13 +220,15 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
    In Progress: 7
    Blocked: 2
    Todo: 2
-   
+
    Progress: 12/23 = 52% complete
    ```
 
 3. **Update feature backlog**:
+
    ```markdown
    ## Feature: Enhanced Navigation System
+
    - Status: 12/23 issues completed (52%)
    - Issues: bd-47, bd-48, bd-49, bd-50
    - Blocked: bd-49 (waiting for design review), bd-50 (accessibility testing)
@@ -228,6 +248,7 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
 **Steps**:
 
 1. **Query completed issues**:
+
    ```bash
    # Find all completed issues for version
    # (Manual filtering from .beads/issues.jsonl)
@@ -239,10 +260,12 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
    - Improvements (type: task)
 
 3. **Generate release notes**:
+
    ```markdown
    # Release v0.20.0
 
    ## New Features
+
    - Enhanced Navigation System (bd-47, bd-48, bd-49, bd-50)
      - Restructured component hierarchy
      - Keyboard shortcut support
@@ -250,10 +273,12 @@ Implement enhanced navigation system as specified in v0.20.0 feature backlog.
      - Full accessibility compliance
 
    ## Bug Fixes
+
    - Fixed focus management in modals (bd-41)
    - Corrected z-index stacking (bd-42)
 
    ## Performance
+
    - Reduced bundle size by 8% (bd-35)
    ```
 
@@ -315,6 +340,7 @@ Release
 ```
 
 **Example**:
+
 ```bash
 # Core work
 bd create "Implement feature" -p 1 --json  # bd-100
@@ -356,13 +382,15 @@ When creating a pull request, reference the Beads issue:
 
 ```markdown
 # Title
+
 Fix navigation accessibility issues
 
 ## Beads Issues
-Resolves: bd-50
-Related: bd-47, bd-48, bd-49
+
+Resolves: bd-50 Related: bd-47, bd-48, bd-49
 
 ## Description
+
 Implements full accessibility compliance for enhanced navigation...
 ```
 
@@ -373,18 +401,21 @@ This creates traceability from PR → Beads → Cody feature.
 ## Weekly Workflow Template
 
 ### Monday: Planning
+
 1. Review Cody backlog for current version
 2. Check Beads for blockers and at-risk items
 3. Create new issues if necessary
 4. Update issue priorities
 
 ### Tuesday-Thursday: Development
+
 1. Claim issue: `bd update bd-XXX --status in_progress`
 2. Work on feature
 3. Create PR with issue reference
 4. Move to review: `bd update bd-XXX --status review`
 
 ### Friday: Status & Planning
+
 1. Complete review: `bd close bd-XXX --reason "Merged"`
 2. Update feature backlog with progress
 3. Plan next week's issues
@@ -494,6 +525,7 @@ cat .beads/issues.jsonl | jq .
 **Cause**: Issue is blocked on another task
 
 **Solution**:
+
 ```bash
 # Check what's blocking it
 grep "bd-XX" .beads/issues.jsonl | jq .
@@ -505,6 +537,7 @@ bd update bd-XX --deps ""  # Clear dependency if incorrect
 ### Unsure Which Issues to Work On
 
 **Solution**:
+
 ```bash
 # Always run this first
 bd ready --json
@@ -516,6 +549,7 @@ bd ready --json
 ### Feature Backlog Out of Sync
 
 **Solution**:
+
 1. Check latest Beads status: `bd ready --json`
 2. Count completed vs total for each feature
 3. Update feature backlog with current numbers
@@ -537,9 +571,11 @@ bd ready --json
 ## Next Steps (Phase 2+)
 
 When Phase 1 has been used for 1-2 versions, consider Phase 2:
+
 - Automated script: `backlog-to-beads.js` (parse Cody → create Beads issues)
 - Automated script: `beads-to-cody.js` (aggregate status → update Cody)
-- Automated script: `issues-to-release-notes.js` (completed issues → release notes)
+- Automated script: `issues-to-release-notes.js` (completed issues → release
+  notes)
 
 Phase 2 will eliminate manual syncing while preserving the same workflow.
 
@@ -548,7 +584,8 @@ Phase 2 will eliminate manual syncing while preserving the same workflow.
 ## See Also
 
 - [AGENTS.md](/AGENTS.md) - Beads quick start and issue types
-- [CODY_BEADS_INTEGRATION_PLAN.md](/CODY_BEADS_INTEGRATION_PLAN.md) - Full technical roadmap
+- [CODY_BEADS_INTEGRATION_PLAN.md](/CODY_BEADS_INTEGRATION_PLAN.md) - Full
+  technical roadmap
 - [STRATEGIC_ROADMAP.md](/STRATEGIC_ROADMAP.md) - Project roadmap
 - `.bd.toml` - Beads configuration
 - `.cody/project/build/feature-backlog.md` - Feature planning document

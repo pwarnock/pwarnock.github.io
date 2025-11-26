@@ -1,10 +1,13 @@
 # Testing Architecture
 
-Complete guide to the project's multi-layer testing strategy, covering unit tests, integration tests, end-to-end testing, visual regression, BDD scenarios, and performance monitoring.
+Complete guide to the project's multi-layer testing strategy, covering unit
+tests, integration tests, end-to-end testing, visual regression, BDD scenarios,
+and performance monitoring.
 
 ## Overview
 
-The project implements a **comprehensive, enterprise-grade testing infrastructure** with multiple layers optimized for different concerns:
+The project implements a **comprehensive, enterprise-grade testing
+infrastructure** with multiple layers optimized for different concerns:
 
 - **Unit Tests** (Go, TypeScript) - Code correctness and logic
 - **Integration Tests** (Bash scripts) - Workflow and system behavior
@@ -17,27 +20,31 @@ The project implements a **comprehensive, enterprise-grade testing infrastructur
 
 ## Test Types & Responsibilities
 
-| Type | Tool | Purpose | Location | Run Command |
-|------|------|---------|----------|------------|
-| **Unit** | Vitest + Go | Code correctness, logic verification | `src/**/*.test.ts`, `test/support/` | `bun run test:unit` |
-| **Integration** | Bash scripts | Workflow validation, system behavior | `test/deployment_*.test.sh` | `bun run test:deployment` |
-| **E2E** | Playwright | User journeys, critical UI paths | `tests/` | `bunx playwright test` |
-| **Visual** | Playwright | Design regression detection | `tests/` (with @visual tag) | `bunx playwright test --grep @visual` |
-| **BDD** | Godog (Cucumber) | Behavior specifications | `test/features/`, `test/step_definitions/` | `bun run test:bdd` |
-| **Performance** | Lighthouse | Core Web Vitals, metrics | `tests/` (perf folder) | `bun run test:perf:watch` |
+| Type            | Tool             | Purpose                              | Location                                   | Run Command                           |
+| --------------- | ---------------- | ------------------------------------ | ------------------------------------------ | ------------------------------------- |
+| **Unit**        | Vitest + Go      | Code correctness, logic verification | `src/**/*.test.ts`, `test/support/`        | `bun run test:unit`                   |
+| **Integration** | Bash scripts     | Workflow validation, system behavior | `test/deployment_*.test.sh`                | `bun run test:deployment`             |
+| **E2E**         | Playwright       | User journeys, critical UI paths     | `tests/`                                   | `bunx playwright test`                |
+| **Visual**      | Playwright       | Design regression detection          | `tests/` (with @visual tag)                | `bunx playwright test --grep @visual` |
+| **BDD**         | Godog (Cucumber) | Behavior specifications              | `test/features/`, `test/step_definitions/` | `bun run test:bdd`                    |
+| **Performance** | Lighthouse       | Core Web Vitals, metrics             | `tests/` (perf folder)                     | `bun run test:perf:watch`             |
 
 ---
 
 ## Layer 1: Unit Tests
 
 ### Purpose
-Verify individual functions, components, and utilities work correctly in isolation.
+
+Verify individual functions, components, and utilities work correctly in
+isolation.
 
 ### Technologies
+
 - **TypeScript**: Vitest with happy-dom
 - **Go**: Standard Go testing with structured logging
 
 ### Coverage Requirements
+
 - **Core logic**: ≥80% statement coverage
 - **Critical paths**: 100% coverage for security-sensitive code
 - **Utilities**: 75%+ coverage for shared functions
@@ -65,6 +72,7 @@ bun run test:coverage:ts
 ```
 
 ### File Structure
+
 ```
 src/
 ├── components/
@@ -84,6 +92,7 @@ test/support/
 ### Writing Unit Tests
 
 **TypeScript Example** (`src/utils/validators.test.ts`):
+
 ```typescript
 import { describe, it, expect } from 'vitest';
 import { validateEmail } from './validators';
@@ -100,6 +109,7 @@ describe('validateEmail', () => {
 ```
 
 **Go Example** (`test/support/validators_test.go`):
+
 ```go
 func TestValidateEmail(t *testing.T) {
   tests := []struct {
@@ -109,7 +119,7 @@ func TestValidateEmail(t *testing.T) {
     {"test@example.com", true},
     {"invalid", false},
   }
-  
+
   for _, tt := range tests {
     result := support.ValidateEmail(tt.input)
     if result != tt.expected {
@@ -124,18 +134,23 @@ func TestValidateEmail(t *testing.T) {
 ## Layer 2: Integration Tests
 
 ### Purpose
-Verify that multiple components work together correctly and workflows execute as expected.
+
+Verify that multiple components work together correctly and workflows execute as
+expected.
 
 ### Technologies
+
 - **Bash Scripts**: Functional testing of deployment workflows
 - **Pre-commit hooks**: Validation gates before commits
 
 ### Test Suites
 
 #### 2.1: Deployment Validation Tests (27 tests)
+
 File: `test/deployment_validation.test.sh`
 
 **Coverage**:
+
 - Script existence and permissions
 - Hugo configuration validation
 - CSS processing validation
@@ -145,15 +160,17 @@ File: `test/deployment_validation.test.sh`
 - Documentation completeness
 
 **Run**:
+
 ```bash
 bun run test:deployment
 ```
 
 **Example Test**:
+
 ```bash
 test_hugo_config_validation() {
   log_test "Hugo config validation checks baseURL"
-  
+
   if [ -f "config/production/hugo.toml" ]; then
     if grep -q "baseURL = \"https://peterwarnock.com" config/production/hugo.toml; then
       log_pass "Production Hugo config has correct baseURL"
@@ -165,9 +182,11 @@ test_hugo_config_validation() {
 ```
 
 #### 2.2: Deployment Workflow Integration Tests (14 tests)
+
 File: `test/deployment_workflow.integration.sh`
 
 **Coverage**:
+
 - Environment branch setup (staging, production)
 - Git remote configuration
 - Deployment script validation
@@ -178,6 +197,7 @@ File: `test/deployment_workflow.integration.sh`
 - Security considerations
 
 **Run**:
+
 ```bash
 bun run test:deployment:integration
 ```
@@ -185,6 +205,7 @@ bun run test:deployment:integration
 ### Pre-commit Validation Gates
 
 The `.husky/pre-commit` hook runs:
+
 1. **YAML linting** - GitHub Actions workflows
 2. **TOML validation** - Hugo config files
 3. **CSS linting** - Style consistency
@@ -199,13 +220,16 @@ These run automatically before commit; changes are rejected if validation fails.
 ## Layer 3: End-to-End Tests
 
 ### Purpose
+
 Verify complete user journeys work correctly in a real browser environment.
 
 ### Technologies
+
 - **Playwright**: Cross-browser (Chromium, Firefox, Safari)
 - **TypeScript**: Type-safe test definitions
 
 ### Test Locations
+
 ```
 tests/
 ├── e2e/                       ← Critical user journeys
@@ -243,22 +267,23 @@ bunx playwright show-report
 ### Writing E2E Tests
 
 **Example** (`tests/e2e/navigation.spec.ts`):
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
 test('navigate to blog and read post', async ({ page }) => {
   // Navigate to homepage
   await page.goto('/');
-  
+
   // Click blog link
   await page.click('nav a:has-text("Blog")');
-  
+
   // Verify blog page loaded
   await expect(page).toHaveTitle(/Blog/);
-  
+
   // Click first blog post
   await page.click('a[href^="/blog/"]');
-  
+
   // Verify post content visible
   await expect(page.locator('article')).toBeVisible();
 });
@@ -267,11 +292,13 @@ test('navigate to blog and read post', async ({ page }) => {
 ### Browser Coverage
 
 Tests run on:
+
 - **Chromium** (primary, ~85% of users)
 - **Firefox** (secondary, ~10% of users)
 - **Safari/WebKit** (mobile, ~5% of users)
 
 Configure in `playwright.config.ts`:
+
 ```typescript
 {
   projects: [
@@ -287,9 +314,12 @@ Configure in `playwright.config.ts`:
 ## Layer 4: Visual Regression Tests
 
 ### Purpose
-Detect unintended design changes by comparing screenshots before and after code changes.
+
+Detect unintended design changes by comparing screenshots before and after code
+changes.
 
 ### Technologies
+
 - **Playwright**: Screenshot capture and comparison
 - **Visual baselines**: Stored in `tests/visual/baselines/`
 
@@ -309,6 +339,7 @@ bun run test:visual:watch
 ### Creating Visual Tests
 
 Mark tests with `@visual` tag:
+
 ```typescript
 test('homepage layout @visual', async ({ page }) => {
   await page.goto('/');
@@ -334,13 +365,17 @@ test('dark theme @visual', async ({ page, context }) => {
 ## Layer 5: BDD Tests (Behavior-Driven Development)
 
 ### Purpose
-Document and verify business requirements and user behaviors in human-readable format.
+
+Document and verify business requirements and user behaviors in human-readable
+format.
 
 ### Technologies
+
 - **Godog**: Cucumber for Go
 - **Gherkin syntax**: Human-readable test specifications
 
 ### File Structure
+
 ```
 test/
 ├── features/                  ← User stories
@@ -369,6 +404,7 @@ bun run test:bdd:ci
 ### Example BDD Feature File
 
 `test/features/navigation.feature`:
+
 ```gherkin
 Feature: Site Navigation
   As a user
@@ -391,6 +427,7 @@ Feature: Site Navigation
 ### Example Step Definition
 
 `test/step_definitions/navigation_steps.go`:
+
 ```go
 package stepdefinitions
 
@@ -425,21 +462,24 @@ func InitializeScenario(s *godog.ScenarioContext) {
 ## Layer 6: Performance Tests
 
 ### Purpose
-Monitor Core Web Vitals and performance metrics to ensure optimal user experience.
+
+Monitor Core Web Vitals and performance metrics to ensure optimal user
+experience.
 
 ### Technologies
+
 - **Lighthouse**: Page performance auditing
 - **Playwright**: Performance metric collection
 
 ### Metrics Tracked
 
-| Metric | Target | Tool |
-|--------|--------|------|
-| **Largest Contentful Paint (LCP)** | <2.5s | Lighthouse |
-| **First Input Delay (FID)** | <100ms | Lighthouse |
-| **Cumulative Layout Shift (CLS)** | <0.1 | Lighthouse |
-| **Page Load Time** | <3s | Lighthouse |
-| **Bundle Size** | <150KB (gzip) | Build stats |
+| Metric                             | Target        | Tool        |
+| ---------------------------------- | ------------- | ----------- |
+| **Largest Contentful Paint (LCP)** | <2.5s         | Lighthouse  |
+| **First Input Delay (FID)**        | <100ms        | Lighthouse  |
+| **Cumulative Layout Shift (CLS)**  | <0.1          | Lighthouse  |
+| **Page Load Time**                 | <3s           | Lighthouse  |
+| **Bundle Size**                    | <150KB (gzip) | Build stats |
 
 ### Running Performance Tests
 
@@ -457,6 +497,7 @@ bun run test:perf:watch
 ### Performance Baseline
 
 Configured in `lighthouserc.js`:
+
 ```javascript
 {
   ci: {
@@ -479,18 +520,21 @@ Configured in `lighthouserc.js`:
 ## Coverage Requirements Summary
 
 ### Mandatory Coverage (Must Pass)
+
 - **Unit tests**: Core logic ≥80%
 - **Integration tests**: All 41 tests passing
 - **Pre-commit hooks**: Linting, validation, security checks
 - **Deployment validation**: 27 tests for staging/production
 
 ### Expected Coverage (Should Maintain)
+
 - **E2E**: All critical user journeys
 - **Visual regression**: Homepage, key pages, responsive breakpoints
 - **BDD**: High-value user stories
 - **Performance**: Production build monitored
 
 ### Optional Coverage (Nice to Have)
+
 - **Additional E2E**: Edge cases, error scenarios
 - **Additional visual tests**: Secondary pages, less common interactions
 - **Load testing**: k6 scenarios for performance under load
@@ -533,12 +577,12 @@ The test infrastructure integrates with GitHub Actions:
 
 ### Test Requirements for Deployment
 
-| Environment | Required Tests |
-|-------------|---|
-| **Commit** | Pre-commit hooks (linting, security) |
-| **Push to main** | Unit + integration + deployment tests |
-| **Merge to staging** | All tests + E2E tests |
-| **Merge to production** | All tests + manual verification |
+| Environment             | Required Tests                        |
+| ----------------------- | ------------------------------------- |
+| **Commit**              | Pre-commit hooks (linting, security)  |
+| **Push to main**        | Unit + integration + deployment tests |
+| **Merge to staging**    | All tests + E2E tests                 |
+| **Merge to production** | All tests + manual verification       |
 
 ---
 
@@ -547,6 +591,7 @@ The test infrastructure integrates with GitHub Actions:
 ### For a New Feature
 
 1. **Start with BDD** (if user-facing):
+
    ```bash
    # Create feature file
    echo 'Feature: ...' > test/features/my-feature.feature
@@ -555,6 +600,7 @@ The test infrastructure integrates with GitHub Actions:
    ```
 
 2. **Add Unit Tests**:
+
    ```typescript
    // src/my-feature.test.ts
    describe('myFeature', () => {
@@ -563,6 +609,7 @@ The test infrastructure integrates with GitHub Actions:
    ```
 
 3. **Add E2E Tests** (if critical):
+
    ```typescript
    // tests/e2e/my-feature.spec.ts
    test('user can ...', async ({ page }) => { ... });
@@ -593,16 +640,19 @@ The test infrastructure integrates with GitHub Actions:
 ### Regular Tasks
 
 **Weekly**:
+
 - Review E2E test failures in CI
 - Update visual regression baselines if design changes were intentional
 - Check performance metrics
 
 **Monthly**:
+
 - Review unit test coverage trends
 - Update BDD scenarios if requirements changed
 - Performance audit of critical pages
 
 **Quarterly**:
+
 - Full accessibility audit
 - Load testing with new content volume
 - Browser version compatibility check
@@ -610,6 +660,7 @@ The test infrastructure integrates with GitHub Actions:
 ### Troubleshooting Tests
 
 #### Unit Test Failures
+
 ```bash
 # Run in debug mode
 bun run test:unit -- --reporter=verbose --inspect-brk
@@ -619,6 +670,7 @@ bun run test:unit src/utils/validators.test.ts
 ```
 
 #### E2E Test Failures
+
 ```bash
 # Run with headed browser (see what's happening)
 bunx playwright test --headed
@@ -631,6 +683,7 @@ bunx playwright test --debug
 ```
 
 #### Integration Test Failures
+
 ```bash
 # Run individual test script
 bash test/deployment_validation.test.sh
@@ -640,6 +693,7 @@ bash -x test/deployment_validation.test.sh
 ```
 
 #### Visual Regression Failures
+
 ```bash
 # View the diff
 bunx playwright show-report
@@ -653,6 +707,7 @@ bunx playwright test --grep @visual --update-snapshots
 ## Performance Benchmarks
 
 Typical test execution times on CI:
+
 - **Unit tests**: 30-45 seconds
 - **Integration tests**: 15-20 seconds
 - **E2E tests**: 2-3 minutes
@@ -675,6 +730,9 @@ Typical test execution times on CI:
 
 ## See Also
 
-- [DEPLOYMENT_TESTING.md](/docs/operations/DEPLOYMENT_TESTING.md) - Deployment-specific test procedures
-- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](/docs/operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) - Manual promotion workflow
-- [ENVIRONMENT_SETTINGS.md](/docs/operations/ENVIRONMENT_SETTINGS.md) - Environment-specific configurations
+- [DEPLOYMENT_TESTING.md](/docs/operations/DEPLOYMENT_TESTING.md) -
+  Deployment-specific test procedures
+- [INFRASTRUCTURE_PROMOTION_WORKFLOW.md](/docs/operations/INFRASTRUCTURE_PROMOTION_WORKFLOW.md) -
+  Manual promotion workflow
+- [ENVIRONMENT_SETTINGS.md](/docs/operations/ENVIRONMENT_SETTINGS.md) -
+  Environment-specific configurations

@@ -1,6 +1,7 @@
 # DaisyUI Component Framework
 
-Complete guide to DaisyUI implementation, framework assessment, migration strategy, and best practices.
+Complete guide to DaisyUI implementation, framework assessment, migration
+strategy, and best practices.
 
 ## Table of Contents
 
@@ -18,7 +19,9 @@ Complete guide to DaisyUI implementation, framework assessment, migration strate
 
 ### Current State Overview
 
-DaisyUI provides a comprehensive semantic theming system for Tailwind CSS. The project's current implementation shows a solid foundation with opportunities for systematic alignment with framework principles.
+DaisyUI provides a comprehensive semantic theming system for Tailwind CSS. The
+project's current implementation shows a solid foundation with opportunities for
+systematic alignment with framework principles.
 
 ### Compliance Analysis
 
@@ -73,7 +76,8 @@ DaisyUI provides a comprehensive semantic theming system for Tailwind CSS. The p
 
 ### Hardcoded Conflicts Removed
 
-The migration addressed several patterns that interfere with DaisyUI's theme system:
+The migration addressed several patterns that interfere with DaisyUI's theme
+system:
 
 - ❌ `bg-primary/80` → ✅ DaisyUI semantic classes
 - ❌ `border-primary/20` → ✅ Theme-aware borders
@@ -87,7 +91,9 @@ The migration addressed several patterns that interfere with DaisyUI's theme sys
 
 ### ✅ **Implementation Complete**
 
-The carousel enhancement project successfully aligned all components with DaisyUI framework principles. All hardcoded conflicts have been removed and replaced with semantic, theme-aware implementations.
+The carousel enhancement project successfully aligned all components with
+DaisyUI framework principles. All hardcoded conflicts have been removed and
+replaced with semantic, theme-aware implementations.
 
 ### Success Metrics
 
@@ -95,13 +101,15 @@ The carousel enhancement project successfully aligned all components with DaisyU
 
 - **Target**: 95% DaisyUI semantic usage
 - **Achieved**: 95% compliance (up from 55%)
-- **Evidence**: All carousel components use semantic classes, theme-aware styling, proper content colors
+- **Evidence**: All carousel components use semantic classes, theme-aware
+  styling, proper content colors
 
 #### 2. Theme Coverage
 
 - **Target**: 100% theme compatibility
 - **Achieved**: 100% compatibility (up from 70%)
-- **Verification**: Full DaisyUI theme system integration, tested across light/dark/colorful themes
+- **Verification**: Full DaisyUI theme system integration, tested across
+  light/dark/colorful themes
 
 #### 3. Accessibility Standards
 
@@ -122,7 +130,9 @@ The carousel enhancement project successfully aligned all components with DaisyU
 
 ### Context
 
-The project originally used a hybrid approach combining DaisyUI theming with custom CSS variables and component classes. The strategic migration moved to pure DaisyUI component classes for standardization and maintainability.
+The project originally used a hybrid approach combining DaisyUI theming with
+custom CSS variables and component classes. The strategic migration moved to
+pure DaisyUI component classes for standardization and maintainability.
 
 ### Why Migration Matters
 
@@ -133,19 +143,24 @@ The project originally used a hybrid approach combining DaisyUI theming with cus
 3. **Community Support**: Access to ecosystem examples and best practices
 4. **Maintenance**: Significantly less custom CSS to maintain
 5. **Performance**: Optimized DaisyUI CSS delivery
-6. **Accessibility**: Built-in accessibility features with proper semantic implementation
+6. **Accessibility**: Built-in accessibility features with proper semantic
+   implementation
 
 **Trade-offs Accepted:**
 
-1. **Learning Curve**: Team needs DaisyUI knowledge (mitigated via documentation)
-2. **Customization**: Less control over specific styling (acceptable via DaisyUI variants)
-3. **Migration Effort**: Significant refactoring required (completed incrementally)
+1. **Learning Curve**: Team needs DaisyUI knowledge (mitigated via
+   documentation)
+2. **Customization**: Less control over specific styling (acceptable via DaisyUI
+   variants)
+3. **Migration Effort**: Significant refactoring required (completed
+   incrementally)
 
 ### Phase 1: Framework Alignment (Completed)
 
 #### 1.1 Audit Current Implementation
 
-Comprehensive component audit identified all manual styling and semantic color inconsistencies across carousel, cards, buttons, and layout components.
+Comprehensive component audit identified all manual styling and semantic color
+inconsistencies across carousel, cards, buttons, and layout components.
 
 #### 1.2 Establish DaisyUI Standards
 
@@ -184,7 +199,9 @@ All components now follow a consistent structure:
 
 ```html
 <!-- Colored Card Pattern -->
-<div class="card bg-base-100 shadow-xl border border-primary/20 hover:shadow-2xl">
+<div
+  class="card bg-base-100 shadow-xl border border-primary/20 hover:shadow-2xl"
+>
   <div class="card-body">
     <h3 class="card-title text-primary-content">Title</h3>
     <p class="text-base-content/80">Content</p>
@@ -203,7 +220,9 @@ All components now follow a consistent structure:
 
 ```html
 <!-- Consistent hover patterns -->
-<div class="card hover:shadow-2xl hover:scale-105 transition-all duration-300"></div>
+<div
+  class="card hover:shadow-2xl hover:scale-105 transition-all duration-300"
+></div>
 ```
 
 ### Phase 3: Advanced Framework Features (Completed)
@@ -260,7 +279,9 @@ Always use DaisyUI's semantic color classes instead of manual styling:
 </div>
 ```
 
-**Key Principle**: Let DaisyUI determine the color scheme based on the current theme. Semantic classes ensure automatic contrast compliance and theme adaptation.
+**Key Principle**: Let DaisyUI determine the color scheme based on the current
+theme. Semantic classes ensure automatic contrast compliance and theme
+adaptation.
 
 ### 2. Leverage Built-in Component Variants
 
@@ -300,7 +321,9 @@ DaisyUI automatically sets appropriate text colors for contrast:
 </div>
 ```
 
-**Why?** Manual text colors can create contrast issues when themes change. DaisyUI's semantic colors automatically adjust the text color based on the background color.
+**Why?** Manual text colors can create contrast issues when themes change.
+DaisyUI's semantic colors automatically adjust the text color based on the
+background color.
 
 ---
 
@@ -454,7 +477,9 @@ When working with carousel components:
 
 ```html
 <!-- ✅ Correct - Theme-aware carousel cards -->
-<div class="card card-primary card-border hover:shadow-xl transition-all duration-300">
+<div
+  class="card card-primary card-border hover:shadow-xl transition-all duration-300"
+>
   <div class="card-body p-3 text-center">
     <h3 class="card-title font-semibold">Title</h3>
     <p class="text-sm opacity-90">Description</p>
@@ -514,7 +539,9 @@ When working with carousel components:
 
 ```html
 <!-- ❌ Don't manually override colors -->
-<div class="card card-primary" style="background: custom-color;">Breaks theme system</div>
+<div class="card card-primary" style="background: custom-color;">
+  Breaks theme system
+</div>
 
 <!-- ✅ Use semantic variants -->
 <div class="card card-primary">Theme-aware styling</div>
@@ -534,7 +561,10 @@ When working with carousel components:
 
 ```html
 <!-- ❌ Don't create custom glass effects -->
-<div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur();">
+<div
+  class="card"
+  style="background: rgba(255,255,255,0.1); backdrop-filter: blur();"
+>
   Conflicts with theme system
 </div>
 
@@ -560,7 +590,9 @@ When working with carousel components:
 
 ```html
 <!-- ❌ Don't use gradients on cards -->
-<div class="card bg-gradient-to-br from-primary/25 to-primary/15">Breaks semantic color system</div>
+<div class="card bg-gradient-to-br from-primary/25 to-primary/15">
+  Breaks semantic color system
+</div>
 
 <!-- ✅ Use semantic color classes -->
 <div class="card card-primary"></div>
@@ -695,6 +727,6 @@ When updating existing components:
 
 ---
 
-_Framework compliance consolidated from assessment, migration planning, and best practices documentation._
-_Last updated: November 17, 2025_
-_DaisyUI Version: v5_
+_Framework compliance consolidated from assessment, migration planning, and best
+practices documentation._ _Last updated: November 17, 2025_ _DaisyUI Version:
+v5_

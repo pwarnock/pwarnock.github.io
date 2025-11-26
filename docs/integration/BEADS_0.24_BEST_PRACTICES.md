@@ -3,15 +3,19 @@
 **Status**: Implementation Guide  
 **Created**: November 25, 2025  
 **Reference**: [Steve Yegge's Beads Best Practices](https://medium.com/@steveyegge/beads-best-practices)  
-**Related**: [BEADS_HYGIENE_PLAN.md](../operations/BEADS_HYGIENE_PLAN.md)
+**Related**:
+[BEADS_HYGIENE_PLAN.md](../operations/BEADS_HYGIENE_PLAN.md)
 
 ---
 
 ## Executive Summary
 
-Beads 0.24 is a mature, stable issue tracking system designed for **distributed teams** and **comprehensive work logging**. This document implements Steve Yegge's best practices for maximum effectiveness.
+Beads 0.24 is a mature, stable issue tracking system designed for **distributed
+teams** and **comprehensive work logging**. This document implements Steve
+Yegge's best practices for maximum effectiveness.
 
 **Current Status**:
+
 - 135 total issues (healthy)
 - 120 closed (89% closure rate)
 - 11 open (awaiting work)
@@ -25,9 +29,11 @@ Beads 0.24 is a mature, stable issue tracking system designed for **distributed 
 
 **The Problem**: Creating issues IS work. Planning in Beads slows down planning.
 
-**The Solution**: Plan work in documents, whiteboards, or conversations first. Then import structured plan into Beads.
+**The Solution**: Plan work in documents, whiteboards, or conversations first.
+Then import structured plan into Beads.
 
 **Example Workflow**:
+
 ```
 1. Cody Framework planning → Output: design doc, PRD, feature backlog
 2. External planning → Output: markdown docs in docs/ or .cody/
@@ -42,13 +48,15 @@ Beads 0.24 is a mature, stable issue tracking system designed for **distributed 
 
 **The Rule**: Create a beads issue for ANY work that takes more than 2 minutes.
 
-**Why**: 
+**Why**:
+
 - Historical record of all significant work
 - Prevents context loss
 - Enables pattern discovery
 - Supports future retrospectives
 
 **What to File**:
+
 - ✅ Features (new functionality)
 - ✅ Bugs (broken things)
 - ✅ Tasks (implementation steps)
@@ -56,7 +64,8 @@ Beads 0.24 is a mature, stable issue tracking system designed for **distributed 
 - ✅ Investigations (research, RFCs)
 - ❌ Sub-minute fixes (typos, simple edits)
 
-**Current Coverage**: 
+**Current Coverage**:
+
 - P1 work: 100% filed
 - P2 work: 100% filed
 - Chores: 80% filed (room for improvement)
@@ -70,12 +79,14 @@ Beads 0.24 is a mature, stable issue tracking system designed for **distributed 
 **Current**: 135 total (27% of limit - healthy)
 
 **Monthly Cleanup**:
+
 1. Run `bd doctor` - identify issues needing attention
 2. Archive closed issues >14 days old
 3. Delete obsolete/invalid issues
 4. Commit archive snapshot to git
 
 **Archive Strategy**:
+
 ```
 .beads/archive/
 ├── issues-2025-11-25.json    ← Monthly snapshot
@@ -86,6 +97,7 @@ Beads 0.24 is a mature, stable issue tracking system designed for **distributed 
 ### 4. Establish Regular Hygiene Routine
 
 **Weekly** (5 minutes):
+
 ```bash
 bd doctor                      # Check health
 bd ready                       # What's unblocked?
@@ -93,6 +105,7 @@ bd ready                       # What's unblocked?
 ```
 
 **Monthly** (15 minutes):
+
 ```bash
 bd cleanup --older-than 14d    # Archive old closed
 bd doctor --fix                # Auto-fix if issues
@@ -101,6 +114,7 @@ git commit -m "chore: beads monthly hygiene"
 ```
 
 **Quarterly** (30 minutes):
+
 ```bash
 # Generate stats
 bd status --json > .beads/quarterly-report-Q4-2025.json
@@ -117,12 +131,13 @@ bd status --json > .beads/quarterly-report-Q4-2025.json
 **Pattern**: Each beads issue should be traceable to git commits
 
 **Implementation**:
+
 ```bash
 # In commit message
 git commit -m "feat: add analytics tracking (pw-aog)"
                ↑ beads issue ID in parens
 
-# In beads issue  
+# In beads issue
 bd update pw-aog --notes "Implemented in commit abc123"
 ```
 
@@ -133,6 +148,7 @@ bd update pw-aog --notes "Implemented in commit abc123"
 **Beads Philosophy**: Let issues be simple. Don't over-engineer.
 
 **Required Fields Only**:
+
 - `id` - Auto-assigned (pw-NNN)
 - `title` - Brief (< 80 chars)
 - `status` - open/closed/blocked/in_progress
@@ -140,11 +156,13 @@ bd update pw-aog --notes "Implemented in commit abc123"
 - `priority` - 0-4 (0=critical, 4=backlog)
 
 **Optional Fields** (use sparingly):
+
 - `description` - Why is this needed?
 - `dependencies` - What's it blocked by?
 - `notes` - Log work as you go
 
 **What NOT to Use**:
+
 - ❌ Assigned to (too rigid for async work)
 - ❌ Story points (estimates, rarely accurate)
 - ❌ Labels/tags (Beads doesn't do this well)
@@ -161,12 +179,14 @@ bd close pw-aog --reason "Completed" \
   --notes "Created docs/development/ANALYTICS_PATTERNS.md and FEATURE_DEVELOPMENT_CHECKLIST.md. Implemented pre-push validation hook. Analytics now mandatory for all features."
 ```
 
-**Why**: 
+**Why**:
+
 - Provides closure context for future readers
 - Prevents "why was this closed?" confusion
 - Creates historical knowledge base
 
 **Example Good Closure**:
+
 ```
 Status: closed
 Reason: Completed
@@ -317,18 +337,19 @@ Git History:      Preserved (recoverable)
 
 ### Health Metrics
 
-| Metric | Target | Current | Status |
-|--------|--------|---------|--------|
-| Total issues | <500 | 135 | ✅ Healthy |
-| Closed ratio | >75% | 89% | ✅ Excellent |
-| Avg cycle time | <2 weeks | ~10 days | ✅ Good |
-| Issues >30 days old | <5 | 0 | ✅ Excellent |
-| Database corruption | 0 | 0 | ✅ Clean |
-| Sync status | In sync | Synced | ✅ Good |
+| Metric              | Target   | Current  | Status       |
+| ------------------- | -------- | -------- | ------------ |
+| Total issues        | <500     | 135      | ✅ Healthy   |
+| Closed ratio        | >75%     | 89%      | ✅ Excellent |
+| Avg cycle time      | <2 weeks | ~10 days | ✅ Good      |
+| Issues >30 days old | <5       | 0        | ✅ Excellent |
+| Database corruption | 0        | 0        | ✅ Clean     |
+| Sync status         | In sync  | Synced   | ✅ Good      |
 
 ### Monitoring
 
 **Weekly Check** (5 min):
+
 ```bash
 cd /Users/peter/github/pwarnock.github.io
 bd status --json | jq '.summary'
@@ -336,6 +357,7 @@ bd status --json | jq '.summary'
 ```
 
 **Monthly Deep Dive** (15 min):
+
 ```bash
 bd doctor
 # Check: no orphaned issues, no corruption
@@ -350,6 +372,7 @@ bd doctor
 ### Current State
 
 ✅ **Established Linkage**:
+
 - Cody feature backlog → Beads epics
 - Version planning → Epic creation
 - Version retrospectives → Link to beads issues
@@ -360,6 +383,7 @@ bd doctor
 #### 1. Version Mapping
 
 Create explicit mapping:
+
 ```
 v0.20.1 (Released)
   ├─ pw-701 epic: Release process automation
@@ -376,6 +400,7 @@ v0.21.0 (In Planning)
 #### 2. Auto-Sync Version Status
 
 When closing release epic:
+
 ```bash
 bd close pw-701 --reason "Released as v0.20.1"
 # Auto-update all child issues with version tag
@@ -384,6 +409,7 @@ bd close pw-701 --reason "Released as v0.20.1"
 #### 3. Release Notes Generation
 
 Generate release notes from closed beads issues:
+
 ```bash
 bd list --closed-since="2 weeks" --json | \
   jq '.[] | "\(.title) (closes \(.id))"'
@@ -436,6 +462,7 @@ bd status --json | jq '.summary'
 ### Every 3 Months (30 minutes)
 
 1. **Generate Stats**
+
    ```bash
    bd status --json > .beads/quarterly/Q4-2025-stats.json
    ```
@@ -458,7 +485,7 @@ bd status --json | jq '.summary'
    - File 1-2 improvements for next quarter
 
 5. **Review Best Practices**
-   - Are we filing >2 min work consistently? 
+   - Are we filing >2 min work consistently?
    - Are summaries capturing enough detail?
    - Are dependencies tracked properly?
    - Any process improvements needed?
@@ -508,6 +535,7 @@ bd sync
 The following has been documented in [AGENTS.md](/AGENTS.md):
 
 ✅ **Beads Workflow** (section: Issue Tracking with bd)
+
 - Quick start commands
 - Create/update/close procedures
 - Ready work detection
@@ -515,6 +543,7 @@ The following has been documented in [AGENTS.md](/AGENTS.md):
 - How to link issues to work
 
 ✅ **Best Practices**
+
 - File liberally (>2 min)
 - Plan outside Beads first
 - Keep database small
@@ -548,10 +577,12 @@ The following has been documented in [AGENTS.md](/AGENTS.md):
 
 ## References
 
-- **Steve Yegge's Beads Best Practices**: https://medium.com/@steveyegge/beads-best-practices
+- **Steve Yegge's Beads Best Practices**:
+  https://medium.com/@steveyegge/beads-best-practices
 - **Beads Documentation**: https://github.com/beads-db/beads
 - **AGENTS.md**: [Issue Tracking Section](/AGENTS.md#issue-tracking-with-bd)
-- **BEADS_HYGIENE_PLAN.md**: [Hygiene & Cleanup](../operations/BEADS_HYGIENE_PLAN.md)
+- **BEADS_HYGIENE_PLAN.md**:
+  [Hygiene & Cleanup](../operations/BEADS_HYGIENE_PLAN.md)
 - **Current Database**: [.beads/issues.jsonl](/.beads/issues.jsonl)
 
 ---

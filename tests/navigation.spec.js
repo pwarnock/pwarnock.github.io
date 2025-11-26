@@ -2,7 +2,9 @@ import { test, expect } from '@playwright/test';
 import { injectAxe, checkA11y } from 'axe-playwright';
 
 test.describe('Navigation and Accessibility', () => {
-  test('should navigate to the blog page and have no detectable a11y violations on the homepage', async ({ page }) => {
+  test('should navigate to the blog page and have no detectable a11y violations on the homepage', async ({
+    page,
+  }) => {
     // Navigate to the home page
     await page.goto('/');
     await injectAxe(page);

@@ -1,10 +1,12 @@
 # Ready to Archive
 
-These files have been fully consolidated into new authoritative sources. Ready to move to `docs/_archived/` directory.
+These files have been fully consolidated into new authoritative sources. Ready
+to move to `docs/_archived/` directory.
 
 ## Files Ready for Archival
 
 ### 1. docs/operations/RELEASE_MANAGEMENT.md
+
 - **Status**: ✅ Fully consolidated into DEPLOYMENT.md
 - **Original size**: 500 lines (705 total)
 - **Content merged**:
@@ -19,12 +21,13 @@ These files have been fully consolidated into new authoritative sources. Ready t
   - ✅ Metrics and KPIs
   - ✅ CI/CD Workflow Architecture overview
   - ✅ Continuous Improvement section
-  
-- **Reason for archival**: All content preserved in DEPLOYMENT.md; no longer need two deployment docs at different governance levels
+- **Reason for archival**: All content preserved in DEPLOYMENT.md; no longer
+  need two deployment docs at different governance levels
 
 ---
 
 ### 2. docs/operations/DEPLOYMENT_NOTES.md
+
 - **Status**: ✅ Fully consolidated into DEPLOYMENT.md
 - **Original size**: 346 lines (402 total)
 - **Content merged**:
@@ -39,21 +42,22 @@ These files have been fully consolidated into new authoritative sources. Ready t
   - ✅ Recovery Steps
   - ✅ Lessons Learned
 
-- **Reason for archival**: All operational knowledge preserved in DEPLOYMENT.md; no longer need separate notes doc
+- **Reason for archival**: All operational knowledge preserved in DEPLOYMENT.md;
+  no longer need separate notes doc
 
 ---
 
 ## Consolidation Metrics
 
-| Metric | Value |
-|--------|-------|
-| Original lines | 1,107 |
-| Consolidated lines | 759 |
-| Deduplication | 348 lines (31%) |
-| Information loss | 0% |
-| Cross-references added | 3 (RELEASE_WORKFLOW, RELEASE_PROCESS, ENVIRONMENT_CONFIG) |
-| New sections added | 2 (Quick Links, CSS Validation subsection) |
-| Checklists merged | 6 (pre-commit, code quality, content, performance, security, post-release) |
+| Metric                 | Value                                                                      |
+| ---------------------- | -------------------------------------------------------------------------- |
+| Original lines         | 1,107                                                                      |
+| Consolidated lines     | 759                                                                        |
+| Deduplication          | 348 lines (31%)                                                            |
+| Information loss       | 0%                                                                         |
+| Cross-references added | 3 (RELEASE_WORKFLOW, RELEASE_PROCESS, ENVIRONMENT_CONFIG)                  |
+| New sections added     | 2 (Quick Links, CSS Validation subsection)                                 |
+| Checklists merged      | 6 (pre-commit, code quality, content, performance, security, post-release) |
 
 ---
 
@@ -92,7 +96,8 @@ Before moving files to archive, verify:
 - [x] DEPLOYMENT.md has release notes template
 - [x] DEPLOYMENT.md has monitoring thresholds
 - [x] DEPLOYMENT.md has escalation procedures
-- [x] No external links point to RELEASE_MANAGEMENT.md (only internal doc updates)
+- [x] No external links point to RELEASE_MANAGEMENT.md (only internal doc
+      updates)
 - [x] No external links point to DEPLOYMENT_NOTES.md
 - [x] docs/README.md updated to reflect consolidation
 - [x] DEPLOYMENT.md has cross-references instead of duplication
@@ -105,7 +110,8 @@ To maintain clean separation without duplication, DEPLOYMENT.md references:
 
 1. **RELEASE_WORKFLOW.md** - For three-stage release mechanics and scripts
    - Why: Technical reference for executing releases
-   - What it covers: RC tagging, testing, final release with `./scripts/release.sh`
+   - What it covers: RC tagging, testing, final release with
+     `./scripts/release.sh`
 
 2. **RELEASE_PROCESS.md** - For Cody Framework workflow
    - Why: Framework-specific approach to version development
@@ -124,8 +130,10 @@ To maintain clean separation without duplication, DEPLOYMENT.md references:
 ## Impact on Documentation Index
 
 Updated `docs/README.md`:
+
 - ✅ DEPLOYMENT.md status: ⚠️ WIP → ✅ Consolidated
-- ✅ Added consolidation note: "Merged from: RELEASE_MANAGEMENT.md + DEPLOYMENT_NOTES.md"
+- ✅ Added consolidation note: "Merged from: RELEASE_MANAGEMENT.md +
+  DEPLOYMENT_NOTES.md"
 - ✅ Added archive entries for consolidated files
 - ✅ Removed from "In Progress" section
 
@@ -134,10 +142,12 @@ Updated `docs/README.md`:
 ## Final Notes
 
 This consolidation:
+
 - **Maintains context**: All critical information preserved with full detail
 - **Eliminates redundancy**: 31% reduction through deduplication
 - **Improves navigation**: Single authoritative source for deployment procedures
-- **Preserves separation of concerns**: References other docs instead of duplicating
+- **Preserves separation of concerns**: References other docs instead of
+  duplicating
 - **No information loss**: All checklists, procedures, error solutions intact
 
 Ready to archive when user confirms.

@@ -3,6 +3,7 @@
 ## Files to Consolidate
 
 ### From style-guide/ directory (8 files):
+
 1. **01-project-architecture.md** (48 lines)
    - Directory structure (content/, layouts/)
    - Template hierarchy
@@ -45,6 +46,7 @@
    - [TO READ]
 
 ### Related files (to check for duplication):
+
 - **CSS_VARIABLES_DESIGN_SYSTEM.md** (243 lines)
   - Likely duplicates 02-design-system.md content
 
@@ -54,16 +56,18 @@
 2. **Read CSS_VARIABLES_DESIGN_SYSTEM.md** to check for duplication
 3. **Map duplicates and conflicts** (like deployment consolidation)
 4. **Create master STYLE_GUIDE.md** with all content organized
-5. **Archive source files** to docs/_archived/development/style-guide/
+5. **Archive source files** to docs/\_archived/development/style-guide/
 6. **Update docs/README.md** index
 
 ## Preliminary Observations
 
 **Size**: 8 files = 1,199 lines (likely 30-40% redundancy)
 
-**Structure**: Files are already numbered 01-08, suggesting they're meant to be a sequence that could be merged into one master doc.
+**Structure**: Files are already numbered 01-08, suggesting they're meant to be
+a sequence that could be merged into one master doc.
 
 **Key sections identified so far**:
+
 - Architecture/structure
 - Design system (colors, typography, components)
 - Content guidelines (critical voice/tone rules, validation)
@@ -74,6 +78,7 @@
 - Accessibility standards
 
 **Potential redundancy**:
+
 - CSS_VARIABLES likely duplicates design-system color content
 - Multiple mentions of DaisyUI theme variables across files
 - Component patterns might appear in multiple files

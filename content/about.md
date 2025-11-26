@@ -54,4 +54,5 @@ something that lasts?
 
 ## Books That Shaped Me
 
-These books have fundamentally influenced how I think about engineering, leadership, and building organizations:
+These books have fundamentally influenced how I think about engineering,
+leadership, and building organizations:

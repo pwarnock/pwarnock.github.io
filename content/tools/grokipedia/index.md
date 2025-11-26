@@ -139,5 +139,4 @@ _This tool overview is part of our comprehensive guide to
 [AI knowledge management tools](/blog/posts/vibe-coding-revolution/). Last
 updated: October 28, 2025._
 
-
 **Website**: [grokipedia.com](https://grokipedia.com)

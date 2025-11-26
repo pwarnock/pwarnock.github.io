@@ -11,18 +11,18 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     await page.addInitScript(() => {
       const CookieConsent = {
         // Check if user has already made a choice
-        hasConsent: function() {
+        hasConsent: function () {
           return localStorage.getItem('cookie-consent') !== null;
         },
 
         // Get stored consent preferences
-        getConsent: function() {
+        getConsent: function () {
           const stored = localStorage.getItem('cookie-consent');
           return stored ? JSON.parse(stored) : null;
         },
 
         // Initialize - show banner if no prior consent
-        init: function() {
+        init: function () {
           if (!this.hasConsent()) {
             this.show();
           } else {
@@ -32,7 +32,7 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         },
 
         // Show the banner
-        show: function() {
+        show: function () {
           const banner = document.getElementById('cookie-consent-banner');
           if (banner) {
             banner.style.display = 'block';
@@ -40,7 +40,7 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         },
 
         // Hide the banner
-        hide: function() {
+        hide: function () {
           const banner = document.getElementById('cookie-consent-banner');
           if (banner) {
             banner.style.display = 'none';
@@ -48,12 +48,12 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         },
 
         // Accept all cookies
-        accept: function() {
+        accept: function () {
           const consent = {
             essential: true,
             analytics: true,
             marketing: true,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
           };
           this.storeConsent(consent);
           this.applyConsent(consent);
@@ -62,12 +62,12 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         },
 
         // Reject non-essential cookies
-        reject: function() {
+        reject: function () {
           const consent = {
             essential: true,
             analytics: false,
             marketing: false,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
           };
           this.storeConsent(consent);
           this.applyConsent(consent);
@@ -76,18 +76,18 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         },
 
         // Show preferences modal (placeholder)
-        showPreferences: function() {
+        showPreferences: function () {
           console.log('[CookieConsent] Preferences dialog would open here');
           this.trackConsentEvent('open_preferences');
         },
 
         // Store consent choice in localStorage
-        storeConsent: function(consent) {
+        storeConsent: function (consent) {
           localStorage.setItem('cookie-consent', JSON.stringify(consent));
         },
 
         // Apply consent settings (enable/disable tracking)
-        applyConsent: function(consent) {
+        applyConsent: function (consent) {
           if (consent.analytics && typeof window.Analytics !== 'undefined') {
             console.log('[CookieConsent] Analytics enabled');
           } else {
@@ -96,21 +96,21 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
 
           if (typeof window.gtag !== 'undefined') {
             window.gtag('consent', 'update', {
-              'analytics_storage': consent.analytics ? 'granted' : 'denied',
-              'ad_storage': consent.marketing ? 'granted' : 'denied'
+              analytics_storage: consent.analytics ? 'granted' : 'denied',
+              ad_storage: consent.marketing ? 'granted' : 'denied',
             });
           }
         },
 
         // Track consent decision
-        trackConsentEvent: function(action) {
+        trackConsentEvent: function (action) {
           if (typeof window.Analytics !== 'undefined') {
             window.Analytics.trackEvent('cookie_consent', {
               action: action,
-              timestamp: new Date().toISOString()
+              timestamp: new Date().toISOString(),
             });
           }
-        }
+        },
       };
 
       // Expose to global scope
@@ -185,7 +185,7 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
         essential: true,
         analytics: false,
         marketing: false,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
       localStorage.setItem('cookie-consent', JSON.stringify(consent));
     });
@@ -203,7 +203,9 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(consentObj.marketing).toBe(false);
   });
 
-  test('CookieConsent.hasConsent() correctly identifies consent status @cookie-consent', async ({ page }) => {
+  test('CookieConsent.hasConsent() correctly identifies consent status @cookie-consent', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     // No consent initially
@@ -239,7 +241,9 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(consent.marketing).toBe(false);
   });
 
-  test('cookie consent choice persists across page navigation @cookie-consent', async ({ page }) => {
+  test('cookie consent choice persists across page navigation @cookie-consent', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     // Accept consent
@@ -263,14 +267,16 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(consentAfter).toBe(consentBefore);
   });
 
-  test('CookieConsent.trackConsentEvent() sends analytics events @cookie-consent', async ({ page }) => {
+  test('CookieConsent.trackConsentEvent() sends analytics events @cookie-consent', async ({
+    page,
+  }) => {
     // Set up Analytics mock before navigating
     await page.addInitScript(() => {
       (window as any).Analytics = {
-        trackEvent: function(eventName: string, eventData: any) {
+        trackEvent: function (eventName: string, eventData: any) {
           (window as any).analyticsEvents = (window as any).analyticsEvents || [];
           (window as any).analyticsEvents.push({ event: eventName, ...eventData });
-        }
+        },
       };
     });
 
@@ -306,7 +312,9 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(consent.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
   });
 
-  test('CookieConsent handles multiple accept calls idempotently @cookie-consent', async ({ page }) => {
+  test('CookieConsent handles multiple accept calls idempotently @cookie-consent', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     await page.evaluate(() => {
@@ -328,10 +336,10 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     // Set up Analytics mock
     await page.addInitScript(() => {
       (window as any).Analytics = {
-        trackEvent: function(eventName: string, eventData: any) {
+        trackEvent: function (eventName: string, eventData: any) {
           (window as any).analyticsEvents = (window as any).analyticsEvents || [];
           (window as any).analyticsEvents.push({ event: eventName, ...eventData });
-        }
+        },
       };
     });
 
@@ -349,7 +357,9 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(prefsEvent).toBeDefined();
   });
 
-  test('CookieConsent.applyConsent() respects analytics setting @cookie-consent', async ({ page }) => {
+  test('CookieConsent.applyConsent() respects analytics setting @cookie-consent', async ({
+    page,
+  }) => {
     await page.goto('/');
 
     // Create a consent object without analytics
@@ -357,7 +367,7 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
       const consent = {
         essential: true,
         analytics: false,
-        marketing: false
+        marketing: false,
       };
       (window as any).CookieConsent.applyConsent(consent);
     });
@@ -383,11 +393,14 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     expect(isInitialized).toBe(true);
   });
 
-  test('localStorage persists across browser sessions (simulated) @cookie-consent', async ({ page, context }) => {
+  test('localStorage persists across browser sessions (simulated) @cookie-consent', async ({
+    page,
+    context,
+  }) => {
     // First session
     let page1 = await context.newPage();
     await page1.goto('/');
-    
+
     await page1.evaluate(() => {
       (window as any).CookieConsent.accept();
     });
@@ -412,8 +425,8 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
 
   test('consent banner renders without JavaScript errors @cookie-consent', async ({ page }) => {
     const jsErrors: string[] = [];
-    
-    page.on('console', (msg) => {
+
+    page.on('console', msg => {
       if (msg.type() === 'error') {
         jsErrors.push(msg.text());
       }
@@ -423,15 +436,16 @@ test.describe('Cookie Consent Banner (pw-27)', () => {
     await page.waitForLoadState('networkidle');
 
     // CookieConsent-specific errors should not exist
-    const cookieErrors = jsErrors.filter(e => 
-      e.includes('CookieConsent') || 
-      e.includes('cookie-consent')
+    const cookieErrors = jsErrors.filter(
+      e => e.includes('CookieConsent') || e.includes('cookie-consent')
     );
 
     expect(cookieErrors.length).toBe(0);
   });
 
-  test('feature flag can be toggled by enabling cookie_consent_banner @cookie-consent', async ({ page }) => {
+  test('feature flag can be toggled by enabling cookie_consent_banner @cookie-consent', async ({
+    page,
+  }) => {
     // This test verifies the structure is ready for enabling the flag
     await page.goto('/');
 
