@@ -89,14 +89,18 @@
     }
   {{ end }}
 {{ else if eq .Type "blog" }}
+  {{- $contentType := .Params.content_type | default "original" -}}
+  {{- $contentTypes := index .Site.Data "content-types" -}}
+  {{- $contentTypeConfig := index $contentTypes.content_types $contentType -}}
   {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "{{ $contentTypeConfig.schema_type | default "Article" }}",
     "headline": "{{ .Title }}",
     "description": "{{ .Description | default .Summary }}",
     "image": "{{ .Params.featured_image | default "/images/default-blog-image.jpg" | absURL }}",
     "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
     "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    {{- if eq $contentType "original" -}}
     "author": {
       "@type": "Person",
       "name": "Peter Warnock",
@@ -108,10 +112,29 @@
       ]
     },
     "publisher": {
-      "@type": "Person",
-      "name": "Peter Warnock",
-      "url": "{{ .Site.BaseURL }}"
+      "@type": "Organization",
+      "name": "Peter Warnock Consulting",
+      "url": "{{ .Site.BaseURL }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.BaseURL }}images/logo.png",
+        "width": 512,
+        "height": 512
+      }
     },
+    {{- else if or (eq $contentType "curated") (eq $contentType "embed") -}}
+    "author": {
+      "@type": "Person",
+      "name": "{{ .Params.attribution | default "Unknown Author" }}"
+    },
+    {{- if .Params.source_url -}}
+    {{- if eq $contentType "curated" -}}
+    "isBasedOn": "{{ .Params.source_url }}",
+    {{- else if eq $contentType "embed" -}}
+    "embedUrl": "{{ .Params.source_url }}",
+    {{- end -}}
+    {{- end -}}
+    {{- end -}}
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "{{ .Permalink }}"
@@ -119,7 +142,12 @@
     "url": "{{ .Permalink }}",
     "wordCount": {{ .WordCount }},
     "keywords": {{ if .Params.tags }}{{ delimit .Params.tags ", " | jsonify }}{{ else }}[]{{ end }},
-    "inLanguage": "{{ .Site.LanguageCode }}"
+    "inLanguage": "{{ .Site.LanguageCode }}",
+    "about": {
+      "@type": "Thing",
+      "name": "Content Type",
+      "description": "{{ $contentTypeConfig.description }}"
+    }
   }
 {{ else if or (eq .Type "portfolio") (eq .Type "tools") }}
   {

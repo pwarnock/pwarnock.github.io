@@ -1,0 +1,24 @@
+{{/* Content Header Partial - Displays attribution for curated/embed content */}}
+{{- $contentType := .Params.content_type | default "original" -}}
+
+{{- if or (eq $contentType "curated") (eq $contentType "embed") -}}
+  {{- $attribution := .Params.attribution -}}
+  {{- $sourceUrl := .Params.source_url -}}
+  
+  {{- if and $attribution $sourceUrl -}}
+    <div class="content-header">
+      <div class="attribution-notice">
+        <span class="attribution-text">
+          {{- if eq $contentType "curated" -}}
+            Curated from
+          {{- else if eq $contentType "embed" -}}
+            Embedded from
+          {{- end -}}
+          <a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" class="source-link">
+            {{ $attribution }}
+          </a>
+        </span>
+      </div>
+    </div>
+  {{- end -}}
+{{- end -}}

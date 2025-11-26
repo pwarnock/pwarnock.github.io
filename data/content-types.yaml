@@ -1,0 +1,95 @@
+# Content Type System Configuration
+# Defines content types and their field requirements for the Hugo site
+
+content_types:
+  original:
+    name: 'Original Content'
+    description: 'Content created specifically for this site'
+    fields:
+      required:
+        - title
+        - date
+        - summary
+      optional:
+        - tags
+        - categories
+        - featured_image
+        - draft
+    schema_type: 'Article'
+
+  curated:
+    name: 'Curated Content'
+    description: 'Content from external sources, shared with commentary'
+    fields:
+      required:
+        - title
+        - date
+        - summary
+        - attribution
+        - source_url
+      optional:
+        - tags
+        - categories
+        - featured_image
+        - draft
+    schema_type: 'Article'
+    additional_properties:
+      isBasedOn: 'source_url'
+
+  embed:
+    name: 'Embedded Content'
+    description: 'Direct embeds from external platforms'
+    fields:
+      required:
+        - title
+        - date
+        - attribution
+        - source_url
+      optional:
+        - tags
+        - categories
+        - draft
+    schema_type: 'Article'
+    additional_properties:
+      embedUrl: 'source_url'
+
+# Validation rules
+validation:
+  content_type_required: true
+  attribution_required_for:
+    - curated
+    - embed
+  source_url_required_for:
+    - curated
+    - embed
+  summary_required_for:
+    - original
+    - curated
+
+# Default values
+defaults:
+  content_type: 'original'
+
+# Schema.org mappings
+schema_mappings:
+  original:
+    mainEntityOfPage: '{{ .Permalink }}'
+    author:
+      '@type': 'Person'
+      name: 'Pete Warnock'
+    publisher:
+      '@type': 'Organization'
+      name: 'Pete Warnock'
+      logo:
+        '@type': 'ImageObject'
+        url: '{{ .Site.BaseURL }}/images/logo.png'
+
+  curated:
+    mainEntityOfPage: '{{ .Permalink }}'
+    isBasedOn: '{{ .Params.source_url }}'
+    author: '{{ .Params.attribution }}'
+
+  embed:
+    mainEntityOfPage: '{{ .Permalink }}'
+    embedUrl: '{{ .Params.source_url }}'
+    author: '{{ .Params.attribution }}'

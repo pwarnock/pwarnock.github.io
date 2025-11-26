@@ -1,0 +1,33 @@
+{{/* Content Preview Partial - Displays summary/preview based on content type */}}
+{{- $contentType := .Params.content_type | default "original" -}}
+{{- $summary := .Summary -}}
+
+{{- if $summary -}}
+  <div class="content-preview">
+    {{- if eq $contentType "original" -}}
+      <!-- Original content: use summary as-is -->
+      <div class="preview-text">
+        {{ $summary }}
+      </div>
+      
+    {{- else if or (eq $contentType "curated") (eq $contentType "embed") -}}
+      <!-- Curated/embed content: add context -->
+      <div class="preview-text curated-preview">
+        {{ $summary }}
+      </div>
+      
+      {{- $sourceUrl := .Params.source_url -}}
+      {{- if $sourceUrl -}}
+        <div class="source-link-container">
+          <a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" class="read-source-link">
+            {{- if eq $contentType "curated" -}}
+              Read Original
+            {{- else if eq $contentType "embed" -}}
+              View Source
+            {{- end -}}
+          </a>
+        </div>
+      {{- end -}}
+    {{- end -}}
+  </div>
+{{- end -}}

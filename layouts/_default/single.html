@@ -33,15 +33,11 @@
       </nav>
       {{ end }}
 
-      <!-- Summary alert (if not shown in hero) -->
-      {{ if .Params.summary }}
-      <div class="alert bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20 backdrop-blur-sm max-w-2xl mx-auto mb-responsive-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6 text-primary">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <span class="text-base-content/80">{{ .Params.summary }}</span>
-      </div>
-      {{ end }}
+      <!-- Content Header (attribution for curated/embed) -->
+      {{ partial "content/content-header.html" . }}
+
+      <!-- Content Preview (summary with context) -->
+      {{ partial "content/content-preview.html" . }}
 
       <!-- Main Content -->
       <div class="prose prose-lg lg:prose-xl" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">
