@@ -44,7 +44,7 @@
       {{ end }}
 
       <!-- Main Content -->
-      <div class="prose prose-lg lg:prose-xl max-w-none" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">
+      <div class="prose prose-lg lg:prose-xl" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">
         {{ .Content }}
       </div>
 
