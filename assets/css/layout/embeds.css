@@ -13,6 +13,13 @@
 .embed-container iframe,
 .embed-container blockquote {
   margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.substack-post-embed {
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 /* Prose context embeds */
