@@ -303,3 +303,19 @@ Hero carousel system implementation: Complete modular carousel with autoplay, na
 | F84 | Gradient Background     | Restore gradient background from original hero design | Medium   | 🟢 Completed |
 | F85 | Accessibility Features  | Implement keyboard navigation, ARIA labels, and screen reader support | High     | 🟢 Completed |
 | F86 | E2E Testing             | Add comprehensive Playwright tests for carousel functionality | Medium   | 🟢 Completed |
+
+| F105 | Content Type System | Implement content classification with original, curated, and embed types | High | 🔴 Not Started (pw-duh) |
+| F106 | Content Header Component | Create reusable component for attribution display | High | 🔴 Not Started (pw-dpm) |
+| F107 | Content Preview Component | Create reusable component for conditional alert display | High | 🔴 Not Started (pw-hd1) |
+| F108 | Single Post Template Update | Integrate content components into blog post template | High | 🔴 Not Started (pw-2o9) |
+| F109 | Structured Data Enhancement | Add dynamic schema.org markup based on content type | High | 🔴 Not Started (pw-n58) |
+| F110 | Card Component Updates | Add content type badges to all card components | Medium | 🔴 Not Started (pw-2s1) |
+| F111 | Content Validation Engine | Build configurable validation system for content types | High | 🔴 Not Started (pw-bes6) |
+| F112 | Blog Validation Script Update | Integrate new validation engine into existing script | High | 🔴 Not Started (pw-z41b) |
+| F113 | Content Type Documentation | Create comprehensive guide for content creators | Medium | 🔴 Not Started (pw-juvu) |
+| F114 | Style Guide Content Type Updates | Add content type requirements to style guide | Medium | 🔴 Not Started (pw-oa26) |
+| F115 | Content Audit and Classification | Review and classify all existing blog posts | Medium | 🔴 Not Started (pw-9q6t) |
+| F116 | Content Migration | Update frontmatter for all existing posts with new fields | Low | 🔴 Not Started (pw-mkn9) |
+| F117 | Component Testing | Test all content types display correctly in templates | High | 🔴 Not Started (pw-g71v) |
+| F118 | Schema.org Validation | Validate JSON-LD structured data for all content types | High | 🔴 Not Started (pw-pq8p) |
+| F119 | End-to-End Testing | Complete integration testing of content type system | High | 🔴 Not Started (pw-sw6u) |
