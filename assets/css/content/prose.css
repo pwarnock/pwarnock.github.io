@@ -20,7 +20,6 @@
     /* Target: ~5xl (Hero) / ~4xl (Page) */
     font-size: clamp(2rem, 5vw + 1rem, 3.5rem); /* Fluid large heading */
     letter-spacing: -0.02em; /* Tight letter spacing */
-    max-width: 65ch; /* Readable line length */
   }
 
   .prose h2 {
@@ -32,7 +31,6 @@
     /* Target: ~3xl */
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); /* Fluid larger heading */
     letter-spacing: -0.01em;
-    max-width: 65ch;
   }
 
   .prose h3 {
@@ -43,7 +41,6 @@
 
     /* Target: ~2xl */
     font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem); /* Fluid medium heading */
-    max-width: 65ch;
   }
 
   .prose p {
@@ -52,7 +49,6 @@
 
     /* Target: ~base to lg */
     font-size: clamp(1rem, 1.5vw + 0.75rem, 1.125rem); /* Fluid body text */
-    max-width: 65ch; /* Optimal reading length */
   }
 
   .prose strong,
@@ -91,14 +87,12 @@
     list-style-type: disc;
     padding-left: var(--space-8);
     margin-bottom: var(--space-6);
-    max-width: 65ch; /* Optimal for lists */
   }
 
   .prose ol {
     list-style-type: decimal;
     padding-left: var(--space-8);
     margin-bottom: var(--space-6);
-    max-width: 65ch;
   }
 
   .prose li {
