@@ -90,8 +90,14 @@
   {{ end }}
 {{ else if eq .Type "blog" }}
   {{- $contentType := .Params.content_type | default "original" -}}
-  {{- $contentTypes := index .Site.Data "content-types" -}}
-  {{- $contentTypeConfig := index $contentTypes.content_types $contentType -}}
+  {{- $contentTypeConfig := dict "schema_type" "Article" -}}
+  {{- if eq $contentType "original" -}}
+    {{- $contentTypeConfig = dict "schema_type" "Article" "description" "Content created specifically for this site" -}}
+  {{- else if eq $contentType "curated" -}}
+    {{- $contentTypeConfig = dict "schema_type" "Article" "description" "Content from external sources, shared with commentary" -}}
+  {{- else if eq $contentType "embed" -}}
+    {{- $contentTypeConfig = dict "schema_type" "Article" "description" "Direct embeds from external platforms" -}}
+  {{- end -}}
   {
     "@context": "https://schema.org",
     "@type": "{{ $contentTypeConfig.schema_type | default "Article" }}",
