@@ -1,0 +1,64 @@
+{{/* 
+  Substack Post Embed Shortcode
+  Usage: {{< substack "https://example.substack.com/p/post-slug" >}}
+  Automatically fetches OG tags for title, description, author, and image.
+  Sets "substack_image" in Page Scratch for use as thumbnail.
+*/}}
+
+{{- $url := (.Get 0) | default "" -}}
+
+{{- if not $url -}}
+  {{- errorf "substack shortcode requires a URL parameter" -}}
+{{- end -}}
+
+{{- /* Initialize variables */ -}}
+{{- $title := "Substack Post" -}}
+{{- $description := "" -}}
+{{- $author := "" -}}
+{{- $image := "" -}}
+
+{{- /* Fetch page content and extract OG tags */ -}}
+{{- $result := try (resources.GetRemote $url) -}}
+{{- if $result.Err -}}
+  {{- warnf "Failed to fetch substack URL %s: %s" $url $result.Err -}}
+{{- else -}}
+  {{- $content := $result.Value.Content -}}
+  
+  {{- /* Extract og:title */ -}}
+  {{- $titleMatches := findRE `(?i)<meta[^>]+property="og:title"[^>]+content="([^"]*)"` $content 1 -}}
+  {{- if gt (len $titleMatches) 0 -}}
+    {{- $title = index $titleMatches 0 | replaceRE `(?i).*content="([^"]*)".*` "$1" -}}
+  {{- end -}}
+  
+  {{- /* Extract og:description */ -}}
+  {{- $descMatches := findRE `(?i)<meta[^>]+property="og:description"[^>]+content="([^"]*)"` $content 1 -}}
+  {{- if gt (len $descMatches) 0 -}}
+    {{- $description = index $descMatches 0 | replaceRE `(?i).*content="([^"]*)".*` "$1" -}}
+  {{- end -}}
+  
+  {{- /* Extract author from meta name attribute */ -}}
+  {{- $authorMatches := findRE `(?i)<meta[^>]+name="author"[^>]+content="([^"]*)"` $content 1 -}}
+  {{- if gt (len $authorMatches) 0 -}}
+    {{- $author = index $authorMatches 0 | replaceRE `(?i).*content="([^"]*)".*` "$1" -}}
+  {{- end -}}
+
+  {{- /* Extract og:image */ -}}
+  {{- $imageMatches := findRE `(?i)<meta[^>]+property="og:image"[^>]+content="([^"]*)"` $content 1 -}}
+  {{- if gt (len $imageMatches) 0 -}}
+    {{- $image = index $imageMatches 0 | replaceRE `(?i).*content="([^"]*)".*` "$1" -}}
+    {{- .Page.Scratch.Set "substack_image" $image -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Render Substack embed with fetched content */ -}}
+<div class="embed-container">
+  <div class="substack-post-embed">
+    <p lang="en"><strong>{{ $title }}</strong>{{- if $author }} by {{ $author }}{{- end }}</p>
+    {{- if $description -}}
+      <p>{{ $description }}</p>
+    {{- end -}}
+    <a data-post-link href="{{ $url }}">Read on Substack</a>
+  </div>
+</div>
+
+<script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
