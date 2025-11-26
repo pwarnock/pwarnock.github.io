@@ -7,9 +7,13 @@
 
 ## Summary
 
-**Beads issues** (pw-lz0, pw-l2f, pw-4up, pw-bie, pw-15u) have been created for **test infrastructure observability**, which is infrastructure/tooling work, not a feature version.
+**Beads issues** (pw-lz0, pw-l2f, pw-4up, pw-bie, pw-15u) have been created for
+**test infrastructure observability**, which is infrastructure/tooling work, not
+a feature version.
 
-**Key insight**: This work should be tracked in beads (not Cody Framework), because:
+**Key insight**: This work should be tracked in beads (not Cody Framework),
+because:
+
 - It's infrastructure/tooling (dependencies, configuration)
 - It's not a user-facing feature version (no v0.X.X release needed)
 - It's a multi-phase implementation that needs dependency tracking
@@ -20,6 +24,7 @@
 ## Separation of Concerns
 
 ### Cody Framework (.cody/)
+
 **Purpose**: User-facing features and versions  
 **Manages**: Feature backlog, versions (v0.X.X), releases, retrospectives  
 **Example**: v0.17.0-test-infrastructure-observability
@@ -27,13 +32,16 @@
 **Rule**: Only modify via `:cody` commands, never manually edit
 
 ### Beads (bd issues)
+
 **Purpose**: Work items, tasks, dependencies, execution tracking  
-**Manages**: All work (tasks, bugs, features), blocking relationships, ready work  
+**Manages**: All work (tasks, bugs, features), blocking relationships, ready
+work  
 **Example**: pw-l2f, pw-4up (Phase tasks)
 
 **Rule**: Use `bd` CLI only, no markdown TODOs
 
 ### Docs (/docs/ and work/)
+
 **Purpose**: Guides, references, operational documentation  
 **Manages**: OBSERVABILITY.md (canonical), work/ (detailed research)
 
@@ -72,6 +80,7 @@ The observability work **should remain as beads issues** because:
 ## Recommendation: Create Version Only If Needed
 
 ### Option A: Beads-Only (RECOMMENDED)
+
 ```
 Status: Infrastructure work
 Tracking: Beads issues pw-l2f, pw-4up, pw-bie, pw-15u, pw-lz0
@@ -86,6 +95,7 @@ Impact: Internal only (test infrastructure)
 ```
 
 ### Option B: Add to Cody Framework (If you want version tracking)
+
 ```
 If decided to create a version:
 :cody version add
@@ -141,18 +151,22 @@ Beads Issues (pw-l2f, pw-4up, pw-bie, pw-15u, pw-lz0)
 ## Current Setup (What I Created)
 
 ### Beads Issues (Fully Reconciled)
-- ✅ **pw-lz0** (parent) - Implement Logfire observability for test infrastructure
+
+- ✅ **pw-lz0** (parent) - Implement Logfire observability for test
+  infrastructure
 - ✅ **pw-l2f** (Phase 0) - Team decision & POC (blocker)
 - ✅ **pw-4up** (Phase 1) - Go OTEL Integration (depends on Phase 0)
 - ✅ **pw-bie** (Phase 2) - TypeScript Instrumentation (depends on Phase 1)
 - ✅ **pw-15u** (Phase 3) - Cross-Test Correlation (depends on Phase 2)
 
 ### Documentation
+
 - ✅ `docs/operations/OBSERVABILITY.md` - Operational guide
 - ✅ `work/` directory - Research and implementation guides
 - ✅ `RECONCILIATION_SUMMARY.md` - Documents reconciliation
 
 ### NOT in Cody Framework
+
 - ❌ No feature-backlog.md entry (internal work)
 - ❌ No version created (infrastructure, not feature)
 - ❌ No .cody/project/versions/ entry (would be over-engineering)
@@ -162,6 +176,7 @@ Beads Issues (pw-l2f, pw-4up, pw-bie, pw-15u, pw-lz0)
 ## AGENTS.md Compliance
 
 ### ✅ Beads Usage
+
 - All work tracked in `bd` issues
 - No markdown TODOs (all in beads)
 - Proper issue types: task (infrastructure work)
@@ -169,18 +184,21 @@ Beads Issues (pw-l2f, pw-4up, pw-bie, pw-15u, pw-lz0)
 - Ready work visible: `bd ready --json`
 
 ### ✅ Documentation
+
 - Operational guide in `/docs/operations/OBSERVABILITY.md`
 - Follows index in `/docs/README.md`
 - Research docs in `work/` (project-specific)
 - No duplication across multiple docs
 
 ### ✅ Cody Framework
+
 - Not modified manually
 - Used only as reference for context
 - Beads is the execution system
 - Framework used for actual features (not infrastructure)
 
 ### ✅ No Mixing
+
 - Framework handles features (v0.X.Y versions)
 - Beads handles work (issues, dependencies)
 - Docs handle references (guides, operational)
@@ -210,11 +228,13 @@ Is this work user-facing?
 ## If You Later Decide to Create a Version
 
 Run:
+
 ```bash
 :cody version add
 ```
 
 Then fill in:
+
 ```
 Name: v0.17.0-test-observability
 Description: Implement Logfire/OpenTelemetry for comprehensive test infrastructure observability
@@ -257,6 +277,7 @@ Project Root/
 ## Next Steps
 
 ### If Keeping Beads-Only (Recommended)
+
 1. Team reviews DECISION_MATRIX.md
 2. Vote on Logfire vs OTEL+Jaeger (pw-l2f status: in_progress)
 3. Start Phase 1 once Phase 0 complete
@@ -264,6 +285,7 @@ Project Root/
 5. No Cody Framework changes needed
 
 ### If Creating a Version (Optional)
+
 1. Run `:cody version add` when Phase 1 starts
 2. Fill in version details
 3. Cody Framework auto-creates folder structure
@@ -275,19 +297,30 @@ Project Root/
 ## FAQ
 
 ### Q: Should infrastructure work go in Cody Framework?
-**A**: No. Cody Framework is for user-facing feature versions. Use beads for all work execution.
+
+**A**: No. Cody Framework is for user-facing feature versions. Use beads for all
+work execution.
 
 ### Q: Why not create a v0.17.0 version?
-**A**: Because users don't see a "new observability feature" release. It's internal tooling. If you wanted to market it as a feature (e.g., "Improved test debugging with live tracing"), then create a version.
+
+**A**: Because users don't see a "new observability feature" release. It's
+internal tooling. If you wanted to market it as a feature (e.g., "Improved test
+debugging with live tracing"), then create a version.
 
 ### Q: Can we change this later?
-**A**: Yes. If you decide this should be a version, run `:cody version add` and link the beads issues to it.
+
+**A**: Yes. If you decide this should be a version, run `:cody version add` and
+link the beads issues to it.
 
 ### Q: What if Phase 3 becomes big?
-**A**: Still use beads. If it grows into a major initiative, consider creating a version at that point.
+
+**A**: Still use beads. If it grows into a major initiative, consider creating a
+version at that point.
 
 ### Q: Who decides if something is "user-facing"?
-**A**: Ask: Would a user (or stakeholder) care about this in release notes? If no, use beads only.
+
+**A**: Ask: Would a user (or stakeholder) care about this in release notes? If
+no, use beads only.
 
 ---
 

@@ -2,16 +2,20 @@
 
 **Date**: November 24, 2025  
 **Status**: Strategic Planning  
-**Scope**: Unified workflow for professional development with version management and issue tracking
+**Scope**: Unified workflow for professional development with version management
+and issue tracking
 
 ---
 
 ## Executive Summary
 
-Integrate Cody Framework (version management, feature backlogs, retrospectives) with Beads issue tracking (dependency-aware task management) to create a **unified development workflow** that:
+Integrate Cody Framework (version management, feature backlogs, retrospectives)
+with Beads issue tracking (dependency-aware task management) to create a
+**unified development workflow** that:
 
 - **Eliminates silos** between version planning and daily issue tracking
-- **Provides visibility** from feature concept → backlog → issue → implementation → release
+- **Provides visibility** from feature concept → backlog → issue →
+  implementation → release
 - **Enables dependency tracking** across versions and work streams
 - **Automates workflows** between planning and execution
 - **Maintains single source of truth** for project work
@@ -21,7 +25,9 @@ Integrate Cody Framework (version management, feature backlogs, retrospectives) 
 ## Current State
 
 ### Cody Framework (`.cody/`)
+
 ✅ **What it does**:
+
 - Version management (v0.19.4 current)
 - Feature backlogs per version
 - Version planning documents (discovery, requirements, implementation plan)
@@ -29,18 +35,22 @@ Integrate Cody Framework (version management, feature backlogs, retrospectives) 
 - Living documentation
 
 ✅ **Strengths**:
+
 - Structured version lifecycle
 - Professional release workflow
 - Comprehensive documentation
 
 ❌ **Gaps**:
+
 - No issue dependency tracking
 - No real-time work status updates
 - No connection to daily task management
 - Manual status tracking
 
 ### Beads Issue Tracking (`.bd.toml`)
+
 ✅ **What it does**:
+
 - Dependency-aware task tracking
 - JSON-based, git-friendly storage
 - Real-time issue status
@@ -48,12 +58,14 @@ Integrate Cody Framework (version management, feature backlogs, retrospectives) 
 - Quick `bd ready` to see unblocked work
 
 ✅ **Strengths**:
+
 - Dependency tracking across issues
 - Automatic git syncing
 - Easy CLI workflow
 - Distributed/offline-friendly
 
 ❌ **Gaps**:
+
 - No version/release context
 - No feature-level planning
 - No retrospectives
@@ -95,27 +107,34 @@ Integrate Cody Framework (version management, feature backlogs, retrospectives) 
 **Goal**: Connect Cody version features to Beads issues
 
 **Implementation**:
+
 1. **Beads issue labels** include version: `version:0.19.5`, `version:0.20.0`
-2. **Beads descriptions** reference Cody backlog: `Feature from cody-backlog #42`
+2. **Beads descriptions** reference Cody backlog:
+   `Feature from cody-backlog #42`
 3. **Cody feature-backlog.md** links to issues: `See bd-123 for implementation`
 4. **Naming convention**: Issues named like `pw-123` match Cody references
 
 **Example workflow**:
+
 ```markdown
 # Cody Feature Backlog - v0.20.0
+
 ## Feature: Enhanced Navigation System
+
 - [x] Discovery complete
 - [x] Requirements document (FEATURE_REQ_NAVIGATION.md)
 - [ ] Implementation: See bd-47 through bd-50
 
 # Beads Issues
-bd-47: Navigation component restructure (version:0.20.0)
-bd-48: Add keyboard shortcuts (version:0.20.0)  ← depends on bd-47
-bd-49: Mobile nav improvements (version:0.20.0) ← depends on bd-47
-bd-50: Accessibility audit (version:0.20.0)    ← depends on bd-48, bd-49
+
+bd-47: Navigation component restructure (version:0.20.0) bd-48: Add keyboard
+shortcuts (version:0.20.0) ← depends on bd-47 bd-49: Mobile nav improvements
+(version:0.20.0) ← depends on bd-47 bd-50: Accessibility audit (version:0.20.0)
+← depends on bd-48, bd-49
 ```
 
 **Benefits**:
+
 - ✅ No code changes needed
 - ✅ Clear traceability
 - ✅ Humans can navigate both systems
@@ -138,6 +157,7 @@ bun run sync:backlog-to-beads
 ```
 
 **What it does**:
+
 1. Read `.cody/project/build/feature-backlog.md`
 2. Parse features and subtasks
 3. Create Beads issues with:
@@ -148,6 +168,7 @@ bun run sync:backlog-to-beads
    - Status: "todo" (unstarted)
 
 **Example output**:
+
 ```bash
 $ bun run sync:backlog-to-beads --version 0.20.0
 ✓ Scanning feature backlog for v0.20.0
@@ -170,6 +191,7 @@ bun run sync:beads-to-cody --version 0.20.0
 ```
 
 **What it does**:
+
 1. Read all Beads issues with `version:X.Y.Z` label
 2. Calculate progress per feature
 3. Update `.cody/project/build/feature-backlog.md` with:
@@ -179,8 +201,10 @@ bun run sync:beads-to-cody --version 0.20.0
    - Risk items
 
 **Example output**:
+
 ```markdown
 # Feature: Enhanced Navigation System
+
 - Status: 12/23 issues completed (52%)
 - Issues: bd-47, bd-48, bd-49, bd-50 (see beads)
 - Blocked: 2 (bd-49 waiting for design, bd-50 waiting for testing)
@@ -196,6 +220,7 @@ bun run sync:issues-to-release-notes --version 0.20.0
 ```
 
 **What it does**:
+
 1. Query Beads for issues with `version:0.20.0` and status "completed"
 2. Group by issue type (feature, bug, improvement)
 3. Generate `docs/releases/v0.20.0.md` with:
@@ -206,10 +231,12 @@ bun run sync:issues-to-release-notes --version 0.20.0
    - Thanks to contributors
 
 **Example output**:
+
 ```markdown
 # Release Notes: v0.20.0
 
 ## New Features
+
 - Enhanced Navigation System (bd-47, bd-48, bd-49, bd-50)
   - Restructured component hierarchy
   - Keyboard shortcut support
@@ -217,10 +244,12 @@ bun run sync:issues-to-release-notes --version 0.20.0
   - Full accessibility compliance
 
 ## Bug Fixes
+
 - Fixed focus management in modals (bd-41)
 - Corrected z-index stacking (bd-42)
 
 ## Performance
+
 - Reduced bundle size by 8% (bd-35)
 - Improved Core Web Vitals (bd-36)
 ```
@@ -261,7 +290,8 @@ jobs:
           title: 'chore: link new backlog items to beads issues'
 ```
 
-**Benefit**: Every time Cody backlog is updated, corresponding issues auto-created in Beads
+**Benefit**: Every time Cody backlog is updated, corresponding issues
+auto-created in Beads
 
 #### 3.2 Automated Status Updates on Issue Change
 
@@ -277,7 +307,7 @@ on:
     paths:
       - '.beads/issues.jsonl'
   schedule:
-    - cron: '0 * * * *'  # Hourly
+    - cron: '0 * * * *' # Hourly
   workflow_dispatch:
 
 jobs:
@@ -305,7 +335,8 @@ jobs:
 
 **Command**: `bun run sync:issues-to-release-notes --version 0.20.0`
 
-**Effect**: 
+**Effect**:
+
 - Queries all "completed" issues for version
 - Generates professional release notes
 - Commits to `docs/releases/v0.20.0.md`
@@ -322,6 +353,7 @@ jobs:
 **Command**: `bun run status:dashboard --version 0.20.0`
 
 **Output**:
+
 ```
 ╔════════════════════════════════════════════════════════════════╗
 ║           VERSION 0.20.0 PROGRESS DASHBOARD                   ║
@@ -359,6 +391,7 @@ RELEASE READINESS
 **Script**: `scripts/sync/metrics.js`
 
 Collects:
+
 - Feature completion %
 - Issue burn-down rate
 - Dependency health
@@ -444,6 +477,7 @@ Collects:
 ## Implementation Roadmap
 
 ### Phase 1: Foundation (1-2 days)
+
 - [x] Beads configured (DONE)
 - [ ] Establish naming convention (issues = `pw-123`)
 - [ ] Add version labels to `.bd.toml`
@@ -451,6 +485,7 @@ Collects:
 - [ ] Create integration documentation
 
 ### Phase 2: Scripting (1 week)
+
 - [ ] `scripts/sync/backlog-to-beads.js` - Create issues from backlog
 - [ ] `scripts/sync/beads-to-cody.js` - Aggregate status to Cody
 - [ ] `scripts/sync/issues-to-release-notes.js` - Generate release notes
@@ -458,18 +493,21 @@ Collects:
 - [ ] Add to `package.json` scripts
 
 ### Phase 3: Automation (1 week)
+
 - [ ] `.github/workflows/sync-backlog-to-beads.yml` - Auto-create issues
 - [ ] `.github/workflows/sync-beads-to-cody.yml` - Auto-update status
 - [ ] CI/CD integration tests
 - [ ] Error handling & logging
 
 ### Phase 4: Dashboard (3-5 days)
+
 - [ ] `bun run status:dashboard` command
 - [ ] Real-time metrics collection
 - [ ] Progress visualization
 - [ ] Risk assessment engine
 
 ### Phase 5: Polish & Documentation (2-3 days)
+
 - [ ] Create `docs/integration/CODY_BEADS_WORKFLOW.md`
 - [ ] Document sync commands
 - [ ] Training materials
@@ -486,19 +524,19 @@ Collects:
 ```javascript
 // scripts/sync/lib/beads.js
 export class BeadsAPI {
-  async getIssues(filter) { }
-  async createIssue(data) { }
-  async updateIssue(id, data) { }
-  async queryByVersion(version) { }
-  async queryByStatus(status) { }
+  async getIssues(filter) {}
+  async createIssue(data) {}
+  async updateIssue(id, data) {}
+  async queryByVersion(version) {}
+  async queryByStatus(status) {}
 }
 
 // scripts/sync/lib/cody.js
 export class CodyAPI {
-  async readBacklog() { }
-  async writeBacklog(content) { }
-  async readVersion(versionId) { }
-  async extractFeatures() { }
+  async readBacklog() {}
+  async writeBacklog(content) {}
+  async readVersion(versionId) {}
+  async extractFeatures() {}
 }
 
 // scripts/sync/lib/mapper.js
@@ -518,6 +556,7 @@ export function mapIssuesToBacklog(issues) {
 ### Database Schema (Beads Enhancement)
 
 Current `.bd.toml` already supports:
+
 ```toml
 [labels]
 categories = ["infrastructure", "testing", "documentation"]
@@ -526,6 +565,7 @@ impact_levels = ["critical", "high", "medium", "low"]
 ```
 
 **Add for Cody integration**:
+
 ```toml
 [integration]
 cody_enabled = true
@@ -603,6 +643,7 @@ trigger = "manual"
 ## Risk & Constraints
 
 ### Technical Risks
+
 1. **Out-of-sync data** if manual edits bypass sync scripts
    - Mitigation: CI/CD automation, validation checks, alert on conflicts
 
@@ -613,6 +654,7 @@ trigger = "manual"
    - Mitigation: Schema validation, migration scripts
 
 ### Process Risks
+
 1. **Team doesn't use Beads for daily work**
    - Mitigation: Training, process documentation, incentives
 
@@ -623,6 +665,7 @@ trigger = "manual"
    - Mitigation: Regular retrospectives, dependency tracking
 
 ### Constraints
+
 - **Beads 0.24.3**: Stable, mature
 - **Cody Framework**: Read-only integration (don't manually edit `.cody/`)
 - **GitHub Actions**: Available for automation
@@ -633,18 +676,21 @@ trigger = "manual"
 ## Success Metrics
 
 ### Adoption
+
 - [ ] 100% of features tracked in both systems
 - [ ] No manual version updates needed
 - [ ] Zero data sync issues
 - [ ] Team uses `bd ready` daily
 
 ### Quality
+
 - [ ] Release notes auto-generated with <5% manual edits
 - [ ] Issue-to-feature traceability 100%
 - [ ] Dependency blocking prevents surprises
 - [ ] Retrospectives informed by data
 
 ### Efficiency
+
 - [ ] Release planning time reduced 30%
 - [ ] Issue triage time reduced 20%
 - [ ] Release notes generation time reduced 50%
@@ -701,18 +747,24 @@ Only implement scripting & automation if Phase 1 proves valuable.
 ## Questions & Decisions
 
 ### Q: Should integration be manual or automated?
-**A**: Start manual (Phase 1), graduate to automated (Phase 2+) if proven valuable
+
+**A**: Start manual (Phase 1), graduate to automated (Phase 2+) if proven
+valuable
 
 ### Q: What if Cody/Beads change incompatibly?
+
 **A**: Use adapter patterns, versioned APIs, graceful degradation
 
 ### Q: How to handle older versions?
+
 **A**: Beads issues support version labels retroactively
 
 ### Q: Who maintains the integration?
+
 **A**: Initially developer (manual), later CI/CD (automated)
 
 ### Q: What about team communication?
+
 **A**: Slack integration (future), email on status changes (future)
 
 ---

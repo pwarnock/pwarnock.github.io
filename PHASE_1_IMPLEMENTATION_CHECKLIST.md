@@ -10,6 +10,7 @@
 ## Deliverables
 
 ### Documentation (Completed)
+
 - [x] `docs/integration/CODY_BEADS_WORKFLOW.md` - Complete 4,200-line guide
   - Three-layer architecture explanation
   - Quick start for team members
@@ -98,17 +99,18 @@
 ## Implementation Timeline
 
 ### Day 1: Setup & Documentation (Completed ✓)
+
 - [x] Create `docs/integration/CODY_BEADS_WORKFLOW.md`
 - [x] Update documentation index
 - [x] Update AGENTS.md with Phase 1 instructions
 - **Time**: 4-6 hours
 
 ### Day 2: Team Training & Test Run
+
 - [ ] Schedule and run team alignment meeting
   - Duration: 30-45 minutes
   - Attendees: Full team
   - Materials: CODY_BEADS_WORKFLOW.md, example walkthrough
-  
 - [ ] Test run with existing feature
   - Select feature from `.cody/project/build/feature-backlog.md`
   - Have 1-2 team members create Beads issues
@@ -117,6 +119,7 @@
   - **Time**: 2-3 hours
 
 ### Day 3: Rollout & Verification
+
 - [ ] Kick-off with full team
   - Confirm understanding
   - Answer questions
@@ -142,11 +145,14 @@
 ### Scenario: Starting v0.20.0 (Enhanced Navigation)
 
 **Step 1: Planning** (Cody)
+
 ```markdown
 # Feature Backlog - v0.20.0
+
 ## Feature: Enhanced Navigation System
 
 ### Subtasks:
+
 - [ ] Component restructure
 - [ ] Keyboard shortcuts
 - [ ] Mobile optimization
@@ -154,6 +160,7 @@
 ```
 
 **Step 2: Execution** (Beads) - Team creates issues:
+
 ```bash
 # Component restructure (blocker)
 bd create "Navigation component restructure (v0.20.0)" -t feature -p 1 --json
@@ -173,8 +180,10 @@ bd create "Accessibility audit (v0.20.0)" -t task -p 2 --deps blocks:bd-48,bd-49
 ```
 
 **Step 3: Update Backlog** (Cody) - Link issues:
+
 ```markdown
 ## Feature: Enhanced Navigation System
+
 - Status: 0/4 issues completed (0%)
 - Issues: bd-47, bd-48, bd-49, bd-50
 - Implementation plan:
@@ -185,6 +194,7 @@ bd create "Accessibility audit (v0.20.0)" -t task -p 2 --deps blocks:bd-48,bd-49
 ```
 
 **Step 4: Daily Work** (Beads)
+
 ```bash
 # See what's ready
 bd ready --json
@@ -203,8 +213,10 @@ bd close bd-47 --reason "Merged"
 ```
 
 **Step 5: Weekly Update** (Cody)
+
 ```markdown
 ## Feature: Enhanced Navigation System
+
 - Status: 1/4 issues completed (25%)
 - Completed: bd-47 ✓
 - In Progress: bd-48 (keyboard shortcuts)
@@ -214,6 +226,7 @@ bd close bd-47 --reason "Merged"
 ```
 
 **Step 6: Release** (Both systems)
+
 ```bash
 # Before release, check Beads
 # All 4 issues should be closed
@@ -234,12 +247,14 @@ bd close bd-47 --reason "Merged"
 Every Friday:
 
 1. **Check Beads status** for current version:
+
    ```bash
    bd ready --json
    # Count todo, in_progress, completed
    ```
 
 2. **Update Cody backlog** with progress:
+
    ```markdown
    - Status: X/Y issues completed (ZZ%)
    - Ready: [list of ready issues]
@@ -287,11 +302,13 @@ After Phase 1 runs for 1-2 versions, evaluate:
 
 ### Q: Can we skip version labels?
 
-**A**: Not recommended. Version labels enable future automation. Include them from day one.
+**A**: Not recommended. Version labels enable future automation. Include them
+from day one.
 
 ### Q: Do all issues need to be in Beads?
 
-**A**: For Phase 1, yes. All features and subtasks should have Beads issues. Helps with release notes.
+**A**: For Phase 1, yes. All features and subtasks should have Beads issues.
+Helps with release notes.
 
 ### Q: What if someone forgets to update the backlog?
 
@@ -299,7 +316,8 @@ After Phase 1 runs for 1-2 versions, evaluate:
 
 ### Q: Can we use a different naming scheme?
 
-**A**: The `pw-XXX` or `bd-XXX` pattern is flexible. Key is: consistent, descriptive, version-aware.
+**A**: The `pw-XXX` or `bd-XXX` pattern is flexible. Key is: consistent,
+descriptive, version-aware.
 
 ---
 
@@ -345,11 +363,11 @@ After Phase 1 runs for 1-2 versions, evaluate:
 **Phase 1 Implementation Ready**: ✅  
 **Documentation Complete**: ✅  
 **Team Training Materials**: ✅  
-**Example Walkthrough**: ✅  
+**Example Walkthrough**: ✅
 
 **Ready to Start**: Yes  
 **Estimated Duration**: 2-3 days  
-**Expected Outcome**: Clear feature → issue → release traceability  
+**Expected Outcome**: Clear feature → issue → release traceability
 
 ---
 

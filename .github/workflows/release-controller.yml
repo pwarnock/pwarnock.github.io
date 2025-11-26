@@ -421,7 +421,7 @@ jobs:
           Description: $DESCRIPTION
           Beads:       ${BEAD_ID:-none}
           Status:      ${{ job.status }}
-          
+
           Next: Monitor deployment at https://peterwarnock.com
           ═══════════════════════════════════════════════════════════
           EOF

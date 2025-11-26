@@ -1,11 +1,14 @@
 # Development & Agent Workflow Guide
 
-This is the **single source of truth** for AI agent and developer workflow on this project.
+This is the **single source of truth** for AI agent and developer workflow on
+this project.
 
 ## 🚀 Quick Navigation
 
-**First Time Setup?** → [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
-**Adding Content?** → [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)  
+**First Time Setup?** →
+[docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
+**Adding Content?** →
+[docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)  
 **Full Documentation** → [docs/README.md](/docs/README.md) (Master index)
 
 ---
@@ -34,16 +37,17 @@ for updates at any time.
 
 ## Subagent Architecture
 
-This project uses **specialized subagents** to prevent context bloat and prevent freezing. Each agent has focused responsibility and isolated context.
+This project uses **specialized subagents** to prevent context bloat and prevent
+freezing. Each agent has focused responsibility and isolated context.
 
 ### Available Subagents
 
 Located in `.claude/agents/*.md`:
 
-| Agent | Purpose | Tools |
-|-------|---------|-------|
-| **cody-executor** | Execute :cody commands | Bash, Read, Glob |
-| **beads-manager** | Issue tracking (bd commands) | Bash, Read, Glob |
+| Agent                 | Purpose                        | Tools             |
+| --------------------- | ------------------------------ | ----------------- |
+| **cody-executor**     | Execute :cody commands         | Bash, Read, Glob  |
+| **beads-manager**     | Issue tracking (bd commands)   | Bash, Read, Glob  |
 | **context-librarian** | Compress context, manage state | Read, Grep, Write |
 
 ### How It Works
@@ -77,6 +81,7 @@ Use `.agents/commands/` for explicit workflows:
 ### Session Recovery
 
 `.claude/session-state.json` tracks:
+
 - Current task and progress
 - Agent checkpoints (resumable IDs)
 - Completed work
@@ -87,12 +92,14 @@ If interrupted, check session state and resume exactly where you left off.
 ### Project-Specific Context
 
 This project uses **Cody PBT** (project-local, not global):
+
 - Framework: `.cody/` directory
 - Commands: `:cody` prefix
 - Versions: `.cody/project/build/versions/v[major.minor.patch]-[name]`
 - Issues: `bd` CLI (beads database)
 
 Agents should:
+
 1. Always use `--json` flag for CLI commands
 2. Check session state for resumable checkpoints
 3. Update session state after major operations
@@ -203,6 +210,7 @@ When working on a Cody feature:
 3. **Update backlog** with issue reference:
    ```markdown
    ## Feature: Name
+
    - Implementation: See bd-NNN for details
    ```
 4. **Link dependent issues**:
@@ -210,7 +218,9 @@ When working on a Cody feature:
    bd create "Subtask" -t task --deps blocks:bd-NNN --json
    ```
 
-See [docs/integration/CODY_BEADS_WORKFLOW.md](/docs/integration/CODY_BEADS_WORKFLOW.md) for complete workflow.
+See
+[docs/integration/CODY_BEADS_WORKFLOW.md](/docs/integration/CODY_BEADS_WORKFLOW.md)
+for complete workflow.
 
 ### Auto-Sync
 
@@ -257,9 +267,12 @@ Then use `mcp__beads__*` functions instead of CLI commands.
 
 ### Best Practices (Steve Yegge)
 
-See [docs/operations/BEADS_HYGIENE_PLAN.md](/docs/operations/BEADS_HYGIENE_PLAN.md) for comprehensive hygiene procedures.
+See
+[docs/operations/BEADS_HYGIENE_PLAN.md](/docs/operations/BEADS_HYGIENE_PLAN.md)
+for comprehensive hygiene procedures.
 
 **Key Practices**:
+
 1. **Plan outside Beads first** - Use Cody for planning, then import as epics
 2. **File liberally** - Create Beads issue for anything >2 min of work
 3. **Keep small** - Run cleanup every few weeks (target <500 issues)
@@ -283,15 +296,16 @@ When working on this project:
 
 Key docs to bookmark:
 
-- `docs/operations/RELEASE_WORKFLOW.md` - How to run the professional release workflow
-- `docs/operations/DEPLOYMENT.md` - Detailed deployment steps, version management,
-  and post-release checklist
-- `docs/operations/ROLLBACK_PROCEDURES.md` - Emergency incident response and rollback
-  recovery
+- `docs/operations/RELEASE_WORKFLOW.md` - How to run the professional release
+  workflow
+- `docs/operations/DEPLOYMENT.md` - Detailed deployment steps, version
+  management, and post-release checklist
+- `docs/operations/ROLLBACK_PROCEDURES.md` - Emergency incident response and
+  rollback recovery
 - `docs/development/STYLE_GUIDE.md` - CSS, template, and architecture
   conventions
-- `docs/integration/CODY_BEADS_WORKFLOW.md` - Feature planning → Beads issues → releases
-  (Phase 1 manual linking implementation)
+- `docs/integration/CODY_BEADS_WORKFLOW.md` - Feature planning → Beads issues →
+  releases (Phase 1 manual linking implementation)
 
 ## Project Documentation
 
@@ -622,12 +636,15 @@ may provide outdated information.**
 
 ### Self-Enforcing Release Process
 
-**MANDATORY WORKFLOW**: All releases go through `scripts/release.sh` and the release controller. Direct version edits are blocked by CI.
+**MANDATORY WORKFLOW**: All releases go through `scripts/release.sh` and the
+release controller. Direct version edits are blocked by CI.
 
 1. **Create Release Request**
+
    ```bash
    ./scripts/release.sh [rc|final|hotfix]
    ```
+
    - Script validates clean working tree
    - Prompts for release description and Beads issue ID
    - Creates `.release/request.json`
@@ -648,14 +665,19 @@ may provide outdated information.**
    - `hotfix`: Emergency patch from production
 
 4. **Guardrails (Enforced by CI)**
-   - `version-consistency.yml` blocks any PR that manually edits `package.json.version`
+   - `version-consistency.yml` blocks any PR that manually edits
+     `package.json.version`
    - Direct git tags are not permitted - only release controller can create them
-   - `.release/request.json` status fields are CI-only (cannot be manually edited)
-   - Version is canonical source - flows: package.json → data/version.json → Hugo footer
+   - `.release/request.json` status fields are CI-only (cannot be manually
+     edited)
+   - Version is canonical source - flows: package.json → data/version.json →
+     Hugo footer
 
-**Why**: Single source of truth for version, fully auditable release history, impossible to bypass.
+**Why**: Single source of truth for version, fully auditable release history,
+impossible to bypass.
 
-See `/docs/architecture/SELF_ENFORCING_RELEASE_PROCESS.md` for complete architecture.
+See `/docs/architecture/SELF_ENFORCING_RELEASE_PROCESS.md` for complete
+architecture.
 
 ## Testing
 

@@ -13,14 +13,15 @@
 
 **Candidates** (from feature backlog):
 
-| Feature | Subtasks | Effort | Why Pick |
-|---------|----------|--------|----------|
-| F89: Manual Promotion Workflow | 3-4 | 2-3 days | Core, well-defined |
-| F90: Change Validation | 2-3 | 1-2 days | Smaller, good for first try |
-| F91: Environment Configuration | 2-3 | 1-2 days | Infrastructure |
-| F92: Documentation Updates | 2-3 | 1 day | Clear scope |
+| Feature                        | Subtasks | Effort   | Why Pick                    |
+| ------------------------------ | -------- | -------- | --------------------------- |
+| F89: Manual Promotion Workflow | 3-4      | 2-3 days | Core, well-defined          |
+| F90: Change Validation         | 2-3      | 1-2 days | Smaller, good for first try |
+| F91: Environment Configuration | 2-3      | 1-2 days | Infrastructure              |
+| F92: Documentation Updates     | 2-3      | 1 day    | Clear scope                 |
 
 **Recommendation**: Pick **F90 (Change Validation)** for test run
+
 - Clear scope (environment-specific testing)
 - 2-3 subtasks (manageable)
 - 1-2 days effort (fast iteration)
@@ -33,15 +34,18 @@
 ### Phase 1: Setup (10 min)
 
 **Lead**: Do this first
+
 1. Review feature in `.cody/project/build/feature-backlog.md`
 2. Identify subtasks
 3. Have volunteers ready
 
 **Example (F90: Change Validation)**:
+
 ```markdown
 ## F90: Change Validation
+
 - Environment-specific testing setup
-- Validation framework implementation  
+- Validation framework implementation
 - CI/CD integration testing
 - Documentation of validation process
 ```
@@ -51,15 +55,18 @@
 **Volunteers**: Create issues while lead watches
 
 **Issue 1: Main Feature**
+
 ```bash
 bd create "Environment-specific testing setup (v0.20.0)" \
   -t feature \
   -p 1 \
   --json
 ```
+
 → Returns: bd-1 (example)
 
 **Issue 2: Subtask (depends on Issue 1)**
+
 ```bash
 bd create "Validation framework implementation (v0.20.0)" \
   -t task \
@@ -67,9 +74,11 @@ bd create "Validation framework implementation (v0.20.0)" \
   --deps blocks:bd-1 \
   --json
 ```
+
 → Returns: bd-2
 
 **Issue 3: Subtask (depends on Issue 1)**
+
 ```bash
 bd create "CI/CD integration testing (v0.20.0)" \
   -t task \
@@ -77,9 +86,11 @@ bd create "CI/CD integration testing (v0.20.0)" \
   --deps blocks:bd-1 \
   --json
 ```
+
 → Returns: bd-3
 
 **Issue 4: Subtask (depends on Issues 2 & 3)**
+
 ```bash
 bd create "Document validation process (v0.20.0)" \
   -t task \
@@ -87,9 +98,11 @@ bd create "Document validation process (v0.20.0)" \
   --deps blocks:bd-2,bd-3 \
   --json
 ```
+
 → Returns: bd-4
 
 **Observation Points**:
+
 - [ ] Did naming look good? ("... (v0.20.0)")
 - [ ] Did volunteers understand -p priority?
 - [ ] Did --deps flag work?
@@ -110,6 +123,7 @@ bd ready --json
 ```
 
 **Observation Points**:
+
 - [ ] `bd ready` shows correct state?
 - [ ] Blockers are preventing dependent issues?
 - [ ] Volunteers understand the dependency flow?
@@ -122,19 +136,22 @@ Edit `.cody/project/build/feature-backlog.md`:
 
 ```markdown
 ## F90: Change Validation
+
 Environment-specific testing and validation
 
-| ID  | Feature                 | Description                              | Priority | Status |
-|-----|-------------------------|------------------------------------------|----------|--------|
-| F90 | Change Validation       | Environment-specific testing and validation | High | 🟡 In Progress |
+| ID  | Feature           | Description                                 | Priority | Status         |
+| --- | ----------------- | ------------------------------------------- | -------- | -------------- |
+| F90 | Change Validation | Environment-specific testing and validation | High     | 🟡 In Progress |
 
 ### Implementation Issues
+
 - bd-1: Environment-specific testing setup
   - bd-2: Validation framework implementation (depends on bd-1)
   - bd-3: CI/CD integration testing (depends on bd-1)
   - bd-4: Document validation process (depends on bd-2, bd-3)
 
 ### Progress
+
 - Status: 0/4 issues completed (0%)
 - Ready: bd-1
 - In Progress: None
@@ -143,6 +160,7 @@ Environment-specific testing and validation
 ```
 
 **Observation Points**:
+
 - [ ] Did they find the right section in backlog?
 - [ ] Format look correct?
 - [ ] Easy to understand the dependency structure?
@@ -157,6 +175,7 @@ bd update bd-1 --status in_progress
 ```
 
 **Observation Points**:
+
 - [ ] Worked without error?
 - [ ] Easy to understand?
 
@@ -167,6 +186,7 @@ bd close bd-1 --reason "Merged environment testing setup"
 ```
 
 **Then check what's ready**:
+
 ```bash
 bd ready --json
 
@@ -184,12 +204,14 @@ bd update bd-3 --status in_progress
 ```
 
 **Finish both**:
+
 ```bash
 bd close bd-2 --reason "Merged validation framework"
 bd close bd-3 --reason "Merged CI/CD tests"
 ```
 
 **Check what's ready**:
+
 ```bash
 bd ready --json
 
@@ -204,6 +226,7 @@ bd close bd-4 --reason "Merged documentation"
 ```
 
 **Observation Points**:
+
 - [ ] Did dependencies work as expected?
 - [ ] Did `bd ready` update correctly after each close?
 - [ ] Did volunteers understand the flow?
@@ -215,11 +238,13 @@ bd close bd-4 --reason "Merged documentation"
 
 ```markdown
 ## F90: Change Validation
+
 - Status: 4/4 issues completed (100%)
 - Ready for v0.20.0 release ✓
 ```
 
 **Observation Points**:
+
 - [ ] Easy to update?
 - [ ] Clear what progress means?
 
@@ -228,6 +253,7 @@ bd close bd-4 --reason "Merged documentation"
 **Group discussion**:
 
 **What worked?**
+
 - [ ] Naming conventions clear?
 - [ ] Issue creation straightforward?
 - [ ] `bd ready` helpful?
@@ -235,12 +261,14 @@ bd close bd-4 --reason "Merged documentation"
 - [ ] Progress visible?
 
 **What was confusing?**
+
 - [ ] Any commands unclear?
 - [ ] Backlog updates hard?
 - [ ] Naming inconsistencies?
 - [ ] Missing documentation?
 
 **What would you change?**
+
 - [ ] Different naming?
 - [ ] Different conventions?
 - [ ] Clearer instructions?
@@ -261,13 +289,15 @@ bd close bd-4 --reason "Merged documentation"
 - ✅ No major confusion on commands
 - ✅ Feedback captured for full rollout
 
-**If any ✗**: Don't worry. Adjust instructions and try again. That's what test runs are for.
+**If any ✗**: Don't worry. Adjust instructions and try again. That's what test
+runs are for.
 
 ---
 
 ## Troubleshooting During Test Run
 
 ### Issue creation fails
+
 ```bash
 # Verify Beads is working
 bd ready --json
@@ -278,6 +308,7 @@ cd .beads && git pull
 ```
 
 ### `bd ready` not showing expected state
+
 ```bash
 # Check if dependencies are formatted correctly
 # Should be: --deps blocks:id,id
@@ -287,6 +318,7 @@ cd .beads && git pull
 ```
 
 ### Backlog update formatting is hard
+
 ```bash
 # Show them the template in PHASE_1_QUICK_REFERENCE.md
 # Show them an example in docs/integration/CODY_BEADS_WORKFLOW.md
@@ -325,12 +357,14 @@ These are lead responsibilities (not part of test run):
 ## After Test Run
 
 ### If Everything Worked
-- [ ] Celebrate! 
+
+- [ ] Celebrate!
 - [ ] Update pw-zyu: "Test run successful"
 - [ ] Announce full rollout for next day
 - [ ] Confirm Friday kick-off meeting time
 
 ### If Issues Found
+
 - [ ] Document what failed
 - [ ] Create sub-issues in pw-zyu
 - [ ] Adjust instructions

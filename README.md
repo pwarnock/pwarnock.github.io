@@ -1,8 +1,10 @@
 # Pete Warnock - Personal Portfolio & Blog
 
-A modern, fast portfolio website and blog built with Hugo static site generator, featuring a unified design system and responsive design.
+A modern, fast portfolio website and blog built with Hugo static site generator,
+featuring a unified design system and responsive design.
 
-**New to the project?** Start with [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
+**New to the project?** Start with
+[docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
 **Full documentation index:** [docs/README.md](/docs/README.md)  
 **Development workflow:** [AGENTS.md](/AGENTS.md)
 
@@ -40,7 +42,8 @@ bun run dev
 # Open browser to http://localhost:1313
 ```
 
-See [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md) for detailed setup instructions.
+See [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md) for
+detailed setup instructions.
 
 ## 🛠️ Development
 
@@ -87,7 +90,8 @@ mkdir -p content/portfolio/project-name
 # Add project details in index.md
 ```
 
-See [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md) for detailed content creation workflow.
+See [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)
+for detailed content creation workflow.
 
 ## 🧪 Testing & Validation
 
@@ -108,7 +112,9 @@ bun run test:visual
 bun run validate
 ```
 
-See [docs/development/TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md) for comprehensive testing guide.
+See
+[docs/development/TESTING_ARCHITECTURE.md](/docs/development/TESTING_ARCHITECTURE.md)
+for comprehensive testing guide.
 
 ## 🌐 Deployment
 
@@ -117,13 +123,16 @@ Automated deployment via GitHub Actions to staging and production branches.
 **Staging**: `git push origin staging`  
 **Production**: `git push origin production`
 
-See [docs/operations/DEPLOYMENT.md](/docs/operations/DEPLOYMENT.md) for detailed deployment procedures.
+See [docs/operations/DEPLOYMENT.md](/docs/operations/DEPLOYMENT.md) for detailed
+deployment procedures.
 
 ## 🚨 Emergency Procedures
 
 If production is down:
+
 1. Notify team immediately
-2. Run rollback: See [docs/operations/ROLLBACK_PROCEDURES.md](/docs/operations/ROLLBACK_PROCEDURES.md)
+2. Run rollback: See
+   [docs/operations/ROLLBACK_PROCEDURES.md](/docs/operations/ROLLBACK_PROCEDURES.md)
 3. Verify service restored
 4. Post incident investigation issue
 
@@ -131,8 +140,10 @@ If production is down:
 
 All project documentation lives in `/docs/`:
 
-- **Getting Started**: [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)
-- **Adding Content**: [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)
+- **Getting Started**:
+  [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)
+- **Adding Content**:
+  [docs/tutorials/ADDING_BLOG_POST.md](/docs/tutorials/ADDING_BLOG_POST.md)
 - **Full Index**: [docs/README.md](/docs/README.md)
 - **Development**: [docs/development/](/docs/development/)
 - **Operations**: [docs/operations/](/docs/operations/)
@@ -167,7 +178,8 @@ All project documentation lives in `/docs/`:
 
 1. Read [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)
 2. Create feature branch from `main`
-3. Make changes following [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md)
+3. Make changes following
+   [docs/development/STYLE_GUIDE.md](/docs/development/STYLE_GUIDE.md)
 4. Run tests: `bun run validate`
 5. Submit pull request
 
@@ -175,14 +187,17 @@ See [CONTRIBUTING.md](/CONTRIBUTING.md) for detailed guidelines.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE)
+file for details.
 
 ## 📞 Contact
 
 - **GitHub**: [@pwarnock](https://github.com/pwarnock)
-- **LinkedIn**: [linkedin.com/in/peterwarnock](https://linkedin.com/in/peterwarnock)
+- **LinkedIn**:
+  [linkedin.com/in/peterwarnock](https://linkedin.com/in/peterwarnock)
 - **Email**: github@peterwarnock.com
 
 ---
 
-Built with ❤️ using [Hugo](https://gohugo.io/), [Tailwind CSS](https://tailwindcss.com/), and [Bun](https://bun.sh/)
+Built with ❤️ using [Hugo](https://gohugo.io/),
+[Tailwind CSS](https://tailwindcss.com/), and [Bun](https://bun.sh/)

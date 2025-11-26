@@ -6,25 +6,34 @@
 
 ## Executive Summary
 
-The project has strong deployment infrastructure (pw-21, pw-23, pw-24, pw-25) with 41 passing tests and good CI/CD foundations. However, there are accumulated artifacts from framework experiments, agent configurations, and work directories that should be systematically cleaned up and organized. This plan ensures the codebase remains maintainable while supporting future development.
+The project has strong deployment infrastructure (pw-21, pw-23, pw-24, pw-25)
+with 41 passing tests and good CI/CD foundations. However, there are accumulated
+artifacts from framework experiments, agent configurations, and work directories
+that should be systematically cleaned up and organized. This plan ensures the
+codebase remains maintainable while supporting future development.
 
 ---
 
 ## Part 1: Current State Analysis
 
 ### Strengths
+
 - ✅ **Deployment Infrastructure**: Production-ready (all 41 tests passing)
 - ✅ **Testing Foundation**: Unit, integration, E2E, BDD, visual regression
 - ✅ **Pre-commit Hooks**: Linting, validation, security checks
-- ✅ **Environment Strategy**: Main → staging → production with branch protection
-- ✅ **Documentation**: Comprehensive guides in `/docs/operations/` and `/docs/development/`
+- ✅ **Environment Strategy**: Main → staging → production with branch
+  protection
+- ✅ **Documentation**: Comprehensive guides in `/docs/operations/` and
+  `/docs/development/`
 - ✅ **Package Management**: Bun with clean package.json structure
 - ✅ **Dependency Hygiene**: Just resolved glob advisory
 
 ### Problems to Fix
 
 #### 1. **Root-Level Documentation Clutter** (~17 files)
+
 Experimental/working documents at root level that should be archived:
+
 ```
 AMP_AGENT_STRATEGY.md              ← Agent framework experiments
 AMP_COMMANDS_REFERENCE.md          ← Agent commands reference
@@ -43,9 +52,11 @@ TOMORROW_PLAN.md                   ← Daily planning (ephemeral)
 UNIFIED_TEST_RUNNER.md             ← Old test infrastructure
 ```
 
-**Impact**: Noise in git root, confusing for new developers, makes AGENTS.md harder to find
+**Impact**: Noise in git root, confusing for new developers, makes AGENTS.md
+harder to find
 
 #### 2. **Backup & Cache Directories**
+
 ```
 .cody.backup.20251124_094441/      ← 744K (framework backups)
 .cody.backup.20251124_095017/      ← 788K (framework backups)
@@ -59,6 +70,7 @@ UNIFIED_TEST_RUNNER.md             ← Old test infrastructure
 **Impact**: ~2.5MB in version control, inflates clone size, clutters git status
 
 #### 3. **Work Directory** (~3MB)
+
 ```
 work/
 ├── cody-pbt-source/               ← Git submodule (duplicate clone)
@@ -70,7 +82,8 @@ work/
 
 **Impact**: 3MB in git, includes git repos as embedded repos, hides real work
 
-#### 4. **Test Results** 
+#### 4. **Test Results**
+
 ```
 test-results/                      ← Visual regression baselines (ephemeral)
 tmp/                               ← Temporary files from build/test runs
@@ -80,6 +93,7 @@ debug-focus-*.png                  ← Debug screenshots (root level)
 **Impact**: Should be in gitignore, clutters repo
 
 #### 5. **Configuration Proliferation**
+
 ```
 .letta/                           ← Framework-specific config (should be ignored)
 .letta.example/                   ← Example config
@@ -95,6 +109,7 @@ debug-focus-*.png                  ← Debug screenshots (root level)
 ## Part 2: Ideal Architecture
 
 ### Root Level Structure (Clean)
+
 ```
 pwarnock.github.io/
 ├── .git/
@@ -141,12 +156,14 @@ pwarnock.github.io/
 ### Documentation Hierarchy (Reorganized)
 
 **Root Level** (Only essentials):
+
 - `README.md` - Project overview, quick start
 - `AGENTS.md` - Agent development guide (this is the ONLY workflow doc at root)
 - `CONTRIBUTING.md` - How to contribute
 - `LICENSE` - License
 
 **`/docs` (Canonical Documentation)**:
+
 ```
 docs/
 ├── README.md                          ← Documentation index
@@ -173,16 +190,20 @@ docs/
 ### Framework Configuration Strategy
 
 **Keep** (Project-essential):
+
 - `.github/` - GitHub Actions workflows (CI/CD backbone)
 - `.husky/` - Git hooks (quality gates)
 - `.pre-commit-config.yaml` - Pre-commit hooks
 
 **Archive/Deprecate** (Experimental frameworks):
+
 - `.cody/` - Cody Framework internals (read-only, never edit manually)
-- `.agents/`, `.claude/` - Agent definitions (framework-generated, not part of core project)
+- `.agents/`, `.claude/` - Agent definitions (framework-generated, not part of
+  core project)
 - `.letta/` - Letta AI framework (external, should be .gitignored)
 
 **Add to `.gitignore`**:
+
 ```bash
 # Framework-generated directories (read-only)
 .cody.backup.*/
@@ -209,11 +230,13 @@ tmp/
 ### Phase 1: Quick Wins (1-2 hours)
 
 **Task 1.1**: Update `.gitignore`
+
 - Add framework backup patterns
 - Add ephemeral directories
 - Verify everything unwanted is ignored
 
 **Task 1.2**: Move experimental docs to `work/` or delete
+
 ```bash
 # Archive these (move to work/archive/)
 ├── AMP_AGENT_STRATEGY.md
@@ -235,6 +258,7 @@ tmp/
 ```
 
 **Task 1.3**: Clean root-level debug files
+
 ```bash
 rm -f debug-focus-*.png
 rm -f cody-*.log cody-migration.log cody-backup.log cody-health-check.log
@@ -242,6 +266,7 @@ rm -f AGENTS.md.backup AGENTS.md.bak
 ```
 
 **Task 1.4**: Add `.gitignore` entries
+
 ```bash
 # Framework-specific (never commit)
 .cody.backup.*/
@@ -261,6 +286,7 @@ cody-*.log
 ### Phase 2: Repository Cleanup (2-3 hours)
 
 **Task 2.1**: Clean git index
+
 ```bash
 git rm --cached -r .cody.backup.* .agents .claude .pids test-results
 git rm --cached debug-*.png *.log
@@ -268,6 +294,7 @@ git rm --cached work/cody-pbt-* work/migrate-to-pbt.sh work/test-migration.sh
 ```
 
 **Task 2.2**: Move experimental docs to archive
+
 ```bash
 mkdir -p work/archive/
 mv AMP_AGENT_STRATEGY.md work/archive/
@@ -276,6 +303,7 @@ mv CODY_PBT_IMPLEMENTATION_COMPLETE.md work/archive/
 ```
 
 **Task 2.3**: Delete superseded docs (with git log reference)
+
 ```bash
 # Document why in commit message that these were superseded by:
 # - DEPLOYMENT_TESTING.md
@@ -285,6 +313,7 @@ git rm BDD_TEST_RESOLUTION_SUMMARY.md CURRENT_UNIT_TESTS_OVERVIEW.md
 ```
 
 **Task 2.4**: Commit cleanup
+
 ```bash
 git add .gitignore
 git commit -m "chore: update gitignore to exclude ephemeral and framework files"
@@ -299,6 +328,7 @@ git commit -m "chore: remove superseded documentation (consolidated into docs/)"
 ### Phase 3: Documentation Expansion (3-4 hours)
 
 **Task 3.1**: Create new canonical docs
+
 ```
 docs/development/TESTING_ARCHITECTURE.md
 ├── Overview of all test types (unit, integration, E2E, visual, BDD)
@@ -327,12 +357,14 @@ docs/tutorials/ADDING_BLOG_POST.md
 ```
 
 **Task 3.2**: Update docs/README.md index
+
 - Add TESTING_ARCHITECTURE.md
 - Add ROLLBACK_PROCEDURES.md
 - Remove references to deleted docs
 - Add tutorials/ section
 
 **Task 3.3**: Update AGENTS.md
+
 - Ensure it references /docs/ for detailed procedures
 - Keep only high-level agent workflow
 - Add quick links to common docs
@@ -350,14 +382,14 @@ Create `docs/development/TESTING_ARCHITECTURE.md`:
 
 ## Test Types & Responsibilities
 
-| Type | Tool | Purpose | Location | Run Command |
-|------|------|---------|----------|------------|
-| **Unit** | Vitest + Go | Code correctness | `src/**/*.test.ts`, `test/support/` | `bun run test:unit` |
-| **Integration** | Bash scripts | Workflow validation | `test/*.sh` | `bun run test:deployment` |
-| **E2E** | Playwright | User journeys | `tests/` | `bunx playwright test` |
-| **Visual** | Playwright | Design regressions | `tests/` | `bunx playwright test --grep @visual` |
-| **BDD** | Godog | Behavior specs | `test/features/` | `bun run test:bdd` |
-| **Performance** | Lighthouse | Metrics tracking | `tests/` | `bun run test:perf:watch` |
+| Type            | Tool         | Purpose             | Location                            | Run Command                           |
+| --------------- | ------------ | ------------------- | ----------------------------------- | ------------------------------------- |
+| **Unit**        | Vitest + Go  | Code correctness    | `src/**/*.test.ts`, `test/support/` | `bun run test:unit`                   |
+| **Integration** | Bash scripts | Workflow validation | `test/*.sh`                         | `bun run test:deployment`             |
+| **E2E**         | Playwright   | User journeys       | `tests/`                            | `bunx playwright test`                |
+| **Visual**      | Playwright   | Design regressions  | `tests/`                            | `bunx playwright test --grep @visual` |
+| **BDD**         | Godog        | Behavior specs      | `test/features/`                    | `bun run test:bdd`                    |
+| **Performance** | Lighthouse   | Metrics tracking    | `tests/`                            | `bun run test:perf:watch`             |
 
 ## Coverage Requirements
 
@@ -379,12 +411,14 @@ Create `docs/development/TESTING_ARCHITECTURE.md`:
 ### Build System (Document & Optimize)
 
 Current excellence (working well):
+
 - Path-based build detection (infrastructure vs content vs docs)
 - Pre-commit validation (fast feedback)
 - Hugo multi-config (dev/staging/production)
 - Environment-specific optimization
 
 Document in `docs/development/BUILD_SYSTEM.md`:
+
 - Build flow diagram
 - When each build type runs
 - How to optimize builds locally
@@ -395,6 +429,7 @@ Document in `docs/development/BUILD_SYSTEM.md`:
 **Current**: `scripts/` with 30+ scripts (mostly good, some overlap)
 
 **Improvements**:
+
 ```
 scripts/
 ├── build/                    ← Build-related
@@ -420,7 +455,8 @@ scripts/
     └── letta-config-init.sh
 ```
 
-Action: Document this in `docs/development/SCRIPTS_ORGANIZATION.md` (no code changes needed yet).
+Action: Document this in `docs/development/SCRIPTS_ORGANIZATION.md` (no code
+changes needed yet).
 
 ---
 
@@ -429,12 +465,14 @@ Action: Document this in `docs/development/SCRIPTS_ORGANIZATION.md` (no code cha
 ### Commits to Make
 
 **Commit 1** (15 min): Dependency fix
+
 ```
 fix: upgrade markdownlint-cli to resolve glob command injection advisory
 ✅ [ALREADY DONE]
 ```
 
 **Commit 2** (30 min): Gitignore cleanup
+
 ```
 chore: update gitignore to exclude framework artifacts and ephemeral files
 
@@ -446,6 +484,7 @@ chore: update gitignore to exclude framework artifacts and ephemeral files
 ```
 
 **Commit 3** (30 min): Documentation archive
+
 ```
 chore: archive experimental documentation to work/archive/
 
@@ -461,6 +500,7 @@ not core project functionality. Moving to archive keeps git root clean.
 ```
 
 **Commit 4** (15 min): Remove superseded docs
+
 ```
 chore: remove superseded documentation
 
@@ -478,6 +518,7 @@ is now captured in canonical documentation structure.
 ```
 
 **Commit 5** (30 min): Clean debug artifacts
+
 ```
 chore: remove debug artifacts and temporary files
 
@@ -488,6 +529,7 @@ chore: remove debug artifacts and temporary files
 ```
 
 **Commit 6** (2 hours): Create new documentation
+
 ```
 docs: add comprehensive testing and rollback documentation
 
@@ -508,6 +550,7 @@ into discoverable, maintainable documentation.
 ### Git Repo Stats Before/After
 
 **Before**:
+
 - ~300 untracked files (experiments)
 - ~17 root-level .md files
 - 2.5MB in framework backups
@@ -516,6 +559,7 @@ into discoverable, maintainable documentation.
 - Cluttered `git status` output
 
 **After**:
+
 - <50 untracked files (only active work)
 - 4 root-level .md files (README, LICENSE, AGENTS, CONTRIBUTING)
 - 0MB in backups/experiments (archived)
@@ -528,6 +572,7 @@ into discoverable, maintainable documentation.
 ## Part 6: Implementation Roadmap
 
 ### Week 1: Cleanup (Priority 1)
+
 - [ ] Day 1: Phase 1 tasks (quick wins) - 2 hours
 - [ ] Day 2: Phase 2 tasks (git cleanup) - 3 hours
 - [ ] Day 3: Phase 3 tasks (new docs) - 4 hours
@@ -536,6 +581,7 @@ into discoverable, maintainable documentation.
 **Total**: 10 hours over 4 days
 
 ### Week 2: Architecture Docs (Priority 2)
+
 - [ ] Document testing architecture
 - [ ] Document build system
 - [ ] Document script organization
@@ -544,6 +590,7 @@ into discoverable, maintainable documentation.
 **Total**: 4 hours, can be done incrementally
 
 ### Ongoing: Keep Clean
+
 - [ ] Don't commit framework artifacts (use .gitignore)
 - [ ] Archive experimental work to `/work/archive/`
 - [ ] Keep root-level only essential (.md files)
@@ -553,11 +600,13 @@ into discoverable, maintainable documentation.
 
 ## Part 7: Quality Gates
 
-**Before**: 
+**Before**:
+
 - All tests passing ✓
 - No git warnings ✓
 
 **After** (add these):
+
 - [ ] `npm audit` shows no high-severity dev vulns ✓
 - [ ] `git status` shows <20 untracked files
 - [ ] All docs link correctly (no broken references)
@@ -575,9 +624,11 @@ This cleanup achieves:
 2. **Maintainability**: Documentation is canonical and well-organized
 3. **Quality**: Reduces git noise and potential security issues
 4. **Scalability**: Foundation for adding new features without clutter
-5. **Professionalism**: Git history and file structure match production standards
+5. **Professionalism**: Git history and file structure match production
+   standards
 
 **Next Steps**:
+
 1. Review this plan for feedback
 2. Execute Phase 1 (quick wins) immediately
 3. Block Phase 2-3 for dedicated cleanup day

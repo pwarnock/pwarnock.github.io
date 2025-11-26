@@ -4,9 +4,11 @@
 
 ## Quick Summary
 
-You had context bloat (freezing). Solution: Use **four context engineering strategies** + **Claude's native subagents**.
+You had context bloat (freezing). Solution: Use **four context engineering
+strategies** + **Claude's native subagents**.
 
 ### Four Strategies
+
 1. **Isolate Context** - Each agent separate thread
 2. **Compress Context** - Summarize at handoffs (5000 → 500 tokens)
 3. **Cache Context** - Reuse system prompts (90% savings)
@@ -15,17 +17,20 @@ You had context bloat (freezing). Solution: Use **four context engineering strat
 ## Files Created
 
 ✅ **Documentation**
+
 - This file: AMP_AGENT_STRATEGY.md
 - SUBAGENT_QUICK_START.md - Quick patterns
 - AMP_COMMANDS_REFERENCE.md - Command guide
 - AGENTS.md - Updated with subagent section
 
 ✅ **Agent Definitions** (in `.claude/agents/`)
+
 - cody-executor.md - Cody PBT executor
 - beads-manager.md - Issue tracking
 - context-librarian.md - Compression & state
 
 ✅ **Custom Commands** (in `.agents/commands/`)
+
 - cody-build.md - Create versions
 - ready-work.md - Show unblocked work
 - cody-help.md - Cody commands
@@ -33,6 +38,7 @@ You had context bloat (freezing). Solution: Use **four context engineering strat
 - close-issue.md - Complete work
 
 ✅ **Session State**
+
 - .claude/session-state.json - Track checkpoint
 
 ## How It Works
@@ -40,6 +46,7 @@ You had context bloat (freezing). Solution: Use **four context engineering strat
 **User asks Amp**: "Build v1.3.0-feature"
 
 **Amp delegates**:
+
 1. cody-executor → run `:cody version build`
 2. context-librarian → compress output
 3. beads-manager → create issues
@@ -50,9 +57,10 @@ You had context bloat (freezing). Solution: Use **four context engineering strat
 ## Next: Test It
 
 Try:
+
 - `/ready-work` - Check unblocked issues
 - `/cody-help` - Show Cody commands
 - Ask: "Build v1.3.0-test version"
 
-See full docs in AMP_AGENT_STRATEGY.md, SUBAGENT_QUICK_START.md, AMP_COMMANDS_REFERENCE.md
-
+See full docs in AMP_AGENT_STRATEGY.md, SUBAGENT_QUICK_START.md,
+AMP_COMMANDS_REFERENCE.md
