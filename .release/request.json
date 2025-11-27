@@ -1,0 +1,9 @@
+{
+  "type": "final",
+  "targetBranch": "main",
+  "currentSha": "04341c7630cf656383fa7f057a15c890c66b2e1c",
+  "requestedBy": "git@peterwarnock.com",
+  "requestedAt": "2025-11-27T00:59:46Z",
+  "status": "pending",
+  "description": "Complete content type system implementation with terminal tools catalog expansion"
+}
