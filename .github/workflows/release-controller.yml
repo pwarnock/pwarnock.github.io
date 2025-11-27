@@ -145,8 +145,8 @@ jobs:
 
       - name: Setup Git bot identity
         run: |
-          git config user.name "${{ vars.BOT_NAME }}"
-          git config user.email "${{ vars.BOT_EMAIL }}"
+          git config user.name "${{ vars.BOT_NAME || 'github-actions[bot]' }}"
+          git config user.email "${{ vars.BOT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}"
 
       - name: Update package.json version
         env:
@@ -273,8 +273,8 @@ jobs:
 
       - name: Setup Git bot identity
         run: |
-          git config user.name "${{ vars.BOT_NAME }}"
-          git config user.email "${{ vars.BOT_EMAIL }}"
+          git config user.name "${{ vars.BOT_NAME || 'github-actions[bot]' }}"
+          git config user.email "${{ vars.BOT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}"
 
       - name: Create Git tag
         env:
@@ -321,8 +321,8 @@ jobs:
           jq ".status = \"$STATUS\" | .completedAt = \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" | .deployedVersion = \"$NEXT_VERSION\"" .release/request.json > .release/request.json.tmp
           mv .release/request.json.tmp .release/request.json
 
-          git config user.name "${{ vars.BOT_NAME }}"
-          git config user.email "${{ vars.BOT_EMAIL }}"
+          git config user.name "${{ vars.BOT_NAME || 'github-actions[bot]' }}"
+          git config user.email "${{ vars.BOT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}"
           git add .release/request.json
           git commit -m "chore: update release request status to $STATUS" || true
           git push origin main || true
