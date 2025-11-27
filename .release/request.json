@@ -1,9 +1,9 @@
 {
   "type": "final",
   "targetBranch": "main",
-  "currentSha": "04341c7630cf656383fa7f057a15c890c66b2e1c",
+  "currentSha": "fcec8b9cb21b84fc77809bfb634237fcb9b4d140",
   "requestedBy": "git@peterwarnock.com",
-  "requestedAt": "2025-11-27T00:59:46Z",
+  "requestedAt": "2025-11-27T01:28:09Z",
   "status": "pending",
-  "description": "Complete content type system implementation with terminal tools catalog expansion"
+  "description": "Link methodology refactoring: convert tool-link markdown to shortcodes, enforce baseURL configuration, validate URL construction patterns"
 }
