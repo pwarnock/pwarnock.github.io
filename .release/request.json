@@ -1,9 +1,10 @@
 {
   "type": "final",
   "targetBranch": "main",
-  "currentSha": "fcec8b9cb21b84fc77809bfb634237fcb9b4d140",
+  "currentSha": "017b7c483cbd629521f518e78069f96d121ddd40",
   "requestedBy": "git@peterwarnock.com",
-  "requestedAt": "2025-11-27T01:28:09Z",
+  "requestedAt": "2025-11-27T01:36:21Z",
   "status": "pending",
-  "description": "Link methodology refactoring: convert tool-link markdown to shortcodes, enforce baseURL configuration, validate URL construction patterns"
+  "description": "v0.21.0: Content Type System with full validation, schema.org integration, and documentation. Link Methodology refactoring with Hugo shortcodes and baseURL configuration.",
+  "beadId": "pw-83r"
 }
