@@ -1,6 +1,6 @@
 {
   "name": "pwarnock.github.io",
-  "version": "0.20.2",
+  "version": "0.21.0-dev",
   "description": "",
   "type": "module",
   "main": "postcss.config.cjs",
