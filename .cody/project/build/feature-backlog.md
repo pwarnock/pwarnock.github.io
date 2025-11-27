@@ -228,16 +228,6 @@ Infrastructure foundation and structured data implementation: Complete analytics
 | F103 | Review/Rating Schema | Implement structured data for product reviews and ratings | Low | 🟢 Completed (pw-3e7) |
 | F104 | Structured Data Documentation | Document all schema types and usage examples | Low | 🟢 Completed (pw-2vh) |
 
-## v0.21.0-link-methodology - 🟢 Completed
-Link methodology refactoring: Establish robust link construction patterns using Hugo shortcodes and baseURL configuration.
-
-| ID  | Feature                 | Description                              | Priority | Status |
-|-----|-------------------------|------------------------------------------|----------|--------|
-| F105 | Tool Link Shortcode | Create tool-link shortcode with absURL filter for environment-agnostic URLs | High | 🟢 Completed |
-| F106 | Link Validation Script | Implement methodology validation to enforce baseURL configuration patterns | High | 🟢 Completed |
-| F107 | Link Conversion | Convert 28+ markdown tool links to shortcodes across blog posts | High | 🟢 Completed |
-| F108 | Tool Reference Fixing | Fix tool slug references to match actual directory names | High | 🟢 Completed |
-
 ## v0.15.0 - 🟢 Completed
 Deployment workflows and environment management: Complete infrastructure foundation with analytics and structured data.
 
