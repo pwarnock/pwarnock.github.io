@@ -3,7 +3,7 @@
   "targetBranch": "main",
   "currentSha": "0614a248650d6f04b08442d6cd81efaf48ca8fc9",
   "requestedBy": "git@peterwarnock.com",
-  "requestedAt": "2025-11-27T01:37:55Z",
+  "requestedAt": "2025-11-27T01:50:00Z",
   "status": "pending",
   "description": "v0.21.0: Content Type System with full validation, schema.org integration, and documentation. Link Methodology refactoring with Hugo shortcodes and baseURL configuration.",
   "beadId": "pw-83r"
