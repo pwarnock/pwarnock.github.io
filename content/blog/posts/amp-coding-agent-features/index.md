@@ -16,7 +16,7 @@ image: 'amp-coding-agent-features.png'
 
 I'm constantly evaluating new coding agents, but one that's consistently
 impressed me over the past few months is
-[Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/). Hamel Husain recently
+{{< tool-link "amp-free-ad-supported-cli-ai-coding-tool" "Amp" >}}. Hamel Husain recently
 wrote an excellent
 [deep dive into Amp's features](https://hamel.dev/notes/coding-agents/amp.html 'Editorial reference')
 that highlighted several capabilities I think make it particularly noteworthy
@@ -86,14 +86,14 @@ incredibly effective at priming the agent with the information it needs before
 coding begins—especially valuable for newer libraries or private codebases.
 
 This approach reminds me of how I've implemented similar functionality in
-[OpenCode](/tools/opencode-flexible-ai-coding-platform/) using
-[Context7](/tools/context7-library-documentation-research-platform/) for library
+{{< tool-link "opencode-flexible-ai-coding-platform" "OpenCode" >}} using
+{{< tool-link "context7-library-documentation-research-platform" "Context7" >}} for library
 documentation research. Both approaches recognize that effective coding agents
 need specialized subagents that can rapidly gather and process domain-specific
 context before beginning development work.
 
 Similarly, when I need quick, verified code examples for specific problems, I
-use [GitHits](/tools/githits-ai-powered-code-search-platform/) to get canonical
+use {{< tool-link "githits-ai-powered-code-search-platform" "GitHits" >}} to get canonical
 solutions rather than sifting through endless search results.
 
 ## Why Amp Matters
@@ -106,7 +106,7 @@ workflow continuity.
 
 For teams managing complex, multi-agent projects, Amp pairs particularly well
 with task management tools like
-[Beads](/tools/beads-distributed-task-management-for-agents/), which provide the
+{{< tool-link "beads-distributed-task-management-for-agents" "Beads" >}}, which provide the
 dependency tracking and priority visibility that keep distributed agents
 coordinated.
 
@@ -125,5 +125,5 @@ Drop me a note on [Twitter](https://x.com/pwarnock) or
 **Related Tools**: Check out my comprehensive
 [AI Development Tools collection](/tools/) for comparisons with other leading
 coding agents, including
-[my analysis of Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/).
+{{< tool-link "amp-free-ad-supported-cli-ai-coding-tool" "my analysis of Amp" >}}.
 content_type: original

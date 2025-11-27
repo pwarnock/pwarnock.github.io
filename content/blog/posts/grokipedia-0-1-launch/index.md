@@ -23,7 +23,7 @@ However, the idea of synthesizing all of the ideas on the web is intriguing.
 It's essentially where Google and ChatGPT Search are going, too. It will be
 interesting to see who comes out most neutral.
 
-[Learn more about Grokipedia's features and capabilities →](/tools/grokipedia/)
+{{< tool-link "grokipedia" "Learn more about Grokipedia's features and capabilities →" >}}
 
 ---
 

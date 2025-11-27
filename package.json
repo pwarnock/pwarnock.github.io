@@ -30,6 +30,7 @@
     "lint:toml": "bun x @taplo/cli lint **/*.toml",
     "lint:css": "bun x stylelint \"**/*.css\" --ignore-path .gitignore",
     "validate": "./scripts/validate.sh",
+    "validate:links": "./scripts/validate-links.sh",
     "validate:portfolio": "bun run portfolio-validate",
     "test:ga": "bun run test-ga",
     "postinstall": "bun x husky",

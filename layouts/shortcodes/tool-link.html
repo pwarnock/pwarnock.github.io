@@ -1,0 +1,20 @@
+{{/* Tool link shortcode - generates absolute URLs using baseURL
+   Usage: {{< tool-link "slug" "Text" >}} or {{< tool-link "slug" "Text" "https://external-url.com" >}}
+*/}}
+{{ $slug := .Get 0 }}
+{{ $text := .Get 1 }}
+{{ $external := .Get 2 }}
+
+{{ if $external }}
+  {{/* External URL provided - use it directly */}}
+  <a href="{{ $external }}">{{ $text }}</a>
+{{ else }}
+  {{/* Check if tool directory exists, build internal link */}}
+  {{ if os.FileExists (printf "content/tools/%s" $slug) }}
+    {{ $url := printf "/tools/%s/" $slug | absURL }}
+    <a href="{{ $url }}">{{ $text }}</a>
+  {{ else }}
+    {{/* Tool not found - return placeholder */}}
+    <span title="Tool page not found: {{ $slug }}">{{ $text }}</span>
+  {{ end }}
+{{ end }}

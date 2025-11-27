@@ -20,10 +20,10 @@ fundamentally improves development experience, build performance, and deployment
 safety. This major overhaul introduces three game-changing systems that will
 accelerate development while ensuring rock-solid reliability.
 
-## 🚀 **[Bun](/tools/bun-javascript-runtime-package-manager/)** Migration: Lightning-Fast Package Management
+## 🚀 **{{< tool-link "bun-javascript-runtime-package-manager" "Bun" >}}** Migration: Lightning-Fast Package Management
 
 We've migrated from npm to
-**[Bun](/tools/bun-javascript-runtime-package-manager/)** as our primary package
+**{{< tool-link "bun-javascript-runtime-package-manager" "Bun" >}}** as our primary package
 manager, delivering dramatic performance improvements:
 
 ### Performance Gains
@@ -94,7 +94,7 @@ site:
 
 ### Multi-Layer Testing Strategy
 
-#### Unit Tests ([Go](/tools/go-modern-systems-programming-language/))
+#### Unit Tests ({{< tool-link "go-modern-systems-programming-language" "Go" >}})
 
 - 4.5% baseline coverage with automated reporting
 - Structured logging framework for debugging
@@ -102,12 +102,12 @@ site:
 
 #### Behavior-Driven Development (BDD)
 
-- 9/9 scenarios passing with [Godog](/tools/godog-bdd-testing-framework-for-go/)
+- 9/9 scenarios passing with {{< tool-link "godog-bdd-testing-framework-for-go" "Godog" >}}
   framework
 - Human-readable test scenarios
 - Integration testing across components
 
-#### End-to-End Testing ([TypeScript](/tools/typescript-javascript-with-type-safety/) + [Playwright](/tools/playwright-modern-end-to-end-testing-framework/))
+#### End-to-End Testing ({{< tool-link "typescript-javascript-with-type-safety" "TypeScript" >}} + [Playwright](/tools/playwright-modern-end-to-end-testing-framework/))
 
 - Cross-browser compatibility validation
 - User journey automation
@@ -170,7 +170,7 @@ bun run sync:env
 - Security vulnerability scanning
 
 **Infrastructure**:
-[GitHub Actions](/tools/github-actions-ci-cd-for-modern-development/) for CI/CD
+{{< tool-link "github-actions-ci-cd-for-modern-development" "GitHub Actions" >}} for CI/CD
 automation
 
 ## ⚡ **Performance Optimizations**
@@ -222,8 +222,8 @@ bun run perf:monitor
 - Keyboard navigation enhancements
 
 **Design System**:
-[DaisyUI](/tools/daisyui-component-library-for-tailwind-css/) +
-[Tailwind CSS](/tools/tailwind-css-utility-first-css-framework/) for accessible
+{{< tool-link "daisyui-component-library-for-tailwind-css" "DaisyUI" >}} +
+{{< tool-link "tailwind-css-utility-first-css-framework" "Tailwind CSS" >}} for accessible
 components
 
 ## 📊 **Impact Metrics**

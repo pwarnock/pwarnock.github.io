@@ -136,7 +136,7 @@ The `discovered-from` dependency type is particularly useful—when an agent
 uncovers new work during planning, it naturally links back to the discovery
 context.
 
-See the [Beads tool page](/tools/beads-distributed-task-management-for-agents/)
+See the {{< tool-link "beads-distributed-task-management-for-agents" "Beads tool page" >}}
 for technical details and integration patterns.
 
 ---
@@ -160,7 +160,7 @@ introduces some genuinely novel ideas to the issue tracking space.
 ---
 
 **Learn more**: Check the
-[Beads tool page](/tools/beads-distributed-task-management-for-agents/) for
+{{< tool-link "beads-distributed-task-management-for-agents" "Beads tool page" >}} for
 comprehensive technical documentation, integration patterns, and related
 resources.
 

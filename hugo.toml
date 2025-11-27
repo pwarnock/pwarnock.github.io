@@ -56,7 +56,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   section = ["HTML", "RSS", "JSON"]
 
 [security]
-  enableInlineShortcodes = false
+  enableInlineShortcodes = true
   [security.exec]
     allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$']
     osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']

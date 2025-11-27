@@ -16,13 +16,13 @@ image: cover.png
 
 ## Tools Mentioned
 
-- [Just](https://peterwarnock.com/tools/just-make-replacement-cli-tool/) -
+- {{< tool-link "just-make-replacement-cli-tool" "Just" >}} -
   Modern command runner and make replacement
-- [Bat](https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/) - Cat
+- {{< tool-link "bat-cat-with-syntax-highlighting" "Bat" >}} - Cat
   with syntax highlighting and formatting
-- [Eza](https://peterwarnock.com/tools/eza-modern-ls-replacement/) - Modern ls
+- {{< tool-link "eza-modern-ls-replacement" "Eza" >}} - Modern ls
   replacement with colors and icons
-- [Yazi](https://peterwarnock.com/tools/yazi-terminal-file-manager/) - Terminal
+- {{< tool-link "yazi-terminal-file-manager" "Yazi" >}} - Terminal
   file manager with image preview
-- [Micro](https://peterwarnock.com/tools/micro-terminal-editor/) - Modern
+- {{< tool-link "micro-terminal-editor" "Micro" >}} - Modern
   terminal-based text editor

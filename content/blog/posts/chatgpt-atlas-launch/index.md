@@ -92,7 +92,7 @@ For developers and businesses, ChatGPT Atlas represents a shift toward agentic
 web experiences where AI handles routine browsing tasks.
 
 Learn more about
-[ChatGPT Atlas and how it works →](/tools/chatgpt-atlas-ai-powered-browser/)
+{{< tool-link "chatgpt-atlas-ai-powered-browser" "ChatGPT Atlas and how it works →" >}}
 
 ---
 
