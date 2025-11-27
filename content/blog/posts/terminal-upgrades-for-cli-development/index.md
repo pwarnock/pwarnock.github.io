@@ -16,13 +16,13 @@ image: cover.png
 
 ## Tools Mentioned
 
-- [Just]({{< relURL "/tools/just-make-replacement-cli-tool" >}}) - Modern
-  command runner and make replacement
-- [Bat]({{< relURL "/tools/bat-cat-with-syntax-highlighting" >}}) - Cat with
+- [Just]({{ absURL "/tools/just-make-replacement-cli-tool" }}) - Modern command
+  runner and make replacement
+- [Bat]({{ absURL "/tools/bat-cat-with-syntax-highlighting" }}) - Cat with
   syntax highlighting and formatting
-- [Eza]({{< relURL "/tools/eza-modern-ls-replacement" >}}) - Modern ls
-  replacement with colors and icons
-- [Yazi]({{< relURL "/tools/yazi-terminal-file-manager" >}}) - Terminal file
+- [Eza]({{ absURL "/tools/eza-modern-ls-replacement" }}) - Modern ls replacement
+  with colors and icons
+- [Yazi]({{ absURL "/tools/yazi-terminal-file-manager" }}) - Terminal file
   manager with image preview
-- [Micro]({{< relURL "/tools/micro-terminal-editor" >}}) - Modern terminal-based
+- [Micro]({{ absURL "/tools/micro-terminal-editor" }}) - Modern terminal-based
   text editor
