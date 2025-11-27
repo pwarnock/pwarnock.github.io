@@ -18,7 +18,8 @@ tags:
     'behavior-driven-development',
     'automation',
   ]
-draft: false
+external_url: 'https://cucumber.io/docs/godog'
+github_url: 'https://github.com/cucumber/godog'
 ---
 
 Godog is a Behavior-Driven Development (BDD) testing framework for the Go

@@ -98,3 +98,4 @@ test('isolation demo page visual regression @visual', async ({ page }) => {
 This ensures that if I accidentally break the CSS isolation or the 3D transforms
 in a future update, the CI pipeline will catch the visual difference
 immediately.
+content_type: original

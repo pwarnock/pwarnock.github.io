@@ -1,6 +1,7 @@
 ---
 title: 'My First Post'
 date: 2025-06-24T15:08:06-07:00
+content_type: original
 draft: false
 description:
   'Learn about Lorem Ipsum, standard dummy text used in printing and typesetting

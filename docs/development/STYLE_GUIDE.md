@@ -209,10 +209,18 @@ compatibility:
 
 #### Prose Layout & Centering
 
-To ensure consistent centering and readability for long-form content (blog posts, etc.), we use a specific layout strategy in `assets/css/content/prose.css`:
+To ensure consistent centering and readability for long-form content (blog
+posts, etc.), we use a specific layout strategy in
+`assets/css/content/prose.css`:
 
-1.  **Container Centering**: The `.prose` container itself is centered with `margin-left: auto`, `margin-right: auto`, and constrained to `max-width: 65ch` (approx. 65 characters) for optimal reading comfort.
-2.  **Child Element Centering**: Direct children of `.prose` (like `p`, `h1`-`h6`, `ul`, `ol`, `blockquote`) *also* have these properties explicitly set. This ensures that even if the container context changes or if a child element behaves unexpectedly (like breaking out of a container), the text content remains strictly centered and readable.
+1.  **Container Centering**: The `.prose` container itself is centered with
+    `margin-left: auto`, `margin-right: auto`, and constrained to
+    `max-width: 65ch` (approx. 65 characters) for optimal reading comfort.
+2.  **Child Element Centering**: Direct children of `.prose` (like `p`,
+    `h1`-`h6`, `ul`, `ol`, `blockquote`) _also_ have these properties explicitly
+    set. This ensures that even if the container context changes or if a child
+    element behaves unexpectedly (like breaking out of a container), the text
+    content remains strictly centered and readable.
 
 ```css
 /* Container */
@@ -775,18 +783,91 @@ daisyUI styling:
 
 ## Content Guidelines
 
+### Content Types
+
+All content must specify a `content_type` field in front matter. This determines
+validation requirements and display behavior.
+
+#### Available Content Types
+
+**Original** (`content_type: original`)
+
+- Content created specifically for this site
+- Required fields: `title`, `date`, `summary`
+- Optional fields: `tags`, `categories`, `featured_image`, `draft`
+
+**Curated** (`content_type: curated`)
+
+- Content from external sources, shared with commentary
+- Required fields: `title`, `date`, `summary`, `attribution`, `source_url`
+- Optional fields: `tags`, `categories`, `featured_image`, `draft`
+
+**Embedded Content** (`content_type: embed`)
+
+- Direct embeds from external platforms
+- Required fields: `title`, `date`, `attribution`, `source_url`
+- Optional fields: `tags`, `categories`, `draft`
+
+**Project** (`content_type: project`)
+
+- Internal project updates, milestones, and status reports
+- Required fields: `title`, `date`, `summary`
+- Optional fields: `tags`, `categories`, `author`, `draft`, `thumbnail`
+
 ### Front Matter Structure
 
 ```yaml
 ---
 title: 'Page Title'
 date: 2025-01-01T00:00:00Z
+content_type: original # Required: original, curated, embed, or project
 draft: false
 description: 'Brief description for SEO'
 summary: 'Required: Brief summary for homepage and list views (150-200 chars)'
 tags: ['tag1', 'tag2']
 categories: ['category']
 customHTML: false # Set to true for pages with custom HTML layouts
+---
+```
+
+#### Content Type Examples
+
+**Original Content Example:**
+
+```yaml
+---
+title: 'My Technical Article'
+date: 2025-01-01T00:00:00Z
+content_type: original
+summary: 'A deep dive into modern web development practices and tools.'
+tags: ['web-development', 'javascript', 'best-practices']
+---
+```
+
+**Curated Content Example:**
+
+```yaml
+---
+title: 'External Article Summary'
+date: 2025-01-01T00:00:00Z
+content_type: curated
+summary: 'John Doe shares insights on cloud architecture patterns.'
+attribution: 'John Doe'
+source_url: 'https://example.com/article'
+tags: ['cloud', 'architecture', 'patterns']
+---
+```
+
+**Project Update Example:**
+
+```yaml
+---
+title: 'Phase 1 Complete: New Feature Launch'
+date: 2025-01-01T00:00:00Z
+content_type: project
+summary: 'Complete implementation of new feature with comprehensive testing.'
+author: 'Peter Warnock'
+tags: ['project-management', 'milestone', 'development']
 ---
 ```
 

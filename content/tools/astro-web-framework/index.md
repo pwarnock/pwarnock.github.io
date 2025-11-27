@@ -9,7 +9,6 @@ external_url: 'https://astro.build/'
 website: 'astro.build'
 tool_category: 'Web Frameworks'
 slug: 'astro-web-framework'
-image: '/images/tools/astro-web-framework.png'
 radar:
   quadrant: 'Languages & Frameworks'
   ring: 'Adopt'

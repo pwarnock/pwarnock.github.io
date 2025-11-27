@@ -23,7 +23,6 @@ radar:
   ring: 'Hold'
 slug: 'github-copilot-original-ai-pair-programmer'
 aliases: ['/tools/copilot-original/']
-image: '/images/tools/github-copilot-original-ai-pair-programmer.png'
 ---
 
 GitHub Copilot Original represents the pioneering AI pair programmer that

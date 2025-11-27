@@ -2,6 +2,7 @@
 title: 'Phase 1 Complete: Cody-Beads Integration & Strategic Roadmap'
 date: 2025-11-24T16:30:00-08:00
 draft: false
+content_type: project
 author: 'Peter Warnock'
 description:
   'Complete Phase 1 implementation of Cody-Beads integration with 4,200+ lines

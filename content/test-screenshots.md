@@ -1,5 +1,8 @@
 ---
 title: 'Screenshot Test'
+summary:
+  'Testing placeholder shortcodes with different sizes and aspect ratios for
+  screenshot system validation and component testing.'
 date: 2025-10-27
 draft: true
 ---

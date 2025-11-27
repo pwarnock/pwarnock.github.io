@@ -188,3 +188,4 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/peterwarnock/),
 [GitHub](https://github.com/pwarnock/),
 [X (Twitter)](https://twitter.com/pwarnock/), or
 [Discord](https://discord.gg/pwarnock) to continue the conversation._
+content_type: original

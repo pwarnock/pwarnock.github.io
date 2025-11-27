@@ -8,7 +8,6 @@ external_url: 'https://starlight.astro.build/'
 website: 'starlight.astro.build'
 tool_category: 'Static Site Generators'
 slug: 'astro-starlight'
-image: '/images/tools/astro-starlight-documentation-website-builder.png'
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'

@@ -99,3 +99,4 @@ Learn more about
 _This post covers the launch of ChatGPT Atlas as announced by OpenAI on October
 21, 2025. For the latest updates, visit the
 [official OpenAI announcement](https://openai.com/index/introducing-chatgpt-atlas/)._
+content_type: original

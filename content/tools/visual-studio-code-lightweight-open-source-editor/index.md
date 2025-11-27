@@ -14,7 +14,6 @@ aliases: ['/tools/vscode/', '/tools/visual-studio-code/']
 radar:
   quadrant: 'Tools'
   ring: 'Adopt'
-image: '/images/tools/visual-studio-code-lightweight-open-source-editor.png'
 ---
 
 Visual Studio Code has fundamentally transformed the development landscape since

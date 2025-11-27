@@ -23,7 +23,6 @@ radar:
   ring: 'Trial'
 slug: 'gemini-cli-google-terminal-ai-agent'
 aliases: ['/tools/gemini-cli/']
-image: '/images/tools/gemini-cli-google-terminal-ai-agent.png'
 ---
 
 Gemini CLI represents Google's ambitious entry into the AI-powered terminal

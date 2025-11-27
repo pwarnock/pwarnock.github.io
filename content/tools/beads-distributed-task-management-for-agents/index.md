@@ -23,7 +23,6 @@ aliases: ['/tools/beads/']
 radar:
   quadrant: 'Tools'
   ring: 'Assess'
-image: '/images/tools/beads-distributed-task-management-for-agents.png'
 ---
 
 Beads is a lightweight, distributed task management system built specifically

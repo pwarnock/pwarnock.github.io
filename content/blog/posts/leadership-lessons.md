@@ -1,5 +1,9 @@
 ---
 title: 'Leadership Lessons from 10 Years in Tech'
+summary:
+  'Key insights from a decade in technology leadership: communication
+  excellence, hiring for potential, creating psychological safety, and balancing
+  short-term wins with long-term vision.'
 date: 2025-01-05T09:15:00Z
 draft: false
 tags: ['Leadership', 'Management', 'Career', 'Technology']

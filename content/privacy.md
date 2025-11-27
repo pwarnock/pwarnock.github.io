@@ -1,5 +1,9 @@
 ---
 title: 'Privacy Policy'
+summary:
+  'How I collect, use, and protect your information when visiting
+  peterwarnock.com, including Google Analytics usage, newsletter subscriptions,
+  cookies, and your data rights.'
 date: 2025-10-27T00:00:00Z
 draft: false
 ---

@@ -14,7 +14,6 @@ aliases: ['/tools/opencode/', '/tools/flexible-ai-platform/']
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
-image: '/images/tools/opencode-flexible-ai-coding-platform.png'
 ---
 
 OpenCode emerges as a revolutionary force in the AI coding landscape,

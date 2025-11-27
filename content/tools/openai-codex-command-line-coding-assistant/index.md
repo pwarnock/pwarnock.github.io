@@ -14,7 +14,6 @@ aliases: ['/tools/codex-cli/', '/tools/openai-codex/']
 radar:
   quadrant: 'Tools'
   ring: 'Assess'
-image: '/images/tools/openai-codex-command-line-coding-assistant.png'
 ---
 
 OpenAI Codex represents a groundbreaking advancement in AI-powered development,

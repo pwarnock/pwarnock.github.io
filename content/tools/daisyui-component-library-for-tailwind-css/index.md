@@ -18,8 +18,8 @@ tags:
     'design-system',
     'accessibility',
   ]
-image: '/images/tools/daisyui-component-library-for-tailwind-css.png'
-draft: false
+external_url: 'https://daisyui.com/'
+github_url: 'https://github.com/saadeghi/daisyui'
 ---
 
 DaisyUI is a component library that brings beautiful, accessible UI components

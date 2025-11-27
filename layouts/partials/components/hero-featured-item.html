@@ -18,6 +18,14 @@
       <div>
         <div class="flex items-center gap-2 mb-3">
           <span class="badge badge-{{ $color }}">Latest Post</span>
+          {{ $contentType := $item.Params.content_type | default "original" }}
+          {{ if eq $contentType "curated" }}
+            <span class="badge badge-info badge-outline">Curated</span>
+          {{ else if eq $contentType "embed" }}
+            <span class="badge badge-warning badge-outline">Embed</span>
+          {{ else }}
+            <span class="badge badge-success badge-outline">Original</span>
+          {{ end }}
           <span class="text-xs text-base-content/60">{{ $item.Date.Format "Jan 2, 2006" }}</span>
         </div>
 

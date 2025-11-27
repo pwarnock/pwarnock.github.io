@@ -21,7 +21,6 @@ aliases: ['/tools/bolt-new/']
 radar:
   quadrant: 'Platforms'
   ring: 'Trial'
-image: '/images/tools/bolt-new-frontend-development-platform.png'
 ---
 
 Bolt.new represents a paradigm shift in frontend development, offering an

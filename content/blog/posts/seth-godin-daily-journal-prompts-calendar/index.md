@@ -76,3 +76,4 @@ daily prompts shape your reflections.
 
 _Prompts inspired by Seth's Blog:
 [Notes to myself](https://seths.blog/2025/07/65-thoughts/)_
+content_type: original

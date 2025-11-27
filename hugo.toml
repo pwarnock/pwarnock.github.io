@@ -1,37 +1,9 @@
-baseURL = "https://peterwarnock.com"
 languageCode = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
-googleAnalytics = 'G-SKDDM2GBXN'
+baseURL = "https://peterwarnock.com"
 
-[author]
-name = 'Peter Warnock'
-
-# RSS configuration
-[outputs]
-home = ["HTML", "RSS", "JSON"]
-page = ["HTML"]
-section = ["HTML", "RSS", "JSON"]
-
-# Security settings
-[security]
-  enableInlineShortcodes = false
-  [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$']
-    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
-  [security.funcs]
-    getenv = ['^HUGO_']
-  [security.http]
-    methods = ['(?i)GET|POST']
-    urls = ['.*']
-
-# Suppress warnings
-ignoreLogs = ['warning-goldmark-raw-html']
-
-# Disable category taxonomy pages to avoid duplicate content issues
-[taxonomies]
-  tag = "tags"
-  # categories = "categories"  # Disabled to prevent duplicate content
+# Theme configuration - using custom layouts instead of external theme
 
 # Enable git info for commit hash in footer
 enableGitInfo = true
@@ -39,31 +11,22 @@ enableGitInfo = true
 # Build future-dated content (for tools and scheduled posts)
 buildFuture = true
 
-# Performance and caching configurations
-[caches]
-  [caches.getjson]
-    dir = ":cacheDir/:project"
-    maxAge = "10m"
-  [caches.getcsv]
-    dir = ":cacheDir/:project"
-    maxAge = "10m"
-  [caches.images]
-    dir = ":cacheDir/images"
-    maxAge = "24h"
-  [caches.assets]
-    dir = ":cacheDir/assets"
-    maxAge = "24h"
+# Suppress warnings
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[author]
+  name = 'Peter Warnock'
 
 [params]
+
+  subtitle = 'Fullstack Developer & TECHNOLOGY LEADER'
+  description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
+  logo = '/img/logo.png'
+  
   # SEO configuration
   keywords = "fullstack developer, devops, cloud engineering, technology leader, software development, SaaS, rapid prototyping"
   og_image = "/img/og-image.png"
   twitter_card = "summary_large_image"
-
-  # Site configuration
-  subtitle = 'Fullstack Developer & TECHNOLOGY LEADER'
-  description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
-  logo = '/img/logo.png'
 
   # Favicon configuration
   favicon_16 = '/favicon-16x16.png'
@@ -79,15 +42,49 @@ buildFuture = true
 
   # Newsletter
   newsletter_url = 'https://gmail.us8.list-manage.com/subscribe/post?u=174f78659f6d3dd707f265f33&id=daaddd52e4&f_id=005f13e1f0'
+  
+  # Version tracking
+  version = "0.20.0"
+  versionHash = "2cdcb75"
 
   # Build settings
   minify = true
 
-  # Version tracking (synced with git tags, used in footer and release notes)
-  version = "0.20.0"
-  versionHash = "2cdcb75"  # Auto-populated by pre-commit hook with git short hash
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS", "JSON"]
 
-  [markup]
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$']
+    osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
+  [security.funcs]
+    getenv = ['^HUGO_']
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+[taxonomies]
+  tag = "tags"
+  # categories = "categories"  # Disabled to prevent duplicate content
+
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.getcsv]
+    dir = ":cacheDir/:project"
+    maxAge = "10m"
+  [caches.images]
+    dir = ":cacheDir/images"
+    maxAge = "24h"
+  [caches.assets]
+    dir = ":cacheDir/assets"
+    maxAge = "24h"
+
+[markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
@@ -100,14 +97,24 @@ buildFuture = true
   useResourceCache = true
   cacheDir = ".hugo_cache"
   noJSConfigInAssets = true
-  # Performance optimizations
   enableResourceCache = true
   enableGitInfo = true
 
-[build.buildStats]
-  enable = true
+  [build.buildStats]
+    enable = true
 
-# Performance optimizations
+[[build.cachebusters]]
+  source = 'assets/.*\.(js|ts|jsx|tsx)'
+  target = '(js|css|json)'
+
+[[build.cachebusters]]
+  source = 'assets/.*\.(css|scss|sass)$'
+  target = '(css|json)'
+
+[[build.cachebusters]]
+  source = 'data/.*\.(ya?ml|json)$'
+  target = '(html|json)'
+
 [minify]
   minifyOutput = true
   [minify.tdewolff]
@@ -126,33 +133,17 @@ buildFuture = true
     [minify.tdewolff.svg]
       keepComments = false
 
-[[build.cachebusters]]
-  source = 'assets/.*\.(js|ts|jsx|tsx)'
-  target = '(js|css|json)'
-
-[[build.cachebusters]]
-  source = 'assets/.*\.(css|scss|sass)$'
-  target = '(css|json)'
-
-[[build.cachebusters]]
-  source = 'data/.*\.(ya?ml|json)$'
-  target = '(html|json)'
-
-# Resource optimization settings
 [imaging]
   resampleFilter = "Lanczos"
   quality = 85
   anchor = "smart"
+  [imaging.resizing]
+    [imaging.resizing.blog]
+      width = 800
+      height = 450
+      filter = "Lanczos"
+      quality = 85
 
-# Blog image processing configuration
-[imaging.resizing]
-  [imaging.resizing.blog]
-    width = 800
-    height = 450  # 16:9 aspect ratio
-    filter = "Lanczos"
-    quality = 85
-
-# Redirects
 [redirects]
   "/posts/" = "/blog/"
   "/posts" = "/blog/"
@@ -165,9 +156,7 @@ buildFuture = true
   "/posts/vibe-coding-revolution/" = "/blog/posts/vibe-coding-revolution/"
   "/posts/chatgpt-atlas-launch/" = "/blog/posts/chatgpt-atlas-launch/"
   "/posts/first-post/" = "/blog/posts/first-post/"
-   "/tools/astro-starlight-documentation-website-builder/" = "/tools/astro-starlight/"
+  "/tools/astro-starlight-documentation-website-builder/" = "/tools/astro-starlight/"
 
-# Pagination
 [pagination]
   pagerSize = 6
-

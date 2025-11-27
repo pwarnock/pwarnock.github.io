@@ -7,3 +7,12 @@ baseURL = "https://peterwarnock.com"
   
   # Production indicators
   env = "production"
+
+# Production build settings
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableXML = false
+  minifyOutput = true

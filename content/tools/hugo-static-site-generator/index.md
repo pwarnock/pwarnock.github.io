@@ -8,7 +8,6 @@ external_url: 'https://gohugo.io/'
 website: 'gohugo.io'
 tool_category: 'Static Site Generators'
 slug: 'hugo-static-site-generator'
-image: '/images/tools/hugo-static-site-generator.png'
 radar:
   quadrant: 'Platforms'
   ring: 'Adopt'

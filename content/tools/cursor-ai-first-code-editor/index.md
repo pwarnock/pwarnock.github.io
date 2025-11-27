@@ -15,7 +15,6 @@ aliases: ['/tools/cursor/']
 radar:
   quadrant: 'Tools'
   ring: 'Trial'
-image: '/images/tools/cursor-ai-first-code-editor.png'
 ---
 
 Cursor represents a fundamental reimagining of the code editor experience—built

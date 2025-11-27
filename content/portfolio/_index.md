@@ -1,5 +1,10 @@
 ---
 title: 'Portfolio'
+summary:
+  'Full-stack development portfolio featuring SaaS prototypes, AI-powered
+  applications, and rapid deployment solutions built with modern architectures
+  and cutting-edge tools.'
+date: 2025-01-01T00:00:00Z
 description:
   'Full-stack development portfolio featuring SaaS prototypes, AI-powered
   applications, and rapid deployment solutions built with modern architectures

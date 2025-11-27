@@ -15,7 +15,6 @@ aliases: ['/tools/deepagent/']
 radar:
   quadrant: 'Tools'
   ring: 'Hold'
-image: '/images/tools/deepagent-vs-code-fork-abacus-ai-integration.png'
 ---
 
 DeepAgent represents one of the most ambitious projects in the AI coding space—a

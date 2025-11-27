@@ -22,7 +22,6 @@ radar:
   quadrant: 'Platforms'
   ring: 'Adopt'
 aliases: ['/tools/vercel/', '/tools/vercel-platform/']
-image: '/images/tools/vercel-web-development-deployment-platform.png'
 ---
 
 Vercel has revolutionized web development and deployment since its founding,

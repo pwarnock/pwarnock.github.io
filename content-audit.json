@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-11-26T22:01:28.571Z",
+  "summary": {
+    "totalFiles": 13,
+    "validFiles": 6,
+    "invalidFiles": 7,
+    "totalErrors": 16,
+    "totalWarnings": 0,
+    "successRate": 46.2
+  },
+  "details": [
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Peter Warnock - Cloud Engineering & DevOps Leadership",
+        "date": "2025-10-15T07:00:00.000Z",
+        "description": "Peter Warnock's personal website showcasing expertise in cloud engineering, DevOps leadership, and fullstack development with 15+ years of experience."
+      },
+      "filePath": "content/_index.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "About",
+        "date": "2025-01-01T00:00:00.000Z",
+        "draft": false,
+        "type": "page",
+        "layout": "about",
+        "description": "Peter Warnock: build systems, pipelines, and cultures that let engineering teams move fast with confidence. From self-taught developer to technical leader—creating conditions for initiative and learning at scale."
+      },
+      "filePath": "content/about.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Accessibility Statement",
+        "date": "2025-01-01T00:00:00.000Z",
+        "draft": false,
+        "description": "My commitment to web accessibility and inclusive design"
+      },
+      "filePath": "content/accessibility.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Blog",
+        "summary": "Thoughts on modern web development, AI-powered tools, cloud architecture, and technology leadership from my experience building scalable solutions",
+        "description": "Thoughts on modern web development, AI-powered tools, cloud architecture, and technology leadership from my experience building scalable solutions",
+        "date": "2025-01-01T00:00:00.000Z",
+        "draft": false
+      },
+      "filePath": "content/blog/_index.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Getting Started with Hugo and Daisy UI",
+        "summary": "Learn how to set up a fast static site using Hugo combined with Daisy UI components for modern, responsive design without JavaScript bloat.",
+        "date": "2025-01-15T10:00:00.000Z",
+        "draft": false,
+        "tags": [
+          "Hugo",
+          "Daisy UI",
+          "Web Development"
+        ],
+        "author": "Peter Warnock"
+      },
+      "filePath": "content/blog/posts/first-post.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Inspired by Gemini CLI: My Journey with Astro Starlight",
+        "date": "2025-11-04T17:00:00.000Z",
+        "description": "How discovering the Gemini CLI website led me to explore Astro Starlight, and why I added both tools to my development toolkit.",
+        "summary": "A journey of discovery sparked by the Gemini CLI website, leading to exploration of Astro Starlight and expanding my web development toolkit.",
+        "image": "/images/blog/gemini-cli-home.svg",
+        "thumbnail": "/images/blog/gemini-cli-home.svg",
+        "tags": [
+          "Astro",
+          "Starlight",
+          "Web Development",
+          "Hugo",
+          "Gemini"
+        ],
+        "draft": false,
+        "author": "Peter Warnock"
+      },
+      "filePath": "content/blog/posts/inspired-by-geminicli.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Leadership Lessons from 10 Years in Tech",
+        "summary": "Key insights from a decade in technology leadership: communication excellence, hiring for potential, creating psychological safety, and balancing short-term wins with long-term vision.",
+        "date": "2025-01-05T09:15:00.000Z",
+        "draft": false,
+        "tags": [
+          "Leadership",
+          "Management",
+          "Career",
+          "Technology"
+        ],
+        "author": "Peter Warnock"
+      },
+      "filePath": "content/blog/posts/leadership-lessons.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Modern Web Development in 2025",
+        "summary": "Exploring the current web development landscape: component architectures, performance optimization, edge computing, and the modern static site stack for optimal user experience.",
+        "date": "2025-01-10T14:30:00.000Z",
+        "draft": false,
+        "tags": [
+          "Web Development",
+          "JavaScript",
+          "React",
+          "Performance"
+        ],
+        "author": "Peter Warnock"
+      },
+      "filePath": "content/blog/posts/modern-web-development.md"
+    },
+    {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Thoughtworks Technology Radar Volume 33",
+        "date": "2025-11-05T00:00:00.000Z",
+        "draft": false,
+        "description": "Analysis of Thoughtworks Technology Radar Volume 33, covering AI infrastructure orchestration, MCP agents, and emerging development workflows",
+        "summary": "Thoughtworks Technology Radar Volume 33 highlights key trends including AI infrastructure orchestration, rise of MCP-powered agents, and evolving AI coding workflows that are reshaping software development practices.",
+        "image": "/images/blog/thoughtworks-tech-radar-33.jpg"
+      },
+      "filePath": "content/blog/posts/thoughtworks-tech-radar-33.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: date",
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Portfolio",
+        "description": "Full-stack development portfolio featuring SaaS prototypes, AI-powered applications, and rapid deployment solutions built with modern architectures and cutting-edge tools.",
+        "featured_subtitle": "Demonstrating expertise in rapid prototyping, multi-tenant systems, and AI integration across diverse technology stacks.",
+        "cta_text": "Interested in collaboration or have a project in mind? Let's connect and discuss how I can help build something remarkable for you."
+      },
+      "filePath": "content/portfolio/_index.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Privacy Policy",
+        "date": "2025-10-27T00:00:00.000Z",
+        "draft": false
+      },
+      "filePath": "content/privacy.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Screenshot Test",
+        "date": "2025-10-27T00:00:00.000Z",
+        "draft": true
+      },
+      "filePath": "content/test-screenshots.md"
+    },
+    {
+      "valid": false,
+      "errors": [
+        "Missing required field: date",
+        "Missing required field: summary",
+        "summary field is required for this content type"
+      ],
+      "warnings": [],
+      "contentType": "original",
+      "frontmatter": {
+        "title": "Tools",
+        "description": "In-depth analysis and hands-on evaluations of cutting-edge development tools, AI coding assistants, and platforms that are reshaping how I build software",
+        "layout": "list"
+      },
+      "filePath": "content/tools/_index.md"
+    }
+  ]
+}

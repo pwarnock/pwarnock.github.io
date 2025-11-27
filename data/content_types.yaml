@@ -3,8 +3,9 @@
 
 content_types:
   original:
-    name: 'Original Content'
+    name: 'Original'
     description: 'Content created specifically for this site'
+    badge_class: 'badge-success'
     fields:
       required:
         - title
@@ -18,8 +19,9 @@ content_types:
     schema_type: 'Article'
 
   curated:
-    name: 'Curated Content'
+    name: 'Curated'
     description: 'Content from external sources, shared with commentary'
+    badge_class: 'badge-info'
     fields:
       required:
         - title
@@ -39,6 +41,7 @@ content_types:
   embed:
     name: 'Embedded Content'
     description: 'Direct embeds from external platforms'
+    badge_class: 'badge-warning'
     fields:
       required:
         - title
@@ -53,6 +56,23 @@ content_types:
     additional_properties:
       embedUrl: 'source_url'
 
+  project:
+    name: 'Project'
+    description: 'Internal project updates, milestones, and status reports'
+    badge_class: 'badge-neutral'
+    fields:
+      required:
+        - title
+        - date
+        - summary
+      optional:
+        - tags
+        - categories
+        - author
+        - draft
+        - thumbnail
+    schema_type: 'Article'
+
 # Validation rules
 validation:
   content_type_required: true
@@ -65,6 +85,7 @@ validation:
   summary_required_for:
     - original
     - curated
+    - project
 
 # Default values
 defaults:

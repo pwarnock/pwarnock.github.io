@@ -43,6 +43,19 @@
   {{- $metadataItems = $metadata | append $metadataItems -}}
 {{- end -}}
 
+{{/* Add content type badge for posts */}}
+{{- $contentTypeBadge := "" -}}
+{{- if eq $context.Type "posts" -}}
+  {{- $contentType := $context.Params.content_type | default "original" -}}
+  {{- if eq $contentType "curated" -}}
+    {{- $contentTypeBadge = `<span class="badge badge-info badge-outline">Curated</span>` -}}
+  {{- else if eq $contentType "embed" -}}
+    {{- $contentTypeBadge = `<span class="badge badge-warning badge-outline">Embed</span>` -}}
+  {{- else -}}
+    {{- $contentTypeBadge = `<span class="badge badge-success badge-outline">Original</span>` -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* Build actions */}}
 {{- $actionButtons := slice -}}
 {{- if $context.Params.external_url -}}
@@ -81,6 +94,9 @@
   <div class="card-system__content">
     {{- if $title }}
     <div class="card-system-header">
+      {{- if $contentTypeBadge }}
+        <div class="mb-2">{{ $contentTypeBadge }}</div>
+      {{- end }}
       <h3 class="card-system-title">
         {{- if $url }}
         <a href="{{ $url }}" class="card-system-title-link">

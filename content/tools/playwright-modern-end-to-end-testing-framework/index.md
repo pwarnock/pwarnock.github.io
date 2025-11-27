@@ -18,8 +18,8 @@ tags:
     'javascript',
     'typescript',
   ]
-image: '/images/tools/playwright-modern-end-to-end-testing-framework.png'
-draft: false
+external_url: 'https://playwright.dev/'
+github_url: 'https://github.com/microsoft/playwright'
 ---
 
 Playwright is a modern end-to-end testing framework developed by Microsoft that

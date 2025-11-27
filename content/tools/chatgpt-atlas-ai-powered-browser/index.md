@@ -4,7 +4,6 @@ description:
   "OpenAI's groundbreaking AI-powered web browser that fundamentally reimagines
   how we interact with the internet through integrated AI assistance"
 date: 2025-10-21T10:00:00-07:00
-image: '/images/tools/chatgpt-atlas-ai-powered-browser.png'
 draft: false
 categories: ['AI', 'Technology', 'Tools']
 tags:

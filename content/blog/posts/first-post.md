@@ -1,5 +1,8 @@
 ---
 title: 'Getting Started with Hugo and Daisy UI'
+summary:
+  'Learn how to set up a fast static site using Hugo combined with Daisy UI
+  components for modern, responsive design without JavaScript bloat.'
 date: 2025-01-15T10:00:00Z
 draft: false
 tags: ['Hugo', 'Daisy UI', 'Web Development']

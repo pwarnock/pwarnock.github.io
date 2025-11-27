@@ -20,34 +20,32 @@ const testCases = [
     name: 'Curated Content',
     file: 'public/blog/posts/test-curated-content/index.html',
     expectedType: 'Article',
-    expectedAuthor: 'Test Author',
+    expectedAuthor: 'External Author',
     hasIsBasedOn: true,
   },
   {
-    name: 'Embed Content',
+    name: 'Embedded Content',
     file: 'public/blog/posts/test-embed-content/index.html',
     expectedType: 'Article',
-    expectedAuthor: 'Test Newsletter',
+    expectedAuthor: 'Platform Creator',
     hasEmbedUrl: true,
   },
 ];
 
 function extractStructuredData(html) {
-  const regex = /<script type="application\/ld\+json">([^<]+)<\/script>/g;
   const matches = [];
+
+  // Find JSON-LD script tags
+  const jsonLdRegex = /<script[^>]*type=["']application\/ld\+json["'][^>]*>(.*?)<\/script>/gs;
   let match;
-  
-  while ((match = regex.exec(html)) !== null) {
+
+  while ((match = jsonLdRegex.exec(html)) !== null) {
     try {
-      // Clean up the JSON string - remove escaped newlines and quotes
-      let jsonStr = match[1]
-        .replace(/\\n/g, '')
-        .replace(/\\"/g, '"')
-        .replace(/"\n/g, '"')
-        .trim();
-      
+      // Clean up the JSON string
+      let jsonStr = match[1].trim();
+
       console.log(`Found JSON-LD: ${jsonStr.substring(0, 100)}...`);
-      
+
       const data = JSON.parse(jsonStr);
       if (data['@type'] === 'Article') {
         matches.push(data);
@@ -55,13 +53,6 @@ function extractStructuredData(html) {
     } catch (e) {
       console.warn('Failed to parse JSON-LD:', e.message);
       console.warn('Raw match:', match[1].substring(0, 200));
-    }
-  }
-  
-  return matches;
-}
-    } catch (e) {
-      console.warn('Failed to parse JSON-LD:', e.message);
     }
   }
 
@@ -81,51 +72,51 @@ function validateStructuredData(testCase) {
   const structuredData = extractStructuredData(html);
 
   if (structuredData.length === 0) {
-    console.log('❌ No Article structured data found');
+    console.log('❌ No structured data found');
     return false;
   }
 
   const article = structuredData[0];
   let passed = true;
 
-  // Check type
-  if (article['@type'] !== testCase.expectedType) {
-    console.log(`❌ Type mismatch: expected ${testCase.expectedType}, got ${article['@type']}`);
-    passed = false;
+  // Check content type
+  if (article['@type'] === testCase.expectedType) {
+    console.log(`✅ Correct type: ${article['@type']}`);
   } else {
-    console.log(`✅ Type correct: ${article['@type']}`);
+    console.log(`❌ Wrong type: expected ${testCase.expectedType}, got ${article['@type']}`);
+    passed = false;
   }
 
   // Check author
-  if (article.author && article.author.name !== testCase.expectedAuthor) {
+  if (article.author && article.author.name === testCase.expectedAuthor) {
+    console.log(`✅ Correct author: ${article.author.name}`);
+  } else {
     console.log(
-      `❌ Author mismatch: expected ${testCase.expectedAuthor}, got ${article.author?.name}`
+      `❌ Wrong author: expected ${testCase.expectedAuthor}, got ${article.author?.name}`
     );
     passed = false;
-  } else {
-    console.log(`✅ Author correct: ${article.author?.name}`);
   }
 
-  // Check specific properties
-  if (testCase.hasIsBasedOn && !article.isBasedOn) {
-    console.log('❌ Missing isBasedOn property');
+  // Check content type specific fields
+  if (testCase.hasPublisher && article.publisher) {
+    console.log('✅ Publisher present');
+  } else if (testCase.hasPublisher && !article.publisher) {
+    console.log('❌ Publisher missing');
     passed = false;
-  } else if (testCase.hasIsBasedOn) {
-    console.log(`✅ isBasedOn present: ${article.isBasedOn}`);
   }
 
-  if (testCase.hasEmbedUrl && !article.embedUrl) {
-    console.log('❌ Missing embedUrl property');
+  if (testCase.hasIsBasedOn && article.isBasedOn) {
+    console.log('✅ isBasedOn present');
+  } else if (testCase.hasIsBasedOn && !article.isBasedOn) {
+    console.log('❌ isBasedOn missing');
     passed = false;
-  } else if (testCase.hasEmbedUrl) {
-    console.log(`✅ embedUrl present: ${article.embedUrl}`);
   }
 
-  if (testCase.hasPublisher && !article.publisher) {
-    console.log('❌ Missing publisher property');
+  if (testCase.hasEmbedUrl && article.embedUrl) {
+    console.log('✅ embedUrl present');
+  } else if (testCase.hasEmbedUrl && !article.embedUrl) {
+    console.log('❌ embedUrl missing');
     passed = false;
-  } else if (testCase.hasPublisher) {
-    console.log(`✅ Publisher present: ${article.publisher?.name}`);
   }
 
   // Check required fields

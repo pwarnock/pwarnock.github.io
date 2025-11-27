@@ -1,6 +1,7 @@
 ---
 title: 'Beads: Distributed Task Management for AI Agents'
 date: 2025-11-12T10:00:00Z
+content_type: original
 draft: false
 tags:
   [

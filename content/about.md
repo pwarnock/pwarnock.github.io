@@ -1,5 +1,9 @@
 ---
 title: 'About'
+summary:
+  'From self-taught developer to technical leader: building systems, pipelines,
+  and cultures that let engineering teams move fast with confidence while
+  creating conditions for initiative and learning at scale.'
 date: 2025-01-01T00:00:00Z
 draft: false
 type: 'page'

@@ -33,6 +33,18 @@
       </nav>
       {{ end }}
 
+      <!-- Content Type Badge (hidden for now) -->
+      {{/* 
+      {{ $contentType := .Params.content_type | default "original" }}
+      {{ $contentTypes := .Site.Data.content_types.content_types }}
+      {{ $contentTypeConfig := index $contentTypes $contentType }}
+      {{ $badgeName := $contentTypeConfig.name }}
+      {{ $badgeClass := $contentTypeConfig.badge_class }}
+      <div class="mb-4">
+        <a href="{{ printf "/tags/%s" ($contentType | urlize) }}" class="badge {{ $badgeClass }} badge-lg">{{ $badgeName }}</a>
+      </div>
+      */}}
+
       <!-- Content Header (attribution for curated/embed) -->
       {{ partial "content/content-header.html" . }}
 

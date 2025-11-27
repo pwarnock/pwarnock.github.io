@@ -21,7 +21,6 @@ aliases: ['/tools/grokipedia/']
 radar:
   quadrant: 'Platforms'
   ring: 'Assess'
-image: '/images/tools/grokipedia.png'
 ---
 
 Grokipedia represents a revolutionary leap forward in knowledge

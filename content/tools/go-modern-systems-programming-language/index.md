@@ -18,8 +18,8 @@ tags:
     'performance',
     'concurrency',
   ]
-image: '/images/tools/go-modern-systems-programming-language.png'
-draft: false
+external_url: 'https://go.dev/'
+github_url: 'https://github.com/golang/go'
 ---
 
 Go (also known as Golang) is a modern systems programming language developed by

@@ -18,8 +18,8 @@ tags:
     'typescript',
     'node-js',
   ]
-image: '/images/tools/bun-javascript-runtime-package-manager.png'
-draft: false
+external_url: 'https://bun.sh/'
+github_url: 'https://github.com/oven-sh/bun'
 ---
 
 Bun is a modern JavaScript runtime and package manager that delivers

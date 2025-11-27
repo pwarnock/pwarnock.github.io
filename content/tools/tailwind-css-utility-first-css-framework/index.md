@@ -18,7 +18,6 @@ tags:
     'responsive-design',
     'design-system',
   ]
-image: '/images/tools/tailwind-css-utility-first-css-framework.png'
 draft: false
 ---
 

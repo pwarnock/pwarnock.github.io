@@ -1,9 +1,13 @@
 ---
 title: 'Modern Web Development in 2025'
+summary:
+  'Exploring the current web development landscape: component architectures,
+  performance optimization, edge computing, and the modern static site stack for
+  optimal user experience.'
 date: 2025-01-10T14:30:00Z
 draft: false
 tags: ['Web Development', 'JavaScript', 'React', 'Performance']
-author: 'Peter Warnuck'
+author: 'Peter Warnock'
 ---
 
 The web development landscape continues to evolve rapidly. Here are my thoughts

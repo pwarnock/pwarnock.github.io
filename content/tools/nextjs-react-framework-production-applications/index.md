@@ -14,7 +14,6 @@ aliases: ['/tools/nextjs/']
 radar:
   quadrant: 'Languages & Frameworks'
   ring: 'Adopt'
-image: '/images/tools/nextjs-react-framework-production-applications.png'
 ---
 
 Next.js has established itself as the de facto standard for building production

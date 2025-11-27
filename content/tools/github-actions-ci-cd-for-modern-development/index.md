@@ -10,8 +10,9 @@ summary:
   directly in GitHub repositories, enabling continuous integration, testing, and
   deployment.'
 tags: ['ci-cd', 'automation', 'devops', 'github', 'testing', 'deployment']
-image: '/images/tools/github-actions-ci-cd-for-modern-development.png'
 draft: false
+external_url: 'https://github.com/features/actions'
+github_url: 'https://github.com/features/actions'
 ---
 
 GitHub Actions is a powerful continuous integration and continuous deployment

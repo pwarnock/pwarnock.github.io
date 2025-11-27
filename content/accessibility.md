@@ -1,5 +1,9 @@
 ---
 title: 'Accessibility Statement'
+summary:
+  'Comprehensive commitment to WCAG 2.1 AA conformance with keyboard navigation,
+  screen reader support, and inclusive design features for an accessible web
+  experience.'
 date: 2025-01-01T00:00:00Z
 draft: false
 description: 'My commitment to web accessibility and inclusive design'

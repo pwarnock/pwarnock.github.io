@@ -44,3 +44,4 @@ that create space for reflection, anticipation, and appreciation.
 > Calvin and Hobbes © Bill Watterson. Images used for commentary and
 > educational purposes. Please support the official release on
 > [GoComics](https://www.gocomics.com/calvinandhobbes).
+content_type: original

@@ -9,15 +9,9 @@ summary:
   'TypeScript is a strongly typed programming language that builds on
   JavaScript, adding static type definitions to enable better development
   tooling and enhanced code reliability.'
-tags:
-  [
-    'programming-language',
-    'javascript',
-    'type-safety',
-    'development-tools',
-    'web-development',
-  ]
-image: '/images/tools/typescript-javascript-with-type-safety.png'
+tags: ['programming-language', 'javascript', 'type-safety', 'development-tools']
+external_url: 'https://www.typescriptlang.org/'
+github_url: 'https://github.com/microsoft/TypeScript'
 draft: false
 ---
 

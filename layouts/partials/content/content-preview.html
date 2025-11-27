@@ -16,18 +16,7 @@
         {{ $summary }}
       </div>
       
-      {{- $sourceUrl := .Params.source_url -}}
-      {{- if $sourceUrl -}}
-        <div class="source-link-container">
-          <a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" class="read-source-link">
-            {{- if eq $contentType "curated" -}}
-              Read Original
-            {{- else if eq $contentType "embed" -}}
-              View Source
-            {{- end -}}
-          </a>
-        </div>
-      {{- end -}}
+
     {{- end -}}
   </div>
 {{- end -}}

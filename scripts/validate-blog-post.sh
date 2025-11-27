@@ -21,28 +21,58 @@ validate_post() {
         return 1
     fi
     
-    # Check required frontmatter fields
+    # Extract content type from frontmatter
+    local content_type=$(awk '/^content_type:/{print $2}' "$index_file" | tr -d "'" | tr -d '"')
+    [[ -z "$content_type" ]] && content_type="original"
+    
+    # Load content type requirements from data file
+    local content_types_file="$PROJECT_ROOT/data/content_types.yaml"
+    local required_fields=()
+    local optional_fields=()
+    
+    # Parse YAML to get required fields for content type
+    if [[ -f "$content_types_file" ]]; then
+        # Simple YAML parsing for required fields
+        local in_content_type=false
+        local in_required=false
+        local current_type=""
+        
+        while IFS= read -r line; do
+            if [[ "$line" =~ ^[[:space:]]*([a-z_]+):[[:space:]]*$ ]]; then
+                current_type="${BASH_REMATCH[1]}"
+                if [[ "$current_type" == "$content_type" ]]; then
+                    in_content_type=true
+                else
+                    in_content_type=false
+                fi
+                in_required=false
+            elif [[ "$in_content_type" == true && "$line" =~ ^[[:space:]]*required:[[:space:]]*$ ]]; then
+                in_required=true
+            elif [[ "$in_required" == true && "$line" =~ ^[[:space:]]*-[[:space:]]*([a-z_]+) ]]; then
+                required_fields+=("${BASH_REMATCH[1]}")
+            elif [[ "$in_required" == true && "$line" =~ ^[[:space:]]*optional:[[:space:]]*$ ]]; then
+                in_required=false
+            fi
+        done < "$content_types_file"
+    fi
+    
+    # Always check these base fields
+    local base_fields=("title" "date" "summary")
     local missing_fields=()
     
-    if ! grep -q "^title:" "$index_file"; then
-        missing_fields+=("title")
-    fi
+    # Check base required fields
+    for field in "${base_fields[@]}"; do
+        if ! grep -q "^$field:" "$index_file"; then
+            missing_fields+=("$field")
+        fi
+    done
     
-    if ! grep -q "^date:" "$index_file"; then
-        missing_fields+=("date")
-    fi
-    
-    if ! grep -q "^draft:" "$index_file"; then
-        missing_fields+=("draft")
-    fi
-    
-    if ! grep -q "^description:" "$index_file"; then
-        missing_fields+=("description")
-    fi
-    
-    if ! grep -q "^summary:" "$index_file"; then
-        missing_fields+=("summary")
-    fi
+    # Check content type specific required fields
+    for field in "${required_fields[@]}"; do
+        if ! grep -q "^$field:" "$index_file"; then
+            missing_fields+=("$field")
+        fi
+    done
     
     # Image field is optional - only validate if present
     # if ! grep -q "^image:" "$index_file"; then
@@ -50,8 +80,8 @@ validate_post() {
     # fi
     
     if [[ ${#missing_fields[@]} -gt 0 ]]; then
-        echo "❌ $(basename "$post_dir"): Missing required fields: ${missing_fields[*]}"
-        echo "💡 Required fields: title, date, draft, description, summary, image"
+        echo "❌ $(basename "$post_dir"): Missing required fields for content type '$content_type': ${missing_fields[*]}"
+        echo "💡 Content type '$content_type' requires: ${base_fields[*]} ${required_fields[*]}"
         return 1
     fi
     

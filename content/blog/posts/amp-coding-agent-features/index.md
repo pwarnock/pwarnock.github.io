@@ -126,3 +126,4 @@ Drop me a note on [Twitter](https://x.com/pwarnock) or
 [AI Development Tools collection](/tools/) for comparisons with other leading
 coding agents, including
 [my analysis of Amp](/tools/amp-free-ad-supported-cli-ai-coding-tool/).
+content_type: original
