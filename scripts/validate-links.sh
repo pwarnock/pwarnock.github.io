@@ -38,10 +38,11 @@ enforce_tool_link_shortcode() {
     ERRORS=$((ERRORS + 1))
   fi
   
-  # ERROR: Relative /tools/ links in markdown (not using shortcode layer)
-  if grep -q "\[.*\]([/]tools/" "$file"; then
+  # ERROR: Relative /tools/SLUG/ links in markdown (not using shortcode layer)
+  # Note: /tools/ alone (section page) is OK as a regular link
+  if grep -q "\[.*\]([/]tools/[^/]*[/])" "$file"; then
     echo -e "${RED}✗ $basename: MARKDOWN LINK INSTEAD OF SHORTCODE${NC}"
-    grep -n "\[.*\]([/]tools/" "$file" | sed 's/^/    Line /'
+    grep -n "\[.*\]([/]tools/[^/]*[/])" "$file" | sed 's/^/    Line /'
     echo "  Fix: Use {{< tool-link \"slug\" \"Text\" >}} to leverage absURL"
     ERRORS=$((ERRORS + 1))
   fi
@@ -89,7 +90,7 @@ enforce_image_frontmatter_pattern() {
     WARNINGS=$((WARNINGS + 1))
   else
     # Verify image file exists if local reference
-    local image=$(grep "^image:" "$file" | head -1 | sed 's/^image: *//;s/[[:space:]]*$//')
+    local image=$(grep "^image:" "$file" | head -1 | sed "s/^image: *//;s/[[:space:]]*$//;s/^['\"]//;s/['\"]$//")
     if [[ ! "$image" =~ ^https?:// ]] && [[ ! "$image" =~ ^/ ]]; then
       if [ ! -f "$dir/$image" ]; then
         echo -e "${RED}✗ $basename: IMAGE FILE MISSING${NC}"

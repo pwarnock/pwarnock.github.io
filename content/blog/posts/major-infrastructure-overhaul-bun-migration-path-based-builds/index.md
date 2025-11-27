@@ -107,7 +107,7 @@ site:
 - Human-readable test scenarios
 - Integration testing across components
 
-#### End-to-End Testing ({{< tool-link "typescript-javascript-with-type-safety" "TypeScript" >}} + [Playwright](/tools/playwright-modern-end-to-end-testing-framework/))
+#### End-to-End Testing ({{< tool-link "typescript-javascript-with-type-safety" "TypeScript" >}} + {{< tool-link "playwright-modern-end-to-end-testing-framework" "Playwright" >}})
 
 - Cross-browser compatibility validation
 - User journey automation
