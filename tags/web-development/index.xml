@@ -1,59 +1,332 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web-Development on Peter Warnock</title><link>https://peterwarnock.com/tags/web-development/</link><description>Recent content in Web-Development on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 19 Sep 2025 10:00:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/web-development/index.xml" rel="self" type="application/rss+xml"/><item><title>Nuxt</title><link>https://peterwarnock.com/tools/nuxt-vuejs-framework-universal-applications/</link><pubDate>Fri, 19 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/nuxt-vuejs-framework-universal-applications/</guid><description>&lt;h1 id="nuxt"&gt;Nuxt&lt;/h1&gt;
-&lt;p&gt;Nuxt has emerged as the premier framework for building universal Vue.js applications, transforming the single-file component experience into a full-stack development platform. Originally created to solve the challenges of server-side rendering with Vue.js, Nuxt has evolved into a comprehensive framework that handles everything from development to production deployment. Built on Vue.js fundamentals and enhanced with modern web development best practices, Nuxt enables developers to create fast, SEO-friendly, and maintainable applications with minimal configuration.&lt;/p&gt;</description></item><item><title>Next.js</title><link>https://peterwarnock.com/tools/nextjs-react-framework-production-applications/</link><pubDate>Tue, 16 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/nextjs-react-framework-production-applications/</guid><description>&lt;h1 id="nextjs"&gt;Next.js&lt;/h1&gt;
-&lt;p&gt;Next.js has established itself as the de facto standard for building production React applications, developed and maintained by Vercel. Since its initial release in 2016, Next.js has evolved from a simple React framework into a comprehensive full-stack development platform that addresses real-world challenges in web development, including performance optimization, SEO, and developer experience. The framework powers some of the world&amp;rsquo;s largest websites and applications, demonstrating its scalability and reliability in enterprise environments.&lt;/p&gt;</description></item><item><title>Vercel</title><link>https://peterwarnock.com/tools/vercel-web-development-deployment-platform/</link><pubDate>Sun, 14 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/vercel-web-development-deployment-platform/</guid><description>&lt;p&gt;Vercel has revolutionized web development and deployment since its founding, establishing itself as the premier platform for modern frontend applications. Originally created by the team behind Next.js, Vercel provides a comprehensive development ecosystem that seamlessly integrates building, deploying, and scaling web applications with unparalleled developer experience and performance optimization.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web-Development on Peter Warnock</title><link>https://peterwarnock.com/tags/web-development/</link><description>Recent content in Web-Development on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/web-development/index.xml" rel="self" type="application/rss+xml"/><item><title>Astro</title><link>https://peterwarnock.com/tools/astro-web-framework/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/astro-web-framework/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/astro.png" alt="Astro Logo" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro is a modern frontend framework designed for building fast, content-driven
+websites. It allows you to use your favorite UI components (React, Vue, Svelte,
+etc.) and renders them to HTML at build time, resulting in zero JavaScript
+runtime by default. This approach leads to incredibly fast load times and
+excellent performance scores.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Island Architecture&lt;/strong&gt;: Ship less JavaScript by rendering UI to static HTML
+and only hydrating interactive components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UI Framework Agnostic&lt;/strong&gt;: Use React, Preact, Svelte, Vue, Solid, Lit, or just
+plain HTML + JavaScript.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fast by Default&lt;/strong&gt;: Astro generates static HTML at build time, resulting in
+faster load times and better SEO.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content-focused&lt;/strong&gt;: Built with content-rich websites like blogs, marketing
+sites, and documentation in mind.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Developer Experience&lt;/strong&gt;: Great tooling, clear documentation, and a vibrant
+community.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Create a new Astro project with &lt;code&gt;npm create astro@latest&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;: Choose a template or start from scratch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Start the development server with &lt;code&gt;npm run dev&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Components&lt;/strong&gt;: Build your UI with your favorite framework components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Deploy your static site to any hosting provider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://astro.build/" rel="noopener noreferrer" target="_blank"&gt;Official Website →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://docs.astro.build/" rel="noopener noreferrer" target="_blank"&gt;Documentation →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://github.com/withastro/astro" rel="noopener noreferrer" target="_blank"&gt;GitHub Repository →&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="related-tools"&gt;Related Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/hugo-static-site-generator/"&gt;Hugo&lt;/a&gt;
+: A popular static site generator
+that shares similar goals of performance and content-driven websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="projects-using-astro"&gt;Projects using Astro&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/astro-starlight/"&gt;Astro Starlight&lt;/a&gt;
+: The documentation website builder
+that makes creating stellar docs effortless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://astro.build" rel="noopener noreferrer" target="_blank"&gt;astro.build&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Astro Starlight</title><link>https://peterwarnock.com/tools/astro-starlight/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/astro-starlight/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/astro-starlight.webp" alt="Astro Starlight Hero Image" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro Starlight is a full-featured documentation theme built on top of the Astro
+framework. It provides everything you need to build a beautiful,
+high-performance documentation website with a great authoring experience.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Markdown &amp;amp; MDX Support&lt;/strong&gt;: Write content using standard Markdown or leverage
+the power of MDX to include interactive components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search&lt;/strong&gt;: Built-in search functionality that indexes your content for easy
+navigation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Internationalization (i18n)&lt;/strong&gt;: Support for multiple languages to reach a
+global audience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEO-friendly&lt;/strong&gt;: Automatic sitemaps, and other features to ensure your
+documentation is discoverable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Easy Configuration&lt;/strong&gt;: A simple &lt;code&gt;starlight.config.ts&lt;/code&gt; file to customize your
+site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Create a new Starlight project with
+&lt;code&gt;bun create astro --template starlight&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;: Configure your site in &lt;code&gt;starlight.config.ts&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Start the development server with &lt;code&gt;bun dev&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content&lt;/strong&gt;: Add your content in the &lt;code&gt;src/content/docs&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Deploy your site to any static hosting provider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="related-tools"&gt;Related Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/astro-web-framework/"&gt;Astro&lt;/a&gt;
+: The underlying framework that powers
+Starlight, designed for building fast, content-driven websites.&lt;/li&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/hugo-static-site-generator/"&gt;Hugo&lt;/a&gt;
+: A popular static site generator
+known for its speed and flexibility, often used for similar documentation
+purposes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="projects-using-astro-starlight"&gt;Projects using Astro Starlight&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/portfolio/astro-starlight-demo/"&gt;Astro Starlight Demo&lt;/a&gt;
+: A demo project
+showcasing the ease of getting started with Astro Starlight for building
+modern websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://starlight.astro.build" rel="noopener noreferrer" target="_blank"&gt;starlight.astro.build&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Hugo</title><link>https://peterwarnock.com/tools/hugo-static-site-generator/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/hugo-static-site-generator/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/hugo.svg" alt="Hugo Logo" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Hugo is one of the most popular open-source static site generators. Written in
+Go, it&amp;rsquo;s renowned for its incredible speed and flexibility, making it an ideal
+choice for building blogs, portfolios, documentation, and more. Hugo takes your
+content written in Markdown and transforms it into a complete static website in
+milliseconds.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blazing Fast Build Times&lt;/strong&gt;: Generate thousands of pages in seconds.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markdown Support&lt;/strong&gt;: Write content in Markdown, a simple and widely used
+markup language.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Theming System&lt;/strong&gt;: Highly customizable themes to control the look and feel of
+your site.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shortcodes&lt;/strong&gt;: Extend Markdown with custom shortcodes for dynamic content.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LiveReload&lt;/strong&gt;: Instant feedback during development with automatic browser
+refreshing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asset Bundling&lt;/strong&gt;: Optimize CSS, JavaScript, and images for production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Install Hugo on your system (available for Windows, macOS,
+Linux).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;New Site&lt;/strong&gt;: Create a new Hugo site with &lt;code&gt;hugo new site my-site&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Add Theme&lt;/strong&gt;: Choose and add a theme to your site.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Add Content&lt;/strong&gt;: Create new content files in Markdown format.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Run &lt;code&gt;hugo server -D&lt;/code&gt; to preview your site locally.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Generate your static site with &lt;code&gt;hugo&lt;/code&gt; and deploy the &lt;code&gt;public&lt;/code&gt;
+directory to any web server.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank"&gt;Official Website →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://gohugo.io/documentation/" rel="noopener noreferrer" target="_blank"&gt;Documentation →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://github.com/gohugoio/hugo" rel="noopener noreferrer" target="_blank"&gt;GitHub Repository →&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://gohugo.io" rel="noopener noreferrer" target="_blank"&gt;gohugo.io&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Inspired by Gemini CLI: My Journey with Astro Starlight</title><link>https://peterwarnock.com/blog/posts/inspired-by-geminicli/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/blog/posts/inspired-by-geminicli/</guid><description>A journey of discovery sparked by the Gemini CLI website, leading to exploration of Astro Starlight and expanding my web development toolkit.</description></item><item><title>Nuxt</title><link>https://peterwarnock.com/tools/nuxt-vuejs-framework-universal-applications/</link><pubDate>Fri, 19 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/nuxt-vuejs-framework-universal-applications/</guid><description>&lt;p&gt;Nuxt has emerged as the premier framework for building universal Vue.js
+applications, transforming the single-file component experience into a
+full-stack development platform. Originally created to solve the challenges of
+server-side rendering with Vue.js, Nuxt has evolved into a comprehensive
+framework that handles everything from development to production deployment.
+Built on Vue.js fundamentals and enhanced with modern web development best
+practices, Nuxt enables developers to create fast, SEO-friendly, and
+maintainable applications with minimal configuration.&lt;/p&gt;</description></item><item><title>Next.js</title><link>https://peterwarnock.com/tools/nextjs-react-framework-production-applications/</link><pubDate>Tue, 16 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/nextjs-react-framework-production-applications/</guid><description>&lt;p&gt;Next.js has established itself as the de facto standard for building production
+React applications, developed and maintained by Vercel. Since its initial
+release in 2016, Next.js has evolved from a simple React framework into a
+comprehensive full-stack development platform that addresses real-world
+challenges in web development, including performance optimization, SEO, and
+developer experience. The framework powers some of the world&amp;rsquo;s largest websites
+and applications, demonstrating its scalability and reliability in enterprise
+environments.&lt;/p&gt;</description></item><item><title>Vercel</title><link>https://peterwarnock.com/tools/vercel-web-development-deployment-platform/</link><pubDate>Sun, 14 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/vercel-web-development-deployment-platform/</guid><description>&lt;p&gt;Vercel has revolutionized web development and deployment since its founding,
+establishing itself as the premier platform for modern frontend applications.
+Originally created by the team behind Next.js, Vercel provides a comprehensive
+development ecosystem that seamlessly integrates building, deploying, and
+scaling web applications with unparalleled developer experience and performance
+optimization.&lt;/p&gt;
 &lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
 &lt;h3 id="frontend-first-architecture"&gt;Frontend-First Architecture&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Framework optimization&lt;/strong&gt;: Native support for Next.js, React, Svelte, Vue, Angular, and 35+ other frameworks&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Automatic deployments&lt;/strong&gt;: Instant deployment from Git commits with zero configuration required&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Preview environments&lt;/strong&gt;: Automatic preview deployments for every pull request and commit&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Global CDN&lt;/strong&gt;: Content delivery across 300+ edge locations worldwide for sub-second latency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Framework optimization&lt;/strong&gt;: Native support for Next.js, React, Svelte, Vue,
+Angular, and 35+ other frameworks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automatic deployments&lt;/strong&gt;: Instant deployment from Git commits with zero
+configuration required&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preview environments&lt;/strong&gt;: Automatic preview deployments for every pull request
+and commit&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Global CDN&lt;/strong&gt;: Content delivery across 300+ edge locations worldwide for
+sub-second latency&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="edge-computing-platform"&gt;Edge Computing Platform&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Serverless functions&lt;/strong&gt;: Deploy serverless code at the edge with automatic scaling&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Edge middleware&lt;/strong&gt;: Run code at CDN edge locations for request routing and modification&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Incremental Static Regeneration&lt;/strong&gt;: Update static content without full rebuilds&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Image optimization&lt;/strong&gt;: Automatic image resizing, compression, and format optimization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Serverless functions&lt;/strong&gt;: Deploy serverless code at the edge with automatic
+scaling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Edge middleware&lt;/strong&gt;: Run code at CDN edge locations for request routing and
+modification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incremental Static Regeneration&lt;/strong&gt;: Update static content without full
+rebuilds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image optimization&lt;/strong&gt;: Automatic image resizing, compression, and format
+optimization&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="developer-experience-tools"&gt;Developer Experience Tools&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Real-time collaboration&lt;/strong&gt;: Live cursors, comments, and instant sharing of development environments&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Analytics dashboard&lt;/strong&gt;: Comprehensive performance monitoring and user behavior insights&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Error tracking&lt;/strong&gt;: Integrated error monitoring with detailed stack traces and user context&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A/B testing&lt;/strong&gt;: Built-in experimentation framework with traffic splitting and analytics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time collaboration&lt;/strong&gt;: Live cursors, comments, and instant sharing of
+development environments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analytics dashboard&lt;/strong&gt;: Comprehensive performance monitoring and user
+behavior insights&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error tracking&lt;/strong&gt;: Integrated error monitoring with detailed stack traces and
+user context&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A/B testing&lt;/strong&gt;: Built-in experimentation framework with traffic splitting and
+analytics&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Platforms&lt;/strong&gt;: Web-based dashboard, CLI tools, VS Code extension, mobile apps&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Hobby (Free), Pro ($20/member/month), Team ($40/member/month), Enterprise (custom pricing)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: GitHub, GitLab, Bitbucket, 200+ marketplace integrations, headless CMS platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Hobby (Free), Pro ($20/member/month), Team ($40/member/month),
+Enterprise (custom pricing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: GitHub, GitLab, Bitbucket, 200+ marketplace integrations,
+headless CMS platforms&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;API Support&lt;/strong&gt;: Comprehensive REST API, webhook system, GraphQL endpoints&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: 99.99% uptime SLA, global edge network with &amp;lt;100ms average response time&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: SOC 2 Type II compliance, DDoS protection, automatic SSL certificates, private VPC options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: 99.99% uptime SLA, global edge network with &amp;lt;100ms average
+response time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: SOC 2 Type II compliance, DDoS protection, automatic SSL
+certificates, private VPC options&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="unique-advantages"&gt;Unique Advantages&lt;/h2&gt;
 &lt;h3 id="nextjs-ecosystem-leadership"&gt;Next.js Ecosystem Leadership&lt;/h3&gt;
-&lt;p&gt;As the creators of Next.js, Vercel provides unmatched integration and optimization for the framework. This includes early access to Next.js features, automatic framework updates, and performance optimizations that aren&amp;rsquo;t available on other platforms. The synergy between platform and framework creates a development experience that&amp;rsquo;s simply unmatched.&lt;/p&gt;</description></item><item><title>Getting Started with Hugo and Daisy UI</title><link>https://peterwarnock.com/posts/first-post/</link><pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/posts/first-post/</guid><description>&lt;h1 id="getting-started-with-hugo-and-daisy-ui"&gt;Getting Started with Hugo and Daisy UI&lt;/h1&gt;
-&lt;p&gt;In this post, I&amp;rsquo;ll share my experience setting up a new personal website using Hugo static site generator combined with Daisy UI component library.&lt;/p&gt;
-&lt;h2 id="why-hugo"&gt;Why Hugo?&lt;/h2&gt;
-&lt;p&gt;Hugo is an excellent choice for personal blogs and portfolios because:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Lightning fast&lt;/strong&gt; build times&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Zero JavaScript&lt;/strong&gt; required for basic functionality&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Rich templating&lt;/strong&gt; system&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Great documentation&lt;/strong&gt; and community support&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="adding-daisy-ui"&gt;Adding Daisy UI&lt;/h2&gt;
-&lt;p&gt;Daisy UI brings the power of Tailwind CSS with pre-built components:&lt;/p&gt;</description></item><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/posts/modern-web-development/</guid><description>&lt;h1 id="modern-web-development-in-2025"&gt;Modern Web Development in 2025&lt;/h1&gt;
-&lt;p&gt;The web development landscape continues to evolve rapidly. Here are my thoughts on the current state and future directions.&lt;/p&gt;
-&lt;h2 id="the-component-revolution"&gt;The Component Revolution&lt;/h2&gt;
-&lt;p&gt;Component-based architectures have become the standard:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;React&lt;/strong&gt; continues to dominate with its ecosystem&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Vue 3&lt;/strong&gt; offers excellent developer experience&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Svelte&lt;/strong&gt; provides compile-time optimizations&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Astro&lt;/strong&gt; brings island architecture to the mainstream&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="performance-matters-more-than-ever"&gt;Performance Matters More Than Ever&lt;/h2&gt;
-&lt;p&gt;Core Web Vitals are now crucial for SEO:&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;As the creators of Next.js, Vercel provides unmatched integration and
+optimization for the framework. This includes early access to Next.js features,
+automatic framework updates, and performance optimizations that aren&amp;rsquo;t available
+on other platforms. The synergy between platform and framework creates a
+development experience that&amp;rsquo;s simply unmatched.&lt;/p&gt;</description></item><item><title>Getting Started with Hugo and Daisy UI</title><link>https://peterwarnock.com/blog/posts/first-post/</link><pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/first-post/</guid><description>Learn how to set up a fast static site using Hugo combined with Daisy UI components for modern, responsive design without JavaScript bloat.</description></item><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/blog/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/modern-web-development/</guid><description>Exploring the current web development landscape: component architectures, performance optimization, edge computing, and the modern static site stack for optimal user experience.</description></item></channel></rss>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Components on Peter Warnock</title><link>https://peterwarnock.com/components/</link><description>Recent content in Components on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 19 Nov 2025 14:47:44 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/components/index.xml" rel="self" type="application/rss+xml"/><item><title>Lit 3D Piano Demo</title><link>https://peterwarnock.com/components/piano-demo/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/components/piano-demo/</guid><description>&lt;script type="module" src="https://peterwarnock.com/js/lit-3d-piano.js"&gt;&lt;/script&gt;
+&lt;h2 id="live-demo"&gt;Live Demo&lt;/h2&gt;
+&lt;p&gt;Interact with the piano below. Click the keys to play sound (Web Audio API).&lt;/p&gt;
+&lt;div style="padding: 40px; text-align: center; background: #f4f4f4; border-radius: 8px;"&gt;
+ &lt;lit-3d-piano&gt;&lt;/lit-3d-piano&gt;
+&lt;/div&gt;
+&lt;h3 id="integration-code"&gt;Integration Code&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;html&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-html" &gt;&lt;script type="module" src="https://peterwarnock.com/js/lit-3d-piano.js"&gt;&lt;/script&gt;
+&lt;lit-3d-piano&gt;&lt;/lit-3d-piano&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h2 id="credits"&gt;Credits&lt;/h2&gt;
+&lt;p&gt;Inspired by 
+
+
+
+
+
+
+&lt;a href="https://github.com/rodydavis/lit-3d-piano" rel="noopener noreferrer" target="_blank"&gt;lit-3d-piano&lt;/a&gt;
+ by Rody
+Davis. This implementation is a lightweight, dependency-free adaptation using
+CSS 3D transforms instead of WebGL/Three.js.&lt;/p&gt;</description></item><item><title>Lit Component Demo</title><link>https://peterwarnock.com/components/demo/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/components/demo/</guid><description>&lt;script type="module" src="https://peterwarnock.com/js/simple-greeting.js"&gt;&lt;/script&gt;
+&lt;h2 id="live-demo"&gt;Live Demo&lt;/h2&gt;
+&lt;p&gt;Below is the &lt;code&gt;&amp;lt;simple-greeting&amp;gt;&lt;/code&gt; component rendered directly in this page:&lt;/p&gt;
+&lt;div style="padding: 20px; border: 1px solid #eee; border-radius: 8px; margin: 20px 0;"&gt;
+ &lt;simple-greeting&gt;&lt;/simple-greeting&gt;
+&lt;/div&gt;
+&lt;h3 id="integration-code"&gt;Integration Code&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;html&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-html" &gt;&lt;script type="module" src="https://peterwarnock.com/js/simple-greeting.js"&gt;&lt;/script&gt;
+&lt;simple-greeting&gt;&lt;/simple-greeting&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;</description></item><item><title>Shadow DOM Isolation Demo</title><link>https://peterwarnock.com/components/isolation-demo/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/components/isolation-demo/</guid><description>A live demo showing CSS and DOM isolation between a host page and a remote web component.</description></item><item><title>Smart Iframe Integration</title><link>https://peterwarnock.com/components/iframe-demo/</link><pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/components/iframe-demo/</guid><description>&lt;script type="module" src="https://peterwarnock.com/js/smart-iframe.js"&gt;&lt;/script&gt;
+&lt;h2 id="live-demo-tech-radar"&gt;Live Demo: Tech Radar&lt;/h2&gt;
+&lt;p&gt;This example embeds the
+
+
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/build-your-own-radar/" rel="noopener noreferrer" target="_blank"&gt;Build Your Own Radar&lt;/a&gt;
+
+application, automatically loaded with this site&amp;rsquo;s tool data. It also auto-hides
+the &amp;ldquo;Powered by Thoughtworks&amp;rdquo; banner when viewed on the production domain.&lt;/p&gt;
+&lt;p&gt;&lt;smart-iframe 
+src="https://peterwarnock.com/build-your-own-radar/?documentId=https://peterwarnock.com/tools/radar.json" 
+title="Peter Warnock Tech Radar" 
+breakout
+dev-crop="305"
+height="800px"&gt; &lt;/smart-iframe&gt;&lt;/p&gt;
+&lt;h2 id="why-use-a-custom-wrapper"&gt;Why use a Custom Wrapper?&lt;/h2&gt;
+&lt;p&gt;While standard &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; tags are functional, wrapping them in a Web Component
+(&lt;code&gt;&amp;lt;smart-iframe&amp;gt;&lt;/code&gt;) offers significant architectural advantages for a static
+site.&lt;/p&gt;
+&lt;h3 id="pros-strengths"&gt;Pros (Strengths)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Improved User Experience (UX)&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

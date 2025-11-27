@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daisy UI on Peter Warnock</title><link>https://peterwarnock.com/tags/daisy-ui/</link><description>Recent content in Daisy UI on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 15 Jan 2025 10:00:00 +0000</lastBuildDate><atom:link href="https://peterwarnock.com/tags/daisy-ui/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with Hugo and Daisy UI</title><link>https://peterwarnock.com/posts/first-post/</link><pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/posts/first-post/</guid><description>&lt;h1 id="getting-started-with-hugo-and-daisy-ui"&gt;Getting Started with Hugo and Daisy UI&lt;/h1&gt;
-&lt;p&gt;In this post, I&amp;rsquo;ll share my experience setting up a new personal website using Hugo static site generator combined with Daisy UI component library.&lt;/p&gt;
-&lt;h2 id="why-hugo"&gt;Why Hugo?&lt;/h2&gt;
-&lt;p&gt;Hugo is an excellent choice for personal blogs and portfolios because:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Lightning fast&lt;/strong&gt; build times&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Zero JavaScript&lt;/strong&gt; required for basic functionality&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Rich templating&lt;/strong&gt; system&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Great documentation&lt;/strong&gt; and community support&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="adding-daisy-ui"&gt;Adding Daisy UI&lt;/h2&gt;
-&lt;p&gt;Daisy UI brings the power of Tailwind CSS with pre-built components:&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daisy UI on Peter Warnock</title><link>https://peterwarnock.com/tags/daisy-ui/</link><description>Recent content in Daisy UI on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/daisy-ui/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started with Hugo and Daisy UI</title><link>https://peterwarnock.com/blog/posts/first-post/</link><pubDate>Wed, 15 Jan 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/first-post/</guid><description>Learn how to set up a fast static site using Hugo combined with Daisy UI components for modern, responsive design without JavaScript bloat.</description></item></channel></rss>

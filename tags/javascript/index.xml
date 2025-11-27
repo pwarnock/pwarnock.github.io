@@ -1,12 +1,102 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on Peter Warnock</title><link>https://peterwarnock.com/tags/javascript/</link><description>Recent content in JavaScript on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 10 Jan 2025 14:30:00 +0000</lastBuildDate><atom:link href="https://peterwarnock.com/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/posts/modern-web-development/</guid><description>&lt;h1 id="modern-web-development-in-2025"&gt;Modern Web Development in 2025&lt;/h1&gt;
-&lt;p&gt;The web development landscape continues to evolve rapidly. Here are my thoughts on the current state and future directions.&lt;/p&gt;
-&lt;h2 id="the-component-revolution"&gt;The Component Revolution&lt;/h2&gt;
-&lt;p&gt;Component-based architectures have become the standard:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Javascript on Peter Warnock</title><link>https://peterwarnock.com/tags/javascript/</link><description>Recent content in Javascript on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>TypeScript - JavaScript with Type Safety</title><link>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</link><pubDate>Sat, 15 Nov 2025 20:15:00 -0800</pubDate><guid>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</guid><description>TypeScript is a strongly typed programming language that builds on JavaScript, adding static type definitions to enable better development tooling and enhanced code reliability.</description></item><item><title>Playwright - Modern End-to-End Testing Framework</title><link>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</link><pubDate>Sat, 15 Nov 2025 20:10:00 -0800</pubDate><guid>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</guid><description>Playwright is a modern end-to-end testing framework for web applications that provides reliable cross-browser testing, mobile emulation, and powerful debugging capabilities.</description></item><item><title>Bun - Lightning-Fast JavaScript Runtime &amp; Package Manager</title><link>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</link><pubDate>Sat, 15 Nov 2025 20:00:00 -0800</pubDate><guid>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</guid><description>Bun is a modern JavaScript runtime and package manager that delivers 20x faster dependency installation and near-instant script execution, revolutionizing JavaScript development workflow.</description></item><item><title>Astro</title><link>https://peterwarnock.com/tools/astro-web-framework/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/astro-web-framework/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/astro.png" alt="Astro Logo" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro is a modern frontend framework designed for building fast, content-driven
+websites. It allows you to use your favorite UI components (React, Vue, Svelte,
+etc.) and renders them to HTML at build time, resulting in zero JavaScript
+runtime by default. This approach leads to incredibly fast load times and
+excellent performance scores.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;React&lt;/strong&gt; continues to dominate with its ecosystem&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Vue 3&lt;/strong&gt; offers excellent developer experience&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Svelte&lt;/strong&gt; provides compile-time optimizations&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Astro&lt;/strong&gt; brings island architecture to the mainstream&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Island Architecture&lt;/strong&gt;: Ship less JavaScript by rendering UI to static HTML
+and only hydrating interactive components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UI Framework Agnostic&lt;/strong&gt;: Use React, Preact, Svelte, Vue, Solid, Lit, or just
+plain HTML + JavaScript.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fast by Default&lt;/strong&gt;: Astro generates static HTML at build time, resulting in
+faster load times and better SEO.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content-focused&lt;/strong&gt;: Built with content-rich websites like blogs, marketing
+sites, and documentation in mind.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Developer Experience&lt;/strong&gt;: Great tooling, clear documentation, and a vibrant
+community.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="performance-matters-more-than-ever"&gt;Performance Matters More Than Ever&lt;/h2&gt;
-&lt;p&gt;Core Web Vitals are now crucial for SEO:&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Create a new Astro project with &lt;code&gt;npm create astro@latest&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;: Choose a template or start from scratch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Start the development server with &lt;code&gt;npm run dev&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Components&lt;/strong&gt;: Build your UI with your favorite framework components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Deploy your static site to any hosting provider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://astro.build/" rel="noopener noreferrer" target="_blank"&gt;Official Website →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://docs.astro.build/" rel="noopener noreferrer" target="_blank"&gt;Documentation →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://github.com/withastro/astro" rel="noopener noreferrer" target="_blank"&gt;GitHub Repository →&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="related-tools"&gt;Related Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/hugo-static-site-generator/"&gt;Hugo&lt;/a&gt;
+: A popular static site generator
+that shares similar goals of performance and content-driven websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="projects-using-astro"&gt;Projects using Astro&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/astro-starlight/"&gt;Astro Starlight&lt;/a&gt;
+: The documentation website builder
+that makes creating stellar docs effortless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://astro.build" rel="noopener noreferrer" target="_blank"&gt;astro.build&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Modern Web Development in 2025</title><link>https://peterwarnock.com/blog/posts/modern-web-development/</link><pubDate>Fri, 10 Jan 2025 14:30:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/modern-web-development/</guid><description>Exploring the current web development landscape: component architectures, performance optimization, edge computing, and the modern static site stack for optimal user experience.</description></item></channel></rss>

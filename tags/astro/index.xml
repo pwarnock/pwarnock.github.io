@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Astro on Peter Warnock</title><link>https://peterwarnock.com/tags/astro/</link><description>Recent content in Astro on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/astro/index.xml" rel="self" type="application/rss+xml"/><item><title>Astro</title><link>https://peterwarnock.com/tools/astro-web-framework/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/astro-web-framework/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/astro.png" alt="Astro Logo" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro is a modern frontend framework designed for building fast, content-driven
+websites. It allows you to use your favorite UI components (React, Vue, Svelte,
+etc.) and renders them to HTML at build time, resulting in zero JavaScript
+runtime by default. This approach leads to incredibly fast load times and
+excellent performance scores.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Island Architecture&lt;/strong&gt;: Ship less JavaScript by rendering UI to static HTML
+and only hydrating interactive components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UI Framework Agnostic&lt;/strong&gt;: Use React, Preact, Svelte, Vue, Solid, Lit, or just
+plain HTML + JavaScript.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fast by Default&lt;/strong&gt;: Astro generates static HTML at build time, resulting in
+faster load times and better SEO.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content-focused&lt;/strong&gt;: Built with content-rich websites like blogs, marketing
+sites, and documentation in mind.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Developer Experience&lt;/strong&gt;: Great tooling, clear documentation, and a vibrant
+community.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Create a new Astro project with &lt;code&gt;npm create astro@latest&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;: Choose a template or start from scratch.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Start the development server with &lt;code&gt;npm run dev&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Components&lt;/strong&gt;: Build your UI with your favorite framework components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Deploy your static site to any hosting provider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="external-links"&gt;External Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://astro.build/" rel="noopener noreferrer" target="_blank"&gt;Official Website →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://docs.astro.build/" rel="noopener noreferrer" target="_blank"&gt;Documentation →&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+
+
+
+
+
+
+&lt;a href="https://github.com/withastro/astro" rel="noopener noreferrer" target="_blank"&gt;GitHub Repository →&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="related-tools"&gt;Related Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/hugo-static-site-generator/"&gt;Hugo&lt;/a&gt;
+: A popular static site generator
+that shares similar goals of performance and content-driven websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="projects-using-astro"&gt;Projects using Astro&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/astro-starlight/"&gt;Astro Starlight&lt;/a&gt;
+: The documentation website builder
+that makes creating stellar docs effortless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://astro.build" rel="noopener noreferrer" target="_blank"&gt;astro.build&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Astro Starlight</title><link>https://peterwarnock.com/tools/astro-starlight/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/astro-starlight/</guid><description>&lt;p&gt;
+
+ 
+ 
+
+&lt;img loading="lazy" src="https://peterwarnock.com/images/tools/astro-starlight.webp" alt="Astro Starlight Hero Image" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro Starlight is a full-featured documentation theme built on top of the Astro
+framework. It provides everything you need to build a beautiful,
+high-performance documentation website with a great authoring experience.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Markdown &amp;amp; MDX Support&lt;/strong&gt;: Write content using standard Markdown or leverage
+the power of MDX to include interactive components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search&lt;/strong&gt;: Built-in search functionality that indexes your content for easy
+navigation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Internationalization (i18n)&lt;/strong&gt;: Support for multiple languages to reach a
+global audience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEO-friendly&lt;/strong&gt;: Automatic sitemaps, and other features to ensure your
+documentation is discoverable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Easy Configuration&lt;/strong&gt;: A simple &lt;code&gt;starlight.config.ts&lt;/code&gt; file to customize your
+site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="getting-started"&gt;Getting Started&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Create a new Starlight project with
+&lt;code&gt;bun create astro --template starlight&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;: Configure your site in &lt;code&gt;starlight.config.ts&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Development&lt;/strong&gt;: Start the development server with &lt;code&gt;bun dev&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content&lt;/strong&gt;: Add your content in the &lt;code&gt;src/content/docs&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deployment&lt;/strong&gt;: Deploy your site to any static hosting provider.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="related-tools"&gt;Related Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/astro-web-framework/"&gt;Astro&lt;/a&gt;
+: The underlying framework that powers
+Starlight, designed for building fast, content-driven websites.&lt;/li&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/tools/hugo-static-site-generator/"&gt;Hugo&lt;/a&gt;
+: A popular static site generator
+known for its speed and flexibility, often used for similar documentation
+purposes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="projects-using-astro-starlight"&gt;Projects using Astro Starlight&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/portfolio/astro-starlight-demo/"&gt;Astro Starlight Demo&lt;/a&gt;
+: A demo project
+showcasing the ease of getting started with Astro Starlight for building
+modern websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Website&lt;/strong&gt;: 
+
+
+
+
+
+
+&lt;a href="https://starlight.astro.build" rel="noopener noreferrer" target="_blank"&gt;starlight.astro.build&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Inspired by Gemini CLI: My Journey with Astro Starlight</title><link>https://peterwarnock.com/blog/posts/inspired-by-geminicli/</link><pubDate>Tue, 04 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/blog/posts/inspired-by-geminicli/</guid><description>A journey of discovery sparked by the Gemini CLI website, leading to exploration of Astro Starlight and expanding my web development toolkit.</description></item></channel></rss>

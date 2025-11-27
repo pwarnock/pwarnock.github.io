@@ -1,36 +1,66 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terminal on Peter Warnock</title><link>https://peterwarnock.com/tags/terminal/</link><description>Recent content in Terminal on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 22 Sep 2025 10:00:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/terminal/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenAI Codex</title><link>https://peterwarnock.com/tools/openai-codex-command-line-coding-assistant/</link><pubDate>Mon, 22 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/openai-codex-command-line-coding-assistant/</guid><description>&lt;p&gt;OpenAI Codex represents a groundbreaking advancement in AI-powered development, bringing sophisticated code generation capabilities directly to the command line. Launched by OpenAI as part of their Codex API ecosystem, this terminal-based assistant leverages the same technology that powers GitHub Copilot, but optimized specifically for CLI workflows and terminal-based development environments.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terminal on Peter Warnock</title><link>https://peterwarnock.com/tags/terminal/</link><description>Recent content in Terminal on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 17:20:57 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/terminal/index.xml" rel="self" type="application/rss+xml"/><item><title>Bat - Cat with Wings</title><link>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</guid><description>A cat command replacement with syntax highlighting and great formatting, perfect for viewing source code and Markdown files.</description></item><item><title>Eza - Modern LS Replacement</title><link>https://peterwarnock.com/tools/eza-modern-ls-replacement/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/eza-modern-ls-replacement/</guid><description>Eza is a feature-rich &lt;code&gt;ls&lt;/code&gt; replacement, offering vibrant color highlighting, file type icons, and flexible tree and table views for enhanced terminal navigation.</description></item><item><title>Just - Modern Make Replacement</title><link>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</guid><description>A command runner that saves time and provides command inheritance, perfect for development workflows and AI agent integration.</description></item><item><title>Micro - Modern Terminal Editor</title><link>https://peterwarnock.com/tools/micro-terminal-editor/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/micro-terminal-editor/</guid><description>A modern terminal-based editor written in Go, configurable with themes and standard keyboard shortcuts.</description></item><item><title>Terminal Upgrades for CLI Development</title><link>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</guid><description>Eleanor Berger shares the terminal tools she uses alongside Claude and other CLI agents.</description></item><item><title>Yazi - Terminal File Manager</title><link>https://peterwarnock.com/tools/yazi-terminal-file-manager/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/yazi-terminal-file-manager/</guid><description>A fully-featured terminal file manager with viewers for different file types, easy navigation, and multi-column view.</description></item><item><title>OpenAI Codex</title><link>https://peterwarnock.com/tools/openai-codex-command-line-coding-assistant/</link><pubDate>Mon, 22 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/openai-codex-command-line-coding-assistant/</guid><description>&lt;p&gt;OpenAI Codex represents a groundbreaking advancement in AI-powered development,
+bringing sophisticated code generation capabilities directly to the command
+line. Launched by OpenAI as part of their Codex API ecosystem, this
+terminal-based assistant leverages the same technology that powers GitHub
+Copilot, but optimized specifically for CLI workflows and terminal-based
+development environments.&lt;/p&gt;
 &lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
 &lt;h3 id="advanced-code-generation"&gt;Advanced Code Generation&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Natural language to code&lt;/strong&gt;: Transform plain English descriptions into functional code across dozens of programming languages&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Context-aware completion&lt;/strong&gt;: Understands surrounding code and project structure for highly relevant suggestions&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Multi-language support&lt;/strong&gt;: Proficient in Python, JavaScript, TypeScript, Go, Rust, Shell scripting, and many more languages&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Framework expertise&lt;/strong&gt;: Deep knowledge of popular frameworks like React, Django, Flask, Express, and Next.js&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Natural language to code&lt;/strong&gt;: Transform plain English descriptions into
+functional code across dozens of programming languages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context-aware completion&lt;/strong&gt;: Understands surrounding code and project
+structure for highly relevant suggestions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-language support&lt;/strong&gt;: Proficient in Python, JavaScript, TypeScript, Go,
+Rust, Shell scripting, and many more languages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Framework expertise&lt;/strong&gt;: Deep knowledge of popular frameworks like React,
+Django, Flask, Express, and Next.js&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="terminal-integration"&gt;Terminal Integration&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Seamless CLI workflow&lt;/strong&gt;: Integrates naturally with existing terminal tools and command-line interfaces&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Scriptable AI assistance&lt;/strong&gt;: Can be incorporated into shell scripts and automation pipelines&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Interactive mode&lt;/strong&gt;: Real-time code generation and modification within terminal sessions&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Batch processing&lt;/strong&gt;: Handle multiple code generation tasks in sequence for automated workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seamless CLI workflow&lt;/strong&gt;: Integrates naturally with existing terminal tools
+and command-line interfaces&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scriptable AI assistance&lt;/strong&gt;: Can be incorporated into shell scripts and
+automation pipelines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interactive mode&lt;/strong&gt;: Real-time code generation and modification within
+terminal sessions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch processing&lt;/strong&gt;: Handle multiple code generation tasks in sequence for
+automated workflows&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="development-intelligence"&gt;Development Intelligence&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Pattern recognition&lt;/strong&gt;: Identifies and implements common coding patterns and best practices&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Error detection&lt;/strong&gt;: Suggests fixes for syntax errors and common programming mistakes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code optimization&lt;/strong&gt;: Recommends performance improvements and refactoring opportunities&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Documentation generation&lt;/strong&gt;: Automatically creates comments and documentation for generated code&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pattern recognition&lt;/strong&gt;: Identifies and implements common coding patterns and
+best practices&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error detection&lt;/strong&gt;: Suggests fixes for syntax errors and common programming
+mistakes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code optimization&lt;/strong&gt;: Recommends performance improvements and refactoring
+opportunities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation generation&lt;/strong&gt;: Automatically creates comments and documentation
+for generated code&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Platforms&lt;/strong&gt;: macOS, Linux, Windows (via WSL)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Free tier with limited requests, Pro tier ($20/month for extended usage), Enterprise pricing available&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: Compatible with bash, zsh, fish, PowerShell, and other popular shells&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Free tier with limited requests, Pro tier ($20/month for
+extended usage), Enterprise pricing available&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: Compatible with bash, zsh, fish, PowerShell, and other
+popular shells&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;API Support&lt;/strong&gt;: Full REST API integration with OpenAI&amp;rsquo;s Codex endpoints&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Average response time 200-500ms for code generation requests&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Privacy&lt;/strong&gt;: Code processed securely with optional data retention controls for enterprise customers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Privacy&lt;/strong&gt;: Code processed securely with optional data retention controls for
+enterprise customers&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="unique-advantages"&gt;Unique Advantages&lt;/h2&gt;
 &lt;h3 id="terminal-first-design"&gt;Terminal-First Design&lt;/h3&gt;
-&lt;p&gt;Unlike GUI-based coding assistants, OpenAI Codex is specifically engineered for terminal workflows, making it ideal for developers who spend most of their time in the command line. This focus results in faster performance, more natural integration with existing tools, and a workflow that doesn&amp;rsquo;t require context switching between terminal and GUI applications.&lt;/p&gt;</description></item><item><title>Gemini CLI</title><link>https://peterwarnock.com/tools/gemini-cli-google-terminal-ai-agent/</link><pubDate>Sat, 20 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/gemini-cli-google-terminal-ai-agent/</guid><description>&lt;h1 id="gemini-cli"&gt;Gemini CLI&lt;/h1&gt;
-&lt;p&gt;Gemini CLI represents Google&amp;rsquo;s ambitious entry into the AI-powered terminal space, bringing the sophisticated capabilities of the Gemini AI model directly to developers&amp;rsquo; command-line environments. Launched in 2024 as part of Google&amp;rsquo;s broader AI development ecosystem, Gemini CLI transforms how developers interact with their terminals by enabling natural language processing for complex command-line operations, code generation, and system administration tasks. The tool leverages Google&amp;rsquo;s extensive AI research and cloud infrastructure to provide a seamless bridge between human language and machine execution.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Unlike GUI-based coding assistants, OpenAI Codex is specifically engineered for
+terminal workflows, making it ideal for developers who spend most of their time
+in the command line. This focus results in faster performance, more natural
+integration with existing tools, and a workflow that doesn&amp;rsquo;t require context
+switching between terminal and GUI applications.&lt;/p&gt;</description></item><item><title>Gemini CLI</title><link>https://peterwarnock.com/tools/gemini-cli-google-terminal-ai-agent/</link><pubDate>Sat, 20 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/gemini-cli-google-terminal-ai-agent/</guid><description>&lt;p&gt;Gemini CLI represents Google&amp;rsquo;s ambitious entry into the AI-powered terminal
+space, bringing the sophisticated capabilities of the Gemini AI model directly
+to developers&amp;rsquo; command-line environments. Launched in 2024 as part of Google&amp;rsquo;s
+broader AI development ecosystem, Gemini CLI transforms how developers interact
+with their terminals by enabling natural language processing for complex
+command-line operations, code generation, and system administration tasks. The
+tool leverages Google&amp;rsquo;s extensive AI research and cloud infrastructure to
+provide a seamless bridge between human language and machine execution.&lt;/p&gt;</description></item></channel></rss>

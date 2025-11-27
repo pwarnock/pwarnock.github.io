@@ -1,10 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Portfolio on Peter Warnock</title><link>https://peterwarnock.com/portfolio/</link><description>Recent content in Portfolio on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 22 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://peterwarnock.com/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Alpha Ad Ops</title><link>https://peterwarnock.com/portfolio/alpha-ad-ops/</link><pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/alpha-ad-ops/</guid><description>&lt;h1 id="alpha-ad-ops---rapid-prototype-development"&gt;Alpha Ad Ops - Rapid Prototype Development&lt;/h1&gt;
-&lt;p&gt;Alpha Ad Ops is a proof-of-concept advertising operations platform developed as a rapid prototype to demonstrate full-stack development capabilities and modern SaaS architecture patterns. The project was built from concept to deployment in a single day based on prospect requirements.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Portfolio on Peter Warnock</title><link>https://peterwarnock.com/portfolio/</link><description>Recent content in Portfolio on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Nov 2025 17:59:58 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Astro Starlight Demo</title><link>https://peterwarnock.com/portfolio/astro-starlight-demo/</link><pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/astro-starlight-demo/</guid><description>&lt;p&gt;
+
+&lt;img loading="lazy" src="https://peterwarnock.com/astro-starlight-demo/_astro/houston.CZZyCf7p_Z1g0CND.webp" alt="Astro Starlight Demo Screenshot" /&gt;
+&lt;/p&gt;
+&lt;p&gt;Astro Starlight positions itself as &amp;ldquo;Everything you need to build a stellar
+documentation website.&amp;rdquo; It was so easy to get started.
+&lt;code&gt;bun create astro --template starlight&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Alpha Ad Ops</title><link>https://peterwarnock.com/portfolio/alpha-ad-ops/</link><pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/alpha-ad-ops/</guid><description>&lt;p&gt;Alpha Ad Ops is a proof-of-concept advertising operations platform developed as
+a rapid prototype to demonstrate full-stack development capabilities and modern
+SaaS architecture patterns. The project was built from concept to deployment in
+a single day based on prospect requirements.&lt;/p&gt;
 &lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;
-&lt;p&gt;This prototype showcases the ability to quickly translate business requirements into a functional SaaS application using modern Laravel ecosystem tools. The platform demonstrates multi-tenant architecture, admin panel development, and cloud deployment capabilities.&lt;/p&gt;</description></item><item><title>YouSong</title><link>https://peterwarnock.com/portfolio/yousong/</link><pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/yousong/</guid><description>&lt;h1 id="yousong---ai-scripture-music-generator"&gt;YouSong - AI Scripture Music Generator&lt;/h1&gt;
-&lt;p&gt;YouSong is an AI-powered application that generates children&amp;rsquo;s scripture-based songs, built during the Gloo AI Hackathon 2025. The project demonstrates rapid full-stack development using cutting-edge AI tools and modern web technologies to create an engaging educational music experience.&lt;/p&gt;
+&lt;p&gt;This prototype showcases the ability to quickly translate business requirements
+into a functional SaaS application using modern Laravel ecosystem tools. The
+platform demonstrates multi-tenant architecture, admin panel development, and
+cloud deployment capabilities.&lt;/p&gt;</description></item><item><title>YouSong</title><link>https://peterwarnock.com/portfolio/yousong/</link><pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/yousong/</guid><description>&lt;p&gt;YouSong is an AI-powered application that generates children&amp;rsquo;s scripture-based
+songs, built during the Gloo AI Hackathon 2025. The project demonstrates rapid
+full-stack development using cutting-edge AI tools and modern web technologies
+to create an engaging educational music experience.&lt;/p&gt;
 &lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;
-&lt;p&gt;Developed as part of FaithTech OC/SoCal Chapter team for the Gloo AI Hackathon, YouSong enables users to create custom children&amp;rsquo;s songs with scripture-based lyrics through AI assistance. The application combines modern AI capabilities with user-friendly interfaces to make religious education engaging and creative.&lt;/p&gt;</description></item><item><title>Vocabulary Game</title><link>https://peterwarnock.com/portfolio/vocabulary-game/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/vocabulary-game/</guid><description>&lt;h1 id="vocabulary-game---educational-typing-practice"&gt;Vocabulary Game - Educational Typing Practice&lt;/h1&gt;
-&lt;p&gt;Vocabulary Game is a simple, focused educational application designed to help young children (specifically 5-year-olds) practice typing, spelling, and reading skills. The project demonstrates the practical application of AI-assisted development for creating educational tools.&lt;/p&gt;
+&lt;p&gt;Developed as part of FaithTech OC/SoCal Chapter team for the Gloo AI Hackathon,
+YouSong enables users to create custom children&amp;rsquo;s songs with scripture-based
+lyrics through AI assistance. The application combines modern AI capabilities
+with user-friendly interfaces to make religious education engaging and creative.&lt;/p&gt;</description></item><item><title>Vocabulary Game</title><link>https://peterwarnock.com/portfolio/vocabulary-game/</link><pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/vocabulary-game/</guid><description>&lt;p&gt;Vocabulary Game is a simple, focused educational application designed to help
+young children (specifically 5-year-olds) practice typing, spelling, and reading
+skills. The project demonstrates the practical application of AI-assisted
+development for creating educational tools.&lt;/p&gt;
 &lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;
-&lt;p&gt;This frontend-only application provides an engaging way for children to learn vocabulary through typing practice. The game displays words that the child types, with immediate feedback on submission. It&amp;rsquo;s designed as a personal educational tool for early childhood development.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;This frontend-only application provides an engaging way for children to learn
+vocabulary through typing practice. The game displays words that the child
+types, with immediate feedback on submission. It&amp;rsquo;s designed as a personal
+educational tool for early childhood development.&lt;/p&gt;</description></item></channel></rss>

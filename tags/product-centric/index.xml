@@ -1,32 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product-Centric on Peter Warnock</title><link>https://peterwarnock.com/tags/product-centric/</link><description>Recent content in Product-Centric on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 29 Sep 2025 10:00:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/product-centric/index.xml" rel="self" type="application/rss+xml"/><item><title>Lovable</title><link>https://peterwarnock.com/tools/lovable-frontend-development-platform/</link><pubDate>Mon, 29 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/lovable-frontend-development-platform/</guid><description>&lt;h1 id="lovable"&gt;Lovable&lt;/h1&gt;
-&lt;p&gt;Lovable represents a paradigm shift in frontend development, offering a product-centric platform that democratizes web application creation through AI-powered visual development tools. Founded in 2023 on the principle that great products should be accessible to everyone, not just developers, Lovable enables teams with limited technical expertise to transform ideas into functional, production-ready web applications through natural language descriptions and intuitive visual interfaces. The platform bridges the gap between design and development, allowing product managers, designers, and business stakeholders to actively participate in the creation process while maintaining enterprise-grade code quality.&lt;/p&gt;</description></item><item><title>Bolt.new</title><link>https://peterwarnock.com/tools/bolt-new-frontend-development-platform/</link><pubDate>Wed, 03 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/bolt-new-frontend-development-platform/</guid><description>&lt;h1 id="boltnew"&gt;Bolt.new&lt;/h1&gt;
-&lt;p&gt;Bolt.new represents a paradigm shift in frontend development, offering an AI-powered platform that transforms how teams move from ideas to production-ready web applications. Launched by the Bolt team in 2024, this platform combines visual development tools with intelligent code generation to dramatically accelerate the frontend development lifecycle.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Product-Centric on Peter Warnock</title><link>https://peterwarnock.com/tags/product-centric/</link><description>Recent content in Product-Centric on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/product-centric/index.xml" rel="self" type="application/rss+xml"/><item><title>Lovable</title><link>https://peterwarnock.com/tools/lovable-frontend-development-platform/</link><pubDate>Mon, 29 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/lovable-frontend-development-platform/</guid><description>&lt;p&gt;Lovable represents a paradigm shift in frontend development, offering a
+product-centric platform that democratizes web application creation through
+AI-powered visual development tools. Founded in 2023 on the principle that great
+products should be accessible to everyone, not just developers, Lovable enables
+teams with limited technical expertise to transform ideas into functional,
+production-ready web applications through natural language descriptions and
+intuitive visual interfaces. The platform bridges the gap between design and
+development, allowing product managers, designers, and business stakeholders to
+actively participate in the creation process while maintaining enterprise-grade
+code quality.&lt;/p&gt;</description></item><item><title>Bolt.new</title><link>https://peterwarnock.com/tools/bolt-new-frontend-development-platform/</link><pubDate>Wed, 03 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/bolt-new-frontend-development-platform/</guid><description>&lt;p&gt;Bolt.new represents a paradigm shift in frontend development, offering an
+AI-powered platform that transforms how teams move from ideas to
+production-ready web applications. Launched by the Bolt team in 2024, this
+platform combines visual development tools with intelligent code generation to
+dramatically accelerate the frontend development lifecycle.&lt;/p&gt;
 &lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
 &lt;h3 id="ai-powered-visual-development"&gt;AI-Powered Visual Development&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Drag-and-Drop Interface&lt;/strong&gt;: Visual component assembly with real-time preview&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Natural Language to Code&lt;/strong&gt;: Describe components and features in plain English&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Smart Component Generation&lt;/strong&gt;: AI creates reusable components based on design requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Natural Language to Code&lt;/strong&gt;: Describe components and features in plain
+English&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart Component Generation&lt;/strong&gt;: AI creates reusable components based on design
+requirements&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Live Preview&lt;/strong&gt;: Instant visual feedback as you build and iterate&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="rapid-prototyping-engine"&gt;Rapid Prototyping Engine&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Template Library&lt;/strong&gt;: Pre-built templates for common web application patterns&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;One-Click Deployment&lt;/strong&gt;: Direct deployment to popular hosting platforms&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Responsive Design&lt;/strong&gt;: Mobile-first approach with automatic breakpoint optimization&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Component Marketplace&lt;/strong&gt;: Access to a library of pre-built, customizable components&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Responsive Design&lt;/strong&gt;: Mobile-first approach with automatic breakpoint
+optimization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Component Marketplace&lt;/strong&gt;: Access to a library of pre-built, customizable
+components&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="intelligent-code-generation"&gt;Intelligent Code Generation&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Framework Agnostic&lt;/strong&gt;: Works with React, Vue, Angular, and vanilla JavaScript&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Best Practices Integration&lt;/strong&gt;: Generated code follows industry standards and accessibility guidelines&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt;: Automatic code splitting and lazy loading implementation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best Practices Integration&lt;/strong&gt;: Generated code follows industry standards and
+accessibility guidelines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt;: Automatic code splitting and lazy loading
+implementation&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;SEO Optimization&lt;/strong&gt;: Built-in meta tags and structured data generation&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Platforms&lt;/strong&gt;: Web-based platform (works in all modern browsers)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Free tier, Pro ($29/month), Team ($99/month), Enterprise (custom)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Free tier, Pro ($29/month), Team ($99/month), Enterprise
+(custom)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: GitHub, GitLab, Vercel, Netlify, AWS Amplify, Firebase&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;API Support&lt;/strong&gt;: RESTful API for custom integrations and workflows&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Sub-2 second build times for most applications&lt;/li&gt;
@@ -34,4 +52,6 @@
 &lt;/ul&gt;
 &lt;h2 id="unique-advantages"&gt;Unique Advantages&lt;/h2&gt;
 &lt;h3 id="democratization-of-frontend-development"&gt;Democratization of Frontend Development&lt;/h3&gt;
-&lt;p&gt;Bolt.new significantly lowers the barrier to entry for web development, enabling non-technical team members to contribute meaningfully to frontend projects while maintaining professional code quality and standards.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Bolt.new significantly lowers the barrier to entry for web development, enabling
+non-technical team members to contribute meaningfully to frontend projects while
+maintaining professional code quality and standards.&lt;/p&gt;</description></item></channel></rss>

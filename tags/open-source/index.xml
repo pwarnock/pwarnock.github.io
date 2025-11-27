@@ -1,38 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Open-Source on Peter Warnock</title><link>https://peterwarnock.com/tags/open-source/</link><description>Recent content in Open-Source on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 05 Sep 2025 10:00:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/open-source/index.xml" rel="self" type="application/rss+xml"/><item><title>Visual Studio Code</title><link>https://peterwarnock.com/tools/visual-studio-code-lightweight-open-source-editor/</link><pubDate>Fri, 05 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/visual-studio-code-lightweight-open-source-editor/</guid><description>&lt;p&gt;Visual Studio Code has fundamentally transformed the development landscape since its launch in 2015, evolving from a simple code editor to the world&amp;rsquo;s most popular development environment. Built by Microsoft on the Electron framework, VS Code combines the lightweight performance developers crave with the powerful features traditionally found only in full IDEs, all while maintaining a commitment to open-source principles and extensibility.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Open-Source on Peter Warnock</title><link>https://peterwarnock.com/tags/open-source/</link><description>Recent content in Open-Source on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/open-source/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHits</title><link>https://peterwarnock.com/tools/githits-ai-powered-code-search-platform/</link><pubDate>Mon, 10 Nov 2025 16:25:00 -0700</pubDate><guid>https://peterwarnock.com/tools/githits-ai-powered-code-search-platform/</guid><description>GitHits is an AI-powered code search platform that provides short, focused, verified code examples from global open source repositories. It helps developers solve specific problems by delivering canonical code solutions rather than overwhelming them with options.</description></item><item><title>Visual Studio Code</title><link>https://peterwarnock.com/tools/visual-studio-code-lightweight-open-source-editor/</link><pubDate>Fri, 05 Sep 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/visual-studio-code-lightweight-open-source-editor/</guid><description>&lt;p&gt;Visual Studio Code has fundamentally transformed the development landscape since
+its launch in 2015, evolving from a simple code editor to the world&amp;rsquo;s most
+popular development environment. Built by Microsoft on the Electron framework,
+VS Code combines the lightweight performance developers crave with the powerful
+features traditionally found only in full IDEs, all while maintaining a
+commitment to open-source principles and extensibility.&lt;/p&gt;
 &lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
 &lt;h3 id="intelligent-code-editing"&gt;Intelligent Code Editing&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;IntelliSense code completion&lt;/strong&gt;: Advanced code completion with deep language understanding and context awareness&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Syntax highlighting&lt;/strong&gt;: Rich syntax highlighting for 400+ languages with customizable themes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Multi-cursor editing&lt;/strong&gt;: Simultaneous editing at multiple locations for bulk changes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code formatting&lt;/strong&gt;: Automatic code formatting with support for Prettier, ESLint, and other formatters&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Bracket matching and colorization&lt;/strong&gt;: Visual aids for code structure and nesting levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IntelliSense code completion&lt;/strong&gt;: Advanced code completion with deep language
+understanding and context awareness&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Syntax highlighting&lt;/strong&gt;: Rich syntax highlighting for 400+ languages with
+customizable themes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-cursor editing&lt;/strong&gt;: Simultaneous editing at multiple locations for bulk
+changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code formatting&lt;/strong&gt;: Automatic code formatting with support for Prettier,
+ESLint, and other formatters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bracket matching and colorization&lt;/strong&gt;: Visual aids for code structure and
+nesting levels&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="integrated-development-tools"&gt;Integrated Development Tools&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Built-in terminal&lt;/strong&gt;: Integrated terminal with support for multiple shells (bash, PowerShell, cmd)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Git integration&lt;/strong&gt;: Native Git support with staging, committing, branching, and conflict resolution&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Debugging console&lt;/strong&gt;: Powerful debugging with breakpoints, watch expressions, and call stack inspection&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Integrated testing&lt;/strong&gt;: Test runner integration with popular testing frameworks&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Live Share&lt;/strong&gt;: Real-time collaborative development with remote pair programming&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Built-in terminal&lt;/strong&gt;: Integrated terminal with support for multiple shells
+(bash, PowerShell, cmd)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git integration&lt;/strong&gt;: Native Git support with staging, committing, branching,
+and conflict resolution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Debugging console&lt;/strong&gt;: Powerful debugging with breakpoints, watch expressions,
+and call stack inspection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integrated testing&lt;/strong&gt;: Test runner integration with popular testing
+frameworks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Live Share&lt;/strong&gt;: Real-time collaborative development with remote pair
+programming&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="performance-and-efficiency"&gt;Performance and Efficiency&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Fast startup&lt;/strong&gt;: Launch in under 2 seconds on most systems&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Low memory footprint&lt;/strong&gt;: Efficient resource usage compared to traditional IDEs&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Responsive UI&lt;/strong&gt;: Smooth performance even with large files and complex projects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Low memory footprint&lt;/strong&gt;: Efficient resource usage compared to traditional
+IDEs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Responsive UI&lt;/strong&gt;: Smooth performance even with large files and complex
+projects&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Workspace management&lt;/strong&gt;: Multi-root workspace support for complex projects&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Search and replace&lt;/strong&gt;: Powerful regex-based search across files and folders&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Platforms&lt;/strong&gt;: Windows 10+, macOS 10.14+, Linux (Ubuntu, Debian, Fedora, RHEL, SUSE)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platforms&lt;/strong&gt;: Windows 10+, macOS 10.14+, Linux (Ubuntu, Debian, Fedora, RHEL,
+SUSE)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;User Tiers&lt;/strong&gt;: Completely free and open-source (MIT license)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: 30,000+ extensions in marketplace, integration with 200+ development tools&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;API Support&lt;/strong&gt;: Rich extension API with TypeScript definitions, custom themes and language support&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Startup time &amp;lt;2 seconds, memory usage &amp;lt;200MB for typical workloads&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Privacy&lt;/strong&gt;: Telemetry can be disabled, enterprise-friendly with no data collection required&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration&lt;/strong&gt;: 30,000+ extensions in marketplace, integration with 200+
+development tools&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Support&lt;/strong&gt;: Rich extension API with TypeScript definitions, custom themes
+and language support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Startup time &amp;lt;2 seconds, memory usage &amp;lt;200MB for typical
+workloads&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Privacy&lt;/strong&gt;: Telemetry can be disabled, enterprise-friendly with no data
+collection required&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="unique-advantages"&gt;Unique Advantages&lt;/h2&gt;
 &lt;h3 id="unmatched-extension-ecosystem"&gt;Unmatched Extension Ecosystem&lt;/h3&gt;
-&lt;p&gt;VS Code&amp;rsquo;s extension marketplace is unparalleled in the development world, with over 30,000 extensions covering every conceivable development need. From language support to database tools, from Docker integration to AI coding assistants, the ecosystem transforms VS Code into whatever type of IDE each developer needs.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;VS Code&amp;rsquo;s extension marketplace is unparalleled in the development world, with
+over 30,000 extensions covering every conceivable development need. From
+language support to database tools, from Docker integration to AI coding
+assistants, the ecosystem transforms VS Code into whatever type of IDE each
+developer needs.&lt;/p&gt;</description></item></channel></rss>

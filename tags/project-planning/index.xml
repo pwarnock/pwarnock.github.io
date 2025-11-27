@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Project-Planning on Peter Warnock</title><link>https://peterwarnock.com/tags/project-planning/</link><description>Recent content in Project-Planning on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 17:20:57 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/project-planning/index.xml" rel="self" type="application/rss+xml"/><item><title>Beads</title><link>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</guid><description>&lt;p&gt;Beads is a lightweight, distributed task management system built specifically
+for AI agents managing complex, multi-session projects. Created by Steve Yegge,
+it leverages Git as its distributed database and models work as a directed
+acyclic graph (DAG) with explicit dependencies and priority levels, enabling
+agents to identify &amp;ldquo;ready work&amp;rdquo; and maintain context across sessions without
+losing state or requiring a central server.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="directed-acyclic-graph-dag-dependencies"&gt;Directed Acyclic Graph (DAG) Dependencies&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Explicit Task Relationships&lt;/strong&gt;: Model blocking dependencies, parent-child
+relationships, and thematic links&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ready Work Detection&lt;/strong&gt;: Automatically surface tasks with no blocking
+dependencies and high priority&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dependency Visualization&lt;/strong&gt;: View full dependency trees and impact analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-type Relationships&lt;/strong&gt;: Supports &amp;ldquo;blocks,&amp;rdquo; &amp;ldquo;related,&amp;rdquo; &amp;ldquo;parent,&amp;rdquo; and
+&amp;ldquo;discovered-from&amp;rdquo; link types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="priority-driven-task-management"&gt;Priority-Driven Task Management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;5-Level Priority System&lt;/strong&gt;: Critical (0), High (1), Medium (2), Low (3),
+Backlog (4)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Priority + Readiness&lt;/strong&gt;: Combine priority with dependency status to determine
+actual work urgency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart Task Sorting&lt;/strong&gt;: Get highest-impact unblocked work first&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Threshold-Based Filtering&lt;/strong&gt;: Filter work by priority level and status&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="git-native-architecture"&gt;Git-Native Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;No Central Server&lt;/strong&gt;: Uses Git as distributed database for complete
+decentralization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local SQLite Cache&lt;/strong&gt;: Fast local queries with automatic sync to Git&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JSONL Source of Truth&lt;/strong&gt;: Single &lt;code&gt;.beads/issues.jsonl&lt;/code&gt; file committed to Git&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Merge Driver&lt;/strong&gt;: Intelligent conflict resolution for concurrent edits
+from multiple agents&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protected Branch Support&lt;/strong&gt;: Works with strict Git workflows and branch
+protection rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="agent-friendly-interface"&gt;Agent-Friendly Interface&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JSON-First Output&lt;/strong&gt;: Every command supports &lt;code&gt;--json&lt;/code&gt; for programmatic use&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP Server Support&lt;/strong&gt;: Use Claude, OpenAI, or other MCP-compatible clients
+directly with Beads&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch Operations&lt;/strong&gt;: Import and export large task sets efficiently&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trail&lt;/strong&gt;: Complete history of all changes for reconstruction and
+debugging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="multi-agent-coordination"&gt;Multi-Agent Coordination&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Distributed by Design&lt;/strong&gt;: Multiple agents on different branches/machines can
+coordinate through Git&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hash-Based IDs&lt;/strong&gt; (v0.20.1+): Collision-resistant task IDs for safe
+concurrent creation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No Conflicts&lt;/strong&gt;: Concurrent edits merge safely without manual intervention&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zero Coordinator&lt;/strong&gt;: No central service needed for multi-agent workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Platform&lt;/strong&gt;: CLI (cross-platform), MCP server, Python package&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backend&lt;/strong&gt;: SQLite (local cache) + Git (distributed sync)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Storage&lt;/strong&gt;: JSON Lines (&lt;code&gt;.beads/issues.jsonl&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Format&lt;/strong&gt;: Extendable schema with custom table support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Fast queries for &amp;lt;200 issues; performance degrades on larger
+databases&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: Git hooks, shell completion, CI/CD pipelines, MCP
+servers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="unique-advantages"&gt;Unique Advantages&lt;/h2&gt;
+&lt;h3 id="purpose-built-for-ai-agents"&gt;Purpose-Built for AI Agents&lt;/h3&gt;
+&lt;p&gt;Unlike general-purpose issue trackers, Beads&amp;rsquo; entire design assumes an AI agent
+as the primary user. The &lt;code&gt;--json&lt;/code&gt; interface isn&amp;rsquo;t an afterthought but the
+primary way the system works. The DAG model forces you to think about
+dependencies explicitly, preventing agents from attempting impossible tasks.&lt;/p&gt;</description></item><item><title>Beads: Distributed Task Management for AI Agents</title><link>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</guid><description>Beads offers distributed task management for AI agents with dependency-aware DAGs, git-backed persistence, and agent-friendly workflows that integrate seamlessly with development workflows.</description></item></channel></rss>
