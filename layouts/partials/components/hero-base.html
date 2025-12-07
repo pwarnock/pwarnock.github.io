@@ -1,0 +1,58 @@
+{{/* Base Hero Template - Standardized Structure */}}
+{{/* Usage: {{ partial "components/hero-base.html" (dict "context" . "section" "tools" "isSingle" true) }} */}}
+
+<div class="hero-content flex-col lg:flex-row gap-8">
+  <div class="text-center lg:text-left max-w-4xl">
+    {{ if .isSingle }}
+      <!-- Single item hero with date and tags -->
+      <div class="inline-flex items-center bg-primary/10 text-primary-content rounded-full text-sm font-medium mb-6" style="gap: var(--space-2); padding: var(--space-2) var(--space-4)">
+        {{ if .dateIcon }}
+          {{ .dateIcon }}
+        {{ else }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2V12a2 2 0 002 2z" />
+          </svg>
+        {{ end }}
+        {{ .context.Date.Format "January 2, 2006" }}
+        {{ if .context.Params.readingTime }}
+        <span class="text-primary-content/70">• {{ .context.Params.readingTime }} min read</span>
+        {{ end }}
+      </div>
+
+      <h1 id="{{ .section }}-title" class="font-bold text-primary-content mb-6 leading-tight text-4xl lg:text-5xl">
+        {{ .context.Title }}
+      </h1>
+
+      <!-- Tags for single items -->
+      {{ if and .showTags .context.Params.tags }}
+      <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8" role="list" aria-label="{{ .section }} tags">
+        {{ range .context.Params.tags }}
+        <span class="badge badge-outline badge-lg text-primary-content border-primary-content/30 hover:bg-primary/20 transition-all duration-300 cursor-default" role="listitem">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <!-- Description for single items -->
+      {{ if .description }}
+      <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
+        {{ .description }}
+      </p>
+      {{ end }}
+    {{ else }}
+      <!-- Section page hero -->
+      <h1 id="{{ .section }}-title" class="font-bold text-primary-content mb-4 text-4xl lg:text-5xl">
+        {{ .context.Title }}
+      </h1>
+      <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
+        {{ .context.Description }}
+      </p>
+
+      <!-- Custom content for section pages -->
+      {{ if .customContent }}
+        {{ .customContent }}
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

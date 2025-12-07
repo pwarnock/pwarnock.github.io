@@ -5,7 +5,7 @@
       <button tabindex="0" @click="mobileMenuOpen = !mobileMenuOpen" class="btn-system btn-system--ghost btn-system--md lg:hidden touch-manipulation" aria-label="Toggle mobile navigation menu">
         {{ partial "components/icon.html" (dict "name" "menu" "size" "md") }}
       </button>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-60 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Mobile navigation menu" aria-orientation="vertical">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-60 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Mobile navigation menu" aria-orientation="vertical">
           <li role="none"><a @click="mobileMenuOpen = false" href="{{ "/" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring font-medium text-base-content" role="menuitem">Home</a></li>
           <li role="none"><a @click="mobileMenuOpen = false" href="{{ "/blog/" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring font-medium text-base-content" role="menuitem">Blog</a></li>
           <li role="none"><a @click="mobileMenuOpen = false" href="{{ "/portfolio/" | relLangURL }}" class="justify-between hover:bg-primary/10 transition-colors duration-200 focus-ring font-medium text-base-content" role="menuitem">Portfolio</a></li>
@@ -40,7 +40,7 @@
         <button tabindex="0" @click="socialMenuOpen = !socialMenuOpen" class="btn-system btn-system--ghost btn-system--md btn-circle touch-manipulation" aria-label="Social links menu" data-event="social_menu_toggle" data-event-label="Social Links">
           {{ partial "components/icon.html" (dict "name" "share" "size" "md") }}
         </button>
-        <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Social links menu" aria-orientation="vertical">
+        <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-300/50 transition-all duration-300 ease-in-out" role="menu" aria-label="Social links menu" aria-orientation="vertical">
            <li class="menu-title" role="presentation"><span class="text-base-content">Connect</span></li>
           <div class="flex gap-3 p-3 justify-center" role="group" aria-label="Social media links" @click="socialMenuOpen = false">
             {{ partial "components/social-links.html" . }}

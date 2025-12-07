@@ -694,6 +694,103 @@ bun run build     # Must succeed
 
 ## Template Conventions
 
+### Hero Component Standards
+
+**CRITICAL**: All hero components MUST follow these exact patterns to prevent
+color/style inconsistencies:
+
+#### Standard Hero Structure
+
+```html
+<!-- Section Hero (NOT single item) -->
+<div class="hero-content flex-col lg:flex-row gap-8">
+  <div class="text-center lg:text-left max-w-4xl">
+    <h1
+      id="[section]-title"
+      class="font-bold text-primary-content mb-4 text-4xl lg:text-5xl"
+    >
+      {{ .context.Title }}
+    </h1>
+    <p
+      class="text-xl lg:text-2xl text-primary-content/80 font-medium"
+      role="doc-subtitle"
+    >
+      {{ .context.Description }}
+    </p>
+  </div>
+</div>
+```
+
+#### Single Item Hero Structure
+
+```html
+<!-- Single blog/portfolio/tool item -->
+<div class="hero-content flex-col lg:flex-row gap-8">
+  <div class="text-center lg:text-left max-w-4xl">
+    <!-- Date badge (EXACT styling) -->
+    <div
+      class="inline-flex items-center bg-primary/10 text-primary-content rounded-full text-sm font-medium mb-6"
+      style="gap: var(--space-2); padding: var(--space-2) var(--space-4)"
+    >
+      <!-- SVG icon + date content -->
+    </div>
+
+    <!-- Title (EXACT classes) -->
+    <h1
+      id="[section]-title"
+      class="font-bold text-primary-content mb-6 leading-tight text-4xl lg:text-5xl"
+    >
+      {{ .context.Title }}
+    </h1>
+
+    <!-- Tags (if applicable) -->
+    <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+      {{ range .context.Params.tags }}
+      <span
+        class="badge badge-outline badge-lg text-primary-content border-primary-content/30 hover:bg-primary/20 transition-all duration-300 cursor-default"
+      >
+        {{ . }}
+      </span>
+      {{ end }}
+    </div>
+  </div>
+</div>
+```
+
+#### Forbidden Patterns
+
+- ❌ NEVER add `bg-base-*` classes to hero wrappers
+- ❌ NEVER use custom font sizes - always `text-4xl lg:text-5xl`
+- ❌ NEVER change `text-primary-content` colors
+- ❌ NEVER modify `hero-content` structure
+- ❌ NEVER use `badge-primary` for date badges - use `bg-primary/10`
+
+#### Required Classes
+
+- ✅ Container: `hero-content flex-col lg:flex-row gap-8`
+- ✅ Inner: `text-center lg:text-left max-w-4xl`
+- ✅ Headings: `font-bold text-primary-content text-4xl lg:text-5xl`
+- ✅ Date badge: `bg-primary/10 text-primary-content rounded-full`
+- ✅ Tags: `badge badge-outline badge-lg text-primary-content`
+
+#### Base Template Usage
+
+Use the standardized base template for new heroes:
+
+```html
+{{ partial "components/hero-base.html" (dict "context" . "section" "tools"
+"isSingle" true) }}
+```
+
+#### Validation
+
+All hero components are automatically validated on commit to ensure compliance
+with these standards. Run manually with:
+
+```bash
+./scripts/validation/validate-hero-components.sh
+```
+
 ### Naming Conventions
 
 - **Files**: kebab-case (e.g., `content-card.html`)

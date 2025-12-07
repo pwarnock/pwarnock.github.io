@@ -80,3 +80,13 @@ repos:
             _archived/
           )
         pass_filenames: false
+
+  # Hero component validation
+  - repo: local
+    hooks:
+      - id: hero-component-validation
+        name: Hero Component Validation
+        entry: scripts/validation/validate-hero-components.sh
+        language: script
+        files: layouts/partials/components/hero-.*\.html$
+        pass_filenames: false

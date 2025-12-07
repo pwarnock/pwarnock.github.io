@@ -50,7 +50,3 @@
     border-left-color: var(--color-primary) !important;
   }
 }
-
-
-/* DaisyUI Theme Integration Overrides */
-@import "./assets/css/design-system/daisyui-overrides.css";

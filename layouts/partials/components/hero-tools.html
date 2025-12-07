@@ -13,15 +13,15 @@
         {{ end }}
       </div>
 
-      <h1 id="tools-title" class="font-bold text-primary-content mb-6 leading-tight" style="font-size: clamp(1.75rem, 4vw + 1rem, 3rem);">
+      <h1 id="tools-title" class="font-bold text-primary-content mb-6 leading-tight text-4xl lg:text-5xl">
         {{ .context.Title }}
       </h1>
 
       <!-- Tags for single tools -->
       {{ if and .showTags .context.Params.tags }}
-      <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+      <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8" role="list" aria-label="Tool tags">
         {{ range .context.Params.tags }}
-        <span class="badge badge-outline badge-lg text-primary-content border-primary-content/30 hover:bg-primary/20 transition-all duration-300 cursor-default">
+        <span class="badge badge-outline badge-lg text-primary-content border-primary-content/30 hover:bg-primary/20 transition-all duration-300 cursor-default" role="listitem">
           {{ . }}
         </span>
         {{ end }}
@@ -36,7 +36,7 @@
       {{ end }}
     {{ else }}
       <!-- Section page hero -->
-      <h1 id="tools-title" class="font-bold text-primary-content mb-4" style="font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);">
+      <h1 id="tools-title" class="font-bold text-primary-content mb-4 text-4xl lg:text-5xl">
         {{ .context.Title }}
       </h1>
       <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
@@ -45,71 +45,70 @@
 
       <!-- Enhanced Features (Feature Flagged) -->
       {{ if or (.context.Params.enableEnhancedHero) (.context.Site.Params.enhancedHero) }}
-        <div class="mt-8 space-y-6">
+        <div class="mt-6 lg:mt-8 space-y-4 lg:space-y-6">
           <!-- Tools Stats -->
-          <div class="stats stats-horizontal bg-base-100/60 backdrop-blur-sm shadow-lg border border-primary/20">
-            <div class="stat">
+          <div class="stats shadow-lg">
+            <div class="stat place-items-center">
               <div class="stat-value text-primary">{{ len (where site.RegularPages "Type" "tools") }}</div>
-              <div class="stat-title text-xs">Tools Reviewed</div>
+              <div class="stat-title">Tools Reviewed</div>
             </div>
-            <div class="stat">
+            <div class="stat place-items-center">
               <div class="stat-value text-secondary">{{ len (where site.RegularPages "Type" "tools") }}</div>
-              <div class="stat-title text-xs">AI-Powered</div>
+              <div class="stat-title">AI-Powered</div>
             </div>
-            <div class="stat">
+            <div class="stat place-items-center">
               <div class="stat-value text-accent">{{ len (where (where site.RegularPages "Type" "tools") ".Params.categories" "intersect" (slice "Traditional")) }}</div>
-              <div class="stat-title text-xs">Traditional</div>
+              <div class="stat-title">Traditional</div>
             </div>
           </div>
 
           <!-- Tools Actions -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
             <!-- Search Section -->
-            <div class="space-y-3">
+            <section class="space-y-3" role="search">
               <h3 class="text-sm font-bold text-primary-content/80 uppercase tracking-wider">Search Tools</h3>
               <div class="form-control">
-                <input type="search" placeholder="Search development tools..." class="input input-bordered input-primary w-full" aria-label="Search development tools">
+                <input type="search" placeholder="Search development tools..." class="input input-bordered input-primary w-full" aria-label="Search development tools" tabindex="0">
               </div>
-            </div>
+            </section>
 
             <!-- Filter Section -->
-            <div class="space-y-3">
+            <section class="space-y-3" role="navigation" aria-label="Tool filters">
               <h3 class="text-sm font-bold text-primary-content/80 uppercase tracking-wider">Filter by Type</h3>
-              <div class="btn-group w-full">
-                <button class="btn btn-primary btn-active" data-event="tool_filter" data-event-label="All Tools">All Tools</button>
-                <button class="btn btn-outline" data-event="tool_filter" data-event-label="AI Tools">AI Tools</button>
-                <button class="btn btn-outline" data-event="tool_filter" data-event-label="Traditional Tools">Traditional</button>
+              <div class="btn-group w-full" role="group" aria-label="Filter tools by type">
+                <button class="btn btn-primary btn-active" data-event="tool_filter" data-event-label="All Tools" tabindex="0" aria-pressed="true">All Tools</button>
+                <button class="btn btn-outline" data-event="tool_filter" data-event-label="AI Tools" tabindex="0" aria-pressed="false">AI Tools</button>
+                <button class="btn btn-outline" data-event="tool_filter" data-event-label="Traditional Tools" tabindex="0" aria-pressed="false">Traditional</button>
               </div>
-            </div>
+            </section>
           </div>
 
           <!-- Latest Reviews Highlight -->
-          <div class="card bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
-            <div class="card-body p-6">
-              <div class="flex items-center gap-2 mb-4">
+          <section class="card w-full bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h2 class="card-title">
                 <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <h3 class="text-lg font-bold text-primary-content">Latest Reviews</h3>
-              </div>
+                Latest Reviews
+              </h2>
 
-              <div class="grid gap-4">
-                {{ $latestTools := first 3 (where (where site.RegularPages "Type" "tools") "Draft" false) }}
-                {{ range $latestTools }}
-                  <div class="flex items-center justify-between p-3 bg-base-100/40 rounded-lg">
-                    <div class="flex-1">
-                      <h4 class="text-sm font-bold text-primary-content mb-1">
-                        <a href="{{ .Permalink }}" class="link link-hover">{{ .Title }}</a>
-                      </h4>
-                      <p class="text-xs text-primary-content/60">{{ .Description }}</p>
-                    </div>
-                    <div class="flex-shrink-0 ml-4">
-                      <a href="{{ .Permalink }}" class="btn btn-primary btn-xs">Review</a>
-                    </div>
+              <div class="divider"></div>
+              {{ $latestTools := first 3 (where (where site.RegularPages "Type" "tools") "Draft" false) }}
+              {{ range $latestTools }}
+                <div class="flex items-center justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-sm font-bold">
+                      <a href="{{ .Permalink }}" class="link link-primary">{{ .Title }}</a>
+                    </h3>
+                    <p class="text-xs opacity-70">{{ .Description }}</p>
                   </div>
-                {{ end }}
-              </div>
-            </div>
-          </div>
-        </div>
+                  <div class="shrink-0">
+                    <a href="{{ .Permalink }}" class="btn btn-primary btn-xs">Review</a>
+                  </div>
+                </div>
+                {{ if not .Last }}<div class="divider my-2"></div>{{ end }}
+              {{ end }}
+  </div>
+</div>
       {{ end }}
     {{ end }}
   </div>
