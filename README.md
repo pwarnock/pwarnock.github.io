@@ -6,7 +6,14 @@ featuring a unified design system and responsive design.
 **New to the project?** Start with
 [docs/tutorials/GETTING_STARTED.md](/docs/tutorials/GETTING_STARTED.md)  
 **Full documentation index:** [docs/README.md](/docs/README.md)  
-**Development workflow:** [AGENTS.md](/AGENTS.md)
+**Development workflow:** [AGENTS.md](/AGENTS.md)  
+**Documentation structure:**  
+- [Development guides](/docs/development/) - Development patterns and workflows  
+- [Operations guides](/docs/operations/) - Deployment and operational procedures  
+- [Integration guides](/docs/integration/) - Tool integration workflows  
+- [Strategy docs](/docs/strategy/) - Project strategy and planning  
+- [Tutorials](/docs/tutorials/) - Getting started guides  
+- [Release notes](/docs/releases/) - Version release history
 
 ## 🚀 Features
 

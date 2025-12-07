@@ -1,0 +1,42 @@
+pwarnock.github.io/assets/components/manifest.json
+{
+  "version": "1.0.0",
+  "description": "Component manifest for tracking usage and dependencies",
+  "components": {
+    "navbar": {
+      "file": "layouts/partials/components/navigation.html",
+      "styles": ["base.css", "navbar.css"],
+      "dependencies": [],
+      "lastReviewed": "2025-12-07",
+      "status": "active",
+      "notes": "Has hover:scale-110 class for logo scaling"
+    },
+    "hero-carousel": {
+      "file": "layouts/partials/components/hero-carousel.html",
+      "styles": ["carousel.css"],
+      "dependencies": ["alpinejs"],
+      "status": "active",
+      "lastReviewed": "2025-12-07"
+    },
+    "hero-tools": {
+      "file": "layouts/partials/components/hero-tools.html",
+      "styles": ["hero.css"],
+      "dependencies": [],
+      "status": "active",
+      "lastReviewed": "2025-12-07"
+    },
+    "navigation": {
+      "file": "layouts/partials/components/navigation.html",
+      "styles": ["base.css", "navbar.css"],
+      "dependencies": [],
+      "lastReviewed": "2025-12-07",
+      "notes": "Has hover:scale-110 class for logo scaling"
+    }
+  },
+  "standards": {
+    "cssVariables": "Use CSS custom properties for all colors/sizes/spacing",
+    "componentBoundaries": "Each component should have minimal shared styles",
+    "accessibility": "All components must meet WCAG AA standards",
+    "responsiveDesign": "Mobile-first approach with progressive enhancement"
+  }
+}

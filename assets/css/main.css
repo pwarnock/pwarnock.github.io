@@ -4,27 +4,30 @@
    ========================================================================== */
 
 /* Framework Imports */
-@import './assets/css/framework/imports.css';
-@import './assets/css/framework/base.css';
+@import "./assets/css/framework/imports.css";
+@import "./assets/css/framework/base.css";
 
 /* Design System */
-@import './assets/css/design-system/tokens.css';
-@import './assets/css/design-system/utilities.css';
+@import "./assets/css/design-system/tokens.css";
+@import "./assets/css/design-system/utilities.css";
 
 /* Component System */
-@import './assets/css/components/buttons.css';
-@import './assets/css/components/badges.css';
-@import './assets/css/components/cards.css';
-@import './assets/css/components/icons.css';
-@import './assets/css/components/focus.css';
-@import './assets/css/components/carousel.css';
+@import "./assets/css/components/buttons.css";
+@import "./assets/css/components/badges.css";
+@import "./assets/css/components/cards.css";
+@import "./assets/css/components/icons.css";
+@import "./assets/css/components/focus.css";
+@import "./assets/css/components/carousel.css";
 
 /* Layout System */
-@import './assets/css/layout/hero.css';
-@import './assets/css/layout/responsive.css';
-@import './assets/css/layout/embeds.css';
+@import "./assets/css/layout/hero.css";
+@import "./assets/css/layout/responsive.css";
+@import "./assets/css/layout/embeds.css";
 
 /* Content System */
-@import './assets/css/content/prose.css';
-@import './assets/css/content/code.css';
-@import './assets/css/content/tables.css';
+@import "./assets/css/content/prose.css";
+@import "./assets/css/content/code.css";
+@import "./assets/css/content/tables.css";
+
+/* DaisyUI Theme Integration Overrides */
+@import "./assets/css/design-system/daisyui-overrides.css";

@@ -1,0 +1,125 @@
+/* ==========================================================================
+   DAISYUI THEME OVERRIDES
+   Custom styles to improve integration between custom design system and DaisyUI
+   ========================================================================== */
+
+/* DaisyUI Theme Integration Overrides */
+
+/* Primary Color System Integration */
+/* Map our design tokens to DaisyUI semantic color classes */
+:root {
+  /* Override DaisyUI primary color with our design system primary */
+  --p: var(--color-primary-500);
+  --pc: var(--color-primary-100);
+  --pf: var(--color-primary-50);
+
+  /* Override DaisyUI secondary color with our design system secondary */
+  --s: var(--color-secondary-500);
+  --sc: var(--color-secondary-100);
+  --sf: var(--color-secondary-50);
+
+  /* Override DaisyUI accent color with our design system accent */
+  --a: var(--color-accent-500);
+  --ac: var(--color-accent-100);
+  --af: var(--color-accent-50);
+
+  /* Override DaisyUI neutral colors with our design system neutral */
+  --n: var(--color-neutral-500);
+  --nc: var(--color-neutral-100);
+  --nf: var(--color-neutral-50);
+
+  /* Base content colors */
+  --bc: var(--color-neutral-100);
+  --b1: var(--color-neutral-200);
+  --b2: var(--color-neutral-300);
+  --b3: var(--color-neutral-400);
+}
+
+/* Component Style Scoping */
+/* Prevent DaisyUI styles from bleeding into custom components */
+.site-navigation {
+  /* Use our design system variables for navigation */
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+
+  /* Custom focus styles for better accessibility */
+  .focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+.site-content {
+  /* Ensure consistent text colors */
+  color: var(--color-base-content);
+
+  /* Better contrast for headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-base-content);
+  }
+}
+
+.site-hero {
+  /* Hero section with our design system */
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+  color: var(--color-primary-content);
+}
+
+/* Card Component Integration */
+.card-system {
+  /* Match our design system card styling */
+  background-color: var(--color-base-100);
+  border: 1px solid var(--color-neutral-200);
+  box-shadow: var(--shadow-md);
+}
+
+/* Button Component Integration */
+.button-system {
+  /* Override DaisyUI button defaults */
+  background-color: var(--color-primary-500);
+  color: var(--color-primary-content);
+  border-radius: var(--radius-md);
+
+  /* Hover states with our colors */
+  &:hover {
+    background-color: var(--color-primary-600);
+  }
+
+  /* Focus styles with our colors */
+  &:focus {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Badge Component Integration */
+.badge-system {
+  background-color: var(--color-secondary-500);
+  color: var(--color-secondary-content);
+  border-radius: var(--radius-md);
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+  .site-navigation {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .site-content {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* Theme-aware overrides */
+[data-theme="dark"] {
+  --p: var(--color-primary-400);
+  --pc: var(--color-primary-100);
+
+  .site-navigation {
+    background-color: var(--color-base-100);
+  }
+
+  .site-content {
+    background-color: var(--color-base-100);
+  }
+}
