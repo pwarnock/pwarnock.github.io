@@ -3,6 +3,13 @@
 This is the **single source of truth** for AI agent and developer workflow on
 this project.
 
+## Relationship to CLAUDE.md
+
+- **AGENTS.md**: Agent workflow guide and architecture documentation (this file)
+- **CLAUDE.md**: Practical reference guide for day-to-day development commands
+- Both documents should be kept in parity for commands and workflows
+- When updating commands, ensure consistency between both documents
+
 ## 🚀 Quick Navigation
 
 **First Time Setup?** →
@@ -359,6 +366,35 @@ workflow guidelines.
 
 ## Build Commands
 
+### Just Task Runner (Recommended)
+
+This project includes a `justfile` for convenient task management. Use `just --list` to see all available tasks.
+
+```bash
+# Show all available tasks
+just --list
+
+# Common workflows
+just dev                    # Start development server
+just agent-init             # Initialize agent environment
+just skills-sync            # Sync .skills content
+just validate               # Run all validation
+just test                   # Run all tests
+just build                  # Build for production
+
+# AI Agent & Skills workflows
+just agent-full             # Full agent initialization with skills
+just skills-status          # Check .skills status
+just skills-force           # Force refresh .skills content
+just agent-prep             # Agent preparation workflow
+
+# Development workflows
+just dev-cycle              # Full development cycle
+just content-create         # Content creation workflow
+just deploy-pipeline        # Full deployment pipeline
+```
+
+### Cody Framework Commands
 - `:cody help` - Show all available commands
 - `:cody plan` - Start planning phase (discovery, PRD, plan documents)
 - `:cody build` - Start build phase and create feature backlog
@@ -368,6 +404,64 @@ workflow guidelines.
 - `:cody refresh` - Refresh AI agent memory
 - `:cody relearn` - Relearn project context
 - `:cody upgrade` - Upgrade Cody Framework
+
+### Development & Building
+```bash
+# Start development server (main command)
+bun run dev
+
+# Build for production
+bun run build
+
+# Generate version information (run before builds)
+bun run generate-version
+
+# Path-based builds (automatically detects change type)
+bun run build:path        # Auto-detect optimal build strategy
+bun run build:content     # Fast content build (~30s)
+bun run build:infra       # Comprehensive infrastructure testing (~5min)
+```
+
+### Testing & Validation
+```bash
+# Run all validation (content, links, portfolio, security)
+bun run validate
+
+# Individual test suites
+bun run test:unit                # Go unit tests
+bun run test:unit:ts            # TypeScript unit tests with Vitest
+bun run test:e2e                # Playwright end-to-end tests
+bun run test:visual             # Visual regression tests
+bun run test:coverage           # Generate coverage reports
+bun run test:deployment         # Deployment validation tests
+
+# Watch mode testing
+bun run test:watch              # Watch all tests
+bun run test:e2e:watch         # Watch E2E tests
+bun run test:unit:watch        # Watch unit tests
+```
+
+### Code Quality & Linting
+```bash
+bun run lint                   # Run all linters (YAML, TOML, CSS)
+bun run format                 # Format code with Prettier
+bun run format:check           # Check formatting without changes
+```
+
+### Deployment
+```bash
+# Environment switching
+bun run env:staging            # Switch to staging branch
+bun run env:production         # Switch to production branch
+bun run env:main               # Switch to main branch
+
+# Deploy to environments (requires proper permissions)
+bun run deploy:staging         # Deploy to staging
+bun run deploy:production      # Deploy to production
+
+# Environment sync
+bun run sync:env               # Sync environment configurations
+```
 
 ## Code Style Guidelines
 
@@ -393,21 +487,26 @@ This project features a comprehensive, enterprise-grade testing infrastructure:
 - **Framework**: Go testing with structured logging
 - **Coverage**: 4.5% baseline with automated reporting
 - **Location**: `test/support/` directory
-- **Command**: `go test -v -race ./support/...`
+- **Command**: `cd test && go test -v ./support/...`
 
 #### Behavior-Driven Development (BDD)
 
 - **Framework**: Godog (Cucumber for Go)
-- **Coverage**: 9/9 scenarios passing
+- **Coverage**: 9/9 scenarios across accessibility, functionality, performance
 - **Location**: `test/features/` and `test/step_definitions/`
 - **Command**: `cd test && go test -v ./...`
 
-#### End-to-End Testing (TypeScript)
+#### End-to-End Tests (Playwright)
 
 - **Framework**: Playwright with TypeScript
 - **Coverage**: Visual regression, performance, user journeys
 - **Location**: `tests/` directory
 - **Command**: `bunx playwright test`
+
+#### Integration Tests
+- **Type**: Deployment and workflow validation
+- **Location**: `test/deployment_*.sh`
+- **Command**: `bun run test:deployment`
 
 ### Development Workflow
 
@@ -421,11 +520,9 @@ Automatically detects change types and applies optimal build strategies:
 
 ```bash
 # Automatic detection
-bun run build:path
-
-# Force specific builds
-bun run build:infra    # Comprehensive testing
-bun run build:content  # Fast content build
+bun run build:path        # Auto-detect optimal build strategy
+bun run build:content     # Fast content build (~30s)
+bun run build:infra       # Comprehensive infrastructure testing (~5min)
 ```
 
 #### Watch Mode Development
@@ -436,8 +533,7 @@ bun run test:watch
 
 # Watch specific test types
 bun run test:e2e:watch      # End-to-end tests
-bun run test:visual:watch   # Visual regression
-bun run test:perf:watch     # Performance benchmarks
+bun run test:unit:watch     # Unit tests
 ```
 
 ### Environment Management
@@ -464,7 +560,45 @@ bun run sync:env
 - **Coverage gates**: Automated quality assurance
 - **Security scanning**: Dependency vulnerability checks
 
-## Documentation & Best Practices
+### Development Workflow Guidelines
+
+#### Before Starting Work
+1. **Run agent initialization**: `./scripts/agent-init.sh`
+2. **Check ready work**: `bd ready --json`
+3. **Claim task**: `bd update <id> --status in_progress`
+
+#### Content Creation Workflow
+1. **Create content** in appropriate `content/` directory
+2. **Validate frontmatter** using validation scripts
+3. **Test locally** with `bun run dev`
+4. **Run validation** with `bun run validate`
+5. **Commit and push** following git workflow
+
+#### Code Quality Standards
+- **TypeScript**: Strict mode for utilities and tooling
+- **CSS**: Tailwind + DaisyUI with custom design tokens
+- **Accessibility**: WCAG 2.1 AA compliance required
+- **Testing**: All new features require appropriate test coverage
+
+#### Important Rules & Constraints
+
+##### NEVER Edit These Files Directly
+- `.cody/` directory - Managed by Cody Framework
+- `package.json.version` - Managed by release controller
+- Generated Hugo files in `public/` directory
+
+##### ALWAYS Use These Systems
+- **Issue tracking**: `bd` CLI commands (never markdown TODOs)
+- **Version management**: `scripts/release.sh` (never manual edits)
+- **Environment config**: `config/{environment}/hugo.toml` files
+- **Documentation updates**: Add to existing docs in `/docs/` namespace
+
+##### Testing Requirements
+- **Content changes**: Run `bun run validate` before commit
+- **Infrastructure changes**: Run `bun run test:deployment`
+- **All changes**: Test in development environment before deployment
+
+### Documentation & Best Practices
 
 - Always check Context7 for up-to-date library documentation and best practices
 - Use `context7_resolve_library_id` followed by `context7_get_library_docs` for
@@ -473,6 +607,8 @@ bun run sync:env
 - Keep documentation references current with project dependencies
 - Use Bun for package management and scripts (see
   `docs/development/BUN_MIGRATION_GUIDE.md`)
+
+
 
 ## Context7 MCP Server Setup
 
@@ -531,6 +667,17 @@ curl -X POST http://localhost:3000/mcp \
 
 **Without Context7 MCP, agents cannot access current library documentation and
 may provide outdated information.**
+
+## Project Documentation & References
+
+### Documentation Cross-References
+
+- **Getting Started**: `docs/tutorials/GETTING_STARTED.md`
+- **Development Workflow**: `CLAUDE.md` (practical reference)
+- **Release Management**: `docs/operations/RELEASE_WORKFLOW.md`
+- **Testing Architecture**: `docs/development/TESTING_ARCHITECTURE.md`
+- **Style Guide**: `docs/development/STYLE_GUIDE.md`
+- **Documentation Index**: `docs/README.md` (master index)
 
 ## .cody Directory Access Rules
 

@@ -1,0 +1,5 @@
+[test]
+preload = ["./tests/global-setup.ts"]
+rootDir = ["src/"]
+testMatch = ["**/*.test.ts", "**/*.test.js", "**/*.spec.ts", "**/*.spec.js"]
+exclude = ["node_modules/", "dist/", "tests/", "test/"]

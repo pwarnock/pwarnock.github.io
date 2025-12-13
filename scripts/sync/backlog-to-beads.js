@@ -30,7 +30,7 @@ class BacklogToBeads {
         fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8')
       );
       return packageJson.version;
-    } catch (error) {
+    } catch (_error) {
       console.warn('⚠️  Could not read version from package.json, using default');
       return '0.19.4';
     }
@@ -135,7 +135,7 @@ class BacklogToBeads {
         try {
           const issue = JSON.parse(line);
           existingIssues.add(issue.title);
-        } catch (error) {
+        } catch (_error) {
           // Skip malformed lines
         }
       }
@@ -179,7 +179,7 @@ class BacklogToBeads {
         version: feature.version,
         priority: feature.priority,
       };
-    } catch (error) {
+    } catch (_error) {
       console.error(`❌ Failed to create issue: ${title}`);
       console.error(`   Error: ${error.message}`);
       this.errors.push({ feature, error: error.message });
@@ -258,7 +258,7 @@ class BacklogToBeads {
           console.log(`   ${feature.id}: ${error}`);
         });
       }
-    } catch (error) {
+    } catch (_error) {
       console.error('💥 Sync failed:', error.message);
       process.exit(1);
     }
@@ -274,7 +274,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     sync.version = version.split('=')[1];
   }
 
-  sync.sync().catch(error => {
+  sync.sync().catch( _error => {
     console.error('💥 Unexpected error:', error);
     process.exit(1);
   });

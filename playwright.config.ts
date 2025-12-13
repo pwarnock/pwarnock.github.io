@@ -1,15 +1,12 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-import { setupLogfire } from './tests/logfire.setup';
-
-setupLogfire();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
   testDir: './tests',
-  testMatch: '**/*.spec.ts',
+  testMatch: '**/*.spec.{ts,js}',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -55,6 +52,8 @@ export default defineConfig({
     stdout: 'pipe',
     timeout: 180 * 1000,
   },
+  /* Global setup for telemetry */
+  globalSetup: './tests/global-setup.ts',
   /* Global timeout for all tests */
   timeout: 60 * 1000,
 });

@@ -30,7 +30,7 @@ class BeadsToCody {
         fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8')
       );
       return packageJson.version;
-    } catch (error) {
+    } catch (_error) {
       console.warn('⚠️  Could not read version from package.json, using default');
       return '0.19.4';
     }
@@ -53,7 +53,7 @@ class BeadsToCody {
         try {
           const issue = JSON.parse(line);
           issues.push(issue);
-        } catch (error) {
+        } catch (_error) {
           // Skip malformed lines
         }
       }
@@ -369,14 +369,14 @@ ${issueList}
 
       if (this.errors.length > 0) {
         console.log('\n❌ Errors:');
-        this.errors.forEach(error => console.log(`   ❌ ${error}`));
+        this.errors.forEach( _error => console.log(`   ❌ ${error}`));
       }
 
       console.log('\n📋 Next Steps:');
       console.log('1. Review updated backlog: .cody/project/build/feature-backlog.md');
       console.log('2. Check ready work: bd --no-daemon ready --json');
       console.log('3. Plan next work items');
-    } catch (error) {
+    } catch (_error) {
       console.error('💥 Aggregation failed:', error.message);
       process.exit(1);
     }
@@ -392,7 +392,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     aggregator.version = version.split('=')[1];
   }
 
-  aggregator.aggregate().catch(error => {
+  aggregator.aggregate().catch( _error => {
     console.error('💥 Unexpected error:', error);
     process.exit(1);
   });

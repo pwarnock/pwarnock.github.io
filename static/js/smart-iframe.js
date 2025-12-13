@@ -180,7 +180,7 @@ export class SmartIframe extends LitElement {
         }
       });
       resizeObserver.observe(doc.body);
-    } catch (e) {
+    } catch (_e) {
       // Cross-origin: Alignment handled by JS, Cropping handled by CSS margin
       console.log('SmartIframe: Cross-origin content, generic enhancements only.');
 

@@ -6,6 +6,7 @@
 /* DaisyUI Theme Integration Overrides */
 
 /* Primary Color System Integration */
+
 /* Map our design tokens to DaisyUI semantic color classes */
 :root {
   /* Override DaisyUI primary color with our design system primary */
@@ -36,6 +37,7 @@
 }
 
 /* Component Style Scoping */
+
 /* Prevent DaisyUI styles from bleeding into custom components */
 .site-navigation {
   /* Use our design system variables for navigation */

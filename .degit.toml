@@ -1,0 +1,15 @@
+# Degit Configuration
+# Format: source = "target"
+
+# Example configurations (uncomment and modify as needed):
+# "github:user/repo" = "templates/user-repo"
+# "github:user/repo/subdir" = "src/components/external"
+
+# Hugo templates
+# "github:the-new-dynamics/minimal-hugo-theme" = "themes/minimal"
+
+# Tool configurations
+# "github:vercel/next.js/tree/canary/examples/with-tailwindcss" = "examples/next-tailwind"
+
+# AI Agent Skills
+"letta-ai/skills" = ".skills"

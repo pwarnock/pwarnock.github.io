@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import security from 'eslint-plugin-security';
+import globals from 'globals';
 
 export default [
   js.configs.recommended,
@@ -9,39 +10,84 @@ export default [
     },
     rules: {
       ...security.configs.recommended.rules,
-      'security/detect-object-injection': 'off', // Too restrictive for Hugo templates
+      'security/detect-object-injection': 'off',
       'security/detect-non-literal-regexp': 'warn',
       'security/detect-unsafe-regex': 'warn',
+      'security/detect-non-literal-fs-filename': 'off', // Too noisy for build scripts
     },
   },
+  // Node.js scripts and config files
   {
-    files: ['scripts/**/*.js', '*.config.js'],
+    files: [
+      'scripts/**/*.js',
+      'scripts/**/*.cjs',
+      '*.config.js',
+      '*.config.cjs',
+      'ecosystem.config.cjs',
+    ],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
-        console: 'readonly',
-        process: 'readonly',
-        Buffer: 'readonly',
-        __dirname: 'readonly',
-        __filename: 'readonly',
-        setTimeout: 'readonly',
-        setInterval: 'readonly',
-        clearTimeout: 'readonly',
-        clearInterval: 'readonly',
-        global: 'readonly',
-        require: 'readonly',
-        module: 'readonly',
-        exports: 'readonly',
+        ...globals.node,
+        Bun: 'readonly',
       },
     },
     rules: {
-      'no-unused-vars': 'warn',
-      'no-console': 'off', // Allow console in scripts
-      'max-len': ['error', { code: 120, ignoreUrls: true, ignoreStrings: false }],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-console': 'off',
+      'max-len': [
+        'error',
+        { code: 120, ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true },
+      ],
+    },
+  },
+  // Browser scripts
+  {
+    files: ['static/js/**/*.js', 'assets/js/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-console': 'warn',
+    },
+  },
+  // Analytics script - allow console for debugging
+  {
+    files: ['static/js/analytics.js'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  // Test files
+  {
+    files: ['tests/**/*.js', 'test/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': 'off',
     },
   },
   {
-    ignores: ['node_modules/', 'public/', 'resources/', '.hugo_cache/', 'static/js/vendor/'],
+    ignores: [
+      'node_modules/',
+      'public/',
+      'resources/',
+      '.hugo_cache/',
+      'static/js/vendor/',
+      'assets/js/alpinejs.min.js', // Minified third-party
+    ],
   },
 ];

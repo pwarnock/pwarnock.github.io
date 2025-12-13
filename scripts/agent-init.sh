@@ -109,8 +109,8 @@ else
 fi
 echo ""
 
-# Sync .skills submodule if present and feature enabled
-echo "📦 Checking .skills submodule..."
+# Sync .skills content if feature enabled
+echo "📦 Checking .skills content..."
 if [ -f ".cody/config/scripts/feature-flags.sh" ]; then
     SKILLS_ENABLED=$("./.cody/config/scripts/feature-flags.sh" check skills_integration 2>/dev/null | grep -q "enabled" && echo "true" || echo "false")
 else
@@ -118,16 +118,21 @@ else
 fi
 
 if [ "$SKILLS_ENABLED" = "true" ]; then
-    if [ -f ".gitmodules" ] && grep -q "\.skills" .gitmodules; then
-        echo "🔄 Syncing .skills submodule..."
-        if git submodule update --depth 1 --remote .skills; then
-            echo "✅ .skills submodule synced successfully"
+    echo "🔄 Syncing .skills content with degit..."
+    if [ -x "./scripts/skills-sync.sh" ]; then
+        if ./scripts/skills-sync.sh --status >/dev/null 2>&1; then
+            echo "ℹ️  .skills content already available"
         else
-            echo "⚠️  Failed to sync .skills submodule"
-            echo "   Run 'git submodule update --depth 1 --remote .skills' manually"
+            if ./scripts/skills-sync.sh >/dev/null 2>&1; then
+                echo "✅ .skills content synced successfully"
+            else
+                echo "⚠️  Failed to sync .skills content"
+                echo "   Run './scripts/skills-sync.sh' manually"
+            fi
         fi
     else
-        echo "ℹ️  .skills submodule not configured"
+        echo "⚠️  skills-sync.sh script not found"
+        echo "   The .skills integration script is missing"
     fi
 else
     echo "ℹ️  .skills integration is disabled"

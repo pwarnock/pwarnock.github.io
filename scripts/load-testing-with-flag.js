@@ -44,7 +44,7 @@ function readFeatureFlags() {
     }
 
     return flags;
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Error reading feature flags:', error.message);
     return null;
   }
@@ -70,7 +70,7 @@ function runK6Tests(scenarios = []) {
       }
     });
 
-    k6Process.on('error', error => {
+    k6Process.on('error',  _error => {
       console.error('❌ Failed to start k6:', error.message);
       reject(error);
     });
@@ -138,7 +138,7 @@ async function main() {
   try {
     spawn('k6', ['version'], { stdio: 'pipe' });
     console.log('✅ k6 found');
-  } catch (error) {
+  } catch (_error) {
     console.log('❌ k6 not found. Install with: brew install k6');
     console.log('📖 Documentation: https://k6.io/docs/');
     process.exit(1);
@@ -153,7 +153,7 @@ async function main() {
       process.exit(1);
     }
     console.log('✅ Hugo development server detected');
-  } catch (error) {
+  } catch (_error) {
     console.log('❌ Hugo development server not running on http://localhost:1313');
     console.log('Start with: bun run dev');
     process.exit(1);
@@ -163,7 +163,7 @@ async function main() {
     // Run actual load tests
     await runK6Tests();
     console.log('🎉 Load testing completed successfully');
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Load testing failed:', error.message);
     process.exit(1);
   }
@@ -171,7 +171,7 @@ async function main() {
 
 // Run if called directly
 if (import.meta.main) {
-  main().catch(error => {
+  main().catch( _error => {
     console.error('💥 Fatal error:', error.message);
     process.exit(1);
   });

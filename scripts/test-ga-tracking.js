@@ -25,7 +25,7 @@ function hasGATracking(filePath) {
     const hasGTMNOScript = content.includes('googletagmanager.com/ns.html');
 
     return hasGTMScript && hasGTMConfig && hasGTMNOScript;
-  } catch (error) {
+  } catch (_error) {
     console.error(`Error reading ${filePath}:`, error.message);
     return false;
   }
@@ -99,7 +99,7 @@ async function testGATracking() {
     } else {
       console.log('   Hugo config googleAnalytics: not found');
     }
-  } catch (error) {
+  } catch (_error) {
     console.log('   Hugo config: error reading');
   }
 
@@ -117,7 +117,7 @@ async function testGATracking() {
 }
 
 // Run test
-testGATracking().catch(error => {
+testGATracking().catch( _error => {
   console.error('❌ Test error:', error);
   process.exit(1);
 });

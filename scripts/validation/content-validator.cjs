@@ -31,7 +31,7 @@ class ContentValidator {
       this.contentTypes = yaml.load(configFile);
       this.validationRules = this.contentTypes.validation || {};
       console.log('✅ Content type configuration loaded');
-    } catch (error) {
+    } catch (_error) {
       console.error('❌ Failed to load content type configuration:', error.message);
       process.exit(1);
     }

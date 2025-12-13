@@ -35,7 +35,7 @@ class HugoConfigValidator {
       this.validateDuplicateSections(lines);
       this.validateNesting(lines);
       this.validateRequiredKeys(lines);
-    } catch (error) {
+    } catch (_error) {
       this.errors.push(`Failed to read config: ${error.message}`);
     }
 
@@ -100,7 +100,7 @@ class HugoConfigValidator {
       if (trimmed.startsWith('[params]')) {
         inParamsSection = true;
         paramsDepth = 1;
-      } else if (trimmed.startsWith('[')) {
+      } else if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
         if (inParamsSection) {
           paramsDepth++;
           if (paramsDepth > 2) {
@@ -108,9 +108,9 @@ class HugoConfigValidator {
               `Deep nesting in [params] at line ${index + 1} (depth: ${paramsDepth})`
             );
           }
+        } else {
+          paramsDepth = Math.max(0, paramsDepth - 1);
         }
-      } else if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
-        paramsDepth = Math.max(0, paramsDepth - 1);
       }
     });
   }
@@ -145,7 +145,7 @@ class HugoConfigValidator {
 
     if (this.errors.length > 0) {
       console.log('\n❌ ERRORS:');
-      this.errors.forEach(error => console.log(`  ${error}`));
+      this.errors.forEach( _error => console.log(`  ${error}`));
     }
 
     if (this.warnings.length > 0) {

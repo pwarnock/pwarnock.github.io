@@ -33,7 +33,7 @@ function readPerfConfig() {
     });
 
     return config;
-  } catch (error) {
+  } catch (_error) {
     console.warn('Could not read performance config:', error.message);
     return {};
   }
@@ -66,7 +66,7 @@ function analyzeCSS() {
     }
 
     return { sizeKB, path: cssPath };
-  } catch (error) {
+  } catch (_error) {
     console.error(`❌ Could not analyze CSS bundle: ${error.message}`);
     return null;
   }
@@ -75,13 +75,13 @@ function analyzeCSS() {
 // Analyze JS bundles
 function analyzeJS() {
   const jsDir = 'public/js';
-  let jsPaths = [];
+  let jsPaths;
   try {
     jsPaths = readdirSync(jsDir)
       .filter(file => file.endsWith('.js'))
       .map(file => join(jsDir, file));
-  } catch (error) {
-    console.error(`❌ Could not read JS directory ${jsDir}: ${error.message}`);
+  } catch (_error) {
+    console.error(`❌ Could not read JS directory ${jsDir}`);
     return;
   }
 
@@ -103,7 +103,7 @@ function analyzeJS() {
           `⚠️  WARNING: JS bundle exceeds ${config.bundle_analysis.max_js_size_kb}KB limit`
         );
       }
-    } catch (error) {
+    } catch (_error) {
       // File doesn't exist, which is expected for some paths
     }
   });

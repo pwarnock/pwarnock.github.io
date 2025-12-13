@@ -92,7 +92,7 @@ Focus on practical, actionable improvements.`,
         completed = true;
       }
     }
-  } catch (error) {
+  } catch (_error) {
     console.error('❌ Error:', error.message);
     process.exit(1);
   }

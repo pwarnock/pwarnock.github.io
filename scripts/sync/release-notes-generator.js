@@ -29,7 +29,7 @@ class ReleaseNotesGenerator {
         fs.readFileSync(path.join(this.projectRoot, 'package.json'), 'utf8')
       );
       return packageJson.version;
-    } catch (error) {
+    } catch (_error) {
       console.warn('⚠️  Could not read version from package.json, using default');
       return '0.19.4';
     }
@@ -54,7 +54,7 @@ class ReleaseNotesGenerator {
           if (issue.status === 'completed') {
             issues.push(issue);
           }
-        } catch (error) {
+        } catch (_error) {
           // Skip malformed lines
         }
       }
@@ -279,9 +279,9 @@ Please review for accuracy and add additional context before publishing.*`;
 
       if (this.errors.length > 0) {
         console.log('\n❌ Errors:');
-        this.errors.forEach(error => console.log(`   ❌ ${error}`));
+        this.errors.forEach( _error => console.log(`   ❌ ${error}`));
       }
-    } catch (error) {
+    } catch (_error) {
       console.error('💥 Generation failed:', error.message);
       process.exit(1);
     }
@@ -297,7 +297,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     generator.version = version.split('=')[1];
   }
 
-  generator.generate().catch(error => {
+  generator.generate().catch( _error => {
     console.error('💥 Unexpected error:', error);
     process.exit(1);
   });

@@ -40,7 +40,7 @@ function checkSecurityFeatures(filePath) {
     }
 
     return checks;
-  } catch (error) {
+  } catch (_error) {
     console.error(`Error reading ${filePath}:`, error.message);
     return null;
   }
@@ -161,7 +161,7 @@ async function testSecurity() {
 }
 
 // Run test
-testSecurity().catch(error => {
+testSecurity().catch( _error => {
   console.error('❌ Test error:', error);
   process.exit(1);
 });

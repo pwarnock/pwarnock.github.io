@@ -17,7 +17,7 @@ function getBundleSize(path) {
     const { statSync } = require('fs');
     const stats = statSync(path);
     return Math.round(stats.size / 1024);
-  } catch (error) {
+  } catch (_error) {
     console.warn(`⚠️  Could not read ${path}: ${error.message}`);
     return null;
   }
@@ -61,7 +61,7 @@ function loadBaseline() {
     const content = readFileSync(BASELINE_FILE, 'utf8');
     const baseline = JSON.parse(content);
     return baseline;
-  } catch (error) {
+  } catch (_error) {
     console.warn(`⚠️  Could not load baseline: ${error.message}`);
     return null;
   }

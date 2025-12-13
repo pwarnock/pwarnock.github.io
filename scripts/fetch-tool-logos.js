@@ -41,7 +41,7 @@ async function fetchBrandfetchLogo(domain, outputPath, apiKey) {
     const buffer = Buffer.from(await imgResponse.arrayBuffer());
     fs.writeFileSync(outputPath, buffer);
     return true;
-  } catch (error) {
+  } catch (_error) {
     console.log(`   ⚠️  Brandfetch failed for ${domain}: ${error.message}. Falling back...`);
     return false;
   }
@@ -63,7 +63,7 @@ async function fetchLogo(domain, outputPath) {
     const buffer = Buffer.from(arrayBuffer);
     fs.writeFileSync(outputPath, buffer);
     return true;
-  } catch (error) {
+  } catch (_error) {
     console.error(`❌ Error fetching logo for ${domain}:`, error.message);
     return false;
   }

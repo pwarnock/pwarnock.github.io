@@ -34,29 +34,6 @@ function collectPortfolioIndexMd(rootDir) {
   return results;
 }
 
-/**
- * Recursively walk portfolio directory and collect all index.md files.
- * This replaces glob-based discovery to avoid dependency/API fragility.
- */
-function collectPortfolioIndexMd(rootDir) {
-  const results = [];
-
-  (function walk(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-    for (const ent of entries) {
-      const full = path.join(dir, ent.name);
-      if (ent.isDirectory()) {
-        walk(full);
-      } else if (ent.isFile() && path.basename(full) === 'index.md') {
-        results.push(full);
-      }
-    }
-  })(rootDir);
-
-  return results;
-}
-
 const REQUIRED_FIELDS = [
   'title',
   'date',
@@ -138,7 +115,7 @@ function parseFrontmatter(content) {
 
   try {
     return yaml.load(match[1]);
-  } catch (error) {
+  } catch (_error) {
     console.error('YAML parsing error:', error);
     return null;
   }
@@ -245,12 +222,11 @@ async function validatePortfolio() {
   console.log('🔍 Validating portfolio frontmatter...\n');
 
   const portfolioDir = path.join(
-    path.dirname(new URL(import.meta.url).pathname), // eslint-disable-line no-undef
+    path.dirname(new URL(import.meta.url).pathname),
     '..',
     'content',
     'portfolio'
   );
-  const pattern = path.join(portfolioDir, '**', 'index.md');
 
   const files = collectPortfolioIndexMd(portfolioDir);
 
@@ -263,7 +239,6 @@ async function validatePortfolio() {
   let totalWarnings = 0;
 
   for (const file of files) {
-    // eslint-disable-next-line security/detect-non-literal-fs-filename
     const content = fs.readFileSync(file, 'utf8');
     const frontmatter = parseFrontmatter(content);
 
@@ -279,7 +254,7 @@ async function validatePortfolio() {
       console.log(`📄 ${fileName}:`);
     }
 
-    errors.forEach(error => {
+    errors.forEach( _error => {
       console.log(`  ❌ ${error}`);
       totalErrors++;
     });
@@ -313,7 +288,7 @@ async function validatePortfolio() {
 }
 
 // Run validation
-validatePortfolio().catch(error => {
+validatePortfolio().catch( _error => {
   console.error('❌ Validation error:', error);
   process.exit(1);
 });
