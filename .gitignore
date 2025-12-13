@@ -157,3 +157,4 @@ coverage/
 .cache/
 data/version.toml
 data/version.json
+.skills/
