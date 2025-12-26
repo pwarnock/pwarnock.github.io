@@ -104,14 +104,14 @@
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
-    "@eslint/js": "^10.0.0-alpha.1",
+    "@eslint/js": "^10.0.0",
     "@playwright/test": "^1.57.0",
     "@tailwindcss/cli": "^4.1.18",
     "@taplo/cli": "^0.7.0",
-    "@vitest/coverage-v8": "^4.0.15",
-    "@vitest/ui": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
     "axe-playwright": "^2.2.2",
-    "daisyui": "^5.5.13",
+    "daisyui": "^5.5.14",
     "eslint-config-prettier": "^9.1.2",
     "eslint-formatter-compact": "^9.0.1",
     "eslint-plugin-security": "^3.0.1",
@@ -127,7 +127,7 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.15",
+    "vitest": "^4.0.16",
     "yaml-lint": "^1.7.0"
   },
   "dependencies": {
@@ -141,7 +141,7 @@
     "@opentelemetry/semantic-conventions": "^1.38.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
-    "logfire": "^0.11.0",
+    "logfire": "^0.11.1",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.1.18",
     "ws": "^8.18.3"
