@@ -253,10 +253,7 @@ export class BlogAgent {
   ): string {
     const sections: string[] = [];
 
-    // Title
-    sections.push(`# ${title}\n`);
-
-    // Introduction
+    // Introduction (title comes from frontmatter, no H1 in content)
     sections.push(`## Introduction\n`);
     sections.push(`${summary}\n`);
 
@@ -292,8 +289,6 @@ export class BlogAgent {
   ): string {
     const sections: string[] = [];
 
-    sections.push(`# ${title}\n`);
-
     sections.push(`## Overview\n`);
     sections.push(`${summary}\n`);
 
@@ -327,8 +322,6 @@ export class BlogAgent {
   ): string {
     const sections: string[] = [];
 
-    sections.push(`# ${title}\n`);
-
     sections.push(`## About This ${keyPoints[0] || 'Content'}\n`);
     sections.push(`${summary}\n`);
 
@@ -352,8 +345,6 @@ export class BlogAgent {
     vocabulary: string[]
   ): string {
     const sections: string[] = [];
-
-    sections.push(`# ${title}\n`);
 
     sections.push(`## Project Overview\n`);
     sections.push(`${summary}\n`);
