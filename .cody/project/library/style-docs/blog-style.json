@@ -1,0 +1,23 @@
+{
+  "contentType": "blog",
+  "tone": "Conversational, personal, and authentic",
+  "vocabulary": [],
+  "sentencePatterns": [],
+  "dos": [
+    "Be concise and to the point",
+    "Use \"I\" statements for personal perspective",
+    "Share authentic thoughts and experiences",
+    "Optimize for SEO/AEO discoverability"
+  ],
+  "donts": [
+    "Don't overachieve with excessive content",
+    "Avoid AI-sounding phrases like \"delve into\", \"in conclusion\", \"it's important to note\"",
+    "Don't be robotic or overly formal",
+    "Avoid excessive jargon without explanation"
+  ],
+  "examples": {
+    "good": [],
+    "bad": []
+  },
+  "lastUpdated": "2025-12-26T12:15:00.000Z"
+}

@@ -1,0 +1,29 @@
+{
+  "contentType": "portfolio",
+  "tone": "Professional, achievement-focused, and confident",
+  "vocabulary": [
+    "led",
+    "developed",
+    "implemented",
+    "achieved",
+    "delivered"
+  ],
+  "sentencePatterns": [],
+  "dos": [
+    "Highlight impact and technical depth",
+    "Use metrics and quantifiable results",
+    "Showcase problem-solving skills",
+    "Demonstrate value delivered to clients"
+  ],
+  "donts": [
+    "Don't be overly modest or downplay achievements",
+    "Avoid vague statements without specifics",
+    "Don't list responsibilities without outcomes",
+    "Avoid excessive technical jargon for non-technical audiences"
+  ],
+  "examples": {
+    "good": [],
+    "bad": []
+  },
+  "lastUpdated": "2025-12-26T12:15:00.000Z"
+}
