@@ -6,24 +6,31 @@
     "developed",
     "implemented",
     "achieved",
-    "delivered"
+    "delivered",
+    "of",
+    "Great",
+    "Too",
+    "Excellent"
   ],
   "sentencePatterns": [],
   "dos": [
     "Highlight impact and technical depth",
     "Use metrics and quantifiable results",
     "Showcase problem-solving skills",
-    "Demonstrate value delivered to clients"
+    "Demonstrate value delivered to clients",
+    "Great use of strong action verbs and metrics",
+    "Excellent use of \"delivered\" and \"achieved\" - very professional tone"
   ],
   "donts": [
     "Don't be overly modest or downplay achievements",
     "Avoid vague statements without specifics",
     "Don't list responsibilities without outcomes",
-    "Avoid excessive technical jargon for non-technical audiences"
+    "Avoid excessive technical jargon for non-technical audiences",
+    "Too vague, need more specific details about outcomes"
   ],
   "examples": {
     "good": [],
     "bad": []
   },
-  "lastUpdated": "2025-12-26T12:15:00.000Z"
+  "lastUpdated": "2025-12-26T20:44:26.523Z"
 }
