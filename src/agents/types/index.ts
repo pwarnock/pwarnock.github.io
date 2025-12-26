@@ -148,3 +148,59 @@ export interface ImagePromptResponse {
     styleHints: string[];
   };
 }
+
+/**
+ * Validation result from content validation
+ */
+export interface ValidationResult {
+  valid: boolean;
+  errors: string[];
+  warnings: string[];
+}
+
+/**
+ * Validation checkpoints for signoff workflow
+ */
+export interface ValidationCheckpoints {
+  frontmatter: boolean;
+  structure: boolean;
+  images: boolean;
+  comments: boolean;
+}
+
+/**
+ * Signoff status for a session
+ */
+export interface SignoffStatus {
+  canApprove: boolean;
+  validationPassed: boolean;
+  pendingComments: number;
+  validationErrors: string[];
+  validationWarnings: string[];
+  checkpoints: ValidationCheckpoints;
+}
+
+/**
+ * Signoff result from operations
+ */
+export interface SignoffResult {
+  success: boolean;
+  sessionId?: string;
+  status?: SignoffStatus;
+  error?: string;
+  summary?: string;
+}
+
+/**
+ * Change summary for a session
+ */
+export interface ChangeSummary {
+  sessionId: string;
+  contentType: string;
+  title: string;
+  validationPassed: boolean;
+  commentsResolved: number;
+  commentsPending: number;
+  createdAt: Date;
+  checkpoints: ValidationCheckpoints;
+}
