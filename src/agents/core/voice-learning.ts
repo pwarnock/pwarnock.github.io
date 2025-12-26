@@ -7,54 +7,60 @@
  */
 
 import type { StyleDocumentation, ContentType } from '../types/index.js';
-import fs from 'fs';
-import path from 'path';
+import {
+  readJSONFile,
+  writeJSONFile,
+  ensureDirectory,
+  validateJSONFile,
+  getFileStats
+} from '../utils/storage.js';
 
 export class VoiceLearningSystem {
   private projectRoot: string;
   private styleDocsDir: string;
+  private readonly styleDocFields: (keyof StyleDocumentation)[] = [
+    'contentType',
+    'tone',
+    'vocabulary',
+    'sentencePatterns',
+    'dos',
+    'donts',
+    'examples',
+    'lastUpdated'
+  ];
 
   constructor() {
     this.projectRoot = process.cwd();
-    this.styleDocsDir = path.join(this.projectRoot, '.cody/project/library/style-docs');
+    this.styleDocsDir = this.projectRoot + '/.cody/project/library/style-docs';
   }
 
   /**
    * Load style documentation for a content type
    */
   async loadStyleDoc(contentType: ContentType): Promise<StyleDocumentation | null> {
-    const filePath = path.join(this.styleDocsDir, `${contentType}-style.json`);
+    const filePath = `${this.styleDocsDir}/${contentType}-style.json`;
 
-    if (!fs.existsSync(filePath)) {
+    const data = readJSONFile<StyleDocumentation>(filePath);
+
+    if (!data) {
       return null;
     }
 
-    try {
-      const content = fs.readFileSync(filePath, 'utf8');
-      const data = JSON.parse(content);
-      return {
-        ...data,
-        lastUpdated: new Date(data.lastUpdated)
-      };
-    } catch (error) {
-      console.error(`Error loading style doc for ${contentType}:`, error);
-      return null;
-    }
+    // Convert date string back to Date object
+    return {
+      ...data,
+      lastUpdated: new Date(data.lastUpdated)
+    };
   }
 
   /**
    * Save style documentation for a content type
    */
   async saveStyleDoc(styleDoc: StyleDocumentation): Promise<void> {
-    const filePath = path.join(this.styleDocsDir, `${styleDoc.contentType}-style.json`);
-
-    // Ensure directory exists
-    if (!fs.existsSync(this.styleDocsDir)) {
-      fs.mkdirSync(this.styleDocsDir, { recursive: true });
-    }
+    const filePath = `${this.styleDocsDir}/${styleDoc.contentType}-style.json`;
 
     try {
-      fs.writeFileSync(filePath, JSON.stringify(styleDoc, null, 2), 'utf8');
+      writeJSONFile(filePath, styleDoc, { createBackup: true, format: true });
     } catch (error) {
       console.error(`Error saving style doc for ${styleDoc.contentType}:`, error);
       throw error;
@@ -296,5 +302,86 @@ export class VoiceLearningSystem {
       badExampleCount: styleDoc.examples.bad.length,
       lastUpdated: styleDoc.lastUpdated
     };
+  }
+
+  /**
+   * Validate style documentation file
+   */
+  async validateStyleDoc(contentType: ContentType): Promise<{
+    valid: boolean;
+    errors: string[];
+  }> {
+    const filePath = `${this.styleDocsDir}/${contentType}-style.json`;
+    return validateJSONFile<StyleDocumentation>(filePath, this.styleDocFields);
+  }
+
+  /**
+   * Get backup files for a content type
+   */
+  getBackups(contentType: ContentType): string[] {
+    const baseFileName = `${contentType}-style.json`;
+    const dir = this.styleDocsDir;
+
+    // List all files that start with the base filename
+    const files = require('fs').readdirSync(dir).filter((file: string): boolean =>
+      file.startsWith(baseFileName) && file !== baseFileName
+    );
+
+    return files.map((file: string) => `${dir}/${file}`);
+  }
+
+  /**
+   * Restore from backup
+   */
+  async restoreFromBackup(contentType: ContentType, backupPath: string): Promise<void> {
+    const fs = require('fs');
+
+    if (!fs.existsSync(backupPath)) {
+      throw new Error(`Backup file not found: ${backupPath}`);
+    }
+
+    const targetPath = `${this.styleDocsDir}/${contentType}-style.json`;
+
+    // Copy backup to main file
+    fs.copyFileSync(backupPath, targetPath);
+
+    console.log(`Restored ${contentType} style doc from backup: ${backupPath}`);
+  }
+
+  /**
+   * Export style documentation as JSON string
+   */
+  async exportStyleDoc(contentType: ContentType): Promise<string | null> {
+    const styleDoc = await this.loadStyleDoc(contentType);
+
+    if (!styleDoc) {
+      return null;
+    }
+
+    return JSON.stringify(styleDoc, null, 2);
+  }
+
+  /**
+   * Import style documentation from JSON string
+   */
+  async importStyleDoc(contentType: ContentType, jsonData: string): Promise<void> {
+    try {
+      const data = JSON.parse(jsonData) as StyleDocumentation;
+
+      // Validate content type matches
+      if (data.contentType !== contentType) {
+        throw new Error(
+          `Content type mismatch: expected ${contentType}, got ${data.contentType}`
+        );
+      }
+
+      // Update timestamp
+      data.lastUpdated = new Date();
+
+      // Save
+      await this.saveStyleDoc(data);
+    } catch (error) {
+      throw new Error(`Failed to import style doc: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
   }
 }
