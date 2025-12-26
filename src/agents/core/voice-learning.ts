@@ -14,6 +14,11 @@ import {
   validateJSONFile,
   getFileStats
 } from '../utils/storage.js';
+import {
+  extractPatternsFromFeedback,
+  mergePatterns,
+  generatePatternSummary
+} from '../utils/pattern-extractor.js';
 
 export class VoiceLearningSystem {
   private projectRoot: string;
@@ -88,29 +93,107 @@ export class VoiceLearningSystem {
 
   /**
    * Extract patterns from user feedback
+   *
+   * Analyzes feedback text to extract:
+   * - Vocabulary words and phrases
+   * - Sentence patterns and structures
+   * - Dos and donts based on feedback tone
+   * - Correction patterns for common issues
+   *
+   * Updates the style documentation with extracted patterns
    */
   async extractPatternsFromFeedback(
     contentType: ContentType,
     feedback: string,
     context: 'positive' | 'negative'
-  ): Promise<void> {
+  ): Promise<{
+    success: boolean;
+    summary: string;
+    patternsExtracted: {
+      vocabulary: number;
+      sentencePatterns: number;
+      dos: number;
+      donts: number;
+      corrections: number;
+    };
+  }> {
     const styleDoc = await this.loadStyleDoc(contentType);
 
     if (!styleDoc) {
       console.warn(`No style doc found for ${contentType}, creating new one`);
-      return;
+      return {
+        success: false,
+        summary: 'No style documentation found',
+        patternsExtracted: {
+          vocabulary: 0,
+          sentencePatterns: 0,
+          dos: 0,
+          donts: 0,
+          corrections: 0
+        }
+      };
     }
 
-    // TODO: Implement pattern extraction logic
-    // For now, just store the feedback as a note
-    if (context === 'positive') {
-      styleDoc.dos.push(feedback);
-    } else {
-      styleDoc.donts.push(feedback);
-    }
+    try {
+      // Extract patterns using the pattern extractor utility
+      const extracted = extractPatternsFromFeedback(feedback);
 
-    styleDoc.lastUpdated = new Date();
-    await this.saveStyleDoc(styleDoc);
+      // If context is explicitly provided, override classification
+      if (context === 'positive' && extracted.dos.length === 0) {
+        extracted.dos.push(feedback);
+      } else if (context === 'negative' && extracted.donts.length === 0) {
+        extracted.donts.push(feedback);
+      }
+
+      // Merge extracted patterns with existing style documentation
+      const merged = mergePatterns(
+        {
+          vocabulary: styleDoc.vocabulary,
+          sentencePatterns: styleDoc.sentencePatterns,
+          dos: styleDoc.dos,
+          donts: styleDoc.donts
+        },
+        extracted
+      );
+
+      // Update style documentation
+      styleDoc.vocabulary = merged.vocabulary;
+      styleDoc.sentencePatterns = merged.sentencePatterns;
+      styleDoc.dos = merged.dos;
+      styleDoc.donts = merged.donts;
+      styleDoc.lastUpdated = new Date();
+
+      // Save updated documentation
+      await this.saveStyleDoc(styleDoc);
+
+      // Generate summary
+      const summary = generatePatternSummary(extracted);
+
+      return {
+        success: true,
+        summary,
+        patternsExtracted: {
+          vocabulary: extracted.vocabulary.length,
+          sentencePatterns: extracted.sentencePatterns.length,
+          dos: extracted.dos.length,
+          donts: extracted.donts.length,
+          corrections: extracted.corrections.length
+        }
+      };
+    } catch (error) {
+      console.error(`Error extracting patterns from feedback:`, error);
+      return {
+        success: false,
+        summary: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        patternsExtracted: {
+          vocabulary: 0,
+          sentencePatterns: 0,
+          dos: 0,
+          donts: 0,
+          corrections: 0
+        }
+      };
+    }
   }
 
   /**

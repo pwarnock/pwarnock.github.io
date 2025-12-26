@@ -1,23 +1,64 @@
 {
   "contentType": "blog",
   "tone": "Conversational, personal, and authentic",
-  "vocabulary": [],
-  "sentencePatterns": [],
+  "vocabulary": [
+    "t use AI-sounding phrases like",
+    "or",
+    ".\n      Use",
+    "instead of",
+    "AI",
+    "starting",
+    "This",
+    "Make",
+    "Don",
+    "Avoid",
+    "Use",
+    "Great",
+    "Love",
+    "delve into",
+    "tapestry",
+    "simpler",
+    "active",
+    "jargon",
+    "Keep",
+    "I think",
+    "I believe",
+    "Prefer"
+  ],
+  "sentencePatterns": [
+    "Avoid starting sentences with \"It is important to note\""
+  ],
   "dos": [
     "Be concise and to the point",
     "Use \"I\" statements for personal perspective",
     "Share authentic thoughts and experiences",
-    "Optimize for SEO/AEO discoverability"
+    "Optimize for SEO/AEO discoverability",
+    "I love the personal stories - keep those",
+    "Great conversational tone",
+    "Love the personal stories and authentic voice",
+    "Use active voice. Be concise.",
+    "Keep it simple",
+    "Prefer \"I think\" over \"I believe\""
   ],
   "donts": [
     "Don't overachieve with excessive content",
     "Avoid AI-sounding phrases like \"delve into\", \"in conclusion\", \"it's important to note\"",
     "Don't be robotic or overly formal",
-    "Avoid excessive jargon without explanation"
+    "Avoid excessive jargon without explanation",
+    "This is too formal and academic",
+    "Make it more conversational",
+    "Don't use AI-sounding phrases like \"delve into\" or \"tapestry\"",
+    "Avoid starting sentences with \"It is important to note\"",
+    "Use \"I think\" instead of \"I believe\" for a more casual tone",
+    "This is too long and wordy",
+    "Make it more concise",
+    "Avoid \"delve into\" and \"tapestry\" - use simpler language instead",
+    "Use \"delve into\" sparingly.",
+    "Avoid jargon"
   ],
   "examples": {
     "good": [],
     "bad": []
   },
-  "lastUpdated": "2025-12-26T12:15:00.000Z"
+  "lastUpdated": "2025-12-26T20:23:01.430Z"
 }

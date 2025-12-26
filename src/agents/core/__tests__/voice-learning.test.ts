@@ -13,7 +13,7 @@ describe('VoiceLearningSystem', () => {
     expect(blogStyle).toBeDefined();
     expect(blogStyle?.contentType).toBe('blog');
     expect(blogStyle?.dos).toContain('Be concise and to the point');
-    expect(blogStyle?.donts).toContain('Avoid AI-sounding phrases');
+    expect(blogStyle?.donts.some(d => d.includes('AI-sounding phrases'))).toBe(true);
   });
 
   it('should load existing portfolio style documentation', async () => {
@@ -42,7 +42,7 @@ describe('VoiceLearningSystem', () => {
 
     expect(suggestions.tone).toBe('Conversational, personal, and authentic');
     expect(suggestions.dos).toContain('Use "I" statements for personal perspective');
-    expect(suggestions.donts).toContain('Avoid AI-sounding phrases');
+    expect(suggestions.donts.some(d => d.includes('AI-sounding phrases'))).toBe(true);
   });
 
   it('should get style suggestions for portfolio', async () => {
