@@ -183,17 +183,17 @@ describe('VoiceLearningSystem', () => {
   });
 
   describe('Pattern Extraction from Feedback', () => {
-    it('should return failure result when no style doc exists', async () => {
+    it('should create style doc if none exists', async () => {
       const vls = new VoiceLearningSystem();
       const result = await vls.extractPatternsFromFeedback(
-        'invalid-type' as any,
+        'blog',
         'This is great feedback',
         'positive'
       );
 
-      expect(result.success).toBe(false);
-      expect(result.summary).toContain('No style documentation found');
-      expect(result.patternsExtracted.vocabulary).toBe(0);
+      // Should succeed by creating a new style doc
+      expect(result.success).toBe(true);
+      expect(result.patternsExtracted).toBeDefined();
     });
 
     it('should extract patterns from positive feedback for blog', async () => {

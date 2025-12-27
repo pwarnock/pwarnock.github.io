@@ -119,21 +119,12 @@ export class VoiceLearningSystem {
       corrections: number;
     };
   }> {
-    const styleDoc = await this.loadStyleDoc(contentType);
+    let styleDoc = await this.loadStyleDoc(contentType);
 
+    // Initialize style doc if it doesn't exist
     if (!styleDoc) {
-      console.warn(`No style doc found for ${contentType}, creating new one`);
-      return {
-        success: false,
-        summary: 'No style documentation found',
-        patternsExtracted: {
-          vocabulary: 0,
-          sentencePatterns: 0,
-          dos: 0,
-          donts: 0,
-          corrections: 0
-        }
-      };
+      styleDoc = this.initializeStyleDoc(contentType, 'professional');
+      await this.saveStyleDoc(styleDoc);
     }
 
     try {
