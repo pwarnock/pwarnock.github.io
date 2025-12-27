@@ -93,7 +93,7 @@ describe('BlogAgent', () => {
       expect(result.bundle?.frontmatter.title).toBe('My Original Thoughts on Testing');
       expect(result.bundle?.frontmatter.content_type).toBe('original');
       expect(result.bundle?.frontmatter.summary).toBe('A deep dive into testing strategies and best practices.');
-      expect(result.bundle?.content).toContain('My Original Thoughts on Testing');
+      // H1 title comes from frontmatter, not content body (to avoid duplicate H1s)
       expect(result.bundle?.content).toContain('## Introduction');
       expect(result.bundle?.content).toContain('## My Take');
       expect(result.bundle?.content).toContain('## Conclusion');
@@ -533,7 +533,9 @@ describe('BlogAgent', () => {
       const result = await blogAgent.generateBlogPost(request);
 
       expect(result.success).toBe(true);
-      expect(result.bundle?.content).toContain('# Structure Test');
+      // H1 title comes from frontmatter, not content body (to avoid duplicate H1s)
+      // Content should start with H2 sections
+      expect(result.bundle?.content).toContain('## Introduction');
       expect(result.bundle?.content).toContain('##');
     });
 
@@ -729,8 +731,12 @@ describe('BlogAgent', () => {
       const result = await blogAgent.generateBlogPost(request);
 
       expect(result.success).toBe(true);
-      expect(result.bundle?.content).toContain('# SEO Test Post');
+      // H1 title comes from frontmatter (SEO best practice: single H1 from title)
+      // Content uses H2+ headings for structure
+      expect(result.bundle?.content).toContain('## Introduction');
+      expect(result.bundle?.content).toContain('## Key Points');
       expect(result.bundle?.frontmatter.summary).toBeDefined();
+      expect(result.bundle?.frontmatter.title).toBe('SEO Test Post');
     });
   });
 
@@ -751,6 +757,126 @@ describe('BlogAgent', () => {
       expect(result.bundle?.frontmatter.content_type).toBe(contentType);
       expect(result.bundle?.content).toBeTruthy();
       expect(result.bundle?.content.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('Featured Image and Attribution', () => {
+    it('should include featured image in frontmatter when provided', async () => {
+      const request: BlogPostRequest = {
+        title: 'Featured Image Test',
+        contentType: 'original',
+        summary: 'Testing featured image',
+        featuredImage: '/images/test.jpg',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.frontmatter.featured_image).toBe('/images/test.jpg');
+    });
+
+    it('should include attribution when provided', async () => {
+      const request: BlogPostRequest = {
+        title: 'Attribution Test',
+        contentType: 'curated',
+        summary: 'Testing attribution',
+        attribution: 'John Doe',
+        sourceUrl: 'https://example.com/article',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.frontmatter.attribution).toBe('John Doe');
+      expect(result.bundle?.frontmatter.source_url).toBe('https://example.com/article');
+    });
+  });
+
+  describe('Validation Status', () => {
+    it('should set validation status to pending initially', async () => {
+      const request: BlogPostRequest = {
+        title: 'Validation Status Test',
+        contentType: 'original',
+        summary: 'Testing validation status',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.validationStatus).toBe('pending');
+    });
+
+    it('should set review status to draft initially', async () => {
+      const request: BlogPostRequest = {
+        title: 'Review Status Test',
+        contentType: 'original',
+        summary: 'Testing review status',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.reviewStatus).toBe('draft');
+    });
+
+    it('should include createdAt timestamp', async () => {
+      const before = new Date();
+      const request: BlogPostRequest = {
+        title: 'Timestamp Test',
+        contentType: 'original',
+        summary: 'Testing timestamp',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+      const after = new Date();
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.createdAt).toBeDefined();
+      expect(result.bundle?.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime());
+      expect(result.bundle?.createdAt.getTime()).toBeLessThanOrEqual(after.getTime());
+    });
+  });
+
+  describe('Whitespace Handling in Input', () => {
+    it('should reject title with only whitespace', async () => {
+      const request: BlogPostRequest = {
+        title: '   ',
+        contentType: 'original',
+        summary: 'Valid summary',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('Title is required');
+    });
+
+    it('should reject summary with only whitespace', async () => {
+      const request: BlogPostRequest = {
+        title: 'Valid Title',
+        contentType: 'original',
+        summary: '   ',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('Summary is required');
+    });
+  });
+
+  describe('Content Bundle Type', () => {
+    it('should set bundle type to blog', async () => {
+      const request: BlogPostRequest = {
+        title: 'Type Test',
+        contentType: 'original',
+        summary: 'Testing type',
+      };
+
+      const result = await blogAgent.generateBlogPost(request);
+
+      expect(result.success).toBe(true);
+      expect(result.bundle?.type).toBe('blog');
     });
   });
 });

@@ -957,4 +957,176 @@ describe('TechRadarAgent', () => {
       expect(result.content).toMatch(/considerations|limitations|challenges|trade-off/i);
     });
   });
+
+  describe('All Quadrants', () => {
+    const quadrants = ['languages', 'frameworks', 'tools', 'infrastructure', 'libraries', 'databases'];
+
+    it.each(quadrants)('should generate content for %s quadrant', async (quadrant) => {
+      const options: TechRadarOptions = {
+        title: `Test ${quadrant} Tech`,
+        description: `Testing ${quadrant} technology`,
+        quadrant,
+        ring: 'adopt'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.frontmatter.quadrant).toBe(quadrant);
+      expect(result.content).toBeTruthy();
+      expect(result.content.length).toBeGreaterThan(100);
+    });
+  });
+
+  describe('Conclusion Section', () => {
+    it('should include maturity assessment in conclusion', async () => {
+      const options: TechRadarOptions = {
+        title: 'Conclusion Test',
+        description: 'Testing conclusion section',
+        quadrant: 'tools',
+        ring: 'trial'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('**Maturity:**');
+    });
+
+    it('should include future outlook in conclusion', async () => {
+      const options: TechRadarOptions = {
+        title: 'Outlook Test',
+        description: 'Testing future outlook',
+        quadrant: 'frameworks',
+        ring: 'assess'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('**Future Outlook:**');
+    });
+
+    it('should include reassessment note', async () => {
+      const options: TechRadarOptions = {
+        title: 'Reassess Test',
+        description: 'Testing reassessment note',
+        quadrant: 'languages',
+        ring: 'adopt'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('Regularly reassess');
+    });
+  });
+
+  describe('Use Cases by Ring', () => {
+    it('should include production-ready use cases for adopt ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Use Cases Adopt',
+        description: 'Testing adopt use cases',
+        quadrant: 'tools',
+        ring: 'adopt'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('Production applications');
+      expect(result.content).toContain('SLA requirements');
+    });
+
+    it('should include pilot use cases for trial ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Use Cases Trial',
+        description: 'Testing trial use cases',
+        quadrant: 'tools',
+        ring: 'trial'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('Proof of concepts');
+      expect(result.content).toContain('prototypes');
+    });
+
+    it('should include research use cases for assess ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Use Cases Assess',
+        description: 'Testing assess use cases',
+        quadrant: 'tools',
+        ring: 'assess'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('Research');
+      expect(result.content).toContain('exploration');
+    });
+
+    it('should include legacy use cases for hold ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Use Cases Hold',
+        description: 'Testing hold use cases',
+        quadrant: 'tools',
+        ring: 'hold'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('legacy');
+    });
+  });
+
+  describe('Ecosystem Assessment Content', () => {
+    it('should describe mature ecosystem for adopt ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Ecosystem Adopt',
+        description: 'Testing ecosystem for adopt',
+        quadrant: 'frameworks',
+        ring: 'adopt'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('mature');
+      expect(result.content).toContain('comprehensive');
+    });
+
+    it('should describe growing ecosystem for trial ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Ecosystem Trial',
+        description: 'Testing ecosystem for trial',
+        quadrant: 'frameworks',
+        ring: 'trial'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('growing');
+    });
+
+    it('should describe early ecosystem for assess ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Ecosystem Assess',
+        description: 'Testing ecosystem for assess',
+        quadrant: 'frameworks',
+        ring: 'assess'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('early');
+    });
+
+    it('should describe declining ecosystem for hold ring', async () => {
+      const options: TechRadarOptions = {
+        title: 'Ecosystem Hold',
+        description: 'Testing ecosystem for hold',
+        quadrant: 'frameworks',
+        ring: 'hold'
+      };
+
+      const result = await agent.generateTechRadar(options);
+
+      expect(result.content).toContain('decline');
+    });
+  });
 });

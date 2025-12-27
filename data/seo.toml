@@ -20,7 +20,7 @@ truncated_length = 45
 tagline = "Fullstack Developer & Technology Leader"
 
 # Default fallback paths
-[paths]
+[defaults.paths]
 og_image = "/img/og-image.png"
 favicon_32 = "/favicon-32x32.png"
 favicon_16 = "/favicon-16x16.png"

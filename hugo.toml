@@ -54,6 +54,8 @@ ignoreLogs = ['warning-goldmark-raw-html']
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML"]
   section = ["HTML", "RSS", "JSON"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
 
 [security]
   enableInlineShortcodes = true

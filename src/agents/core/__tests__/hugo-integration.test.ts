@@ -621,4 +621,306 @@ describe('HugoIntegration', () => {
       expect(result.frontmatter.draft).toBe(false);
     });
   });
+
+  describe('Validation Edge Cases', () => {
+    it('should detect invalid date format in portfolio', async () => {
+      // Create bundle with correct frontmatter first
+      const options: ContentGenerationOptions = {
+        type: 'portfolio',
+        title: 'Invalid Date Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'Test.',
+          client: 'Test Client',
+          technologies: ['React'],
+          completion_date: '2025-01',
+          category: 'Web App',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Manually write an invalid date format to test validation
+      const invalidContent = `---
+title: Invalid Date Test
+date: "01-15-2025"
+draft: true
+description: "Test."
+client: "Test Client"
+technologies: ["React"]
+completion_date: "2025-01"
+category: "Web App"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'portfolio');
+      expect(validation.errors).toContain('Invalid date format (should be YYYY-MM-DD)');
+    });
+
+    it('should detect invalid completion_date format', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'portfolio',
+        title: 'Invalid Completion Date',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'Test.',
+          client: 'Test Client',
+          technologies: ['React'],
+          completion_date: '2025-01',
+          category: 'Web App',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write invalid completion date format
+      const invalidContent = `---
+title: Invalid Completion Date
+date: "2025-01-15"
+draft: true
+description: "Test."
+client: "Test Client"
+technologies: ["React"]
+completion_date: "January 2025"
+category: "Web App"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'portfolio');
+      expect(validation.errors).toContain('Invalid completion_date format (should be YYYY-MM)');
+    });
+
+    it('should detect non-array technologies', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'portfolio',
+        title: 'Tech Array Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'Test.',
+          client: 'Test Client',
+          technologies: ['React'],
+          completion_date: '2025-01',
+          category: 'Web App',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write technologies as string instead of array
+      const invalidContent = `---
+title: Tech Array Test
+date: "2025-01-15"
+draft: true
+description: "Test."
+client: "Test Client"
+technologies: "React"
+completion_date: "2025-01"
+category: "Web App"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'portfolio');
+      expect(validation.errors).toContain('Technologies must be an array');
+    });
+
+    it('should warn about invalid github_url', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'portfolio',
+        title: 'GitHub URL Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'Test.',
+          client: 'Test Client',
+          technologies: ['React'],
+          completion_date: '2025-01',
+          category: 'Web App',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write invalid github URL
+      const invalidContent = `---
+title: GitHub URL Test
+date: "2025-01-15"
+draft: true
+description: "Test."
+client: "Test Client"
+technologies: ["React"]
+completion_date: "2025-01"
+category: "Web App"
+github_url: "https://gitlab.com/user/repo"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'portfolio');
+      expect(validation.warnings.some(w => w.includes('github_url'))).toBe(true);
+    });
+
+    it('should detect invalid date format in tech radar', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'tech-radar',
+        title: 'Tech Radar Date Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'A test tool.',
+          quadrant: 'tools',
+          ring: 'adopt',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write invalid date format
+      const invalidContent = `---
+title: Tech Radar Date Test
+date: "January 15, 2025"
+draft: true
+description: "A test tool."
+quadrant: "tools"
+ring: "adopt"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'tech-radar');
+      expect(validation.errors).toContain('Invalid date format (should be YYYY-MM-DD)');
+    });
+
+    it('should detect non-string quadrant in tech radar', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'tech-radar',
+        title: 'Quadrant Type Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'A test tool.',
+          quadrant: 'tools',
+          ring: 'adopt',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write quadrant as number
+      const invalidContent = `---
+title: Quadrant Type Test
+date: "2025-01-15"
+draft: true
+description: "A test tool."
+quadrant: 123
+ring: "adopt"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'tech-radar');
+      expect(validation.errors).toContain('Quadrant must be a string');
+    });
+
+    it('should detect non-string ring in tech radar', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'tech-radar',
+        title: 'Ring Type Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'A test tool.',
+          quadrant: 'tools',
+          ring: 'adopt',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write ring as number
+      const invalidContent = `---
+title: Ring Type Test
+date: "2025-01-15"
+draft: true
+description: "A test tool."
+quadrant: "tools"
+ring: 456
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'tech-radar');
+      expect(validation.errors).toContain('Ring must be a string');
+    });
+
+    it('should detect non-array tags in tech radar', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'tech-radar',
+        title: 'Tags Array Test',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          description: 'A test tool.',
+          quadrant: 'tools',
+          ring: 'adopt',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write tags as string
+      const invalidContent = `---
+title: Tags Array Test
+date: "2025-01-15"
+draft: true
+description: "A test tool."
+quadrant: "tools"
+ring: "adopt"
+tags: "single-tag"
+---
+
+# Content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'tech-radar');
+      expect(validation.errors).toContain('Tags must be an array');
+    });
+
+    it('should detect missing bundle index.md', async () => {
+      // Create a directory without index.md
+      const emptyDir = path.join(testProjectRoot, 'content', 'test-empty');
+      await fs.mkdir(emptyDir, { recursive: true });
+
+      const validation = await hugo.validateContentBundle(emptyDir, 'blog');
+      expect(validation.valid).toBe(false);
+      expect(validation.errors).toContain('index.md not found in bundle');
+    });
+
+    it('should detect invalid frontmatter format', async () => {
+      const options: ContentGenerationOptions = {
+        type: 'blog',
+        title: 'Invalid Frontmatter',
+        date: new Date('2025-01-15'),
+        frontmatter: {
+          summary: 'Test.',
+        },
+      };
+
+      const result = await hugo.generateContentBundle(options);
+
+      // Write content without proper frontmatter
+      const invalidContent = `This has no frontmatter at all
+
+Just content`;
+      await fs.writeFile(result.file, invalidContent, 'utf8');
+
+      const validation = await hugo.validateContentBundle(result.directory, 'blog');
+      expect(validation.valid).toBe(false);
+      expect(validation.errors).toContain('Invalid or missing frontmatter');
+    });
+  });
 });

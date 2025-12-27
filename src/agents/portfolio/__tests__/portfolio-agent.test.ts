@@ -755,4 +755,115 @@ describe('PortfolioAgent', () => {
       }
     });
   });
+
+  describe('Category Inference', () => {
+    it('should infer Backend Development category', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Backend Project',
+        client: 'BackendCorp',
+        description: 'Backend system development',
+        technologies: ['Node', 'GraphQL', 'API'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+
+      expect(result.bundle?.frontmatter.category).toBe('Backend Development');
+    });
+
+    it('should infer Data Engineering category', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Data Project',
+        client: 'DataCorp',
+        description: 'Data engineering project',
+        technologies: ['PostgreSQL', 'Redis', 'Elasticsearch'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+
+      expect(result.bundle?.frontmatter.category).toBe('Data Engineering');
+    });
+  });
+
+  describe('Content Bundle Properties', () => {
+    it('should set bundle type to portfolio', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Type Test',
+        client: 'Client',
+        description: 'Type testing',
+        technologies: ['JavaScript'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+
+      expect(result.bundle?.type).toBe('portfolio');
+    });
+
+    it('should include createdAt timestamp', async () => {
+      const before = new Date();
+      const request: PortfolioGenerationRequest = {
+        title: 'Timestamp Test',
+        client: 'Client',
+        description: 'Timestamp testing',
+        technologies: ['TypeScript'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+      const after = new Date();
+
+      expect(result.bundle?.createdAt).toBeDefined();
+      expect(result.bundle?.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime());
+      expect(result.bundle?.createdAt.getTime()).toBeLessThanOrEqual(after.getTime());
+    });
+
+    it('should include empty sessions array initially', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Sessions Test',
+        client: 'Client',
+        description: 'Sessions testing',
+        technologies: ['Go'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+
+      expect(result.bundle?.sessions).toBeDefined();
+      expect(Array.isArray(result.bundle?.sessions)).toBe(true);
+    });
+  });
+
+  describe('Default Outcomes', () => {
+    it('should generate default outcomes when none provided', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Default Outcomes Test',
+        client: 'Client',
+        description: 'Testing default outcomes',
+        technologies: ['React'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+      const content = result.bundle!.content;
+
+      expect(content).toContain('Delivered');
+      expect(content).toContain('Achieved');
+      expect(content).toContain('Implemented');
+    });
+  });
+
+  describe('Technologies Display', () => {
+    it('should list all technologies in content', async () => {
+      const request: PortfolioGenerationRequest = {
+        title: 'Tech List Test',
+        client: 'Client',
+        description: 'Testing tech list',
+        technologies: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
+      };
+
+      const result = await agent.generatePortfolio(request);
+      const content = result.bundle!.content;
+
+      expect(content).toContain('**React**');
+      expect(content).toContain('**Node.js**');
+      expect(content).toContain('**PostgreSQL**');
+      expect(content).toContain('**Docker**');
+    });
+  });
 });

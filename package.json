@@ -96,7 +96,11 @@
     "sync:beads-to-cody": "bun run ./scripts/sync/beads-to-cody.js",
     "sync:release-notes": "bun run ./scripts/sync/release-notes-generator.js",
     "status:dashboard": "bun run ./scripts/status-dashboard.ts",
-    "degit:refresh": "bun run ./scripts/degit-refresh.sh"
+    "degit:refresh": "bun run ./scripts/degit-refresh.sh",
+    "agent:blog": "bun run ./src/agents/cli/agent-cli.ts blog",
+    "agent:portfolio": "bun run ./src/agents/cli/agent-cli.ts portfolio",
+    "agent:radar": "bun run ./src/agents/cli/agent-cli.ts radar",
+    "agent:help": "bun run ./src/agents/cli/agent-cli.ts help"
   },
   "keywords": [],
   "author": "Pete Warnock",

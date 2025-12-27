@@ -111,43 +111,40 @@ if [[ "$JSON_MODE" == false ]]; then
     echo "✅ CDN integrity verified"
 fi
 
-# 6. HTML validation
+# 6. Link validation with lychee
 if [[ "$JSON_MODE" == false ]]; then
-    echo "🔗 Running HTML validation..."
+    echo "🔗 Running link validation..."
 fi
 
-# Ensure htmltest is available
-if ! command -v htmltest &> /dev/null; then
-    if [ -f "$(go env GOPATH)/bin/htmltest" ]; then
-        export PATH=$PATH:$(go env GOPATH)/bin
+# Ensure lychee is available
+if ! command -v lychee &> /dev/null; then
+    if [[ "$JSON_MODE" == true ]]; then
+        echo '{"status": "error", "step": "link_validation", "message": "lychee not found. Install with: brew install lychee"}'
     else
-        if [[ "$JSON_MODE" == false ]]; then
-            echo "⚠️ htmltest not found. Installing..."
-        fi
-        go install github.com/wjdp/htmltest@latest
-        export PATH=$PATH:$(go env GOPATH)/bin
+        echo "❌ lychee not found. Install with: brew install lychee"
     fi
+    exit 1
 fi
 
 if [[ ! -d "public" ]]; then
     if [[ "$JSON_MODE" == true ]]; then
-        echo '{"status": "error", "step": "html_validation", "message": "No public directory found - site not built"}'
+        echo '{"status": "error", "step": "link_validation", "message": "No public directory found - site not built"}'
     else
         echo "❌ No public directory found - site not built"
     fi
     exit 1
 fi
 
-if ! htmltest; then
+if ! lychee --config lychee.toml public/; then
     if [[ "$JSON_MODE" == true ]]; then
-        echo '{"status": "error", "step": "html_validation", "message": "HTML validation failed"}'
+        echo '{"status": "error", "step": "link_validation", "message": "Link validation failed"}'
     else
-        echo "❌ HTML validation failed"
+        echo "❌ Link validation failed"
     fi
     exit 1
 fi
 if [[ "$JSON_MODE" == false ]]; then
-    echo "✅ HTML validation passed"
+    echo "✅ Link validation passed"
 fi
 
 # 6. SEO validation

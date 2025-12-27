@@ -158,3 +158,9 @@ coverage/
 data/version.toml
 data/version.json
 .skills/
+
+# Cody Framework sessions (local context, not versioned)
+.cody/project/library/sessions/
+
+# Old plan backups
+.cody/project/plan/old/
