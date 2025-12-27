@@ -24,7 +24,7 @@ src/agents/
 ### Voice Learning System
 - Captures user feedback during review sessions
 - Maintains content-type-specific style patterns
-- Persists style guide to `.cody/project/library/style-docs/`
+- Persists style guide to `.agents/style-docs/`
 
 ### Hugo Integration Module
 - Generates content bundles with proper frontmatter
@@ -75,5 +75,5 @@ bun run test:agents
 
 ## Storage
 
-- Style documentation: `.cody/project/library/style-docs/`
-- Session history: `.cody/project/library/sessions/`
+- Style documentation: `.agents/style-docs/`
+- Session history: `.agents/sessions/`

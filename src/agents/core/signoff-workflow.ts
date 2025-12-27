@@ -14,7 +14,6 @@
  * - Rejection tracking with reasons
  */
 
-import * as path from 'path';
 import type {
   ContentBundle,
   ValidationResult,
@@ -25,6 +24,7 @@ import type {
 } from '../types/index.js';
 import { ReviewWorkflow } from './review-workflow.js';
 import { HugoIntegration } from './hugo-integration.js';
+import { getAgentPaths } from '../config/index.js';
 
 /**
  * Signoff Workflow Engine
@@ -67,12 +67,12 @@ export class SignoffWorkflow {
    * Initialize the SignoffWorkflow engine
    *
    * @param projectRoot - Project root directory
-   * @param sessionsDir - Directory for session storage (default: .cody/project/library/sessions/)
+   * @param sessionsDir - Directory for session storage
    */
   constructor(projectRoot?: string, sessionsDir?: string) {
-    this.projectRoot = projectRoot || process.cwd();
-    const sessionsPath = sessionsDir ||
-      path.join(this.projectRoot, '.cody', 'project', 'library', 'sessions');
+    const paths = getAgentPaths(projectRoot);
+    this.projectRoot = paths.projectRoot;
+    const sessionsPath = sessionsDir || paths.sessionsDir;
 
     this.reviewWorkflow = new ReviewWorkflow(sessionsPath);
     this.hugoIntegration = new HugoIntegration(this.projectRoot);

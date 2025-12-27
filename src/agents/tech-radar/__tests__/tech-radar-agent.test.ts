@@ -22,7 +22,7 @@ describe('TechRadarAgent', () => {
     // Create temporary directory for testing
     tempDir = path.join(originalCwd, 'tmp', 'test-tech-radar-' + Date.now());
     await fs.mkdir(tempDir, { recursive: true });
-    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'style-docs'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.agents', 'style-docs'), { recursive: true });
     await fs.mkdir(path.join(tempDir, 'content', 'tools'), { recursive: true });
 
     // Change to temp directory so agent writes there

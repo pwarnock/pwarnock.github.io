@@ -15,6 +15,7 @@
 
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { getAgentPaths } from '../config/index.js';
 import type {
   ContentBundle,
   ReviewSession,
@@ -101,15 +102,13 @@ export class ReviewWorkflow {
    * Initialize the ReviewWorkflow engine
    *
    * @param sessionsDir - Directory path for session storage
-   *                        Default: .cody/project/library/sessions/
    */
   constructor(sessionsDir?: string) {
     this.storage = {
       sessions: new Map(),
       bundleIndex: new Map(),
     };
-    this.sessionsDir = sessionsDir ||
-      path.join(process.cwd(), '.cody', 'project', 'library', 'sessions');
+    this.sessionsDir = sessionsDir || getAgentPaths().sessionsDir;
   }
 
   /**

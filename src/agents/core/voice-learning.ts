@@ -19,6 +19,7 @@ import {
   mergePatterns,
   generatePatternSummary
 } from '../utils/pattern-extractor.js';
+import { getAgentPaths } from '../config/index.js';
 
 export class VoiceLearningSystem {
   private projectRoot: string;
@@ -35,8 +36,9 @@ export class VoiceLearningSystem {
   ];
 
   constructor() {
-    this.projectRoot = process.cwd();
-    this.styleDocsDir = this.projectRoot + '/.cody/project/library/style-docs';
+    const paths = getAgentPaths();
+    this.projectRoot = paths.projectRoot;
+    this.styleDocsDir = paths.styleDocsDir;
   }
 
   /**

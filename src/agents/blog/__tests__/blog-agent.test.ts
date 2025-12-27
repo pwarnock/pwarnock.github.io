@@ -23,8 +23,8 @@ describe('BlogAgent', () => {
     // Create temporary directory for testing
     tempDir = path.join(process.cwd(), 'tmp', 'test-blog-' + Date.now());
     await fs.mkdir(tempDir, { recursive: true });
-    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'style-docs'), { recursive: true });
-    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'sessions'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.agents', 'style-docs'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.agents', 'sessions'), { recursive: true });
     await fs.mkdir(path.join(tempDir, 'content'), { recursive: true });
 
     // Change to temp directory
