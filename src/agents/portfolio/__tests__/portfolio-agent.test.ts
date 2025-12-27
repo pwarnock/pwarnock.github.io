@@ -21,17 +21,30 @@ import type { PortfolioGenerationRequest } from '../portfolio-agent.js';
 describe('PortfolioAgent', () => {
   let agent: PortfolioAgent;
   let tempDir: string;
+  let originalCwd: string;
 
   beforeEach(async () => {
+    // Store original working directory
+    originalCwd = process.cwd();
+
     // Create temporary directory for testing
-    tempDir = path.join(process.cwd(), 'tmp', 'test-portfolio-' + Date.now());
+    tempDir = path.join(originalCwd, 'tmp', 'test-portfolio-' + Date.now());
     await fs.mkdir(tempDir, { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'style-docs'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'sessions'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, 'content', 'portfolio'), { recursive: true });
+
+    // Change to temp directory so agent writes there
+    process.chdir(tempDir);
 
     agent = new PortfolioAgent();
     await agent.initialize();
   });
 
   afterEach(async () => {
+    // Restore original working directory
+    process.chdir(originalCwd);
+
     // Clean up temp directory
     try {
       await fs.rm(tempDir, { recursive: true, force: true });

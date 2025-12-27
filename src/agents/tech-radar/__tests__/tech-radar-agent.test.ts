@@ -13,16 +13,28 @@ import type { TechRadarOptions } from '../tech-radar-agent.js';
 describe('TechRadarAgent', () => {
   let agent: TechRadarAgent;
   let tempDir: string;
+  let originalCwd: string;
 
   beforeEach(async () => {
+    // Store original working directory
+    originalCwd = process.cwd();
+
     // Create temporary directory for testing
-    tempDir = path.join(process.cwd(), 'tmp', 'test-tech-radar-' + Date.now());
+    tempDir = path.join(originalCwd, 'tmp', 'test-tech-radar-' + Date.now());
     await fs.mkdir(tempDir, { recursive: true });
+    await fs.mkdir(path.join(tempDir, '.cody', 'project', 'library', 'style-docs'), { recursive: true });
+    await fs.mkdir(path.join(tempDir, 'content', 'tools'), { recursive: true });
+
+    // Change to temp directory so agent writes there
+    process.chdir(tempDir);
 
     agent = new TechRadarAgent();
   });
 
   afterEach(async () => {
+    // Restore original working directory
+    process.chdir(originalCwd);
+
     // Clean up temp directory
     try {
       await fs.rm(tempDir, { recursive: true, force: true });
