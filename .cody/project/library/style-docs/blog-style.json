@@ -23,10 +23,26 @@
     "Keep",
     "I think",
     "I believe",
-    "Prefer"
+    "Prefer",
+    "test-word-1766798275226",
+    "unique-word-1766798275226",
+    "test-word-1766798563234",
+    "unique-word-1766798563234",
+    "test-word-1766800015429",
+    "unique-word-1766800015429",
+    "test-word-1766804391851",
+    "unique-word-1766804391852"
   ],
   "sentencePatterns": [
-    "Avoid starting sentences with \"It is important to note\""
+    "Avoid starting sentences with \"It is important to note\"",
+    "Pattern 1766798275227",
+    "Unique pattern 1766798275227",
+    "Pattern 1766798563235",
+    "Unique pattern 1766798563235",
+    "Pattern 1766800015430",
+    "Unique pattern 1766800015430",
+    "Pattern 1766804391866",
+    "Unique pattern 1766804391869"
   ],
   "dos": [
     "Be concise and to the point",
@@ -58,8 +74,18 @@
     "Avoid jargon"
   ],
   "examples": {
-    "good": [],
-    "bad": []
+    "good": [
+      "Good example 1766798275227",
+      "Good example 1766798563234",
+      "Good example 1766800015430",
+      "Good example 1766804391857"
+    ],
+    "bad": [
+      "Bad example 1766798275227",
+      "Bad example 1766798563235",
+      "Bad example 1766800015430",
+      "Bad example 1766804391858"
+    ]
   },
-  "lastUpdated": "2025-12-26T21:53:55.730Z"
+  "lastUpdated": "2025-12-27T02:59:53.364Z"
 }

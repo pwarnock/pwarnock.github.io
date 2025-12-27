@@ -1,9 +1,9 @@
 ---
 title: Bun
-date: "2025-12-26"
+date: "2025-12-27"
 draft: true
 description: Fast JavaScript runtime, bundler, test runner, and package manager
-quadrant: Tools
+quadrant: tools
 ring: trial
 tags:
   - runtime
