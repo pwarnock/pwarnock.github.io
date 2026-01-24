@@ -580,6 +580,38 @@ bun run sync:env
 - **Accessibility**: WCAG 2.1 AA compliance required
 - **Testing**: All new features require appropriate test coverage
 
+#### Pre-commit Hooks and Guardrails
+
+**CRITICAL RULE: NEVER bypass pre-commit hooks or validation failures**
+
+When a pre-commit hook fails:
+
+1. **STOP immediately** - Do not use `--no-verify` or bypass flags
+2. **Ask the user** what they want to do - present options, don't assume
+3. **Respect the guardrail** - It exists for a reason (link validation, linting, security checks)
+
+**Common pre-commit failures:**
+
+- **Link validation** (lychee): Missing tool or broken links
+  - **Options**: Install lychee, fix links, or modify validation to make lychee optional
+  - **NEVER**: Bypass with `--no-verify`
+
+- **CSS/YAML linting**: Style or syntax errors
+  - **Options**: Fix the errors, update lint config if genuinely incorrect
+  - **NEVER**: Commit broken code
+
+- **Test failures**: Code broke existing functionality
+  - **Options**: Fix the code, update tests if requirements changed
+  - **NEVER**: Ship broken tests
+
+**When hook fails, present user with:**
+1. What failed and why
+2. Options to fix it properly
+3. Ask which option they prefer
+4. Document recurring issues in this file
+
+**Rationale**: Bypassing guardrails creates technical debt, broken deployments, and undermines CI/CD trust.
+
 #### Important Rules & Constraints
 
 ##### NEVER Edit These Files Directly
