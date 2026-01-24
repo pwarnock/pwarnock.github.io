@@ -14,6 +14,15 @@ agent-setup:
     @just agent-init
     @echo "✅ Agent environment ready!"
 
+# Check mise tool versions match .mise.toml
+mise-check:
+    @mise doctor || true
+    @mise current
+
+# Sync mise installation (install missing tools)
+mise-sync:
+    @mise install
+
 # ==============================================================================
 # DEVELOPMENT
 # ==============================================================================
