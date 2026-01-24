@@ -2,6 +2,7 @@ package support
 
 import (
 	"encoding/json"
+	"os/exec"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -144,9 +145,44 @@ func TestAccessibilityScanner_CreateBdIssue(t *testing.T) {
 		},
 	}
 
+	// Track created issue IDs for cleanup
+	var createdIssueIDs []string
+
+	// Register cleanup to delete test issues
+	t.Cleanup(func() {
+		for _, issueID := range createdIssueIDs {
+			cleanupCmd := exec.Command("bd", "close", issueID, "--reason", "Test cleanup")
+			_ = cleanupCmd.Run() // Ignore errors - issue might already be closed
+		}
+	})
+
 	// Test that function doesn't panic - bd command might actually work
 	// In real scenario, this would call bd command
 	err := scanner.CreateBdIssue(issue)
+
+	// If creation succeeded, extract issue ID from bd list for cleanup
+	if err == nil {
+		listCmd := exec.Command("bd", "list", "--json")
+		output, listErr := listCmd.Output()
+		if listErr == nil {
+			var issues []map[string]interface{}
+			if json.Unmarshal(output, &issues) == nil {
+				// Find the issue we just created by title
+				expectedTitle := "Accessibility Issue: Test Issue"
+				for _, bdIssue := range issues {
+					if title, ok := bdIssue["title"].(string); ok && title == expectedTitle {
+						if id, ok := bdIssue["id"].(string); ok {
+							if status, ok := bdIssue["status"].(string); ok && status == "open" {
+								createdIssueIDs = append(createdIssueIDs, id)
+								break
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	// May succeed or fail depending on bd availability
 	// We just test it doesn't panic
 	assert.True(t, err == nil || err != nil, "Function should handle both success and error cases")
@@ -165,6 +201,37 @@ func TestAccessibilityScanner_CreateBdIssuesForAll(t *testing.T) {
 	}
 
 	scanner.issues = issues
+
+	// Register cleanup to delete test issues
+	t.Cleanup(func() {
+		// List all open issues and close any that match our test titles
+		listCmd := exec.Command("bd", "list", "--json")
+		output, listErr := listCmd.Output()
+		if listErr == nil {
+			var bdIssues []map[string]interface{}
+			if json.Unmarshal(output, &bdIssues) == nil {
+				// Close issues matching our test titles
+				testTitles := []string{
+					"Accessibility Issue: Critical Issue",
+					"Accessibility Issue: Serious Issue",
+				}
+				for _, bdIssue := range bdIssues {
+					if title, ok := bdIssue["title"].(string); ok {
+						for _, testTitle := range testTitles {
+							if title == testTitle {
+								if id, ok := bdIssue["id"].(string); ok {
+									if status, ok := bdIssue["status"].(string); ok && status == "open" {
+										cleanupCmd := exec.Command("bd", "close", id, "--reason", "Test cleanup")
+										_ = cleanupCmd.Run() // Ignore errors
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	})
 
 	// Should attempt to create issues for critical and serious only
 	err := scanner.CreateBdIssuesForAll()
