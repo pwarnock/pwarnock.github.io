@@ -2,11 +2,11 @@
 <div class="py-16">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "portfolio") 0).title | default "Featured Projects" }}</h2>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary mb-6">{{ (index (where site.Data.home.section "id" "portfolio") 0).title | default "Featured Projects" }}</h2>
       <p class="text-lg text-base-content/70">Recent work and personal projects</p>
     </div>
 
-    <div class="grid gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
       {{ range first 3 (where site.RegularPages "Type" "portfolio") }}
       {{ $tags := slice }}
 {{ if .Params.type }}{{ $tags = $tags | append .Params.type }}{{ end }}

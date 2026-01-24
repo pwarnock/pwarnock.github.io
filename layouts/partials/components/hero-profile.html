@@ -2,7 +2,7 @@
 {{ with site.Data.hero.profile }}
 <div class="flex justify-center items-center">
   <div class="avatar flex-shrink-0" role="img" aria-label="{{ .alt }}">
-    <div class="w-32 h-32 lg:w-48 lg:h-48 rounded-full ring-4 ring-primary/20 shadow-xl transition-transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50">
+    <div class="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-48 lg:h-48 rounded-full ring-2 sm:ring-3 lg:ring-4 ring-primary/20 shadow-lg sm:shadow-xl transition-transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/50">
       <img src="{{ .image }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="eager" decoding="async" />
     </div>
   </div>

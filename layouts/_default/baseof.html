@@ -38,7 +38,7 @@
       {{ if or (eq .Kind "section") (eq .Kind "page") }}
         <!-- Section page and single post: Breadcrumbs above hero -->
         {{ if not .Params.hideBreadcrumbs }}
-        <div class="container mx-auto px-4 py-4">
+        <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4">
           {{ partial "components/breadcrumbs.html" . }}
         </div>
         {{ end }}
@@ -94,7 +94,7 @@
       ) }}
     {{ end }}
 
-    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else if eq .Layout "about" }}{{ else }}container mx-auto{{ end }}" style="{{ if and (not .IsHome) (ne .Layout "about") }}padding: var(--space-8) var(--space-4){{ end }}" role="main" tabindex="-1">
+    <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else if eq .Layout "about" }}{{ else }}container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10{{ end }}" role="main" tabindex="-1">
         {{ block "main" . }}
         {{ if .IsHome }}
             {{ .Content }}
@@ -112,7 +112,7 @@
                     <div class="prose prose-lg max-w-none">
                         {{/* For pages without a hero, render a single canonical H1 */}}
                         {{ if not (or (and (or (eq .Type "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "section")) (and (or (eq .Type "posts") (eq .Section "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "page"))) }}
-                          <h1 class="text-3xl lg:text-4xl font-bold leading-tight mb-6">{{ .Title }}</h1>
+                          <h1 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold leading-tight mb-6">{{ .Title }}</h1>
                         {{ end }}
                         {{ .Content }}
                     </div>
