@@ -4,11 +4,27 @@
   "private": true,
   "type": "module",
   "description": "Content generation agents (blog, portfolio, radar)",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./blog": "./src/blog/blog-agent.ts",
+    "./portfolio": "./src/portfolio/portfolio-agent.ts",
+    "./radar": "./src/tech-radar/tech-radar-agent.ts",
+    "./cli": "./src/cli/agent-cli.ts"
+  },
   "scripts": {
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui"
+  },
+  "dependencies": {
+    "@pwarnock/shared": "workspace:*",
+    "js-yaml": "4.1.1"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.16",
+    "happy-dom": "^20.0.11"
   }
 }
