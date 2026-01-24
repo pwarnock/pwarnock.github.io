@@ -30,6 +30,12 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -59,7 +65,7 @@ jobs:
 
       - name: Test build
         run: |
-          if [ ! -d "public" ]; then
+          if [ ! -d "packages/site/public" ]; then
             echo "Build failed: public directory not found"
             exit 1
           fi
@@ -71,11 +77,11 @@ jobs:
           bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
 
           # Check for broken internal links
-          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          find packages/site/public -name "*.html" -exec grep -H "href=\"/" {} \; | \
           while read line; do
             url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
             if [ -n "$url" ]; then
-              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+              if [ ! -f "packages/site/public/$url" ] && [ ! -f "packages/site/public/$url/index.html" ]; then
                 echo "❌ Broken link found: /$url"
                 exit 1
               fi
@@ -87,7 +93,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./public
+          path: ./packages/site/public
 
   # Deploy Job (only runs on main branch after successful build)
   deploy:
