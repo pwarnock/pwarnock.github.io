@@ -1,1 +1,1 @@
-../packages/tooling/scripts/validation/check-hardcoded-urls.sh
+packages/tooling/scripts/validation/check-hardcoded-urls.sh

@@ -5,15 +5,15 @@
 
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+# Find git root (works regardless of where script is called from)
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
 
 echo "🔒 Checking for hardcoded baseURL issues..."
 
 # Check main hugo.toml for hardcoded production URLs
 # Note: baseURL in main hugo.toml is expected to be production URL
 # The validation should check if it matches the production config
-if grep -q 'baseURL = "https://peterwarnock.com"' "$PROJECT_ROOT/hugo.toml"; then
+if grep -q 'baseURL = "https://peterwarnock.com"' "$PROJECT_ROOT/packages/site/hugo.toml"; then
     # This is actually correct - main config should have production URL
     echo "✅ Production baseURL correctly configured in main hugo.toml"
 else
@@ -26,13 +26,13 @@ else
     echo "   3. Set HUGO_ENV=production for builds"
     echo ""
     echo "📝 Current problematic line:"
-    grep -n 'baseURL = "https://peterwarnock.com"' "$PROJECT_ROOT/hugo.toml"
+    grep -n 'baseURL = "https://peterwarnock.com"' "$PROJECT_ROOT/packages/site/hugo.toml"
     exit 1
 fi
 
 # Check for localhost URLs in production config
-if [[ -f "$PROJECT_ROOT/config/production/hugo.toml" ]]; then
-    if grep -q 'localhost' "$PROJECT_ROOT/config/production/hugo.toml"; then
+if [[ -f "$PROJECT_ROOT/packages/site/config/production/hugo.toml" ]]; then
+    if grep -q 'localhost' "$PROJECT_ROOT/packages/site/config/production/hugo.toml"; then
         echo "❌ LOCALHOST URL DETECTED in production config"
         echo "⚠️  Production config should use production URLs"
         exit 1
