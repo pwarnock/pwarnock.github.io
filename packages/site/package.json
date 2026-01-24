@@ -1,0 +1,11 @@
+{
+  "name": "@pwarnock/site",
+  "version": "0.20.3",
+  "private": true,
+  "type": "module",
+  "description": "Hugo site with frontend assets",
+  "scripts": {
+    "dev": "echo 'Hugo dev server'",
+    "build": "echo 'Hugo build'"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@pwarnock/qa-tools",
+  "version": "0.20.3",
+  "private": true,
+  "type": "module",
+  "description": "QA automation and observability infrastructure",
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}

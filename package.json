@@ -1,9 +1,13 @@
 {
-  "name": "pwarnock.github.io",
+  "name": "pwarnock-monorepo",
   "version": "0.20.3",
-  "description": "",
+  "private": true,
+  "description": "Peter Warnock's personal website - monorepo with Hugo, TypeScript agents, and QA tooling",
   "type": "module",
-  "main": "postcss.config.cjs",
+  "workspaces": [
+    "packages/*",
+    "shared"
+  ],
   "scripts": {
     "build": "bun run generate-version && hugo --environment production --gc --minify --enableGitInfo && cp public/tools/index.json public/tools/radar.json && bun run build:cleanup",
     "clean": "rm -rf public",

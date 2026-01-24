@@ -1,0 +1,10 @@
+{
+  "name": "@pwarnock/tooling",
+  "version": "0.20.3",
+  "private": true,
+  "type": "module",
+  "description": "Build, deployment, and validation scripts",
+  "scripts": {
+    "test": "echo 'Tooling tests not implemented yet'"
+  }
+}
