@@ -46,7 +46,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'bun run build:preview && bunx http-server public -p 3000 -s',
+    command: 'bun run build:preview && bunx http-server packages/site/public -p 3000 -s',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
