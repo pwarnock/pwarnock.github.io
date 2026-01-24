@@ -5,9 +5,9 @@
 
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
-CDN_CONFIG="$PROJECT_ROOT/data/cdn.toml"
+# Find git root (works regardless of where script is called from)
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+CDN_CONFIG="$PROJECT_ROOT/packages/site/data/cdn.toml"
 
 echo "🔍 Verifying CDN integrity..."
 

@@ -3,6 +3,9 @@
 # Local development validation script
 # Run this before pushing to catch issues early
 
+# Find git root (works regardless of where script is called from)
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+
 # Check for flags
 JSON_MODE=false
 SKIP_BUILD=false
@@ -83,7 +86,7 @@ fi
 if [[ "$JSON_MODE" == false ]]; then
     echo "🔒 Checking URL configuration..."
 fi
-if ! ./scripts/check-hardcoded-urls.sh; then
+if ! "$(git rev-parse --show-toplevel)/packages/tooling/scripts/validation/check-hardcoded-urls.sh"; then
     if [[ "$JSON_MODE" == true ]]; then
         echo '{"status": "error", "step": "url_validation", "message": "URL configuration validation failed"}'
     else
@@ -126,7 +129,7 @@ if ! command -v lychee &> /dev/null; then
     exit 1
 fi
 
-if [[ ! -d "public" ]]; then
+if [[ ! -d "$PROJECT_ROOT/packages/site/public" ]]; then
     if [[ "$JSON_MODE" == true ]]; then
         echo '{"status": "error", "step": "link_validation", "message": "No public directory found - site not built"}'
     else
@@ -135,7 +138,7 @@ if [[ ! -d "public" ]]; then
     exit 1
 fi
 
-if ! lychee --config lychee.toml public/; then
+if ! lychee --config "$PROJECT_ROOT/lychee.toml" "$PROJECT_ROOT/packages/site/public/"; then
     if [[ "$JSON_MODE" == true ]]; then
         echo '{"status": "error", "step": "link_validation", "message": "Link validation failed"}'
     else
