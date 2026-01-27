@@ -6,6 +6,7 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['src/**/*.test.ts'],
+    setupFiles: ['src/__tests__/setup.ts'],
     // Disable file parallelism to prevent race conditions from shared singleton state
     // (paths.ts caches config based on process.cwd(), which tests modify)
     fileParallelism: false,

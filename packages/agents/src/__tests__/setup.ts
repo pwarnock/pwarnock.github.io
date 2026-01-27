@@ -2,13 +2,32 @@
  * Vitest Global Setup for Agent Tests
  *
  * Ensures test artifacts are cleaned up after test runs
- * and resets shared state between tests
+ * and resets shared state between tests.
+ *
+ * IMPORTANT: Tests should use the monorepo root's .agents/ directory,
+ * not packages/agents/.agents/ which would be test pollution.
  */
 
 import fs from 'fs/promises';
+import fsSync from 'fs';
 import path from 'path';
 import { afterAll, afterEach, beforeAll, beforeEach } from 'vitest';
-import { resetAgentPaths } from '../config/index.js';
+import { configureAgentPaths, resetAgentPaths } from '../config/index.js';
+
+/**
+ * Find the monorepo root by looking for packages/tooling
+ */
+function findMonorepoRoot(): string {
+  let dir = process.cwd();
+  while (dir !== '/') {
+    if (fsSync.existsSync(path.join(dir, 'packages/tooling'))) {
+      return dir;
+    }
+    dir = path.dirname(dir);
+  }
+  // Fallback: assume we're 2 levels deep (packages/agents)
+  return path.resolve(process.cwd(), '../..');
+}
 
 const TEST_ARTIFACT_PATTERNS = [
   // Portfolio test artifacts
@@ -80,6 +99,21 @@ async function cleanupTestArtifacts(): Promise<void> {
 
 // Register global cleanup
 beforeAll(async () => {
+  // Configure agent paths to use monorepo root, preventing test pollution
+  // in packages/agents/.agents/
+  const monorepoRoot = findMonorepoRoot();
+  configureAgentPaths({ projectRoot: monorepoRoot });
+
+  // Clean up any leftover test pollution in packages/agents/.agents/
+  const pollutedAgentsDir = path.join(process.cwd(), '.agents');
+  if (process.cwd().includes('packages/agents')) {
+    try {
+      await fs.rm(pollutedAgentsDir, { recursive: true, force: true });
+    } catch {
+      // Directory doesn't exist or can't be removed, that's fine
+    }
+  }
+
   // Clean up any leftover artifacts from previous test runs
   await cleanupTestArtifacts();
 });
@@ -93,6 +127,9 @@ afterAll(async () => {
 // This is critical for tests that use process.chdir() and expect fresh config
 beforeEach(() => {
   resetAgentPaths();
+  // Re-configure with monorepo root to prevent test pollution
+  const monorepoRoot = findMonorepoRoot();
+  configureAgentPaths({ projectRoot: monorepoRoot });
 });
 
 afterEach(() => {
