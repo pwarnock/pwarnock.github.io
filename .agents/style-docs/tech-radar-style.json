@@ -1,0 +1,36 @@
+{
+  "contentType": "tech-radar",
+  "tone": "Opinionated but balanced and informed",
+  "vocabulary": [
+    "adopt",
+    "trial",
+    "assess",
+    "hold",
+    "maturity",
+    "ecosystem",
+    "Great",
+    "Too",
+    "Test"
+  ],
+  "sentencePatterns": [],
+  "dos": [
+    "Provide technical depth and context",
+    "Consider practical adoption implications",
+    "Assess maturity and ecosystem support",
+    "Be forward-looking but realistic",
+    "Great technical depth and balanced perspective",
+    "Test feedback for learning"
+  ],
+  "donts": [
+    "Don't be purely opinionated without evidence",
+    "Avoid hype-driven language",
+    "Don't ignore potential drawbacks or limitations",
+    "Avoid being overly negative about technologies",
+    "Too opinionated without enough evidence"
+  ],
+  "examples": {
+    "good": [],
+    "bad": []
+  },
+  "lastUpdated": "2026-01-27T03:15:47.319Z"
+}
