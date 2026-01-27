@@ -9,7 +9,7 @@
     "dev:legacy": "HUGO_ENV=development hugo server -D --bind 0.0.0.0 --baseURL http://localhost:1313 --navigateToChanged --disableFastRender",
     "build": "bun run generate-version && hugo --environment production --gc --minify --enableGitInfo",
     "build:preview": "hugo --gc --enableGitInfo",
-    "generate-version": "bun run ../../packages/tooling/scripts/build/generate-version.js",
+    "generate-version": "bun run ../../packages/tooling/scripts/release/generate-version.js",
     "clean": "rm -rf public"
   },
   "dependencies": {

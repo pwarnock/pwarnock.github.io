@@ -1,1 +1,1 @@
-packages/tooling/scripts/validation/validate-portfolio-frontmatter.js
+../packages/tooling/scripts/validation/validate-portfolio-frontmatter.js

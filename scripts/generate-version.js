@@ -1,1 +1,1 @@
-../packages/tooling/scripts/build/generate-version.js
+../packages/tooling/scripts/release/generate-version.js

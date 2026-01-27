@@ -1,1 +1,1 @@
-../packages/tooling/scripts/build/path-based-build.sh
+../packages/tooling/scripts/release/path-based-build.sh

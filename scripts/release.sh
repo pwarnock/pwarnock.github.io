@@ -1,1 +1,1 @@
-../packages/tooling/scripts/build/release.sh
+../packages/tooling/scripts/release/release.sh
