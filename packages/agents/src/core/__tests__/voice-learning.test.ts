@@ -340,29 +340,31 @@ describe('VoiceLearningSystem', () => {
       // Use tech-radar which is less likely to be modified by other tests
       const originalExport = await vls.exportStyleDoc('tech-radar');
 
-      // Create a valid style document with matching content type
-      const validJson = JSON.stringify({
-        contentType: 'tech-radar',
-        tone: 'Test Imported Tone',
-        vocabulary: ['imported-word'],
-        sentencePatterns: ['imported pattern'],
-        dos: ['Do something imported'],
-        donts: ['Dont do something imported'],
-        examples: { good: ['good imported example'], bad: ['bad imported example'] },
-        lastUpdated: new Date().toISOString()
-      });
+      try {
+        // Create a valid style document with matching content type
+        const validJson = JSON.stringify({
+          contentType: 'tech-radar',
+          tone: 'Test Imported Tone',
+          vocabulary: ['imported-word'],
+          sentencePatterns: ['imported pattern'],
+          dos: ['Do something imported'],
+          donts: ['Dont do something imported'],
+          examples: { good: ['good imported example'], bad: ['bad imported example'] },
+          lastUpdated: new Date().toISOString()
+        });
 
-      // Import should succeed
-      await vls.importStyleDoc('tech-radar', validJson);
+        // Import should succeed
+        await vls.importStyleDoc('tech-radar', validJson);
 
-      // Verify the import worked
-      const loaded = await vls.loadStyleDoc('tech-radar');
-      expect(loaded).not.toBeNull();
-      expect(loaded?.tone).toBe('Test Imported Tone');
-
-      // Restore original state
-      if (originalExport) {
-        await vls.importStyleDoc('tech-radar', originalExport);
+        // Verify the import worked
+        const loaded = await vls.loadStyleDoc('tech-radar');
+        expect(loaded).not.toBeNull();
+        expect(loaded?.tone).toBe('Test Imported Tone');
+      } finally {
+        // Always restore original state to prevent test pollution
+        if (originalExport) {
+          await vls.importStyleDoc('tech-radar', originalExport);
+        }
       }
     });
   });

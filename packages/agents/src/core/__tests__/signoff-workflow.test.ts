@@ -594,7 +594,9 @@ describe('SignoffWorkflow', () => {
 
   describe('Error Handling', () => {
     it('should handle initialization errors gracefully', async () => {
-      const invalidWorkflow = new SignoffWorkflow('/invalid/path');
+      // Pass invalid sessions directory directly (bypassing path config)
+      // Using a path that can't be created (null byte in path)
+      const invalidWorkflow = new SignoffWorkflow(undefined, '/dev/null/invalid\0path');
       // Should throw with helpful error message
       await expect(invalidWorkflow.initialize()).rejects.toThrow();
     });
