@@ -5,8 +5,8 @@
  * validation results for content bundles.
  *
  * Supported validators:
- * - Blog: scripts/validate-blog-post.sh
- * - Portfolio: scripts/validate-portfolio-frontmatter.js
+ * - Blog: packages/tooling/scripts/validation/validate-blog-post.sh
+ * - Portfolio: packages/tooling/scripts/validation/validate-portfolio-frontmatter.js
  * - Tech Radar: (basic validation, no dedicated script yet)
  */
 
@@ -32,6 +32,8 @@ export interface ValidationResult {
 export interface ValidationOptions {
   dryRun?: boolean;
   verbose?: boolean;
+  /** Directory containing validation scripts (defaults to packages/tooling/scripts/validation) */
+  scriptsDir?: string;
 }
 
 /**
@@ -44,17 +46,19 @@ interface ParsedOutput {
 }
 
 /**
- * ValidationResult Class
+ * Validator Class
  *
  * Wraps existing validation scripts and provides structured results.
  * Runs shell scripts using child_process and parses their output.
  */
-export class ValidationResult {
+export class Validator {
   private projectRoot: string;
+  private scriptsDir: string;
   private verbose: boolean;
 
   constructor(projectRoot: string = process.cwd(), options: ValidationOptions = {}) {
     this.projectRoot = projectRoot;
+    this.scriptsDir = options.scriptsDir || path.join(projectRoot, 'packages/tooling/scripts/validation');
     this.verbose = options.verbose || false;
   }
 
@@ -62,7 +66,7 @@ export class ValidationResult {
    * Validate blog post using validate-blog-post.sh
    */
   async validateBlog(contentPath: string): Promise<ValidationResult> {
-    const scriptPath = path.join(this.projectRoot, 'scripts', 'validate-blog-post.sh');
+    const scriptPath = path.join(this.scriptsDir, 'validate-blog-post.sh');
 
     if (!fs.existsSync(scriptPath)) {
       return {
@@ -116,7 +120,7 @@ export class ValidationResult {
    * Validate portfolio using validate-portfolio-frontmatter.js
    */
   async validatePortfolio(contentPath: string): Promise<ValidationResult> {
-    const scriptPath = path.join(this.projectRoot, 'scripts', 'validate-portfolio-frontmatter.js');
+    const scriptPath = path.join(this.scriptsDir, 'validate-portfolio-frontmatter.js');
 
     if (!fs.existsSync(scriptPath)) {
       return {

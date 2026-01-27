@@ -17,5 +17,6 @@ export { VoiceLearningSystem } from './core/voice-learning.js';
 export { HugoIntegration } from './core/hugo-integration.js';
 export { ImagePromptGenerator } from './core/image-prompt-generator.js';
 export { ReviewWorkflow } from './core/review-workflow.js';
+export { Validator } from './utils/validation.js';
 
 export * from './types/index.js';

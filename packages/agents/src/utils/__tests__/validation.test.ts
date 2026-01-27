@@ -1,19 +1,34 @@
 /**
- * Tests for ValidationResult class
+ * Tests for Validator class
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { ValidationResult } from '../validation.js';
+import { Validator } from '../validation.js';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-describe('ValidationResult', () => {
-  let validator: ValidationResult;
+// Resolve monorepo root for script paths
+function getMonorepoRoot(): string {
+  let dir = process.cwd();
+  while (dir !== '/') {
+    if (fs.existsSync(path.join(dir, 'packages/tooling/scripts/validation'))) {
+      return dir;
+    }
+    dir = path.dirname(dir);
+  }
+  // Fallback: assume we're 2 levels deep (packages/agents)
+  return path.resolve(process.cwd(), '../..');
+}
+
+describe('Validator', () => {
+  let validator: Validator;
   const tempDir = '/tmp/test-validation';
+  const monorepoRoot = getMonorepoRoot();
+  const scriptsDir = path.join(monorepoRoot, 'packages/tooling/scripts/validation');
 
   beforeEach(() => {
-    validator = new ValidationResult(process.cwd(), { verbose: false });
+    validator = new Validator(monorepoRoot, { verbose: false, scriptsDir });
 
     // Create temp directory
     if (!fs.existsSync(tempDir)) {
@@ -91,7 +106,7 @@ describe('ValidationResult', () => {
 
   describe('validateBlog', () => {
     it('should return error when script does not exist', async () => {
-      const badValidator = new ValidationResult('/nonexistent/path');
+      const badValidator = new Validator('/nonexistent/path');
       const result = await badValidator.validateBlog(tempDir);
 
       expect(result.success).toBe(false);
@@ -136,7 +151,7 @@ describe('ValidationResult', () => {
 
   describe('validatePortfolio', () => {
     it('should return error when script does not exist', async () => {
-      const badValidator = new ValidationResult('/nonexistent/path');
+      const badValidator = new Validator('/nonexistent/path');
       const result = await badValidator.validatePortfolio(tempDir);
 
       expect(result.success).toBe(false);
