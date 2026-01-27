@@ -45,6 +45,9 @@ static/css/main.css
 # Git hooks (local development only)
 .git/hooks/
 
+# Git worktrees (isolated development workspaces)
+.worktrees/
+
 # Environment variables
 .env
 .env.local
