@@ -6,13 +6,14 @@ import (
 
 	"github.com/cucumber/godog"
 	"github.com/playwright-community/playwright-go"
+	"github.com/pwarnock/go-playwright-testkit/pkg/browser"
 	"pwarnock-tests/support"
 )
 
 // PerformanceSteps implements performance-related BDD steps
 type PerformanceSteps struct {
 	testCtx   *support.TestContext
-	browser   *support.Browser
+	browser   *browser.Browser
 	metrics   map[string]interface{}
 	startTime time.Time
 }

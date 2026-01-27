@@ -6,124 +6,23 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/pwarnock/go-playwright-testkit/pkg/scanner"
 )
 
-// AccessibilityIssue represents an accessibility issue found by scanner
-type AccessibilityIssue struct {
-	ID          string                 `json:"id"`
-	Title       string                 `json:"title"`
-	Description string                 `json:"description"`
-	Impact      string                 `json:"impact"`
-	Tags        []string               `json:"tags"`
-	Selector    string                 `json:"selector"`
-	URL         string                 `json:"url"`
-	Metadata    map[string]interface{} `json:"metadata,omitempty"`
-}
-
-// AccessibilityScanner integrates with GitHub Accessibility Scanner
+// AccessibilityScanner wraps the library scanner with bd-specific functionality
 type AccessibilityScanner struct {
-	baseURL string
-	issues  []AccessibilityIssue
+	*scanner.AccessibilityScanner
 }
 
 // NewAccessibilityScanner creates a new accessibility scanner
 func NewAccessibilityScanner(baseURL string) *AccessibilityScanner {
 	return &AccessibilityScanner{
-		baseURL: baseURL,
-		issues:  make([]AccessibilityIssue, 0),
+		AccessibilityScanner: scanner.NewAccessibilityScanner(baseURL),
 	}
 }
 
-// ScanPage scans a specific page for accessibility issues
-func (as *AccessibilityScanner) ScanPage(url string) error {
-	// For now, we'll use axe-core via CLI
-	// In a full implementation, this would integrate GitHub Accessibility Scanner
-
-	cmd := exec.Command("npx", "axe-core",
-		"--url", url,
-		"--format", "json",
-		"--tags", "wcag2a,wcag2aa,wcag21aa",
-	)
-
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		return fmt.Errorf("accessibility scan failed: %w, output: %s", err, string(output))
-	}
-
-	// Parse results
-	var scanResult struct {
-		Violations []struct {
-			ID          string   `json:"id"`
-			Description string   `json:"description"`
-			Impact      string   `json:"impact"`
-			Tags        []string `json:"tags"`
-			Nodes       []struct {
-				Target []string `json:"target"`
-				HTML   string   `json:"html"`
-			} `json:"nodes"`
-		} `json:"violations"`
-	}
-
-	if err := json.Unmarshal(output, &scanResult); err != nil {
-		return fmt.Errorf("failed to parse scan results: %w", err)
-	}
-
-	// Convert to our issue format
-	for _, violation := range scanResult.Violations {
-		for _, node := range violation.Nodes {
-			selector := ""
-			if len(node.Target) > 0 {
-				selector = node.Target[0]
-			}
-
-			issue := AccessibilityIssue{
-				ID:          violation.ID,
-				Title:       violation.Description,
-				Description: violation.Description,
-				Impact:      violation.Impact,
-				Tags:        violation.Tags,
-				Selector:    selector,
-				URL:         url,
-				Metadata: map[string]interface{}{
-					"html": node.HTML,
-				},
-			}
-
-			as.issues = append(as.issues, issue)
-		}
-	}
-
-	return nil
-}
-
-// GetIssues returns all found accessibility issues
-func (as *AccessibilityScanner) GetIssues() []AccessibilityIssue {
-	return as.issues
-}
-
-// GetCriticalIssues returns only critical accessibility issues
-func (as *AccessibilityScanner) GetCriticalIssues() []AccessibilityIssue {
-	var critical []AccessibilityIssue
-	for _, issue := range as.issues {
-		if issue.Impact == "critical" {
-			critical = append(critical, issue)
-		}
-	}
-	return critical
-}
-
-// GetSeriousIssues returns only serious accessibility issues
-func (as *AccessibilityScanner) GetSeriousIssues() []AccessibilityIssue {
-	var serious []AccessibilityIssue
-	for _, issue := range as.issues {
-		if issue.Impact == "serious" {
-			serious = append(serious, issue)
-		}
-	}
-	return serious
-}
-
-// issueExists checks if an issue with the same content already exists
+// issueExists checks if an issue with the same content already exists in bd
 func issueExists(title string, selector string, url string) (bool, error) {
 	cmd := exec.Command("bd", "list", "--json")
 	output, err := cmd.Output()
@@ -151,7 +50,7 @@ func issueExists(title string, selector string, url string) (bool, error) {
 }
 
 // CreateBdIssue creates a bd issue for accessibility problems
-func (as *AccessibilityScanner) CreateBdIssue(issue AccessibilityIssue) error {
+func (as *AccessibilityScanner) CreateBdIssue(issue scanner.AccessibilityIssue) error {
 	// Skip bd creation in CI environment
 	if os.Getenv("CI") != "" {
 		fmt.Printf("Skipping bd issue creation in CI environment for: %s\n", issue.Title)
@@ -201,7 +100,7 @@ func (as *AccessibilityScanner) CreateBdIssue(issue AccessibilityIssue) error {
 
 // CreateBdIssuesForAll creates bd issues for all found problems
 func (as *AccessibilityScanner) CreateBdIssuesForAll() error {
-	for _, issue := range as.issues {
+	for _, issue := range as.GetIssues() {
 		if issue.Impact == "critical" || issue.Impact == "serious" {
 			if err := as.CreateBdIssue(issue); err != nil {
 				fmt.Printf("Failed to create issue for %s: %v\n", issue.Title, err)
@@ -209,17 +108,4 @@ func (as *AccessibilityScanner) CreateBdIssuesForAll() error {
 		}
 	}
 	return nil
-}
-
-// formatMetadata formats metadata for display
-func (as *AccessibilityScanner) formatMetadata(metadata map[string]interface{}) string {
-	if len(metadata) == 0 {
-		return "No additional metadata"
-	}
-
-	data, err := json.MarshalIndent(metadata, "  ", "  ")
-	if err != nil {
-		return "Failed to format metadata"
-	}
-	return string(data)
 }

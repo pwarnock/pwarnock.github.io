@@ -6,13 +6,15 @@ import (
 	"time"
 
 	"github.com/cucumber/godog"
+	"github.com/pwarnock/go-playwright-testkit/pkg/browser"
+	"github.com/pwarnock/go-playwright-testkit/pkg/logger"
 	"pwarnock-tests/support"
 )
 
 // NavigationSteps implements navigation-related BDD steps
 type NavigationSteps struct {
 	testCtx *support.TestContext
-	browser *support.Browser
+	browser *browser.Browser
 }
 
 // NewNavigationSteps creates a new NavigationSteps instance
@@ -45,7 +47,7 @@ func (ns *NavigationSteps) RegisterSteps(ctx *godog.ScenarioContext) {
 func (ns *NavigationSteps) iNavigateToThePage(pageName string) error {
 	// Create browser instance if not exists
 	if ns.browser == nil {
-		browser, err := support.NewBrowser()
+		browser, err := browser.NewBrowser()
 		if err != nil {
 			return fmt.Errorf("failed to create browser: %w", err)
 		}
@@ -143,8 +145,8 @@ func (ns *NavigationSteps) iShouldSeeNoAccessibilityViolations() error {
 		if violations, ok := resultMap["violations"].([]interface{}); ok {
 			if len(violations) > 0 {
 				// Use structured logging for accessibility violations
-				if ns.testCtx.StructuredLogger != nil {
-					ns.testCtx.StructuredLogger.LogAccessibility(violations)
+				if sl, ok := ns.testCtx.StructuredLogger.(*logger.StructuredLogger); ok && sl != nil {
+					sl.LogAccessibility(violations)
 				}
 				return fmt.Errorf("found %d accessibility violations", len(violations))
 			}

@@ -3,37 +3,35 @@ package support
 import (
 	"testing"
 
+	"github.com/pwarnock/go-playwright-testkit/pkg/logger"
 	"github.com/stretchr/testify/assert"
 )
 
-// TestStructuredLogger tests the structured logging functionality
+// TestStructuredLogger tests the structured logging functionality (from library)
 func TestStructuredLogger(t *testing.T) {
-	logger := NewStructuredLogger("test")
+	log := logger.NewStructuredLogger("test")
 
 	t.Run("Logf formats messages correctly", func(t *testing.T) {
-		logger.Logf("Test message: %s", "value")
+		log.Logf("Test message: %s", "value")
 	})
 
 	t.Run("LogError includes error details", func(t *testing.T) {
 		err := assert.AnError
-		logger.LogError(err, "Test error occurred")
+		log.LogError(err, "Test error occurred")
 	})
 
 	t.Run("LogPerformance includes metrics", func(t *testing.T) {
-		metrics := map[string]interface{}{
-			"loadTime": 100.0,
-			"ttfb":     50.0,
-		}
-		logger.LogPerformance(metrics)
+		log.LogPerformance("loadTime", 100.0, "ms")
+		log.LogPerformance("ttfb", 50.0, "ms")
 	})
 
 	t.Run("LogAccessibility includes violation count", func(t *testing.T) {
 		violations := []interface{}{"violation1", "violation2"}
-		logger.LogAccessibility(violations)
+		log.LogAccessibility(violations)
 	})
 
 	t.Run("Close returns nil", func(t *testing.T) {
-		err := logger.Close()
+		err := log.Close()
 		assert.NoError(t, err)
 	})
 }

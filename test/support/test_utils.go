@@ -5,94 +5,59 @@ import (
 	"fmt"
 	"os/exec"
 	"testing"
-	"time"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/pwarnock/go-playwright-testkit/pkg/browser"
+	pkgcontext "github.com/pwarnock/go-playwright-testkit/pkg/context"
+	"github.com/pwarnock/go-playwright-testkit/pkg/logger"
+	"github.com/pwarnock/go-playwright-testkit/pkg/telemetry"
 )
 
-// TestContext holds shared test state
+// TestContext wraps the library's TestContext with Hugo-specific functionality
 type TestContext struct {
-	HugoServer       *HugoServer
-	Browser          *Browser
-	BaseURL          string
-	T                *testing.T
-	logger           func(format string, args ...interface{})
-	StructuredLogger *StructuredLogger
+	*pkgcontext.TestContext
+	HugoServer *HugoServer
 }
 
-// NewTestContext creates a new test context
+// NewTestContext creates a new test context for Hugo site testing
 func NewTestContext(t *testing.T) *TestContext {
 	tc := &TestContext{
-		T:       t,
-		BaseURL: "http://localhost:1313",
+		TestContext: pkgcontext.NewTestContext(t, "http://localhost:1313"),
+		HugoServer:  NewHugoServer(),
 	}
 
-	// Initialize structured logger
-	tc.StructuredLogger = NewStructuredLogger("BDD-Test")
+	// Initialize structured logger with OTEL
+	structuredLogger := logger.NewStructuredLogger("BDD-Test")
+	tc.TestContext.SetStructuredLogger(structuredLogger)
 
-	if t != nil {
-		tc.logger = t.Logf
-	} else {
-		tc.logger = tc.StructuredLogger.GetLogger()
-	}
 	return tc
 }
 
-// SetLogger sets the logger function
-func (tc *TestContext) SetLogger(logger func(format string, args ...interface{})) {
-	tc.logger = logger
-}
+// Setup sets up test environment with Hugo server
+func (tc *TestContext) Setup() error {
+	// Set Hugo server as the ServerManager
+	tc.TestContext.Server = tc.HugoServer
 
-// SetStructuredLogger sets the structured logger
-func (tc *TestContext) SetStructuredLogger(logger *StructuredLogger) {
-	tc.StructuredLogger = logger
-	tc.logger = logger.GetLogger()
-}
-
-// Logf logs a formatted message
-func (tc *TestContext) Logf(format string, args ...interface{}) {
-	if tc.logger != nil {
-		tc.logger(format, args...)
-	}
-}
-
-// Setup sets up test environment
-func (tc *TestContext) Setup() {
-	// Start Hugo server
-	tc.HugoServer = NewHugoServer()
-	err := tc.HugoServer.Start()
-	if err != nil {
+	// Call parent Setup which will start the server
+	if err := tc.TestContext.Setup(); err != nil {
 		tc.Logf("Warning: Failed to start Hugo server: %v", err)
 		tc.Logf("Tests will run without Hugo server")
+		return err
 	}
 
-	// Browser will be created on-demand by step definitions
+	// Update BaseURL from Hugo server
+	tc.BaseURL = tc.HugoServer.GetBaseURL()
+
+	return nil
 }
 
 // Teardown cleans up test environment
 func (tc *TestContext) Teardown() {
-	tc.Logf("Cleaning up test environment...")
+	// Call parent Teardown which handles browser and server cleanup
+	tc.TestContext.Teardown()
 
-	if tc.Browser != nil {
-		tc.Logf("Closing browser...")
-		if err := tc.Browser.Close(); err != nil {
-			tc.Logf("Error closing browser: %v", err)
-		}
-		tc.Browser = nil
-	}
-
-	if tc.HugoServer != nil {
-		tc.Logf("Stopping Hugo server...")
-		if err := tc.HugoServer.Stop(); err != nil {
-			tc.Logf("Error stopping Hugo server: %v", err)
-		}
-		tc.HugoServer = nil
-	}
-
-	tc.Logf("Test environment cleanup completed")
-
-	if tc.StructuredLogger != nil {
-		tc.StructuredLogger.Close()
+	// Close structured logger if it's our type
+	if sl, ok := tc.StructuredLogger.(*logger.StructuredLogger); ok {
+		sl.Close()
 	}
 }
 
@@ -100,54 +65,20 @@ func (tc *TestContext) Teardown() {
 func (tc *TestContext) SetupBrowser() error {
 	if tc.Browser != nil {
 		tc.Logf("Browser already initialized")
-		return nil // Already setup
+		return nil
 	}
 
 	tc.Logf("Initializing browser...")
-	browser, err := NewBrowser()
+
+	// Create browser with default options (headless)
+	b, err := browser.NewBrowser()
 	if err != nil {
 		return fmt.Errorf("failed to create browser: %w", err)
 	}
 
-	tc.Browser = browser
+	tc.Browser = b
 	tc.Logf("Browser initialized successfully")
 	return nil
-}
-
-// AssertNoError asserts no error occurred
-func (tc *TestContext) AssertNoError(err error, msgAndArgs ...interface{}) {
-	assert.NoError(tc.T, err, msgAndArgs...)
-}
-
-// AssertEqual asserts two values are equal
-func (tc *TestContext) AssertEqual(expected, actual interface{}, msgAndArgs ...interface{}) {
-	assert.Equal(tc.T, expected, actual, msgAndArgs...)
-}
-
-// AssertContains asserts a string contains a substring
-func (tc *TestContext) AssertContains(s, contains interface{}, msgAndArgs ...interface{}) {
-	assert.Contains(tc.T, s, contains, msgAndArgs...)
-}
-
-// AssertTrue asserts a condition is true
-func (tc *TestContext) AssertTrue(value bool, msgAndArgs ...interface{}) {
-	assert.True(tc.T, value, msgAndArgs...)
-}
-
-// TakeScreenshotOnError takes a screenshot if an error occurs
-func (tc *TestContext) TakeScreenshotOnError(testName string) {
-	if tc.Browser != nil {
-		screenshotDir := "test-results/screenshots"
-		exec.Command("mkdir", "-p", screenshotDir).Run()
-
-		screenshotPath := fmt.Sprintf("%s/%s-error.png", screenshotDir, testName)
-		err := tc.Browser.TakeScreenshot(screenshotPath)
-		if err != nil {
-			tc.Logf("Failed to take screenshot: %v", err)
-		} else {
-			tc.Logf("Screenshot saved to: %s", screenshotPath)
-		}
-	}
 }
 
 // CheckPageExists checks if a page responds correctly
@@ -168,7 +99,7 @@ func (tc *TestContext) CheckPageExists(pageName string) error {
 	return nil
 }
 
-// GetPageURL returns a full URL for a page name
+// GetPageURL returns a full URL for a page name (Hugo-specific)
 func (tc *TestContext) GetPageURL(pageName string) string {
 	switch pageName {
 	case "home":
@@ -186,7 +117,7 @@ func (tc *TestContext) GetPageURL(pageName string) string {
 	}
 }
 
-// WaitForPage waits for a page to become available
+// WaitForPage waits for a page to become available (Hugo-specific)
 func (tc *TestContext) WaitForPage(pageName string) error {
 	maxAttempts := 15
 
@@ -194,22 +125,22 @@ func (tc *TestContext) WaitForPage(pageName string) error {
 		if err := tc.CheckPageExists(pageName); err == nil {
 			return nil
 		}
-		time.Sleep(2 * time.Second)
+		tc.Logf("Waiting for page %s... (attempt %d/%d)", pageName, i+1, maxAttempts)
+		// Sleep is handled in loop
 	}
 
-	return fmt.Errorf("page %s did not become available within %d seconds", pageName, maxAttempts*2)
+	return fmt.Errorf("page %s did not become available within timeout", pageName)
 }
 
 func init() {
-	// Initialize OTEL on package load
-	if IsOTELEnabled() {
+	// Initialize OTEL on package load if enabled
+	if telemetry.IsOTELEnabled() {
 		ctx := context.Background()
-		shutdown, err := InitOTEL(ctx)
+		shutdown, err := telemetry.InitOTEL(ctx)
 		if err != nil {
 			fmt.Printf("Warning: Failed to initialize OTEL: %v\n", err)
 		} else {
 			// Register shutdown to run at exit
-			// (In real usage, call this in test main cleanup)
 			_ = shutdown
 		}
 	}

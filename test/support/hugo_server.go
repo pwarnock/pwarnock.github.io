@@ -128,3 +128,9 @@ func (h *HugoServer) detectServerURL() (string, error) {
 func (h *HugoServer) GetBaseURL() string {
 	return h.baseURL
 }
+
+// IsReady returns whether the server is ready to accept requests
+// Implements context.ServerManager interface
+func (h *HugoServer) IsReady() bool {
+	return h.isRunning && h.IsServerRunning()
+}
