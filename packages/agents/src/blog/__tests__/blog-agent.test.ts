@@ -10,6 +10,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { BlogAgent } from '../blog-agent.js';
 import type { BlogPostRequest } from '../blog-agent.js';
+import { resetAgentPaths } from '../../config/index.js';
 
 describe('BlogAgent', () => {
   let blogAgent: BlogAgent;
@@ -17,6 +18,9 @@ describe('BlogAgent', () => {
   let originalCwd: string;
 
   beforeEach(async () => {
+    // Reset paths configuration cache FIRST to ensure clean state
+    resetAgentPaths();
+
     // Store original working directory
     originalCwd = process.cwd();
 
@@ -35,6 +39,10 @@ describe('BlogAgent', () => {
   });
 
   afterEach(async () => {
+    // Reset paths configuration cache FIRST (before changing directory)
+    // This prevents race conditions where parallel tests corrupt the cached config
+    resetAgentPaths();
+
     // Restore original working directory
     process.chdir(originalCwd);
 

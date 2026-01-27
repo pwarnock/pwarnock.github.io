@@ -2,11 +2,13 @@
  * Vitest Global Setup for Agent Tests
  *
  * Ensures test artifacts are cleaned up after test runs
+ * and resets shared state between tests
  */
 
 import fs from 'fs/promises';
 import path from 'path';
-import { afterAll, beforeAll } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach } from 'vitest';
+import { resetAgentPaths } from '../config/index.js';
 
 const TEST_ARTIFACT_PATTERNS = [
   // Portfolio test artifacts
@@ -85,6 +87,16 @@ beforeAll(async () => {
 afterAll(async () => {
   // Clean up artifacts created during this test run
   await cleanupTestArtifacts();
+});
+
+// Reset shared state between tests to prevent race conditions
+// This is critical for tests that use process.chdir() and expect fresh config
+beforeEach(() => {
+  resetAgentPaths();
+});
+
+afterEach(() => {
+  resetAgentPaths();
 });
 
 export { cleanupTestArtifacts };
