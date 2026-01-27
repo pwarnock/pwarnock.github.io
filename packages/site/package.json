@@ -1,0 +1,25 @@
+{
+  "name": "@pwarnock/site",
+  "version": "0.20.3",
+  "private": true,
+  "type": "module",
+  "description": "Hugo site with frontend assets",
+  "scripts": {
+    "dev": "bun run generate-version && hugo server --environment development --port 1313",
+    "dev:legacy": "HUGO_ENV=development hugo server -D --bind 0.0.0.0 --baseURL http://localhost:1313 --navigateToChanged --disableFastRender",
+    "build": "bun run generate-version && hugo --environment production --gc --minify --enableGitInfo",
+    "build:preview": "hugo --gc --enableGitInfo",
+    "generate-version": "bun run ../../packages/tooling/scripts/release/generate-version.js",
+    "clean": "rm -rf public"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "daisyui": "^5.5.14"
+  }
+}

@@ -28,10 +28,12 @@ featuring a unified design system and responsive design.
 
 ### Prerequisites
 
-- **Hugo Extended** v0.120 or later
-- **Bun** latest (primary package manager and runtime)
+- **mise** (tool version manager - manages Hugo, Bun, Go, just)
+  - Install: `curl https://mise.run | sh`
+  - Tool versions are locked in `.mise.toml`
 - **Git** (for version control)
-- **Go** ≥1.21 (for test utilities)
+
+All other tools (Hugo 0.154.5, Bun 1.3.6, Go 1.25, just 1.46.0) are managed by mise
 
 ### Installation
 
@@ -40,11 +42,14 @@ featuring a unified design system and responsive design.
 git clone https://github.com/pwarnock/pwarnock.github.io.git
 cd pwarnock.github.io
 
+# Install mise and all tools (Hugo, Bun, Go, just)
+mise install
+
 # Install dependencies
 bun install
 
 # Start development server
-bun run dev
+just dev  # or: bun run dev
 
 # Open browser to http://localhost:1313
 ```
@@ -157,29 +162,65 @@ All project documentation lives in `/docs/`:
 
 ## 🏗️ Project Structure
 
+This is a **bun workspaces monorepo** with tool versions managed by **mise**.
+
 ```
-├── config/              # Hugo environment configs (dev, staging, production)
-├── content/             # Site content (Markdown)
-│   ├── blog/           # Blog posts
-│   └── portfolio/      # Portfolio projects
-├── layouts/            # Hugo templates
-├── static/             # Static files (CSS, images)
-├── src/                # TypeScript utilities
-├── test/               # Test infrastructure
-├── tests/              # E2E and visual tests
-├── scripts/            # Build and deployment scripts
-├── docs/               # Project documentation
-├── package.json        # Dependencies
-└── hugo.toml           # Hugo configuration
+├── .mise.toml                    # Tool version locks (Hugo, Go, bun, just)
+├── package.json                  # Root workspace configuration
+├── justfile                      # Task orchestration (390-line command hub)
+├── packages/
+│   ├── site/                     # Hugo site + frontend
+│   │   ├── hugo.toml            # Hugo configuration
+│   │   ├── content/             # Site content (blog, portfolio)
+│   │   ├── layouts/             # Hugo templates
+│   │   ├── static/              # Static assets
+│   │   ├── assets/              # Build-time assets (Tailwind)
+│   │   └── package.json         # Site dependencies
+│   ├── agents/                   # Content generation agents
+│   │   ├── src/agents/          # Blog, portfolio, tech-radar agents
+│   │   └── package.json         # @pwarnock/agents
+│   ├── qa-tools/                 # QA infrastructure
+│   │   ├── src/                 # QA automation, observability
+│   │   └── package.json         # @pwarnock/qa-tools
+│   └── tooling/                  # Build/deploy scripts
+│       ├── scripts/             # 65 scripts in 7 categories
+│       └── package.json         # @pwarnock/tooling
+├── shared/                       # Shared utilities and types
+│   ├── src/utils/               # Common utilities
+│   ├── src/types/               # TypeScript types
+│   └── package.json             # @pwarnock/shared
+├── test/                         # Go test infrastructure (root level)
+├── tests/                        # Playwright E2E tests (root level)
+├── scripts/                      # Symlinks to packages/tooling/scripts/ (backward compat)
+└── docs/                         # Project documentation
 ```
+
+**Workspace Dependencies:**
+- `packages/agents` → depends on `@pwarnock/shared`
+- `packages/qa-tools` → depends on `@pwarnock/shared`
+- `packages/site` → standalone (Hugo site)
+- `shared` → no dependencies (utilities only)
 
 ## 🔧 Configuration
 
-- **Site Config**: `hugo.toml`
-- **Environment Configs**: `config/{development,staging,production}/hugo.toml`
-- **CSS Framework**: Tailwind CSS with DaisyUI components
+- **Tool Versions**: `.mise.toml` (Hugo 0.154.5, Bun 1.3.6, Go 1.25, just 1.46.0)
+- **Site Config**: `packages/site/hugo.toml`
+- **Environment Configs**: `packages/site/config/{development,staging,production}/hugo.toml`
+- **CSS Framework**: Tailwind CSS with DaisyUI components (in `packages/site/`)
 - **Build Tools**: PostCSS, Hugo Pipes
 - **Development**: PM2 process manager
+- **Workspace Config**: Root `package.json` with `workspaces: ["packages/*", "shared"]`
+
+### Workspace-Specific Commands
+
+```bash
+# Run command in specific workspace
+just test-workspace agents        # Test agents workspace
+bun run --filter @pwarnock/site build  # Build site workspace
+
+# Workspace dependencies
+bun pm ls                        # List all workspaces
+```
 
 ## 🤝 Contributing
 

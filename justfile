@@ -14,6 +14,15 @@ agent-setup:
     @just agent-init
     @echo "✅ Agent environment ready!"
 
+# Check mise tool versions match .mise.toml
+mise-check:
+    @mise doctor || true
+    @mise current
+
+# Sync mise installation (install missing tools)
+mise-sync:
+    @mise install
+
 # ==============================================================================
 # DEVELOPMENT
 # ==============================================================================
@@ -66,6 +75,13 @@ validate:
 test:
     bun run test
 
+# Run all tests (Go + TypeScript + E2E)
+test-all:
+    @echo "🧪 Running all tests..."
+    @just test-unit-go
+    @just test-unit-ts
+    @echo "✅ All tests complete"
+
 # Run unit tests (Go + TypeScript)
 test-unit:
     bun run test:unit
@@ -74,9 +90,13 @@ test-unit:
 test-unit-go:
     cd test && go test -v ./support/...
 
-# Run TypeScript unit tests
+# Run TypeScript unit tests (all workspaces)
 test-unit-ts:
     bun run test:unit:ts
+
+# Run tests for specific workspace
+test-workspace workspace:
+    bun run --filter @pwarnock/{{workspace}} test
 
 # Run end-to-end tests
 test-e2e:

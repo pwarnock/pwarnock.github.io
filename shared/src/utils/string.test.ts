@@ -1,23 +1,8 @@
 import { describe, it, expect } from 'vitest';
+import { capitalize, truncate } from './string.js';
 
 /**
- * Example utility function for testing
- */
-function capitalize(str: string): string {
-  if (!str) return '';
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function truncate(str: string, length: number): string {
-  if (str.length <= length) return str;
-  return str.slice(0, length) + '...';
-}
-
-/**
- * Example: String utility tests
- *
- * This demonstrates the Vitest setup for TypeScript unit tests.
- * Replace these with actual component tests as Phase 1 progresses.
+ * String utility tests
  */
 describe('String Utilities', () => {
   describe('capitalize', () => {

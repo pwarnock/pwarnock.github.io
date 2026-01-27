@@ -181,6 +181,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -224,7 +230,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site-build
-          path: public/
+          path: packages/site/public/
           retention-days: 1
 
   deploy-site:
@@ -239,19 +245,19 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site-build
-          path: public/
+          path: packages/site/public/
 
       - name: Validate deployment artifacts
         run: |
           echo "Deployment artifacts:"
-          du -sh public/
-          find public -name "index.html" | wc -l | xargs echo "  HTML files:"
+          du -sh packages/site/public/
+          find packages/site/public -name "index.html" | wc -l | xargs echo "  HTML files:"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./packages/site/public
           cname: ${{ vars.SITE_CNAME }}
           force_orphan: false
 

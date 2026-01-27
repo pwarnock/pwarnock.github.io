@@ -1,0 +1,20 @@
+{
+  "name": "@pwarnock/shared",
+  "version": "0.20.3",
+  "private": true,
+  "type": "module",
+  "description": "Shared types and utilities",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./utils": "./src/utils/index.ts",
+    "./types": "./src/types/index.ts"
+  },
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}

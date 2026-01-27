@@ -50,6 +50,65 @@
         "yaml-lint": "^1.7.0",
       },
     },
+    "packages/agents": {
+      "name": "@pwarnock/agents",
+      "version": "0.20.3",
+      "dependencies": {
+        "@pwarnock/shared": "workspace:*",
+        "js-yaml": "4.1.1",
+      },
+      "devDependencies": {
+        "@types/js-yaml": "^4.0.9",
+        "happy-dom": "^20.0.11",
+        "typescript": "^5.9.3",
+        "vitest": "^4.0.16",
+      },
+    },
+    "packages/qa-tools": {
+      "name": "@pwarnock/qa-tools",
+      "version": "0.20.3",
+      "dependencies": {
+        "@opentelemetry/api": "^1.9.0",
+        "@opentelemetry/exporter-trace-otlp-proto": "^0.208.0",
+        "@opentelemetry/resources": "^2.2.0",
+        "@opentelemetry/sdk-node": "^0.208.0",
+        "@opentelemetry/sdk-trace-base": "^2.2.0",
+        "@opentelemetry/semantic-conventions": "^1.38.0",
+        "logfire": "^0.11.1",
+        "minimatch": "^10.0.1",
+      },
+      "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.9.3",
+        "vitest": "^4.0.16",
+      },
+    },
+    "packages/site": {
+      "name": "@pwarnock/site",
+      "version": "0.20.3",
+      "dependencies": {
+        "@tailwindcss/postcss": "^4.1.18",
+        "@tailwindcss/typography": "^0.5.19",
+        "postcss": "^8.5.6",
+        "postcss-cli": "^11.0.1",
+        "tailwindcss": "^4.1.18",
+      },
+      "devDependencies": {
+        "daisyui": "^5.5.14",
+      },
+    },
+    "packages/tooling": {
+      "name": "@pwarnock/tooling",
+      "version": "0.20.3",
+    },
+    "shared": {
+      "name": "@pwarnock/shared",
+      "version": "0.20.3",
+      "devDependencies": {
+        "typescript": "^5.9.3",
+        "vitest": "^4.0.16",
+      },
+    },
   },
   "trustedDependencies": [
     "protobufjs",
@@ -360,6 +419,16 @@
 
     "@puppeteer/browsers": ["@puppeteer/browsers@0.5.0", "", { "dependencies": { "debug": "4.3.4", "extract-zip": "2.0.1", "https-proxy-agent": "5.0.1", "progress": "2.0.3", "proxy-from-env": "1.1.0", "tar-fs": "2.1.1", "unbzip2-stream": "1.4.3", "yargs": "17.7.1" }, "peerDependencies": { "typescript": ">= 4.7.4" }, "optionalPeers": ["typescript"], "bin": { "browsers": "lib/cjs/main-cli.js" } }, "sha512-Uw6oB7VvmPRLE4iKsjuOh8zgDabhNX67dzo8U/BB0f9527qx+4eeUs+korU98OhG5C4ubg7ufBgVi63XYwS6TQ=="],
 
+    "@pwarnock/agents": ["@pwarnock/agents@workspace:packages/agents"],
+
+    "@pwarnock/qa-tools": ["@pwarnock/qa-tools@workspace:packages/qa-tools"],
+
+    "@pwarnock/shared": ["@pwarnock/shared@workspace:shared"],
+
+    "@pwarnock/site": ["@pwarnock/site@workspace:packages/site"],
+
+    "@pwarnock/tooling": ["@pwarnock/tooling@workspace:packages/tooling"],
+
     "@rollup/rollup-android-arm-eabi": ["@rollup/rollup-android-arm-eabi@4.53.3", "", { "os": "android", "cpu": "arm" }, "sha512-mRSi+4cBjrRLoaal2PnqH82Wqyb+d3HsPUN/W+WslCXsZsyHa9ZeQQX/pQsZaVIWDkPcpV6jJ+3KLbTbgnwv8w=="],
 
     "@rollup/rollup-android-arm64": ["@rollup/rollup-android-arm64@4.53.3", "", { "os": "android", "cpu": "arm64" }, "sha512-CbDGaMpdE9sh7sCmTrTUyllhrg65t6SwhjlMJsLr+J8YjFuPmCEjbBSx4Z/e4SmDyH3aB5hGaJUP2ltV/vcs4w=="],
@@ -465,6 +534,8 @@
     "@types/deep-eql": ["@types/deep-eql@4.0.2", "", {}, "sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw=="],
 
     "@types/estree": ["@types/estree@1.0.8", "", {}, "sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w=="],
+
+    "@types/js-yaml": ["@types/js-yaml@4.0.9", "", {}, "sha512-k4MGaQl5TGo/iipqb2UDG2UwjXziSWkh0uysQelTlJpX1qGlpUZYm8PnO4DxG1qBomtJUdYJ6qR6xdIah10JLg=="],
 
     "@types/json-schema": ["@types/json-schema@7.0.15", "", {}, "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA=="],
 

@@ -18,6 +18,12 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+        with:
+          install: true
+          cache: true
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -41,11 +47,11 @@ jobs:
       - name: Check for broken internal links
         run: |
           # Check if all internal links resolve to existing files
-          find public -name "*.html" -exec grep -H "href=\"/" {} \; | \
+          find packages/site/public -name "*.html" -exec grep -H "href=\"/" {} \; | \
           while read line; do
             url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
             if [ -n "$url" ]; then
-              if [ ! -f "public/$url" ] && [ ! -f "public/$url/index.html" ]; then
+              if [ ! -f "packages/site/public/$url" ] && [ ! -f "packages/site/public/$url/index.html" ]; then
                 echo "Broken link found: /$url"
                 exit 1
               fi
