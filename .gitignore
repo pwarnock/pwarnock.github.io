@@ -109,9 +109,16 @@ kubeconfig
 
 # Framework-specific configurations (not part of core project)
 .cody.backup.*/
-.agents/
-.claude/
 .letta/
+
+# Claude Code local state (but keep skills and commands)
+.claude/*
+!.claude/skills/
+!.claude/commands/
+
+# Agent data (sessions are local, style-docs and drafts are project-specific)
+.agents/sessions/
+.agents/style-docs/*.backup
 .letta.example/
 .letta.schema.json
 .opencode.jsonc
@@ -123,8 +130,7 @@ debug-*.png
 cody-*.log
 .cache/
 
-# Session state files (framework-generated)
-.claude/session-state.json
+# Session state files (covered by .claude/* above)
 
 # Hugo binary (OS-specific)
 hugo
@@ -164,6 +170,9 @@ data/version.json
 
 # Old plan backups
 .cody/project/plan/old/
+
+# Cody backups
+.cody/backup/
 
 # Link checker cache
 .lycheecache
