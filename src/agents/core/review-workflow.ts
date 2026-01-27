@@ -18,10 +18,48 @@ import * as path from 'path';
 import { getAgentPaths } from '../config/index.js';
 import type {
   ContentBundle,
-  ReviewSession,
   Comment,
-  ReviewStatus,
+  ContentType,
 } from '../types/index.js';
+
+/**
+ * Draft review file structure
+ *
+ * Lightweight tracking for content drafts pending user review.
+ * Stored at `.agents/drafts/{type}-{slug}.review.json`
+ */
+export interface DraftReviewFile {
+  /** Path to the content bundle (e.g., content/blog/posts/2026-01-26-my-post/index.md) */
+  bundlePath: string;
+
+  /** Content type (blog, portfolio, tech-radar) */
+  contentType: ContentType;
+
+  /** Slug derived from title */
+  slug: string;
+
+  /** Current status of the draft */
+  status: 'pending_review' | 'approved' | 'rejected';
+
+  /** Image prompts generated for this content */
+  imagePrompts: string[];
+
+  /** When the draft was created */
+  createdAt: string;
+
+  /** When the draft was last updated */
+  updatedAt: string;
+
+  /** Validation result from content checks */
+  validationResult: {
+    valid: boolean;
+    errors: string[];
+    warnings: string[];
+  };
+
+  /** Optional notes from review */
+  reviewNotes?: string;
+}
 
 /**
  * Generate a unique ID using Node.js crypto API
@@ -660,5 +698,246 @@ export class ReviewWorkflow {
         0
       ),
     };
+  }
+
+  // ============================================================================
+  // Draft Review File Methods
+  // ============================================================================
+
+  /**
+   * Create a draft review file for a content bundle
+   *
+   * Draft files are lightweight tracking for content pending user review.
+   * Unlike full review sessions, they don't track inline comments.
+   *
+   * @param options - Draft file options
+   * @returns Result with file path
+   */
+  async createDraftReviewFile(options: {
+    bundlePath: string;
+    contentType: ContentType;
+    slug: string;
+    imagePrompts?: string[];
+    validationResult?: { valid: boolean; errors: string[]; warnings: string[] };
+  }): Promise<{ success: boolean; filePath?: string; error?: string }> {
+    await this.ensureInitialized();
+
+    try {
+      const draftsDir = getAgentPaths().draftsDir;
+      await fs.mkdir(draftsDir, { recursive: true });
+
+      const now = new Date().toISOString();
+      const draftFile: DraftReviewFile = {
+        bundlePath: options.bundlePath,
+        contentType: options.contentType,
+        slug: options.slug,
+        status: 'pending_review',
+        imagePrompts: options.imagePrompts || [],
+        createdAt: now,
+        updatedAt: now,
+        validationResult: options.validationResult || { valid: true, errors: [], warnings: [] },
+      };
+
+      const fileName = `${options.contentType}-${options.slug}.review.json`;
+      const filePath = path.join(draftsDir, fileName);
+
+      await fs.writeFile(filePath, JSON.stringify(draftFile, null, 2), 'utf-8');
+
+      return { success: true, filePath };
+    } catch (error) {
+      return {
+        success: false,
+        error: 'Failed to create draft review file: ' + (error instanceof Error ? error.message : 'Unknown error'),
+      };
+    }
+  }
+
+  /**
+   * Get a draft review file by content type and slug
+   *
+   * @param contentType - The content type (blog, portfolio, tech-radar)
+   * @param slug - The content slug
+   * @returns Draft review file or null if not found
+   */
+  async getDraftReviewFile(
+    contentType: ContentType,
+    slug: string
+  ): Promise<DraftReviewFile | null> {
+    await this.ensureInitialized();
+
+    try {
+      const draftsDir = getAgentPaths().draftsDir;
+      const fileName = `${contentType}-${slug}.review.json`;
+      const filePath = path.join(draftsDir, fileName);
+
+      const content = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(content) as DraftReviewFile;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return null;
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * List all draft review files
+   *
+   * @param contentType - Optional filter by content type
+   * @returns Array of draft review files
+   */
+  async listDraftReviewFiles(contentType?: ContentType): Promise<DraftReviewFile[]> {
+    await this.ensureInitialized();
+
+    try {
+      const draftsDir = getAgentPaths().draftsDir;
+      const files = await fs.readdir(draftsDir);
+
+      const reviewFiles = files.filter(f => f.endsWith('.review.json'));
+      const drafts: DraftReviewFile[] = [];
+
+      for (const file of reviewFiles) {
+        try {
+          const filePath = path.join(draftsDir, file);
+          const content = await fs.readFile(filePath, 'utf-8');
+          const draft = JSON.parse(content) as DraftReviewFile;
+
+          if (!contentType || draft.contentType === contentType) {
+            drafts.push(draft);
+          }
+        } catch (error) {
+          console.error(`Failed to read draft file ${file}:`, error);
+        }
+      }
+
+      return drafts;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return [];
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * Approve a draft by updating its status and removing draft: true from content
+   *
+   * This is the ONLY way to transition a draft to approved status.
+   * Modifies both the review file and the actual content file.
+   *
+   * @param contentType - The content type
+   * @param slug - The content slug
+   * @param notes - Optional approval notes
+   * @returns Result with updated bundle path
+   */
+  async approveDraft(
+    contentType: ContentType,
+    slug: string,
+    notes?: string
+  ): Promise<{ success: boolean; bundlePath?: string; error?: string }> {
+    await this.ensureInitialized();
+
+    try {
+      const draft = await this.getDraftReviewFile(contentType, slug);
+      if (!draft) {
+        return { success: false, error: `Draft not found: ${contentType}-${slug}` };
+      }
+
+      if (draft.status === 'approved') {
+        return { success: false, error: 'Draft is already approved' };
+      }
+
+      // Update the content file to remove draft: true
+      const bundlePath = draft.bundlePath;
+      const content = await fs.readFile(bundlePath, 'utf-8');
+
+      // Replace draft: true with draft: false in frontmatter
+      const updatedContent = content.replace(/^(---[\s\S]*?)draft:\s*true([\s\S]*?---)/, '$1draft: false$2');
+
+      await fs.writeFile(bundlePath, updatedContent, 'utf-8');
+
+      // Update the draft review file
+      draft.status = 'approved';
+      draft.updatedAt = new Date().toISOString();
+      if (notes) {
+        draft.reviewNotes = notes;
+      }
+
+      const draftsDir = getAgentPaths().draftsDir;
+      const fileName = `${contentType}-${slug}.review.json`;
+      const filePath = path.join(draftsDir, fileName);
+      await fs.writeFile(filePath, JSON.stringify(draft, null, 2), 'utf-8');
+
+      return { success: true, bundlePath };
+    } catch (error) {
+      return {
+        success: false,
+        error: 'Failed to approve draft: ' + (error instanceof Error ? error.message : 'Unknown error'),
+      };
+    }
+  }
+
+  /**
+   * Reject a draft
+   *
+   * @param contentType - The content type
+   * @param slug - The content slug
+   * @param notes - Rejection reason
+   * @returns Result
+   */
+  async rejectDraft(
+    contentType: ContentType,
+    slug: string,
+    notes: string
+  ): Promise<{ success: boolean; error?: string }> {
+    await this.ensureInitialized();
+
+    try {
+      const draft = await this.getDraftReviewFile(contentType, slug);
+      if (!draft) {
+        return { success: false, error: `Draft not found: ${contentType}-${slug}` };
+      }
+
+      draft.status = 'rejected';
+      draft.updatedAt = new Date().toISOString();
+      draft.reviewNotes = notes;
+
+      const draftsDir = getAgentPaths().draftsDir;
+      const fileName = `${contentType}-${slug}.review.json`;
+      const filePath = path.join(draftsDir, fileName);
+      await fs.writeFile(filePath, JSON.stringify(draft, null, 2), 'utf-8');
+
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        error: 'Failed to reject draft: ' + (error instanceof Error ? error.message : 'Unknown error'),
+      };
+    }
+  }
+
+  /**
+   * Delete a draft review file
+   *
+   * @param contentType - The content type
+   * @param slug - The content slug
+   * @returns Success status
+   */
+  async deleteDraftReviewFile(contentType: ContentType, slug: string): Promise<boolean> {
+    await this.ensureInitialized();
+
+    try {
+      const draftsDir = getAgentPaths().draftsDir;
+      const fileName = `${contentType}-${slug}.review.json`;
+      const filePath = path.join(draftsDir, fileName);
+
+      await fs.unlink(filePath);
+      return true;
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+        return false;
+      }
+      throw error;
+    }
   }
 }

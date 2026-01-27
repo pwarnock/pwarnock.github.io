@@ -10,6 +10,7 @@ export interface AgentPathsConfig {
   baseDir: string;
   styleDocsDir: string;
   sessionsDir: string;
+  draftsDir: string;
   projectRoot: string;
 }
 
@@ -32,6 +33,7 @@ export function getAgentPaths(projectRoot: string = process.cwd()): AgentPathsCo
     projectRoot,
     styleDocsDir: path.join(projectRoot, baseDir, 'style-docs'),
     sessionsDir: path.join(projectRoot, baseDir, 'sessions'),
+    draftsDir: path.join(projectRoot, baseDir, 'drafts'),
   };
 }
 
@@ -49,6 +51,7 @@ export function configureAgentPaths(
     projectRoot,
     styleDocsDir: options.styleDocsDir || path.join(projectRoot, baseDir, 'style-docs'),
     sessionsDir: options.sessionsDir || path.join(projectRoot, baseDir, 'sessions'),
+    draftsDir: options.draftsDir || path.join(projectRoot, baseDir, 'drafts'),
   };
 
   return currentConfig;

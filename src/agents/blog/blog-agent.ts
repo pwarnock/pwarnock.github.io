@@ -207,6 +207,26 @@ export class BlogAgent {
         };
       }
 
+      // Generate slug for draft file
+      const slug = this.generateSlug(request.title);
+
+      // Validate content bundle
+      const validationResult = await this.validateBlogPost(hugoResult.directory);
+
+      // Create draft review file for approval workflow
+      const draftResult = await this.reviewWorkflow.createDraftReviewFile({
+        bundlePath: hugoResult.path,
+        contentType: 'blog',
+        slug,
+        imagePrompts: imagePrompts.prompts,
+        validationResult,
+      });
+
+      if (!draftResult.success) {
+        // Log warning but don't fail - review file is supplementary
+        console.warn('Warning: Failed to create draft review file:', draftResult.error);
+      }
+
       return {
         success: true,
         bundle,
@@ -506,5 +526,17 @@ export class BlogAgent {
     };
 
     return descriptions[contentType];
+  }
+
+  /**
+   * Generate URL-friendly slug from title
+   */
+  private generateSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '') // Remove special chars
+      .replace(/\s+/g, '-') // Replace spaces with dashes
+      .replace(/-+/g, '-') // Replace multiple dashes
+      .trim();
   }
 }

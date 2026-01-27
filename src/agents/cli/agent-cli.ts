@@ -18,7 +18,8 @@
 import { BlogAgent, type BlogPostRequest } from '../blog/blog-agent.js';
 import { PortfolioAgent, type PortfolioGenerationRequest } from '../portfolio/portfolio-agent.js';
 import { TechRadarAgent, type TechRadarOptions } from '../tech-radar/tech-radar-agent.js';
-import type { BlogContentType, RadarSubtype } from '../types/index.js';
+import { ReviewWorkflow } from '../core/review-workflow.js';
+import type { BlogContentType, RadarSubtype, ContentType } from '../types/index.js';
 import * as readline from 'readline';
 
 // =============================================================================
@@ -35,6 +36,7 @@ function parseArgs(args: string[]): ParsedArgs {
   const command = args[0] || '';
   const interactive = args.includes('--interactive') || args.includes('-i');
   const options: Record<string, string> = {};
+  let positionalIndex = 0;
 
   for (let i = 1; i < args.length; i++) {
     const arg = args[i];
@@ -45,6 +47,10 @@ function parseArgs(args: string[]): ParsedArgs {
         options[key] = value;
         i++;
       }
+    } else if (!arg.startsWith('-')) {
+      // Positional argument (e.g., "approve blog my-post" -> type=blog, slug=my-post)
+      options[`_positional_${positionalIndex}`] = arg;
+      positionalIndex++;
     }
   }
 
@@ -458,6 +464,103 @@ async function runRadarCli(options: Record<string, string>, interactive: boolean
 }
 
 // =============================================================================
+// Approve Draft CLI
+// =============================================================================
+
+async function runApproveCli(options: Record<string, string>): Promise<void> {
+  console.log('\n--- Approve Draft ---\n');
+
+  const contentTypeArg = options['type'] || options['_positional_0'];
+  const slugArg = options['slug'] || options['_positional_1'];
+
+  if (!contentTypeArg) {
+    console.error('Error: Content type is required');
+    console.error('Usage: bun run src/agents/cli/agent-cli.ts approve <type> <slug>');
+    console.error('  or:  bun run src/agents/cli/agent-cli.ts approve --type blog --slug my-post');
+    process.exit(1);
+  }
+
+  if (!['blog', 'portfolio', 'tech-radar'].includes(contentTypeArg)) {
+    console.error('Error: Content type must be one of: blog, portfolio, tech-radar');
+    process.exit(1);
+  }
+
+  if (!slugArg) {
+    console.error('Error: Slug is required');
+    console.error('Usage: bun run src/agents/cli/agent-cli.ts approve <type> <slug>');
+    process.exit(1);
+  }
+
+  const contentType = contentTypeArg as ContentType;
+  const slug = slugArg;
+  const notes = options['notes'];
+
+  console.log(`Approving ${contentType} draft: ${slug}...`);
+
+  const workflow = new ReviewWorkflow();
+  await workflow.initialize();
+
+  const result = await workflow.approveDraft(contentType, slug, notes);
+
+  if (result.success) {
+    console.log('\n[SUCCESS] Draft approved\n');
+    console.log('Bundle path:', result.bundlePath);
+    console.log('\nThe draft: true flag has been removed from the content file.');
+    console.log('The content is now ready for publishing.');
+  } else {
+    console.error('\n[ERROR] Failed to approve draft:', result.error);
+    process.exit(1);
+  }
+}
+
+// =============================================================================
+// List Drafts CLI
+// =============================================================================
+
+async function runListDraftsCli(options: Record<string, string>): Promise<void> {
+  console.log('\n--- List Drafts ---\n');
+
+  const contentTypeArg = options['type'];
+  const contentType = contentTypeArg as ContentType | undefined;
+
+  if (contentTypeArg && !['blog', 'portfolio', 'tech-radar'].includes(contentTypeArg)) {
+    console.error('Error: Content type must be one of: blog, portfolio, tech-radar');
+    process.exit(1);
+  }
+
+  const workflow = new ReviewWorkflow();
+  await workflow.initialize();
+
+  const drafts = await workflow.listDraftReviewFiles(contentType);
+
+  if (drafts.length === 0) {
+    console.log('No drafts found.');
+    if (contentType) {
+      console.log(`(filtered by type: ${contentType})`);
+    }
+    return;
+  }
+
+  console.log(`Found ${drafts.length} draft(s):\n`);
+
+  for (const draft of drafts) {
+    const statusIcon = draft.status === 'pending_review' ? '📝' :
+                       draft.status === 'approved' ? '✅' : '❌';
+    console.log(`${statusIcon} ${draft.contentType}/${draft.slug}`);
+    console.log(`   Status: ${draft.status}`);
+    console.log(`   Bundle: ${draft.bundlePath}`);
+    console.log(`   Created: ${draft.createdAt}`);
+    if (draft.imagePrompts.length > 0) {
+      console.log(`   Image prompts: ${draft.imagePrompts.length}`);
+    }
+    if (!draft.validationResult.valid) {
+      console.log(`   Validation errors: ${draft.validationResult.errors.join(', ')}`);
+    }
+    console.log('');
+  }
+}
+
+// =============================================================================
 // Help
 // =============================================================================
 
@@ -472,6 +575,8 @@ Commands:
   blog        Generate a blog post
   portfolio   Generate a portfolio entry
   radar       Generate a tech radar entry
+  approve     Approve a draft for publishing
+  drafts      List all pending drafts
   help        Show this help message
 
 Blog Options:
@@ -503,11 +608,21 @@ Radar Options:
   --tags         Comma-separated tags
   --interactive  Enable interactive prompts
 
+Approve Options:
+  --type        Content type: blog, portfolio, tech-radar (required)
+  --slug        Content slug (required)
+  --notes       Optional approval notes
+
+Drafts Options:
+  --type        Filter by content type: blog, portfolio, tech-radar (optional)
+
 Examples:
   bun run src/agents/cli/agent-cli.ts blog --title "My Post" --type original --summary "A summary"
   bun run src/agents/cli/agent-cli.ts portfolio --title "Project" --client "ACME" --description "A project" --technologies "React,Node"
   bun run src/agents/cli/agent-cli.ts radar --title "Bun" --description "Fast JS runtime" --quadrant tools --ring adopt
   bun run src/agents/cli/agent-cli.ts blog --interactive
+  bun run src/agents/cli/agent-cli.ts approve --type blog --slug my-post
+  bun run src/agents/cli/agent-cli.ts drafts --type blog
 `);
 }
 
@@ -533,6 +648,13 @@ async function main(): Promise<void> {
       break;
     case 'radar':
       await runRadarCli(options, interactive);
+      break;
+    case 'approve':
+      await runApproveCli(options);
+      break;
+    case 'drafts':
+    case 'list-drafts':
+      await runListDraftsCli(options);
       break;
     default:
       console.error(`Unknown command: ${command}`);
