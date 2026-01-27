@@ -64,7 +64,9 @@
     "test-word-1769483581789",
     "unique-word-1769483581789",
     "test-word-1769483747320",
-    "unique-word-1769483747320"
+    "unique-word-1769483747320",
+    "test-word-1769488164992",
+    "unique-word-1769488164993"
   ],
   "sentencePatterns": [
     "Avoid starting sentences with \"It is important to note\"",
@@ -109,7 +111,9 @@
     "Pattern 1769483581790",
     "Unique pattern 1769483581790",
     "Pattern 1769483747321",
-    "Unique pattern 1769483747321"
+    "Unique pattern 1769483747321",
+    "Pattern 1769488164994",
+    "Unique pattern 1769488164995"
   ],
   "dos": [
     "Be concise and to the point",
@@ -163,7 +167,8 @@
       "Good example 1769482365853",
       "Good example 1769482422872",
       "Good example 1769483581789",
-      "Good example 1769483747321"
+      "Good example 1769483747321",
+      "Good example 1769488164993"
     ],
     "bad": [
       "Bad example 1766798275227",
@@ -186,8 +191,9 @@
       "Bad example 1769482365854",
       "Bad example 1769482422872",
       "Bad example 1769483581790",
-      "Bad example 1769483747321"
+      "Bad example 1769483747321",
+      "Bad example 1769488164994"
     ]
   },
-  "lastUpdated": "2026-01-27T03:15:47.321Z"
+  "lastUpdated": "2026-01-27T04:29:25.588Z"
 }
