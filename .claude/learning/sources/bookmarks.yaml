@@ -1,0 +1,12 @@
+---
+name: Reading List
+description: Bookmarks and external learning resources
+enabled: true
+command: cat .claude/learning/reading-list.md 2>/dev/null || echo "No reading list"
+parser:
+  type: markdown
+format:
+  title: "🔖 Reading List"
+  item: "- {line}"
+  empty: "No bookmarked resources yet"
+---

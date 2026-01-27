@@ -1,0 +1,12 @@
+# Example source: Recent git commits
+name: Recent Commits
+description: Shows recent git commits from the repository
+enabled: true
+command: git log --oneline -n 10
+parser:
+  type: shell
+  linePattern: "^[a-f0-9]+"
+format:
+  title: "Recent Git Commits"
+  item: "- {line}"
+  empty: "No recent commits found"

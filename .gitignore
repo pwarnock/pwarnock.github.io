@@ -119,6 +119,8 @@ kubeconfig
 .claude/*
 !.claude/skills/
 !.claude/commands/
+!.claude/context/
+!.claude/learning/
 
 # Agent data (sessions are local, style-docs and drafts are project-specific)
 .agents/sessions/

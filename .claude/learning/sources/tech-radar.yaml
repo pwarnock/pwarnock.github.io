@@ -1,0 +1,12 @@
+---
+name: Tech Radar
+description: Recent technology assessments and recommendations
+enabled: true
+command: ls -lt /home/pwarnock/github/pwarnock.github.io/packages/site/content/tools/*/index.md | head -5 | awk '{print $NF}' | while read f; do dir=$(dirname "$f"); date=$(stat -c %y "$f" | cut -d' ' -f1); basename "$dir"; echo "  Updated: $date"; done
+parser:
+  type: shell
+format:
+  title: "🎯 Tech Radar Updates"
+  item: "- {output}"
+  empty: "No recent tech radar updates"
+---

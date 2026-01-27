@@ -1,0 +1,12 @@
+---
+name: Documentation
+description: Recent documentation changes
+enabled: true
+command: git log --since="7 days ago" --pretty=format:"%s" -- docs/ | head -10
+parser:
+  type: shell
+format:
+  title: "📚 Documentation Updates"
+  item: "- {line}"
+  empty: "No recent documentation updates"
+---

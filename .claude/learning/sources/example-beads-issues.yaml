@@ -1,0 +1,12 @@
+# Example source: Beads issues (JSON parser)
+name: Open Issues
+description: Lists open issues from beads tracker
+enabled: true
+command: bd list --status=open --format=json
+parser:
+  type: json
+  fields: ["id", "title", "priority", "status"]
+format:
+  title: "Open Issues"
+  item: "- [{priority}] {id}: {title} ({status})"
+  empty: "No open issues"

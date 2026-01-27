@@ -1,0 +1,15 @@
+---
+name: Blog Posts
+description: Recent blog posts you've written
+enabled: true
+command: |
+  (find packages/site/content/blog/posts -name "index.md" -o -name "*.md" -not -path "*/index.md") | \
+  xargs -I {} sh -c 'stat -c "%y|%n" "{}" 2>/dev/null || stat -f "%Sm|%N" "{}" 2>/dev/null' | \
+  sort -rn | head -5 | cut -d'|' -f2- | sed 's|packages/site/content/blog/posts/||' | sed 's|/index.md||' | sed 's|.md$||'
+parser:
+  type: shell
+format:
+  title: "📝 Recent Blog Posts"
+  item: "- {line}"
+  empty: "No recent blog posts"
+---

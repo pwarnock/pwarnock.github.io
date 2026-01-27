@@ -21,6 +21,9 @@ import { TechRadarAgent, type TechRadarOptions } from '../tech-radar/tech-radar-
 import { ReviewWorkflow } from '../core/review-workflow.js';
 import type { BlogContentType, RadarSubtype, ContentType } from '../types/index.js';
 import * as readline from 'readline';
+import { TodayAgent } from '../today/today-agent.js';
+import { TaskCreateAgent } from '../task-create/task-create-agent.js';
+import { LearningDigestAgent } from '../learning-digest/learning-digest-agent.js';
 
 // =============================================================================
 // Argument Parsing
@@ -561,6 +564,106 @@ async function runListDraftsCli(options: Record<string, string>): Promise<void> 
 }
 
 // =============================================================================
+// Today Agent CLI
+// =============================================================================
+
+async function runTodayCli(options: Record<string, string>): Promise<void> {
+  console.log('\n--- Today Agent ---\n');
+
+  const agent = new TodayAgent();
+  await agent.initialize();
+
+  const result = await agent.generateToday(options);
+
+  if (result.success) {
+    console.log('\n[SUCCESS] Today entry generated\n');
+    console.log('Bundle path:', result.bundlePath);
+    if (result.bundle?.frontmatter) {
+      console.log('\nFrontmatter:', JSON.stringify(result.bundle.frontmatter, null, 2));
+    }
+    if (result.bundle?.content) {
+      console.log('\n--- Content Preview ---\n');
+      console.log(result.bundle.content.substring(0, 500) + '...');
+    }
+  } else {
+    console.error('\n[ERROR] Failed to generate today entry:', result.error);
+    process.exit(1);
+  }
+}
+
+// =============================================================================
+// Task Create Agent CLI
+// =============================================================================
+
+async function runTaskCreateCli(options: Record<string, string>): Promise<void> {
+  console.log('\n--- Task Create Agent ---\n');
+
+  const text = options['text'];
+
+  if (!text) {
+    console.error('Error: --text is required');
+    console.error('Usage: bun run src/agents/cli/agent-cli.ts task-create --text "..."');
+    process.exit(1);
+  }
+
+  console.log('\nCreating task...\n');
+  console.log('Task text:', text);
+
+  const agent = new TaskCreateAgent();
+  await agent.initialize();
+
+  const result = await agent.createTask(text);
+
+  if (result.success) {
+    console.log('\n[SUCCESS] Task created\n');
+    console.log('Task ID:', result.taskId);
+    if (result.subject) {
+      console.log('Subject:', result.subject);
+    }
+    if (result.description) {
+      console.log('Description:', result.description);
+    }
+  } else {
+    console.error('\n[ERROR] Failed to create task:', result.error);
+    process.exit(1);
+  }
+}
+
+// =============================================================================
+// Learning Digest Agent CLI
+// =============================================================================
+
+async function runLearningDigestCli(options: Record<string, string>): Promise<void> {
+  console.log('\n--- Learning Digest Agent ---\n');
+
+  const sourcesDir = options['sources-dir'];
+  const enabledOnly = options['enabled-only'] !== 'false';
+  const includeEmpty = options['include-empty'] === 'true';
+
+  console.log('\nGenerating learning digest...\n');
+
+  const agent = new LearningDigestAgent();
+  await agent.initialize(sourcesDir);
+
+  const result = await agent.generateDigest({
+    sourcesDir,
+    enabledOnly,
+    includeEmpty,
+  });
+
+  if (result.success) {
+    console.log('\n[SUCCESS] Learning digest generated\n');
+    console.log(`Generated at: ${result.generatedAt.toISOString()}`);
+    console.log(`Sources processed: ${result.sources.length}`);
+    console.log('\n--- Digest Output ---\n');
+    console.log(result.markdown);
+  } else {
+    console.error('\n[ERROR] Failed to generate learning digest:', result.error);
+    process.exit(1);
+  }
+}
+
+// =============================================================================
 // Help
 // =============================================================================
 
@@ -572,12 +675,15 @@ Usage:
   bun run src/agents/cli/agent-cli.ts <command> [options]
 
 Commands:
-  blog        Generate a blog post
-  portfolio   Generate a portfolio entry
-  radar       Generate a tech radar entry
-  approve     Approve a draft for publishing
-  drafts      List all pending drafts
-  help        Show this help message
+  blog              Generate a blog post
+  portfolio         Generate a portfolio entry
+  radar             Generate a tech radar entry
+  today             Generate a today entry
+  task-create       Create a task from text
+  learning-digest   Generate a learning digest from sources
+  approve           Approve a draft for publishing
+  drafts            List all pending drafts
+  help              Show this help message
 
 Blog Options:
   --title       Post title (required)
@@ -608,6 +714,14 @@ Radar Options:
   --tags         Comma-separated tags
   --interactive  Enable interactive prompts
 
+Task Create Options:
+  --text        Task text or description (required)
+
+Learning Digest Options:
+  --sources-dir      Override default sources directory (.claude/learning/sources)
+  --enabled-only     Only process enabled sources (default: true)
+  --include-empty    Include sections with no items (default: false)
+
 Approve Options:
   --type        Content type: blog, portfolio, tech-radar (required)
   --slug        Content slug (required)
@@ -621,6 +735,9 @@ Examples:
   bun run src/agents/cli/agent-cli.ts portfolio --title "Project" --client "ACME" --description "A project" --technologies "React,Node"
   bun run src/agents/cli/agent-cli.ts radar --title "Bun" --description "Fast JS runtime" --quadrant tools --ring adopt
   bun run src/agents/cli/agent-cli.ts blog --interactive
+  bun run src/agents/cli/agent-cli.ts task-create --text "Fix authentication bug in login flow"
+  bun run src/agents/cli/agent-cli.ts learning-digest
+  bun run src/agents/cli/agent-cli.ts learning-digest --enabled-only true --include-empty false
   bun run src/agents/cli/agent-cli.ts approve --type blog --slug my-post
   bun run src/agents/cli/agent-cli.ts drafts --type blog
 `);
@@ -648,6 +765,15 @@ async function main(): Promise<void> {
       break;
     case 'radar':
       await runRadarCli(options, interactive);
+      break;
+    case 'today':
+      await runTodayCli(options);
+      break;
+    case 'task-create':
+      await runTaskCreateCli(options);
+      break;
+    case 'learning-digest':
+      await runLearningDigestCli(options);
       break;
     case 'approve':
       await runApproveCli(options);
