@@ -584,6 +584,15 @@ bun run sync:env
 
 **CRITICAL RULE: NEVER bypass pre-commit hooks or validation failures**
 
+**Protocol for `--no-verify` and hook bypassing:**
+
+1. **Default behavior**: NEVER use `--no-verify`, `--no-gpg-sign`, or any hook bypass flags
+2. **If bypass is needed**:
+   - Explain to the user WHY it's necessary (be specific about the technical reason)
+   - Wait for explicit user approval with "yes" or confirmation
+   - Document the reason if approved
+3. **This is non-negotiable**: Agents must follow this protocol without exception
+
 When a pre-commit hook fails:
 
 1. **STOP immediately** - Do not use `--no-verify` or bypass flags
