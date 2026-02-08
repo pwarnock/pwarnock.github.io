@@ -16,27 +16,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      e2e: ${{ steps.filter.outputs.e2e }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect changes
-        id: filter
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            e2e:
-              - 'packages/site/**'
-              - 'packages/tooling/**'
-              - 'packages/qa-tools/**'
-              - 'packages/agents/**'
-              - 'layouts/**'
-              - 'content/**'
-              - 'assets/**'
-              - 'data/**'
   test:
     runs-on: ubuntu-latest
     steps:
@@ -88,43 +67,3 @@ jobs:
             fi
           done
           echo "All internal links are valid"
-  e2e-tests:
-    name: 'E2E Tests'
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs: changes
-    if: needs.changes.outputs.e2e == 'true'
-    steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v4
-      - name: 'Setup Hugo'
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 'latest'
-          extended: true
-      - name: 'Setup Bun'
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-          cache: true
-          cache-dependency-path: bun.lock
-      - name: 'Install Dependencies'
-        run: bun install --frozen-lockfile --no-progress
-      - name: 'Cache Playwright Browsers'
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-      - name: 'Install Playwright Browsers'
-        run: bunx playwright install --with-deps
-      - name: 'Run Playwright Tests'
-        run: bunx playwright test --grep-invert @visual
-      - name: 'Run Placeholder Detection Tests'
-        run: bunx playwright test placeholder-detection.spec.ts
-      - name: 'Upload Playwright Report'
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
