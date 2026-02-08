@@ -45,11 +45,48 @@
       </div>
       */}}
 
+      {{ $isBlog := eq .Type "blog" }}
+
+      {{ if $isBlog }}
+      <header class="mb-responsive-lg">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-base-content/50">Blog</p>
+        <h1 class="mt-3 max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+          {{ .Title }}
+        </h1>
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-base-content/60">
+          {{ with .Date }}
+          <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "Jan 2, 2006" }}</time>
+          {{ end }}
+          <span class="hidden sm:inline" aria-hidden="true">•</span>
+          <span>{{ .ReadingTime }} min read</span>
+          {{ with .Params.updated }}
+          <span class="hidden sm:inline" aria-hidden="true">•</span>
+          <span>Updated {{ . | time.Format "Jan 2, 2006" }}</span>
+          {{ end }}
+        </div>
+        {{ if .Params.tags }}
+        <div class="mt-4 flex flex-wrap gap-2">
+          {{ range .Params.tags }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="badge badge-outline badge-sm text-base-content/70">
+            {{ . }}
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        <!-- Content Header (attribution for curated/embed) -->
+        {{ partial "content/content-header.html" . }}
+
+        <!-- Content Preview (summary with context) -->
+        {{ partial "content/content-preview.html" . }}
+      </header>
+      {{ else }}
       <!-- Content Header (attribution for curated/embed) -->
       {{ partial "content/content-header.html" . }}
 
       <!-- Content Preview (summary with context) -->
       {{ partial "content/content-preview.html" . }}
+      {{ end }}
 
       <!-- Main Content -->
       <div class="prose prose-lg lg:prose-xl" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">

@@ -5,7 +5,7 @@
  * Does not execute any commands; only returns a decision.
  */
 
-import { minimatch } from 'minimatch';
+import picomatch from 'picomatch';
 import { pathRules, defaultMode, fallbackOnErrorMode } from './qaConfig';
 
 export type ModeId = 'content_fast_path' | 'full';
@@ -111,5 +111,5 @@ export function selectMode({
  * Helper: check if a file matches any pattern in a list
  */
 function matchesAny(file: string, patterns: readonly string[]): boolean {
-  return patterns.some(pattern => minimatch(file, pattern));
+  return patterns.some(pattern => picomatch.isMatch(file, pattern));
 }

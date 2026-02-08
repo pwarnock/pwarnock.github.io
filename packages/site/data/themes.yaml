@@ -17,28 +17,7 @@ themes:
     accessible: true
     contrast: 'high'
 
-  # Fun Themes (WCAG AA Compliant)
-  - id: 'cupcake'
-    name: 'Cupcake'
-    emoji: '🧁'
-    description: 'Sweet pink theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'bumblebee'
-    name: 'Bumblebee'
-    emoji: '🐝'
-    description: 'Yellow and black theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'emerald'
-    name: 'Emerald'
-    emoji: '💚'
-    description: 'Green nature theme'
-    accessible: true
-    contrast: 'good'
-
+  # Curated Themes (Professional + Accessible)
   - id: 'corporate'
     name: 'Corporate'
     emoji: '💼'
@@ -46,94 +25,17 @@ themes:
     accessible: true
     contrast: 'good'
 
-  - id: 'retro'
-    name: 'Retro'
-    emoji: '📼'
-    description: 'Vintage retro theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'valentine'
-    name: 'Valentine'
-    emoji: '💝'
-    description: 'Pink romantic theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'garden'
-    name: 'Garden'
-    emoji: '🌻'
-    description: 'Green garden theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'forest'
-    name: 'Forest'
-    emoji: '🌲'
-    description: 'Dark forest theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'aqua'
-    name: 'Aqua'
-    emoji: '🌊'
-    description: 'Blue water theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'lofi'
-    name: 'Lofi'
-    emoji: '🎧'
-    description: 'Minimal lo-fi theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'pastel'
-    name: 'Pastel'
-    emoji: '🎨'
-    description: 'Soft pastel colors'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'fantasy'
-    name: 'Fantasy'
-    emoji: '🦄'
-    description: 'Magical fantasy theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'wireframe'
-    name: 'Wireframe'
-    emoji: '📐'
-    description: 'Minimal wireframe theme'
-    accessible: true
-    contrast: 'excellent'
-
-  - id: 'luxury'
-    name: 'Luxury'
-    emoji: '💎'
-    description: 'Elegant gold theme'
-    accessible: true
-    contrast: 'good'
-
-  - id: 'autumn'
-    name: 'Autumn'
-    emoji: '🍂'
-    description: 'Warm autumn colors'
-    accessible: true
-    contrast: 'good'
-
   - id: 'business'
     name: 'Business'
     emoji: '📊'
-    description: 'Professional business theme'
+    description: 'Executive business theme'
     accessible: true
     contrast: 'good'
 
-  - id: 'lemonade'
-    name: 'Lemonade'
-    emoji: '🍋'
-    description: 'Fresh yellow theme'
+  - id: 'winter'
+    name: 'Winter'
+    emoji: '❄️'
+    description: 'Cool blue-white theme'
     accessible: true
     contrast: 'good'
 
@@ -144,6 +46,27 @@ themes:
     accessible: true
     contrast: 'good'
 
+  - id: 'forest'
+    name: 'Forest'
+    emoji: '🌲'
+    description: 'Dark forest theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'garden'
+    name: 'Garden'
+    emoji: '🌻'
+    description: 'Green garden theme'
+    accessible: true
+    contrast: 'good'
+
+  - id: 'emerald'
+    name: 'Emerald'
+    emoji: '💚'
+    description: 'Green nature theme'
+    accessible: true
+    contrast: 'good'
+
   - id: 'coffee'
     name: 'Coffee'
     emoji: '☕'
@@ -151,12 +74,19 @@ themes:
     accessible: true
     contrast: 'good'
 
-  - id: 'winter'
-    name: 'Winter'
-    emoji: '❄️'
-    description: 'Cool blue-white theme'
+  - id: 'lofi'
+    name: 'Lofi'
+    emoji: '🎧'
+    description: 'Minimal lo-fi theme'
     accessible: true
     contrast: 'good'
+
+  - id: 'wireframe'
+    name: 'Wireframe'
+    emoji: '📐'
+    description: 'Minimal wireframe theme'
+    accessible: true
+    contrast: 'excellent'
 
   # Special Occasion Themes (Temporarily Accessible)
   - id: 'halloween'
@@ -211,4 +141,4 @@ selection:
 
     light:
       # Use light theme when system prefers light mode
-      fallback_themes: ['light', 'cupcake', 'emerald']
+      fallback_themes: ['light', 'corporate', 'emerald']

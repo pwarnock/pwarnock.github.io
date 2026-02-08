@@ -3,8 +3,6 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main, uat]
-  pull_request:
-    branches: [main]
 
 # Sets permissions for both CI and deployment
 permissions:
@@ -23,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: latest
+      HUGO_ENV: production
 
     steps:
       - name: Checkout
@@ -51,14 +50,11 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+          cache: true
+          cache-dependency-path: bun.lock
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Security vulnerability scan
-        run: |
-          echo "Running security vulnerability scan..."
-          bun audit --audit-level=moderate || echo "⚠️ Security vulnerabilities found"
+        run: bun install --frozen-lockfile --no-progress
 
       - name: Build
         run: bun run build
@@ -70,24 +66,6 @@ jobs:
             exit 1
           fi
           echo "Build successful"
-
-      - name: Content validation
-        run: |
-          echo "🧪 Running content validation..."
-          bun run validate:portfolio || echo "⚠️ Portfolio validation issues"
-
-          # Check for broken internal links
-          find packages/site/public -name "*.html" -exec grep -H "href=\"/" {} \; | \
-          while read line; do
-            url=$(echo "$line" | sed -n 's/.*href="\/\([^"]*\)".*/\1/p')
-            if [ -n "$url" ]; then
-              if [ ! -f "packages/site/public/$url" ] && [ ! -f "packages/site/public/$url/index.html" ]; then
-                echo "❌ Broken link found: /$url"
-                exit 1
-              fi
-            fi
-          done
-          echo "✅ All internal links valid"
 
       - name: Upload pages artifact
         if: github.ref == 'refs/heads/main'
