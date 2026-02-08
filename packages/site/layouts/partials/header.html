@@ -18,9 +18,13 @@
     dark: 'dark'
   };
 
-  function setTheme(theme) {
+  function setTheme(theme, options = {}) {
+    const { persist = true } = options;
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+
+    if (persist) {
+      localStorage.setItem('theme', theme);
+    }
   }
 
   function getScheduledTheme() {
@@ -42,7 +46,7 @@
 
     const scheduledTheme = getScheduledTheme();
     const theme = themes.includes(scheduledTheme) ? scheduledTheme : 'light';
-    setTheme(theme);
+    setTheme(theme, { persist: false });
   }
 
   // Keyboard shortcuts
