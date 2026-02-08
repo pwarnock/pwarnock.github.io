@@ -1,45 +1,99 @@
-{{/* Data-Driven Theme Selector Component */}}
-{{ $themes := site.Data.themes.themes }}
-{{ $accessibleThemes := where $themes "accessible" true }}
+{{/* Data-Driven Theme Selector Component */}} {{ $themes := site.Data.themes.themes }} {{
+$accessibleThemes := where $themes "accessible" true }}
 
-<div class="dropdown dropdown-end" x-data="{ themeOpen: false }" @click.outside="themeOpen = false" :class="{ 'dropdown-open': themeOpen }">
-  <div class="tooltip tooltip-left tooltip-info" data-tip="Switch theme - Choose from 20+ accessible themes">
-    <button tabindex="0" @click="themeOpen = !themeOpen" class="btn-system btn-system--ghost btn-system--md btn-circle" aria-label="Theme selector" data-testid="theme-selector" data-event="theme_toggle" data-event-label="Theme Selector">
+<div
+  class="dropdown dropdown-end"
+  x-data="{ themeOpen: false, showMoreThemes: false }"
+  @click.outside="themeOpen = false"
+  :class="{ 'dropdown-open': themeOpen }"
+>
+  <div
+    class="tooltip tooltip-left tooltip-info"
+    data-tip="Switch theme - Choose from 20+ accessible themes"
+  >
+    <button
+      tabindex="0"
+      @click="themeOpen = !themeOpen"
+      class="btn-system btn-system--ghost btn-system--md btn-circle"
+      aria-label="Theme selector"
+      data-testid="theme-selector"
+      data-event="theme_toggle"
+      data-event-label="Theme Selector"
+    >
       {{ partial "components/icon.html" (dict "name" "theme" "size" "md") }}
     </button>
   </div>
-  <ul tabindex="0" class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto" role="menu" aria-label="Theme selection menu">
+  <ul
+    tabindex="0"
+    class="dropdown-content z-[50] menu p-2 shadow bg-base-100 rounded-box w-64 max-h-80 overflow-y-auto"
+    role="menu"
+    aria-label="Theme selection menu"
+  >
     <li class="menu-title"><span>Choose Theme</span></li>
-    {{ range $accessibleThemes }}
-      <li>
-        <a 
-          href="#" 
-          @click.prevent="setTheme('{{ .id }}'); themeOpen = false" 
-          role="menuitem" 
-          {{ if .keyboard_shortcut }}aria-keyshortcuts="{{ .keyboard_shortcut }}"{{ end }}
-          title="{{ .description }} ({{ .contrast }} contrast)"
-        >
-          <span class="mr-2">{{ .emoji }}</span>
-          <span>{{ .name }}</span>
-        </a>
-      </li>
-    {{ end }}
-    
-    {{/* Special Halloween Theme - Only show during October */}}
-    {{ $halloweenThemes := where $themes "id" "halloween" }}
-    {{ $halloweenTheme := index $halloweenThemes 0 }}
-    {{ if and $halloweenTheme (eq (now.Format "1") "10") }}
-      <li>
-        <a 
-          href="#" 
-          @click.prevent="setTheme('halloween'); themeOpen = false" 
-          role="menuitem"
-          title="{{ $halloweenTheme.description }} (Seasonal theme)"
-        >
-          <span class="mr-2">{{ $halloweenTheme.emoji }}</span>
-          <span>{{ $halloweenTheme.name }}</span>
-        </a>
-      </li>
+    {{ range $accessibleThemes }} {{ if in (slice "light" "dark") .id }}
+    <li>
+      <a
+        href="#"
+        @click.prevent="setTheme('{{ .id }}'); themeOpen = false"
+        role="menuitem"
+        {{
+        if
+        .keyboard_shortcut
+        }}aria-keyshortcuts="{{ .keyboard_shortcut }}"
+        {{
+        end
+        }}
+        title="{{ .description }} ({{ .contrast }} contrast)"
+      >
+        <span class="mr-2">{{ .emoji }}</span>
+        <span>{{ .name }}</span>
+      </a>
+    </li>
+    {{ end }} {{ end }}
+
+    <li class="menu-title">
+      <button
+        class="btn-system btn-system--ghost btn-system--sm w-full justify-start"
+        @click.prevent="showMoreThemes = !showMoreThemes"
+        :aria-expanded="showMoreThemes.toString()"
+        aria-controls="theme-more"
+      >
+        <span class="mr-2" x-text="showMoreThemes ? '−' : '+'"></span>
+        <span x-text="showMoreThemes ? 'Hide more themes' : 'More themes'"></span>
+      </button>
+    </li>
+    <li id="theme-more" x-show="showMoreThemes" x-cloak>
+      <ul class="menu menu-xs">
+        {{ range $accessibleThemes }} {{ if and (not (in (slice "light" "dark" "halloween") .id)) }}
+        <li>
+          <a
+            href="#"
+            @click.prevent="setTheme('{{ .id }}'); themeOpen = false"
+            role="menuitem"
+            title="{{ .description }} ({{ .contrast }} contrast)"
+          >
+            <span class="mr-2">{{ .emoji }}</span>
+            <span>{{ .name }}</span>
+          </a>
+        </li>
+        {{ end }} {{ end }}
+      </ul>
+    </li>
+
+    {{/* Special Halloween Theme - Only show during October */}} {{ $halloweenThemes := where
+    $themes "id" "halloween" }} {{ $halloweenTheme := index $halloweenThemes 0 }} {{ if and
+    $halloweenTheme (eq (now.Format "1") "10") }}
+    <li>
+      <a
+        href="#"
+        @click.prevent="setTheme('halloween'); themeOpen = false"
+        role="menuitem"
+        title="{{ $halloweenTheme.description }} (Seasonal theme)"
+      >
+        <span class="mr-2">{{ $halloweenTheme.emoji }}</span>
+        <span>{{ $halloweenTheme.name }}</span>
+      </a>
+    </li>
     {{ end }}
   </ul>
 </div>

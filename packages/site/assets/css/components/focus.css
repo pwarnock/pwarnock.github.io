@@ -80,6 +80,10 @@
   border: 0;
 }
 
+[x-cloak] {
+  display: none !important;
+}
+
 /* Enhanced focus management for better screen reader support */
 .skip-link {
   position: absolute;
