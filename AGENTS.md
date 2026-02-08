@@ -644,6 +644,11 @@ When a pre-commit hook fails:
 - Always check Context7 for up-to-date library documentation and best practices
 - Use `context7_resolve_library_id` followed by `context7_get_library_docs` for
   current API references
+- Discover skills with a progressive flow:
+  1. Check existing project skills in `.skills/` (if present)
+  2. Browse https://skills.sh/ for the canonical skills index
+  3. Cross-check https://context7.com/skills for Context7-curated skills
+- Prefer `bunx skills add <owner/repo>` when installing new skills (avoid npx)
 - Verify library versions and compatibility before implementation
 - Keep documentation references current with project dependencies
 - Use Bun for package management and scripts (see
