@@ -21,7 +21,7 @@
     <!-- Data-driven Google Tag Manager (noscript) -->
 
     {{ $analyticsConfig := site.Data.cdn.analytics }}
-    {{ if and (eq (getenv "HUGO_ENV") "production") $analyticsConfig.container_id }}
+    {{ if and (eq hugo.Environment "production") $analyticsConfig.container_id }}
     <noscript><iframe src="{{ $analyticsConfig.base_url }}/ns.html?id={{ $analyticsConfig.container_id }}"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {{ end }}
@@ -128,7 +128,7 @@
     {{ partial "components/cookie-consent.html" . }}
 
     <!-- Analytics Tracking Module -->
-    {{ if eq (getenv "HUGO_ENV") "production" }}
+    {{ if eq hugo.Environment "production" }}
     <script src="{{ "/js/analytics.js" | relURL }}" defer></script>
     {{ end }}
 </body>
