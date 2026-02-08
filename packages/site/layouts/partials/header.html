@@ -1,26 +1,47 @@
-<header>
-  {{ partial "components/navigation.html" . }}
-</header>
+<header>{{ partial "components/navigation.html" . }}</header>
 
 <script>
   // Simple, reliable theme management
   // Fixed: No complex data loading, no CDN dependencies
-  
+
   // Themes are now loaded from data/themes.yaml for better maintainability
   const themes = [
     {{ range site.Data.themes.themes }}
       "{{ .id }}",
     {{ end }}
   ];
-  
+
+  const themeSchedule = {
+    startHour: 19,
+    endHour: 7,
+    light: 'light',
+    dark: 'dark'
+  };
+
   function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }
 
+  function getScheduledTheme() {
+    const now = new Date();
+    const hour = now.getHours();
+    const { startHour, endHour, light, dark } = themeSchedule;
+    const isNight = startHour < endHour
+      ? hour >= startHour && hour < endHour
+      : hour >= startHour || hour < endHour;
+    return isNight ? dark : light;
+  }
+
   function initializeTheme() {
     const savedTheme = localStorage.getItem('theme');
-    const theme = themes.includes(savedTheme) ? savedTheme : 'light';
+    if (themes.includes(savedTheme)) {
+      setTheme(savedTheme);
+      return;
+    }
+
+    const scheduledTheme = getScheduledTheme();
+    const theme = themes.includes(scheduledTheme) ? scheduledTheme : 'light';
     setTheme(theme);
   }
 

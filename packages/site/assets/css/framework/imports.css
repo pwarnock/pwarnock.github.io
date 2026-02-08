@@ -5,7 +5,20 @@
 
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: all;
+  themes:
+    light --default,
+    dark --prefersdark,
+    corporate,
+    business,
+    winter,
+    night,
+    forest,
+    garden,
+    emerald,
+    coffee,
+    lofi,
+    wireframe,
+    halloween;
 }
 @plugin "@tailwindcss/typography";
 
