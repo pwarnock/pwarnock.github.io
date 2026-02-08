@@ -8,6 +8,23 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  text-rendering: optimizelegibility;
+  overflow-x: hidden;
+
+  /* Font smoothing improves legibility on macOS/iOS browsers. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(180deg, var(--color-base-100) 0%, var(--color-base-200) 100%);
+}
+
+::selection {
+  background-color: var(--color-primary-200);
+  color: var(--color-base-content);
+}
+
 /* Enhanced accessibility styles */
 @media (prefers-reduced-motion: reduce) {
   html {

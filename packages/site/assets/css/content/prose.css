@@ -20,6 +20,7 @@
     font-size: clamp(2rem, 5vw + 1rem, 3.5rem); /* Fluid large heading */
     letter-spacing: -0.02em; /* Tight letter spacing */
     max-width: 65ch; /* Readable line length */
+    text-wrap: balance;
   }
 
   .prose h2 {
@@ -31,6 +32,7 @@
     font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem); /* Fluid larger heading */
     letter-spacing: -0.01em;
     max-width: 65ch;
+    text-wrap: balance;
   }
 
   .prose h3 {
@@ -41,6 +43,7 @@
     /* Target: ~2xl */
     font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem); /* Fluid medium heading */
     max-width: 65ch;
+    text-wrap: balance;
   }
 
   .prose p {
@@ -52,6 +55,7 @@
     max-width: 65ch; /* Optimal reading length */
     margin-left: auto;
     margin-right: auto;
+    text-wrap: pretty;
   }
 
   .prose strong,
@@ -109,6 +113,7 @@
     margin-bottom: var(--space-3);
     line-height: 1.7; /* Improved readability */
     font-size: 1.05rem; /* Slightly larger */
+    text-wrap: pretty;
   }
 
   /* Ensure list markers are also visible */
@@ -154,8 +159,6 @@
     background-color: var(--color-base-200);
   }
 }
-
-
 
 /* Mobile-specific enhancements */
 @media (max-width: 768px) {
