@@ -6,18 +6,32 @@
 
 Context files in `.claude/context/` provide role-specific and session-specific guidance for Claude agents operating in this repository. They define how to approach tasks, what principles to follow, and what systems are in place.
 
-The context system is organized into three categories:
+The context system is organized into five categories:
+- **Codified Context** - Constitution, routing, failure modes, subsystem map (load always or by trigger)
 - **Roles** - Instructions for specific agent roles (e.g., Refinery, Developer)
 - **Project** - Project-wide context and shared understanding
+- **Specs** - On-demand subsystem deep-dives
 - **Session** - Learnings and state accumulated during the current session
 
 ## Quick Navigation
+
+**Loading rules** → Load `constitution.md` for any task. Load `trigger-tables.md` when routing. Load `failure-modes.md` when debugging. Load `subsystem-map.md` when exploring.
 
 **What's my role?** → See [Roles](#roles)
 
 **I need to understand the project** → See [Project Context](#project-context)
 
 **I'm continuing work from a previous session** → See [Session Learnings](#session-learnings)
+
+## Codified Context Infrastructure
+
+| File | Purpose | When to Load |
+|------|---------|-------------|
+| [constitution.md](./constitution.md) | Non-negotiable project rules and conventions | Every task |
+| [trigger-tables.md](./trigger-tables.md) | File pattern → context/skill routing | When routing queries |
+| [failure-modes.md](./failure-modes.md) | Symptom → cause → fix mappings | When debugging |
+| [subsystem-map.md](./subsystem-map.md) | Directory → subsystem ownership | When exploring codebase |
+| [specs/](./specs/) | On-demand subsystem deep-dives | When deep context needed |
 
 ## Roles
 
@@ -54,14 +68,19 @@ The `project/` directory contains shared project-level context files that apply 
   - Core components (self-enforcing releases, agent coordination, issue tracking)
   - Links to detailed architectural documentation
 
+- **`conventions.md`** - Coding standards and project conventions
+  - TypeScript, testing, naming, documentation, git commit standards
+  - Content bundle and frontmatter validation rules
+
+- **`workflows.md`** - Development, release, deployment, and issue tracking workflows
+  - Quick start guides for each workflow
+  - QA modes (auto/content/full) documentation
+
 - **`references.md`** - External articles, patterns, and standards
   - Teresa Torres task management system (chatprd.ai article)
   - TypeScript code quality standards (zero warnings policy)
   - Progressive disclosure patterns
   - Key implementation patterns and quotes
-
-- **`principles.md`** (TODO) - Project philosophy and decision-making frameworks
-- **`systems.md`** (TODO) - Key systems and how they interact
 
 ---
 
@@ -136,10 +155,20 @@ When context files conflict, this order applies (later overrides earlier):
 ```
 .claude/context/
 ├── index.md                    ← YOU ARE HERE
+├── constitution.md             (Non-negotiable project rules)
+├── trigger-tables.md           (File pattern → routing)
+├── failure-modes.md            (Symptom → cause → fix)
+├── subsystem-map.md            (Directory → ownership)
+├── specs/                      (On-demand subsystem deep-dives)
 ├── roles/
-│   └── refinery.md            (Merge queue processor)
+│   ├── refinery.md             (Merge queue processor)
+│   ├── developer.md            (General development)
+│   └── personal-assistant.md   (Daily planning)
 ├── project/
-│   └── [shared project context]
+│   ├── architecture.md         (System design decisions)
+│   ├── conventions.md          (Coding standards)
+│   ├── workflows.md            (Dev/release/deploy workflows)
+│   └── references.md           (External patterns & standards)
 └── session/
     └── learnings/
         └── [session-specific discoveries]
@@ -227,11 +256,13 @@ For detailed guidance on specific topics, consult the main documentation:
 
 | Directory | Files | Status | Next Steps |
 |-----------|-------|--------|-----------|
-| roles/ | refinery.md, developer.md (TODO), personal-assistant.md (TODO) | In Progress | Complete developer and PA roles |
-| project/ | architecture.md, references.md | Active | Add principles.md, workflows.md, conventions.md |
-| session/learnings/ | (empty) | Active | Populate during sessions with discoveries |
+| (root) | constitution.md, trigger-tables.md, failure-modes.md, subsystem-map.md | Active | Evolve with project |
+| specs/ | README.md (template) | Active | Generate on-demand as subsystems need deep context |
+| roles/ | refinery.md, developer.md, personal-assistant.md | Complete | Maintain as roles evolve |
+| project/ | architecture.md, conventions.md, workflows.md, references.md | Complete | Update when architecture changes |
+| session/learnings/ | (per-session) | Active | Populate during sessions with discoveries |
 
 ---
 
-**Last Updated**: 2026-01-26
+**Last Updated**: 2026-03-01
 **Created by**: Claude Code context bootstrap

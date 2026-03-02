@@ -143,6 +143,11 @@ All context files live in `.claude/context/`:
 ```
 .claude/
 ├── context/
+│   ├── constitution.md              # Non-negotiable project rules
+│   ├── trigger-tables.md            # File pattern → context/skill routing
+│   ├── failure-modes.md             # Symptom → cause → fix mappings
+│   ├── subsystem-map.md             # Directory → ownership reference
+│   ├── specs/                       # On-demand subsystem deep-dives
 │   ├── roles/
 │   │   ├── refinery.md              # Merge queue processor
 │   │   ├── personal-assistant.md    # Daily planning & scheduling
@@ -155,6 +160,11 @@ All context files live in `.claude/context/`:
 ├── learning/
 └── skills/
 ```
+
+## Codified Context Infrastructure
+
+Load `constitution.md` for any task. Load `trigger-tables.md` when routing.
+Load `failure-modes.md` when debugging. Load `subsystem-map.md` when exploring.
 
 ## Example Routing Scenarios
 
