@@ -34,9 +34,10 @@
     {{ partial "header.html" . }}
 
     <!-- Hero Sections for Section Pages and Single Posts (outside main) -->
+    {{ $isSingleBlog := and (eq .Kind "page") (or (eq .Type "posts") (eq .Section "blog")) }}
     {{ if or (and (or (eq .Type "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "section")) (and (or (eq .Type "posts") (eq .Section "blog") (eq .Type "portfolio") (eq .Type "tools")) (eq .Kind "page")) }}
       {{ if or (eq .Kind "section") (eq .Kind "page") }}
-        <!-- Section page and single post: Breadcrumbs above hero -->
+        <!-- Breadcrumbs -->
         {{ if not .Params.hideBreadcrumbs }}
         <div class="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-4">
           {{ partial "components/breadcrumbs.html" . }}
@@ -44,7 +45,8 @@
         {{ end }}
       {{ end }}
 
-      <!-- Hero configuration -->
+      {{ if not $isSingleBlog }}
+      <!-- Hero configuration (skipped for single blog posts — they use a typographic header) -->
       {{ $heroLayout := .Type }}
       {{ $heroBackground := "gradient-primary" }}
       {{ $heroTitle := .Title }}
@@ -62,13 +64,7 @@
         {{ end }}
       {{ else if eq .Kind "page" }}
         <!-- Single post/page hero configuration -->
-        {{ if or (eq .Type "posts") (eq .Section "blog") }}
-          {{ $heroBackground = "gradient-br" }}
-          {{ $heroShowDate = true }}
-          {{ $heroShowTags = true }}
-          {{ $heroDescription = .Description }}
-          {{ $heroLayout = "blog" }}
-        {{ else if eq .Type "portfolio" }}
+        {{ if eq .Type "portfolio" }}
           {{ $heroBackground = "gradient-subtle" }}
           {{ $heroShowDate = true }}
           {{ $heroShowTags = true }}
@@ -92,6 +88,7 @@
         "showTags" $heroShowTags
         "isSingle" (eq .Kind "page")
       ) }}
+      {{ end }}
     {{ end }}
 
     <main id="main-content" class="flex-grow {{ if .IsHome }}{{ else if eq .Layout "about" }}{{ else }}container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10{{ end }}" role="main" tabindex="-1">
