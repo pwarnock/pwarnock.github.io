@@ -228,8 +228,8 @@ export class HugoIntegration {
       date: base.date,
       draft: base.draft ?? true,
       description: base.description || '',
-      quadrant: base.quadrant || '',
-      ring: base.ring || '',
+      quadrant: base.quadrant || 'tools',
+      ring: base.ring || 'assess',
     };
 
     // Optional fields

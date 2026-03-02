@@ -97,7 +97,7 @@ async function testTechRadarAgent() {
     title: 'Test Technology',
     date: new Date('2025-01-15'),
     description: 'A test technology for validation',
-    quadrant: 'languages-frameworks',
+    quadrant: 'languages-and-frameworks',
     ring: 'adopt',
     tags: ['testing'],
     draft: true

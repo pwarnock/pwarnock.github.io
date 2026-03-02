@@ -73,12 +73,6 @@ ignoreLogs = ['warning-goldmark-raw-html']
   # categories = "categories"  # Disabled to prevent duplicate content
 
 [caches]
-  [caches.getjson]
-    dir = ":cacheDir/:project"
-    maxAge = "10m"
-  [caches.getcsv]
-    dir = ":cacheDir/:project"
-    maxAge = "10m"
   [caches.images]
     dir = ":cacheDir/images"
     maxAge = "24h"

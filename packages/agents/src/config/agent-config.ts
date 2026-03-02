@@ -79,7 +79,7 @@ export const techRadarAgentConfig: AgentConfig = {
     optional: ['tags']
   },
   outputDirectory: 'content/tools',
-  validationScripts: [] // TODO: Add tech radar validation when available
+  validationScripts: ['scripts/validate-tech-radar.js']
 };
 
 /**

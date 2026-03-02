@@ -17,6 +17,7 @@
 
 import type {
   RadarSubtype,
+  RadarQuadrant,
   TechRadarFrontmatter,
   ImagePromptResponse,
   ContentBundle
@@ -31,7 +32,7 @@ import { ImagePromptGenerator } from '../core/image-prompt-generator.js';
 export interface TechRadarOptions {
   title: string;
   description: string;
-  quadrant: string;
+  quadrant: RadarQuadrant;
   ring: RadarSubtype;
   tags?: string[];
   date?: Date;

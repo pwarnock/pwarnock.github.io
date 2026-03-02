@@ -19,7 +19,7 @@ import { BlogAgent, type BlogPostRequest } from '../blog/blog-agent.js';
 import { PortfolioAgent, type PortfolioGenerationRequest } from '../portfolio/portfolio-agent.js';
 import { TechRadarAgent, type TechRadarOptions } from '../tech-radar/tech-radar-agent.js';
 import { ReviewWorkflow } from '../core/review-workflow.js';
-import type { BlogContentType, RadarSubtype, ContentType } from '../types/index.js';
+import type { BlogContentType, RadarSubtype, RadarQuadrant, ContentType } from '../types/index.js';
 import * as readline from 'readline';
 import { TodayAgent } from '../today/today-agent.js';
 import { TaskCreateAgent } from '../task-create/task-create-agent.js';
@@ -386,7 +386,7 @@ async function runRadarCli(options: Record<string, string>, interactive: boolean
         process.exit(1);
       }
 
-      const quadrant = await promptChoice(
+      const quadrant = await promptChoice<RadarQuadrant>(
         rl,
         'Quadrant',
         ['tools', 'techniques', 'platforms', 'languages-and-frameworks'],
@@ -418,7 +418,7 @@ async function runRadarCli(options: Record<string, string>, interactive: boolean
     // Non-interactive mode
     const title = options['title'];
     const description = options['description'];
-    const quadrant = options['quadrant'] || 'tools';
+    const quadrant = (options['quadrant'] || 'tools') as RadarQuadrant;
     const ring = (options['ring'] || 'trial') as RadarSubtype;
 
     if (!title) {

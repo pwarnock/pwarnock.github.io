@@ -5,8 +5,11 @@
 // Content types supported by the agent system
 export type ContentType = 'blog' | 'portfolio' | 'tech-radar';
 
-// Tech radar subtypes
+// Tech radar ring subtypes
 export type RadarSubtype = 'adopt' | 'trial' | 'assess' | 'hold';
+
+// Tech radar quadrant types
+export type RadarQuadrant = 'tools' | 'techniques' | 'platforms' | 'languages-and-frameworks' | 'languages' | 'frameworks' | 'infrastructure' | 'libraries';
 
 // Content type for blog posts (from data/content_types.yaml)
 export type BlogContentType = 'original' | 'curated' | 'embed' | 'project';
@@ -109,8 +112,8 @@ export interface TechRadarFrontmatter {
   date: string; // YYYY-MM-DD
   draft: boolean;
   description: string;
-  quadrant: string;
-  ring: string;
+  quadrant: RadarQuadrant;
+  ring: RadarSubtype;
   tags?: string[];
 }
 

@@ -1,0 +1,1 @@
+../packages/tooling/scripts/validation/validate-tech-radar.js

@@ -82,6 +82,22 @@ if [[ "$JSON_MODE" == false ]]; then
     echo "✅ Blog posts validated"
 fi
 
+# 3b. Tech radar validation
+if [[ "$JSON_MODE" == false ]]; then
+    echo "📡 Validating tech radar entries..."
+fi
+if ! bun run validate:radar; then
+    if [[ "$JSON_MODE" == true ]]; then
+        echo '{"status": "error", "step": "radar_validation", "message": "Tech radar validation failed"}'
+    else
+        echo "❌ Tech radar validation failed"
+    fi
+    exit 1
+fi
+if [[ "$JSON_MODE" == false ]]; then
+    echo "✅ Tech radar entries validated"
+fi
+
 # 4. URL configuration validation
 if [[ "$JSON_MODE" == false ]]; then
     echo "🔒 Checking URL configuration..."
