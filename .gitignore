@@ -177,14 +177,15 @@ packages/site/data/version.toml
 packages/site/data/version.json
 .skills/
 
-# Cody Framework sessions (local context, not versioned)
-.cody/project/library/sessions/
-
-# Old plan backups
-.cody/project/plan/old/
+# Cody Product Builder generated project files
+cody-projects/
 
 # Cody backups
 .cody/backup/
 
 # Link checker cache
 .lycheecache
+
+# Dolt database files (added by bd init)
+.dolt/
+*.db
