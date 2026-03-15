@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Personal portfolio and blog for Pete Warnock. This is a **Bun workspaces monorepo** where the main deliverable is a Hugo static site. Tool versions are locked in `.mise.toml` (Hugo 0.154.5, Bun 1.3.6, Go 1.25, just 1.46.0).
+Personal portfolio and blog for Pete Warnock. This is a **Bun workspaces monorepo** where the main deliverable is a Hugo static site. Tooling is managed via `.mise.toml`: Bun 1.3.6, Go 1.25, and just 1.46.0 are pinned there, while Hugo currently uses the system installation.
 
 ## Workspace Structure
 

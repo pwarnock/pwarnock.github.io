@@ -15,42 +15,52 @@ if command -v bd &>/dev/null; then
   bd hooks run pre-push "$@" || true
 fi
 
-# Branch gate: block pushes from main/master unless FORCE_PUSH=yes
-# Also checks refspecs from stdin to catch detached HEAD pushing to main.
-current_branch=$(git branch --show-current 2>/dev/null) || true
-
-if { [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; } && [ "$FORCE_PUSH" != "yes" ]; then
-  echo -e "\033[0;31m❌ BLOCKED: Direct push to $current_branch is not allowed.\033[0m"
-  echo -e "\033[1;33m💡 Create a feature branch and open a PR instead.\033[0m"
-  echo -e "\033[1;33m   git checkout -b feature/my-change\033[0m"
-  echo -e "\033[1;33m   git push -u origin feature/my-change\033[0m"
-  echo -e "\033[1;33m   gh pr create\033[0m"
-  echo ""
-  echo -e "\033[1;33m   Breakglass: FORCE_PUSH=yes git push\033[0m"
-  exit 1
-fi
-
-# Detached HEAD or unknown branch — check refspecs from stdin for protected branch targets
-# Pre-push hook receives lines: <local-ref> <local-sha> <remote-ref> <remote-sha>
-if [ -z "$current_branch" ] && [ "$FORCE_PUSH" != "yes" ]; then
-  while read -r local_ref local_sha remote_ref remote_sha; do
-    case "$remote_ref" in
-      refs/heads/main|refs/heads/master)
-        echo -e "\033[0;31m❌ BLOCKED: Push targets protected branch ${remote_ref##refs/heads/}.\033[0m"
-        echo -e "\033[1;33m💡 Create a feature branch and open a PR instead.\033[0m"
-        echo -e "\033[1;33m   Breakglass: FORCE_PUSH=yes git push\033[0m"
-        exit 1
-        ;;
-    esac
-  done
-fi
-
-# Colors for better readability (branch gate above uses inline escapes for self-containment)
+# Colors for better readability
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
+
+print_branch_gate_block() {
+  local reason="$1"
+
+  printf '%b\n' "${RED}❌ BLOCKED: ${reason}${NC}"
+  printf '%b\n' "${YELLOW}💡 Create a feature branch and open a PR instead.${NC}"
+  printf '%b\n' "${YELLOW}   git checkout -b feature/my-change${NC}"
+  printf '%b\n' "${YELLOW}   git push -u origin feature/my-change${NC}"
+  printf '%b\n' "${YELLOW}   gh pr create${NC}"
+  printf '\n'
+  printf '%b\n' "${YELLOW}   Breakglass: FORCE_PUSH=yes git push${NC}"
+}
+
+# Branch gate: block pushes from protected branches unless FORCE_PUSH=yes.
+# Pre-push hook receives lines on stdin: <local-ref> <local-sha> <remote-ref> <remote-sha>
+current_branch=$(git branch --show-current 2>/dev/null) || true
+protected_remote_branch=""
+
+if [ "$FORCE_PUSH" != "yes" ]; then
+  while read -r local_ref local_sha remote_ref remote_sha; do
+    case "$remote_ref" in
+      refs/heads/main|refs/heads/master)
+        protected_remote_branch="${remote_ref##refs/heads/}"
+        break
+        ;;
+    esac
+  done
+fi
+
+if [ "$FORCE_PUSH" != "yes" ]; then
+  if [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; then
+    print_branch_gate_block "Direct push from protected branch ${current_branch} is not allowed."
+    exit 1
+  fi
+
+  if [ -n "$protected_remote_branch" ]; then
+    print_branch_gate_block "Push targets protected branch ${protected_remote_branch}."
+    exit 1
+  fi
+fi
 
 echo -e "${BLUE}🔒 PRE-PUSH GUARDRAIL ACTIVATED${NC}"
 echo -e "${BLUE}=================================${NC}"
@@ -127,15 +137,13 @@ elif [ "$FORCE_PUSH" = "yes" ]; then
     echo -e "${YELLOW}🚀 Force push enabled via environment variable${NC}"
     echo -e "${YELLOW}Skipping interactive confirmation${NC}"
 else
-    # Non-interactive environment (CI, Claude Code, etc.)
-    # Branch gate and refspec gate already block main — feature branch pushes are allowed
-    if [ -z "$current_branch" ]; then
-      echo -e "${RED}❌ Cannot confirm branch safety in non-interactive mode${NC}"
-      echo -e "${YELLOW}💡 Specify branch explicitly or use FORCE_PUSH=yes git push${NC}"
-      exit 1
-    fi
-    echo -e "${YELLOW}📦 Non-interactive environment detected${NC}"
-    echo -e "${YELLOW}Branch '${current_branch}' is not protected — proceeding${NC}"
+  # Non-interactive environment (CI, Claude Code, etc.)
+  echo -e "${YELLOW}📦 Non-interactive environment detected${NC}"
+  if [ -n "$current_branch" ]; then
+      echo -e "${YELLOW}Branch '${current_branch}' is not protected — proceeding${NC}"
+  else
+      echo -e "${YELLOW}Remote refs are not protected — proceeding${NC}"
+  fi
 fi
 
 echo ""

@@ -126,6 +126,7 @@ kubeconfig
 # Agent data (sessions are local, style-docs and drafts are project-specific)
 .agents/sessions/
 .agents/style-docs/*.backup
+packages/agents/.agents/
 .opencode.jsonc
 
 # Ephemeral files (regenerated on each run)
