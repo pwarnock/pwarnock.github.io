@@ -37,6 +37,12 @@ jobs:
 
       - name: Check for broken internal links
         run: |
+          HTML_COUNT=$(find packages/site/public -name "*.html" 2>/dev/null | wc -l)
+          if [ "$HTML_COUNT" -eq 0 ]; then
+            echo "::error::No HTML files found in packages/site/public — Hugo build may have failed"
+            exit 1
+          fi
+          echo "Found $HTML_COUNT HTML files, checking internal links..."
           # Check if all internal links resolve to existing files
           find packages/site/public -name "*.html" -exec grep -H "href=\"/" {} \; | \
           while read -r line; do
