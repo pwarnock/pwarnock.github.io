@@ -1,0 +1,25 @@
+{
+  "contentType": "tech-radar",
+  "tone": "Test Imported Tone",
+  "vocabulary": [
+    "imported-word"
+  ],
+  "sentencePatterns": [
+    "imported pattern"
+  ],
+  "dos": [
+    "Do something imported"
+  ],
+  "donts": [
+    "Dont do something imported"
+  ],
+  "examples": {
+    "good": [
+      "good imported example"
+    ],
+    "bad": [
+      "bad imported example"
+    ]
+  },
+  "lastUpdated": "2026-03-02T08:12:15.388Z"
+}
