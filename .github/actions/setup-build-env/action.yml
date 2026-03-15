@@ -11,13 +11,15 @@ runs:
   using: 'composite'
   steps:
     - name: Setup mise
-      uses: jdx/mise-action@v2
+      uses: jdx/mise-action@v4
       with:
         install: true
         cache: true
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v3
+      env:
+        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       with:
         hugo-version: 'latest'
         extended: true
@@ -26,8 +28,6 @@ runs:
       uses: oven-sh/setup-bun@v2
       with:
         bun-version: latest
-        cache: true
-        cache-dependency-path: bun.lock
 
     - name: Install dependencies
       if: inputs.install-deps == 'true'
