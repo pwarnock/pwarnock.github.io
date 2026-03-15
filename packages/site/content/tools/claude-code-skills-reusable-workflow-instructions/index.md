@@ -12,24 +12,32 @@ radar:
   quadrant: 'Techniques'
   ring: 'Trial'
 slug: 'claude-code-skills-reusable-workflow-instructions'
-draft: false
+draft: true
 ---
 
-The pattern that keeps showing up in AI coding tools is the gap between what a model *can* do and what it *does* do without context. I hit this with [Claude Code](/tools/claude-code-conversational-ai-coding-assistant/) — it's capable enough, but every new session starts from zero. Skills close that gap by letting you codify workflows once instead of re-explaining them.
+A skill is a folder with a `SKILL.md` file that teaches Claude how to handle a specific task or workflow. Instead of re-explaining your preferences, processes, and domain expertise every conversation, you codify it once and Claude loads it when relevant.
 
-This site runs about a dozen skills now. Blog post creation, tech radar entries, draft review, portfolio generation — each one is a `SKILL.md` file that Claude loads when it recognizes the task. The interesting part isn't the format (it's just markdown with YAML frontmatter). It's the progressive disclosure: Claude only loads the full instructions when it thinks the skill is relevant, which keeps token usage reasonable while making specialized expertise available on demand.
+## How it works
 
-## What makes this different from Copilot instructions
+Skills use progressive disclosure — three levels of context loading:
 
-[GitHub Copilot](/tools/github-copilot-2025-update-multi-model-ai-assistant/) has a similar concept with `.instructions.md` files, and there's a [growing community repo](https://github.com/github/awesome-copilot/tree/main/instructions) collecting them. Skills take the same idea further — they compose (multiple skills active simultaneously), they support linked assets like scripts and reference files, and they work across Claude.ai, Claude Code, and the API.
+1. **YAML frontmatter** — always loaded into Claude's system prompt. Just enough for Claude to know when to activate the skill.
+2. **SKILL.md body** — loaded when Claude thinks the skill is relevant. Full instructions and guidance.
+3. **Linked files** (`scripts/`, `references/`, `assets/`) — additional files Claude discovers and navigates as needed.
 
-The real difference is behavioral: Copilot instructions shape *how* code gets written. Skills shape *what Claude does* — full multi-step workflows with validation gates, iteration loops, and tool orchestration. It's the difference between "use tabs not spaces" and "here's how to create, review, and publish a blog post end to end."
+This minimizes token usage while keeping specialized expertise available.
 
-## What I've learned using them
+## Three categories Anthropic has observed
 
-The hardest part is trigger accuracy — writing a description that activates the skill for the right queries without false positives. Anthropic's guide suggests testing this: run the same request 3-5 times, track whether the skill fires, and measure output consistency. In practice I've found that specific verb phrases in the description ("Use when the user wants to review drafts") work better than noun-heavy descriptions.
+- **Document & asset creation** — consistent output following style guides and templates (e.g., frontend-design skill)
+- **Workflow automation** — multi-step processes with validation gates and iteration loops (e.g., skill-creator skill)
+- **MCP enhancement** — workflow guidance layered on top of MCP tool access (e.g., Sentry code review skill)
 
-Skills that wrap [MCP tool access](/tools/claude-code-plugin-marketplace-curated-extensions/) tend to be the most valuable — they add workflow guidance on top of raw capability. A Playwright MCP server gives Claude browser automation; a skill tells it *when* to screenshot, *what* to ask the user, and *how* to handle feedback loops.
+## Why it's on the radar
+
+Already using skills heavily in this project. The technique is the same pattern as Copilot's `.instructions.md` files but with more structure — progressive disclosure, composability (multiple skills active simultaneously), and portability across Claude.ai, Claude Code, and API.
+
+Anthropic's guide covers planning, testing with success metrics (quantitative and qualitative), and distribution via GitHub or skills.sh. The testing framework is worth reading — they suggest tracking trigger accuracy (does it activate for 90% of relevant queries?), workflow completion (X tool calls), and consistency (same request 3-5 times, compare output).
 
 ## Links
 

@@ -12,7 +12,7 @@ radar:
   quadrant: 'Platforms'
   ring: 'Assess'
 slug: 'azure-application-gateway-layer-7-load-balancer'
-draft: false
+draft: true
 ---
 
 Azure's Layer 7 (HTTP/HTTPS) load balancer and reverse proxy. Sits in front of your backend pools and handles SSL termination, WAF, path-based routing, and multi-site hosting. Different from Azure Load Balancer, which operates at Layer 4 (TCP/IP).

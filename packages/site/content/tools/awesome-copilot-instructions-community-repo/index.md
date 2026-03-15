@@ -12,7 +12,7 @@ radar:
   quadrant: 'Techniques'
   ring: 'Trial'
 slug: 'awesome-copilot-instructions-community-repo'
-draft: false
+draft: true
 ---
 
 Copilot supports `.instructions.md` files that live in your repo and give it persistent context — coding standards, framework conventions, architectural constraints. Same idea as CLAUDE.md for Claude Code or AGENTS.md for Codex, but with per-topic scoping so you can have separate instruction files for different concerns.

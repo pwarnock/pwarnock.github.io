@@ -12,7 +12,7 @@ radar:
   quadrant: 'Tools'
   ring: 'Assess'
 slug: 'gh-aw-github-agentic-workflows'
-draft: false
+draft: true
 ---
 
 GitHub's take on running coding agents (Copilot, Claude, Codex) inside Actions workflows. You write automation in markdown instead of YAML. The interesting part is the security model — read-only by default, sandboxed execution, tool allowlisting, and network isolation for anything that writes.
