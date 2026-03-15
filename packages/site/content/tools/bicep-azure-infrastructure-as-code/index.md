@@ -12,10 +12,10 @@ radar:
   quadrant: 'Tools'
   ring: 'Assess'
 slug: 'bicep-azure-infrastructure-as-code'
-draft: true
+draft: false
 ---
 
-Microsoft's domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you're multi-cloud, use Terraform.
+Microsoft's domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you're multi-cloud, use [Terraform](/tools/terraform-infrastructure-as-code/).
 
 ## What it does
 
@@ -27,7 +27,7 @@ Microsoft's domain-specific language for deploying Azure resources. Compiles dow
 
 ## Why it's on the radar
 
-If you're Azure-only, Bicep is the path of least resistance for IaC. No state file to manage (Azure is the source of truth), no provider plugins, no HCL to learn. The trade-off is obvious: you're locked to Azure. For Azure shops, that's fine. For anyone else, Terraform or OpenTofu gives you portability.
+If you're Azure-only, Bicep is the path of least resistance for IaC. No state file to manage (Azure is the source of truth), no provider plugins, no HCL to learn. The trade-off is obvious: you're locked to Azure. For Azure shops, that's fine. For anyone else, [Terraform](/tools/terraform-infrastructure-as-code/) or [OpenTofu](/tools/opentofu-open-source-terraform-fork/) gives you portability.
 
 ## Open questions
 

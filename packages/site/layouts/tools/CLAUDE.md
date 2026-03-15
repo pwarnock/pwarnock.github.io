@@ -8,7 +8,7 @@ The card partial `partials/components/card-tool-radar.html` renders each tool. T
 
 ## Gotchas
 
-- **Nil ring guard**: `$ring` is nil for tools without `radar.ring` frontmatter. Hugo's `index` panics on nil keys — always wrap in `{{ with $ring }}` before calling `index $ringColors .`
+- **Nil ring guard**: The ring variable is nil for tools without `radar.ring` frontmatter. Hugo's `index` panics on nil keys — always wrap in a `with` guard before calling `index` on the ring colors map
 - **Badge rendering**: DaisyUI v5 badges break when placed in flex rows with multi-line titles (fixed height gets crushed). Rule: 1 badge per card, always `shrink-0`, never in the same flex row as the title
 - **Ring color mapping** lives in the card partial, not the list layout: `dict "Adopt" "success" "Trial" "info" "Assess" "warning" "Hold" "error"`
 - **Adding a new ring**: Update both the color mapping in `card-tool-radar.html` and the `$sections` slice in `list.html`

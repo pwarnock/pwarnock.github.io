@@ -86,12 +86,14 @@
       <!-- Content Header (attribution for curated/embed) -->
       {{ partial "content/content-header.html" . }}
 
-      <!-- Content Preview (summary with context) -->
-      {{ partial "content/content-preview.html" . }}
+      <!-- Content Preview (summary with context) — skip for types that already show description in the hero -->
+      {{ if not (or (eq .Type "tools") (eq .Type "portfolio")) }}
+        {{ partial "content/content-preview.html" . }}
+      {{ end }}
       {{ end }}
 
       <!-- Main Content -->
-      <div class="prose prose-lg lg:prose-xl" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">
+      <div class="prose prose-lg lg:prose-xl mt-responsive-lg" role="document" data-testid="{{ if eq .Type "blog" }}blog-post-content{{ else if eq .Type "tools" }}tool-content{{ else }}page-content{{ end }}">
         {{ .Content }}
       </div>
 

@@ -3,12 +3,12 @@ title: 'New on the Site: Radar Entries, People Directory, and Bookmarks'
 summary:
   'Added new tech radar entries, launched a people directory and curated bookmarks section, and restructured how I track tools and resources.'
 date: 2026-03-14T18:00:00-07:00
-draft: true
+draft: false
 content_type: original
 tags: ['Site Updates', 'Tech Radar', 'Bookmarks', 'Tools']
 author: 'Peter Warnock'
 description:
-  'March 2026 site update — new tech radar entries for gh-aw, VitePlus, Void Zero, Azure Application Gateway, Conductor, Terraform, Bicep, and .NET Aspire. Plus a people directory and curated bookmarks section.'
+  'March 2026 site update — new tech radar entries for gh-aw, VitePlus, Void Zero, Azure Application Gateway, Conductor, Terraform, Bicep, and Aspire. Plus a people directory and curated bookmarks section.'
 ---
 
 Big batch of updates to the site today. I've been collecting links, tools, and people to follow — and rather than let them rot in browser tabs, I'm putting them where they're useful.
@@ -30,7 +30,7 @@ Eight new entries on the tech radar, spanning developer tools and enterprise inf
 - **{{< tool-link "azure-application-gateway-layer-7-load-balancer" "Azure Application Gateway" >}}** (Assess) — Layer 7 load balancer with WAF, SSL termination, and path-based routing. Investigating for work.
 - **{{< tool-link "terraform-infrastructure-as-code" "Terraform" >}}** (Adopt) — Industry standard for multi-cloud infrastructure as code.
 - **{{< tool-link "bicep-azure-infrastructure-as-code" "Bicep" >}}** (Assess) — Azure-native IaC that compiles to ARM templates. Simpler syntax, but Azure-only.
-- **{{< tool-link "dotnet-aspire-distributed-app-orchestration" ".NET Aspire" >}}** (Assess) — Code-first orchestration for distributed apps. Define your stack in C#, run locally or deploy anywhere.
+- **{{< tool-link "aspire-distributed-app-orchestration" "Aspire" >}}** (Assess) — Code-first orchestration for distributed apps. Define your stack in C#, run locally or deploy anywhere.
 
 ## New Section: People Directory
 
@@ -65,4 +65,4 @@ These are lightweight by design. A link, a paragraph, maybe a social handle. Eno
 
 ## What's Next
 
-All the new radar entries are in draft. I'll review and publish them over the next few days. The people directory will grow as I keep running into folks whose work is worth referencing. And I'll keep adding bookmark pages as topics accumulate — cloud infrastructure, newsletters, and design resources are likely next.
+The people directory will grow as I keep running into folks whose work is worth referencing. And I'll keep adding bookmark pages as topics accumulate — cloud infrastructure, newsletters, and design resources are likely next.
