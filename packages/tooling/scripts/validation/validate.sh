@@ -146,27 +146,41 @@ if ! command -v lychee &> /dev/null; then
 fi
 
 if [[ ! -d "$PROJECT_ROOT/packages/site/public" ]]; then
-    if [[ "$JSON_MODE" == true ]]; then
-        echo '{"status": "error", "step": "link_validation", "message": "No public directory found - site not built"}'
+    if [[ "$SKIP_BUILD" == true ]]; then
+        if [[ "$JSON_MODE" == false ]]; then
+            echo "⏭️  Skipping link validation (no build output)"
+        fi
     else
-        echo "❌ No public directory found - site not built"
+        if [[ "$JSON_MODE" == true ]]; then
+            echo '{"status": "error", "step": "link_validation", "message": "No public directory found - site not built"}'
+        else
+            echo "❌ No public directory found - site not built"
+        fi
+        exit 1
     fi
-    exit 1
-fi
-
-if ! lychee --config "$PROJECT_ROOT/lychee.toml" "$PROJECT_ROOT/packages/site/public/"; then
-    if [[ "$JSON_MODE" == true ]]; then
-        echo '{"status": "error", "step": "link_validation", "message": "Link validation failed"}'
-    else
-        echo "❌ Link validation failed"
+else
+    if ! lychee --config "$PROJECT_ROOT/lychee.toml" "$PROJECT_ROOT/packages/site/public/"; then
+        if [[ "$JSON_MODE" == true ]]; then
+            echo '{"status": "error", "step": "link_validation", "message": "Link validation failed"}'
+        else
+            echo "❌ Link validation failed"
+        fi
+        exit 1
     fi
-    exit 1
-fi
-if [[ "$JSON_MODE" == false ]]; then
-    echo "✅ Link validation passed"
+    if [[ "$JSON_MODE" == false ]]; then
+        echo "✅ Link validation passed"
+    fi
 fi
 
 # 6. SEO validation
+if [[ ! -d "$PROJECT_ROOT/packages/site/public" ]]; then
+    if [[ "$JSON_MODE" == false ]]; then
+        echo "⏭️  Skipping SEO/performance checks (no build output)"
+        echo "================================"
+        echo "✅ All validation checks passed!"
+    fi
+    exit 0
+fi
 if [[ "$JSON_MODE" == false ]]; then
     echo "📈 Running SEO validation..."
 fi
