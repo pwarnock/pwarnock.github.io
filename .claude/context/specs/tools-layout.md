@@ -2,9 +2,9 @@
 
 ## Architecture
 
-Tools are grouped by radar ring (Adopt → Trial → Assess → Hold → Other) in `list.html`. No pagination — all tools render on a single page across sections.
+Tools are grouped by radar ring (Adopt → Trial → Assess → Hold → Other) in `packages/site/layouts/tools/list.html`. No pagination — all tools render on a single page across sections.
 
-The card partial `partials/components/card-tool-radar.html` renders each tool. The legacy `card-tools.html` is unused by this layout but kept for backward compatibility.
+The card partial `packages/site/layouts/partials/components/card-tool-radar.html` renders each tool. The legacy `card-tools.html` is unused by this layout but kept for backward compatibility.
 
 ## Gotchas
 

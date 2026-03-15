@@ -24,7 +24,7 @@ jobs:
       bead_id: ${{ steps.parse.outputs.bead_id }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -71,8 +71,8 @@ jobs:
           # Count active release requests in last 10 minutes
           RECENT_REQUESTS=$(git log --oneline --since="10 minutes ago" -- .release/request.json | wc -l)
           if [ "$RECENT_REQUESTS" -gt 1 ]; then
-            echo "⚠️  Multiple release requests detected"
-            echo "   Serializing: will process in order"
+            echo "::warning::Multiple release requests detected in last 10 minutes"
+            echo "::warning::No serialization enforced — concurrent releases may conflict"
           fi
           echo "✓ Concurrency check passed"
 
@@ -85,14 +85,14 @@ jobs:
       version_tag: ${{ steps.compute.outputs.version_tag }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Compute next version
         id: compute
@@ -142,7 +142,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -181,12 +181,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup mise
-        uses: jdx/mise-action@v2
+        uses: jdx/mise-action@v4
         with:
           install: true
           cache: true
@@ -194,7 +194,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -203,8 +203,10 @@ jobs:
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
-          hugo-version: latest
+          hugo-version: 'latest'
           extended: true
 
       - name: Install dependencies
@@ -222,13 +224,14 @@ jobs:
           echo "✓ Build complete"
 
       - name: Validate HTML
+        continue-on-error: true
         run: |
           echo "🔍 Validating generated HTML..."
-          if command -v htmltest &> /dev/null; then
-            htmltest --conf .htmltest.yml || {
-              echo "⚠️  Some HTML validation issues (continuing)"
-            }
+          if ! command -v htmltest &> /dev/null; then
+            echo "::warning::htmltest not installed — HTML validation skipped"
+            exit 1
           fi
+          htmltest --conf .htmltest.yml
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -243,7 +246,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
@@ -253,9 +256,18 @@ jobs:
 
       - name: Validate deployment artifacts
         run: |
-          echo "Deployment artifacts:"
+          if [ ! -d "packages/site/public" ]; then
+            echo "::error::Build artifact directory not found"
+            exit 1
+          fi
+          HTML_COUNT=$(find packages/site/public -name "index.html" | wc -l)
+          if [ "$HTML_COUNT" -eq 0 ]; then
+            echo "::error::No index.html files found in artifacts — build may be empty"
+            exit 1
+          fi
+          echo "Deployment artifacts validated:"
           du -sh packages/site/public/
-          find packages/site/public -name "index.html" | wc -l | xargs echo "  HTML files:"
+          echo "  HTML files: $HTML_COUNT"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -276,7 +288,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -309,7 +321,7 @@ jobs:
     if: always()
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -334,8 +346,15 @@ jobs:
           git config user.name "${{ vars.BOT_NAME || 'github-actions[bot]' }}"
           git config user.email "${{ vars.BOT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}"
           git add .release/request.json
-          git commit -m "chore: update release request status to $STATUS" || true
-          git push origin main || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update release request status to $STATUS"
+            git push origin main || {
+              echo "::warning::Failed to push release status update to main"
+              echo "::warning::Manual update of .release/request.json may be required"
+            }
+          else
+            echo "::notice::No changes to commit for release status update"
+          fi
 
           echo "✓ Release request status: $STATUS"
 
@@ -345,7 +364,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -357,12 +376,19 @@ jobs:
           RELEASE_TYPE: ${{ needs.validate-request.outputs.release_type }}
         run: |
           RELEASE_NOTES="Release $VERSION_TAG - $RELEASE_TYPE: $DESCRIPTION"
-          gh release create "$VERSION_TAG" \
+          if ! output=$(gh release create "$VERSION_TAG" \
             --title "Release $VERSION_TAG" \
             --notes "$RELEASE_NOTES" \
-            --target main \
-            || echo "Release already exists"
-          echo "✓ GitHub release created"
+            --target main 2>&1); then
+            if echo "$output" | grep -q "already exists"; then
+              echo "::notice::Release $VERSION_TAG already exists, skipping"
+            else
+              echo "::error::Failed to create GitHub release: $output"
+              exit 1
+            fi
+          else
+            echo "✓ GitHub release created: $VERSION_TAG"
+          fi
 
   update-beads-status:
     name: Update Beads Issue Status
@@ -371,14 +397,14 @@ jobs:
     if: needs.validate-request.outputs.bead_id != ''
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Update Beads issue with release metadata
         env:

@@ -18,43 +18,31 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Setup mise
-        uses: jdx/mise-action@v2
-        with:
-          install: true
-          cache: true
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 'latest'
-          extended: true
-
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-          cache: true
-          cache-dependency-path: bun.lock
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile --no-progress
+      - name: Setup build environment
+        uses: ./.github/actions/setup-build-env
 
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh
 
       - name: Test Hugo build
-        run: hugo --minify --gc
+        run: hugo --source packages/site --minify --gc
 
       - name: Check for broken internal links
         run: |
+          HTML_COUNT=$(find packages/site/public -name "*.html" 2>/dev/null | wc -l)
+          if [ "$HTML_COUNT" -eq 0 ]; then
+            echo "::error::No HTML files found in packages/site/public — Hugo build may have failed"
+            exit 1
+          fi
+          echo "Found $HTML_COUNT HTML files, checking internal links..."
           # Check if all internal links resolve to existing files
           find packages/site/public -name "*.html" -exec grep -H "href=\"/" {} \; | \
           while read -r line; do
