@@ -111,8 +111,7 @@ echo ""
 
 # Handle different environments
 # Non-interactive environments (CI, Claude Code) skip the confirmation prompt.
-# Safety: branch gate (lines 21-31) blocks main; refspec gate (lines 35-48) catches detached HEAD;
-# tests ran above (lines 82-89).
+# Safety: branch gate blocks main; refspec gate catches detached HEAD; tests ran above.
 if [ -t 0 ] && [ "$FORCE_PUSH" != "yes" ]; then
     # Interactive terminal - ask for confirmation
     printf "${BLUE}Type 'yes' to confirm and push, or anything else to cancel: ${NC}"
