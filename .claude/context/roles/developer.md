@@ -97,6 +97,29 @@ bun tsc --noEmit
 
 ### 4. Git Workflow
 
+**🚨 MANDATORY: Feature Branch + PR Workflow**
+
+All work MUST go through feature branches and pull requests. Direct commits and pushes to main are **blocked by hooks** and **forbidden by policy**.
+
+```bash
+# ✅ CORRECT workflow (ONLY allowed path):
+git checkout -b feat/my-change       # Create feature branch
+# ... make changes ...
+git add <files>
+git commit -m "feat(scope): ..."     # Commit to feature branch
+git push -u origin feat/my-change    # Push feature branch
+gh pr create                         # Open PR for review
+
+# ❌ FORBIDDEN (blocked by hooks):
+git push                             # Bare push on main → DENIED
+git push origin main                 # Explicit push to main → DENIED
+
+# 🔧 Breakglass (ONLY when user explicitly requests, manual terminal only):
+FORCE_PUSH=yes git push              # Override pre-push branch gate
+```
+
+**Use `commit-commands:commit-push-pr` skill** — it handles the full branch → commit → push → PR flow automatically.
+
 **Commit message standards:**
 ```bash
 # Format: <type>(<scope>): <subject>
@@ -845,20 +868,21 @@ git commit -m "feat(blog): add reading time estimation"
 git commit -m "refactor(components): extract hero variants to separate files"
 ```
 
-❌ **Committing to main directly**
+❌ **Committing/pushing to main directly (BLOCKED BY HOOKS)**
 ```bash
 git checkout main
 # ... make changes ...
 git commit -m "feat: ..."
-git push origin main
+git push origin main           # ← Denied by branch protection hooks
+git push                       # ← Also denied (bare push on main)
 ```
-✅ **Use feature branches**
+✅ **Always use feature branches + PR**
 ```bash
 git checkout -b feature/name
 # ... make changes ...
 git commit -m "feat: ..."
-git push origin feature/name
-# Create PR for review
+git push -u origin feature/name
+gh pr create                   # ← Open PR for review
 ```
 
 ## Context Management

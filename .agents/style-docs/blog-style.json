@@ -67,12 +67,14 @@
     "unique-word-1769483747320",
     "test-word-1769488164992",
     "unique-word-1769488164993",
-    "test-word-1773546885361",
-    "unique-word-1773546885361",
-    "test-word-1773547465717",
-    "unique-word-1773547465717",
-    "test-word-1773547506466",
-    "unique-word-1773547506466"
+    "test-word-1772433637687",
+    "unique-word-1772433637688",
+    "test-word-1772433654070",
+    "unique-word-1772433654071",
+    "test-word-1772433851450",
+    "unique-word-1772433851450",
+    "test-word-1772434632353",
+    "unique-word-1772434632354"
   ],
   "sentencePatterns": [
     "Avoid starting sentences with \"It is important to note\"",
@@ -120,12 +122,14 @@
     "Unique pattern 1769483747321",
     "Pattern 1769488164994",
     "Unique pattern 1769488164995",
-    "Pattern 1773546885363",
-    "Unique pattern 1773546885363",
-    "Pattern 1773547465720",
-    "Unique pattern 1773547465720",
-    "Pattern 1773547506468",
-    "Unique pattern 1773547506468"
+    "Pattern 1772433637690",
+    "Unique pattern 1772433637691",
+    "Pattern 1772433654073",
+    "Unique pattern 1772433654073",
+    "Pattern 1772433851452",
+    "Unique pattern 1772433851453",
+    "Pattern 1772434632356",
+    "Unique pattern 1772434632356"
   ],
   "dos": [
     "Be concise and to the point",
@@ -181,9 +185,10 @@
       "Good example 1769483581789",
       "Good example 1769483747321",
       "Good example 1769488164993",
-      "Good example 1773546885362",
-      "Good example 1773547465718",
-      "Good example 1773547506467"
+      "Good example 1772433637689",
+      "Good example 1772433654072",
+      "Good example 1772433851451",
+      "Good example 1772434632355"
     ],
     "bad": [
       "Bad example 1766798275227",
@@ -208,10 +213,11 @@
       "Bad example 1769483581790",
       "Bad example 1769483747321",
       "Bad example 1769488164994",
-      "Bad example 1773546885362",
-      "Bad example 1773547465719",
-      "Bad example 1773547506467"
+      "Bad example 1772433637690",
+      "Bad example 1772433654072",
+      "Bad example 1772433851452",
+      "Bad example 1772434632355"
     ]
   },
-  "lastUpdated": "2026-03-15T04:05:07.401Z"
+  "lastUpdated": "2026-03-02T06:57:14.076Z"
 }
