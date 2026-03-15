@@ -3,7 +3,7 @@
     {{- /* Collect all regular pages in portfolio section */ -}}
     {{- $allProjects := .RegularPages -}}
 
-    {{- /* Extract unique categories and build category collections */ -}}
+    {{- /* Extract unique categories */ -}}
     {{- $categories := slice -}}
     {{- range $allProjects -}}
       {{- with .Params.category -}}
@@ -12,35 +12,8 @@
     {{- end -}}
     {{- $categories = $categories | uniq -}}
 
-    {{- /* Category → DaisyUI color mapping (must match card-portfolio-enhanced.html) */ -}}
+    {{- /* Category → DaisyUI color mapping */ -}}
     {{- $categoryColors := dict "Web App" "info" "Infrastructure" "success" "API" "accent" "Developer Tool" "secondary" "Educational Game" "warning" "Prototype" "neutral" -}}
-
-    {{- /* Category → description mapping */ -}}
-    {{- $categoryDescs := dict
-      "Web App" "Full-stack web applications with modern frameworks and real-world impact."
-      "Infrastructure" "Systems, tooling, and infrastructure powering development workflows."
-      "API" "Backend services, integrations, and API design."
-      "Developer Tool" "Tools and utilities that improve the developer experience."
-      "Educational Game" "Interactive learning experiences built with accessibility in mind."
-      "Prototype" "Rapid prototypes and proof-of-concept builds exploring new ideas."
-    -}}
-
-    {{- /* Build sections from categories */ -}}
-    {{- $sections := slice -}}
-    {{- range $categories -}}
-      {{- $cat := . -}}
-      {{- $color := index $categoryColors $cat | default "neutral" -}}
-      {{- $desc := index $categoryDescs $cat | default "" -}}
-      {{- $projects := where $allProjects "Params.category" $cat -}}
-      {{- $sections = $sections | append (dict "name" $cat "color" $color "desc" $desc "projects" $projects) -}}
-    {{- end -}}
-
-    {{- /* Projects without category */ -}}
-    {{- $categorizedProjects := where $allProjects "Params.category" "!=" nil -}}
-    {{- $uncategorized := $allProjects | complement $categorizedProjects -}}
-    {{- if $uncategorized }}
-      {{- $sections = $sections | append (dict "name" "Other" "color" "neutral" "desc" "Projects not yet categorized." "projects" $uncategorized) -}}
-    {{- end }}
 
     {{- /* Category filter buttons */ -}}
     <div class="flex flex-wrap gap-2 mb-8" role="toolbar" aria-label="Filter by category">
@@ -48,54 +21,46 @@
         All
         <span class="badge badge-sm">{{ len $allProjects }}</span>
       </button>
-      {{- range $sections }}
-      <button class="btn btn-sm btn-outline portfolio-filter" data-category="{{ .name }}" aria-pressed="false">
-        {{ .name }}
-        <span class="badge badge-sm badge-{{ .color }}">{{ len .projects }}</span>
+      {{- range $categories }}
+        {{- $color := index $categoryColors . | default "neutral" -}}
+        {{- $count := len (where $allProjects "Params.category" .) -}}
+      <button class="btn btn-sm btn-soft portfolio-filter" data-category="{{ . }}" aria-pressed="false">
+        {{ . }}
+        <span class="badge badge-sm badge-{{ $color }}">{{ $count }}</span>
       </button>
       {{- end }}
     </div>
 
-    {{- range $sections }}
-      {{- if .projects }}
-      <section class="portfolio-category-section" data-category="{{ .name }}" style="margin-bottom: var(--space-12)">
-        <div class="flex items-center gap-3 mb-2">
-          <h2 class="text-2xl lg:text-3xl font-medium text-secondary">{{ .name }}</h2>
-          <span class="badge badge-{{ .color }}">{{ len .projects }}</span>
-        </div>
-        {{- if .desc }}
-        <p class="text-base-content/60 mb-6">{{ .desc }}</p>
-        {{- end }}
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-responsive-md">
-          {{- range .projects }}
-            {{ partial "components/card-portfolio-enhanced.html" . }}
-          {{- end }}
-        </div>
-      </section>
+    {{- /* Flat card grid — all projects, filterable by data-category */ -}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="portfolio-grid">
+      {{- range $allProjects }}
+      <div class="portfolio-card" data-category="{{ .Params.category | default "Other" }}">
+        {{ partial "components/card-v2.html" . }}
+      </div>
       {{- end }}
-    {{- end }}
+    </div>
 
-  {{- /* Filter JS */ -}}
+  {{- /* Filter JS — card-level toggling */ -}}
   <script>
   (function() {
     var buttons = document.querySelectorAll('.portfolio-filter');
-    var sections = document.querySelectorAll('.portfolio-category-section');
+    var cards = document.querySelectorAll('.portfolio-card');
     buttons.forEach(function(btn) {
       btn.addEventListener('click', function() {
         var cat = this.dataset.category;
         buttons.forEach(function(b) {
           b.classList.remove('btn-primary');
-          b.classList.add('btn-outline');
+          b.classList.add('btn-soft');
           b.setAttribute('aria-pressed', 'false');
         });
-        this.classList.remove('btn-outline');
+        this.classList.remove('btn-soft');
         this.classList.add('btn-primary');
         this.setAttribute('aria-pressed', 'true');
-        sections.forEach(function(s) {
-          if (cat === 'all' || s.dataset.category === cat) {
-            s.classList.remove('hidden');
+        cards.forEach(function(c) {
+          if (cat === 'all' || c.dataset.category === cat) {
+            c.classList.remove('hidden');
           } else {
-            s.classList.add('hidden');
+            c.classList.add('hidden');
           }
         });
       });

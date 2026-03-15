@@ -860,6 +860,47 @@ Use the standardized base template for new heroes:
 "isSingle" true) }}
 ```
 
+### Layout Block Rules
+
+#### No Nested `<main>` Tags
+
+**CRITICAL**: Never add a `<main>` element inside `{{ define "main" }}`. The base
+template `baseof.html` already wraps the block in:
+
+```html
+<main id="main-content" class="flex-grow container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10" role="main">
+```
+
+Adding another `<main class="container mx-auto">` inside causes double container
+nesting with conflicting padding, making cards appear narrower than intended.
+
+```html
+<!-- BAD: double container nesting -->
+{{ define "main" }}
+  <main class="flex-grow container mx-auto">  <!-- ❌ nested inside baseof's <main> -->
+    <div class="grid ...">...</div>
+  </main>
+{{ end }}
+
+<!-- GOOD: content flows directly into baseof's <main> -->
+{{ define "main" }}
+  <div class="grid ...">...</div>
+{{ end }}
+```
+
+#### Smart Grid for Single-Item Sections
+
+When a section has only 1 item, use `grid-cols-1 lg:grid-cols-2` instead of the
+default 3-column layout so the card fills half the width instead of one-third:
+
+```html
+{{- $gridCols := "grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" -}}
+{{- if le (len $items) 1 }}
+  {{- $gridCols = "grid-cols-1 lg:grid-cols-2" -}}
+{{- end }}
+<div class="grid {{ $gridCols }} gap-responsive-md">
+```
+
 #### Validation
 
 All hero components are automatically validated on commit to ensure compliance

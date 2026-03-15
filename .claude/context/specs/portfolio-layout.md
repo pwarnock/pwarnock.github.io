@@ -16,6 +16,9 @@ dict "Web App" "info" "Infrastructure" "success" "API" "accent" "Developer Tool"
 
 ## Gotchas
 
+- **No nested `<main>` inside `{{ define "main" }}`**: `baseof.html` already wraps the block in `<main id="main-content" class="flex-grow container mx-auto px-4 ...">`. Adding another `<main>` causes double container nesting with conflicting padding, making cards appear narrower than they should be.
+- **Smart grid for single-item categories**: When a category has only 1 project, the grid uses `grid-cols-1 lg:grid-cols-2` instead of the default 3-column layout. This prevents a single card from sitting in 1/3 of the row. Detected via `{{ if le (len .projects) 1 }}`.
+- **`card-sm` in DaisyUI v5 only affects padding, not width** — cards fill their grid cell regardless of size modifier.
 - **Nil category guard**: `$category` is nil for entries without `category` frontmatter. Always wrap in `{{ with $category }}` before calling `index $categoryColors .` — same pattern as tools' ring guard.
 - **Badge rendering**: DaisyUI v5 badges break in flex rows with multi-line titles (fixed height gets crushed). Rule: 1 badge per card, always `shrink-0`, never in the same flex row as the title.
 - **Category color mapping in two places**: The mapping must match between `card-portfolio-enhanced.html` and `portfolio/list.html`. If you add a category, update both.

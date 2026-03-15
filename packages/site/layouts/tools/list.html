@@ -1,5 +1,4 @@
 {{ define "main" }}
-  <main class="flex-grow container mx-auto" style="padding: var(--space-8) var(--space-4)" role="main">
 
     {{- /* Collect all regular pages in tools section */ -}}
     {{- $allTools := .RegularPages -}}
@@ -15,7 +14,7 @@
     {{- $otherTools := $allTools | complement $radarTools -}}
 
     {{- /* Stats bar */ -}}
-    <div class="stats stats-vertical lg:stats-horizontal shadow w-full mb-8">
+    <div class="stats stats-vertical lg:stats-horizontal w-full mb-8 bg-base-200/50 rounded-box">
       <div class="stat">
         <div class="stat-title">Adopt</div>
         <div class="stat-value text-success">{{ len $adoptTools }}</div>
@@ -49,15 +48,11 @@
 
     {{- range $sections }}
       {{- if .tools }}
-      <section style="margin-bottom: var(--space-12)">
-        <div class="flex items-center gap-3 mb-2">
-          <h2 class="text-2xl lg:text-3xl font-medium text-secondary">{{ .name }}</h2>
-          <span class="badge badge-{{ .color }}">{{ len .tools }}</span>
-        </div>
-        <p class="text-base-content/60 mb-6">{{ .desc }}</p>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-responsive-md">
+      <section class="mb-12">
+        {{ partial "components/section-heading.html" (dict "title" .name "count" (len .tools) "color" .color "description" .desc) }}
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {{- range .tools }}
-            {{ partial "components/card-tool-radar.html" . }}
+            {{ partial "components/card-v2.html" . }}
           {{- end }}
         </div>
       </section>
@@ -65,11 +60,10 @@
     {{- end }}
 
     {{- /* Interactive Radar link */ -}}
-    <div class="text-center" style="margin-bottom: var(--space-8)">
+    <div class="text-center mb-8">
       <a href="https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json" target="_blank" rel="noopener noreferrer" class="link link-primary text-lg font-semibold">
         View as Interactive Radar ↗
       </a>
     </div>
 
-  </main>
 {{ end }}
