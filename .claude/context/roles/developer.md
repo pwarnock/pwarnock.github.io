@@ -114,8 +114,8 @@ gh pr create                         # Open PR for review
 git push                             # Bare push on main → DENIED
 git push origin main                 # Explicit push to main → DENIED
 
-# 🔧 Breakglass (ONLY when user explicitly requests):
-FORCE_PUSH=yes git push              # Override branch gate
+# 🔧 Breakglass (ONLY when user explicitly requests, manual terminal only):
+FORCE_PUSH=yes git push              # Override pre-push branch gate
 ```
 
 **Use `commit-commands:commit-push-pr` skill** — it handles the full branch → commit → push → PR flow automatically.
@@ -873,7 +873,7 @@ git commit -m "refactor(components): extract hero variants to separate files"
 git checkout main
 # ... make changes ...
 git commit -m "feat: ..."
-git push origin main           # ← Denied by hookify guard
+git push origin main           # ← Denied by branch protection hooks
 git push                       # ← Also denied (bare push on main)
 ```
 ✅ **Always use feature branches + PR**
