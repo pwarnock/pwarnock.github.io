@@ -39,8 +39,10 @@ hugo_stats.json
 # Generated CSS
 static/css/main.css
 
-# Beads daemon lock file
+# Beads ephemeral runtime files
 .beads/daemon.lock
+.beads/dolt-server.port
+.beads/dolt-monitor.pid.lock
 
 # Git hooks (local development only)
 .git/hooks/
@@ -142,8 +144,7 @@ cody-*.log
 hugo
 hugo.exe
 
-# Letta settings (contains local absolute paths)
-.letta/
+# Letta settings (contains local absolute paths — .letta/ also in line 116)
 .letta-sync.sh
 
 # Backup files
@@ -155,7 +156,6 @@ hugo.exe
 # Build artifacts
 dist/
 build/
-.cache/
 .parcel-cache/
 
 # Workspace build artifacts
@@ -172,7 +172,6 @@ coverage/
 # Miscellaneous
 *.tgz
 *.tar.gz
-.cache/
 packages/site/data/version.toml
 packages/site/data/version.json
 .skills/
