@@ -10,6 +10,11 @@
 
 set -e
 
+# Run beads pre-push hook (auto-export JSONL before push)
+if command -v bd &>/dev/null; then
+  bd hooks run pre-push "$@" || true
+fi
+
 # Colors for better readability
 RED='\033[0;31m'
 GREEN='\033[0;32m'

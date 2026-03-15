@@ -8,6 +8,11 @@
 
 set -e
 
+# Run beads pre-commit hook (auto-flush, export JSONL)
+if command -v bd &>/dev/null; then
+  bd hooks run pre-commit "$@" || true
+fi
+
 echo ""
 echo "🔍 Running pre-commit checks..."
 echo ""
