@@ -33,7 +33,7 @@ jobs:
         run: ./scripts/placeholder-detection.sh
 
       - name: Test Hugo build
-        run: hugo --minify --gc
+        run: hugo --source packages/site --minify --gc
 
       - name: Check for broken internal links
         run: |
