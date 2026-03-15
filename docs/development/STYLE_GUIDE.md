@@ -154,6 +154,84 @@ All single items use:
 - Breadcrumb navigation
 - Related content section
 
+### Section List Layout Pattern
+
+Tools and portfolio sections share a common list layout architecture. Each
+section uses a custom `list.html` that groups content into sections by a
+metadata field and renders them as filterable card grids.
+
+| Aspect | Tools (Tech Radar) | Portfolio |
+|---|---|---|
+| **Grouping field** | `radar.ring` | `category` |
+| **Layout file** | `layouts/tools/list.html` | `layouts/portfolio/list.html` |
+| **Card partial** | `card-tool-radar.html` | `card-portfolio-enhanced.html` |
+| **Filter mechanism** | `data-category` buttons + vanilla JS | `data-category` buttons + vanilla JS |
+| **Fallback group** | "Other" via `complement` | "Other" via `complement` |
+
+Each section renders as:
+
+1. **Heading with count badge** (color-coded by ring/category)
+2. **Section description** (from `_index.md` or hardcoded)
+3. **Responsive card grid** (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`)
+
+The `complement` template function collects entries that lack the grouping
+field and places them into an "Other" section at the end.
+
+Filter buttons toggle section visibility using `data-category` attributes
+and vanilla JavaScript click handlers. No framework required.
+
+### Card Component Convention
+
+`card-tool-radar.html` and `card-portfolio-enhanced.html` follow the same
+five-row structural pattern:
+
+| Row | Content | Key Classes |
+|---|---|---|
+| 1 | **Metadata** | Badge (left), secondary info (right) |
+| 2 | **Title** | Link with `text-accent` on hover |
+| 3 | **Description** | `line-clamp-2`, `text-sm` |
+| 4 | **Tags** | `badge-xs badge-ghost` |
+| 5 | **Action buttons** | Primary CTA + ghost/outline secondary |
+
+This convention keeps visual weight and information hierarchy consistent
+across both sections even though each card handles different data fields.
+
+### Category/Ring Color Mapping
+
+Color is assigned by ring (tools) or category (portfolio) using DaisyUI
+semantic color names:
+
+**Tools (radar ring):**
+
+| Ring | Color |
+|---|---|
+| Adopt | `success` |
+| Trial | `info` |
+| Assess | `warning` |
+| Hold | `error` |
+
+**Portfolio (category):**
+
+| Category | Color |
+|---|---|
+| Web App | `info` |
+| Infrastructure | `success` |
+| API | `accent` |
+| Developer Tool | `secondary` |
+| Educational Game | `warning` |
+| Prototype | `neutral` |
+
+Color mapping lives in **both** the card partial and the list layout (for
+section heading badges). These must stay in sync -- updating one without the
+other will produce mismatched colors.
+
+### Cross-Reference
+
+For implementation details, edge cases, and template gotchas:
+
+- **Portfolio**: `.claude/context/specs/portfolio-layout.md`
+- **Tools**: `.claude/context/specs/tools-layout.md`
+
 ### Theme-Aware Color System
 
 #### DaisyUI Theme Variables (v0.10.2+)
