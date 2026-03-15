@@ -20,14 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Get PR author
         id: pr
@@ -69,7 +69,7 @@ jobs:
             echo "❌ Version changes must be made by the release controller"
             echo ""
             echo "ERROR: package.json.version was modified by $AUTHOR"
-            echo "Version bumps can only be performed by the release controller ($(vars.BOT_NAME))."
+            echo "Version bumps can only be performed by the release controller (${{ vars.BOT_NAME }})."
             echo ""
             echo "To release:"
             echo "  1. Run: ./scripts/release.sh [rc|final|hotfix]"
