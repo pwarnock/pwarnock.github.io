@@ -7,6 +7,7 @@ import (
 
 	"github.com/cucumber/godog"
 	"github.com/cucumber/godog/colors"
+	"github.com/pwarnock/go-playwright-testkit/pkg/logger"
 	"pwarnock-tests/step_definitions"
 	"pwarnock-tests/support"
 )
@@ -69,7 +70,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 		})
 
 		// Initialize structured logger for enhanced logging
-		testCtx.SetStructuredLogger(support.NewStructuredLogger("BDD-Test"))
+		testCtx.SetStructuredLogger(logger.NewStructuredLogger("BDD-Test"))
 		testCtx.Setup()
 
 		// Update step definitions with proper context
