@@ -1,0 +1,86 @@
+{{- $context := . -}}
+{{- $title := $context.Title -}}
+{{- $url := $context.Permalink -}}
+{{- $description := $context.Params.description | default $context.Summary -}}
+{{- $category := $context.Params.category -}}
+{{- $client := $context.Params.client -}}
+
+{{- /* Category → DaisyUI color mapping */ -}}
+{{- $categoryColors := dict "Web App" "info" "Infrastructure" "success" "API" "accent" "Developer Tool" "secondary" "Educational Game" "warning" "Prototype" "neutral" -}}
+{{- $categoryColor := "neutral" -}}
+{{- with $category }}{{ $categoryColor = index $categoryColors . | default "neutral" }}{{ end -}}
+
+<article class="card bg-base-100 card-sm card-border shadow-lg hover:shadow-xl transition-shadow">
+  <div class="card-body">
+    {{- /* Row 1: Category badge (left) + Client (right) */ -}}
+    {{- if or $category $client }}
+    <div class="flex justify-between items-center">
+      {{- if $category }}
+      <span class="badge badge-sm badge-{{ $categoryColor }} shrink-0">{{ $category }}</span>
+      {{- else }}
+      <span></span>
+      {{- end }}
+      {{- if $client }}
+      <span class="text-xs text-base-content/60 truncate ml-2">{{ $client }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- /* Row 2: Title as link */ -}}
+    {{- if $title }}
+    <h3 class="card-title text-lg">
+      {{- if $url }}
+      <a href="{{ $url }}" class="link link-hover text-accent no-underline hover:underline">
+        {{ $title }}
+      </a>
+      {{- else }}
+        {{ $title }}
+      {{- end }}
+    </h3>
+    {{- end }}
+
+    {{- /* Row 3: Description (2-line clamp) */ -}}
+    {{- if $description }}
+    <p class="text-base-content/80 line-clamp-2 text-sm">{{ $description }}</p>
+    {{- end }}
+
+    {{- /* Row 4: Technology tags */ -}}
+    {{- with $context.Params.technologies }}
+    <div class="flex flex-wrap gap-1">
+      {{- range . }}
+      <span class="badge badge-xs badge-ghost">{{ . }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- /* Row 5: Action buttons */ -}}
+    <div class="card-actions justify-end mt-auto">
+      <div class="flex gap-2">
+        {{- if $context.Params.live_url }}
+        <a href="{{ $context.Params.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-xs">
+          Live Demo
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        {{- end }}
+        {{- if $context.Params.github_url }}
+        <a href="{{ $context.Params.github_url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-xs">
+          GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        {{- end }}
+        {{- if $url }}
+        <a href="{{ $url }}" class="btn btn-outline btn-xs">
+          Details
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</article>

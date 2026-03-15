@@ -42,6 +42,11 @@
       <p class="text-xl lg:text-2xl text-primary-content/80 font-medium" role="doc-subtitle">
         {{ .context.Description }}
       </p>
+      {{- if .context.Params.featured_subtitle }}
+      <p class="text-lg text-primary-content/60 mt-4">
+        {{ .context.Params.featured_subtitle }}
+      </p>
+      {{- end }}
     {{ end }}
   </div>
 </div>
