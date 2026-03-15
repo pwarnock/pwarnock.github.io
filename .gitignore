@@ -115,7 +115,6 @@ kubeconfig
 
 # Framework-specific configurations (not part of core project)
 .cody.backup.*/
-.letta/
 
 # Claude Code local state (but keep skills and commands)
 .claude/*
@@ -127,8 +126,6 @@ kubeconfig
 # Agent data (sessions are local, style-docs and drafts are project-specific)
 .agents/sessions/
 .agents/style-docs/*.backup
-.letta.example/
-.letta.schema.json
 .opencode.jsonc
 
 # Ephemeral files (regenerated on each run)
@@ -143,9 +140,6 @@ cody-*.log
 # Hugo binary (OS-specific)
 hugo
 hugo.exe
-
-# Letta settings (contains local absolute paths — .letta/ also in line 116)
-.letta-sync.sh
 
 # Backup files
 *.backup
