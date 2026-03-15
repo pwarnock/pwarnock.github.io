@@ -39,7 +39,7 @@ jobs:
 
           if [[ -z "$RC_TAGS" ]]; then
             echo "No RC tags found"
-            echo "audit_needed=false" >> "$GITHUB_OUTPUT"
+            echo "audit_needed=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
@@ -53,8 +53,7 @@ jobs:
 
           while IFS= read -r tag; do
             # Extract version (e.g., v0.20.2-rc.1 -> 0.20.2)
-            stripped="${tag#v}"
-            VERSION="${stripped%%-*}"
+            VERSION=$(echo "$tag" | sed 's/v\([0-9]*\.[0-9]*\.[0-9]*\)-.*/\1/')
             FINAL_TAG="v$VERSION"
 
             echo "Checking RC: $tag"
@@ -83,11 +82,9 @@ jobs:
 
           # Output results
           if [[ ${#ORPHAN_RCS[@]} -gt 0 ]]; then
-            {
-              echo "audit_needed=true"
-              echo "orphan_count=${#ORPHAN_RCS[@]}"
-              echo "stale_count=${#STALE_RCS[@]}"
-            } >> "$GITHUB_OUTPUT"
+            echo "audit_needed=true" >> $GITHUB_OUTPUT
+            echo "orphan_count=${#ORPHAN_RCS[@]}" >> $GITHUB_OUTPUT
+            echo "stale_count=${#STALE_RCS[@]}" >> $GITHUB_OUTPUT
 
             # Store list for issue creation
             printf '%s\n' "${ORPHAN_RCS[@]}" > /tmp/orphan_rcs.txt
@@ -95,7 +92,7 @@ jobs:
               printf '%s\n' "${STALE_RCS[@]}" > /tmp/stale_rcs.txt
             fi
           else
-            echo "audit_needed=false" >> "$GITHUB_OUTPUT"
+            echo "audit_needed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Create audit report

@@ -12,7 +12,7 @@ radar:
   quadrant: 'Tools'
   ring: 'Assess'
 slug: 'conductor-parallel-coding-agents'
-draft: false
+draft: true
 ---
 
 macOS app from Melty Labs for running multiple Claude Code (or Codex) agents simultaneously across isolated git worktrees. Each workspace gets its own branch and copy of the repo.

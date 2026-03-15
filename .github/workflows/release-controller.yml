@@ -41,12 +41,10 @@ jobs:
           DESCRIPTION=$(jq -r '.description // "No description"' .release/request.json)
           BEAD_ID=$(jq -r '.beadId // ""' .release/request.json)
 
-          {
-            echo "release_type=$RELEASE_TYPE"
-            echo "target_branch=$TARGET_BRANCH"
-            echo "description=$DESCRIPTION"
-            echo "bead_id=$BEAD_ID"
-          } >> "$GITHUB_OUTPUT"
+          echo "release_type=$RELEASE_TYPE" >> $GITHUB_OUTPUT
+          echo "target_branch=$TARGET_BRANCH" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "bead_id=$BEAD_ID" >> $GITHUB_OUTPUT
 
           echo "✓ Release Request Parsed:"
           echo "  Type: $RELEASE_TYPE"
@@ -104,10 +102,10 @@ jobs:
           echo "ℹ️  Release type: $RELEASE_TYPE"
 
           # Parse current version
-          MAJOR=$(echo "$CURRENT_VERSION" | cut -d. -f1)
-          MINOR=$(echo "$CURRENT_VERSION" | cut -d. -f2)
-          PATCH=$(echo "$CURRENT_VERSION" | cut -d. -f3 | cut -d- -f1)
-          PRERELEASE=$(echo "$CURRENT_VERSION" | grep -oP '(?<=-).+' || echo "")
+          MAJOR=$(echo $CURRENT_VERSION | cut -d. -f1)
+          MINOR=$(echo $CURRENT_VERSION | cut -d. -f2)
+          PATCH=$(echo $CURRENT_VERSION | cut -d. -f3 | cut -d- -f1)
+          PRERELEASE=$(echo $CURRENT_VERSION | grep -oP '(?<=-).+' || echo "")
 
           case "$RELEASE_TYPE" in
             rc)
@@ -115,7 +113,7 @@ jobs:
               if [[ -z "$PRERELEASE" ]]; then
                 NEXT_VERSION="$MAJOR.$MINOR.$((PATCH + 1))-rc.1"
               else
-                RC_NUM=$(echo "$PRERELEASE" | grep -oP '(?<=rc\.)\d+' || echo "0")
+                RC_NUM=$(echo $PRERELEASE | grep -oP '(?<=rc\.)\d+' || echo "0")
                 NEXT_VERSION="$MAJOR.$MINOR.$PATCH-rc.$((RC_NUM + 1))"
               fi
               ;;
@@ -130,10 +128,8 @@ jobs:
               ;;
           esac
 
-          {
-            echo "next_version=$NEXT_VERSION"
-            echo "version_tag=v$NEXT_VERSION"
-          } >> "$GITHUB_OUTPUT"
+          echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "version_tag=v$NEXT_VERSION" >> $GITHUB_OUTPUT
           echo "✓ Next version: $NEXT_VERSION"
 
   update-version:
@@ -318,9 +314,9 @@ jobs:
         run: |
           # Check if create-tag job succeeded
           if [[ "${{ needs.create-tag.result }}" == "success" ]]; then
-            echo "status=succeeded" >> "$GITHUB_OUTPUT"
+            echo "status=succeeded" >> $GITHUB_OUTPUT
           else
-            echo "status=failed" >> "$GITHUB_OUTPUT"
+            echo "status=failed" >> $GITHUB_OUTPUT
           fi
 
       - name: Update request status
