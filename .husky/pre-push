@@ -15,6 +15,19 @@ if command -v bd &>/dev/null; then
   bd hooks run pre-push "$@" || true
 fi
 
+# Branch gate: block pushes from main/master unless FORCE_PUSH=yes
+current_branch=$(git branch --show-current 2>/dev/null || echo "")
+if [[ "$current_branch" == "main" || "$current_branch" == "master" ]] && [[ "$FORCE_PUSH" != "yes" ]]; then
+  echo -e "\033[0;31m❌ BLOCKED: Direct push to $current_branch is not allowed.\033[0m"
+  echo -e "\033[1;33m💡 Create a feature branch and open a PR instead.\033[0m"
+  echo -e "\033[1;33m   git checkout -b feature/my-change\033[0m"
+  echo -e "\033[1;33m   git push -u origin feature/my-change\033[0m"
+  echo -e "\033[1;33m   gh pr create\033[0m"
+  echo ""
+  echo -e "\033[1;33m   Breakglass: FORCE_PUSH=yes git push\033[0m"
+  exit 1
+fi
+
 # Colors for better readability
 RED='\033[0;31m'
 GREEN='\033[0;32m'
