@@ -18,7 +18,7 @@
   <div class="card-body">
     {{- if $title }}
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
         <h3 class="card-title {{ index $titleSizeClasses $size }}">
           {{- if $url }}
           <a href="{{ $url }}" class="link link-hover text-accent no-underline hover:underline">
@@ -29,7 +29,7 @@
           {{- end }}
         </h3>
         {{- if $context.Params.tool_category }}
-        <div class="badge badge-ghost">{{ $context.Params.tool_category }}</div>
+        <span class="badge badge-ghost badge-sm shrink-0">{{ $context.Params.tool_category }}</span>
         {{- end }}
       </div>
       {{- if $tags }}

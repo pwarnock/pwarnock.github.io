@@ -1,0 +1,75 @@
+{{ define "main" }}
+  <main class="flex-grow container mx-auto" style="padding: var(--space-8) var(--space-4)" role="main">
+
+    {{- /* Collect all regular pages in tools section */ -}}
+    {{- $allTools := .RegularPages -}}
+
+    {{- /* Filter tools by radar ring */ -}}
+    {{- $adoptTools := where $allTools "Params.radar.ring" "Adopt" -}}
+    {{- $trialTools := where $allTools "Params.radar.ring" "Trial" -}}
+    {{- $assessTools := where $allTools "Params.radar.ring" "Assess" -}}
+    {{- $holdTools := where $allTools "Params.radar.ring" "Hold" -}}
+
+    {{- /* Tools without radar ring data */ -}}
+    {{- $radarTools := union $adoptTools $trialTools | union $assessTools | union $holdTools -}}
+    {{- $otherTools := $allTools | complement $radarTools -}}
+
+    {{- /* Stats bar */ -}}
+    <div class="stats stats-vertical lg:stats-horizontal shadow w-full mb-8">
+      <div class="stat">
+        <div class="stat-title">Adopt</div>
+        <div class="stat-value text-success">{{ len $adoptTools }}</div>
+        <div class="stat-desc">Use daily, recommend</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Trial</div>
+        <div class="stat-value text-info">{{ len $trialTools }}</div>
+        <div class="stat-desc">Actively evaluating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Assess</div>
+        <div class="stat-value text-warning">{{ len $assessTools }}</div>
+        <div class="stat-desc">Worth investigating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Hold</div>
+        <div class="stat-value text-error">{{ len $holdTools }}</div>
+        <div class="stat-desc">Not recommended now</div>
+      </div>
+    </div>
+
+    {{- /* Ring section data */ -}}
+    {{- $sections := slice
+      (dict "name" "Adopt" "color" "success" "desc" "Tools I use daily and recommend without hesitation." "tools" $adoptTools)
+      (dict "name" "Trial" "color" "info" "desc" "Actively evaluating — promising enough to invest time in." "tools" $trialTools)
+      (dict "name" "Assess" "color" "warning" "desc" "Worth investigating — keeping an eye on these." "tools" $assessTools)
+      (dict "name" "Hold" "color" "error" "desc" "Not recommended right now — better alternatives exist." "tools" $holdTools)
+      (dict "name" "Other" "color" "neutral" "desc" "Tools not yet placed on the radar." "tools" $otherTools)
+    -}}
+
+    {{- range $sections }}
+      {{- if .tools }}
+      <section style="margin-bottom: var(--space-12)">
+        <div class="flex items-center gap-3 mb-2">
+          <h2 class="text-2xl lg:text-3xl font-medium text-secondary">{{ .name }}</h2>
+          <span class="badge badge-{{ .color }}">{{ len .tools }}</span>
+        </div>
+        <p class="text-base-content/60 mb-6">{{ .desc }}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-responsive-md">
+          {{- range .tools }}
+            {{ partial "components/card-tool-radar.html" . }}
+          {{- end }}
+        </div>
+      </section>
+      {{- end }}
+    {{- end }}
+
+    {{- /* Interactive Radar link */ -}}
+    <div class="text-center" style="margin-bottom: var(--space-8)">
+      <a href="https://peterwarnock.com/build-your-own-radar/?documentId=https%3A%2F%2Fpeterwarnock.com%2Ftools%2Fradar.json" target="_blank" rel="noopener noreferrer" class="link link-primary text-lg font-semibold">
+        View as Interactive Radar ↗
+      </a>
+    </div>
+
+  </main>
+{{ end }}

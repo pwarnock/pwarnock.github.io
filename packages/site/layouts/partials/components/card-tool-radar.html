@@ -1,0 +1,75 @@
+{{- $context := . -}}
+{{- $title := $context.Title -}}
+{{- $url := $context.Permalink -}}
+{{- $description := $context.Params.description | default $context.Summary -}}
+{{- $quadrant := $context.Params.radar.quadrant -}}
+{{- $ring := $context.Params.radar.ring -}}
+{{- $category := $context.Params.tool_category -}}
+
+{{- /* Ring → DaisyUI color mapping */ -}}
+{{- $ringColors := dict "Adopt" "success" "Trial" "info" "Assess" "warning" "Hold" "error" -}}
+{{- $ringColor := "neutral" -}}
+{{- with $ring }}{{ $ringColor = index $ringColors . | default "neutral" }}{{ end -}}
+
+<article class="card bg-base-100 card-sm card-border shadow-lg hover:shadow-xl transition-shadow">
+  <div class="card-body">
+    {{- /* Row 1: Quadrant (left) + Ring badge (right) */ -}}
+    {{- if or $quadrant $ring }}
+    <div class="flex justify-between items-center">
+      {{- if $quadrant }}
+      <span class="text-xs text-base-content/60 uppercase tracking-wide">{{ $quadrant }}</span>
+      {{- else }}
+      <span></span>
+      {{- end }}
+      {{- if $ring }}
+      <span class="badge badge-sm badge-{{ $ringColor }} shrink-0">{{ $ring }}</span>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- /* Row 2: Title as link */ -}}
+    {{- if $title }}
+    <h3 class="card-title text-lg">
+      {{- if $url }}
+      <a href="{{ $url }}" class="link link-hover text-accent no-underline hover:underline">
+        {{ $title }}
+      </a>
+      {{- else }}
+        {{ $title }}
+      {{- end }}
+    </h3>
+    {{- end }}
+
+    {{- /* Row 3: Description (2-line clamp) */ -}}
+    {{- if $description }}
+    <p class="text-base-content/80 line-clamp-2 text-sm">{{ $description }}</p>
+    {{- end }}
+
+    {{- /* Row 4: Category (left) + action buttons (right) */ -}}
+    <div class="card-actions justify-between items-center mt-auto">
+      <div>
+        {{- if $category }}
+        <span class="text-xs text-base-content/50">{{ $category }}</span>
+        {{- end }}
+      </div>
+      <div class="flex gap-2">
+        {{- if $context.Params.external_url }}
+        <a href="{{ $context.Params.external_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-xs">
+          Visit
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+        {{- end }}
+        {{- if $url }}
+        <a href="{{ $url }}" class="btn btn-outline btn-xs">
+          Details
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</article>
