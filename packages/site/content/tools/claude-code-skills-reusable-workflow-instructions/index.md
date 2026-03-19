@@ -12,7 +12,7 @@ radar:
   quadrant: 'Techniques'
   ring: 'Trial'
 slug: 'claude-code-skills-reusable-workflow-instructions'
-draft: true
+draft: false
 ---
 
 A skill is a folder with a `SKILL.md` file that teaches Claude how to handle a specific task or workflow. Instead of re-explaining your preferences, processes, and domain expertise every conversation, you codify it once and Claude loads it when relevant.

@@ -12,7 +12,7 @@ radar:
   quadrant: 'Platforms'
   ring: 'Assess'
 slug: 'aspire-distributed-app-orchestration'
-draft: true
+draft: false
 ---
 
 Microsoft's orchestration platform for distributed apps, created by [David Fowler](/people/industry/#david-fowler) and the .NET team. Define your entire stack — frontends, APIs, databases, containers — in a single C# AppHost file, then run locally or deploy to Kubernetes, Azure, AWS, or on-prem. Recently rebranded from ".NET Aspire" to just "Aspire", reflecting its multi-language positioning.

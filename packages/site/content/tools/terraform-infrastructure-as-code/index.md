@@ -12,7 +12,7 @@ radar:
   quadrant: 'Tools'
   ring: 'Adopt'
 slug: 'terraform-infrastructure-as-code'
-draft: true
+draft: false
 ---
 
 HashiCorp's infrastructure as code tool. Write declarative HCL config, run `terraform plan` to preview changes, `terraform apply` to provision. Multi-cloud — works with AWS, Azure, GCP, and hundreds of other providers. Created by [Mitchell Hashimoto](/people/industry/#mitchell-hashimoto).

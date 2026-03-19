@@ -3,7 +3,7 @@ title: 'New on the Site: Radar Entries, People Directory, and Bookmarks'
 summary:
   'Added new tech radar entries, launched a people directory and curated bookmarks section, and restructured how I track tools and resources.'
 date: 2026-03-14T18:00:00-07:00
-draft: true
+draft: false
 content_type: original
 tags: ['Site Updates', 'Tech Radar', 'Bookmarks', 'Tools']
 author: 'Peter Warnock'

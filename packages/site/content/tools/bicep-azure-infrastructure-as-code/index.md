@@ -12,7 +12,7 @@ radar:
   quadrant: 'Tools'
   ring: 'Assess'
 slug: 'bicep-azure-infrastructure-as-code'
-draft: true
+draft: false
 ---
 
 Microsoft's domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you're multi-cloud, use Terraform.
