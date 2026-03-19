@@ -1,5 +1,5 @@
 name: 'Setup Build Environment'
-description: 'Sets up mise, Hugo, Bun, and installs dependencies for the site build'
+description: 'Sets up mise (with Hugo), Bun, and installs dependencies for the site build'
 
 inputs:
   install-deps:
@@ -15,14 +15,6 @@ runs:
       with:
         install: true
         cache: true
-
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v3
-      env:
-        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      with:
-        hugo-version: 'latest'
-        extended: true
 
     - name: Setup Bun
       uses: oven-sh/setup-bun@v2

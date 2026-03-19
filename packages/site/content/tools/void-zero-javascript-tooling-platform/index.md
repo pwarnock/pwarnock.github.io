@@ -12,7 +12,7 @@ radar:
   quadrant: 'Platforms'
   ring: 'Assess'
 slug: 'void-zero-javascript-tooling-platform'
-draft: true
+draft: false
 ---
 
 The company behind Vite, Vitest, Rolldown, and Oxc — now consolidated under one VC-backed entity (Accel, Peak XV, others). They've launched VitePlus as the unified CLI product tying it all together.

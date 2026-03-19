@@ -3,7 +3,7 @@ title: 'Claude Is Doubling Usage Limits This Month'
 summary:
   'Anthropic is running a two-week promotion doubling Claude usage limits during off-peak hours through March 27.'
 date: 2026-03-14T12:00:00-07:00
-draft: true
+draft: false
 content_type: curated
 source_url: 'https://support.claude.com/en/articles/14063676-claude-march-2026-usage-promotion'
 tags: ['Claude', 'Anthropic', 'AI']

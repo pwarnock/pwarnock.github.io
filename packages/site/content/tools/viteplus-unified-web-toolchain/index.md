@@ -12,7 +12,7 @@ radar:
   quadrant: 'Tools'
   ring: 'Assess'
 slug: 'viteplus-unified-web-toolchain'
-draft: true
+draft: false
 ---
 
 Single CLI that replaces your dev server, bundler, linter, formatter, test runner, and package builder. Built on Vite, Vitest, Rolldown, and Oxc — the Rust-based tooling layer that's been gaining traction across the ecosystem.
