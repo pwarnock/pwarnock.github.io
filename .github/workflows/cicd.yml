@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+# Force Node.js 24 for all actions (Node.js 20 deprecated, enforced June 2026)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: 'pages'

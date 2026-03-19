@@ -13,6 +13,10 @@ permissions:
   contents: write
   packages: write
 
+# Force Node.js 24 for all actions (Node.js 20 deprecated, enforced June 2026)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   validate-request:
     name: Validate Release Request
@@ -203,8 +207,6 @@ jobs:
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           hugo-version: 'latest'
           extended: true
