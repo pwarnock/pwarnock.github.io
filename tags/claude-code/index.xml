@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Claude Code on Peter Warnock</title><link>https://peterwarnock.com/tags/claude-code/</link><description>Recent content in Claude Code on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/claude-code/index.xml" rel="self" type="application/rss+xml"/><item><title>Publishing Blog Posts with Claude Code on iPhone</title><link>https://peterwarnock.com/blog/posts/publishing-with-claude-code-iphone/</link><pubDate>Fri, 23 Jan 2026 18:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/publishing-with-claude-code-iphone/</guid><description>How I use Claude Code in the Claude app on iPhone to create, edit, and publish blog posts directly from my mobile device.</description></item><item><title>Cody Article Writer</title><link>https://peterwarnock.com/tools/cody-article-writer/</link><pubDate>Mon, 05 Jan 2026 17:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/cody-article-writer/</guid><description>AI-assisted article writing skill for Claude Code with structured workflows, style guides, and iterative collaboration.</description></item><item><title>pwarnock-cc-plugins</title><link>https://peterwarnock.com/tools/claude-code-plugin-marketplace-curated-extensions/</link><pubDate>Mon, 01 Dec 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/claude-code-plugin-marketplace-curated-extensions/</guid><description>&lt;p&gt;pwarnock-cc-plugins is a curated marketplace of Claude Code plugins and
+reusable skills, organized into functional categories with quality gates that
+prioritize depth, security review, and real-world testing over volume. It
+provides 11 plugins across 5 categories and 7 marketplace skills for extending
+Claude Code&amp;rsquo;s capabilities.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="plugin-categories"&gt;Plugin Categories&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt;: Connect Claude Code to external services (Notion CRM,
+Strong&amp;rsquo;s Concordance for biblical study)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Developer Tools&lt;/strong&gt;: Curated best practices for Vercel and Prisma that go
+beyond generic documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow&lt;/strong&gt;: Cross-session orchestration via gastown-parallel-workflow and
+session retrospectives&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge &amp;amp; Context&lt;/strong&gt;: Three-tier progressive disclosure system for managing
+large codebase context (constitution, trigger tables, subsystem maps)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search &amp;amp; Discovery&lt;/strong&gt;: Semantic search across millions of open source
+examples via githits-mcp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="marketplace-skills"&gt;Marketplace Skills&lt;/h3&gt;
+&lt;p&gt;Seven installable workflow skills:&lt;/p&gt;</description></item></channel></rss>

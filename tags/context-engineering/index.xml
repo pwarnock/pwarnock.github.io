@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Context-Engineering on Peter Warnock</title><link>https://peterwarnock.com/tags/context-engineering/</link><description>Recent content in Context-Engineering on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/context-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude Code Skills</title><link>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</guid><description>&lt;p&gt;A skill is a folder with a &lt;code&gt;SKILL.md&lt;/code&gt; file that teaches Claude how to handle a specific task or workflow. Instead of re-explaining your preferences, processes, and domain expertise every conversation, you codify it once and Claude loads it when relevant.&lt;/p&gt;
+&lt;h2 id="how-it-works"&gt;How it works&lt;/h2&gt;
+&lt;p&gt;Skills use progressive disclosure — three levels of context loading:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;YAML frontmatter&lt;/strong&gt; — always loaded into Claude&amp;rsquo;s system prompt. Just enough for Claude to know when to activate the skill.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SKILL.md body&lt;/strong&gt; — loaded when Claude thinks the skill is relevant. Full instructions and guidance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linked files&lt;/strong&gt; (&lt;code&gt;scripts/&lt;/code&gt;, &lt;code&gt;references/&lt;/code&gt;, &lt;code&gt;assets/&lt;/code&gt;) — additional files Claude discovers and navigates as needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This minimizes token usage while keeping specialized expertise available.&lt;/p&gt;</description></item><item><title>Copilot Custom Instructions</title><link>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</guid><description>&lt;p&gt;Copilot supports &lt;code&gt;.instructions.md&lt;/code&gt; files that live in your repo and give it persistent context — coding standards, framework conventions, architectural constraints. Same idea as CLAUDE.md for Claude Code or AGENTS.md for Codex, but with per-topic scoping so you can have separate instruction files for different concerns.&lt;/p&gt;
+&lt;h2 id="the-technique"&gt;The technique&lt;/h2&gt;
+&lt;p&gt;Instead of repeating context in every prompt, codify it once as a file. Copilot loads relevant instruction files based on the workspace and files you&amp;rsquo;re editing. The 
+
+
+
+
+
+
+&lt;a href="https://github.com/github/awesome-copilot/tree/main/instructions" rel="noopener noreferrer" target="_blank"&gt;awesome-copilot repo&lt;/a&gt;
+ has 160+ community-maintained examples to start from or adapt.&lt;/p&gt;</description></item></channel></rss>

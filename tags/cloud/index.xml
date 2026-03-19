@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud on Peter Warnock</title><link>https://peterwarnock.com/tags/cloud/</link><description>Recent content in Cloud on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>Aspire by Microsoft</title><link>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s orchestration platform for distributed apps, created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#david-fowler"&gt;David Fowler&lt;/a&gt;
+ and the .NET team. Define your entire stack — frontends, APIs, databases, containers — in a single C# AppHost file, then run locally or deploy to Kubernetes, Azure, AWS, or on-prem. Recently rebranded from &amp;ldquo;.NET Aspire&amp;rdquo; to just &amp;ldquo;Aspire&amp;rdquo;, reflecting its multi-language positioning.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Code-first config&lt;/strong&gt;: Model services, dependencies, and deployment in C# instead of scattered YAML/config files&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-language&lt;/strong&gt;: Orchestrates C#, Java, Python, TypeScript, Go — the rebrand from .NET Aspire signals this isn&amp;rsquo;t a .NET-only play&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Built-in observability&lt;/strong&gt;: OpenTelemetry dashboard with logs, traces, and health checks out of the box&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local-to-prod parity&lt;/strong&gt;: Same app model runs via &lt;code&gt;aspire run&lt;/code&gt; locally and &lt;code&gt;aspire deploy&lt;/code&gt; to production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;100+ integrations&lt;/strong&gt;: Pre-built connectors for databases, messaging, cloud services, monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Interesting approach to the &amp;ldquo;how do I run 6 services locally&amp;rdquo; problem. The code-first model is more maintainable than docker-compose for complex setups. Dropping the &amp;ldquo;.NET&amp;rdquo; prefix is a deliberate signal — they&amp;rsquo;re positioning this as a polyglot platform, not a .NET ecosystem tool. The OpenTelemetry dashboard being built in rather than bolted on is a good default.&lt;/p&gt;</description></item><item><title>Azure Application Gateway</title><link>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</guid><description>&lt;p&gt;Azure&amp;rsquo;s Layer 7 (HTTP/HTTPS) load balancer and reverse proxy. Sits in front of your backend pools and handles SSL termination, WAF, path-based routing, and multi-site hosting. Different from Azure Load Balancer, which operates at Layer 4 (TCP/IP).&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routing&lt;/strong&gt;: Path-based (&lt;code&gt;/api/*&lt;/code&gt; → pool A, &lt;code&gt;/static/*&lt;/code&gt; → pool B) and multi-site (different domains to different backends)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WAF&lt;/strong&gt;: Optional web application firewall using OWASP Core Rule Set — covers SQL injection, XSS, command injection, request smuggling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSL termination&lt;/strong&gt;: Offloads TLS at the gateway so backends don&amp;rsquo;t handle certs. Can re-encrypt for end-to-end if needed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backend pools&lt;/strong&gt;: VMs, scale sets, App Services, or on-prem servers. Round-robin load balancing with session stickiness option&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Health probes&lt;/strong&gt;: Marks unhealthy backends (non-2xx/3xx responses) and stops routing to them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autoscaling&lt;/strong&gt;: Scales instances based on traffic load&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocol support&lt;/strong&gt;: WebSocket and HTTP/2 natively&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Investigating for work. If you&amp;rsquo;re already in Azure and need application-level routing with WAF, this is the managed option. The path-based and multi-site routing is useful for consolidating multiple apps behind a single IP. SSL termination at the gateway simplifies cert management across backend pools.&lt;/p&gt;</description></item><item><title>Bicep</title><link>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you&amp;rsquo;re multi-cloud, use Terraform.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative Azure resource definitions with type safety and IntelliSense&lt;/li&gt;
+&lt;li&gt;Compiles to ARM templates — anything ARM can do, Bicep can do with less verbosity&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;li&gt;What-if deployments to preview changes before applying&lt;/li&gt;
+&lt;li&gt;First-class VS Code extension with validation and autocomplete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re Azure-only, Bicep is the path of least resistance for IaC. No state file to manage (Azure is the source of truth), no provider plugins, no HCL to learn. The trade-off is obvious: you&amp;rsquo;re locked to Azure. For Azure shops, that&amp;rsquo;s fine. For anyone else, Terraform or OpenTofu gives you portability.&lt;/p&gt;</description></item><item><title>Terraform</title><link>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</guid><description>&lt;p&gt;HashiCorp&amp;rsquo;s infrastructure as code tool. Write declarative HCL config, run &lt;code&gt;terraform plan&lt;/code&gt; to preview changes, &lt;code&gt;terraform apply&lt;/code&gt; to provision. Multi-cloud — works with AWS, Azure, GCP, and hundreds of other providers. Created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#mitchell-hashimoto"&gt;Mitchell Hashimoto&lt;/a&gt;
+.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative infrastructure definitions in HCL&lt;/li&gt;
+&lt;li&gt;State management tracks what&amp;rsquo;s deployed vs what&amp;rsquo;s defined&lt;/li&gt;
+&lt;li&gt;Plan/apply workflow lets you preview before changing anything&lt;/li&gt;
+&lt;li&gt;Provider ecosystem covers virtually every cloud and SaaS service&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Industry standard for multi-cloud IaC. If you&amp;rsquo;re not locked into a single cloud&amp;rsquo;s native tooling (like Bicep for Azure), Terraform is the default choice. The provider ecosystem is unmatched. Worth noting the BSL license change in 2023 — led to the OpenTofu fork for those who want a pure open-source option.&lt;/p&gt;</description></item></channel></rss>

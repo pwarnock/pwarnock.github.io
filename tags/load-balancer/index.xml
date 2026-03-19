@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Load-Balancer on Peter Warnock</title><link>https://peterwarnock.com/tags/load-balancer/</link><description>Recent content in Load-Balancer on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/load-balancer/index.xml" rel="self" type="application/rss+xml"/><item><title>Azure Application Gateway</title><link>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</guid><description>&lt;p&gt;Azure&amp;rsquo;s Layer 7 (HTTP/HTTPS) load balancer and reverse proxy. Sits in front of your backend pools and handles SSL termination, WAF, path-based routing, and multi-site hosting. Different from Azure Load Balancer, which operates at Layer 4 (TCP/IP).&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routing&lt;/strong&gt;: Path-based (&lt;code&gt;/api/*&lt;/code&gt; → pool A, &lt;code&gt;/static/*&lt;/code&gt; → pool B) and multi-site (different domains to different backends)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WAF&lt;/strong&gt;: Optional web application firewall using OWASP Core Rule Set — covers SQL injection, XSS, command injection, request smuggling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSL termination&lt;/strong&gt;: Offloads TLS at the gateway so backends don&amp;rsquo;t handle certs. Can re-encrypt for end-to-end if needed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backend pools&lt;/strong&gt;: VMs, scale sets, App Services, or on-prem servers. Round-robin load balancing with session stickiness option&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Health probes&lt;/strong&gt;: Marks unhealthy backends (non-2xx/3xx responses) and stops routing to them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autoscaling&lt;/strong&gt;: Scales instances based on traffic load&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocol support&lt;/strong&gt;: WebSocket and HTTP/2 natively&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Investigating for work. If you&amp;rsquo;re already in Azure and need application-level routing with WAF, this is the managed option. The path-based and multi-site routing is useful for consolidating multiple apps behind a single IP. SSL termination at the gateway simplifies cert management across backend pools.&lt;/p&gt;</description></item></channel></rss>

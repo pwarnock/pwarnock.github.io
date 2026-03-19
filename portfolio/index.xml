@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Portfolio on Peter Warnock</title><link>https://peterwarnock.com/portfolio/</link><description>Recent content in Portfolio on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Nov 2025 17:59:58 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Astro Starlight Demo</title><link>https://peterwarnock.com/portfolio/astro-starlight-demo/</link><pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/astro-starlight-demo/</guid><description>&lt;p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Portfolio on Peter Warnock</title><link>https://peterwarnock.com/portfolio/</link><description>Recent content in Portfolio on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/portfolio/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude Code Plugin Marketplace</title><link>https://peterwarnock.com/portfolio/claude-code-plugin-marketplace/</link><pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/claude-code-plugin-marketplace/</guid><description>&lt;p&gt;A curated collection of 11 Claude Code plugins and 7 marketplace skills,
+organized into a quality-gated marketplace that prioritizes depth over breadth.
+Each plugin is tested, security-reviewed, and documented to production standards
+rather than duplicating official Anthropic documentation.&lt;/p&gt;
+&lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;
+&lt;p&gt;Claude Code&amp;rsquo;s plugin system enables extending the AI coding assistant with
+custom commands, hooks, agents, and skills. This marketplace emerged from
+building real-world plugins for daily development work and recognizing the need
+for a curated, opinionated collection rather than a sprawling registry.&lt;/p&gt;</description></item><item><title>Astro Starlight Demo</title><link>https://peterwarnock.com/portfolio/astro-starlight-demo/</link><pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/astro-starlight-demo/</guid><description>&lt;p&gt;
 
 &lt;img loading="lazy" src="https://peterwarnock.com/astro-starlight-demo/_astro/houston.CZZyCf7p_Z1g0CND.webp" alt="Astro Starlight Demo Screenshot" /&gt;
 &lt;/p&gt;
 &lt;p&gt;Astro Starlight positions itself as &amp;ldquo;Everything you need to build a stellar
 documentation website.&amp;rdquo; It was so easy to get started.
-&lt;code&gt;bun create astro --template starlight&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Alpha Ad Ops</title><link>https://peterwarnock.com/portfolio/alpha-ad-ops/</link><pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/alpha-ad-ops/</guid><description>&lt;p&gt;Alpha Ad Ops is a proof-of-concept advertising operations platform developed as
-a rapid prototype to demonstrate full-stack development capabilities and modern
-SaaS architecture patterns. The project was built from concept to deployment in
-a single day based on prospect requirements.&lt;/p&gt;
-&lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;
-&lt;p&gt;This prototype showcases the ability to quickly translate business requirements
-into a functional SaaS application using modern Laravel ecosystem tools. The
-platform demonstrates multi-tenant architecture, admin panel development, and
-cloud deployment capabilities.&lt;/p&gt;</description></item><item><title>YouSong</title><link>https://peterwarnock.com/portfolio/yousong/</link><pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/yousong/</guid><description>&lt;p&gt;YouSong is an AI-powered application that generates children&amp;rsquo;s scripture-based
+&lt;code&gt;bun create astro --template starlight&lt;/code&gt;&lt;/p&gt;</description></item><item><title>YouSong</title><link>https://peterwarnock.com/portfolio/yousong/</link><pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/portfolio/yousong/</guid><description>&lt;p&gt;YouSong is an AI-powered application that generates children&amp;rsquo;s scripture-based
 songs, built during the Gloo AI Hackathon 2025. The project demonstrates rapid
 full-stack development using cutting-edge AI tools and modern web technologies
 to create an engaging educational music experience.&lt;/p&gt;

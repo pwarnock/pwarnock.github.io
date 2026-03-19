@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hashicorp on Peter Warnock</title><link>https://peterwarnock.com/tags/hashicorp/</link><description>Recent content in Hashicorp on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/hashicorp/index.xml" rel="self" type="application/rss+xml"/><item><title>Terraform</title><link>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</guid><description>&lt;p&gt;HashiCorp&amp;rsquo;s infrastructure as code tool. Write declarative HCL config, run &lt;code&gt;terraform plan&lt;/code&gt; to preview changes, &lt;code&gt;terraform apply&lt;/code&gt; to provision. Multi-cloud — works with AWS, Azure, GCP, and hundreds of other providers. Created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#mitchell-hashimoto"&gt;Mitchell Hashimoto&lt;/a&gt;
+.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative infrastructure definitions in HCL&lt;/li&gt;
+&lt;li&gt;State management tracks what&amp;rsquo;s deployed vs what&amp;rsquo;s defined&lt;/li&gt;
+&lt;li&gt;Plan/apply workflow lets you preview before changing anything&lt;/li&gt;
+&lt;li&gt;Provider ecosystem covers virtually every cloud and SaaS service&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Industry standard for multi-cloud IaC. If you&amp;rsquo;re not locked into a single cloud&amp;rsquo;s native tooling (like Bicep for Azure), Terraform is the default choice. The provider ecosystem is unmatched. Worth noting the BSL license change in 2023 — led to the OpenTofu fork for those who want a pure open-source option.&lt;/p&gt;</description></item></channel></rss>

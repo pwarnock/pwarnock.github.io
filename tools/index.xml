@@ -1,4 +1,271 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on Peter Warnock</title><link>https://peterwarnock.com/tools/</link><description>Recent content in Tools on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>Bat - Cat with Wings</title><link>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</guid><description>A cat command replacement with syntax highlighting and great formatting, perfect for viewing source code and Markdown files.</description></item><item><title>Eza - Modern LS Replacement</title><link>https://peterwarnock.com/tools/eza-modern-ls-replacement/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/eza-modern-ls-replacement/</guid><description>Eza is a feature-rich &lt;code&gt;ls&lt;/code&gt; replacement, offering vibrant color highlighting, file type icons, and flexible tree and table views for enhanced terminal navigation.</description></item><item><title>Just - Modern Make Replacement</title><link>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</guid><description>A command runner that saves time and provides command inheritance, perfect for development workflows and AI agent integration.</description></item><item><title>Micro - Modern Terminal Editor</title><link>https://peterwarnock.com/tools/micro-terminal-editor/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/micro-terminal-editor/</guid><description>A modern terminal-based editor written in Go, configurable with themes and standard keyboard shortcuts.</description></item><item><title>Yazi - Terminal File Manager</title><link>https://peterwarnock.com/tools/yazi-terminal-file-manager/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/yazi-terminal-file-manager/</guid><description>A fully-featured terminal file manager with viewers for different file types, easy navigation, and multi-column view.</description></item><item><title>Tailwind CSS - Utility-First CSS Framework</title><link>https://peterwarnock.com/tools/tailwind-css-utility-first-css-framework/</link><pubDate>Sat, 15 Nov 2025 21:30:00 -0800</pubDate><guid>https://peterwarnock.com/tools/tailwind-css-utility-first-css-framework/</guid><description>Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.</description></item><item><title>DaisyUI - Component Library for Tailwind CSS</title><link>https://peterwarnock.com/tools/daisyui-component-library-for-tailwind-css/</link><pubDate>Sat, 15 Nov 2025 21:25:00 -0800</pubDate><guid>https://peterwarnock.com/tools/daisyui-component-library-for-tailwind-css/</guid><description>DaisyUI is a component library that adds beautiful, accessible UI components to Tailwind CSS, enabling rapid development of modern web interfaces with semantic class names.</description></item><item><title>GitHub Actions - CI/CD for Modern Development</title><link>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</link><pubDate>Sat, 15 Nov 2025 21:20:00 -0800</pubDate><guid>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</guid><description>GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.</description></item><item><title>Godog - BDD Testing Framework for Go</title><link>https://peterwarnock.com/tools/godog-bdd-testing-framework-for-go/</link><pubDate>Sat, 15 Nov 2025 20:35:00 -0800</pubDate><guid>https://peterwarnock.com/tools/godog-bdd-testing-framework-for-go/</guid><description>Godog is a Behavior-Driven Development (BDD) testing framework for Go that enables writing human-readable tests using Gherkin syntax, bridging the gap between technical and business stakeholders.</description></item><item><title>TypeScript - JavaScript with Type Safety</title><link>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</link><pubDate>Sat, 15 Nov 2025 20:15:00 -0800</pubDate><guid>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</guid><description>TypeScript is a strongly typed programming language that builds on JavaScript, adding static type definitions to enable better development tooling and enhanced code reliability.</description></item><item><title>Playwright - Modern End-to-End Testing Framework</title><link>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</link><pubDate>Sat, 15 Nov 2025 20:10:00 -0800</pubDate><guid>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</guid><description>Playwright is a modern end-to-end testing framework for web applications that provides reliable cross-browser testing, mobile emulation, and powerful debugging capabilities.</description></item><item><title>Go - Modern Systems Programming Language</title><link>https://peterwarnock.com/tools/go-modern-systems-programming-language/</link><pubDate>Sat, 15 Nov 2025 20:05:00 -0800</pubDate><guid>https://peterwarnock.com/tools/go-modern-systems-programming-language/</guid><description>Go is a modern systems programming language designed for simplicity, reliability, and efficiency. Perfect for backend services, CLI tools, and high-performance applications.</description></item><item><title>Bun - Lightning-Fast JavaScript Runtime &amp; Package Manager</title><link>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</link><pubDate>Sat, 15 Nov 2025 20:00:00 -0800</pubDate><guid>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</guid><description>Bun is a modern JavaScript runtime and package manager that delivers 20x faster dependency installation and near-instant script execution, revolutionizing JavaScript development workflow.</description></item><item><title>Beads</title><link>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</guid><description>&lt;p&gt;Beads is a lightweight, distributed task management system built specifically
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on Peter Warnock</title><link>https://peterwarnock.com/tools/</link><description>Recent content in Tools on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>Aspire by Microsoft</title><link>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s orchestration platform for distributed apps, created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#david-fowler"&gt;David Fowler&lt;/a&gt;
+ and the .NET team. Define your entire stack — frontends, APIs, databases, containers — in a single C# AppHost file, then run locally or deploy to Kubernetes, Azure, AWS, or on-prem. Recently rebranded from &amp;ldquo;.NET Aspire&amp;rdquo; to just &amp;ldquo;Aspire&amp;rdquo;, reflecting its multi-language positioning.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Code-first config&lt;/strong&gt;: Model services, dependencies, and deployment in C# instead of scattered YAML/config files&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-language&lt;/strong&gt;: Orchestrates C#, Java, Python, TypeScript, Go — the rebrand from .NET Aspire signals this isn&amp;rsquo;t a .NET-only play&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Built-in observability&lt;/strong&gt;: OpenTelemetry dashboard with logs, traces, and health checks out of the box&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local-to-prod parity&lt;/strong&gt;: Same app model runs via &lt;code&gt;aspire run&lt;/code&gt; locally and &lt;code&gt;aspire deploy&lt;/code&gt; to production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;100+ integrations&lt;/strong&gt;: Pre-built connectors for databases, messaging, cloud services, monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Interesting approach to the &amp;ldquo;how do I run 6 services locally&amp;rdquo; problem. The code-first model is more maintainable than docker-compose for complex setups. Dropping the &amp;ldquo;.NET&amp;rdquo; prefix is a deliberate signal — they&amp;rsquo;re positioning this as a polyglot platform, not a .NET ecosystem tool. The OpenTelemetry dashboard being built in rather than bolted on is a good default.&lt;/p&gt;</description></item><item><title>Azure Application Gateway</title><link>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/azure-application-gateway-layer-7-load-balancer/</guid><description>&lt;p&gt;Azure&amp;rsquo;s Layer 7 (HTTP/HTTPS) load balancer and reverse proxy. Sits in front of your backend pools and handles SSL termination, WAF, path-based routing, and multi-site hosting. Different from Azure Load Balancer, which operates at Layer 4 (TCP/IP).&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routing&lt;/strong&gt;: Path-based (&lt;code&gt;/api/*&lt;/code&gt; → pool A, &lt;code&gt;/static/*&lt;/code&gt; → pool B) and multi-site (different domains to different backends)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WAF&lt;/strong&gt;: Optional web application firewall using OWASP Core Rule Set — covers SQL injection, XSS, command injection, request smuggling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSL termination&lt;/strong&gt;: Offloads TLS at the gateway so backends don&amp;rsquo;t handle certs. Can re-encrypt for end-to-end if needed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backend pools&lt;/strong&gt;: VMs, scale sets, App Services, or on-prem servers. Round-robin load balancing with session stickiness option&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Health probes&lt;/strong&gt;: Marks unhealthy backends (non-2xx/3xx responses) and stops routing to them&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autoscaling&lt;/strong&gt;: Scales instances based on traffic load&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocol support&lt;/strong&gt;: WebSocket and HTTP/2 natively&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Investigating for work. If you&amp;rsquo;re already in Azure and need application-level routing with WAF, this is the managed option. The path-based and multi-site routing is useful for consolidating multiple apps behind a single IP. SSL termination at the gateway simplifies cert management across backend pools.&lt;/p&gt;</description></item><item><title>Bicep</title><link>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you&amp;rsquo;re multi-cloud, use Terraform.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative Azure resource definitions with type safety and IntelliSense&lt;/li&gt;
+&lt;li&gt;Compiles to ARM templates — anything ARM can do, Bicep can do with less verbosity&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;li&gt;What-if deployments to preview changes before applying&lt;/li&gt;
+&lt;li&gt;First-class VS Code extension with validation and autocomplete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re Azure-only, Bicep is the path of least resistance for IaC. No state file to manage (Azure is the source of truth), no provider plugins, no HCL to learn. The trade-off is obvious: you&amp;rsquo;re locked to Azure. For Azure shops, that&amp;rsquo;s fine. For anyone else, Terraform or OpenTofu gives you portability.&lt;/p&gt;</description></item><item><title>Claude Code Skills</title><link>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</guid><description>&lt;p&gt;A skill is a folder with a &lt;code&gt;SKILL.md&lt;/code&gt; file that teaches Claude how to handle a specific task or workflow. Instead of re-explaining your preferences, processes, and domain expertise every conversation, you codify it once and Claude loads it when relevant.&lt;/p&gt;
+&lt;h2 id="how-it-works"&gt;How it works&lt;/h2&gt;
+&lt;p&gt;Skills use progressive disclosure — three levels of context loading:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;YAML frontmatter&lt;/strong&gt; — always loaded into Claude&amp;rsquo;s system prompt. Just enough for Claude to know when to activate the skill.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SKILL.md body&lt;/strong&gt; — loaded when Claude thinks the skill is relevant. Full instructions and guidance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linked files&lt;/strong&gt; (&lt;code&gt;scripts/&lt;/code&gt;, &lt;code&gt;references/&lt;/code&gt;, &lt;code&gt;assets/&lt;/code&gt;) — additional files Claude discovers and navigates as needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This minimizes token usage while keeping specialized expertise available.&lt;/p&gt;</description></item><item><title>Conductor</title><link>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</guid><description>&lt;p&gt;macOS app from Melty Labs for running multiple Claude Code (or Codex) agents simultaneously across isolated git worktrees. Each workspace gets its own branch and copy of the repo.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs parallel Claude Code instances across worktrees with a visual UI&lt;/li&gt;
+&lt;li&gt;Integrates with Linear and GitHub — inject issues as context, open PRs from the app&lt;/li&gt;
+&lt;li&gt;Lets you hand off plans between agents, provide feedback mid-run, and review code&lt;/li&gt;
+&lt;li&gt;Handles all the git worktree management for you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;The parallel worktree pattern is something I already do manually. Conductor puts a UI on it and adds the Linear integration, which could be useful for turning a backlog into parallel agent work. The target audience is senior devs and tech leads whose day is a series of interruptions — chunk out well-defined tasks and let agents work them in parallel.&lt;/p&gt;</description></item><item><title>Copilot Custom Instructions</title><link>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</guid><description>&lt;p&gt;Copilot supports &lt;code&gt;.instructions.md&lt;/code&gt; files that live in your repo and give it persistent context — coding standards, framework conventions, architectural constraints. Same idea as CLAUDE.md for Claude Code or AGENTS.md for Codex, but with per-topic scoping so you can have separate instruction files for different concerns.&lt;/p&gt;
+&lt;h2 id="the-technique"&gt;The technique&lt;/h2&gt;
+&lt;p&gt;Instead of repeating context in every prompt, codify it once as a file. Copilot loads relevant instruction files based on the workspace and files you&amp;rsquo;re editing. The 
+
+
+
+
+
+
+&lt;a href="https://github.com/github/awesome-copilot/tree/main/instructions" rel="noopener noreferrer" target="_blank"&gt;awesome-copilot repo&lt;/a&gt;
+ has 160+ community-maintained examples to start from or adapt.&lt;/p&gt;</description></item><item><title>gh-aw</title><link>https://peterwarnock.com/tools/gh-aw-github-agentic-workflows/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/gh-aw-github-agentic-workflows/</guid><description>&lt;p&gt;GitHub&amp;rsquo;s take on running coding agents (Copilot, Claude, Codex) inside Actions workflows. You write automation in markdown instead of YAML. The interesting part is the security model — read-only by default, sandboxed execution, tool allowlisting, and network isolation for anything that writes.&lt;/p&gt;
+&lt;p&gt;Still early. GitHub themselves say &amp;ldquo;use it with caution, and at your own risk.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Defines repo automations in markdown files&lt;/li&gt;
+&lt;li&gt;Triggers on issues, PRs, discussions, or schedules&lt;/li&gt;
+&lt;li&gt;Runs whichever coding agent you point it at&lt;/li&gt;
+&lt;li&gt;Handles things like issue triage, doc updates, test improvements, CI failure analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Interesting middle ground between &amp;ldquo;agent does everything on your laptop&amp;rdquo; and &amp;ldquo;agent is a black box SaaS.&amp;rdquo; Running agents inside Actions means you get the audit trail, the permissions model, and the existing GitHub infrastructure for free. The markdown-as-workflow definition is worth watching — could make agent automation more accessible than writing custom Actions YAML.&lt;/p&gt;</description></item><item><title>Terraform</title><link>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</guid><description>&lt;p&gt;HashiCorp&amp;rsquo;s infrastructure as code tool. Write declarative HCL config, run &lt;code&gt;terraform plan&lt;/code&gt; to preview changes, &lt;code&gt;terraform apply&lt;/code&gt; to provision. Multi-cloud — works with AWS, Azure, GCP, and hundreds of other providers. Created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#mitchell-hashimoto"&gt;Mitchell Hashimoto&lt;/a&gt;
+.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative infrastructure definitions in HCL&lt;/li&gt;
+&lt;li&gt;State management tracks what&amp;rsquo;s deployed vs what&amp;rsquo;s defined&lt;/li&gt;
+&lt;li&gt;Plan/apply workflow lets you preview before changing anything&lt;/li&gt;
+&lt;li&gt;Provider ecosystem covers virtually every cloud and SaaS service&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Industry standard for multi-cloud IaC. If you&amp;rsquo;re not locked into a single cloud&amp;rsquo;s native tooling (like Bicep for Azure), Terraform is the default choice. The provider ecosystem is unmatched. Worth noting the BSL license change in 2023 — led to the OpenTofu fork for those who want a pure open-source option.&lt;/p&gt;</description></item><item><title>VitePlus</title><link>https://peterwarnock.com/tools/viteplus-unified-web-toolchain/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/viteplus-unified-web-toolchain/</guid><description>&lt;p&gt;Single CLI that replaces your dev server, bundler, linter, formatter, test runner, and package builder. Built on Vite, Vitest, Rolldown, and Oxc — the Rust-based tooling layer that&amp;rsquo;s been gaining traction across the ecosystem.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dev server and production builds (Vite + Rolldown)&lt;/li&gt;
+&lt;li&gt;Lint, format, and type-check in one pass (Oxlint + Oxfmt)&lt;/li&gt;
+&lt;li&gt;Test runner with Jest-compatible API, browser mode, and coverage&lt;/li&gt;
+&lt;li&gt;Library packaging with auto-generated TypeScript definitions&lt;/li&gt;
+&lt;li&gt;Task runner with caching and monorepo-aware dependency resolution&lt;/li&gt;
+&lt;li&gt;Auto-detects Node version and package manager per project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;The &amp;ldquo;one tool to rule them all&amp;rdquo; pitch isn&amp;rsquo;t new, but the foundation is interesting — Rolldown and Oxc are already proving themselves independently. If VitePlus gets the integration right, it could eliminate a lot of config-file overhead. The monorepo task runner with caching is the part worth paying attention to.&lt;/p&gt;</description></item><item><title>Void Zero</title><link>https://peterwarnock.com/tools/void-zero-javascript-tooling-platform/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/void-zero-javascript-tooling-platform/</guid><description>&lt;p&gt;The company behind Vite, Vitest, Rolldown, and Oxc — now consolidated under one VC-backed entity (Accel, Peak XV, others). They&amp;rsquo;ve launched VitePlus as the unified CLI product tying it all together.&lt;/p&gt;
+&lt;h2 id="what-it-is"&gt;What it is&lt;/h2&gt;
+&lt;p&gt;Void Zero is the commercial layer on top of the open-source tools that a large chunk of the JS ecosystem already depends on. Vite powers millions of projects. Rolldown is replacing esbuild as Vite&amp;rsquo;s bundler. Oxc is the Rust-based linter/formatter/parser gaining momentum. Void Zero is the company trying to turn all of that into a business.&lt;/p&gt;</description></item><item><title>Cody Article Writer</title><link>https://peterwarnock.com/tools/cody-article-writer/</link><pubDate>Mon, 05 Jan 2026 17:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/cody-article-writer/</guid><description>AI-assisted article writing skill for Claude Code with structured workflows, style guides, and iterative collaboration.</description></item><item><title>Gastown</title><link>https://peterwarnock.com/tools/gastown/</link><pubDate>Mon, 05 Jan 2026 17:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/gastown/</guid><description>Multi-agent orchestrator for Claude Code. Track work with convoys, sling to agents, and coordinate complex workflows.</description></item><item><title>tmux</title><link>https://peterwarnock.com/tools/tmux/</link><pubDate>Mon, 05 Jan 2026 17:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/tmux/</guid><description>Terminal multiplexer for managing multiple terminal sessions within a single window.</description></item><item><title>Bun</title><link>https://peterwarnock.com/tools/bun/</link><pubDate>Sat, 27 Dec 2025 00:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/bun/</guid><description>&lt;h1 id="bun"&gt;Bun&lt;/h1&gt;
+&lt;h2 id="overview"&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Bun shows promise for specific use cases and is worth exploring through targeted trials. Fast JavaScript runtime, bundler, test runner, and package manager&lt;/p&gt;
+&lt;h2 id="key-features"&gt;Key Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Promising approach to solving specific problems&lt;/li&gt;
+&lt;li&gt;Growing community and ecosystem&lt;/li&gt;
+&lt;li&gt;Active development and improvement&lt;/li&gt;
+&lt;li&gt;Good initial documentation&lt;/li&gt;
+&lt;li&gt;Positive early adopter feedback&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="strengths-and-weaknesses"&gt;Strengths and Weaknesses&lt;/h2&gt;
+&lt;h3 id="strengths"&gt;Strengths&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Modern approach with current best practices&lt;/li&gt;
+&lt;li&gt;Active community and rapid iteration&lt;/li&gt;
+&lt;li&gt;Good performance for targeted use cases&lt;/li&gt;
+&lt;li&gt;Growing ecosystem of libraries and tools&lt;/li&gt;
+&lt;li&gt;Enthusiastic early adopter community&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="weaknesses"&gt;Weaknesses&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Limited production track record&lt;/li&gt;
+&lt;li&gt;Smaller talent pool and expertise&lt;/li&gt;
+&lt;li&gt;Ecosystem still maturing&lt;/li&gt;
+&lt;li&gt;Potential for breaking changes&lt;/li&gt;
+&lt;li&gt;Learning curve for teams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="use-cases"&gt;Use Cases&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;New projects with flexibility in technology choices&lt;/li&gt;
+&lt;li&gt;Proof of concepts and prototypes&lt;/li&gt;
+&lt;li&gt;Teams willing to invest in learning&lt;/li&gt;
+&lt;li&gt;Applications where specific strengths align&lt;/li&gt;
+&lt;li&gt;Scenarios where trade-offs are acceptable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="trial-recommendation"&gt;Trial Recommendation&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;TRIAL&lt;/strong&gt; - Worth exploring for new projects or pilots.&lt;/p&gt;</description></item><item><title>pwarnock-cc-plugins</title><link>https://peterwarnock.com/tools/claude-code-plugin-marketplace-curated-extensions/</link><pubDate>Mon, 01 Dec 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/claude-code-plugin-marketplace-curated-extensions/</guid><description>&lt;p&gt;pwarnock-cc-plugins is a curated marketplace of Claude Code plugins and
+reusable skills, organized into functional categories with quality gates that
+prioritize depth, security review, and real-world testing over volume. It
+provides 11 plugins across 5 categories and 7 marketplace skills for extending
+Claude Code&amp;rsquo;s capabilities.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="plugin-categories"&gt;Plugin Categories&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Integrations&lt;/strong&gt;: Connect Claude Code to external services (Notion CRM,
+Strong&amp;rsquo;s Concordance for biblical study)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Developer Tools&lt;/strong&gt;: Curated best practices for Vercel and Prisma that go
+beyond generic documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow&lt;/strong&gt;: Cross-session orchestration via gastown-parallel-workflow and
+session retrospectives&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge &amp;amp; Context&lt;/strong&gt;: Three-tier progressive disclosure system for managing
+large codebase context (constitution, trigger tables, subsystem maps)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search &amp;amp; Discovery&lt;/strong&gt;: Semantic search across millions of open source
+examples via githits-mcp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="marketplace-skills"&gt;Marketplace Skills&lt;/h3&gt;
+&lt;p&gt;Seven installable workflow skills:&lt;/p&gt;</description></item><item><title>Crush</title><link>https://peterwarnock.com/tools/crush-ai-coding-assistant/</link><pubDate>Thu, 27 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/crush-ai-coding-assistant/</guid><description>&lt;p&gt;Crush represents Charmbracelet&amp;rsquo;s entry into the AI coding assistant space,
+bringing their signature terminal-first philosophy and &amp;ldquo;glamourous&amp;rdquo; design
+aesthetic to AI-powered development. Built as a native terminal application,
+Crush distinguishes itself through its exceptional multi-model support,
+flexible configuration options, and deep integration with developer workflows
+through LSP and MCP protocols.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="terminal-first-design"&gt;Terminal-First Design&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Native CLI Experience&lt;/strong&gt;: Fully optimized for terminal workflows with
+keyboard-driven interaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Support&lt;/strong&gt;: First-class support on macOS, Linux, Windows
+(PowerShell and WSL), FreeBSD, OpenBSD, and NetBSD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimal Resource Footprint&lt;/strong&gt;: Lightweight Go-based implementation with
+fast startup and response times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Management&lt;/strong&gt;: Multiple work sessions with context preservation per
+project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="multi-model-architecture"&gt;Multi-Model Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Provider Flexibility&lt;/strong&gt;: Choose from Anthropic, OpenAI, Groq, OpenRouter,
+Google Gemini, Cerebras, HuggingFace, VertexAI, Amazon Bedrock, and more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Provider Support&lt;/strong&gt;: Add your own OpenAI-compatible or
+Anthropic-compatible APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model Switching&lt;/strong&gt;: Switch LLMs mid-session while preserving context and
+conversation history&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Tracking&lt;/strong&gt;: Built-in cost tracking and token usage monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="enhanced-context-awareness"&gt;Enhanced Context Awareness&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LSP Integration&lt;/strong&gt;: Uses Language Server Protocol for additional context,
+just like modern IDEs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP Support&lt;/strong&gt;: Extensible via Model Context Protocol (stdio, http, and sse
+transport types)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Initialization&lt;/strong&gt;: Analyzes codebase and creates context files for
+future sessions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git Integration&lt;/strong&gt;: Native support for version control workflows with
+attribution options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt;: Go (98%) with minimal Smarty templating&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Homebrew, NPM, Winget, Scoop, Arch Linux, Nix, Debian/Ubuntu,
+Fedora/RHEL, or direct binary download&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: JSON-based with project-local and global options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;License&lt;/strong&gt;: FSL-1.1-MIT (Fair Source License)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt;: 15.4k+ stars, 883+ forks on GitHub&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Release Cadence&lt;/strong&gt;: Regular updates with 75+ releases&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="installation-methods"&gt;Installation Methods&lt;/h2&gt;
+&lt;h3 id="package-managers"&gt;Package Managers&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Homebrew
+brew install charmbracelet/tap/crush
+
+# NPM
+npm install -g @charmland/crush
+
+# Winget (Windows)
+winget install charmbracelet.crush
+
+# Scoop (Windows)
+scoop install crush
+
+# Arch Linux
+yay -S crush-bin
+
+# Nix
+nix run github:numtide/nix-ai-tools#crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="system-package-installation"&gt;System Package Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Debian/Ubuntu
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+sudo apt update &amp;&amp; sudo apt install crush
+
+# Fedora/RHEL
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="direct-installation"&gt;Direct Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Go install
+go install github.com/charmbracelet/crush@latest&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h2 id="configuration"&gt;Configuration&lt;/h2&gt;
+&lt;h3 id="quick-setup"&gt;Quick Setup&lt;/h3&gt;
+&lt;p&gt;Crush runs great with no configuration. Simply set an API key for your preferred
+provider:&lt;/p&gt;</description></item><item><title>Bat - Cat with Wings</title><link>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/bat-cat-with-syntax-highlighting/</guid><description>A cat command replacement with syntax highlighting and great formatting, perfect for viewing source code and Markdown files.</description></item><item><title>Eza - Modern LS Replacement</title><link>https://peterwarnock.com/tools/eza-modern-ls-replacement/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/eza-modern-ls-replacement/</guid><description>Eza is a feature-rich &lt;code&gt;ls&lt;/code&gt; replacement, offering vibrant color highlighting, file type icons, and flexible tree and table views for enhanced terminal navigation.</description></item><item><title>Just - Modern Make Replacement</title><link>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/just-make-replacement-cli-tool/</guid><description>A command runner that saves time and provides command inheritance, perfect for development workflows and AI agent integration.</description></item><item><title>Micro - Modern Terminal Editor</title><link>https://peterwarnock.com/tools/micro-terminal-editor/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/micro-terminal-editor/</guid><description>A modern terminal-based editor written in Go, configurable with themes and standard keyboard shortcuts.</description></item><item><title>Yazi - Terminal File Manager</title><link>https://peterwarnock.com/tools/yazi-terminal-file-manager/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/yazi-terminal-file-manager/</guid><description>A fully-featured terminal file manager with viewers for different file types, easy navigation, and multi-column view.</description></item><item><title>Tailwind CSS - Utility-First CSS Framework</title><link>https://peterwarnock.com/tools/tailwind-css-utility-first-css-framework/</link><pubDate>Sat, 15 Nov 2025 21:30:00 -0800</pubDate><guid>https://peterwarnock.com/tools/tailwind-css-utility-first-css-framework/</guid><description>Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without leaving your HTML, enabling rapid UI development.</description></item><item><title>DaisyUI - Component Library for Tailwind CSS</title><link>https://peterwarnock.com/tools/daisyui-component-library-for-tailwind-css/</link><pubDate>Sat, 15 Nov 2025 21:25:00 -0800</pubDate><guid>https://peterwarnock.com/tools/daisyui-component-library-for-tailwind-css/</guid><description>DaisyUI is a component library that adds beautiful, accessible UI components to Tailwind CSS, enabling rapid development of modern web interfaces with semantic class names.</description></item><item><title>GitHub Actions - CI/CD for Modern Development</title><link>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</link><pubDate>Sat, 15 Nov 2025 21:20:00 -0800</pubDate><guid>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</guid><description>GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.</description></item><item><title>Godog - BDD Testing Framework for Go</title><link>https://peterwarnock.com/tools/godog-bdd-testing-framework-for-go/</link><pubDate>Sat, 15 Nov 2025 20:35:00 -0800</pubDate><guid>https://peterwarnock.com/tools/godog-bdd-testing-framework-for-go/</guid><description>Godog is a Behavior-Driven Development (BDD) testing framework for Go that enables writing human-readable tests using Gherkin syntax, bridging the gap between technical and business stakeholders.</description></item><item><title>TypeScript - JavaScript with Type Safety</title><link>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</link><pubDate>Sat, 15 Nov 2025 20:15:00 -0800</pubDate><guid>https://peterwarnock.com/tools/typescript-javascript-with-type-safety/</guid><description>TypeScript is a strongly typed programming language that builds on JavaScript, adding static type definitions to enable better development tooling and enhanced code reliability.</description></item><item><title>Playwright - Modern End-to-End Testing Framework</title><link>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</link><pubDate>Sat, 15 Nov 2025 20:10:00 -0800</pubDate><guid>https://peterwarnock.com/tools/playwright-modern-end-to-end-testing-framework/</guid><description>Playwright is a modern end-to-end testing framework for web applications that provides reliable cross-browser testing, mobile emulation, and powerful debugging capabilities.</description></item><item><title>Go - Modern Systems Programming Language</title><link>https://peterwarnock.com/tools/go-modern-systems-programming-language/</link><pubDate>Sat, 15 Nov 2025 20:05:00 -0800</pubDate><guid>https://peterwarnock.com/tools/go-modern-systems-programming-language/</guid><description>Go is a modern systems programming language designed for simplicity, reliability, and efficiency. Perfect for backend services, CLI tools, and high-performance applications.</description></item><item><title>Bun - Lightning-Fast JavaScript Runtime &amp; Package Manager</title><link>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</link><pubDate>Sat, 15 Nov 2025 20:00:00 -0800</pubDate><guid>https://peterwarnock.com/tools/bun-javascript-runtime-package-manager/</guid><description>Bun is a modern JavaScript runtime and package manager that delivers 20x faster dependency installation and near-instant script execution, revolutionizing JavaScript development workflow.</description></item><item><title>Beads</title><link>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/tools/beads-distributed-task-management-for-agents/</guid><description>&lt;p&gt;Beads is a lightweight, distributed task management system built specifically
 for AI agents managing complex, multi-session projects. Created by Steve Yegge,
 it leverages Git as its distributed database and models work as a directed
 acyclic graph (DAG) with explicit dependencies and priority levels, enabling

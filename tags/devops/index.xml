@@ -1,1 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devops on Peter Warnock</title><link>https://peterwarnock.com/tags/devops/</link><description>Recent content in Devops on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 16:53:37 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHub Actions - CI/CD for Modern Development</title><link>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</link><pubDate>Sat, 15 Nov 2025 21:20:00 -0800</pubDate><guid>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</guid><description>GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devops on Peter Warnock</title><link>https://peterwarnock.com/tags/devops/</link><description>Recent content in Devops on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Bicep</title><link>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/bicep-azure-infrastructure-as-code/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s domain-specific language for deploying Azure resources. Compiles down to ARM templates but with a drastically simpler syntax. Azure-only by design — if you&amp;rsquo;re multi-cloud, use Terraform.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative Azure resource definitions with type safety and IntelliSense&lt;/li&gt;
+&lt;li&gt;Compiles to ARM templates — anything ARM can do, Bicep can do with less verbosity&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;li&gt;What-if deployments to preview changes before applying&lt;/li&gt;
+&lt;li&gt;First-class VS Code extension with validation and autocomplete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re Azure-only, Bicep is the path of least resistance for IaC. No state file to manage (Azure is the source of truth), no provider plugins, no HCL to learn. The trade-off is obvious: you&amp;rsquo;re locked to Azure. For Azure shops, that&amp;rsquo;s fine. For anyone else, Terraform or OpenTofu gives you portability.&lt;/p&gt;</description></item><item><title>Terraform</title><link>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/terraform-infrastructure-as-code/</guid><description>&lt;p&gt;HashiCorp&amp;rsquo;s infrastructure as code tool. Write declarative HCL config, run &lt;code&gt;terraform plan&lt;/code&gt; to preview changes, &lt;code&gt;terraform apply&lt;/code&gt; to provision. Multi-cloud — works with AWS, Azure, GCP, and hundreds of other providers. Created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#mitchell-hashimoto"&gt;Mitchell Hashimoto&lt;/a&gt;
+.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Declarative infrastructure definitions in HCL&lt;/li&gt;
+&lt;li&gt;State management tracks what&amp;rsquo;s deployed vs what&amp;rsquo;s defined&lt;/li&gt;
+&lt;li&gt;Plan/apply workflow lets you preview before changing anything&lt;/li&gt;
+&lt;li&gt;Provider ecosystem covers virtually every cloud and SaaS service&lt;/li&gt;
+&lt;li&gt;Modules for reusable infrastructure patterns&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Industry standard for multi-cloud IaC. If you&amp;rsquo;re not locked into a single cloud&amp;rsquo;s native tooling (like Bicep for Azure), Terraform is the default choice. The provider ecosystem is unmatched. Worth noting the BSL license change in 2023 — led to the OpenTofu fork for those who want a pure open-source option.&lt;/p&gt;</description></item><item><title>GitHub Actions - CI/CD for Modern Development</title><link>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</link><pubDate>Sat, 15 Nov 2025 21:20:00 -0800</pubDate><guid>https://peterwarnock.com/tools/github-actions-ci-cd-for-modern-development/</guid><description>GitHub Actions is a powerful CI/CD platform that automates software workflows directly in GitHub repositories, enabling continuous integration, testing, and deployment.</description></item></channel></rss>

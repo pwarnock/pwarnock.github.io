@@ -1,4 +1,167 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ai-Coding on Peter Warnock</title><link>https://peterwarnock.com/tags/ai-coding/</link><description>Recent content in Ai-Coding on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 17:20:57 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/ai-coding/index.xml" rel="self" type="application/rss+xml"/><item><title>Beads: Distributed Task Management for AI Agents</title><link>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</guid><description>Beads offers distributed task management for AI agents with dependency-aware DAGs, git-backed persistence, and agent-friendly workflows that integrate seamlessly with development workflows.</description></item><item><title>Amp Coding Agent: Features That Make It Stand Out</title><link>https://peterwarnock.com/blog/posts/amp-coding-agent-features/</link><pubDate>Mon, 10 Nov 2025 16:10:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/amp-coding-agent-features/</guid><description>Amp coding agent features Handoff for context transitions, message queueing, scoped instructions, and extensible toolboxes for enhanced developer workflow.</description></item><item><title>Grokipedia</title><link>https://peterwarnock.com/tools/grokipedia/</link><pubDate>Tue, 28 Oct 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/grokipedia/</guid><description>&lt;p&gt;Grokipedia represents a revolutionary leap forward in knowledge
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ai-Coding on Peter Warnock</title><link>https://peterwarnock.com/tags/ai-coding/</link><description>Recent content in Ai-Coding on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/ai-coding/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude Code Skills</title><link>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/claude-code-skills-reusable-workflow-instructions/</guid><description>&lt;p&gt;A skill is a folder with a &lt;code&gt;SKILL.md&lt;/code&gt; file that teaches Claude how to handle a specific task or workflow. Instead of re-explaining your preferences, processes, and domain expertise every conversation, you codify it once and Claude loads it when relevant.&lt;/p&gt;
+&lt;h2 id="how-it-works"&gt;How it works&lt;/h2&gt;
+&lt;p&gt;Skills use progressive disclosure — three levels of context loading:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;YAML frontmatter&lt;/strong&gt; — always loaded into Claude&amp;rsquo;s system prompt. Just enough for Claude to know when to activate the skill.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SKILL.md body&lt;/strong&gt; — loaded when Claude thinks the skill is relevant. Full instructions and guidance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linked files&lt;/strong&gt; (&lt;code&gt;scripts/&lt;/code&gt;, &lt;code&gt;references/&lt;/code&gt;, &lt;code&gt;assets/&lt;/code&gt;) — additional files Claude discovers and navigates as needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This minimizes token usage while keeping specialized expertise available.&lt;/p&gt;</description></item><item><title>Conductor</title><link>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</guid><description>&lt;p&gt;macOS app from Melty Labs for running multiple Claude Code (or Codex) agents simultaneously across isolated git worktrees. Each workspace gets its own branch and copy of the repo.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs parallel Claude Code instances across worktrees with a visual UI&lt;/li&gt;
+&lt;li&gt;Integrates with Linear and GitHub — inject issues as context, open PRs from the app&lt;/li&gt;
+&lt;li&gt;Lets you hand off plans between agents, provide feedback mid-run, and review code&lt;/li&gt;
+&lt;li&gt;Handles all the git worktree management for you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;The parallel worktree pattern is something I already do manually. Conductor puts a UI on it and adds the Linear integration, which could be useful for turning a backlog into parallel agent work. The target audience is senior devs and tech leads whose day is a series of interruptions — chunk out well-defined tasks and let agents work them in parallel.&lt;/p&gt;</description></item><item><title>Copilot Custom Instructions</title><link>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/awesome-copilot-instructions-community-repo/</guid><description>&lt;p&gt;Copilot supports &lt;code&gt;.instructions.md&lt;/code&gt; files that live in your repo and give it persistent context — coding standards, framework conventions, architectural constraints. Same idea as CLAUDE.md for Claude Code or AGENTS.md for Codex, but with per-topic scoping so you can have separate instruction files for different concerns.&lt;/p&gt;
+&lt;h2 id="the-technique"&gt;The technique&lt;/h2&gt;
+&lt;p&gt;Instead of repeating context in every prompt, codify it once as a file. Copilot loads relevant instruction files based on the workspace and files you&amp;rsquo;re editing. The 
+
+
+
+
+
+
+&lt;a href="https://github.com/github/awesome-copilot/tree/main/instructions" rel="noopener noreferrer" target="_blank"&gt;awesome-copilot repo&lt;/a&gt;
+ has 160+ community-maintained examples to start from or adapt.&lt;/p&gt;</description></item><item><title>gh-aw</title><link>https://peterwarnock.com/tools/gh-aw-github-agentic-workflows/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/gh-aw-github-agentic-workflows/</guid><description>&lt;p&gt;GitHub&amp;rsquo;s take on running coding agents (Copilot, Claude, Codex) inside Actions workflows. You write automation in markdown instead of YAML. The interesting part is the security model — read-only by default, sandboxed execution, tool allowlisting, and network isolation for anything that writes.&lt;/p&gt;
+&lt;p&gt;Still early. GitHub themselves say &amp;ldquo;use it with caution, and at your own risk.&amp;rdquo;&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Defines repo automations in markdown files&lt;/li&gt;
+&lt;li&gt;Triggers on issues, PRs, discussions, or schedules&lt;/li&gt;
+&lt;li&gt;Runs whichever coding agent you point it at&lt;/li&gt;
+&lt;li&gt;Handles things like issue triage, doc updates, test improvements, CI failure analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Interesting middle ground between &amp;ldquo;agent does everything on your laptop&amp;rdquo; and &amp;ldquo;agent is a black box SaaS.&amp;rdquo; Running agents inside Actions means you get the audit trail, the permissions model, and the existing GitHub infrastructure for free. The markdown-as-workflow definition is worth watching — could make agent automation more accessible than writing custom Actions YAML.&lt;/p&gt;</description></item><item><title>GitHub Ecosystem</title><link>https://peterwarnock.com/bookmarks/github-ecosystem/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/bookmarks/github-ecosystem/</guid><description>&lt;h2 id="github-next"&gt;GitHub Next&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;a href="https://githubnext.com/" rel="noopener noreferrer" target="_blank"&gt;githubnext.com&lt;/a&gt;
+ · 
+
+
+
+
+
+
+&lt;a href="https://x.com/GitHubNext" rel="noopener noreferrer" target="_blank"&gt;𝕏 @GitHubNext&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;GitHub&amp;rsquo;s research lab. The team that built Copilot before it was a product. Current work includes agentic workflows, LLM-powered code navigation, and GitHub Spark. Past projects that shipped: Copilot, Monaspace (code font family), Copilot for Pull Requests. About 13 people — principal researchers and research engineers. Worth following to see what GitHub is thinking about before it shows up in the product.&lt;/p&gt;
+&lt;h2 id="awesome-copilot"&gt;awesome-copilot&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;a href="https://github.com/github/awesome-copilot" rel="noopener noreferrer" target="_blank"&gt;github.com/github/awesome-copilot&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Crush</title><link>https://peterwarnock.com/tools/crush-ai-coding-assistant/</link><pubDate>Thu, 27 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/crush-ai-coding-assistant/</guid><description>&lt;p&gt;Crush represents Charmbracelet&amp;rsquo;s entry into the AI coding assistant space,
+bringing their signature terminal-first philosophy and &amp;ldquo;glamourous&amp;rdquo; design
+aesthetic to AI-powered development. Built as a native terminal application,
+Crush distinguishes itself through its exceptional multi-model support,
+flexible configuration options, and deep integration with developer workflows
+through LSP and MCP protocols.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="terminal-first-design"&gt;Terminal-First Design&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Native CLI Experience&lt;/strong&gt;: Fully optimized for terminal workflows with
+keyboard-driven interaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Support&lt;/strong&gt;: First-class support on macOS, Linux, Windows
+(PowerShell and WSL), FreeBSD, OpenBSD, and NetBSD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimal Resource Footprint&lt;/strong&gt;: Lightweight Go-based implementation with
+fast startup and response times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Management&lt;/strong&gt;: Multiple work sessions with context preservation per
+project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="multi-model-architecture"&gt;Multi-Model Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Provider Flexibility&lt;/strong&gt;: Choose from Anthropic, OpenAI, Groq, OpenRouter,
+Google Gemini, Cerebras, HuggingFace, VertexAI, Amazon Bedrock, and more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Provider Support&lt;/strong&gt;: Add your own OpenAI-compatible or
+Anthropic-compatible APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model Switching&lt;/strong&gt;: Switch LLMs mid-session while preserving context and
+conversation history&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Tracking&lt;/strong&gt;: Built-in cost tracking and token usage monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="enhanced-context-awareness"&gt;Enhanced Context Awareness&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LSP Integration&lt;/strong&gt;: Uses Language Server Protocol for additional context,
+just like modern IDEs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP Support&lt;/strong&gt;: Extensible via Model Context Protocol (stdio, http, and sse
+transport types)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Initialization&lt;/strong&gt;: Analyzes codebase and creates context files for
+future sessions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git Integration&lt;/strong&gt;: Native support for version control workflows with
+attribution options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt;: Go (98%) with minimal Smarty templating&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Homebrew, NPM, Winget, Scoop, Arch Linux, Nix, Debian/Ubuntu,
+Fedora/RHEL, or direct binary download&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: JSON-based with project-local and global options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;License&lt;/strong&gt;: FSL-1.1-MIT (Fair Source License)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt;: 15.4k+ stars, 883+ forks on GitHub&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Release Cadence&lt;/strong&gt;: Regular updates with 75+ releases&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="installation-methods"&gt;Installation Methods&lt;/h2&gt;
+&lt;h3 id="package-managers"&gt;Package Managers&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Homebrew
+brew install charmbracelet/tap/crush
+
+# NPM
+npm install -g @charmland/crush
+
+# Winget (Windows)
+winget install charmbracelet.crush
+
+# Scoop (Windows)
+scoop install crush
+
+# Arch Linux
+yay -S crush-bin
+
+# Nix
+nix run github:numtide/nix-ai-tools#crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="system-package-installation"&gt;System Package Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Debian/Ubuntu
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+sudo apt update &amp;&amp; sudo apt install crush
+
+# Fedora/RHEL
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="direct-installation"&gt;Direct Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Go install
+go install github.com/charmbracelet/crush@latest&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h2 id="configuration"&gt;Configuration&lt;/h2&gt;
+&lt;h3 id="quick-setup"&gt;Quick Setup&lt;/h3&gt;
+&lt;p&gt;Crush runs great with no configuration. Simply set an API key for your preferred
+provider:&lt;/p&gt;</description></item><item><title>Beads: Distributed Task Management for AI Agents</title><link>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</link><pubDate>Wed, 12 Nov 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/beads-distributed-task-management/</guid><description>Beads offers distributed task management for AI agents with dependency-aware DAGs, git-backed persistence, and agent-friendly workflows that integrate seamlessly with development workflows.</description></item><item><title>Amp Coding Agent: Features That Make It Stand Out</title><link>https://peterwarnock.com/blog/posts/amp-coding-agent-features/</link><pubDate>Mon, 10 Nov 2025 16:10:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/amp-coding-agent-features/</guid><description>Amp coding agent features Handoff for context transitions, message queueing, scoped instructions, and extensible toolboxes for enhanced developer workflow.</description></item><item><title>Grokipedia</title><link>https://peterwarnock.com/tools/grokipedia/</link><pubDate>Tue, 28 Oct 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/grokipedia/</guid><description>&lt;p&gt;Grokipedia represents a revolutionary leap forward in knowledge
 management—combining the power of AI with human judgment to create a dynamic,
 self-correcting encyclopedia that evolves in real-time. Launched in October
 2025, Grokipedia isn&amp;rsquo;t just an updated Wikipedia; it&amp;rsquo;s a fundamentally new

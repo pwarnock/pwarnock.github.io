@@ -147,7 +147,7 @@ export class Lit3DPiano extends LitElement {
       <div class="piano">
         <div class="keys">
           ${whiteKeys.map(
-            (k, i) => html`
+            (k, _i) => html`
               <div class="key" @mousedown="${() => this.playNote(k.freq)}">
                 <span class="note-label">${k.note}</span>
               </div>

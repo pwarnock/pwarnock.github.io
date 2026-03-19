@@ -1,1 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Peter Warnock</title><link>https://peterwarnock.com/tags/ai/</link><description>Recent content in AI on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Nov 2025 17:20:57 -0800</lastBuildDate><atom:link href="https://peterwarnock.com/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Terminal Upgrades for CLI Development</title><link>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</guid><description>Eleanor Berger shares the terminal tools she uses alongside Claude and other CLI agents.</description></item><item><title>Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction</title><link>https://peterwarnock.com/blog/posts/grokipedia-0-1-launch/</link><pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/grokipedia-0-1-launch/</guid><description>Grokipedia 0.1 is an AI-powered knowledge platform with real-time fact correction, offering an open alternative to Wikipedia.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ai on Peter Warnock</title><link>https://peterwarnock.com/tags/ai/</link><description>Recent content in Ai on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude Is Doubling Usage Limits This Month</title><link>https://peterwarnock.com/blog/posts/claude-march-2026-double-usage-promotion/</link><pubDate>Sat, 14 Mar 2026 12:00:00 -0700</pubDate><guid>https://peterwarnock.com/blog/posts/claude-march-2026-double-usage-promotion/</guid><description>Anthropic is running a two-week promotion doubling Claude usage limits during off-peak hours through March 27.</description></item><item><title>Industry</title><link>https://peterwarnock.com/people/industry/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/people/industry/</guid><description>&lt;h2 id="andrej-karpathy"&gt;Andrej Karpathy&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;a href="https://x.com/karpathy" rel="noopener noreferrer" target="_blank"&gt;𝕏 @karpathy&lt;/a&gt;
+ · 
+
+
+
+
+
+
+&lt;a href="https://karpathy.ai/" rel="noopener noreferrer" target="_blank"&gt;karpathy.ai&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;Former Director of AI at Tesla, founding member of OpenAI, created Stanford&amp;rsquo;s CS231n deep learning course. Coined &amp;ldquo;vibe coding.&amp;rdquo; Recently released 
+
+
+
+
+
+
+&lt;a href="https://github.com/karpathy/autoresearch" rel="noopener noreferrer" target="_blank"&gt;autoresearch&lt;/a&gt;
+ — a 630-line Python tool that lets AI agents autonomously run ML experiments. One overnight run completed 126 experiments and dropped the &amp;ldquo;Time to GPT-2&amp;rdquo; benchmark by 11%. Currently says programming is &amp;ldquo;unrecognizable&amp;rdquo; now that agents work.&lt;/p&gt;
+&lt;h2 id="evan-you"&gt;Evan You&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+&lt;a href="https://x.com/youyuxi" rel="noopener noreferrer" target="_blank"&gt;𝕏 @youyuxi&lt;/a&gt;
+ · 
+
+
+
+
+
+
+&lt;a href="https://evanyou.me/" rel="noopener noreferrer" target="_blank"&gt;evanyou.me&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Terminal Upgrades for CLI Development</title><link>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</link><pubDate>Wed, 26 Nov 2025 12:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/terminal-upgrades-for-cli-development/</guid><description>Eleanor Berger shares the terminal tools she uses alongside Claude and other CLI agents.</description></item><item><title>Grokipedia 0.1: AI-Powered Knowledge Platform with Real-time Fact Correction</title><link>https://peterwarnock.com/blog/posts/grokipedia-0-1-launch/</link><pubDate>Tue, 28 Oct 2025 10:00:00 +0000</pubDate><guid>https://peterwarnock.com/blog/posts/grokipedia-0-1-launch/</guid><description>Grokipedia 0.1 is an AI-powered knowledge platform with real-time fact correction, offering an open alternative to Wikipedia.</description></item></channel></rss>

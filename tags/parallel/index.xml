@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Parallel on Peter Warnock</title><link>https://peterwarnock.com/tags/parallel/</link><description>Recent content in Parallel on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/parallel/index.xml" rel="self" type="application/rss+xml"/><item><title>Conductor</title><link>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/conductor-parallel-coding-agents/</guid><description>&lt;p&gt;macOS app from Melty Labs for running multiple Claude Code (or Codex) agents simultaneously across isolated git worktrees. Each workspace gets its own branch and copy of the repo.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Runs parallel Claude Code instances across worktrees with a visual UI&lt;/li&gt;
+&lt;li&gt;Integrates with Linear and GitHub — inject issues as context, open PRs from the app&lt;/li&gt;
+&lt;li&gt;Lets you hand off plans between agents, provide feedback mid-run, and review code&lt;/li&gt;
+&lt;li&gt;Handles all the git worktree management for you&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;The parallel worktree pattern is something I already do manually. Conductor puts a UI on it and adds the Linear integration, which could be useful for turning a backlog into parallel agent work. The target audience is senior devs and tech leads whose day is a series of interruptions — chunk out well-defined tasks and let agents work them in parallel.&lt;/p&gt;</description></item></channel></rss>

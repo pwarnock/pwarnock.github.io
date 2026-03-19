@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dotnet on Peter Warnock</title><link>https://peterwarnock.com/tags/dotnet/</link><description>Recent content in Dotnet on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/dotnet/index.xml" rel="self" type="application/rss+xml"/><item><title>Aspire by Microsoft</title><link>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/aspire-distributed-app-orchestration/</guid><description>&lt;p&gt;Microsoft&amp;rsquo;s orchestration platform for distributed apps, created by 
+
+
+ 
+
+
+
+
+
+&lt;a href="https://peterwarnock.com/people/industry/#david-fowler"&gt;David Fowler&lt;/a&gt;
+ and the .NET team. Define your entire stack — frontends, APIs, databases, containers — in a single C# AppHost file, then run locally or deploy to Kubernetes, Azure, AWS, or on-prem. Recently rebranded from &amp;ldquo;.NET Aspire&amp;rdquo; to just &amp;ldquo;Aspire&amp;rdquo;, reflecting its multi-language positioning.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Code-first config&lt;/strong&gt;: Model services, dependencies, and deployment in C# instead of scattered YAML/config files&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-language&lt;/strong&gt;: Orchestrates C#, Java, Python, TypeScript, Go — the rebrand from .NET Aspire signals this isn&amp;rsquo;t a .NET-only play&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Built-in observability&lt;/strong&gt;: OpenTelemetry dashboard with logs, traces, and health checks out of the box&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local-to-prod parity&lt;/strong&gt;: Same app model runs via &lt;code&gt;aspire run&lt;/code&gt; locally and &lt;code&gt;aspire deploy&lt;/code&gt; to production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;100+ integrations&lt;/strong&gt;: Pre-built connectors for databases, messaging, cloud services, monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;Interesting approach to the &amp;ldquo;how do I run 6 services locally&amp;rdquo; problem. The code-first model is more maintainable than docker-compose for complex setups. Dropping the &amp;ldquo;.NET&amp;rdquo; prefix is a deliberate signal — they&amp;rsquo;re positioning this as a polyglot platform, not a .NET ecosystem tool. The OpenTelemetry dashboard being built in rather than bolted on is a good default.&lt;/p&gt;</description></item></channel></rss>

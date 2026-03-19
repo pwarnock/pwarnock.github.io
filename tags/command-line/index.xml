@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Command-Line on Peter Warnock</title><link>https://peterwarnock.com/tags/command-line/</link><description>Recent content in Command-Line on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/command-line/index.xml" rel="self" type="application/rss+xml"/><item><title>Crush</title><link>https://peterwarnock.com/tools/crush-ai-coding-assistant/</link><pubDate>Thu, 27 Nov 2025 10:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/crush-ai-coding-assistant/</guid><description>&lt;p&gt;Crush represents Charmbracelet&amp;rsquo;s entry into the AI coding assistant space,
+bringing their signature terminal-first philosophy and &amp;ldquo;glamourous&amp;rdquo; design
+aesthetic to AI-powered development. Built as a native terminal application,
+Crush distinguishes itself through its exceptional multi-model support,
+flexible configuration options, and deep integration with developer workflows
+through LSP and MCP protocols.&lt;/p&gt;
+&lt;h2 id="core-features"&gt;Core Features&lt;/h2&gt;
+&lt;h3 id="terminal-first-design"&gt;Terminal-First Design&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Native CLI Experience&lt;/strong&gt;: Fully optimized for terminal workflows with
+keyboard-driven interaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Support&lt;/strong&gt;: First-class support on macOS, Linux, Windows
+(PowerShell and WSL), FreeBSD, OpenBSD, and NetBSD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimal Resource Footprint&lt;/strong&gt;: Lightweight Go-based implementation with
+fast startup and response times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Management&lt;/strong&gt;: Multiple work sessions with context preservation per
+project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="multi-model-architecture"&gt;Multi-Model Architecture&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Provider Flexibility&lt;/strong&gt;: Choose from Anthropic, OpenAI, Groq, OpenRouter,
+Google Gemini, Cerebras, HuggingFace, VertexAI, Amazon Bedrock, and more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Provider Support&lt;/strong&gt;: Add your own OpenAI-compatible or
+Anthropic-compatible APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model Switching&lt;/strong&gt;: Switch LLMs mid-session while preserving context and
+conversation history&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Tracking&lt;/strong&gt;: Built-in cost tracking and token usage monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="enhanced-context-awareness"&gt;Enhanced Context Awareness&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LSP Integration&lt;/strong&gt;: Uses Language Server Protocol for additional context,
+just like modern IDEs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP Support&lt;/strong&gt;: Extensible via Model Context Protocol (stdio, http, and sse
+transport types)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Initialization&lt;/strong&gt;: Analyzes codebase and creates context files for
+future sessions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git Integration&lt;/strong&gt;: Native support for version control workflows with
+attribution options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="technical-specifications"&gt;Technical Specifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt;: Go (98%) with minimal Smarty templating&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Installation&lt;/strong&gt;: Homebrew, NPM, Winget, Scoop, Arch Linux, Nix, Debian/Ubuntu,
+Fedora/RHEL, or direct binary download&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: JSON-based with project-local and global options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;License&lt;/strong&gt;: FSL-1.1-MIT (Fair Source License)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt;: 15.4k+ stars, 883+ forks on GitHub&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Release Cadence&lt;/strong&gt;: Regular updates with 75+ releases&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="installation-methods"&gt;Installation Methods&lt;/h2&gt;
+&lt;h3 id="package-managers"&gt;Package Managers&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Homebrew
+brew install charmbracelet/tap/crush
+
+# NPM
+npm install -g @charmland/crush
+
+# Winget (Windows)
+winget install charmbracelet.crush
+
+# Scoop (Windows)
+scoop install crush
+
+# Arch Linux
+yay -S crush-bin
+
+# Nix
+nix run github:numtide/nix-ai-tools#crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="system-package-installation"&gt;System Package Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Debian/Ubuntu
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
+echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
+sudo apt update &amp;&amp; sudo apt install crush
+
+# Fedora/RHEL
+echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo
+sudo yum install crush&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h3 id="direct-installation"&gt;Direct Installation&lt;/h3&gt;
+&lt;figure class="code-block not-prose my-6"&gt;
+ &lt;figcaption class="code-language"&gt;bash&lt;/figcaption&gt;
+ &lt;pre class="overflow-x-auto"&gt;&lt;code class="language-bash" &gt;# Go install
+go install github.com/charmbracelet/crush@latest&lt;/code&gt;&lt;/pre&gt;
+&lt;/figure&gt;
+&lt;h2 id="configuration"&gt;Configuration&lt;/h2&gt;
+&lt;h3 id="quick-setup"&gt;Quick Setup&lt;/h3&gt;
+&lt;p&gt;Crush runs great with no configuration. Simply set an API key for your preferred
+provider:&lt;/p&gt;</description></item></channel></rss>

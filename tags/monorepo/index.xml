@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monorepo on Peter Warnock</title><link>https://peterwarnock.com/tags/monorepo/</link><description>Recent content in Monorepo on Peter Warnock</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 18 Mar 2026 20:32:00 -0700</lastBuildDate><atom:link href="https://peterwarnock.com/tags/monorepo/index.xml" rel="self" type="application/rss+xml"/><item><title>VitePlus</title><link>https://peterwarnock.com/tools/viteplus-unified-web-toolchain/</link><pubDate>Sat, 14 Mar 2026 00:00:00 -0700</pubDate><guid>https://peterwarnock.com/tools/viteplus-unified-web-toolchain/</guid><description>&lt;p&gt;Single CLI that replaces your dev server, bundler, linter, formatter, test runner, and package builder. Built on Vite, Vitest, Rolldown, and Oxc — the Rust-based tooling layer that&amp;rsquo;s been gaining traction across the ecosystem.&lt;/p&gt;
+&lt;h2 id="what-it-does"&gt;What it does&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dev server and production builds (Vite + Rolldown)&lt;/li&gt;
+&lt;li&gt;Lint, format, and type-check in one pass (Oxlint + Oxfmt)&lt;/li&gt;
+&lt;li&gt;Test runner with Jest-compatible API, browser mode, and coverage&lt;/li&gt;
+&lt;li&gt;Library packaging with auto-generated TypeScript definitions&lt;/li&gt;
+&lt;li&gt;Task runner with caching and monorepo-aware dependency resolution&lt;/li&gt;
+&lt;li&gt;Auto-detects Node version and package manager per project&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="why-its-on-the-radar"&gt;Why it&amp;rsquo;s on the radar&lt;/h2&gt;
+&lt;p&gt;The &amp;ldquo;one tool to rule them all&amp;rdquo; pitch isn&amp;rsquo;t new, but the foundation is interesting — Rolldown and Oxc are already proving themselves independently. If VitePlus gets the integration right, it could eliminate a lot of config-file overhead. The monorepo task runner with caching is the part worth paying attention to.&lt;/p&gt;</description></item></channel></rss>
