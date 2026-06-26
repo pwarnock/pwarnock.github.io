@@ -35,7 +35,7 @@ cache = true
 format = "compact"
 
 # Check fragment identifiers (#anchors)
-include_fragments = true
+include_fragments = "full"
 
 # Fallback extensions for local file resolution
 fallback_extensions = ["html", "htm"]
