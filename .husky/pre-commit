@@ -1,12 +1,32 @@
 #!/bin/bash
 
 # Pre-Commit Hook: Quality Gates
-# 
+#
 # This hook:
-# 1. Runs linting and validation
-# 2. Prevents commit if quality gates fail
+# 1. Blocks direct commits to protected branches (main)
+# 2. Runs linting and validation
+# 3. Prevents commit if quality gates fail
 
 set -e
+
+# ============================================================================
+# STEP 0: Branch protection — no direct commits to main
+# ============================================================================
+# To bootstrap or update this hook itself on main, set ALLOW_MAIN_COMMIT=1.
+# All other work must land via a feature branch and merge.
+PROTECTED_BRANCHES="main"
+CURRENT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
+if echo "$PROTECTED_BRANCHES" | grep -qx "$CURRENT_BRANCH"; then
+  if [ "${ALLOW_MAIN_COMMIT:-0}" != "1" ]; then
+    echo "❌ Direct commits to '$CURRENT_BRANCH' are blocked by pre-commit hook."
+    echo "   Create a feature branch instead:"
+    echo "     git checkout -b feat/<your-feature>"
+    echo "   To bootstrap or update this hook on main, run:"
+    echo "     ALLOW_MAIN_COMMIT=1 git commit ..."
+    exit 1
+  fi
+  echo "⚠️  ALLOW_MAIN_COMMIT=1 set: bypassing branch protection for this commit only."
+fi
 
 # Run beads pre-commit hook (auto-flush, export JSONL)
 if command -v bd &>/dev/null; then
