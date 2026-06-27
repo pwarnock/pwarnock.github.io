@@ -12,20 +12,18 @@ set -e
 # ============================================================================
 # STEP 0: Branch protection — no direct commits to main
 # ============================================================================
-# To bootstrap or update this hook itself on main, set ALLOW_MAIN_COMMIT=1.
-# All other work must land via a feature branch and merge.
+# Hard block: no env-var bypass. All work must land via a feature branch.
+# To update this hook itself on main, a human disables it first:
+#   git -c core.hooksPath=/dev/null commit ...
+# (that escape route is blocked for agents via the commandDenylist in
+# ~/.factory/settings.json).
 PROTECTED_BRANCHES="main"
 CURRENT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null || echo "")
 if echo "$PROTECTED_BRANCHES" | grep -qx "$CURRENT_BRANCH"; then
-  if [ "${ALLOW_MAIN_COMMIT:-0}" != "1" ]; then
-    echo "❌ Direct commits to '$CURRENT_BRANCH' are blocked by pre-commit hook."
-    echo "   Create a feature branch instead:"
-    echo "     git checkout -b feat/<your-feature>"
-    echo "   To bootstrap or update this hook on main, run:"
-    echo "     ALLOW_MAIN_COMMIT=1 git commit ..."
-    exit 1
-  fi
-  echo "⚠️  ALLOW_MAIN_COMMIT=1 set: bypassing branch protection for this commit only."
+  echo "❌ Direct commits to '$CURRENT_BRANCH' are blocked by pre-commit hook."
+  echo "   Create a feature branch instead:"
+  echo "     git checkout -b feat/<your-feature>"
+  exit 1
 fi
 
 # Run beads pre-commit hook (auto-flush, export JSONL)
