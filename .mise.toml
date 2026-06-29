@@ -12,7 +12,7 @@ disable_tools = ["hugo"]
 HUGO_ENV = "development"
 # Share Playwright browsers between Node.js (@playwright/test) and Go (playwright-go)
 # Saves 400-600MB disk space by using single browser installation
-PLAYWRIGHT_BROWSERS_PATH = "{{env.HOME}}/.cache/ms-playwright"
+PLAYWRIGHT_BROWSERS_PATH = "~/.cache/ms-playwright"
 
 [tasks.playwright-install]
 description = "Install Playwright browsers (shared by Node and Go)"
