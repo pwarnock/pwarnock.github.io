@@ -1,6 +1,6 @@
 {
   "name": "@pwarnock/qa-tools",
-  "version": "0.20.3",
+  "version": "0.21.0",
   "private": true,
   "type": "module",
   "description": "QA automation and observability infrastructure",

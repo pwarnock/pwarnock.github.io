@@ -50,7 +50,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   newsletter_url = 'https://gmail.us8.list-manage.com/subscribe/post?u=174f78659f6d3dd707f265f33&id=daaddd52e4&f_id=005f13e1f0'
   
   # Version tracking
-  version = "0.20.0"
+  version = "0.21.0"
   versionHash = "2cdcb75"
 
   # Build settings
