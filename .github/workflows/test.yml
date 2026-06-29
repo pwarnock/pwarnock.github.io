@@ -29,6 +29,9 @@ jobs:
       - name: Setup build environment
         uses: ./.github/actions/setup-build-env
 
+      - name: Trust mise config
+        run: mise trust
+
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh
 
