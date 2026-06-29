@@ -6,7 +6,7 @@
 
   // Themes are now loaded from data/themes.yaml for better maintainability
   const themes = [
-    {{ range site.Data.themes.themes }}
+    {{ range hugo.Data.themes.themes }}
       "{{ .id }}",
     {{ end }}
   ];

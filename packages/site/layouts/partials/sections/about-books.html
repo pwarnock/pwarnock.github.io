@@ -1,5 +1,5 @@
 {{/* Books That Shaped Me Section - Feature Flagged (disabled by default) */}}
-{{ $flags := site.Data.featureFlags }}
+{{ $flags := hugo.Data.featureFlags }}
 {{ if and (ne $flags nil) (ne $flags.flags nil) (ne $flags.flags.books_section nil) (eq $flags.flags.books_section.enabled true) }}
 
 <!-- Books That Shaped Me Section -->

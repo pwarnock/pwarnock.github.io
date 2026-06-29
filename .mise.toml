@@ -1,9 +1,12 @@
 [tools]
-hugo = "system"
 go = "1.25"
 bun = "1.3.6"
 just = "1.46.0"
 actionlint = "latest"
+node = "26"
+
+[settings]
+disable_tools = ["hugo"]
 
 [env]
 HUGO_ENV = "development"

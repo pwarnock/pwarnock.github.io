@@ -53,8 +53,8 @@
          <p class="text-xs opacity-70">Copyright © {{ now.Year }}</p>
          <p class="text-xs opacity-70">{{ .Site.Title }}</p>
           <p class="text-xs opacity-70">
-          {{ if .Site.Data.version }}
-            v{{ .Site.Data.version.version }} ({{ .Site.Data.version.hash }})
+          {{ if hugo.Data.version }}
+            v{{ hugo.Data.version.version }} ({{ hugo.Data.version.hash }})
           {{ else }}
             v{{ .Site.Params.version }} (dev)
           {{ end }}

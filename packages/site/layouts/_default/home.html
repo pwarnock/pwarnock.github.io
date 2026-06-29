@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{/* Custom data from configuration file */}}
-  {{ with site.Data.home }}
+  {{ with hugo.Data.home }}
     {{ range sort .section ".weight" }}
       {{ if .enabled }}
         <section id="{{ .id }}">

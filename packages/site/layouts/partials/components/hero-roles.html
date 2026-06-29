@@ -1,5 +1,5 @@
 <!-- Hero Role Cards Column -->
-{{ with site.Data.hero.roles }}
+{{ with hugo.Data.hero.roles }}
 <div class="space-y-3">
   {{ range . }}
   {{ $idSafeTitle := lower (replace .title " " "-") }}

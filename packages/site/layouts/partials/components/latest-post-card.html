@@ -1,5 +1,5 @@
 {{ $sectionId := .id }}
-{{ $sectionData := index (where site.Data.home.section "id" $sectionId) 0 }}
+{{ $sectionData := index (where hugo.Data.home.section "id" $sectionId) 0 }}
 {{ $title := $sectionData.title | default .title }}
 {{ $description := $sectionData.description | default .description }}
 {{ $color := .color | default "primary" }}

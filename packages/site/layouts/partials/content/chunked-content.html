@@ -1,6 +1,6 @@
 {{/* Content pagination for long articles */}}
 {{ $content := . }}
-{{ $perfConfig := site.Data.performance }}
+{{ $perfConfig := hugo.Data.performance }}
 
 {{ if gt (len .Content) $perfConfig.content_optimization.max_lines }}
     {{/* Split content into pages */}}

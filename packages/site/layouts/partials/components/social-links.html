@@ -20,8 +20,8 @@
 
 
 {{ $discordEnabled := false }}
-{{ if .Site.Data.feature_flags }}
-  {{ if .Site.Data.feature_flags.flags.discord_social_link.enabled }}
+{{ if hugo.Data.feature_flags }}
+  {{ if hugo.Data.feature_flags.flags.discord_social_link.enabled }}
     {{ $discordEnabled = true }}
   {{ end }}
 {{ end }}

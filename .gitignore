@@ -36,8 +36,9 @@ resources/
 .hugo_cache/
 hugo_stats.json
 
-# Generated CSS
-static/css/main.css
+packages/site/assets/css/**/*.css
+packages/site/public/css/**/*.css
+
 
 # Beads ephemeral runtime files
 .beads/daemon.lock

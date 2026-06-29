@@ -1,5 +1,5 @@
 <!-- Portfolio Card -->
-{{ $portfolioData := index (where site.Data.home.section "id" "portfolio") 0 }}
+{{ $portfolioData := index (where hugo.Data.home.section "id" "portfolio") 0 }}
 <div class="card bg-base-100 shadow-xl border border-base-300">
   <div class="card-body">
     <div class="text-center mb-6">

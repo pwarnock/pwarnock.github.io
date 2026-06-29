@@ -1,5 +1,5 @@
 <!-- Hero Carousel Container -->
-<div class="hero-carousel" x-data="heroCarousel({{ len (where site.Data.hero.slides "active" true) }})">
+<div class="hero-carousel" x-data="heroCarousel({{ len (where hugo.Data.hero.slides "active" true) }})">
   
   <!-- Carousel Slides -->
   {{ partial "components/carousel/slides" . }}
