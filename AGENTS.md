@@ -51,7 +51,7 @@ bun run lint             # YAML, TOML, CSS linters
 bun run format           # Prettier --write .
 ```
 
-Releases: `./scripts/release.sh [rc|final|hotfix]`. Never edit `package.json.version` manually.
+Releases are automatic. Merge a PR to main and the auto-release workflow bumps version, creates a tag, and deploys. Never edit `package.json.version` manually.
 
 ## Coding Style
 
