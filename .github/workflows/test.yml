@@ -33,10 +33,7 @@ jobs:
 
       - name: Trust mise config
         run: |
-          mise trust --all
-          echo "Trusted configs:"
-          ls -la ~/.local/share/mise/trusted-configs/ 2>/dev/null || echo "No trust directory found"
-          echo "MISE_TRUSTED_CONFIG_PATHS=$MISE_TRUSTED_CONFIG_PATHS"
+          mise settings trusted_config_paths='["/"]'
 
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh
