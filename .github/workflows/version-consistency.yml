@@ -69,12 +69,10 @@ jobs:
             echo "❌ Version changes must be made by the release controller"
             echo ""
             echo "ERROR: package.json.version was modified by $AUTHOR"
-            echo "Version bumps can only be performed by the release controller (${{ vars.BOT_NAME }})."
+            echo "Version bumps happen automatically when PRs are merged to main."
+            echo "The auto-release workflow handles version bumps via conventional commit prefixes."
             echo ""
-            echo "To release:"
-            echo "  1. Run: ./scripts/release.sh [rc|final|hotfix]"
-            echo "  2. This will create a .release/request.json"
-            echo "  3. The release controller will handle version bumps automatically"
+            echo "Do not manually edit package.json.version in PRs."
             exit 1
           fi
 
@@ -106,12 +104,12 @@ jobs:
               echo "❌ .release/request.json status fields are managed by CI only"
               echo ""
               echo "ERROR: Manual modifications to release request status detected"
-              echo "The following fields are controlled by the release controller:"
+              echo "The following fields are controlled by the auto-release workflow:"
               echo "  - status (pending, succeeded, failed)"
               echo "  - completedAt (timestamp)"
               echo "  - deployedVersion (version deployed)"
               echo ""
-              echo "These can only be modified by the release controller."
+              echo "These can only be modified by CI."
               exit 1
             fi
           fi

@@ -1,0 +1,180 @@
+name: Auto Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  release-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_ENV: production
+      MISE_TRUSTED_CONFIG_PATHS: /
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup git bot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine version bump
+        id: version
+        run: |
+          # Find last semver tag
+          LAST_TAG=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+          if [ -z "$LAST_TAG" ]; then
+            LAST_TAG="v0.0.0"
+          fi
+          printf 'last_tag=%s\n' "$LAST_TAG" >> "$GITHUB_OUTPUT"
+          printf 'Last tag: %s\n' "$LAST_TAG"
+
+          # Get commits since last tag
+          COMMITS=$(git log --oneline "$LAST_TAG"..HEAD --no-merges)
+          if [ -z "$COMMITS" ]; then
+            printf 'bump=none\n' >> "$GITHUB_OUTPUT"
+            printf 'No commits since %s — skipping release\n' "$LAST_TAG"
+            exit 0
+          fi
+
+          printf 'Commits since %s:\n' "$LAST_TAG"
+          printf '%s\n' "$COMMITS"
+
+          # Determine bump type from conventional commits
+          BUMP="patch"
+          if printf '%s\n' "$COMMITS" | grep -qE '^[a-f0-9]+ (feat!|feat\(.+\)!:|.*BREAKING CHANGE:)'; then
+            BUMP="major"
+          elif printf '%s\n' "$COMMITS" | grep -qE '^[a-f0-9]+ feat(\(.+\))?:'; then
+            BUMP="minor"
+          fi
+
+          printf 'bump=%s\n' "$BUMP" >> "$GITHUB_OUTPUT"
+          printf 'Determined bump: %s\n' "$BUMP"
+
+      - name: Compute next version
+        if: steps.version.outputs.bump != 'none'
+        id: compute
+        run: |
+          LAST_TAG="${{ steps.version.outputs.last_tag }}"
+          BUMP="${{ steps.version.outputs.bump }}"
+
+          # Use tag version as base
+          BASE="${LAST_TAG#v}"
+          MAJOR=$(printf '%s' "$BASE" | cut -d. -f1)
+          MINOR=$(printf '%s' "$BASE" | cut -d. -f2)
+          PATCH=$(printf '%s' "$BASE" | cut -d. -f3)
+
+          case "$BUMP" in
+            major) NEXT="$((MAJOR + 1)).0.0" ;;
+            minor) NEXT="$MAJOR.$((MINOR + 1)).0" ;;
+            patch) NEXT="$MAJOR.$MINOR.$((PATCH + 1))" ;;
+          esac
+
+          printf 'next=%s\n' "$NEXT" >> "$GITHUB_OUTPUT"
+          printf 'tag=v%s\n' "$NEXT" >> "$GITHUB_OUTPUT"
+          printf 'Version: %s → %s (%s)\n' "$LAST_TAG" "$NEXT" "$BUMP"
+
+      - name: Bump version in all files
+        if: steps.version.outputs.bump != 'none'
+        run: |
+          NEXT="${{ steps.compute.outputs.next }}"
+          jq --arg v "$NEXT" '.version = $v' package.json > package.json.tmp && mv package.json.tmp package.json
+          bash scripts/version-sync.sh
+
+      - name: Commit version bump
+        if: steps.version.outputs.bump != 'none'
+        run: |
+          NEXT="${{ steps.compute.outputs.next }}"
+          BUMP="${{ steps.version.outputs.bump }}"
+          git add -A
+          git diff --cached --quiet && {
+            printf 'No changes to commit\n'
+            exit 0
+          }
+          git commit -m "chore(release): v${NEXT} [skip ci]
+
+          Bump type: ${BUMP}"
+
+      - name: Create tag
+        if: steps.version.outputs.bump != 'none'
+        run: |
+          TAG="${{ steps.compute.outputs.tag }}"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+
+      - name: Generate release notes
+        if: steps.version.outputs.bump != 'none'
+        id: notes
+        run: |
+          LAST_TAG="${{ steps.version.outputs.last_tag }}"
+
+          # Generate notes from commits
+          NOTES=$(git log --oneline "$LAST_TAG"..HEAD --no-merges | sed 's/^[a-f0-9]\+ /- /')
+
+          # Write to file for multi-line output
+          printf '%s\n' "$NOTES" > /tmp/release-notes.txt
+
+          {
+            printf 'notes<<RELEASE_NOTES_EOF\n'
+            cat /tmp/release-notes.txt
+            printf 'RELEASE_NOTES_EOF\n'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        if: steps.version.outputs.bump != 'none'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.compute.outputs.tag }}"
+          gh release create "$TAG" \
+            --title "Release $TAG" \
+            --notes "${{ steps.notes.outputs.notes }}" \
+            --target main
+
+      - name: Setup build environment
+        uses: ./.github/actions/setup-build-env
+
+      - name: Trust mise config
+        run: |
+          mkdir -p ~/.config/mise
+          printf '[settings]\ntrusted_config_paths = ["/"]\n' > ~/.config/mise/config.toml
+
+      - name: Build site
+        run: bun run build
+
+      - name: Verify build
+        run: |
+          if [ ! -d "packages/site/public" ]; then
+            printf 'Build failed: public directory not found\n' >&2
+            exit 1
+          fi
+          printf 'Build successful\n'
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/site/public
+          cname: ${{ vars.SITE_CNAME }}
+          force_orphan: false
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.version.outputs.bump }}" = "none" ]; then
+            printf 'No releasable commits — deploy only\n'
+          else
+            printf 'Released %s (%s)\n' "${{ steps.compute.outputs.tag }}" "${{ steps.version.outputs.bump }}"
+          fi
+          printf 'Deployed to %s\n' "${{ vars.SITE_URL }}"
