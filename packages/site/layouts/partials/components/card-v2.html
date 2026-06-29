@@ -1,0 +1,201 @@
+{{- /*
+  Card V2 — unified card skeleton for blog, portfolio, and tools pages.
+
+  Row 1: [Left: type/category badge]  [Right: date/ring]
+  Row 2: Title (linked, text-accent)
+  Row 3: Description (text-sm, text-base-content/70)
+  Row 4: Tags / tech badges (flex wrap, gap-1.5)
+  Row 5: [Left: secondary meta]      [Right: action buttons]
+
+  Content-type detection via $.Type (blog, portfolio, tools).
+*/ -}}
+
+{{- $context := . -}}
+{{- $title := $context.Title -}}
+{{- $url := $context.Permalink -}}
+{{- $type := $context.Type -}}
+
+{{- /* --- Resolve description --- */ -}}
+{{- $description := $context.Params.description | default $context.Params.summary | default $context.Summary -}}
+
+{{- /* --- Type-specific variables --- */ -}}
+
+{{- /* Blog */ -}}
+{{- $contentType := $context.Params.content_type -}}
+{{- $date := "" -}}
+{{- $readingTime := $context.Params.readingTime -}}
+
+{{- /* Portfolio */ -}}
+{{- $category := $context.Params.category -}}
+{{- $client := $context.Params.client -}}
+{{- $technologies := $context.Params.technologies -}}
+{{- $categoryColors := dict "Web App" "info" "Infrastructure" "success" "API" "accent" "Developer Tool" "secondary" "Educational Game" "warning" "Prototype" "neutral" -}}
+{{- $categoryColor := "neutral" -}}
+{{- with $category }}{{ $categoryColor = index $categoryColors . | default "neutral" }}{{ end -}}
+
+{{- /* Tools */ -}}
+{{- $quadrant := $context.Params.radar.quadrant -}}
+{{- $ring := $context.Params.radar.ring -}}
+{{- $toolCategory := $context.Params.tool_category -}}
+{{- $ringColors := dict "Adopt" "success" "Trial" "info" "Assess" "warning" "Hold" "error" -}}
+{{- $ringColor := "neutral" -}}
+{{- with $ring }}{{ $ringColor = index $ringColors . | default "neutral" }}{{ end -}}
+
+<article class="card bg-base-100 card-border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+  <div class="card-body">
+
+    {{- /* ── ROW 1: Left badge / Right meta ── */ -}}
+    <div class="flex justify-between items-center">
+
+      {{- /* Left slot */ -}}
+      {{- if eq $type "blog" }}
+        {{- if $contentType }}
+        <span class="badge badge-sm badge-outline badge-primary">{{ $contentType | humanize }}</span>
+        {{- else }}
+        <span></span>
+        {{- end }}
+      {{- else if eq $type "portfolio" }}
+        {{- if $category }}
+        <span class="badge badge-sm badge-{{ $categoryColor }}">{{ $category }}</span>
+        {{- else }}
+        <span></span>
+        {{- end }}
+      {{- else if eq $type "tools" }}
+        {{- if $quadrant }}
+        <span class="text-xs text-base-content/60 uppercase tracking-wide">{{ $quadrant }}</span>
+        {{- else }}
+        <span></span>
+        {{- end }}
+      {{- else }}
+        <span></span>
+      {{- end }}
+
+      {{- /* Right slot */ -}}
+      {{- if eq $type "blog" }}
+        <span class="text-xs text-base-content/60">{{ $context.Date.Format "Jan 2, 2006" }}</span>
+      {{- else if eq $type "portfolio" }}
+        {{- if $client }}
+        <span class="text-xs text-base-content/60 truncate ml-2">{{ $client }}</span>
+        {{- end }}
+      {{- else if eq $type "tools" }}
+        {{- if $ring }}
+        <span class="badge badge-sm badge-{{ $ringColor }}">{{ $ring }}</span>
+        {{- end }}
+      {{- end }}
+
+    </div>
+
+    {{- /* ── ROW 2: Title ── */ -}}
+    {{- if $title }}
+    <h3 class="card-title text-lg">
+      {{- if $url }}
+      <a href="{{ $url }}" class="link link-hover text-accent no-underline hover:underline">
+        {{ $title }}
+      </a>
+      {{- else }}
+        {{ $title }}
+      {{- end }}
+    </h3>
+    {{- end }}
+
+    {{- /* ── ROW 3: Description ── */ -}}
+    {{- if $description }}
+      {{- if eq $type "blog" }}
+    <p class="text-sm text-base-content/70 line-clamp-3">{{ $description }}</p>
+      {{- else }}
+    <p class="text-sm text-base-content/70 line-clamp-2">{{ $description }}</p>
+      {{- end }}
+    {{- end }}
+
+    {{- /* ── ROW 4: Tags / tech badges ── */ -}}
+    {{- if eq $type "blog" }}
+      {{- with $context.Params.tags }}
+      <div class="flex flex-wrap gap-1.5">
+        {{- range . }}
+        <span class="badge badge-sm badge-outline">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    {{- else if eq $type "portfolio" }}
+      {{- with $technologies }}
+      <div class="flex flex-wrap gap-1.5">
+        {{- range . }}
+        <span class="badge badge-sm badge-ghost">{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    {{- else if eq $type "tools" }}
+      {{- if $toolCategory }}
+      <div class="text-xs text-base-content/50">{{ $toolCategory }}</div>
+      {{- end }}
+    {{- end }}
+
+    {{- /* ── ROW 5: Secondary meta + action buttons ── */ -}}
+    <div class="card-actions justify-between items-center mt-auto">
+
+      {{- /* Left: secondary meta */ -}}
+      <div>
+        {{- if and (eq $type "blog") $readingTime }}
+        <span class="text-xs text-base-content/50">{{ $readingTime }} min read</span>
+        {{- end }}
+      </div>
+
+      {{- /* Right: action buttons */ -}}
+      <div class="flex gap-2">
+        {{- if eq $type "blog" }}
+          <a href="{{ $url }}" class="btn btn-primary btn-sm">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+
+        {{- else if eq $type "portfolio" }}
+          {{- if $context.Params.live_url }}
+          <a href="{{ $context.Params.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            Live Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+          {{- end }}
+          {{- if $context.Params.github_url }}
+          <a href="{{ $context.Params.github_url }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+            GitHub
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+          {{- end }}
+          {{- if $url }}
+          <a href="{{ $url }}" class="btn btn-outline btn-sm">
+            Details
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          {{- end }}
+
+        {{- else if eq $type "tools" }}
+          {{- if $context.Params.external_url }}
+          <a href="{{ $context.Params.external_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            Visit
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+          {{- end }}
+          {{- if $url }}
+          <a href="{{ $url }}" class="btn btn-outline btn-sm">
+            Details
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          {{- end }}
+        {{- end }}
+      </div>
+
+    </div>
+  </div>
+</article>

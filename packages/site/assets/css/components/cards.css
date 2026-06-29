@@ -164,3 +164,49 @@
   margin-top: var(--space-4);
   justify-content: flex-end;
 }
+
+/* ==========================================================================
+   CARD V2 ENTRANCE ANIMATION
+   Subtle fade-in + slide-up on page load, respects reduced motion.
+   ========================================================================== */
+
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: card-entrance 0.3s ease-out both;
+}
+
+/* Stagger cards within a grid */
+.grid > :nth-child(1) .card,
+.grid > :nth-child(1).card { animation-delay: 0ms; }
+
+.grid > :nth-child(2) .card,
+.grid > :nth-child(2).card { animation-delay: 50ms; }
+
+.grid > :nth-child(3) .card,
+.grid > :nth-child(3).card { animation-delay: 100ms; }
+
+.grid > :nth-child(4) .card,
+.grid > :nth-child(4).card { animation-delay: 150ms; }
+
+.grid > :nth-child(5) .card,
+.grid > :nth-child(5).card { animation-delay: 200ms; }
+
+.grid > :nth-child(6) .card,
+.grid > :nth-child(6).card { animation-delay: 250ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}

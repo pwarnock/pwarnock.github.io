@@ -1,5 +1,5 @@
 name: 'Setup Build Environment'
-description: 'Sets up mise, Hugo, Bun, and installs dependencies for the site build'
+description: 'Sets up mise (with Hugo), Bun, and installs dependencies for the site build'
 
 inputs:
   install-deps:

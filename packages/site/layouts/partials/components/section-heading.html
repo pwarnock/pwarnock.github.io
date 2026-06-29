@@ -1,0 +1,26 @@
+{{- /*
+  Section Heading — shared across blog, portfolio, and tools list pages.
+
+  Parameters (passed as a dict):
+    .title       — section heading text (required)
+    .count       — item count displayed as badge (optional)
+    .color       — DaisyUI color name for the badge (optional, default: "neutral")
+    .description — paragraph below the heading (optional)
+*/ -}}
+
+{{- $title := .title -}}
+{{- $count := .count -}}
+{{- $color := .color | default "neutral" -}}
+{{- $description := .description -}}
+
+<div class="mb-6">
+  <div class="flex items-center gap-3 mb-2">
+    <h2 class="text-2xl font-semibold text-base-content">{{ $title }}</h2>
+    {{- if $count }}
+    <span class="badge badge-{{ $color }}">{{ $count }}</span>
+    {{- end }}
+  </div>
+  {{- if $description }}
+  <p class="text-base-content/60">{{ $description }}</p>
+  {{- end }}
+</div>

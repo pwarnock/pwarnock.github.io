@@ -1,0 +1,70 @@
+{{ define "main" }}
+
+    {{- /* Collect all regular pages in portfolio section */ -}}
+    {{- $allProjects := .RegularPages -}}
+
+    {{- /* Extract unique categories */ -}}
+    {{- $categories := slice -}}
+    {{- range $allProjects -}}
+      {{- with .Params.category -}}
+        {{- $categories = $categories | append . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $categories = $categories | uniq -}}
+
+    {{- /* Category → DaisyUI color mapping */ -}}
+    {{- $categoryColors := dict "Web App" "info" "Infrastructure" "success" "API" "accent" "Developer Tool" "secondary" "Educational Game" "warning" "Prototype" "neutral" -}}
+
+    {{- /* Category filter buttons */ -}}
+    <div class="flex flex-wrap gap-2 mb-8" role="toolbar" aria-label="Filter by category">
+      <button class="btn btn-sm btn-primary portfolio-filter" data-category="all" aria-pressed="true">
+        All
+        <span class="badge badge-sm">{{ len $allProjects }}</span>
+      </button>
+      {{- range $categories }}
+        {{- $color := index $categoryColors . | default "neutral" -}}
+        {{- $count := len (where $allProjects "Params.category" .) -}}
+      <button class="btn btn-sm btn-soft portfolio-filter" data-category="{{ . }}" aria-pressed="false">
+        {{ . }}
+        <span class="badge badge-sm badge-{{ $color }}">{{ $count }}</span>
+      </button>
+      {{- end }}
+    </div>
+
+    {{- /* Flat card grid — all projects, filterable by data-category */ -}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="portfolio-grid">
+      {{- range $allProjects }}
+      <div class="portfolio-card" data-category="{{ .Params.category | default "Other" }}">
+        {{ partial "components/card-v2.html" . }}
+      </div>
+      {{- end }}
+    </div>
+
+  {{- /* Filter JS — card-level toggling */ -}}
+  <script>
+  (function() {
+    var buttons = document.querySelectorAll('.portfolio-filter');
+    var cards = document.querySelectorAll('.portfolio-card');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var cat = this.dataset.category;
+        buttons.forEach(function(b) {
+          b.classList.remove('btn-primary');
+          b.classList.add('btn-soft');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.remove('btn-soft');
+        this.classList.add('btn-primary');
+        this.setAttribute('aria-pressed', 'true');
+        cards.forEach(function(c) {
+          if (cat === 'all' || c.dataset.category === cat) {
+            c.classList.remove('hidden');
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+      });
+    });
+  })();
+  </script>
+{{ end }}
