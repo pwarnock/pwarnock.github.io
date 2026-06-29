@@ -33,7 +33,9 @@ jobs:
 
       - name: Trust mise config
         run: |
-          mise settings trusted_config_paths='["/"]'
+          mkdir -p ~/.config/mise
+          printf '[settings]\ntrusted_config_paths = ["/"]\n' > ~/.config/mise/config.toml
+          cat ~/.config/mise/config.toml
 
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh
