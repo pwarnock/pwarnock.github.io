@@ -19,6 +19,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      MISE_TRUSTED_CONFIG_PATHS: /
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -30,7 +32,11 @@ jobs:
         uses: ./.github/actions/setup-build-env
 
       - name: Trust mise config
-        run: mise trust
+        run: |
+          mise trust --all
+          echo "Trusted configs:"
+          ls -la ~/.local/share/mise/trusted-configs/ 2>/dev/null || echo "No trust directory found"
+          echo "MISE_TRUSTED_CONFIG_PATHS=$MISE_TRUSTED_CONFIG_PATHS"
 
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh

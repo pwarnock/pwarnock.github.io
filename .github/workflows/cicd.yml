@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_ENV: production
+      MISE_TRUSTED_CONFIG_PATHS: /
 
     steps:
       - name: Checkout
