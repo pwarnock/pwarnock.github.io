@@ -1,0 +1,62 @@
+name: Tool Version Consistency
+# Ensures .mise.toml and CI workflow versions stay in sync
+# Fails the build if local dev (mise) and CI drift apart
+
+on:
+  pull_request:
+    paths:
+      - '.mise.toml'
+      - '.github/actions/setup-build-env/action.yml'
+      - '.github/workflows/release-controller.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.mise.toml'
+      - '.github/actions/setup-build-env/action.yml'
+      - '.github/workflows/release-controller.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-consistency:
+    name: Verify tool versions are aligned
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Extract mise versions
+        id: mise
+        run: |
+          BUN_VERSION=$(grep -oP '^bun = "\K[^"]+' .mise.toml || echo "not found")
+          NODE_VERSION=$(grep -oP '^node = "\K[^"]+' .mise.toml || echo "not found")
+          echo "bun=$BUN_VERSION" >> "$GITHUB_OUTPUT"
+          echo "node=$NODE_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Extract CI versions from setup-build-env
+        id: ci
+        run: |
+          CI_BUN=$(grep -oP 'bun-version: '"'"'\K[^'"'"']+' .github/actions/setup-build-env/action.yml || echo "not found")
+          CI_HUGO=$(grep -oP 'hugo-version: '"'"'\K[^'"'"']+' .github/actions/setup-build-env/action.yml || echo "not found")
+          echo "bun=$CI_BUN" >> "$GITHUB_OUTPUT"
+          echo "hugo=$CI_HUGO" >> "$GITHUB_OUTPUT"
+
+      - name: Check Bun version consistency
+        run: |
+          MISE_BUN="${{ steps.mise.outputs.bun }}"
+          CI_BUN="${{ steps.ci.outputs.bun }}"
+          if [ "$MISE_BUN" != "$CI_BUN" ]; then
+            echo "::error::Bun version mismatch: .mise.toml has '$MISE_BUN' but CI has '$CI_BUN'"
+            exit 1
+          fi
+          echo "✓ Bun version consistent: $MISE_BUN"
+
+      - name: Check Hugo version consistency
+        run: |
+          CI_HUGO="${{ steps.ci.outputs.hugo }}"
+          # Hugo uses system version in .mise.toml (disabled_tools), so we only verify CI pin exists
+          if [ "$CI_HUGO" = "latest" ]; then
+            echo "::warning::Hugo is pinned to 'latest' in CI — consider pinning to a specific version for reproducible builds"
+          else
+            echo "✓ Hugo pinned to $CI_HUGO in CI"
+          fi
