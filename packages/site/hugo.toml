@@ -1,7 +1,13 @@
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Peter Warnock'
 description = 'Personal portfolio and blog of Peter Warnock - Fullstack Developer, DevOps Engineer, and Technology Leader'
 baseURL = "https://peterwarnock.com"
+
+defaultContentLanguage = 'en'
+
+[languages.en]
+  locale = 'en-us'
+  title = 'Peter Warnock'
 
 # Theme configuration - using custom layouts instead of external theme
 
@@ -60,13 +66,19 @@ ignoreLogs = ['warning-goldmark-raw-html']
 [security]
   enableInlineShortcodes = true
   [security.exec]
-    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$']
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^git$', '^tailwindcss$', '^node$']
     osEnv = ['(?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$']
   [security.funcs]
     getenv = ['^HUGO_']
   [security.http]
     methods = ['(?i)GET|POST']
     urls = ['.*']
+  [security.node]
+    [security.node.permissions]
+      allowAddons = ['tailwindcss', 'postcss']
+      allowChildProcess = ['tailwindcss', 'postcss']
+      allowRead = ['.', '..', '*']
+      allowWorker = ['tailwindcss', 'postcss']
 
 [taxonomies]
   tag = "tags"

@@ -1,5 +1,5 @@
 {{/* Data-driven Google Tag Manager */}}
-{{ $analyticsConfig := site.Data.cdn.analytics }}
+{{ $analyticsConfig := hugo.Data.cdn.analytics }}
 {{ if and (eq hugo.Environment "production") $analyticsConfig.container_id }}
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

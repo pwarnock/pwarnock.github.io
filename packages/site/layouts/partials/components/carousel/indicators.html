@@ -1,6 +1,6 @@
 <!-- Carousel Indicators -->
 <div class="carousel-indicators">
-  {{ $activeSlides := where site.Data.hero.slides "active" true }}
+  {{ $activeSlides := where hugo.Data.hero.slides "active" true }}
   {{ $sortedSlides := sort $activeSlides "order" }}
   
   {{ range $index, $slide := $sortedSlides }}

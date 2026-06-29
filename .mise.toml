@@ -1,18 +1,16 @@
 [tools]
-hugo = "0.152.2"
 go = "1.25"
-bun = "1.3.6"
+bun = "1.3.14"
 just = "1.46.0"
 actionlint = "latest"
+node = "26"
 
-[env]
-HUGO_ENV = "development"
-# Share Playwright browsers between Node.js (@playwright/test) and Go (playwright-go)
-# Saves 400-600MB disk space by using single browser installation
-PLAYWRIGHT_BROWSERS_PATH = "{{env.HOME}}/.cache/ms-playwright"
+[settings]
+disable_tools = ["hugo"]
 
 [tasks.playwright-install]
 description = "Install Playwright browsers (shared by Node and Go)"
+env = { PLAYWRIGHT_BROWSERS_PATH = "{{env.HOME}}/.cache/ms-playwright" }
 run = """
   echo "Installing Playwright browsers to $PLAYWRIGHT_BROWSERS_PATH"
   bunx playwright install chromium

@@ -1,5 +1,5 @@
 {{/* Lazy loading for large content sections */}}
-{{ $perfConfig := site.Data.performance }}
+{{ $perfConfig := hugo.Data.performance }}
 
 <div class="lazy-content-container" data-threshold="{{ $perfConfig.content_optimization.lazy_load_threshold }}">
     {{ .Content }}

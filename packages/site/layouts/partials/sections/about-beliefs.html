@@ -1,7 +1,7 @@
 <section class="mb-responsive-lg">
   <h2 class="text-2xl lg:text-3xl font-medium text-base-content mb-responsive-md">What Drives Me</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-responsive-md" role="region" aria-label="Core beliefs">
-    {{ range site.Data.beliefs.belief }}
+    {{ range hugo.Data.beliefs.belief }}
     {{ $idSafeTitle := lower (replace .title " " "-") }}
     <div class="belief-card card bg-base-100 card-md card-border shadow-xl hover:shadow-2xl transition-shadow duration-300" role="article" aria-labelledby="belief-{{ $idSafeTitle }}">
       <div class="card-body p-6 flex flex-col h-full">

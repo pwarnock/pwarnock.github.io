@@ -6,7 +6,7 @@
 {{ $ariaHidden := .ariaHidden | default true }}
 
 {{/* Get icon from data file */}}
-{{ $iconData := index site.Data.icons.icons $name }}
+{{ $iconData := index hugo.Data.icons.icons $name }}
 
 {{/* Build CSS classes */}}
 {{ $classes := slice "icon-system" }}

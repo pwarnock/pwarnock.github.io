@@ -1,5 +1,5 @@
 {{/* Data-driven DNS prefetching for performance */}}
-{{ $prefetchDomains := where (site.Data.performance.domains) "type" "in" (site.Data.performance.prefetch.types) }}
+{{ $prefetchDomains := where (hugo.Data.performance.domains) "type" "in" (hugo.Data.performance.prefetch.types) }}
 
 {{ range $prefetchDomains }}
 <link rel="dns-prefetch" href="{{ .url }}">

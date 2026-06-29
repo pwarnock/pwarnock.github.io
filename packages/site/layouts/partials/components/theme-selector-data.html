@@ -1,4 +1,4 @@
-{{/* Data-Driven Theme Selector Component */}} {{ $themes := site.Data.themes.themes }} {{
+{{/* Data-Driven Theme Selector Component */}} {{ $themes := hugo.Data.themes.themes }} {{
 $accessibleThemes := where $themes "accessible" true }}
 
 <div

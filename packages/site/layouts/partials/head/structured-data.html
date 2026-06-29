@@ -148,7 +148,7 @@
     "url": "{{ .Permalink }}",
     "wordCount": {{ .WordCount }},
     "keywords": {{ if .Params.tags }}{{ delimit .Params.tags ", " | jsonify }}{{ else }}[]{{ end }},
-    "inLanguage": "{{ .Site.LanguageCode }}",
+    "inLanguage": "{{ .Site.Language.Locale }}",
     "about": {
       "@type": "Thing",
       "name": "Content Type",

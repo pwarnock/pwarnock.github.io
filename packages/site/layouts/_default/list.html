@@ -36,14 +36,16 @@
         {{ if not .Paginator }}
           {{ $items = first 6 (where site.RegularPages "Type" "posts") }}
           {{ $showPagination = false }}
-          {{ $sectionData = index (where site.Data.home.section "id" "posts") 0 }}
+          {{ $sectionData = index (where hugo.Data.home.section "id" "posts") 0 }}
           {{ $sectionTitle = $sectionData.title | default "Recent Posts" }}
         {{ end }}
       {{ else if eq .Type "portfolio" }}
-        {{ $sectionData = index (where site.Data.home.section "id" "portfolio") 0 }}
+        {{ $cardType = "card-unified" }}
+        {{ $sectionData = index (where hugo.Data.home.section "id" "portfolio") 0 }}
         {{ $sectionTitle = $sectionData.title | default "Featured Projects" }}
       {{ else if eq .Type "tools" }}
-        {{ $sectionData = index (where site.Data.home.section "id" "tools") 0 }}
+        {{ $cardType = "card-unified" }}
+        {{ $sectionData = index (where hugo.Data.home.section "id" "tools") 0 }}
         {{ $sectionTitle = $sectionData.title | default "AI Development Tools" }}
       {{ end }}
 

@@ -19,6 +19,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      MISE_TRUSTED_CONFIG_PATHS: /
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -28,6 +30,12 @@ jobs:
 
       - name: Setup build environment
         uses: ./.github/actions/setup-build-env
+
+      - name: Trust mise config
+        run: |
+          mkdir -p ~/.config/mise
+          printf '[settings]\ntrusted_config_paths = ["/"]\n' > ~/.config/mise/config.toml
+          cat ~/.config/mise/config.toml
 
       - name: Run placeholder detection
         run: ./scripts/placeholder-detection.sh

@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_ENV: production
+      MISE_TRUSTED_CONFIG_PATHS: /
 
     steps:
       - name: Checkout
@@ -26,6 +27,12 @@ jobs:
 
       - name: Setup build environment
         uses: ./.github/actions/setup-build-env
+
+      - name: Trust mise config
+        run: |
+          mkdir -p ~/.config/mise
+          printf '[settings]\ntrusted_config_paths = ["/"]\n' > ~/.config/mise/config.toml
+          cat ~/.config/mise/config.toml
 
       - name: Build
         run: bun run build

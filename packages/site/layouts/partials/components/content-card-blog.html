@@ -1,5 +1,5 @@
 <!-- Blog Posts Card -->
-{{ $postsData := index (where site.Data.home.section "id" "posts") 0 }}
+{{ $postsData := index (where hugo.Data.home.section "id" "posts") 0 }}
 <div class="card bg-base-100 shadow-xl border border-base-300">
   <div class="card-body">
     <div class="text-center mb-6">

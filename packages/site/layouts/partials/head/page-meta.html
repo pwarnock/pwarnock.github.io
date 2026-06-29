@@ -5,7 +5,7 @@
 {{ partial "head/seo.html" . }}
 
 <!-- Open Graph / Twitter with data-driven defaults -->
-{{ $seoConfig := site.Data.seo }}
+{{ $seoConfig := hugo.Data.seo }}
 {{ $title := .Title }}
 {{ $cleanTitle := $title }}
 {{ if and $title (ne $title "") }}
@@ -67,7 +67,7 @@
 {{ end }}
 
 <!-- Data-driven Favicons -->
-{{ $seoConfig := site.Data.seo }}
+{{ $seoConfig := hugo.Data.seo }}
 <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default $seoConfig.defaults.paths.favicon_32 }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.favicon_16 | default $seoConfig.defaults.paths.favicon_16 }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.apple_touch_icon | default $seoConfig.defaults.paths.apple_touch_icon }}">
