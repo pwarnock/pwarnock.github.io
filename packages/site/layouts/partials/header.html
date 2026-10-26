@@ -14,7 +14,7 @@
   const themeSchedule = {
     startHour: 19,
     endHour: 7,
-    light: 'light',
+    light: 'corporate',
     dark: 'dark'
   };
 
@@ -45,7 +45,7 @@
     }
 
     const scheduledTheme = getScheduledTheme();
-    const theme = themes.includes(scheduledTheme) ? scheduledTheme : 'light';
+    const theme = themes.includes(scheduledTheme) ? scheduledTheme : 'corporate';
     setTheme(theme, { persist: false });
   }
 
