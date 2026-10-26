@@ -69,13 +69,6 @@
     },
 
     /**
-     * Track newsletter signup
-     */
-    trackNewsletterSignup: function () {
-      this.trackEvent('newsletter_signup');
-    },
-
-    /**
      * Track social share
      */
     trackSocialShare: function (network) {
