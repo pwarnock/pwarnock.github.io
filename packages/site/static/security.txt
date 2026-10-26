@@ -55,11 +55,6 @@ The following security headers are implemented:
 - No sensitive data collection
 - Cookie-based tracking only
 
-### Mailchimp (Newsletter)
-- Email-only data collection
-- Unsubscribe option available
-- No data sharing with third parties
-
 ## Security Best Practices
 
 This website follows OWASP security best practices:

@@ -598,7 +598,6 @@ window.Analytics.trackEvent(eventName, eventData); // Generic event
 window.Analytics.trackSectionView(section); // Page section view
 window.Analytics.trackExternalClick(url, context); // External link
 window.Analytics.trackCTAClick(ctaText, ctaLocation); // CTA button
-window.Analytics.trackNewsletterSignup(); // Newsletter signup
 window.Analytics.trackSocialShare(network); // Social share
 ```
 

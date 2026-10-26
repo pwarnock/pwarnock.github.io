@@ -116,14 +116,12 @@ class HugoConfigValidator {
   }
 
   /**
-   * Validate required keys for newsletter/social
+   * Validate required keys for social
    */
   validateRequiredKeys(lines) {
     const content = lines.join('\n');
 
     const requiredKeys = [
-      'params.newsletter.title',
-      'params.newsletter.action',
       'params.social.github',
       'params.social.linkedin',
       'params.social.twitter',
@@ -145,7 +143,7 @@ class HugoConfigValidator {
 
     if (this.errors.length > 0) {
       console.log('\n❌ ERRORS:');
-      this.errors.forEach( _error => console.log(`  ${error}`));
+      this.errors.forEach(_error => console.log(`  ${error}`));
     }
 
     if (this.warnings.length > 0) {

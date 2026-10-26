@@ -96,10 +96,9 @@ Hugo uses **config merging** to combine main and environment-specific configs:
 baseURL = "https://peterwarnock.com/"
 
 [params]
-  # All production parameters (social links, newsletter, etc.)
+  # All production parameters (social links, etc.)
   github = "https://github.com/pwarnock"
   linkedin = "https://www.linkedin.com/in/peterwarnock"
-  newsletter_url = "https://gmail.us8.list-manage.com/..."
   googleAnalytics = "G-SKDDM2GBXN"
 ```
 
@@ -114,8 +113,8 @@ baseURL = "http://localhost:1313"
   env = "development"
 ```
 
-**Note:** All other params (github, linkedin, newsletter, etc.) are inherited
-from the main config during development.
+**Note:** All other params (github, linkedin, etc.) are inherited from the main
+config during development.
 
 ### Usage
 

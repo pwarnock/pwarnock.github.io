@@ -35,9 +35,6 @@ test.describe('Analytics Tracking (pw-26)', () => {
           trackCTAClick: function (ctaText: string, ctaLocation: string) {
             this.trackEvent('cta_click', { cta_text: ctaText, cta_location: ctaLocation });
           },
-          trackNewsletterSignup: function () {
-            this.trackEvent('newsletter_signup');
-          },
           trackSocialShare: function (network: string) {
             this.trackEvent('social_share', { network: network });
           },

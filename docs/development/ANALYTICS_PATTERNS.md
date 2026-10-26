@@ -465,9 +465,6 @@ window.Analytics.trackExternalClick(url, context);
 // CTA click
 window.Analytics.trackCTAClick(ctaText, ctaLocation);
 
-// Newsletter signup
-window.Analytics.trackNewsletterSignup();
-
 // Social share
 window.Analytics.trackSocialShare(network);
 ```
