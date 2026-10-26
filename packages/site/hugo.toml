@@ -47,7 +47,7 @@ ignoreLogs = ['warning-goldmark-raw-html']
   discord = 'https://discord.gg/pwarnock'
 
   # Version tracking
-  version = "0.20.0"
+  version = "0.23.0"
   versionHash = "2cdcb75"
 
   # Build settings
