@@ -184,3 +184,8 @@ cody-projects/
 # Dolt database files (added by bd init)
 .dolt/
 *.db
+
+# Beads runtime/credential files (bd doctor)
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
