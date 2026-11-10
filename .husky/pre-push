@@ -10,9 +10,14 @@
 
 set -e
 
+# Git passes the refs being pushed on stdin, one line each:
+#   <local-ref> <local-sha> <remote-ref> <remote-sha>
+# Read it once so the beads hook can't consume it before the branch gate sees it.
+push_refs=$(cat)
+
 # Run beads pre-push hook (auto-export JSONL before push)
 if command -v bd &>/dev/null; then
-  bd hooks run pre-push "$@" || true
+  printf '%s\n' "$push_refs" | bd hooks run pre-push "$@" || true
 fi
 
 # Colors for better readability
@@ -34,8 +39,10 @@ print_branch_gate_block() {
   printf '%b\n' "${YELLOW}   Breakglass: FORCE_PUSH=yes git push${NC}"
 }
 
-# Branch gate: block pushes from protected branches unless FORCE_PUSH=yes.
-# Pre-push hook receives lines on stdin: <local-ref> <local-sha> <remote-ref> <remote-sha>
+# Branch gate: block pushes whose TARGET is a protected branch, unless FORCE_PUSH=yes.
+# Judge the refs being pushed, not the checked-out branch: from a main checkout,
+# `git push origin some-branch` is legitimate; from any checkout, `git push origin HEAD:main`
+# is not. A bare `git push` from main targets refs/heads/main, so it is still blocked.
 current_branch=$(git branch --show-current 2>/dev/null) || true
 protected_remote_branch=""
 
@@ -47,15 +54,10 @@ if [ "$FORCE_PUSH" != "yes" ]; then
         break
         ;;
     esac
-  done
+  done <<< "$push_refs"
 fi
 
 if [ "$FORCE_PUSH" != "yes" ]; then
-  if [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; then
-    print_branch_gate_block "Direct push from protected branch ${current_branch} is not allowed."
-    exit 1
-  fi
-
   if [ -n "$protected_remote_branch" ]; then
     print_branch_gate_block "Push targets protected branch ${protected_remote_branch}."
     exit 1
@@ -121,7 +123,7 @@ echo ""
 
 # Handle different environments
 # Non-interactive environments (CI, Claude Code) skip the confirmation prompt.
-# Safety: branch gate blocks main; refspec gate catches detached HEAD; tests ran above.
+# Safety: branch gate blocks any push targeting main/master; tests ran above.
 if [ -t 0 ] && [ "$FORCE_PUSH" != "yes" ]; then
     # Interactive terminal - ask for confirmation
     printf "${BLUE}Type 'yes' to confirm and push, or anything else to cancel: ${NC}"
