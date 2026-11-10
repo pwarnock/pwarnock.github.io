@@ -1,6 +1,6 @@
 {
   "name": "@pwarnock/tooling",
-  "version": "0.20.3",
+  "version": "0.23.4",
   "private": true,
   "type": "module",
   "description": "Build, deployment, and validation scripts",
